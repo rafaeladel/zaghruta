@@ -52,9 +52,7 @@ class CommentManager
             "author_url" => "user_url",
             "time" => $comment->getCreatedAt()->format("D - h A"),
             "comments_count" => count($entity->getComments()),
-            "author_pp" => in_array("ROLE_FACEBOOK", $user->getRoles()) ?
-                    'https://graph.facebook.com/'.$user->getFacebookId().'/picture' :
-                    str_replace("app_dev.php", "", $request->getUriForPath($user->getProfilePhoto()->getThumbWebPath()))
+            "author_pp" => $request->getUriForPath($user->getProfilePhoto()->getThumbWebPath())
         ));
     }
 

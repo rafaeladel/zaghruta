@@ -140,10 +140,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PostController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/PostController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="58" selection-start="1289" selection-end="1289" vertical-scroll-proportion="0.165692" vertical-offset="391" max-vertical-offset="2227">
+            <state line="36" column="58" selection-start="1289" selection-end="1289" vertical-scroll-proportion="-3.2692308" vertical-offset="391" max-vertical-offset="2227">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentManager.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Service/CommentManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="0" selection-start="2057" selection-end="2057" vertical-scroll-proportion="0.662768" vertical-offset="510" max-vertical-offset="1122">
               <folding />
             </state>
           </provider>
@@ -204,7 +213,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_experience_add.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_tip_add.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/TipController.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_tip_content.html.twig" />
@@ -255,6 +263,7 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/post_routing.xml" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/post_form.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/PostController.php" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Service/CommentManager.php" />
       </list>
     </option>
   </component>
@@ -1130,13 +1139,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/about_routing.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="12" selection-start="272" selection-end="457" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Branch.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="119" column="30" selection-start="1911" selection-end="1911" vertical-scroll-proportion="-7.1923075" vertical-offset="1802" max-vertical-offset="2771">
@@ -1704,7 +1706,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/PostController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="58" selection-start="1289" selection-end="1289" vertical-scroll-proportion="0.165692" vertical-offset="391" max-vertical-offset="2227">
+        <state line="36" column="58" selection-start="1289" selection-end="1289" vertical-scroll-proportion="-3.2692308" vertical-offset="391" max-vertical-offset="2227">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Service/CommentManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="0" selection-start="2057" selection-end="2057" vertical-scroll-proportion="0.662768" vertical-offset="510" max-vertical-offset="1122">
           <folding />
         </state>
       </provider>
