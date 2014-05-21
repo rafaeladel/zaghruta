@@ -101,7 +101,7 @@
       <file leaf-file-name="PhotoInitializer.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Utility/PhotoInitializer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="0" selection-start="499" selection-end="499" vertical-scroll-proportion="3.8076923" vertical-offset="456" max-vertical-offset="969">
+            <state line="24" column="0" selection-start="499" selection-end="499" vertical-scroll-proportion="-0.65384614" vertical-offset="340" max-vertical-offset="969">
               <folding />
             </state>
           </provider>
@@ -121,7 +121,7 @@
       <file leaf-file-name="Image.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="66" selection-start="1468" selection-end="1468" vertical-scroll-proportion="0.73099416" vertical-offset="509" max-vertical-offset="6103">
+            <state line="54" column="69" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.73099416" vertical-offset="509" max-vertical-offset="6103">
               <folding />
             </state>
           </provider>
@@ -1620,13 +1620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Utility/PhotoInitializer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="499" selection-end="499" vertical-scroll-proportion="3.8076923" vertical-offset="456" max-vertical-offset="969">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/EventListener/RegisterListener.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="105" selection-start="2165" selection-end="2165" vertical-scroll-proportion="-9.807693" vertical-offset="850" max-vertical-offset="1428">
@@ -1636,9 +1629,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Utility/PhotoInitializer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="499" selection-end="499" vertical-scroll-proportion="-0.65384614" vertical-offset="340" max-vertical-offset="969">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="66" selection-start="1468" selection-end="1468" vertical-scroll-proportion="0.73099416" vertical-offset="509" max-vertical-offset="6103">
+        <state line="54" column="69" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.73099416" vertical-offset="509" max-vertical-offset="6103">
           <folding />
         </state>
       </provider>
