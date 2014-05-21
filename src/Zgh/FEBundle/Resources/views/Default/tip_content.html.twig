@@ -1,0 +1,55 @@
+{% extends "@ZghFE/layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock stylesheets %}
+{% block content %}
+
+    <div class="container">
+        {% block leftContent %}
+            <div class="row tip">
+                <div class="col-md-9 tipExp">
+                    <div class="row banner margin">
+                        <div class="col-md-12">
+                            <img src="{{ asset(tip.getThumbWebPath) }}" class="img-responsive">
+                        </div>
+                    </div>
+
+                    <div class="row headerProduct">
+                        <div class="col-md-2 pull-right icons-G">
+                            <form action="{{ url("zgh_fe.like.post", {"id": tip.id, "entity_type": tip.getObjectType }) }}" method="post">
+                                <button type="submit" class="btn btn-danger likeBtn btn-circle {{ checkLike(app.user, tip) ? "glyphicon-heart-empty" : "" }}">
+                                    <span class="glyphicon glyphicon-heart"></span>
+                                </button>
+                            </form>
+
+                        </div>
+                        <h2 class="col-md-4">{{ tip.title }}</h2>
+                        <div class="clearfix"></div>
+
+                        <span class="col-md-12 date-time">{{ tip.createdAt|date() }}</span>
+                        <p class="by col-md-12">By: <span>{{ tip.user.getFullname }}</span></p>
+
+                    </div>
+                    <div class="row">
+                        <p class="col-md-12">
+                            {{ tip.content }}
+                        </p>
+
+                    </div>
+
+                    {{ include("@ZghFE/Partial/comments_section.html.twig", { 'entity': tip }) }}
+
+                </div>
+
+            </div>
+        {% endblock leftContent %}
+
+        {% block rightContent %}{% endblock rightContent %}
+
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock javascripts %}

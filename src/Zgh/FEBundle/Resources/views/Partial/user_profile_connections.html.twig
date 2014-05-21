@@ -1,0 +1,102 @@
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
+
+{% block leftContent %}
+
+
+    <div id="vendConnec" style="display: block;">
+    <div class="row margin">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="btn-group btn-group-justified">
+                <a href="javascript:connectionsTabs('followers');" class="btn btn-default active"> Followers</a>
+                <a href="javascript:connectionsTabs('following');" class="btn btn-default"> Following</a>
+                <a href="javascript:connectionsTabs('vendors');" class="btn btn-default"> Vendors</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="connections">
+
+    <div class="followerCont" style="display: block;">
+        {% for followee in user.followees %}
+        <div class="media profile effect col-sm-4">
+            <a class="pull-left img-circle profile-pic-boy" href="#">
+                <img class="media-object" src="{{ asset(followee.follower.profilePhoto.getWebPath) }}" alt="">
+            </a>
+
+            <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": followee.follower.id }) }}">{{ followee.follower.getFullname }}</a></h3>
+            <span class="title">{{ followee.follower.userInfo.work}}</span>
+            {{ renderFollow(followee.follower) }}
+            <a href="#" class="boy followerStats"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+            <div class="dropdown">
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">remove</a></li>
+                    <li><a href="#">Block</a></li>
+                </ul>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+    <div class="followingCont" style="display: none;">
+        {% for follower in user.followers %}
+            <div class=" profile effect col-sm-4">
+                <a class="pull-left img-circle profile-pic-boy" href="#">
+                    <img class="media-object" src="{{ asset(follower.followee.profilePhoto.getWebPath) }}" alt="">
+                </a>
+
+                <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": follower.followee.id }) }}">{{ follower.followee.getFullname }}</a></h3>
+                <span class="title">{{ follower.followee.userInfo.work}}</span>
+                {{ renderFollow(follower.followee) }}
+                <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+            </div>
+        {% endfor %}
+    </div>
+    <div class="vendorsCont" style="display: none;">
+        <div class=" profile effect col-sm-4">
+            <a class="pull-left img-circle profile-pic-boy" href="#">
+                <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+            </a>
+
+            <h3><a href="">Mohamed Ahmed</a></h3>
+            <span class="title">Developer</span>
+            <button type="button" class="btn btn-primary btn-wide">
+                <span class="glyphicon glyphicon-plus-sign"></span> Follow
+            </button>
+            <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+        </div>
+        <div class=" profile effect col-sm-4">
+            <a class="pull-left  img-circle profile-pic-girl" href="#">
+                <img class="media-object" src="img/pic-profile-girl.jpg" alt="...">
+            </a>
+
+            <h3><a href="">Mona Ahmed</a></h3>
+            <span class="title">Teacher</span>
+            <button type="button" class="btn btn-primary btn-wide btn-danger">
+                <span class="glyphicon glyphicon-plus-sign"></span> Follow
+            </button>
+            <a class="girl" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-girl"></span> 80 </a>
+
+        </div>
+        <div class=" profile effect col-sm-4">
+            <a class="pull-left  img-circle profile-pic-girl" href="#">
+                <img class="media-object" src="img/pic-profile-girl.jpg" alt="...">
+            </a>
+
+            <h3><a href="">Mona Ahmed</a></h3>
+            <span class="title">Teacher</span>
+            <button type="button" class="btn btn-primary btn-wide btn-danger">
+                <span class="glyphicon glyphicon-plus-sign"></span> Follow
+            </button>
+            <a class="girl" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-girl"></span> 80 </a>
+
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+
+{% endblock leftContent %}

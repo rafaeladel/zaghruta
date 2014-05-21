@@ -1,0 +1,47 @@
+<form role="form" class="form-horizontal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modalHeader">
+                <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Add Photo</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group formGroup">
+                    <label class="col-sm-3 control-label">Select Album</label>
+
+                    <div class="col-sm-9">
+                        <select class="form-control" name="album_id">
+                            {% for album_loop in albums %}
+                                {% if app.request.get('_route') == "zgh_fe.photos_partial_albums_photos_content" %}
+                                    <option value="{{ album.id }}" {{ album_loop.id == album.id ? "selected" : "" }}>{{ album_loop.name }}</option>
+                                {% else %}
+                                    <option value="{{ album_loop.id }}">{{ album_loop.name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+
+                        <div class="error"></div>
+                    </div>
+                </div>
+
+                <div class="form-group formGroup">
+                    <label class="col-sm-3 control-label">Upload Photos</label>
+
+                    {#<input type="file" name="file" class="dropzone_photo" />#}
+                    <button type="button" class="btn btn-wide btn-primary dropzone_photo">
+                        browse
+                    </button>
+                    <div class="dropzone-previews photos_previews"></div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-wide btn-primary photo_submitBtn">Upload</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+
+</form>

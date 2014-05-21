@@ -1,0 +1,37 @@
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
+
+{% block leftContent %}
+    <div id="vendPosts">
+
+
+    <!--End Compose Post -->
+
+    <div class="divider"></div>
+    <!--Posted -->
+    <div class="col-md-7 col-sm-7">
+        <!--Compose Post -->
+        {% if user.id == app.user.id %}
+            {{ include("@ZghFE/Partial/post_form.html.twig", {"return_url": path("zgh_fe.user_profile.index", {"id": user.id} ) }) }}
+        {% endif %}
+
+        {{ render_esi(controller("ZghFEBundle:Post:getOwnList", {"id": user.id})) }}
+        <!--End Post Box-->
+
+
+    </div>
+
+    <div class="col-md-5 col-sm-5 hidden-xs">
+
+
+        <!-- Left side posts page -->
+
+        {{ render_esi(controller("ZghFEBundle:UserProfile:getAboutPartial", {"id": user.id})) }}
+
+
+    </div>
+
+    <!--End of Posted -->
+
+
+</div>
+{% endblock leftContent %}

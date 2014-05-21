@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="zgh_fe.photos.new" pattern="/{id}/pp/new" methods="POST">
+        <default key="_controller">ZghFEBundle:Photo:postNew</default>
+    </route>
+
+    <route id="zgh_fe.photos_partial_photos_content" pattern="/{id}/pp/content/p">
+        <default key="_controller">ZghFEBundle:Photo:getPhotoPhotosPartialContent</default>
+    </route>
+
+    <route id="zgh_fe.photos_partial_albums_content" pattern="/{id}/pp/content/a">
+        <default key="_controller">ZghFEBundle:Photo:getPhotoAlbumsPartialContent</default>
+    </route>
+
+    <route id="zgh_fe.photos_partial_albums_photos_content" pattern="/{id}/albums/{album_id}">
+        <default key="_controller">ZghFEBundle:Photo:getPhotoAlbumsPhotosPartialContent</default>
+    </route>
+
+
+    <route id="zgh_fe.photos.photo.content" pattern="/{id}/photo/{photo_id}">
+        <default key="_controller">ZghFEBundle:Photo:getPhotoContent</default>
+    </route>
+
+    <route id="zgh_fe.photos.photo.new" pattern="/{id}/pp/p/new" methods="POST">
+        <default key="_controller">ZghFEBundle:Photo:postPhotoPhotoNew</default>
+    </route>
+
+    <route id="zgh_fe.photos.photo.delete" pattern="/c/{id}/pp/p/delete" methods="POST">
+        <default key="_controller">ZghFEBundle:Photo:postPhotoPhotoDelete</default>
+    </route>
+
+    <route id="zgh_fe.photos.album.new" pattern="/c/{id}/pp/a/new" methods="POST">
+        <default key="_controller">ZghFEBundle:Photo:postPhotoAlbumNew</default>
+    </route>
+
+    <route id="zgh_fe.photos.album.delete" pattern="/c/{id}/pp/a/delete" methods="POST">
+        <default key="_controller">ZghFEBundle:Photo:postPhotoAlbumDelete</default>
+    </route>
+
+</routes>

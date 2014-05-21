@@ -1,0 +1,14 @@
+<ul class="ProfileList">
+    {% for like in likes %}
+        <li>
+            <a class="pull-left" href="">
+                <div class="imgProfileList">
+                    <img alt="" src="{{ asset(like.user.profilePhoto.getThumbWebPath) }}"/>
+                </div>
+
+                <span>{{ like.user.fullname }}</span>
+            </a>
+            {{ renderFollow(like.user, "pull-right") }}
+        </li>
+    {% endfor %}
+</ul>

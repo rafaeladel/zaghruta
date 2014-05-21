@@ -1,0 +1,99 @@
+{% extends "@ZghFE/layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock stylesheets %}
+{% block content %}
+
+    <div class="container">
+        {% block leftContent %}
+            <div class="row">
+
+                <div class="col-md-3 hidden-xs hidden-sm">
+                    <div class="companyData">
+                        <img  src="img/productLogo.png">
+                        <h2 class="text-center">Decorama co</h2>
+                        <p class="text-center">Company<br>Furniture & Home</p>
+                        <button class="btn btn-primary btn-wide" type="button">
+                            <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                        </button>
+                        <div class="groupItem">
+                            <a href="#" class="boy"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 800 </a>
+
+                            <button class="btn btn-primary pull-right btn-sm" type="button">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                            </button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-9 Product">
+                    <div class="row banner margin">
+                        <div class="col-md-12">
+                            <img class="img-responsive" src="img/banner.jpg">
+                            <button type="button" class="btn btn-default btn-wide  btn-cover">
+                                <span class="glyphicon glyphicon-pencil"></span> Change photo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row hidden-md hidden-lg">
+                        <div class="col-sm-12 btnTitle  margin">
+                            <button class="btn btn-primary btn-wide btn-block" type="button"> Decorama Co</button>
+                        </div>
+                    </div>
+                    <div class="row headerProduct">
+
+                        <div class="col-md-5">
+                            <input type="email" placeholder="Product Name" class="form-control input-sm margin-sm">
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div class="col-md-5 margin-sm">
+                            <select class="form-control">
+                                <option>furniture</option>
+                                <option>Food</option>
+                                <option>Clothes</option>
+                                <option>Gym</option>
+                                <option>anything</option>
+                            </select>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="col-md-10">
+                            <textarea rows="3" placeholder="description" class="form-control inputtext margin-sm"></textarea>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="col-md-5">
+                            <input type="email" placeholder="Price"  class="form-control input-sm margin">
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-default btn-wide btn-sm pull-right">
+                                <span class="glyphicon glyphicon-ok"></span> Save
+                            </button>
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div> <!-- end of wrap -->
+        {% endblock leftContent %}
+
+        {% block rightContent %}{% endblock rightContent %}
+
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock javascripts %}

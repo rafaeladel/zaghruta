@@ -1,0 +1,87 @@
+<?php
+namespace Zgh\FEBundle\Entity;
+
+use Zgh\FEBundle\Model\Partial\BasicInfo;
+use Zgh\FEBundle\Model\Utilities\Image;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="tips")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Tip
+{
+//    use BasicInfo;
+
+    protected $cat_dir = "tips";
+    protected $thumb_dir = "thumb";
+
+    protected $thumb_h = 265;
+    protected $thumb_w = 682;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="tips")
+     */
+    protected $user;
+
+    /**
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+     */
+    protected $title;
+
+    /**
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+     */
+    protected $content;
+
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Tip
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Tip
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+}

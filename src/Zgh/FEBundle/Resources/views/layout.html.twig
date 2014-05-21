@@ -1,0 +1,359 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+        "bundles/zghfe/plugins/Imgareaselect/css/imgareaselect-default.css"
+        "bundles/zghfe/plugins/select2-3.4.6/select2-bootstrap.css"
+        "bundles/zghfe/plugins/dropzone-3.9.0/downloads/css/dropzone.css"
+        filter="cssrewrite"
+    %}
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css" media="screen">
+    {% endstylesheets %}
+{% endblock %}
+{% block body %}
+    <div id="wrap">
+        {% block header %}
+            <header class="fixed-header">
+
+                <div class="container hidden-xs">
+                    <div class="logo col-md-3 hidden-sm"><a href="{{ url("zgh_fe.wall.index") }}"><img src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
+                    <div class=" col-md-5 visible-sm col-sm-push-4"><a href="#"><img src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
+                    <div class="divider visible-sm"></div>
+
+                    <div class="col-md-6 col-sm-8 search-box">
+                        <div class="mainSearch input-group">
+                            <div class="input-group-btn" style="display:none;">
+                                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Category <span
+                                            class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="icon-list-alt"></i>Everything</a></li>
+                                    <li class="divider"></li>
+                                    <li class="has_sub"> <a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels &amp; Venues</a></li>
+                                    <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp; catering</a></li>
+                                    <li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a></li>
+                                    <li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a></li>
+                                    <li><a href="#"><i class="iconMenu iconJewelry pull-left"></i>Jewelry</a></li>
+                                    <li><a href="#"><i class="iconMenu iconHonymoons pull-left"></i>Honeymoons</a></li>
+                                    <li><a href="#"><i class="iconMenu iconFashion pull-left"></i>Fashion</a></li>
+                                    <li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a></li>
+                                    <li><a href="#"><i class="iconMenu iconFlorists pull-left"></i>Florists </a></li>
+                                    <li><a href="#"><i class="iconMenu iconFurniture pull-left"></i>Furniture</a></li>
+                                    <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health </a></li>
+                                    <li><a href="#"><i class="iconMenu iconLimousines pull-left"></i>Limousines</a></li>
+                                    <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home Appliances</a></li>
+                                    <li><a href="#"><i class="iconMenu iconEntertainment pull-left"></i>Entertainment</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+
+                            <input type="text" class="form-control custFc" placeholder="Search for your things">
+                            <a href="#" class="search-addon input-group-addon custAncor"></a>
+
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-sm-1">
+                        <div class="input-btn">
+                            <button class="btn btn-primary dropdown-toggle search-box" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-align-justify"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="icon-list-alt"></i>Everything</a></li>
+                                <li class="divider"></li>
+                                <li class="has_sub"> <a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels &amp; Venues</a></li>
+                                <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp; catering</a></li>
+                                <li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a></li>
+                                <li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a></li>
+                                <li><a href="#"><i class="iconMenu iconJewelry pull-left"></i>Jewelry</a></li>
+                                <li><a href="#"><i class="iconMenu iconHonymoons pull-left"></i>Honeymoons</a></li>
+                                <li><a href="#"><i class="iconMenu iconFashion pull-left"></i>Fashion</a></li>
+                                <li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a></li>
+                                <li><a href="#"><i class="iconMenu iconFlorists pull-left"></i>Florists </a></li>
+                                <li><a href="#"><i class="iconMenu iconFurniture pull-left"></i>Furniture</a></li>
+                                <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health </a></li>
+                                <li><a href="#"><i class="iconMenu iconLimousines pull-left"></i>Limousines</a></li>
+                                <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home Appliances</a></li>
+                                <li><a href="#"><i class="iconMenu iconEntertainment pull-left"></i>Entertainment</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {% if app.security.isGranted("ROLE_USER") %}
+                        {{ render_esi(controller("ZghFEBundle:Default:getShortcutsAndNotification")) }}
+                    {% endif %}
+
+                </div>
+                <!-- Header To Xs -->
+
+                <div class="container visible-xs ">
+                    <div class="row">
+                        <div class="logo text-center"><a href="#"><img src="img/logo.png"></a></div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="row">
+                        <div class="col-xs-12 search-box col-centered">
+                            <div class="mainSearch input-group">
+                                <div class="input-group-btn" style="display:none;">
+                                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Category <span
+                                                class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Everything</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Hotels &amp; Venues</a></li>
+                                        <li><a href="#">Cake &amp; catering</a></li>
+                                        <li><a href="#">Wedding Planners</a></li>
+                                        <li><a href="#">Photography</a></li>
+                                        <li><a href="#">Jewelry</a></li>
+                                        <li><a href="#">Hony Moons</a></li>
+                                        <li><a href="#">Category else here</a></li>
+                                        <li><a href="#">Fashion</a></li>
+                                        <li><a href="#">Real Estate</a></li>
+                                        <li><a href="#">Furniture</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">People</a></li>
+
+                                    </ul>
+                                </div>
+                                <!-- /btn-group -->
+
+                                <input type="text" class="form-control custFc" placeholder="Search for your things">
+                                <a href="#" class="search-addon input-group-addon custAncor"></a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="note-box text-center">
+                            <button type="button" class="btn btn-primary btn-circle counter">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                                <span class="notCounter img-circle text-center">15</span>
+                            </button>
+
+                            <button type="button" class="btn btn-primary btn-circle counter">
+                                <span class="glyphicon glyphicon-globe"></span>
+                                <span class="notCounter img-circle text-center">3</span>
+                            </button>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-circle  dropdown-toggle" data-toggle="dropdown">
+                                    <img src="img/img-prf-comment2.jpg" alt="" width="25" height="25"
+                                         style="border-radius:50%;">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><span class="glyphicon glyphicon-heart"></span> Likes</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-list"></span> Wish Lists</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-star"></span> Vendors</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Friends</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-circle">
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Header from Xs -->
+
+
+            </header>
+        {% endblock header %}
+
+        {% block content %}
+            {% block leftContent %}
+            {% endblock leftContent %}
+
+            {% block rightContent %}
+            {% endblock rightContent %}
+        {% endblock content %}
+    </div>
+
+    {% block footer %}
+            <footer>
+                <div class="container">
+                    <p class="pull-right"><a href="#">
+                            <button type="button" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-chevron-up"></span>
+                            </button>
+                        </a></p>
+                    <p>Zaghruta &copy; 2013 Designed by <a href="#">thesevenlayers</a></p>
+                </div>
+            </footer>
+        {% endblock footer %}
+    {% block modals %}
+    {% endblock modals %}
+
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        "bundles/zghfe/js/magicsuggest-1.3.1.js"
+        "bundles/zghfe/js/magicSuggestCustome.js"
+        "bundles/zghfe/js/jquery.fancybox.pack.js"
+        "bundles/zghfe/js/jquery.fancybox-buttons.js"
+        "bundles/zghfe/js/jquery.fancybox-media.js"
+        "bundles/zghfe/js/jquery.fancybox-thumbs.js"
+        "bundles/zghfe/js/fancyCustom.js"
+        "bundles/zghfe/plugins/select2-3.4.6/select2.js"
+        "bundles/thraceform/js/select2.js"
+    "bundles/zghfe/plugins/dropzone-3.9.0/downloads/dropzone.js"
+    "bundles/zghfe/js/uploader_save.js"
+    "bundles/zghfe/js/post_actions.js"
+    "bundles/zghfe/plugins/Imgareaselect/scripts/jquery.imgareaselect.js"
+    "bundles/zghfe/js/ImgCrop.js"
+    "bundles/zghfe/js/autosize.js"
+
+        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/vendor/jquery.ui.widget.js"
+        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/jquery.iframe-transport.js"
+        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/jquery.fileupload.js"
+        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/load-image.min.js"
+        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/jquery.fileupload-process.js"
+        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/jquery.fileupload-image.js"
+        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/jquery.fileupload-validate.js"
+        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/jquery.fileupload-ui.js"
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $("body").on("click", ".btnFollowing", function(e){
+                e.preventDefault();
+                var form = $(e.target).closest("form");
+                $(e.target).attr("disabled", "disabled");
+                $.ajax({
+                    type: "post",
+                    url: form.attr("action"),
+                    success: function(data){
+                        $(e.target).removeAttr("disabled");
+                        $(e.target).find(".following_msg").text(data.msg);
+                    }
+                })
+            });
+
+            $(document).on("ajaxSuccess", function(e){
+
+                var photo_uploader = new Uploader({
+                    wrapperID: "c_photos",
+                    modalID: "addPhotoPopup",
+                    listBtnID: "btnPhots",
+                    listWrapperClass: "content_wrapper",
+                    browseClass: "dropzone_photo",
+                    saveButtonClass: "photo_submitBtn",
+                    previewClass: "photos_previews",
+                    targetUrl: '{{ url("zgh_fe.photos.photo.new", {"id": app.user.id}) }}',
+                    ajaxLoadUrl: '{{ url("zgh_fe.user_profile.photos_partial", {"id": app.user.id}) }}',
+                    imageRequired: true,
+                    additionalData: {
+                        "album_id": {
+                            "required": true,
+                            "message": "Please select an album"
+                        }
+                    },
+                    numOfFiles: 10
+                });
+                photo_uploader.init();
+
+                var album_uploader = new Uploader({
+                    wrapperID: "c_photos",
+                    modalID: "addAlbumPopup",
+                    listBtnID: "btnAlbums",
+                    listWrapperClass: "content_wrapper",
+                    browseClass: "dropzone_album",
+                    saveButtonClass: "album_submitBtn",
+                    previewClass: "albums_previews",
+                    targetUrl: "{{ url("zgh_fe.photos.album.new", {"id": app.user.id}) }}",
+                    ajaxLoadUrl: "{{ url("zgh_fe.user_profile.albums_partial", {"id": app.user.id}) }}",
+                    imageRequired: false,
+                    additionalData: {
+                        "album_name": {
+                            "required": true,
+                            "message": "Please enter album name."
+                        },
+                        "album_info": {
+                            "required": true,
+                            "message": "Please enter album info."
+                        }
+                    },
+                    numOfFiles: 10
+                });
+                album_uploader.init();
+
+                $("#exp_form").fileupload({
+                    autoUpload: false,
+                    filesContainer:  $("#exp_form").find(".thumbnail table"),
+                    uploadTemplate: function(o){
+                        var rows = $();
+                        $.each(o.files, function(index, file){
+                            var row = $('<tr class="template-upload fade">' +
+                                    '<td><span class="preview"></span></td>' +
+                                    (file.error ? '<div class="error"></div>' : '') +
+                                    '<td>' +
+                                    (o.files.error ? '' : '<div class="progress"></div>') +
+                                    '</td>' +
+                                    '<td>' +
+                                    (!index ? '<button class="cancel remove_img">Cancel</button>' : '') +
+                                    '</td>' +
+                                    '</tr>');
+                            if (file.error) {
+                                row.find('.error').text(file.error);
+                            }
+                            rows = rows.add(row);
+                        });
+                        return rows;
+                    }
+                })
+                        .bind("fileuploadadd", function(e, data){
+                            var form = $("#exp_form");
+                            form.find(".progress").css("display", "block").find(".progress-bar").css("width", "0%");
+                            $(".exp_submit").off("click");
+                            $("#exp_form").on("click", ".exp_submit", function(e)
+                            {
+                                e.preventDefault();
+                                $(e.target).attr("disabled", "disabled");
+                                data.submit();
+                            });
+                            $(".remove_img").off("click");
+                            $("#exp_form").on("click", ".remove_img", function(e){
+                                console.log("deleted");
+                                console.log(data.files.length);
+                            })
+
+                        })
+                        .bind("fileuploadprogressall", function(e, data){
+                            var form = $("#exp_form");
+                            var progress = parseInt(data.loaded / data.total * 100, 10);
+                            form.find(".progress").css("display", "block").find(".progress-bar").css("width", progress+"%");
+                            if(progress == 100){
+                                form.find(".progress").find(".progress-bar").append("<span>Done!</span>");
+                            }
+                        })
+                        .bind("fileuploaddone", function(e, data){
+                            if(data.result.status == 200){
+                                $(".content_wrapper").html('<img style="margin: auto; display: block;" src="{{ asset("bundles/zghfe/img/page-preloader.GIF") }}" />');
+                                $(".content_wrapper").load("{{ url("zgh_fe.user_profile.experiences_partial", {"id": app.user.id }) }}");
+                            }
+                            else if(data.result.status == 500)
+                            {
+                                $("body").find(".content_wrapper").html(data.result.view);
+                            }
+
+                        });
+
+                ThraceForm.select2();
+
+            });
+
+        });
+    </script>
+{% endblock javascripts %}
+{% block misc %}{% endblock %}

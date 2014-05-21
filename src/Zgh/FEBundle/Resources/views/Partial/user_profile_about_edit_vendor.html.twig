@@ -1,0 +1,72 @@
+{{ form_start(form, {"action":  url("zgh_fe.about.post_vendor_edit", {"id": app.user.getVendorInfo.getId } ) } ) }}
+    <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th colspan="2">Contact Information
+                        <a href="" class="pull-right cancel_about_edit ">
+                            Cancel
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ form_label(form.company_name) }}</td>
+                    <td>
+                        {{ form_widget(form.company_name, {"attr": {"class": "form-control"} }) }}
+                        {{ form_errors(form.company_name) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.mobile) }}</td>
+                    <td>
+                        {{ form_widget(form.mobile, {"attr": {"class": "form-control"} }) }}
+                        {{ form_errors(form.mobile) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.website) }}</td>
+                    <td>
+                        {{ form_widget(form.website, {"attr": {"class": "form-control"} }) }}
+                        {{ form_errors(form.website) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.email) }}</td>
+                    <td>
+                        {{ form_widget(form.email, {"attr": {"class": "form-control"} }) }}
+                        {{ form_errors(form.email) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.facebook) }}</td>
+                    <td>
+                        {{ form_widget(form.facebook, {"attr": {"class": "form-control"} }) }}
+                        {{ form_errors(form.facebook) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.twitter) }}</td>
+                    <td>
+                        {{ form_widget(form.twitter, {"attr": {"class": "form-control"} }) }}
+                        {{ form_errors(form.twitter) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.info) }}</td>
+                    <td>
+                        {{ form_widget(form.info, {"attr": {"class": "form-control"} }) }}
+                        {{ form_errors(form.info) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" class="btn btn-primary pull-right save_about" value="Save" />
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+    {{ form_rest(form) }}
+{{ form_end(form) }}
+

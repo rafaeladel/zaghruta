@@ -1,0 +1,57 @@
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
+
+{% block leftContent %}
+<div id="c_wishlist">
+    <!-- GridView-->
+    {% if user.id == app.user.id %}
+    <div class="row search-Results">
+
+        <div class="col-sm-3">
+            <button data-target="#addNewListPopup" data-toggle="modal" type="button" class="btn btn-default btn-wide">
+                <span class="glyphicon glyphicon-plus"></span> Add new list
+            </button>
+        </div>
+
+    </div>
+    {% endif %}
+    <div id="wishlists_list">
+        {{ render_esi(controller("ZghFEBundle:Wishlist:getWishlistPartialContent", {"id": user.id})) }}
+    </div>
+</div>
+<div id="addNewListPopup" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+     class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modalHeader">
+                <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Add List</h4>
+            </div>
+            {{ form_start(wishlist_form, {"action": url("zgh_fe.wishlist.new", {"id": app.user.id }), "attr" : {"class": "form-horizontal"} }) }}
+            {#<form role="form" class="form-horizontal">#}
+
+                <div class="modal-body">
+                    <div class="form-group formGroup">
+                        <label class="col-sm-3 control-label">Name</label>
+                        {#{{ form_label(wishlist_form.name, null, {"attr": {"class": "col-sm-3 control-label"} }) }}#}
+                        <div class="col-sm-9">
+                            {{ form_widget(wishlist_form.name, {"attr": {"class": "form-control", "placeholder": "Enter Product Name" } }) }}
+                            {#<input type="text" placeholder="Enter Product Name" class="form-control">#}
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-wide btn-primary wishlistSubmit">Create</button>
+                </div>
+                {{ form_rest(wishlist_form) }}
+            {{ form_end(wishlist_form) }}
+            {#</form>#}
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+{% endblock %}

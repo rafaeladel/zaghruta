@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="zgh_fe.branches.list" pattern="/{id}/branches/list" methods="GET">
+        <default key="_controller">ZghFEBundle:Branch:getBranchesList</default>
+    </route>
+
+    <route id="zgh_fe.branches.new" pattern="/{id}/branches/new" methods="POST">
+        <default key="_controller">ZghFEBundle:Branch:postNewBranch</default>
+    </route>
+
+</routes>

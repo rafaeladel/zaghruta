@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="MySQL - zaghruta_db@localhost" uuid="14e6350c-49bf-4ab1-be3d-57ea7b03a102">
+    <database-info product="MySQL" version="5.6.16" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.29 ( Revision: alexander.soklakov@oracle.com-20140120140810-s44574olh90i6i4l )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="zaghruta_db"/>
+    <table name="albums" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="name" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="info" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_F4E2474FA76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_876E0D91137ABCF" table="photos" schema="" catalog="zaghruta_db" columns="album_id"/>
+      <index name="IDX_F4E2474FA76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="branches" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="address" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="phone" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="mobile" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="email" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_D760D16FA76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_D760D16FA76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="categories" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="false" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_238E917D12469DE2" table="category_experience" schema="" catalog="zaghruta_db" columns="category_id"/>
+      <exported-key name="FK_1808C04212469DE2" table="experience_category" schema="" catalog="zaghruta_db" columns="category_id"/>
+    </table>
+    <table name="category_experience" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="category_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="experience_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="category_id,experience_id"/>
+      <foreign-key name="FK_238E917D46E90E27" columns="experience_id" ref-table="experiences" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_238E917D12469DE2" columns="category_id" ref-table="categories" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_238E917D12469DE2" unique="false" columns="category_id"/>
+      <index name="IDX_238E917D46E90E27" unique="false" columns="experience_id"/>
+    </table>
+    <table name="comments" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="post_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="experience_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="photo_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="content" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_5F9E962A7E9E4C8C" columns="photo_id" ref-table="photos" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_5F9E962A46E90E27" columns="experience_id" ref-table="experiences" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_5F9E962A4B89032C" columns="post_id" ref-table="posts" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_5F9E962AA76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_5F9E962A46E90E27" unique="false" columns="experience_id"/>
+      <index name="IDX_5F9E962A4B89032C" unique="false" columns="post_id"/>
+      <index name="IDX_5F9E962A7E9E4C8C" unique="false" columns="photo_id"/>
+      <index name="IDX_5F9E962AA76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="conf_reads" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="conf_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="read_status" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_843D73A87FDF4958" columns="conf_id" ref-table="confs" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_843D73A8A76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UNIQ_843D73A8A76ED395" unique="true" columns="user_id"/>
+      <index name="IDX_843D73A87FDF4958" unique="false" columns="conf_id"/>
+    </table>
+    <table name="conf_replies" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="conf_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="content" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="false" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_B6088FBA7FDF4958" columns="conf_id" ref-table="confs" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_B6088FBAA76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_B6088FBA7FDF4958" unique="false" columns="conf_id"/>
+      <index name="IDX_B6088FBAA76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="confs" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_one_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="user_two_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_C3171758F59432E1" columns="user_two_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_C31717589EC8D52E" columns="user_one_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_843D73A87FDF4958" table="conf_reads" schema="" catalog="zaghruta_db" columns="conf_id"/>
+      <exported-key name="FK_B6088FBA7FDF4958" table="conf_replies" schema="" catalog="zaghruta_db" columns="conf_id"/>
+      <index name="IDX_C31717589EC8D52E" unique="false" columns="user_one_id"/>
+      <index name="IDX_C3171758F59432E1" unique="false" columns="user_two_id"/>
+    </table>
+    <table name="experience_category" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="experience_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="category_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="experience_id,category_id"/>
+      <foreign-key name="FK_1808C04212469DE2" columns="category_id" ref-table="categories" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_1808C04246E90E27" columns="experience_id" ref-table="experiences" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_1808C04212469DE2" unique="false" columns="category_id"/>
+      <index name="IDX_1808C04246E90E27" unique="false" columns="experience_id"/>
+    </table>
+    <table name="experiences" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="title" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="content" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="image_name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_82020E70A76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_238E917D46E90E27" table="category_experience" schema="" catalog="zaghruta_db" columns="experience_id"/>
+      <exported-key name="FK_5F9E962A46E90E27" table="comments" schema="" catalog="zaghruta_db" columns="experience_id"/>
+      <exported-key name="FK_1808C04246E90E27" table="experience_category" schema="" catalog="zaghruta_db" columns="experience_id"/>
+      <exported-key name="FK_49CA4E7D46E90E27" table="likes" schema="" catalog="zaghruta_db" columns="experience_id"/>
+      <index name="IDX_82020E70A76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="files" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="container_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="file_name" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_6354059BC21F742" columns="container_id" ref-table="files_container" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_6354059BC21F742" unique="false" columns="container_id"/>
+    </table>
+    <table name="files_container" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_6354059BC21F742" table="files" schema="" catalog="zaghruta_db" columns="container_id"/>
+    </table>
+    <table name="follow_users" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="follower_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="followee_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_1674F5361EA9775" columns="followee_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_1674F53AC24F853" columns="follower_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_1674F5361EA9775" unique="false" columns="followee_id"/>
+      <index name="IDX_1674F53AC24F853" unique="false" columns="follower_id"/>
+    </table>
+    <table name="fos_user" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="username_canonical" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="email_canonical" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="enabled" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="salt" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="last_login" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="locked" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="expired" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="expires_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="confirmation_token" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="password_requested_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="roles" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="false" jdbcType="-1" remarks="KERDMlR5cGU6YXJyYXkp"/>
+      <column name="credentials_expired" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="credentials_expire_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="first_time" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
+      <column name="firstname" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="lastname" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="facebook_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="facebook_access_token" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_F4E2474FA76ED395" table="albums" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_D760D16FA76ED395" table="branches" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_5F9E962AA76ED395" table="comments" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_843D73A8A76ED395" table="conf_reads" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_B6088FBAA76ED395" table="conf_replies" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_C3171758F59432E1" table="confs" schema="" catalog="zaghruta_db" columns="user_two_id"/>
+      <exported-key name="FK_C31717589EC8D52E" table="confs" schema="" catalog="zaghruta_db" columns="user_one_id"/>
+      <exported-key name="FK_82020E70A76ED395" table="experiences" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_1674F5361EA9775" table="follow_users" schema="" catalog="zaghruta_db" columns="followee_id"/>
+      <exported-key name="FK_1674F53AC24F853" table="follow_users" schema="" catalog="zaghruta_db" columns="follower_id"/>
+      <exported-key name="FK_23BD56C5A76ED395" table="interest_user" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_49CA4E7DA76ED395" table="likes" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_35AF9D73A76ED395" table="notification_user" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_8EC22D98A76ED395" table="notifications_reads" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_876E0D9A76ED395" table="photos" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_885DBAFAA76ED395" table="posts" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_B3BA5A5AA76ED395" table="products" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_C087935A76ED395" table="user_infos" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_3F980AC8A76ED395" table="user_notification" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_DB8E4398A76ED395" table="users_cover_photos" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_1EE41E0BA76ED395" table="users_profile_photos" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_F88C802DA76ED395" table="vendor_infos" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <exported-key name="FK_4A4C2E1BA76ED395" table="wishlists" schema="" catalog="zaghruta_db" columns="user_id"/>
+      <index name="UNIQ_957A647992FC23A8" unique="true" columns="username_canonical"/>
+      <index name="UNIQ_957A6479A0D96FBF" unique="true" columns="email_canonical"/>
+    </table>
+    <table name="images_container" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_B3BA5A5AB6EE8F2E" table="products" schema="" catalog="zaghruta_db" columns="image_container_id"/>
+      <exported-key name="FK_4A4C2E1BB6EE8F2E" table="wishlists" schema="" catalog="zaghruta_db" columns="image_container_id"/>
+    </table>
+    <table name="interest_post" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="interest_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="post_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="interest_id,post_id"/>
+      <foreign-key name="FK_F4A4EC014B89032C" columns="post_id" ref-table="posts" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_F4A4EC015A95FF89" columns="interest_id" ref-table="interests" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_F4A4EC014B89032C" unique="false" columns="post_id"/>
+      <index name="IDX_F4A4EC015A95FF89" unique="false" columns="interest_id"/>
+    </table>
+    <table name="interest_user" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="interest_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="interest_id,user_id"/>
+      <foreign-key name="FK_23BD56C5A76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_23BD56C55A95FF89" columns="interest_id" ref-table="interests" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_23BD56C55A95FF89" unique="false" columns="interest_id"/>
+      <index name="IDX_23BD56C5A76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="interests" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_F4A4EC015A95FF89" table="interest_post" schema="" catalog="zaghruta_db" columns="interest_id"/>
+      <exported-key name="FK_23BD56C55A95FF89" table="interest_user" schema="" catalog="zaghruta_db" columns="interest_id"/>
+      <exported-key name="FK_D3D393C65A95FF89" table="post_interest" schema="" catalog="zaghruta_db" columns="interest_id"/>
+    </table>
+    <table name="likes" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="post_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="experience_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="photo_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_49CA4E7D7E9E4C8C" columns="photo_id" ref-table="photos" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_49CA4E7D46E90E27" columns="experience_id" ref-table="experiences" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_49CA4E7D4B89032C" columns="post_id" ref-table="posts" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_49CA4E7DA76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_49CA4E7D46E90E27" unique="false" columns="experience_id"/>
+      <index name="IDX_49CA4E7D4B89032C" unique="false" columns="post_id"/>
+      <index name="IDX_49CA4E7D7E9E4C8C" unique="false" columns="photo_id"/>
+      <index name="IDX_49CA4E7DA76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="notification_user" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="notification_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="notification_id,user_id"/>
+      <foreign-key name="FK_35AF9D73A76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_35AF9D73EF1A9D84" columns="notification_id" ref-table="notifications" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_35AF9D73A76ED395" unique="false" columns="user_id"/>
+      <index name="IDX_35AF9D73EF1A9D84" unique="false" columns="notification_id"/>
+    </table>
+    <table name="notifications" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="n_type" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="false" jdbcType="-1"/>
+      <column name="n_content" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="false" jdbcType="-1"/>
+      <column name="n_time" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="n_url" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_35AF9D73EF1A9D84" table="notification_user" schema="" catalog="zaghruta_db" columns="notification_id"/>
+      <exported-key name="FK_3F980AC8EF1A9D84" table="user_notification" schema="" catalog="zaghruta_db" columns="notification_id"/>
+    </table>
+    <table name="notifications_reads" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="last_time" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_8EC22D98A76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UNIQ_8EC22D98A76ED395" unique="true" columns="user_id"/>
+    </table>
+    <table name="photos" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="album_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="caption" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="image_name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_876E0D91137ABCF" columns="album_id" ref-table="albums" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_876E0D9A76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_5F9E962A7E9E4C8C" table="comments" schema="" catalog="zaghruta_db" columns="photo_id"/>
+      <exported-key name="FK_49CA4E7D7E9E4C8C" table="likes" schema="" catalog="zaghruta_db" columns="photo_id"/>
+      <index name="IDX_876E0D91137ABCF" unique="false" columns="album_id"/>
+      <index name="IDX_876E0D9A76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="post_interest" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="post_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="interest_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="post_id,interest_id"/>
+      <foreign-key name="FK_D3D393C65A95FF89" columns="interest_id" ref-table="interests" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_D3D393C64B89032C" columns="post_id" ref-table="posts" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_D3D393C64B89032C" unique="false" columns="post_id"/>
+      <index name="IDX_D3D393C65A95FF89" unique="false" columns="interest_id"/>
+    </table>
+    <table name="posts" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="video" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="content" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="false" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_885DBAFAA76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_5F9E962A4B89032C" table="comments" schema="" catalog="zaghruta_db" columns="post_id"/>
+      <exported-key name="FK_F4A4EC014B89032C" table="interest_post" schema="" catalog="zaghruta_db" columns="post_id"/>
+      <exported-key name="FK_49CA4E7D4B89032C" table="likes" schema="" catalog="zaghruta_db" columns="post_id"/>
+      <exported-key name="FK_D3D393C64B89032C" table="post_interest" schema="" catalog="zaghruta_db" columns="post_id"/>
+      <exported-key name="FK_8A1D99C34B89032C" table="posts_images" schema="" catalog="zaghruta_db" columns="post_id"/>
+      <index name="IDX_885DBAFAA76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="posts_images" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="post_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="image_name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_8A1D99C34B89032C" columns="post_id" ref-table="posts" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UNIQ_8A1D99C34B89032C" unique="true" columns="post_id"/>
+    </table>
+    <table name="product_wishlist" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="product_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="wishlist_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="product_id,wishlist_id"/>
+      <foreign-key name="FK_575140A6FB8E54CD" columns="wishlist_id" ref-table="wishlists" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_575140A64584665A" columns="product_id" ref-table="products" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_575140A64584665A" unique="false" columns="product_id"/>
+      <index name="IDX_575140A6FB8E54CD" unique="false" columns="wishlist_id"/>
+    </table>
+    <table name="products" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="image_container_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="description" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="price" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_B3BA5A5AB6EE8F2E" columns="image_container_id" ref-table="images_container" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_B3BA5A5AA76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_575140A64584665A" table="product_wishlist" schema="" catalog="zaghruta_db" columns="product_id"/>
+      <exported-key name="FK_4C46D2D74584665A" table="wishlist_product" schema="" catalog="zaghruta_db" columns="product_id"/>
+      <index name="UNIQ_B3BA5A5AB6EE8F2E" unique="true" columns="image_container_id"/>
+      <index name="IDX_B3BA5A5AA76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="user_infos" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="birthday" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <column name="gender" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="status" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="city" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="work" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="facebook" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="twitter" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_C087935A76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UNIQ_C087935A76ED395" unique="true" columns="user_id"/>
+    </table>
+    <table name="user_notification" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="notification_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="user_id,notification_id"/>
+      <foreign-key name="FK_3F980AC8EF1A9D84" columns="notification_id" ref-table="notifications" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_3F980AC8A76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_3F980AC8A76ED395" unique="false" columns="user_id"/>
+      <index name="IDX_3F980AC8EF1A9D84" unique="false" columns="notification_id"/>
+    </table>
+    <table name="users_cover_photos" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="image_name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_DB8E4398A76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UNIQ_DB8E4398A76ED395" unique="true" columns="user_id"/>
+    </table>
+    <table name="users_profile_photos" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="image_name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_1EE41E0BA76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UNIQ_1EE41E0BA76ED395" unique="true" columns="user_id"/>
+    </table>
+    <table name="vendor_infos" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="company_name" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="info" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="mobile" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="email" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="twitter" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="facebook" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="website" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_F88C802DA76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UNIQ_F88C802DA76ED395" unique="true" columns="user_id"/>
+    </table>
+    <table name="wishlist_product" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="wishlist_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="product_id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="wishlist_id,product_id"/>
+      <foreign-key name="FK_4C46D2D74584665A" columns="product_id" ref-table="products" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_4C46D2D7FB8E54CD" columns="wishlist_id" ref-table="wishlists" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="IDX_4C46D2D74584665A" unique="false" columns="product_id"/>
+      <index name="IDX_4C46D2D7FB8E54CD" unique="false" columns="wishlist_id"/>
+    </table>
+    <table name="wishlists" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
+      <column name="image_container_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="description" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_4A4C2E1BB6EE8F2E" columns="image_container_id" ref-table="images_container" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_4A4C2E1BA76ED395" columns="user_id" ref-table="fos_user" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_575140A6FB8E54CD" table="product_wishlist" schema="" catalog="zaghruta_db" columns="wishlist_id"/>
+      <exported-key name="FK_4C46D2D7FB8E54CD" table="wishlist_product" schema="" catalog="zaghruta_db" columns="wishlist_id"/>
+      <exported-key name="FK_28F9F88AFB8E54CD" table="wishlists_images" schema="" catalog="zaghruta_db" columns="wishlist_id"/>
+      <index name="UNIQ_4A4C2E1BB6EE8F2E" unique="true" columns="image_container_id"/>
+      <index name="IDX_4A4C2E1BA76ED395" unique="false" columns="user_id"/>
+    </table>
+    <table name="wishlists_images" schema="" catalog="zaghruta_db" type="TABLE">
+      <column name="id" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="wishlist_id" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="image_name" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
+      <column name="updated_at" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_28F9F88AFB8E54CD" columns="wishlist_id" ref-table="wishlists" ref-schema="" ref-catalog="zaghruta_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UNIQ_28F9F88AFB8E54CD" unique="true" columns="wishlist_id"/>
+    </table>
+  </data-source>
+</component>

@@ -1,0 +1,136 @@
+<?php
+
+namespace Zgh\FEBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Zgh\FEBundle\Entity\Partial\BasicInfo;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="comments")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Comment
+{
+//    use BasicInfo;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $content;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
+     */
+    protected $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
+     */
+    protected $post;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
+     */
+    protected $experience;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Photo", inversedBy="comments")
+     */
+    protected $photo;
+
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Comment
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Zgh\FEBundle\Entity\User $user
+     * @return Comment
+     */
+    public function setUser(\Zgh\FEBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Zgh\FEBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set post
+     *
+     * @param \Zgh\FEBundle\Entity\Post $post
+     * @return Comment
+     */
+    public function setPost(\Zgh\FEBundle\Entity\Post $post = null)
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return \Zgh\FEBundle\Entity\Post 
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param \Zgh\FEBundle\Entity\Photo $photo
+     * @return Comment
+     */
+    public function setPhoto(\Zgh\FEBundle\Entity\Photo $photo = null)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return \Zgh\FEBundle\Entity\Photo 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+}

@@ -1,0 +1,41 @@
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
+
+{% block leftContent %}
+<div id="c_photos" style="display: block;">
+    <div class="row">
+        <div class="col-xs-12 search-Results">
+            {% if user.id == app.user.id %}
+                {% if albums|length > 0 %}
+                    <button id="addNewPhoto" class="btn btn-default btn-wide" type="button" data-toggle="modal"
+                            data-target="#addPhotoPopup"><span class="glyphicon glyphicon-plus"></span>
+                        Add new photo
+                    </button>
+                {% endif %}
+                <button id="addNewAlbum" class="btn btn-default btn-wide" type="button" data-toggle="modal"
+                        data-target="#addAlbumPopup"><span
+                            class="glyphicon glyphicon-plus"></span> Add new album
+                </button>
+            {% endif %}
+
+            <div class="btn-group pull-right">
+                <span class="album_nav"></span>
+                <a id="btnPhots" href="#" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {"id": user.id }) }}" class="active photoTab btn btn-default"> Photos</a>
+                <a id="btnAlbums" href="#" data-target_url="{{ url("zgh_fe.user_profile.albums_partial", {"id": user.id }) }}" class="photoTab albumTab btn btn-default"> Albums</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="row photosWrapper" id="photos">
+        {{ render_esi(controller("ZghFEBundle:Photo:getPhotoPhotosPartialContent", {"id" : user.id} )) }}
+    </div>
+
+    <div id="addAlbumPopup" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
+        {{ include("@ZghFE/Partial/album_add_modal.html.twig") }}
+    </div>
+
+    <div id="addPhotoPopup" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
+        {{ include("@ZghFE/Partial/photo_add_modal.html.twig") }}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+<div class="row about_wrapper">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th colspan="2">Contact Information
+                    {% if about.user.id == app.user.id %}
+                        <a href="{{ url("zgh_fe.about.get_customer_edit", {"id": about.id }) }}" class="pull-right about_edit">
+                            <span class="glyphicon glyphicon-edit top"></span>
+                        </a>
+                    {% endif %}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Birthday</td>
+                <td>{{ about.birthday|date("M d, Y") }}</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{{ about.gender == 0 ? "Male" : "Female" }}</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>
+                    {{ about.status }}
+                    {% if about.relationshipUser %}
+                        {{ about.status == "In relationship" ? "with" : "to" }} <a href="{{ url("zgh_fe.user_profile.index", {"id": about.relationshipUser.id}) }}">{{ about.relationshipUser }}</a>
+                    {% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <td>City</td>
+                <td>{{ about.city }}</td>
+            </tr>
+            <tr>
+                <td>Work</td>
+                <td>{{ about.work }}</td>
+            </tr>
+            <tr>
+                <td>Facebook</td>
+                <td>{{ about.facebook|converturls }}</td>
+            </tr>
+            <tr>
+                <td>Twitter</td>
+                <td>{{ about.twitter|converturls }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

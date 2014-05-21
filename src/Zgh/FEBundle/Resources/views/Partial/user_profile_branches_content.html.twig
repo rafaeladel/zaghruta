@@ -1,0 +1,19 @@
+{% for branch in branches %}
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h5>{{ branch.address }} <a href="#"> <span title=""
+                                                                                                         data-placement="top"
+                                                                                                         data-toggle="tooltip"
+                                                                                                         class="glyphicon glyphicon-edit pull-right top"
+                                                                                                         data-original-title="Edit"></span></a>
+                </h5></div>
+
+            <ul class="list-group">
+                <li class="list-group-item">Phone: {{ branch.phone }}</li>
+                <li class="list-group-item">Mob: {{ branch.mobile }}</li>
+                <li class="list-group-item">Email: {{ branch.email }}</li>
+            </ul>
+
+        </div>
+    </div><!--End Col 6-->
+{% endfor %}

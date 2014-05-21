@@ -1,0 +1,28 @@
+{% extends "@ZghFE/layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock stylesheets %}
+{% block content %}
+
+    <div class="container">
+        {% block leftContent %}
+            <h3>Add your interests</h3>
+            <div class="row">
+                {{ form_start(form, {"action": url("zgh_fe.interest.post") }) }}
+                    {{ form_widget(form.interests) }}
+
+                    <input type="submit" value="Save"/>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div>
+        {% endblock leftContent %}
+
+        {% block rightContent %}{% endblock rightContent %}
+
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock javascripts %}
+{% form_theme form with '@ZghFE/Form/checkbox_ul.html.twig' %}

@@ -1,0 +1,16 @@
+<div class="row margin">
+    <div class="postBox">
+        {{ form_start(post_form, {"action": url("zgh_fe.post.new", {"return_url": return_url } )}) }}
+        {{ form_widget(post_form.content, {"attr": {"class":"form-control animated", "placeholder": "Post something.." }}) }}
+        <button class="btn btn-primary btn-sm btn-wide pull-right newPost" type="submit"> Post</button>
+        {#<a href="#"><span class="glyphicon glyphicon-camera cam-post"></span> </a>#}
+        <div class="btnBrowse">
+           {{ form_widget(post_form.post_image) }}
+           {{ form_rest(post_form) }}
+           {{ form_end(post_form) }}
+        <a href="#"><span class="glyphicon glyphicon-camera cam-post"></span></a>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>

@@ -1,0 +1,167 @@
+<?php
+
+namespace Zgh\FEBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Zgh\FEBundle\Entity\Partial\BasicInfo;
+use Zgh\FEBundle\Entity\Utilities\Image;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="experiences")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Experience
+{
+//    use BasicInfo;
+
+
+    protected $cat_dir = "experiences";
+    protected $thumb_dir = "thumb";
+
+    protected $thumb_h = 332;
+    protected $thumb_w = 561;
+
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $title;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $content;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="experiences")
+     */
+    protected $user;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Zgh\FEBundle\Entity\Category", cascade={"persist", "remove"})
+     */
+    protected $categories;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", cascade={"persist", "remove"}, mappedBy="experience")
+     */
+    protected $comments;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Like", cascade={"persist", "remove"}, mappedBy="experience")
+     */
+    protected $likes;
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Experience
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Experience
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Zgh\FEBundle\Entity\User $user
+     * @return Experience
+     */
+    public function setUser(\Zgh\FEBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Zgh\FEBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->category = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Add categories
+     *
+     * @param \Zgh\FEBundle\Entity\Category $categories
+     * @return Experience
+     */
+    public function addCategory(\Zgh\FEBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+        $categories->addExperience($this);
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param \Zgh\FEBundle\Entity\Category $categories
+     */
+    public function removeCategory(\Zgh\FEBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+}

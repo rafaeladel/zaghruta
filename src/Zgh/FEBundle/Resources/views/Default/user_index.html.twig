@@ -1,0 +1,578 @@
+{% extends "@ZghFE/layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+        "bundles/zghfe/css/magicsuggest-1.3.1.css"
+        "bundles/zghfe/plugins/select2-3.4.6/select2.css"
+        filter="cssrewrite"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen"/>
+    {% endstylesheets %}
+{% endblock stylesheets %}
+{% block content %}
+    <div class="container">
+        <div class="row cover">
+        <div class="photoCover"><img src="{{ asset(user.coverPhoto.getWebPath) }}"/></div>
+        <div class="SVb"></div>
+        <div class="media profilePic profile col-md-6 col-xs-10">
+          <div class="imgProfile pull-left">
+              {% if user.id == app.user.id %}
+                  <button data-toggle="modal" data-target="#pp_modal" type="button" class="btn btn-primary btn-circle ch-pr">
+                      <span class="glyphicon glyphicon-camera cam-post"></span>
+                      {#<input type="file" class="glyphicon glyphicon-camera cam-post"/>#}
+                  </button>
+                  <div class="modal fade" id="pp_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header modalHeader">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title" id="myModalLabel">Select profile photo</h4>
+                              </div>
+                              <form action="{{ url("zgh_fe.user_profile.picture.set", {"id": app.user.id}) }}" method="post" enctype="multipart/form-data">
+
+                                  <div class="modal-body">
+                                      <input name="picture" type="file"/>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-primary">Save changes</button>
+                                  </div>
+                              </form>
+
+                          </div>
+                      </div>
+                  </div>
+              {% endif %}
+            <a  class="pull-left img-circle fancyboxArrow fancybox" rel="profile"  href="#profile_pic_popup">
+                <img alt="" src="{{ "ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(user.profilePhoto.getThumbWebPath) }}" class="media-object" >
+            </a>
+              <div id="profile_pic_popup" style="display: none;">
+                  <img src="{{ "ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=500&height=500' : asset(user.profilePhoto.getWebPath) }}" alt="profile_photo" />
+              </div>
+          </div>
+            <h3><a href="">{{ user.firstname }}</a></h3>
+            <span class="title">{{ user.lastname }}</span>
+
+            {{ renderFollow(user) }}
+
+            <button class="btn-Message  btn btn-primary " type="button">
+                <span class="glyphicon glyphicon-envelope"></span>
+            </button>
+            <a href="{{ url("zgh_fe.user_profile.connections_partial", {id: user.id}) }}" class="boy"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> {{ user.followees|length }} </a>
+        </div>
+            {% if user.id == app.user.id %}
+                <button data-toggle="modal" data-target="#cp_modal" class="btn btn-default btn-wide  btn-cover" type="button">
+                    <span class="glyphicon glyphicon-pencil"></span> Change Cover
+                </button>
+            {% endif %}
+            <div class="modal fade cover_wrapper" id="cp_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Select cover photo</h4>
+                        </div>
+                        <form action="{{ url("zgh_fe.user_profile.cover.set", {"id": app.user.id}) }}" method="post" class="cover_form" enctype="multipart/form-data">
+
+                            <div class="modal-body">
+                                <input name="cover" type="file" class="cover_input"/>
+                                <div id="testtt" class="cover_thumb"  width="540px" height="400px"  style=" position: relative;">
+                                    <img src="{{ asset("bundles/zghfe/img/thumb.jpg") }}" width="100%" height="auto" alt="cover"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+        <div style="display: none;" class="col-md-6 col-sm-6 warning">
+            <h3>Your picture is too tall or too wide.</h3>
+
+            <p>Try to pick something closer to a square.</p>
+        </div>
+    </div>
+
+        <div class="divider"></div>
+
+        {% if user.id == app.user.id %}
+            {% if app.user.showInterestNotification %}
+                <div class="alert alert-success">
+                    <p>You may need to add some interests to your profile. <a href="{{ url("zgh_fe.interest.get") }}">Click here</a></p>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        {% set current_route = app.request.attributes.get("_route") %}
+        {% set authorized = isVisitable(user) %}
+        <!--Menu -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="btn-group btn-group-md btn-group-justified">
+                    {% if "ROLE_CUSTOMER" in user.roles %}
+                        {% if authorized %}
+                            <a href="#" data-target_url="{{ url("zgh_fe.user_profile.main_partial", {'id': user.id}) }}" type="button"
+                               class="tab btn btn-primary {{ "index" in current_route or "main" in current_route ? "active" : "" }}">Posts</a>
+
+                            <a href="#" data-target_url="{{ url("zgh_fe.user_profile.wishlist_partial", {'id': user.id}) }}" type="button"
+                               class="tab btn btn-primary {{ "wishlist" in current_route ? "active" : "" }}">Wishlist</a>
+
+                            <a href="#" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {'id': user.id}) }}" type="button"
+                               class="tab btn btn-primary {{ "photos" in current_route or "albums" in current_route ? "active" : "" }}">Photos</a>
+
+                            <a href="#" data-target_url="{{ url("zgh_fe.user_profile.experiences_partial", {'id': user.id}) }}" type="button"
+                               class="tab btn btn-primary {{ "experience" in current_route ? "active" : "" }}">Experiences</a>
+                        {% endif %}
+                    {% elseif "ROLE_VENDOR" in user.roles %}
+                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.main_partial", {'id': user.id}) }}" type="button"
+                           class="tab btn btn-primary {{ "index" in current_route or "main" in current_route ? "active" : "" }}">Posts</a>
+
+                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.branches_partial", {'id': user.id}) }}" type="button"
+                           class="tab btn btn-primary {{ "branch" in current_route ? "active" : "" }}">Branches</a>
+
+                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.wishlist_partial", {'id': user.id}) }}" type="button"
+                           class="tab btn btn-primary {{ "wishlist" in current_route ? "active" : "" }}">Products</a>
+
+                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {'id': user.id}) }}" type="button"
+                           class="tab btn btn-primary {{ "photos" in current_route or "albums" in current_route ? "active" : "" }}">Photos</a>
+
+                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.tips_partial", {'id': user.id}) }}" type="button"
+                           class="tab btn btn-primary {{ "tip" in current_route ? "active" : "" }}">Tips</a>
+                    {% endif %}
+                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.connections_partial", {'id': user.id}) }}" type="button"
+                           class="tab btn btn-primary {{ "connection" in current_route ? "active" : "" }}">Connections</a>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- Menu End  -->
+
+        <div class="divider"></div>
+        <div class="row content_wrapper">
+
+        {% block leftContent %}
+
+            <div id="vendPosts">
+
+
+                <!--End Compose Post -->
+
+                <div class="divider"></div>
+                <!--Posted -->
+                <div class="col-md-7 col-sm-7">
+
+                    <!--Compose Post -->
+                    {% if user.id == app.user.id %}
+                        {{ include("@ZghFE/Partial/post_form.html.twig", {"return_url": path("zgh_fe.user_profile.index", {"id": user.id} ) }) }}
+                    {% endif %}
+
+                    {% if authorized %}
+                        {{ render_esi(controller("ZghFEBundle:Post:getOwnList", {"id": user.id})) }}
+                    {% else %}
+                        <p>Private account, You have to follow {{ user.firstname }} first.</p>
+                    {% endif %}
+                    <!--End Post Box-->
+
+
+                </div>
+
+                <div class="col-md-5 col-sm-5 hidden-xs">
+
+
+                    <!-- Left side posts page -->
+                    {{ render_esi(controller("ZghFEBundle:UserProfile:getAboutPartial", {"id": user.id})) }}
+
+
+
+                </div>
+
+                <!--End of Posted -->
+
+
+            </div>
+
+
+        {% endblock leftContent %}
+        {#{{ include("@ZghFE/Partial/user_profile_main.html.twig") }}#}
+
+        </div>
+
+        {% block rightContent %}{% endblock rightContent %}
+
+    </div>
+{% endblock content %}
+
+{% block modals %}
+    <div id="sharePost" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modalHeader">
+                    <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Share This Post</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea placeholder="Write Something.." class="form-control"> </textarea>
+                    <hr>
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="img/img-prf-comment.jpg" alt="...">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">Media heading</h4>
+                            <p class="by">By: <span>Decorama Egypt</span></p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-wide btn-default">Cancel</button>
+                    <button type="button" class="btn btn-wide btn-primary">Delete</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <div id="shareVideo" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modalHeader">
+                    <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Share This Video</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea placeholder="Write Something.." class="form-control"> </textarea>
+                    <hr>
+                    <div class="col-md-12">
+                        <iframe class="margin" width="100%" height="200" src="http://www.youtube.com/embed/2CwXjN4DoWs" frameborder="0" allowfullscreen></iframe>
+                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quinare odio.</p>
+                        <p class="by">By: <span>Mohamed Boghdady</span></p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-wide btn-default">Cancel</button>
+                    <button type="button" class="btn btn-wide btn-primary">Delete</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+{% endblock modals %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            $(window).on("popstate", function(e){
+                window.location.href = window.location.href;
+            });
+
+
+            $("body").on("click", ".tab", function(e){
+                e.preventDefault();
+                if(!$(e.target).is(".activated")){
+
+                    $(".tab").removeClass("active");
+                    $(e.target).addClass("active");
+                    $(".content_wrapper").html('<img style="margin: auto; display: block;" src="{{ asset("bundles/zghfe/img/page-preloader.GIF") }}" />');
+                    $(".content_wrapper").load($(e.target).data("target_url"));
+                    history.pushState(null, null, $(e.target).data("target_url"));
+
+                    //reloading post_actions for commenting validations and stuff
+                }
+            });
+
+            $('#myModal').modal('toggle');
+                $("body").on("click", ".about_edit" ,function(e){
+                    e.preventDefault();
+                    var url = $(e.currentTarget).attr("href");
+                    $(e.currentTarget).html('<img style="margin: auto; display: block;" src="{{ asset("bundles/zghfe/img/page-preloader.GIF") }}" />');
+                    $(e.currentTarget).parents(".about_wrapper").load(url, function(){
+    //                    $(e.target).removeAttr("disabled");
+                    });
+                });
+
+            $("body").on("change", ".status_ddl", function(e){
+                if($(e.target).val() == "Single"){
+                    $(e.target).siblings(".user_select").hide();
+                    return;
+                }
+                $(e.target).siblings(".user_select").show();
+            });
+
+
+            $("body").on("click", ".cancel_about_edit", function(e){
+                e.preventDefault();
+                $(e.currentTarget).html('<img style="margin: auto; display: block;" src="{{ asset("bundles/zghfe/img/page-preloader.GIF") }}" />');
+
+                /* about_wrapper is the div right above the table tag */
+                $(e.currentTarget).parents(".about_wrapper").load("{{ url("zgh_fe.user_profile.about_partial", {"id": app.user.id}) }}");
+            });
+
+            $("body").on("click", ".save_about", function(e){
+                e.preventDefault();
+                $(e.target).attr("disabled", "disabled");
+                $(e.target).val("Saving");
+                var form = $(e.target).closest("form");
+                $.ajax({
+                    type: "POST",
+                    url: $(form).attr("action"),
+                    data: $(form).serialize(),
+
+                    success: function(data){
+                        if(data.status == 200){
+                            $(e.target).parents(".about_wrapper").load("{{ url("zgh_fe.user_profile.about_partial", {"id": app.user.id}) }}");
+                        } else if(data.status == 500)
+                        {
+                            $(e.target).parents(".about_wrapper").html(data.view);
+                        }
+                    }
+                })
+            })
+            /**
+             * Wishlist page
+             */
+
+            $("body").on("click", ".wishlistSubmit", function(e){
+                e.preventDefault();
+                var form = $(e.target).closest("form");
+                $.ajax({
+                    type: "POST",
+                    url: $(form).attr('action'),
+                    data: $(form).serialize(),
+                    success: function(){
+                        $(".modalClose").click();
+                        $(form).get(0).reset();
+                        $("#wishlists_list").load('{{ url("zgh_fe.wishlist_partial_content", {"id": user.id}) }}');
+                    }
+                });
+            });
+
+
+            /**
+             * Photos page
+             */
+
+
+            $("body").on("click", ".photoTab", function(e){
+                e.preventDefault();
+
+                if(!$(e.target).is(".active")){
+                    $(".photosWrapper").html('<img style="margin: auto; display: block;" src="{{ asset("bundles/zghfe/img/page-preloader.GIF") }}" />');
+                    $(".photoTab").removeClass("active");
+
+                    $(".content_wrapper").load($(e.target).data("target_url"));
+                    history.pushState(null, null, $(e.target).data("target_url"));
+
+                }
+            });
+
+            $("body").on("click", ".load_images", function(e){
+                e.preventDefault();
+                $(e.currentTarget).closest(".content_wrapper").load($(e.currentTarget).data("url"));
+                $(".photosWrapper").html('<img style="margin: auto; display: block;" src="{{ asset("bundles/zghfe/img/page-preloader.GIF") }}" />');
+                history.pushState(null, null, $(e.currentTarget).data("url"));
+            })
+
+            $("body").on("click", ".back_btn", function(e){
+                e.preventDefault();
+                $(".photosWrapper").html('<img style="margin: auto; display: block;" src="{{ asset("bundles/zghfe/img/page-preloader.GIF") }}" />');
+                $(".content_wrapper").load($(e.target).data("target_url"));
+                history.pushState(null, null, $(e.target).data("target_url"));
+
+            });
+
+            /**
+             * Experience page
+             */
+
+
+            $("body").on("click", ".exp_tip_submit", function(e){
+                e.preventDefault();
+                $(e.currentTarget).attr("disabled", "disabled");
+                var form = $(e.currentTarget).closest("form");
+                $.ajax({
+                    type: "post",
+                    url: $(form).attr("action"),
+                    data: $(form).serialize(),
+                    success: function(data){
+                        if(data.status == 200){
+                            $(".content_wrapper").html('<img style="margin: auto; display: block;" src="{{ asset("bundles/zghfe/img/page-preloader.GIF") }}" />');
+                            $(".content_wrapper").load($(".content_wrapper").find(".moveExpTip").attr("href"), function(){
+                                history.pushState(null, null, $(".content_wrapper").find(".moveExpTip").attr("href"));
+                            });
+                        }
+                        else if(data.status == 500)
+                        {
+                            $("body").find(".content_wrapper").html(data.view);
+                            ThraceForm.select2();
+                        }
+                    }
+                });
+            });
+
+            $("#exp_form").fileupload({
+                autoUpload: false,
+                filesContainer:  $("#exp_form").find(".thumbnail table"),
+                uploadTemplate: function(o){
+                    var rows = $();
+                    $.each(o.files, function(index, file){
+                        var row = $('<tr class="template-upload fade">' +
+                            '<td><span class="preview"></span></td>' +
+                            (file.error ? '<div class="error"></div>' : '') +
+                            '<td>' +
+                            (o.files.error ? '' : '<div class="progress"></div>') +
+                            '</td>' +
+                            '<td>' +
+                            (!index ? '<button class="cancel remove_img">Cancel</button>' : '') +
+                            '</td>' +
+                            '</tr>');
+                        if (file.error) {
+                            row.find('.error').text(file.error);
+                        }
+                        rows = rows.add(row);
+                    });
+                    return rows;
+                }
+            })
+                .bind("fileuploadadd", function(e, data){
+                    var form = $("#exp_form");
+                    form.find(".progress").css("display", "block").find(".progress-bar").css("width", "0%");
+                    $(".exp_submit").off("click");
+                    $("#exp_form").on("click", ".exp_tip_submit", function(e)
+                    {
+                        e.preventDefault();
+                        $(e.target).attr("disabled", "disabled");
+                        data.submit();
+                    });
+                    $(".remove_img").off("click");
+                    $("#exp_form").on("click", ".remove_img", function(e){
+                        console.log("deleted");
+                        console.log(data.files.length);
+                    })
+
+                })
+                .bind("fileuploadprogressall", function(e, data){
+                    var form = $("#exp_form");
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    form.find(".progress").css("display", "block").find(".progress-bar").css("width", progress+"%");
+                    if(progress == 100){
+                        form.find(".progress").find(".progress-bar").append("<span>Done!</span>");
+                    }
+                })
+                .bind("fileuploaddone", function(e, data){
+                    if(data.result.status == 200){
+                        $(".content_wrapper").html('<img style="margin: auto; display: block;" src="{{ asset("bundles/zghfe/img/page-preloader.GIF") }}" />');
+                        $(".content_wrapper").load("{{ url("zgh_fe.user_profile.experiences_partial", {"id": user.id }) }}");
+                    }
+                    else if(data.result.status == 500)
+                    {
+                        $("body").find(".content_wrapper").html(data.result.view);
+                        ThraceForm.select2();
+                    }
+                });
+
+            $("body").on("click", ".moveExpTip", function(e){
+                e.preventDefault();
+                $(".content_wrapper").html('<img style="margin: auto; display: block;" src="{{ asset("bundles/zghfe/img/page-preloader.GIF") }}" />');
+                $(".content_wrapper").load($(e.currentTarget).attr("href"));
+                history.pushState(null, null, $(e.currentTarget).attr("href"));
+            });
+
+
+            var img_crop = new ImgCrop({
+                height : 130,
+                width : 535,
+                image_class : "cover_thumb",
+                wrapper : "cover_wrapper",
+                form_class : "cover_form",
+                input_class: "cover_input",
+                crop: true,
+                autocrop: true
+            });
+
+            img_crop.init();
+
+            $(".fancyboxArrow").fancybox({
+                'showNavArrows'     : 'true'
+            });
+
+
+
+            var photo_uploader = new Uploader({
+                wrapperID: "c_photos",
+                modalID: "addPhotoPopup",
+                listBtnID: "btnPhots",
+                listWrapperClass: "content_wrapper",
+                browseClass: "dropzone_photo",
+                saveButtonClass: "photo_submitBtn",
+                previewClass: "photos_previews",
+                targetUrl: '{{ url("zgh_fe.photos.photo.new", {"id": app.user.id}) }}',
+                ajaxLoadUrl: '{{ url("zgh_fe.user_profile.photos_partial", {"id": app.user.id}) }}',
+                imageRequired: true,
+                additionalData: {
+                        "album_id": {
+                            "required": true,
+                            "message": "Please select an album"
+                        }
+                    },
+                numOfFiles: 10
+            });
+            photo_uploader.init();
+
+            var album_uploader = new Uploader({
+                wrapperID: "c_photos",
+                modalID: "addAlbumPopup",
+                listBtnID: "btnAlbums",
+                listWrapperClass: "content_wrapper",
+                browseClass: "dropzone_album",
+                saveButtonClass: "album_submitBtn",
+                previewClass: "albums_previews",
+                targetUrl: "{{ url("zgh_fe.photos.album.new", {"id": app.user.id}) }}",
+                ajaxLoadUrl: "{{ url("zgh_fe.user_profile.albums_partial", {"id": app.user.id}) }}",
+                imageRequired: false,
+                additionalData: {
+                        "album_name": {
+                            "required": true,
+                            "message": "Please enter album name."
+                        },
+                        "album_info": {
+                            "required": true,
+                            "message": "Please enter album info."
+                        }
+                },
+                numOfFiles: 10
+            });
+            album_uploader.init();
+
+            $("body").on("click", ".branchSubmit", function(e){
+                e.preventDefault();
+                $(e.currentTarget).attr("disabled", "disabled").text("Saving");
+                var form = $(e.currentTarget).closest("form");
+                $.ajax({
+                    type: "post",
+                    url: form.attr("action"),
+                    data: form.serialize(),
+                    success: function(data){
+                        if(data.status == 200){
+                            form[0].reset();
+                            $("#addBranch").modal("hide");
+                            $(".content_wrapper").find("#branches_list").load("{{ url("zgh_fe.branches.list", {"id": user.id}) }}");
+                        } else if(data.status == 500){
+                            $(e.currentTarget).closest("#addBranch").find(".form_wrapper").html(data.view);
+                            $(e.currentTarget).removeAttr("disabled").text("Create");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock javascripts %}

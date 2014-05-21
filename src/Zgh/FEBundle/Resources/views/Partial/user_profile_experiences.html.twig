@@ -1,0 +1,23 @@
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
+
+{% block leftContent %}
+    <div id="vendTips">
+        <div class="row">
+            <div class="col-xs-12 search-Results">
+                <a class="btn btn-default btn-wide moveExpTip" href="{{ url("zgh_fe.experience.add", {"id": user.id}) }}">
+                    <span class="glyphicon glyphicon-plus"></span> Share your Experince
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="row exp_wrapper">
+            {{ render_esi(controller("ZghFEBundle:Experience:getList", {"id": user.id} ) ) }}
+        </div>
+
+    </div>
+
+
+
+{% endblock leftContent %}

@@ -1,0 +1,1273 @@
+{% extends "@ZghFE/layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+        "bundles/zghfe/css/magicsuggest-1.3.1.css"
+        filter="cssrewrite"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen"/>
+    {% endstylesheets %}
+{% endblock stylesheets %}
+{% block content %}
+
+    <div class="container">
+        <div class="row cover">
+        <div class="SVb"></div>
+        <div class="media profile col-md-6 col-xs-10">
+            <a href="#" class="pull-left img-circle">
+                <img alt="" src="img/pic-profile-boy.jpg" class="media-object">
+                <button type="button" class="btn btn-primary btn-circle ch-pr">
+                    <span class="glyphicon glyphicon-camera cam-post"></span>
+                </button>
+            </a>
+
+            <h3><a href="">Decorama Co.</a></h3>
+            <span class="title">Furniture company</span>
+
+            <button class="btn btn-primary btn-wide  btnFollowing" type="button">
+                <span class="following">Following</span>
+                <span class="Unfollow"><span class="glyphicon glyphicon-minus-sign"></span>Unfollow</span>
+            </button>
+            <button class="btn btn-primary " type="button">
+                <span class="glyphicon glyphicon-envelope"></span>
+            </button>
+            <a href="#" class="boy"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+        </div>
+        <button class="btn btn-default btn-wide  btn-cover" type="button">
+            <span class="glyphicon glyphicon-pencil"></span> Change Cover
+        </button>
+        <div style="display: none;" class="col-md-6 col-sm-6 warning">
+            <h3>Your picture is too tall or too wide.</h3>
+
+            <p>Try to pick something closer to a square.</p>
+        </div>
+    </div>
+
+        <div class="divider"></div>
+
+        <!--Menu -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="btn-group btn-group-md btn-group-justified menuLinks">
+                    <a href="#vendPosts" type="button" class="btn btn-primary active">Posts</a>
+                    <!-- <a href="#vendAbout" type="button" class="btn btn-primary">About</a> -->
+                    <a href="#vendProducts" type="button" class="btn btn-primary">Wishlist</a>
+                    <a href="#vendPhotos" type="button" class="btn btn-primary">Photos</a>
+                    <a href="#vendTips" type="button" class="btn btn-primary">Experiences</a>
+                    <a href="#vendConnec" type="button" class="btn btn-primary">Connections</a>
+                </div>
+
+            </div>
+        </div>
+        <!-- Menu End  -->
+
+        <div class="divider"></div>
+
+        {% block leftContent %}
+            <div class="row">
+            <!--Vendor Posts -->
+            <div id="vendPosts" class="menuSection">
+
+
+            <!--End Compose Post -->
+
+            <div class="divider"></div>
+            <!--Posted -->
+            <div class="col-md-7 col-sm-7">
+
+            <!--Compose Post -->
+
+            <div class="row margin">
+                <div class="postBox">
+                    <input type="text" class="form-control" placeholder="Text input">
+                    <button class="btn btn-primary btn-sm btn-wide pull-right" type="button"> Post</button>
+                    <a href="#"><span class="glyphicon glyphicon-camera cam-post"></span> </a>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <!--Post Box-->
+            <div class="row margin">
+
+                <div class="post margin">
+                    <button class="row   btn delete-post pull-right" type="button" data-toggle="modal" data-target="#deletePost"><span class="glyphicon glyphicon-remove pull-right"></span></button>
+                    <div class="header-post">
+
+                        <div class="data-reacted col-xs-8 pull-left">
+                            <div class="profile sm-img-post">
+                                <a href="#" class="pull-left img-circle">
+                                    <img alt="" src="img/img-prf-comment2.jpg" class="img-responsive  media-object">
+                                </a>
+
+                                <h3><a href="">Ibrahem Ahmed</a></h3>
+                                <span class="date-time">Saturday - 22 PM</span>
+
+                            </div>
+
+                        </div>
+                        <div class="icons-G pull-right">
+
+                            <button type="button" class="btn btn-danger btn-circle">
+                                <span class="glyphicon glyphicon-share"></span>
+                            </button>
+
+
+                            <button type="button" class="btn btn-danger btn-circle">
+                                <span class="glyphicon glyphicon-heart"></span>
+                            </button>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--End header-post-->
+
+                    <div class="content-post">
+                        <iframe class="margin" width="100%" height="300" src="http://www.youtube.com/embed/2CwXjN4DoWs"
+                                frameborder="0" allowfullscreen></iframe>
+
+
+                        <p>
+                            This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                            sollicitudin,
+                            lorem quinare odio.
+                        </p>
+
+                        <div class="col-md-12 pull-right">
+                            <a href="#" class="girl pull-right"> <span class="glyphicon glyphicon-comment"></span> 800 </a>
+                            <a href="#" class="girl pull-right iconHeart"> <span class="glyphicon glyphicon-heart"></span> 60 </a>
+
+                            <span class="glyphicon "></span>
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+                    <div class="footer-post">
+                        <textarea class="form-control" rows="1"></textarea>
+
+                        <button class="btn btn-primary btn-wide btn-comment pull-right" type="button">
+                            Comment
+                        </button>
+                        <div class="clearfix"></div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <!--End Post Box-->
+
+
+            <!--Post Box-->
+            <div class="row margin">
+
+                <div class="post margin">
+                    <button class="row   btn delete-post" type="button" data-toggle="modal" data-target="#deletePost"><span class="glyphicon glyphicon-remove pull-right"></span></button>
+
+
+                    <div class="header-post">
+
+                        <div class="data-reacted col-xs-8 pull-left">
+                            <div class="profile sm-img-post">
+                                <a href="#" class="pull-left img-circle">
+                                    <img alt="" src="img/popUpDemo.jpg" width="639" class="img-responsive  media-object">
+                                </a>
+
+                                <h3><a href="">Ibrahem Ahmed</a></h3>
+                                <span class="date-time">Saturday - 22 PM</span>
+
+                            </div>
+
+                        </div>
+                        <div class="icons-G pull-right">
+
+                            <button type="button" class="btn btn-danger btn-circle">
+                                <span class="glyphicon glyphicon-share"></span>
+                            </button>
+
+
+                            <button type="button" class="btn btn-danger btn-circle">
+                                <span class="glyphicon glyphicon-heart"></span>
+                            </button>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--End header-post-->
+
+                    <div class="content-post">
+                        <a href="#"><img alt="" src="img/photo1.jpg" class="img-responsive margin-md"> </a>
+
+                        <p>
+                            This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
+                            Aenean sollicitudin,
+                            lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis
+                            sed odio sit amet nibh vulputate cursus a sit amet mauris.
+                            Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non
+                            mauris vitae erat consequat auctor eu in elit. Class aptent
+
+                        </p>
+                        <div class="col-md-3 pull-right margin">
+                            <a href="#" class="girl pull-right"> <span class="glyphicon glyphicon-comment"></span> 800 </a>
+                            <a href="#" class="girl pull-right iconHeart"> <span class="glyphicon glyphicon-heart"></span> 60 </a>
+                            <span class="glyphicon "></span>
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+                    <div class="footer-post">
+
+
+                        <div class="row postComment margin-sm">
+                            <button class="row   btn delete-post pull-right" type="button" data-toggle="modal" data-target="#deletePost"><span class="glyphicon glyphicon-remove pull-right"></span></button>
+
+                            <div class="data-reacted  pull-left">
+                                <div class="profile sm-img-post">
+                                    <a href="#" class="pull-left img-circle">
+                                        <img alt="" src="img/img-prf-comment2.jpg" class="img-responsive  media-object">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="content-post">
+                                <a href=""><strong>Ibrahem Ahmed</strong></a>
+
+                                <p>
+                                    This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
+                                    Aenean sollicitudin,
+                                    lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis
+                                    sed odio sit amet nibh vulputate cursus a sit amet mauris.
+                                    Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non
+                                    mauris vitae erat consequat auctor eu in elit. Class aptent
+
+                                </p>
+                                <span class="date-time">Saturday - 22 PM</span>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+
+                        </div>
+                        <div class="row postComment margin-sm">
+                            <button class="row   btn delete-post pull-right" type="button" data-toggle="modal" data-target="#deletePost"><span class="glyphicon glyphicon-remove pull-right"></span></button>
+
+                            <div class="data-reacted  pull-left">
+                                <div class="profile sm-img-post">
+                                    <a href="#" class="pull-left img-circle">
+                                        <img alt="" src="img/img-prf-comment2.jpg" class="img-responsive  media-object">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="content-post">
+                                <a href=""><strong>Ibrahem Ahmed</strong></a>
+
+                                <p>
+                                    This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
+                                    Aenean sollicitudin.
+                                </p>
+                                <span class="date-time">Saturday - 22 PM</span>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+
+                        </div>
+                        <div class="row postComment margin-sm">
+                            <button class="row   btn delete-post pull-right" type="button" data-toggle="modal" data-target="#deletePost"><span class="glyphicon glyphicon-remove pull-right"></span></button>
+
+                            <div class="data-reacted  pull-left">
+                                <div class="profile sm-img-post">
+                                    <a href="#" class="pull-left img-rounded">
+                                        <img alt="" src="img/banner.jpg" class="img-responsive  media-object">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="content-post">
+                                <a href=""><strong>Decorama</strong></a>
+
+                                <p>
+                                    This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
+                                    Aenean sollicitudin,
+                                    lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis
+                                    sed odio sit amet nibh vulputate cursus a sit amet mauris.
+
+
+                                </p>
+                                <span class="date-time">Saturday - 22 PM</span>
+
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+
+
+                        <textarea class="form-control" rows="1"></textarea>
+
+                        <button class="btn btn-primary btn-wide btn-comment pull-right" type="button">
+                            Comment
+                        </button>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--End Footer-post-->
+
+                </div>
+
+            </div>
+
+
+            <!--End Post Box-->
+
+
+            </div>
+
+            <div class="col-md-5 col-sm-5 hidden-xs">
+
+
+                <!-- Left side posts page -->
+
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th> Basic information</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><textarea class="form-control inputtext" rows="3"></textarea>
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-default btn-wide btn-sm pull-right" type="button">
+                        <span class="glyphicon glyphicon-ok"></span> Save
+                    </button>
+                </div>
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th colspan="2">Contact Information</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Mobile</td>
+                            <td><input type="email" class="form-control input-sm" id="exampleInputMobil" placeholder="Enter Mobile"></td>
+                        </tr>
+                        <tr>
+                            <td>E-mail</td>
+                            <td><input type="email" class="form-control input-sm" id="exampleInputEmail1" placeholder="Enter E-mail"></td>
+                        </tr>
+                        <tr>
+                            <td>Facebook</td>
+                            <td><input type="email" class="form-control input-sm" id="exampleInputFacebook" placeholder="Enter Facebook"></td>
+                        </tr>
+                        <tr>
+                            <td>Twitter</td>
+                            <td><input type="email" class="form-control input-sm" id="exampleInputTwitter" placeholder="Enter Twitter"></td>
+                        </tr>
+                        <tr>
+                            <td>website</td>
+                            <td><input type="email" class="form-control input-sm" id="exampleInputwebsite" placeholder="Enter website"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-default btn-wide btn-sm pull-right" type="button">
+                        <span class="glyphicon glyphicon-ok"></span> Save
+                    </button>
+                </div>
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th colspan="2">Basic Information<a class="pull-right " href=""> <span title="" data-placement="top" data-toggle="tooltip" class="glyphicon glyphicon-edit top" data-original-title="Edit"></span></a></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Birthday</td>
+                            <td><input type="email" placeholder="Month/DAy/Year" id="exampleInputBirthday" class="form-control input-sm"></td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td><input type="email" placeholder="I am.." id="exampleInputGender" class="form-control input-sm"></td>
+                        </tr>
+                        <tr>
+                            <td>Relationship status</td>
+                            <td><input type="email" placeholder="Relationship" id="exampleInputRelationship" class="form-control input-sm"></td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td><input type="email" placeholder="City" id="exampleInputCity" class="form-control input-sm"></td>
+                        </tr>
+                        <tr>
+                            <td>Work</td>
+                            <td><input type="email" placeholder="Work" id="exampleInputWork" class="form-control input-sm"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-default btn-wide btn-sm pull-right">
+                        <span class="glyphicon glyphicon-ok"></span> Save
+                    </button>
+                </div>
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th colspan=2>Contact Information<a href="" class="pull-right "> <span class="glyphicon glyphicon-edit top" data-toggle="tooltip" data-placement="top" title="Edit"></span></a></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Mobile</td>
+                            <td><input type="text" placeholder="01" id="exampleInputMobile" class="form-control input-sm"></td>
+                        </tr>
+                        <tr>
+                            <td>E-mail</td>
+                            <td><input type="email" placeholder="@example" id="exampleInputE-mail" class="form-control input-sm"></td>
+                        </tr>
+                        <tr>
+                            <td>Facebook</td>
+                            <td><input type="email" placeholder="Facebook" id="exampleInputFacebook" class="form-control input-sm"></td>
+                        </tr>
+                        <tr>
+                            <td>Twitter</td>
+                            <td><input type="email" placeholder="Twitter" id="exampleInputTwitter" class="form-control input-sm"></td>
+                        </tr>
+                        <tr>
+                            <td>website</td>
+                            <td><input type="email" placeholder="website" id="exampleInputwebsite" class="form-control input-sm"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-default btn-wide btn-sm pull-right">
+                        <span class="glyphicon glyphicon-ok"></span> Save
+                    </button>
+                </div>
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th colspan=2>Relationship <a href="" class="pull-right "> <span class="glyphicon glyphicon-edit top" data-toggle="tooltip" data-placement="top" title="Edit"></span></a></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <select class="form-control">
+                                    <option class="iconRelationship iconmom">mom</option>
+                                    <option class="iconRelationship icondad">dad</option>
+                                    <option class="iconRelationship iconFiance">Fiance</option>
+                                    <option class="iconRelationship iconFaience">Faience</option>
+                                    <option class="iconRelationship iconSister">Sister</option>
+                                </select>
+                                <br>
+                                <input type="text" class="form-control" placeholder="Enter Price">
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <button class="btn btn-default btn-wide btn-sm pull-right" type="button">
+                        <span class="glyphicon glyphicon-ok"></span> Save
+                    </button>
+                </div>
+
+            </div>
+
+            <!--End of Posted -->
+
+
+            </div>
+
+
+            <!-- End of vendor Posts-->
+
+
+
+            <!--<div id="vendAbout" class="menuSection">
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th colspan="2">Basic Information<a class="pull-right " href=""> <span title="" data-placement="top" data-toggle="tooltip" class="glyphicon glyphicon-edit top" data-original-title="Edit"></span></a></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Birthday</td>
+                                <td><input type="email" placeholder="Month/DAy/Year" id="exampleInputBirthday" class="form-control input-sm"></td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td><input type="email" placeholder="I am.." id="exampleInputGender" class="form-control input-sm"></td>
+                            </tr>
+                            <tr>
+                                <td>Relationship status</td>
+                                <td><input type="email" placeholder="Relationship" id="exampleInputRelationship" class="form-control input-sm"></td>
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td><input type="email" placeholder="City" id="exampleInputCity" class="form-control input-sm"></td>
+                            </tr>
+                            <tr>
+                                <td>Work</td>
+                                <td><input type="email" placeholder="Work" id="exampleInputWork" class="form-control input-sm"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-default btn-wide btn-sm pull-right">
+                            <span class="glyphicon glyphicon-ok"></span> Save
+                        </button>
+                    </div>
+
+                    <div class="col-md-6">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th colspan=2>Contact Information<a href="" class="pull-right "> <span class="glyphicon glyphicon-edit top" data-toggle="tooltip" data-placement="top" title="Edit"></span></a></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Mobile</td>
+                                <td><input type="text" placeholder="01" id="exampleInputMobile" class="form-control input-sm"></td>
+                            </tr>
+                            <tr>
+                                <td>E-mail</td>
+                                <td><input type="email" placeholder="@example" id="exampleInputE-mail" class="form-control input-sm"></td>
+                            </tr>
+                            <tr>
+                                <td>Facebook</td>
+                                <td><input type="email" placeholder="Facebook" id="exampleInputFacebook" class="form-control input-sm"></td>
+                            </tr>
+                            <tr>
+                                <td>Twitter</td>
+                                <td><input type="email" placeholder="Twitter" id="exampleInputTwitter" class="form-control input-sm"></td>
+                            </tr>
+                            <tr>
+                                <td>website</td>
+                                <td><input type="email" placeholder="website" id="exampleInputwebsite" class="form-control input-sm"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-default btn-wide btn-sm pull-right">
+                            <span class="glyphicon glyphicon-ok"></span> Save
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th colspan=2>Relationship <a href="" class="pull-right "> <span class="glyphicon glyphicon-edit top" data-toggle="tooltip" data-placement="top" title="Edit"></span></a></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <select class="form-control">
+                                        <option class="iconRelationship iconmom">mom</option>
+                                        <option class="iconRelationship icondad">dad</option>
+                                        <option class="iconRelationship iconFiance">Fiance</option>
+                                        <option class="iconRelationship iconFaience">Faience</option>
+                                        <option class="iconRelationship iconSister">Sister</option>
+                                    </select>
+                                    <br>
+                                    <input type="text" class="form-control" placeholder="Enter Price">
+                               </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <button class="btn btn-default btn-wide btn-sm pull-right" type="button">
+                            <span class="glyphicon glyphicon-ok"></span> Save
+                        </button>
+                    </div>
+
+                </div>
+            </div>-->
+            <div id="vendProducts" class="menuSection">
+                <!-- GridView-->
+                <div class="row search-Results">
+
+                    <div class="col-sm-3">
+                        <button data-target="#addNewListPopup" data-toggle="modal" type="button" class="btn btn-default btn-wide">
+                            <span class="glyphicon glyphicon-plus"></span>  Add new list
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 col-xs-6">
+                        <div class="thumbnail">
+                            <a href="#"><img src="img/thumb.jpg" class="img-responsive" alt="Responsive image"></a>
+                            <div class="caption">
+                                <h5>My Kitchen Tools <span class="badge pull-right">4</span> </h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-xs-6">
+                        <div class="thumbnail">
+                            <a href="#"> <img src="img/thumb.jpg" class="img-responsive" alt="Responsive image"></a>
+                            <div class="caption">
+                                <h5>My Kitchen Tools  <span class="badge pull-right">4</span> </h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-xs-6">
+                        <div class="thumbnail">
+                            <a href="#"> <img src="img/thumb.jpg" class="img-responsive" alt="Responsive image"></a>
+                            <div class="caption">
+                                <h5>My Kitchen Tools  <span class="badge pull-right">4</span> </h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-xs-6">
+                        <div class="thumbnail">
+                            <a href="#"> <img src="img/thumb.jpg" class="img-responsive" alt="Responsive image"></a>
+                            <div class="caption">
+                                <h5>My Kitchen Tools  <span class="badge pull-right">4</span> </h5>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <div class="menuSection" id="vendPhotos" style="display: block;">
+                <div class="row">
+                    <div class="col-xs-12 search-Results">
+                        <button id="addNewPhoto" class="btn btn-default btn-wide" type="button" data-toggle="modal" data-target="#addPhotosPopup" style="display: none;"><span class="glyphicon glyphicon-plus"></span>  Add new photo  </button>
+                        <button id="addNewAlbum" class="btn btn-default btn-wide" type="button" data-toggle="modal" data-target="#addAlbumPopup" style="display: inline-block;"><span class="glyphicon glyphicon-plus"></span>  Add new album  </button>
+                        <button id="addPhoto" class="btn btn-default btn-wide" type="button" data-toggle="modal" data-target="#addPhotoPopup" style="display: inline-block;"><span class="glyphicon glyphicon-plus"></span> Add photo </button>
+
+
+
+
+
+
+
+                        <div class="btn-group pull-right">
+                            <a id="btnPhots" href="javascript:photoAlbumTabs('photos');" class="btn btn-default active"> Photos</a>
+                            <a id="btnAlbums" href="javascript:photoAlbumTabs('albums');" class="btn btn-default"> Albums</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row" id="photos">
+                    <div class="photosCont" style="display: block;">
+                        <div class="col-md-3 col-sm-4 col-xs-6 margin">
+                            <div class="thumbnail photoGallery">
+                                <a class="fancybox" href="#photosPopup" rel="gallery">
+                                    <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
+                                    <img src="img/photo2.jpg" class="img-responsive" alt="Responsive image">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6 margin">
+                            <div class="thumbnail photoGallery">
+                                <a class="fancybox" href="#photosPopup" rel="gallery">
+                                    <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
+                                    <img src="img/photo2.jpg" class="img-responsive" alt="Responsive image">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6 margin">
+                            <div class="thumbnail photoGallery">
+                                <a class="fancybox" href="#photosPopup" rel="gallery">
+                                    <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
+                                    <img src="img/photo2.jpg" class="img-responsive" alt="Responsive image">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6 margin">
+                            <div class="thumbnail photoGallery">
+                                <a class="fancybox" href="#photosPopup" rel="gallery">
+                                    <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
+                                    <img src="img/photo2.jpg" class="img-responsive" alt="Responsive image">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6 margin">
+                            <div class="thumbnail photoGallery">
+                                <a class="fancybox" href="#photosPopup" rel="gallery">
+                                    <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
+                                    <img src="img/photo2.jpg" class="img-responsive" alt="Responsive image">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <div class="thumbnail photoGallery">
+                                <a class="fancybox" href="#photosPopup" rel="gallery">
+                                    <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
+                                    <img src="img/photo2.jpg" class="img-responsive" alt="Responsive image">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-4 col-xs-6 margin">
+                            <div class="thumbnail photoGallery">
+                                <a class="fancybox" href="#photosPopup" rel="gallery">
+                                    <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
+                                    <img src="img/photo2.jpg" class="img-responsive" alt="Responsive image">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-4 col-xs-6 margin">
+                            <div class="thumbnail photoGallery">
+                                <a class="fancybox" href="#photosPopup" rel="gallery">
+                                    <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
+                                    <img src="img/photo2.jpg" class="img-responsive" alt="Responsive image">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="albumCont" style="display: none;">
+
+                        <div class="col-md-3 col-xs-6">
+                            <div class="thumbnail">
+                                <a href="#"> <img alt="Responsive image" class="img-responsive" src="img/thumb.jpg"></a>
+
+                                <div class="caption">
+                                    <h4>My Kitchen photos <span class="badge pull-right">55</span></h4>
+
+                                    <p class="date">12 Sept 2013</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3 col-xs-6">
+                            <div class="thumbnail">
+                                <a href="#"> <img alt="Responsive image" class="img-responsive" src="img/thumb.jpg"></a>
+
+                                <div class="caption">
+                                    <h4>My Kitchen photos <span class="badge pull-right">55</span></h4>
+
+                                    <p class="date">12 Sept 2013</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-xs-6">
+                            <div class="thumbnail">
+                                <a href="#"> <img alt="Responsive image" class="img-responsive" src="img/thumb.jpg"></a>
+
+                                <div class="caption">
+                                    <h4>My Kitchen photos <span class="badge pull-right">55</span></h4>
+
+                                    <p class="date">12 Sept 2013</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-xs-6">
+                            <div class="thumbnail">
+                                <a href="#"> <img alt="Responsive image" class="img-responsive" src="img/thumb.jpg"></a>
+
+                                <div class="caption">
+                                    <h4>My Kitchen photos <span class="badge pull-right">55</span></h4>
+
+                                    <p class="date">12 Sept 2013</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="vendTips" class="menuSection">
+                <div class="row">
+                    <div class="col-xs-12 search-Results">
+                        <button class="btn btn-default btn-wide" type="button" data-toggle="modal" data-target="#tipExpPopup">
+                            <span class="glyphicon glyphicon-plus"></span> Share your Experince
+                        </button>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-xs-6">
+                        <div class="thumbnail">
+                            <a href="#"><img alt="Responsive image" class="img-responsive" src="img/thumb.jpg"></a>
+                            <div class="caption">
+                                <h4>Note About how to get a good venue for wedding</h4>
+                                <p>Point of sale is offering a  new furniture discount on bedrooms</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-6">
+                        <div class="thumbnail">
+                            <a href="#"><img alt="Responsive image" class="img-responsive" src="img/thumb.jpg"> </a>
+                            <div class="caption">
+                                <h4>Note About how to get a good venue for wedding</h4>
+                                <p>Point of sale is offering a  new furniture discount on bedrooms</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-6">
+                        <div class="thumbnail">
+                            <a href="#"><img alt="Responsive image" class="img-responsive" src="img/thumb.jpg"></a>
+                            <div class="caption">
+                                <h4>Note About how to get a good venue for wedding</h4>
+                                <p>Point of sale is offering a  new furniture discount on bedrooms</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-6">
+                        <div class="thumbnail">
+                            <a href="#"><img alt="Responsive image" class="img-responsive" src="img/thumb.jpg"></a>
+                            <div class="caption">
+                                <h4>Note About how to get a good venue for wedding</h4>
+                                <p>Point of sale is offering a  new furniture discount on bedrooms</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-6">
+                        <div class="thumbnail">
+                            <a href="#"><img alt="Responsive image" class="img-responsive" src="img/thumb.jpg"></a>
+                            <div class="caption">
+                                <h4>Note About how to get a good venue for wedding</h4>
+                                <p>Point of sale is offering a  new furniture discount on bedrooms</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="menuSection" id="vendConnec" style="display: block;">
+            <div class="row margin">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="btn-group btn-group-justified">
+                        <a href="javascript:connectionsTabs('followers');" class="btn btn-default active"> Followers</a>
+                        <a href="javascript:connectionsTabs('following');" class="btn btn-default"> Following</a>
+                        <a href="javascript:connectionsTabs('vendors');" class="btn btn-default"> Vendors</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="connections">
+
+            <div class="followerCont" style="display: none;">
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide  btnFollowing">
+                        <span class="following">Following</span>
+                        <span class="Unfollow"><span class="glyphicon glyphicon-minus-sign"></span>Unfollow</span>
+                    </button>
+                    <a href="#" class="boy followerStats"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+                    <div class="dropdown">
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide btnFollowing">
+                        Following
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide  btnFollowing">
+                        Following
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left  img-circle profile-pic-girl" href="#">
+                        <img class="media-object" src="img/pic-profile-girl.jpg" alt="...">
+                    </a>
+
+                    <h3><a href="">Mona Ahmed</a></h3>
+                    <span class="title">Teacher</span>
+                    <button type="button" class="btn btn-primary btn-wide btn-danger">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="girl" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-girl"></span> 80 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left  img-circle profile-pic-girl" href="#">
+                        <img class="media-object" src="img/pic-profile-girl.jpg" alt="...">
+                    </a>
+
+                    <h3><a href="">Mona Ahmed</a></h3>
+                    <span class="title">Teacher</span>
+                    <button type="button" class="btn btn-primary btn-wide btn-danger">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="girl" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-girl"></span> 80 </a>
+
+                </div>
+            </div>
+            <div class="followingCont" style="display: none;">
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div><div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div><div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+
+
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left  img-circle profile-pic-girl" href="#">
+                        <img class="media-object" src="img/pic-profile-girl.jpg" alt="...">
+                    </a>
+
+                    <h3><a href="">Mona Ahmed</a></h3>
+                    <span class="title">Teacher</span>
+                    <button type="button" class="btn btn-primary btn-wide btn-danger">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="girl" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-girl"></span> 80 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left  img-circle profile-pic-girl" href="#">
+                        <img class="media-object" src="img/pic-profile-girl.jpg" alt="...">
+                    </a>
+
+                    <h3><a href="">Mona Ahmed</a></h3>
+                    <span class="title">Teacher</span>
+                    <button type="button" class="btn btn-primary btn-wide btn-danger">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="girl" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-girl"></span> 80 </a>
+                </div>
+            </div>
+            <div class="vendorsCont" style="display: block;">
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left img-circle profile-pic-boy" href="#">
+                        <img class="media-object" src="img/pic-profile-boy.jpg" alt="">
+                    </a>
+
+                    <h3><a href="">Mohamed Ahmed</a></h3>
+                    <span class="title">Developer</span>
+                    <button type="button" class="btn btn-primary btn-wide">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left  img-circle profile-pic-girl" href="#">
+                        <img class="media-object" src="img/pic-profile-girl.jpg" alt="...">
+                    </a>
+
+                    <h3><a href="">Mona Ahmed</a></h3>
+                    <span class="title">Teacher</span>
+                    <button type="button" class="btn btn-primary btn-wide btn-danger">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="girl" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-girl"></span> 80 </a>
+
+                </div>
+                <div class="media profile effect col-sm-4">
+                    <a class="pull-left  img-circle profile-pic-girl" href="#">
+                        <img class="media-object" src="img/pic-profile-girl.jpg" alt="...">
+                    </a>
+
+                    <h3><a href="">Mona Ahmed</a></h3>
+                    <span class="title">Teacher</span>
+                    <button type="button" class="btn btn-primary btn-wide btn-danger">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Follow
+                    </button>
+                    <a class="girl" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-girl"></span> 80 </a>
+
+                </div>
+            </div>
+            </div>
+            </div>
+
+            </div>  <!-- end of somthing -->
+        {% endblock leftContent %}
+
+        {% block rightContent %}{% endblock rightContent %}
+
+    </div>
+{% endblock content %}
+
+{% block modals %}
+    <div id="sharePost" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modalHeader">
+                    <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Share This Post</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea placeholder="Write Something.." class="form-control"> </textarea>
+                    <hr>
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="img/img-prf-comment.jpg" alt="...">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">Media heading</h4>
+                            <p class="by">By: <span>Decorama Egypt</span></p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-wide btn-default">Cancel</button>
+                    <button type="button" class="btn btn-wide btn-primary">Delete</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <div id="shareVideo" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modalHeader">
+                    <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Share This Video</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea placeholder="Write Something.." class="form-control"> </textarea>
+                    <hr>
+                    <div class="col-md-12">
+                        <iframe class="margin" width="100%" height="200" src="http://www.youtube.com/embed/2CwXjN4DoWs" frameborder="0" allowfullscreen></iframe>
+                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quinare odio.</p>
+                        <p class="by">By: <span>Mohamed Boghdady</span></p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-wide btn-default">Cancel</button>
+                    <button type="button" class="btn btn-wide btn-primary">Delete</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+{% endblock modals %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        "bundles/zghfe/js/magicsuggest-1.3.1.js"
+        "bundles/zghfe/js/magicSuggestCustome.js"
+        "bundles/zghfe/js/jquery.fancybox.pack.js"
+        "bundles/zghfe/js/jquery.fancybox-buttons.js"
+        "bundles/zghfe/js/jquery.fancybox-media.js"
+        "bundles/zghfe/js/jquery.fancybox-thumbs.js"
+        "bundles/zghfe/js/fancyCustom.js"
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock javascripts %}

@@ -1,0 +1,102 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+
+    <parameters>
+        <parameter key="zgh_fe.registration.form.type.class">Zgh\FEBundle\Form\RegistrationType</parameter>
+        <parameter key="zgh_fe.login_handler_success.class">Zgh\FEBundle\EventListener\LoginSuccessHandler</parameter>
+        <parameter key="zgh_fe.login_handler_failure.class">Zgh\FEBundle\EventListener\LoginFailureHandler</parameter>
+        <parameter key="zgh_fe.register_handler.class">Zgh\FEBundle\EventListener\RegisterListener</parameter>
+        <parameter key="zgh_fe.twig.like_check.class">Zgh\FEBundle\TwigExtension\LikeCheckExtension</parameter>
+        <parameter key="zgh_fe.twig.follow_check.class">Zgh\FEBundle\TwigExtension\FollowCheckExtension</parameter>
+        <parameter key="zgh_fe.twig.render_follow.class">Zgh\FEBundle\TwigExtension\RenderFollowExtension</parameter>
+        <parameter key="zgh_user_provider.class">Zgh\FEBundle\Security\User\Provider\ZaghrutaUserProvider</parameter>
+        <parameter key="zgh_fe.user_privacy.manager.class">Zgh\FEBundle\TwigExtension\UserPrivacyManager</parameter>
+        <parameter key="zgh_fe.follow.manager.class">Zgh\FEBundle\Service\FollowManager</parameter>
+        <parameter key="zgh_fe.doctrine.listener.class">Zgh\FEBundle\EventListener\DoctrineListenerHandler</parameter>
+        <parameter key="zgh_fe.like_manager.class">Zgh\FEBundle\Service\LikeManager</parameter>
+        <parameter key="zgh_fe.comment_manager.class">Zgh\FEBundle\Service\CommentManager</parameter>
+    </parameters>
+
+    <services>
+        <service id="zgh_fe.registration.form.type" class="%zgh_fe.registration.form.type.class%">
+        </service>
+
+        <service id="zgh_fe.login_handler_success" class="%zgh_fe.login_handler_success.class%">
+            <argument type="service" id="router"/>
+        </service>
+
+        <service id="zgh_fe.login_handler_failure" class="%zgh_fe.login_handler_failure.class%">
+        </service>
+
+        <service id="zgh_fe.register_handler" class="%zgh_fe.register_handler.class%">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="fos_user.user_manager"/>
+            <argument type="service" id="kernel"/>
+        </service>
+
+        <service id="zgh_fe.twig.like_check" class="%zgh_fe.twig.like_check.class%">
+            <tag name="twig.extension" />
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+
+        <service id="zgh_fe.twig.follow_check" class="%zgh_fe.twig.follow_check.class%">
+            <tag name="twig.extension" />
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+
+        <service id="zgh_fe.twig.render_follow" class="%zgh_fe.twig.render_follow.class%">
+            <tag name="twig.extension" />
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="security.context"/>
+            <argument type="service" id="zgh_fe.twig.follow_check"/>
+            <argument type="service" id="router"/>
+        </service>
+
+        <service id="zgh_fe.user_privacy.manager" class="%zgh_fe.user_privacy.manager.class%">
+            <tag name="twig.extension"/>
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="security.context"/>
+        </service>
+
+        <service id="zgh_fe.follow.manager" class="%zgh_fe.follow.manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="security.context"/>
+            <argument type="service" id="zgh_fe.twig.follow_check"/>
+            <argument type="service" id="router"/>
+        </service>
+
+        <service id="zgh_user_provider" class="%zgh_user_provider.class%">
+            <argument type="service" id="fos_user.user_manager" />
+            <argument type="collection">
+                <argument key="facebook">facebook_id</argument>
+            </argument>
+        </service>
+
+        <service id="zgh_fe.doctrine.listener" class="%zgh_fe.doctrine.listener.class%">
+            <tag name="doctrine.event_subscriber" />
+        </service>
+
+        <service id="zgh_fe.like_manager" class="%zgh_fe.like_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="security.context" />
+        </service>
+
+        <service id="zgh_fe.comment_manager" class="%zgh_fe.comment_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="security.context" />
+            <argument type="service" id="router" />
+        </service>
+
+        <!--<service id="zgh_fe.param_converter.social" class="Zgh\FEBundle\ParamConverter\SocialConverter">-->
+            <!--<argument type="service" id="doctrine.orm.entity_manager" />-->
+
+            <!--<tag name="request.param_converter" converter="social" priority="10" />-->
+        <!--</service>-->
+
+    </services>
+
+</container>

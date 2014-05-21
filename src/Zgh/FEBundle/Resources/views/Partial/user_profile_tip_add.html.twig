@@ -1,0 +1,65 @@
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
+
+{% block leftContent %}
+    <div class="row">
+        <div class="col-xs-12 search-Results">
+            <a class="btn btn-default btn-wide moveExpTip" href="{{ url("zgh_fe.user_profile.tips_partial", {"id": user.id}) }}">
+                <span class="glyphicon glyphicon-arrow-left"></span> Cancel
+            </a>
+
+        </div>
+
+    </div>
+<div class="tip_add">
+    <div class="row">
+        <h3>Add Tip</h3>
+    </div>
+    {{ form_start(form, {"action": url("zgh_fe.tip.post_new", {"id": user.id} ), "attr": {"id": "tip_form"} }     ) }}
+            <div class="form-group formGroup row">
+                {{ form_label(form.title, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+                <div class="col-sm-9">
+                    {{ form_widget(form.title, {"attr":{"class": "form-control", "placeholder": "Tip title"} }) }}
+                   {{ form_errors(form.title) }}
+                </div>
+            </div>
+
+            <div class="form-group formGroup row">
+                {{ form_label(form.image_file, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+
+                <div class="col-sm-9">
+                    <div class="col-md12">
+                        {{ form_widget(form.image_file) }}
+                        {{ form_errors(form.image_file) }}
+                        <span class="error" style="color: red;"></span>
+                    </div>
+
+                    {#<div class="col-sm-4 col-md-4 UploadPhotos clearfix row">#}
+                        {#<div class="thumbnail">#}
+                            {#<table class="files"></table>#}
+                        {#</div>#}
+
+                        {#<div class="progress progress-striped active" style="display: none;">#}
+                            {#<div style="display: none;" class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0"#}
+                                 {#aria-valuemax="100" style="width: 0%">#}
+                                {#<span class="sr-only">45% Complete</span>#}
+                            {#</div>#}
+                        {#</div>#}
+
+
+                    {#</div>#}
+                </div>
+            </div>
+
+            <div class="form-group formGroup row">
+                {{ form_label(form.content, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+
+                <div class="col-sm-9">
+                    {{ form_widget(form.content, {"attr":{"class": "form-control", "placeholder": "Tip content"} }) }}
+                    {{ form_errors(form.content) }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-wide btn-primary exp_tip_sbumit">save</button>
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
+</div>
+{% endblock %}

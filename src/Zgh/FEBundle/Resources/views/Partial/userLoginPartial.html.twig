@@ -1,0 +1,49 @@
+<div id="User" class="tab-pane active">
+    <div class="row push-botton">
+        <div class="col-lg-12">
+            {#<div class="col-md-6 col-sm-4 col-xs-8 btnFb">#}
+            {#<div class="fb-login-button"></div>#}
+            {#<a class="fbLogin" href="#"></a></div>#}
+            <div class="col-md-6 col-sm-4 col-xs-8 btnFb">
+                {{ facebook_login_button({'autologoutlink': true, 'width': '600px'}) }}
+            </div>
+        </div>
+    </div>
+
+    <fieldset>
+        <legend class="text-center"> Or sign in with your email</legend>
+        {#{% if error %}#}
+            {#<div class=" alert alert-danger col-md-12">#}
+                {#{{ error|trans }}#}
+                {#<a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>#}
+            {#</div>#}
+        {#{% endif %}#}
+
+        <form action="{{ path("fos_user_security_check") }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"  />
+            <div class="form-group">
+                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" placeholder="Username" />
+                <div class="validation" style="">No suggestions</div>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password"/>
+                <div class="validation" style="">No suggestions</div>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                <label for="remember_me">Remember Me</label>
+            </div>
+
+            <div class="row">
+                <a type="button" class=" pull-left pinkLink linkForgotPass"
+                   data-toggle="modal" data-target="#modalResetPass">Forgot your Password </a>
+
+                <input type="submit" id="_submit" name="_submit" value="Login"  class="btn btn-danger btn-wide pull-right" />
+                <a href="#" class=" pull-right">Sign Up</a>
+                {#<a href="#" class="pull-right">Sign Up</a>#}
+            </div>
+        </form>
+    </fieldset>
+</div>

@@ -1,0 +1,86 @@
+{% form_theme form with ['ThraceFormBundle:Form:fields.html.twig'] %}
+{{ form_start(form, {"action":  url("zgh_fe.about.post_customer_edit", {"id": app.user.getUserInfo.getId } ) } ) }}
+    <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th colspan="2">Contact Information
+                        <a href="" class="pull-right cancel_about_edit ">
+                            Cancel
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Birthday</td>
+                    <td class="DMY">
+                        {{ form_widget(form.birthday.day, {"attr": {"class": "form-control Day"} })}}
+                        {{ form_widget(form.birthday.month, {"attr": {"class": "form-control Month"} })}}
+                        {{ form_widget(form.birthday.year, {"attr": {"class": "form-control Year"} })}}
+                        {{ form_errors(form.birthday) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        {{ form_widget(form.gender, {"attr": {"class": "form-control"} }) }}
+                        {{ form_errors(form.gender) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>
+                        {% if info.status == "In relationship" %}
+                            <span>In relationship with</span>
+                            <a href="{{ url("zgh_fe.user_profile.index", {"id": info.relationshipUser.id}) }}">{{ info.relationshipUser }}</a>
+                        {% elseif info.status == "Married" or info.status == "Engaged" %}
+                            <span>{{ info.status }} to</span>
+                            <a href="{{ url("zgh_fe.user_profile.index", {"id": info.relationshipUser.id}) }}">{{ info.relationshipUser }}</a>
+                        {% endif %}
+
+                        {{ form_widget(form.status , {"attr": {"class": "form-control status_ddl"} }) }}
+                        {{ form_errors(form.status) }}
+                        {{ form_widget(form.relationship_user , {"attr": {"class": "user_select"} }) }}
+                        {{ form_errors(form.relationship_user) }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>City</td>
+                    <td>
+                        {{ form_widget(form.city , {"attr": {"class": "form-control"} }) }}
+                        {{ form_errors(form.city) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Work</td>
+                    <td>
+                        {{ form_widget(form.work , {"attr": {"class": "form-control"} }) }}
+                        {{ form_errors(form.work) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Facebook</td>
+                    <td>
+                        {{ form_widget(form.facebook , {"attr": {"class": "form-control"} }) }}
+                        {{ form_errors(form.facebook) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Twitter</td>
+                    <td>
+                        {{ form_widget(form.twitter , {"attr": {"class": "form-control"} }) }}
+                        {{ form_errors(form.twitter) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" class="btn btn-primary pull-right save_about" value="Save" />
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+    {{ form_rest(form) }}
+{{ form_end(form) }}
+

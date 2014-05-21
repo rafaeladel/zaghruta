@@ -1,0 +1,334 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zaghruta your weeding planner guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="{{ asset("bundles/zghfe/css/bootstrap.css") }}" rel="stylesheet" media="screen">
+    <link href="{{ asset("bundles/zghfe/css/custom.css") }}" rel="stylesheet" media="screen">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset("bundles/zghfe/js/html5shiv.js") }}"></script>
+    <script src="{{ asset("bundles/zghfe/js/respond.js") }}"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<header class="fixed-header indexHeader">
+
+    <div class="container">
+        <div class="logo col-md-3 col-sm-4 col-md-offset-1"><a href="#"><img src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
+        <div class="col-md-6 col-sm-8 search-box">
+            <div class="mainSearch input-group">
+                <div class="input-group-btn" style="display:none;">
+                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Category <span
+                                class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="icon-list-alt"></i>Everything</a></li>
+                        <li class="divider"></li>
+                        <li class="has_sub"><a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels &amp; Venues</a>
+                        </li>
+                        <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp; catering</a></li>
+                        <li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a></li>
+                        <li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a></li>
+                        <li class="dropdown-submenu"><a href="#"><i class="iconMenu iconJewelry pull-left"></i>Jewelry</a>    <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">Second level</a></li>
+                                <li class="dropdown-submenu">
+                                    <a href="#">More..</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">3rd level</a></li>
+                                        <li><a href="#">3rd level</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Second level</a></li>
+                                <li><a href="#">Second level</a></li>
+                            </ul></li>
+                        <li><a href="#"><i class="iconMenu iconHonymoons pull-left"></i>Honeymoons</a></li>
+                        <li><a href="#"><i class="iconMenu iconFashion pull-left"></i>Fashion</a></li>
+                        <li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a></li>
+                        <li><a href="#"><i class="iconMenu iconFlorists pull-left"></i>Florists </a></li>
+                        <li><a href="#"><i class="iconMenu iconFurniture pull-left"></i>Furniture</a></li>
+                        <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health </a></li>
+                        <li><a href="#"><i class="iconMenu iconLimousines pull-left"></i>Limousines</a></li>
+                        <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home Appliances</a></li>
+                        <li><a href="#"><i class="iconMenu iconEntertainment pull-left"></i>Entertainment</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
+                    </ul>
+                </div>
+                <!-- /btn-group -->
+
+                <input type="text" class="form-control custFc" placeholder="Search for your things">
+                <a href="#" class="search-addon input-group-addon custAncor"></a>
+
+            </div>
+        </div>
+        <div class="col-md-1 col-sm-1">
+            <div class="input-btn">
+                <button class="btn btn-primary dropdown-toggle search-box" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i class="icon-list-alt"></i>Everything</a></li>
+                    <li class="divider"></li>
+                    <li class="has_sub"><a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels &amp; Venues</a>
+                    </li>
+                    <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp; catering</a></li>
+                    <li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a></li>
+                    <li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a></li>
+                    <li class="dropdown-submenu"><a href="#"><i class="iconMenu iconJewelry pull-left"></i>Jewelry</a>    <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="#">Second level</a></li>
+                            <li class="dropdown-submenu">
+                                <a href="#">More..</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">3rd level</a></li>
+                                    <li><a href="#">3rd level</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Second level</a></li>
+                            <li><a href="#">Second level</a></li>
+                        </ul></li>
+                    <li><a href="#"><i class="iconMenu iconHonymoons pull-left"></i>Honeymoons</a></li>
+                    <li><a href="#"><i class="iconMenu iconFashion pull-left"></i>Fashion</a></li>
+                    <li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a></li>
+                    <li><a href="#"><i class="iconMenu iconFlorists pull-left"></i>Florists </a></li>
+                    <li><a href="#"><i class="iconMenu iconFurniture pull-left"></i>Furniture</a></li>
+                    <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health </a></li>
+                    <li><a href="#"><i class="iconMenu iconLimousines pull-left"></i>Limousines</a></li>
+                    <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home Appliances</a></li>
+                    <li><a href="#"><i class="iconMenu iconEntertainment pull-left"></i>Entertainment</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+</header>
+<!-- Header -->
+<div class="row loginSwitch">
+    <section class="container" id="sprite-iconPlug">
+        <h3>Technology</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+    <section class="container hide-show" id="sprite-iconChair">
+        <h3>Furniture</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+    <section class="container hide-show" id="sprite-iconCalendar">
+        <h3>Wedding Planner</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+    <section class="container hide-show" id="sprite-iconHome">
+        <h3>Real State</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+    <section class="container hide-show" id="sprite-iconGirl">
+        <h3>Beauty</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+
+    <section class="container hide-show" id="sprite-iconAccessories">
+        <h3>Accessories</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+
+    <section class="container hide-show" id="sprite-iconFashion">
+        <h3>Fashon</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+    <section class="container hide-show" id="sprite-iconPhotographers">
+        <h3>Photographers</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+    <section class="container hide-show" id="sprite-iconHotels">
+        <h3>Hotels</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+    <section class="container hide-show" id="sprite-iconBouquet">
+        <h3>Bouquet</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+
+    <section class="container hide-show" id="sprite-iconHoneymoon">
+        <h3>Honymoon</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+    <section class="container hide-show" id="sprite-iconCakes">
+        <h3>Cake</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+    <section class="container hide-show" id="sprite-iconMusic">
+        <h3>Music</h3>
+        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
+            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
+            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
+            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+    </section>
+</div>
+<div class="mainContent">
+    <div>
+        <div class="loginBG img-responsive visible-lg"></div>
+        <div class="iconGroup img-responsive  visible-lg">
+            <div style="position: relative">
+                <a href="#" class="sprite-iconPlug"></a>
+                <a href="#" class="sprite-iconChair"></a>
+                <a href="#" class="sprite-iconCalendar"></a>
+                <a href="#" class="sprite-iconHome"></a>
+                <a href="#" class="sprite-iconGirl"></a>
+                <a href="#" class="sprite-iconAccessories"></a>
+                <a href="#" class="sprite-iconFashion"></a>
+                <a href="#" class="sprite-iconPhotographers"></a>
+                <a href="#" class="sprite-iconHotels"></a>
+                <a href="#" class="sprite-iconBouquet"></a>
+                <a href="#" class="sprite-iconCar"></a>
+                <a href="#" class="sprite-iconHoneymoon"></a>
+                <a href="#" class="sprite-iconCakes"></a>
+                <a href="#" class="sprite-iconMusic"></a>
+            </div>
+        </div>
+    </div>
+    <div class="BGlogin img-responsive visible-lg" style="display: none !important;"></div>
+    <section class="container">
+        <div class="control-group">&nbsp;</div>
+        <div class="row">
+            <div class="signBox  col-md-6">
+
+                <ul class="nav nav-tabs nav-login" id="loginTabs">
+                    <li class="active"><a href="">Register {{ app.request.get("type")|capitalize }}</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="register_user" class="tab-pane active">
+                            {% block fos_user_content %}
+                                <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+                            {% endblock fos_user_content %}
+
+
+                    </div>
+                    <div id="Vendor" class="tab-pane">
+                        {#{% if error %}#}
+                        {#<div class=" alert alert-danger col-md-12">#}
+                        {#{{ error|trans }}#}
+                        {#<a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>#}
+                        {#</div>#}
+                        {#{% endif %}#}
+                        {#<form action="{{ path("fos_user_security_check") }}" method="post">#}
+                        {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}"  />#}
+                        {#<div class="form-group">#}
+                        {#<input type="text" id="username" name="_username" value="" required="required" class="form-control" placeholder="Username" />#}
+                        {#<div class="validation" style="">No suggestions</div>#}
+                        {#</div>#}
+
+                        {#<div class="form-group">#}
+                        {#<input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password"/>#}
+                        {#<div class="validation" style="">No suggestions</div>#}
+                        {#</div>#}
+
+                        {#<div class="form-group">#}
+                        {#<input type="checkbox" id="remember_me" name="_remember_me" value="on" />#}
+                        {#<label for="remember_me">Remember Me</label>#}
+                        {#</div>#}
+
+                        {#<div class="row">#}
+                        {#<a type="button" class=" pull-left pinkLink linkForgotPass"#}
+                        {#data-toggle="modal" data-target="#modalResetPass">Forgot your Password </a>#}
+
+                        {#<input type="submit" id="_submit" name="_submit" value="Login"  class="btn btn-danger btn-wide pull-right" />#}
+                        {#<a href="#" class=" pull-right">Sign Up</a>#}
+                        {#</div>#}
+
+                        {#</form>#}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </section>
+
+</div>
+
+
+
+<!-- JavaScript plugins (requires jQuery) -->
+<script src="{{ asset("bundles/zghfe/js/jquery-1.10.2.min.js") }}"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ asset("bundles/zghfe/js/bootstrap.js") }}"></script>
+
+<!-- Optionally enable responsive features in IE8 -->
+<script src="{{ asset("bundles/zghfe/js/respond.js") }}"></script>
+
+<script src="{{ asset("bundles/zghfe/js/custom.js") }}"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+<script>
+    $(document).ready(function(){
+        $(".iconGroup a").mouseenter(function(){
+            var secName = $(this).attr('class');
+            $('#' + secName + '').siblings().hide();
+            $('#' + secName + '').fadeIn(100);
+
+        });
+    });
+</script>
+<div id="theH" style=""></div>
+</body>
+</html>
