@@ -147,22 +147,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="post_actions.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/bundles/zghfe/js/post_actions.js">
+      <file leaf-file-name="post_actions.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/post_actions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="137" column="7" selection-start="7480" selection-end="7480" vertical-scroll-proportion="4.3840446" vertical-offset="0" max-vertical-offset="2499">
+            <state line="139" column="3" selection-start="7485" selection-end="7485" vertical-scroll-proportion="0.0" vertical-offset="1960" max-vertical-offset="2499">
               <folding>
-                <marker date="1400683468973" expanded="false" signature="1783:1812" placeholder="..." />
-                <marker date="1400683468973" expanded="true" signature="3297:4786" placeholder="..." />
-                <marker date="1400683468973" expanded="true" signature="3370:4738" placeholder="..." />
-                <marker date="1400683468973" expanded="true" signature="3458:3786" placeholder="..." />
-                <marker date="1400683468973" expanded="true" signature="3860:4014" placeholder="..." />
-                <marker date="1400683468973" expanded="true" signature="4090:4686" placeholder="..." />
-                <marker date="1400683468973" expanded="true" signature="4385:4630" placeholder="..." />
-                <marker date="1400683468973" expanded="true" signature="4901:5431" placeholder="..." />
-                <marker date="1400683468973" expanded="true" signature="4976:5284" placeholder="..." />
-                <marker date="1400683468973" expanded="true" signature="5059:5244" placeholder="..." />
-                <marker date="1400683468973" expanded="true" signature="5487:5528" placeholder="..." />
+                <marker date="1400683935389" expanded="false" signature="1783:1812" placeholder="..." />
+                <marker date="1400683935389" expanded="true" signature="3297:4786" placeholder="..." />
+                <marker date="1400683935389" expanded="true" signature="3370:4738" placeholder="..." />
+                <marker date="1400683935389" expanded="true" signature="3458:3786" placeholder="..." />
+                <marker date="1400683935389" expanded="true" signature="3860:4014" placeholder="..." />
+                <marker date="1400683935389" expanded="true" signature="4090:4686" placeholder="..." />
+                <marker date="1400683935389" expanded="true" signature="4385:4630" placeholder="..." />
+                <marker date="1400683935389" expanded="true" signature="4901:5431" placeholder="..." />
+                <marker date="1400683935389" expanded="true" signature="4976:5284" placeholder="..." />
+                <marker date="1400683935389" expanded="true" signature="5059:5244" placeholder="..." />
+                <marker date="1400683935389" expanded="true" signature="5487:5528" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -177,22 +177,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app_dev.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/app_dev.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="0" selection-start="982" selection-end="982" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="646">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/app.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="336" selection-end="437" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="595">
-              <folding>
-                <element signature="e#7#56#0" expanded="false" />
-              </folding>
+            <state line="9" column="42" selection-start="335" selection-end="335" vertical-scroll-proportion="0.2651072" vertical-offset="0" max-vertical-offset="578">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -207,7 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/NotificationRead.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Photo.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Post.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/PostImage.php" />
@@ -253,11 +241,12 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/SecurityController_dep.php" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/web/app_dev.php" />
-        <option value="$PROJECT_DIR$/web/app.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/UserProfileController.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/EventListener/RegisterListener.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php" />
         <option value="$PROJECT_DIR$/web/bundles/zghfe/js/post_actions.js" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/post_actions.js" />
+        <option value="$PROJECT_DIR$/web/app.php" />
       </list>
     </option>
   </component>
@@ -1069,13 +1058,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/likes_popup.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="15" selection-start="425" selection-end="425" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Tip.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="176" column="28" selection-start="3239" selection-end="3239" vertical-scroll-proportion="-13.846154" vertical-offset="2632" max-vertical-offset="3145">
@@ -1333,8 +1315,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="54" selection-start="494" selection-end="494" vertical-scroll-proportion="-8.538462" vertical-offset="33" max-vertical-offset="884">
           <folding>
-            <element signature="e#42#99#0" expanded="true" />
-            <element signature="e#992#1042#0" expanded="true" />
+            <element signature="e#42#99#0" expanded="false" />
+            <element signature="e#992#1042#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1507,7 +1489,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="1" selection-start="134" selection-end="134" vertical-scroll-proportion="-2.6153846" vertical-offset="34" max-vertical-offset="782">
           <folding>
-            <element signature="e#7#47#0" expanded="true" />
+            <element signature="e#7#47#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1516,15 +1498,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="0" selection-start="982" selection-end="982" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="646">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="336" selection-end="437" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="595">
-          <folding>
-            <element signature="e#7#56#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1646,20 +1619,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/bundles/zghfe/js/post_actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="7" selection-start="7480" selection-end="7480" vertical-scroll-proportion="4.3840446" vertical-offset="0" max-vertical-offset="2499">
+        <state line="137" column="7" selection-start="7480" selection-end="7480" vertical-scroll-proportion="0.0" vertical-offset="1960" max-vertical-offset="2499">
           <folding>
-            <marker date="1400683468973" expanded="false" signature="1783:1812" placeholder="..." />
-            <marker date="1400683468973" expanded="true" signature="3297:4786" placeholder="..." />
-            <marker date="1400683468973" expanded="true" signature="3370:4738" placeholder="..." />
-            <marker date="1400683468973" expanded="true" signature="3458:3786" placeholder="..." />
-            <marker date="1400683468973" expanded="true" signature="3860:4014" placeholder="..." />
-            <marker date="1400683468973" expanded="true" signature="4090:4686" placeholder="..." />
-            <marker date="1400683468973" expanded="true" signature="4385:4630" placeholder="..." />
-            <marker date="1400683468973" expanded="true" signature="4901:5431" placeholder="..." />
-            <marker date="1400683468973" expanded="true" signature="4976:5284" placeholder="..." />
-            <marker date="1400683468973" expanded="true" signature="5059:5244" placeholder="..." />
-            <marker date="1400683468973" expanded="true" signature="5487:5528" placeholder="..." />
+            <marker date="1400683468973" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1400683468973" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400683468973" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400683468973" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400683468973" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400683468973" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400683468973" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400683468973" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400683468973" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400683468973" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400683468973" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/post_actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="3" selection-start="7485" selection-end="7485" vertical-scroll-proportion="0.0" vertical-offset="1960" max-vertical-offset="2499">
+          <folding>
+            <marker date="1400683935389" expanded="false" signature="1783:1812" placeholder="..." />
+            <marker date="1400683935389" expanded="true" signature="3297:4786" placeholder="..." />
+            <marker date="1400683935389" expanded="true" signature="3370:4738" placeholder="..." />
+            <marker date="1400683935389" expanded="true" signature="3458:3786" placeholder="..." />
+            <marker date="1400683935389" expanded="true" signature="3860:4014" placeholder="..." />
+            <marker date="1400683935389" expanded="true" signature="4090:4686" placeholder="..." />
+            <marker date="1400683935389" expanded="true" signature="4385:4630" placeholder="..." />
+            <marker date="1400683935389" expanded="true" signature="4901:5431" placeholder="..." />
+            <marker date="1400683935389" expanded="true" signature="4976:5284" placeholder="..." />
+            <marker date="1400683935389" expanded="true" signature="5059:5244" placeholder="..." />
+            <marker date="1400683935389" expanded="true" signature="5487:5528" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="42" selection-start="335" selection-end="335" vertical-scroll-proportion="0.2651072" vertical-offset="0" max-vertical-offset="578">
+          <folding />
         </state>
       </provider>
     </entry>
