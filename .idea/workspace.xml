@@ -46,10 +46,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="branch_routing.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="branch_routing.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/branch_routing.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="65" selection-start="333" selection-end="333" vertical-scroll-proportion="0.18923934" vertical-offset="0" max-vertical-offset="539">
+            <state line="6" column="65" selection-start="333" selection-end="333" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
               <folding />
             </state>
           </provider>
@@ -73,6 +73,41 @@
             <state line="82" column="91" selection-start="1930" selection-end="1930" vertical-scroll-proportion="-5.8846154" vertical-offset="1241" max-vertical-offset="18224">
               <folding>
                 <element signature="e#38#86#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Wishlist.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Wishlist.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="145" column="5" selection-start="2551" selection-end="2551" vertical-scroll-proportion="0.7348928" vertical-offset="507" max-vertical-offset="1020">
+              <folding>
+                <element signature="e#115#199#0" expanded="false" />
+                <element signature="e#241#299#0" expanded="false" />
+                <element signature="e#326#384#0" expanded="false" />
+                <element signature="e#418#496#0" expanded="false" />
+                <element signature="e#523#581#0" expanded="false" />
+                <element signature="e#613#643#0" expanded="false" />
+                <element signature="e#648#767#0" expanded="false" />
+                <element signature="e#773#858#0" expanded="false" />
+                <element signature="e#863#957#0" expanded="false" />
+                <element signature="e#963#1020#0" expanded="false" />
+                <element signature="e#1025#1090#0" expanded="false" />
+                <element signature="e#1096#1195#0" expanded="false" />
+                <element signature="e#1200#1322#0" expanded="false" />
+                <element signature="e#1328#1392#0" expanded="false" />
+                <element signature="e#1397#1476#0" expanded="false" />
+                <element signature="e#1482#1586#0" expanded="false" />
+                <element signature="e#1591#1718#0" expanded="false" />
+                <element signature="e#1724#1800#0" expanded="false" />
+                <element signature="e#1805#1870#0" expanded="false" />
+                <element signature="e#1876#1991#0" expanded="false" />
+                <element signature="e#1996#2136#0" expanded="false" />
+                <element signature="e#2142#2236#0" expanded="false" />
+                <element signature="e#2241#2373#0" expanded="false" />
+                <element signature="e#2379#2473#0" expanded="false" />
+                <element signature="e#2478#2551#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -177,7 +212,6 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/UserPP.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/WishlistPhoto.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Product.php" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Wishlist.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Form/TipType.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/tip_routing.xml" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_experiences.html.twig" />
@@ -216,6 +250,7 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/BranchController.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/branch_routing.xml" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Wishlist.php" />
       </list>
     </option>
   </component>
@@ -1459,13 +1494,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Form/TipType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="55" selection-start="181" selection-end="181" vertical-scroll-proportion="-0.26923078" vertical-offset="78" max-vertical-offset="612">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/tip_routing.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="58" selection-start="468" selection-end="468" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
@@ -2038,8 +2066,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/branch_routing.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="65" selection-start="333" selection-end="333" vertical-scroll-proportion="0.18923934" vertical-offset="0" max-vertical-offset="539">
+        <state line="6" column="65" selection-start="333" selection-end="333" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Wishlist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="145" column="5" selection-start="2551" selection-end="2551" vertical-scroll-proportion="0.7348928" vertical-offset="507" max-vertical-offset="1020">
+          <folding>
+            <element signature="e#115#199#0" expanded="false" />
+            <element signature="e#241#299#0" expanded="false" />
+            <element signature="e#326#384#0" expanded="false" />
+            <element signature="e#418#496#0" expanded="false" />
+            <element signature="e#523#581#0" expanded="false" />
+            <element signature="e#613#643#0" expanded="false" />
+            <element signature="e#648#767#0" expanded="false" />
+            <element signature="e#773#858#0" expanded="false" />
+            <element signature="e#863#957#0" expanded="false" />
+            <element signature="e#963#1020#0" expanded="false" />
+            <element signature="e#1025#1090#0" expanded="false" />
+            <element signature="e#1096#1195#0" expanded="false" />
+            <element signature="e#1200#1322#0" expanded="false" />
+            <element signature="e#1328#1392#0" expanded="false" />
+            <element signature="e#1397#1476#0" expanded="false" />
+            <element signature="e#1482#1586#0" expanded="false" />
+            <element signature="e#1591#1718#0" expanded="false" />
+            <element signature="e#1724#1800#0" expanded="false" />
+            <element signature="e#1805#1870#0" expanded="false" />
+            <element signature="e#1876#1991#0" expanded="false" />
+            <element signature="e#1996#2136#0" expanded="false" />
+            <element signature="e#2142#2236#0" expanded="false" />
+            <element signature="e#2241#2373#0" expanded="false" />
+            <element signature="e#2379#2473#0" expanded="false" />
+            <element signature="e#2478#2551#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

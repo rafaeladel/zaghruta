@@ -34,10 +34,6 @@ class Wishlist
      */
     protected $products;
 
-//    /**
-//     * @ORM\OneToOne(targetEntity="Zgh\FEBundle\Entity\Utilities\ImageContainer", cascade={"persist", "remove"})
-//     */
-//    protected $image_container;
 
     /**
      * Constructor
@@ -147,28 +143,5 @@ class Wishlist
     public function getProducts()
     {
         return $this->products;
-    }
-
-    /**
-     * Set image_container
-     *
-     * @param \Zgh\FEBundle\Entity\Utilities\ImageContainer $imageContainer
-     * @return Wishlist
-     */
-    public function setImageContainer(\Zgh\FEBundle\Entity\Utilities\ImageContainer $imageContainer = null)
-    {
-        $this->image_container = $imageContainer;
-
-        return $this;
-    }
-
-    /**
-     * Get image_container
-     *
-     * @return \Zgh\FEBundle\Entity\Utilities\ImageContainer 
-     */
-    public function getImageContainer()
-    {
-        return $this->image_container;
     }
 }
