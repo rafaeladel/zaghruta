@@ -44,13 +44,15 @@ class Image
     public function getRootUploadDir()
     {
 //        return $_SERVER['DOCUMENT_ROOT']."/Zaghruta/Website/Development/PHP/web/".$this->getUploadDir();
-        return $_SERVER['DOCUMENT_ROOT']."/".$this->getUploadDir();
+//        return $_SERVER['DOCUMENT_ROOT']."/".$this->getUploadDir();
+        return $_SERVER['DOCUMENT_ROOT']."/beta/testing/zaghruta/".$this->getUploadDir();
     }
 
     public function getThumbRootUploadDir()
     {
 //        return $_SERVER['DOCUMENT_ROOT']."/Zaghruta/Website/Development/PHP/web/".$this->getThumbUploadDir();
-        return $_SERVER['DOCUMENT_ROOT']."/".$this->getThumbUploadDir();
+//        return $_SERVER['DOCUMENT_ROOT']."/".$this->getThumbUploadDir();
+        return $_SERVER['DOCUMENT_ROOT']."/beta/testing/zaghruta/".$this->getThumbUploadDir();
     }
 
     public function getWebPath()
