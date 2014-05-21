@@ -4,13 +4,14 @@
         {{ form_widget(post_form.content, {"attr": {"class":"form-control animated", "placeholder": "Post something.." }}) }}
         <button class="btn btn-primary btn-sm btn-wide pull-right newPost" type="submit"> Post</button>
         {#<a href="#"><span class="glyphicon glyphicon-camera cam-post"></span> </a>#}
+        <input type="hidden" name="return_url" value="{{ return_url }}" />
+
         <div class="btnBrowse">
            {{ form_widget(post_form.post_image) }}
-           <input type="hidden" name="return_url" value="{{ return_url }}" />
-           {{ form_rest(post_form) }}
-           {{ form_end(post_form) }}
         <a href="#"><span class="glyphicon glyphicon-camera cam-post"></span></a>
         </div>
+        {{ form_rest(post_form) }}
+        {{ form_end(post_form) }}
 
         <div class="clearfix"></div>
     </div>
