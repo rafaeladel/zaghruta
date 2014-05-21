@@ -13,7 +13,7 @@
         </div>
 
         <div class="row exp_wrapper">
-            {{ render_esi(controller("ZghFEBundle:Experience:getList", {"id": user.id} ) ) }}
+            {{ include("@ZghFE/Partial/user_profile_experience_content.html.twig") }}
         </div>
 
     </div>

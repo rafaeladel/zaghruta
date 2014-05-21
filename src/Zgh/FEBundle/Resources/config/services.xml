@@ -12,6 +12,7 @@
         <parameter key="zgh_fe.register_handler.class">Zgh\FEBundle\EventListener\RegisterListener</parameter>
         <parameter key="zgh_fe.twig.like_check.class">Zgh\FEBundle\TwigExtension\LikeCheckExtension</parameter>
         <parameter key="zgh_fe.twig.follow_check.class">Zgh\FEBundle\TwigExtension\FollowCheckExtension</parameter>
+        <parameter key="zgh_fe.twig.widgets_extension.class">Zgh\FEBundle\TwigExtension\WidgetsExtension</parameter>
         <parameter key="zgh_fe.twig.render_follow.class">Zgh\FEBundle\TwigExtension\RenderFollowExtension</parameter>
         <parameter key="zgh_user_provider.class">Zgh\FEBundle\Security\User\Provider\ZaghrutaUserProvider</parameter>
         <parameter key="zgh_fe.user_privacy.manager.class">Zgh\FEBundle\TwigExtension\UserPrivacyManager</parameter>
@@ -89,6 +90,11 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="security.context" />
             <argument type="service" id="router" />
+        </service>
+
+        <service id="zgh_fe.twig.widgets_extension" class="%zgh_fe.twig.widgets_extension.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="twig.extension" />
         </service>
 
         <!--<service id="zgh_fe.param_converter.social" class="Zgh\FEBundle\ParamConverter\SocialConverter">-->

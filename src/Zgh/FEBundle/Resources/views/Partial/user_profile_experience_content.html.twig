@@ -1,13 +1,16 @@
-{% for experience in experiences %}
-    <div class="col-md-4 col-xs-6">
-        <div class="thumbnail">
-            <a href="{{ url("zgh_fe.experience.content", {"id": user.id, "exp_id": experience.id }) }}"><img alt="Responsive image" class="img-responsive" src="{{ asset(experience.getThumbWebPath) }}"></a>
+{% set experiences = getExpriences(user) %}
+{% if experiences is defined and experiences is not empty %}
+    {% for experience in experiences %}
+        <div class="col-md-4 col-xs-6">
+            <div class="thumbnail">
+                <a href="{{ url("zgh_fe.experience.content", {"id": user.id, "exp_id": experience.id }) }}"><img alt="Responsive image" class="img-responsive" src="{{ asset(experience.getThumbWebPath) }}"></a>
 
-            <div class="caption">
-                <h4>{{ experience.title }}</h4>
+                <div class="caption">
+                    <h4>{{ experience.title }}</h4>
 
-                <p>{{ experience.content }}</p>
+                    <p>{{ experience.content }}</p>
+                </div>
             </div>
         </div>
-    </div>
-{% endfor %}
+    {% endfor %}
+{% endif %}
