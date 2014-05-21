@@ -33,7 +33,7 @@ class Image
 
     public function getUploadDir()
     {
-        return 'web'.'/'.'uploads'."/".'images'."/".$this->cat_dir;
+        return 'uploads'."/".'images'."/".$this->cat_dir;
     }
 
     public function getThumbUploadDir()
@@ -43,12 +43,12 @@ class Image
 
     public function getRootUploadDir()
     {
-        return __DIR__."/../../../../../".$this->getUploadDir();
+        return __DIR__."/../../../../../web/".$this->getUploadDir();
     }
 
     public function getThumbRootUploadDir()
     {
-        return __DIR__."/../../../../../".$this->getThumbUploadDir();
+        return __DIR__."/../../../../../web/".$this->getThumbUploadDir();
     }
 
     public function getWebPath()

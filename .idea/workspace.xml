@@ -114,7 +114,7 @@
       <file leaf-file-name="Image.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="25" selection-start="694" selection-end="694" vertical-scroll-proportion="0.110486895" vertical-offset="502" max-vertical-offset="6035">
+            <state line="45" column="44" selection-start="935" selection-end="935" vertical-scroll-proportion="0.35018727" vertical-offset="544" max-vertical-offset="6035">
               <folding />
             </state>
           </provider>
@@ -1695,7 +1695,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="25" selection-start="694" selection-end="694" vertical-scroll-proportion="0.110486895" vertical-offset="502" max-vertical-offset="6035">
+        <state line="45" column="44" selection-start="935" selection-end="935" vertical-scroll-proportion="0.35018727" vertical-offset="544" max-vertical-offset="6035">
           <folding />
         </state>
       </provider>
