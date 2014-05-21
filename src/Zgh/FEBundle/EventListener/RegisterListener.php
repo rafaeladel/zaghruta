@@ -63,7 +63,7 @@ class RegisterListener implements EventSubscriberInterface
             $user->setVendorInfo($info);
         }
 
-        $initializer = new PhotoInitializer($this->kernel->getRootDir()."/../src/Zgh/FEBundle/Resources/Public/img/init", "init_pp.jpg", "init_cp.jpg");
+        $initializer = new PhotoInitializer($this->kernel->getRootDir()."/../src/Zgh/FEBundle/Resources/public/img/init", "init_pp.jpg", "init_cp.jpg");
 
         $pp = $initializer->initProfilePhoto();
         $cp = $initializer->initCoverPhoto();
