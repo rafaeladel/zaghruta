@@ -190,7 +190,7 @@
       <file leaf-file-name="app.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/app.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.5633528" vertical-offset="0" max-vertical-offset="595">
+            <state line="10" column="0" selection-start="336" selection-end="437" vertical-scroll-proportion="0.2982456" vertical-offset="0" max-vertical-offset="595">
               <folding />
             </state>
           </provider>
@@ -1639,7 +1639,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.5633528" vertical-offset="0" max-vertical-offset="595">
+        <state line="10" column="0" selection-start="336" selection-end="437" vertical-scroll-proportion="0.2982456" vertical-offset="0" max-vertical-offset="595">
           <folding />
         </state>
       </provider>
