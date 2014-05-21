@@ -102,19 +102,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.yml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="config.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="0" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.75714284" vertical-offset="341" max-vertical-offset="2618">
+            <state line="45" column="0" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.0" vertical-offset="341" max-vertical-offset="2618">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Image.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Image.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="0" selection-start="1013" selection-end="1013" vertical-scroll-proportion="-12.076923" vertical-offset="502" max-vertical-offset="6035">
+            <state line="35" column="25" selection-start="694" selection-end="694" vertical-scroll-proportion="0.110486895" vertical-offset="502" max-vertical-offset="6035">
               <folding />
             </state>
           </provider>
@@ -178,9 +178,9 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/TwigExtension/WidgetsExtension.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Service/CommentManager.php" />
         <option value="$PROJECT_DIR$/web/js/877e5b7.js" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php" />
       </list>
     </option>
   </component>
@@ -1672,13 +1672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="0" selection-start="1013" selection-end="1013" vertical-scroll-proportion="-12.076923" vertical-offset="502" max-vertical-offset="6035">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="224" column="0" selection-start="13565" selection-end="13565" vertical-scroll-proportion="-11.461538" vertical-offset="3510" max-vertical-offset="6222">
@@ -1695,7 +1688,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="0" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.75714284" vertical-offset="341" max-vertical-offset="2618">
+        <state line="45" column="0" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.0" vertical-offset="341" max-vertical-offset="2618">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="25" selection-start="694" selection-end="694" vertical-scroll-proportion="0.110486895" vertical-offset="502" max-vertical-offset="6035">
           <folding />
         </state>
       </provider>

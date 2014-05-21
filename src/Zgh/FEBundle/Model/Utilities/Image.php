@@ -33,7 +33,7 @@ class Image
 
     public function getUploadDir()
     {
-        return 'uploads'."/".'images'."/".$this->cat_dir;
+        return 'web'.'/'.'uploads'."/".'images'."/".$this->cat_dir;
     }
 
     public function getThumbUploadDir()
