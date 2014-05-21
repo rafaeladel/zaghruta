@@ -37,11 +37,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BranchType.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Form/BranchType.php">
+      <file leaf-file-name="Product.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Product.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="22" selection-start="862" selection-end="862" vertical-scroll-proportion="-14.5" vertical-offset="82" max-vertical-offset="595">
-              <folding />
+            <state line="172" column="0" selection-start="2953" selection-end="2953" vertical-scroll-proportion="0.7348928" vertical-offset="660" max-vertical-offset="1173">
+              <folding>
+                <element signature="e#115#168#0" expanded="false" />
+                <element signature="e#209#267#0" expanded="false" />
+                <element signature="e#294#352#0" expanded="false" />
+                <element signature="e#386#444#0" expanded="false" />
+                <element signature="e#472#549#0" expanded="false" />
+                <element signature="e#576#635#0" expanded="false" />
+                <element signature="e#667#697#0" expanded="false" />
+                <element signature="e#702#822#0" expanded="false" />
+                <element signature="e#828#912#0" expanded="false" />
+                <element signature="e#917#1011#0" expanded="false" />
+                <element signature="e#1017#1074#0" expanded="false" />
+                <element signature="e#1079#1144#0" expanded="false" />
+                <element signature="e#1150#1248#0" expanded="false" />
+                <element signature="e#1253#1375#0" expanded="false" />
+                <element signature="e#1381#1445#0" expanded="false" />
+                <element signature="e#1450#1529#0" expanded="false" />
+                <element signature="e#1535#1621#0" expanded="false" />
+                <element signature="e#1626#1724#0" expanded="false" />
+                <element signature="e#1730#1788#0" expanded="false" />
+                <element signature="e#1793#1860#0" expanded="false" />
+                <element signature="e#1866#1969#0" expanded="false" />
+                <element signature="e#1974#2101#0" expanded="false" />
+                <element signature="e#2107#2183#0" expanded="false" />
+                <element signature="e#2188#2253#0" expanded="false" />
+                <element signature="e#2259#2376#0" expanded="false" />
+                <element signature="e#2381#2526#0" expanded="false" />
+                <element signature="e#2532#2629#0" expanded="false" />
+                <element signature="e#2634#2771#0" expanded="false" />
+                <element signature="e#2777#2872#0" expanded="false" />
+                <element signature="e#2877#2952#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,10 +109,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Wishlist.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Wishlist.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Wishlist.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="145" column="5" selection-start="2551" selection-end="2551" vertical-scroll-proportion="0.7348928" vertical-offset="507" max-vertical-offset="1020">
+            <state line="145" column="5" selection-start="2551" selection-end="2551" vertical-scroll-proportion="-14.5" vertical-offset="507" max-vertical-offset="1020">
               <folding>
                 <element signature="e#115#199#0" expanded="false" />
                 <element signature="e#241#299#0" expanded="false" />
@@ -211,7 +242,6 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/UserInfo.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/UserPP.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/WishlistPhoto.php" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Product.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Form/TipType.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/tip_routing.xml" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_experiences.html.twig" />
@@ -251,6 +281,7 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/branch_routing.xml" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Wishlist.php" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Product.php" />
       </list>
     </option>
   </component>
@@ -1494,13 +1525,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/tip_routing.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="58" selection-start="468" selection-end="468" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_experiences.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="61" selection-start="307" selection-end="307" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="493">
@@ -2073,7 +2097,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Wishlist.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="5" selection-start="2551" selection-end="2551" vertical-scroll-proportion="0.7348928" vertical-offset="507" max-vertical-offset="1020">
+        <state line="145" column="5" selection-start="2551" selection-end="2551" vertical-scroll-proportion="-14.5" vertical-offset="507" max-vertical-offset="1020">
           <folding>
             <element signature="e#115#199#0" expanded="false" />
             <element signature="e#241#299#0" expanded="false" />
@@ -2100,6 +2124,44 @@
             <element signature="e#2241#2373#0" expanded="false" />
             <element signature="e#2379#2473#0" expanded="false" />
             <element signature="e#2478#2551#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="172" column="0" selection-start="2953" selection-end="2953" vertical-scroll-proportion="0.7348928" vertical-offset="660" max-vertical-offset="1173">
+          <folding>
+            <element signature="e#115#168#0" expanded="false" />
+            <element signature="e#209#267#0" expanded="false" />
+            <element signature="e#294#352#0" expanded="false" />
+            <element signature="e#386#444#0" expanded="false" />
+            <element signature="e#472#549#0" expanded="false" />
+            <element signature="e#576#635#0" expanded="false" />
+            <element signature="e#667#697#0" expanded="false" />
+            <element signature="e#702#822#0" expanded="false" />
+            <element signature="e#828#912#0" expanded="false" />
+            <element signature="e#917#1011#0" expanded="false" />
+            <element signature="e#1017#1074#0" expanded="false" />
+            <element signature="e#1079#1144#0" expanded="false" />
+            <element signature="e#1150#1248#0" expanded="false" />
+            <element signature="e#1253#1375#0" expanded="false" />
+            <element signature="e#1381#1445#0" expanded="false" />
+            <element signature="e#1450#1529#0" expanded="false" />
+            <element signature="e#1535#1621#0" expanded="false" />
+            <element signature="e#1626#1724#0" expanded="false" />
+            <element signature="e#1730#1788#0" expanded="false" />
+            <element signature="e#1793#1860#0" expanded="false" />
+            <element signature="e#1866#1969#0" expanded="false" />
+            <element signature="e#1974#2101#0" expanded="false" />
+            <element signature="e#2107#2183#0" expanded="false" />
+            <element signature="e#2188#2253#0" expanded="false" />
+            <element signature="e#2259#2376#0" expanded="false" />
+            <element signature="e#2381#2526#0" expanded="false" />
+            <element signature="e#2532#2629#0" expanded="false" />
+            <element signature="e#2634#2771#0" expanded="false" />
+            <element signature="e#2777#2872#0" expanded="false" />
+            <element signature="e#2877#2952#0" expanded="false" />
           </folding>
         </state>
       </provider>
