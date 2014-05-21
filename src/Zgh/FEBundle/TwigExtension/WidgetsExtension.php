@@ -16,6 +16,7 @@ class WidgetsExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
+            new \Twig_SimpleFunction("getOwnPosts", [$this, "getOwnPosts"]),
             new \Twig_SimpleFunction("getExpriences", [$this, "getExpriences"])
         ];
     }
