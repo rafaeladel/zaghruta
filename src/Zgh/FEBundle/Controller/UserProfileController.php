@@ -109,7 +109,13 @@ class UserProfileController extends Controller
         $b_month = $request->request->get("form")["birthday"]["month"];
         $b_year = $request->request->get("form")["birthday"]["year"];
 
-        $birthday = new \DateTime($b_day."-".$b_month."-".$b_year);
+        try{
+            $birthday = new \DateTime($b_day."-".$b_month."-".$b_year);
+        }catch(\Exception $e){
+            $birthday = null;
+            $this->get('logger')->emergency($b_day. '' . $b_month.''.$b_year.' error message ='. $e->getMessage());
+        }
+
 
         $user->setFirstname($first_name);
         $user->setLastname($last_name);
