@@ -6,6 +6,7 @@
 
     <import resource="@ZghFEBundle/Resources/config/Routing/wall_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/settings_routing.xml" />
+    <import resource="@ZghFEBundle/Resources/config/Routing/interest_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/user_profile_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/misc_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/post_routing.xml" />
@@ -16,7 +17,6 @@
     <import resource="@ZghFEBundle/Resources/config/Routing/experience_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/tip_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/connections_routing.xml" />
-    <import resource="@ZghFEBundle/Resources/config/Routing/interest_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/like_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/comment_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/follow_routing.xml" />
