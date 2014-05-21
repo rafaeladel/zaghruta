@@ -8,7 +8,7 @@
         <default key="_controller">ZghFEBundle:Post:getList</default>
     </route>
 
-    <route id="zgh_fe.post.new" pattern="/posts/new/{return_url}" methods="POST">
+    <route id="zgh_fe.post.new" pattern="/posts/new" methods="POST">
         <default key="_controller">ZghFEBundle:Post:postNew</default>
         <requirement key="return_url">.+</requirement>
     </route>

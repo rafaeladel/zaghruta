@@ -30,10 +30,11 @@ class PostController extends Controller
             ));
     }
 
-    public function postNewAction(Request $request, $return_url)
+    public function postNewAction(Request $request)
     {
         $photo = $request->files->get("post")["post_image"];
         $content = $request->request->get("post")["content"];
+        $return_url = $request->request->get("post")["return_url"];
         $post = new Post();
 
         if($content != null)
