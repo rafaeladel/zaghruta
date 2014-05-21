@@ -176,10 +176,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app_dev.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app_dev.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/app_dev.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="812" selection-end="812" vertical-scroll-proportion="0.6296296" vertical-offset="0" max-vertical-offset="629">
+            <state line="25" column="0" selection-start="982" selection-end="982" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="646">
               <folding>
                 <element signature="e#8#53#0" expanded="true" />
               </folding>
@@ -187,11 +187,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="branch_routing.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/branch_routing.xml">
+      <file leaf-file-name="app.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/app.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="65" selection-start="333" selection-end="333" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+            <state line="18" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.5633528" vertical-offset="0" max-vertical-offset="595">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppKernel.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="1" selection-start="134" selection-end="134" vertical-scroll-proportion="-2.6153846" vertical-offset="34" max-vertical-offset="782">
+              <folding>
+                <element signature="e#7#47#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -231,17 +242,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_index.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="567" column="131" selection-start="27255" selection-end="27255" vertical-scroll-proportion="23.538462" vertical-offset="10251" max-vertical-offset="10863">
-              <folding>
-                <element signature="e#12#35#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -252,8 +252,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Interest.php" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Notification.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/NotificationRead.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Photo.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Post.php" />
@@ -283,7 +281,6 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/shortcuts&amp;notifications.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/services.xml" />
         <option value="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/HttpFoundation/File/UploadedFile.php" />
-        <option value="$PROJECT_DIR$/web/app_dev.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/EventListener/RegisterListener.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Utility/PhotoInitializer.php" />
@@ -303,6 +300,9 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Product.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/SecurityController_dep.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/UserProfileController.php" />
+        <option value="$PROJECT_DIR$/app/AppKernel.php" />
+        <option value="$PROJECT_DIR$/web/app_dev.php" />
+        <option value="$PROJECT_DIR$/web/app.php" />
       </list>
     </option>
   </component>
@@ -1062,40 +1062,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/TipController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="67" selection-start="530" selection-end="530" vertical-scroll-proportion="-9.192307" vertical-offset="33" max-vertical-offset="1445">
-          <folding>
-            <element signature="e#42#99#0" expanded="false" />
-            <element signature="e#397#415#1" expanded="false" />
-            <element signature="e#748#765#1" expanded="false" />
-            <element signature="e#812#850#0" expanded="false" />
-            <element signature="e#1091#1109#1" expanded="false" />
-            <element signature="e#1238#1272#0" expanded="false" />
-            <element signature="e#1406#1453#0" expanded="false" />
-            <element signature="e#1714#1732#1" expanded="false" />
-            <element signature="e#1973#2020#0" expanded="false" />
-            <element signature="e#2621#2655#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_tip_content.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="351" selection-end="351" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="323">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Like.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="59" selection-start="2463" selection-end="2463" vertical-scroll-proportion="-13.846154" vertical-offset="1850" max-vertical-offset="2380">
-          <folding>
-            <element signature="e#39#71#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/cache/prod/doctrine/orm/Proxies/__CG__ZghFEBundleEntityComment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="277" column="20" selection-start="6934" selection-end="6934" vertical-scroll-proportion="0.3489279" vertical-offset="4530" max-vertical-offset="6460">
@@ -1646,12 +1612,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="20" selection-start="2531" selection-end="2531" vertical-scroll-proportion="0.3489279" vertical-offset="654" max-vertical-offset="13566">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="1" selection-start="134" selection-end="134" vertical-scroll-proportion="-2.6153846" vertical-offset="34" max-vertical-offset="782">
+          <folding>
+            <element signature="e#7#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/app_dev.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="812" selection-end="812" vertical-scroll-proportion="0.6296296" vertical-offset="0" max-vertical-offset="629">
+        <state line="25" column="0" selection-start="982" selection-end="982" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="646">
           <folding>
             <element signature="e#8#53#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.5633528" vertical-offset="0" max-vertical-offset="595">
+          <folding />
         </state>
       </provider>
     </entry>

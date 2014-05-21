@@ -22,6 +22,7 @@ $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 Debug::enable();
 
 require_once __DIR__.'/../app/AppKernel.php';
+date_default_timezone_set("Africa/Cairo");
 
 $kernel = new AppKernel('dev', true);
 $kernel->loadClassCache();
