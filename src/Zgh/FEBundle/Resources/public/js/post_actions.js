@@ -131,8 +131,10 @@ $(document).ready(function(){
             url: $(form).attr("action"),
             data: $(form).serialize()
         });
-        $(e.target).closest("[data-toggle='modal']").modal("hide");
-        $(e.target).closest(".postComment").remove();
+        $(e.target).closest("div.modal").modal("hide").on("hidden.bs.modal", function(){
+            $(e.target).closest(".postComment").remove();
+        });
+
     });
 
 });
