@@ -39,27 +39,23 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
+
         function fb_login() {
             FB.getLoginStatus(function(response) {
-                if (response.status === 'connected') {
-//                    connected
-//                    console.log(response);
-                    {#document.location = "{{ url("zgh_fe.wall.index") }}";#}
 
+                if (response.status === 'connected') {
                     FB.login(function(response) {
                         if (response.authResponse) {
                             document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
-                            {#document.location = "{{ url("zgh_fe.wall.index") }}";#}
                         } else {
                             alert('Cancelled.');
                         }
-                    }, {scope: ''});                    {#document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";#}
+                    }, {scope: ''});
                 } else {
                     // not_authorized
                     FB.login(function(response) {
                         if (response.authResponse) {
                             document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
-                            {#document.location = "{{ url("zgh_fe.wall.index") }}";#}
                         }
                     }, {scope: 'email'});
                 }

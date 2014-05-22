@@ -47,24 +47,6 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
         $user->$setter_token($response->getAccessToken());
 
         $this->userManager->updateUser($user);
-
-        /*$property = $this->getProperty($response);
-        $setter = 'set'.ucfirst($property);
-
-        if (!method_exists($user, $setter)) {
-            throw new \RuntimeException(sprintf("Class '%s' should have a method '%s'.", get_class($user), $setter));
-        }
-
-        $username = $response->getUsername();
-
-        if (null !== $previousUser = $this->userManager->findUserBy(array($property => $username))) {
-            $previousUser->$setter(null);
-            $this->userManager->updateUser($previousUser);
-        }
-
-        $user->$setter($username);
-
-        $this->userManager->updateUser($user);*/
     }
 
     //Check if the user trying to connect is in the DB in the first place or not.
