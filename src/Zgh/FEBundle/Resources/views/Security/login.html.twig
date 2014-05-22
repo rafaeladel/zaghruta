@@ -24,7 +24,7 @@
             // init the FB JS SDK
             FB.init({
                 appId      : '1403397396596528',                        // App ID from the app dashboard
-                channelUrl : '//yourdomain.com/channel.html',      // Channel file for x-domain comms
+                channelUrl : '//zaghrota.local.com/channel.html',      // Channel file for x-domain comms
                 status     : true,                                 // Check Facebook Login status
                 xfbml      : true                                  // Look for social plugins on the page
             });
@@ -310,7 +310,7 @@
                         <div class="row push-botton">
                             <div class="col-lg-12">
                                 <div class="col-md-6 col-sm-4 col-xs-8 btnFb">
-                                    <a href="#" onclick="fb_login();" class="fbLogin"></a>
+                                    <a href="#" onclick="fb_login();return false;" class="fbLogin"></a>
                                     {#<a href="{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}">Facebook Connect Button (Dialog)</a>#}
                                 </div>
                             </div>
