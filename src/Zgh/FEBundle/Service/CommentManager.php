@@ -54,7 +54,7 @@ class CommentManager
             "comments_count" => count($entity->getComments()),
             "author_pp" => in_array("ROLE_FACEBOOK", $user->getRoles()) ?
                     'https://graph.facebook.com/'.$user->getFacebookId().'/picture' :
-                    str_replace("app_dev.php", "/", $request->getUriForPath($user->getProfilePhoto()->getThumbWebPath()))
+                    $request->getScheme().'://'.$request->getHttpHost().$request->getBasePath().'/'.$request->getUriForPath($user->getProfilePhoto()->getThumbWebPath())
         ));
     }
 

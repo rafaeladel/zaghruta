@@ -71,8 +71,6 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
     //If not, Create it.
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
-//        var_dump(new \DateTime($response->getResponse()["birthday"]));
-//        die;
         $property = $this->getProperty($response);
         $username = $response->getUsername();
 
@@ -103,7 +101,7 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
 
             $about = new UserInfo();
             $about->setGender(strtolower(($response->getResponse()["gender"]) == "male" ? 0 : 1));
-            $about->setBirthday(new \DateTime($response->getResponse()["birthday"]));
+            $about->setBirthday(new \DateTime(in_array("birthday", $response->getResponse() ? $response->getResponse()["birthday"] : null )));
             $about->setFacebook($response->getResponse()["link"]);
             $user->setUserInfo($about);
 

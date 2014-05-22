@@ -29,8 +29,42 @@
       <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="329" column="49" selection-start="18623" selection-end="18623" vertical-scroll-proportion="-7.4615383" vertical-offset="5399" max-vertical-offset="6222">
+            <state line="230" column="44" selection-start="13787" selection-end="13787" vertical-scroll-proportion="-7.4615383" vertical-offset="3716" max-vertical-offset="6222">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_index.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="274" column="23" selection-start="14089" selection-end="14089" vertical-scroll-proportion="-5.5" vertical-offset="4515" max-vertical-offset="9979">
+              <folding>
+                <element signature="e#1695#1726#0" expanded="true" />
+                <element signature="e#3453#3492#0" expanded="true" />
+                <element signature="e#4521#4550#0" expanded="true" />
+                <element signature="e#6018#6037#0" expanded="true" />
+                <element signature="e#6575#6607#0" expanded="true" />
+                <element signature="e#6854#6890#0" expanded="true" />
+                <element signature="e#7116#7150#0" expanded="true" />
+                <element signature="e#7401#7440#0" expanded="true" />
+                <element signature="e#7763#7795#0" expanded="true" />
+                <element signature="e#8034#8070#0" expanded="true" />
+                <element signature="e#8286#8322#0" expanded="true" />
+                <element signature="e#8540#8574#0" expanded="true" />
+                <element signature="e#8817#8849#0" expanded="true" />
+                <element signature="e#9089#9128#0" expanded="true" />
+                <element signature="e#9876#9901#0" expanded="true" />
+                <element signature="e#16093#16126#0" expanded="true" />
+                <element signature="e#16757#16790#0" expanded="true" />
+                <element signature="e#17638#17669#0" expanded="true" />
+                <element signature="e#23316#23355#0" expanded="true" />
+                <element signature="e#24970#24993#0" expanded="true" />
+                <element signature="e#25060#25094#0" expanded="true" />
+                <element signature="e#25880#25903#0" expanded="true" />
+                <element signature="e#25970#26004#0" expanded="true" />
+                <element signature="e#27240#27260#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,15 +73,33 @@
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Security/login.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state line="312" column="57" selection-start="20122" selection-end="20122" vertical-scroll-proportion="-198.11539" vertical-offset="153" max-vertical-offset="8279">
+              <folding>
+                <element signature="e#2123#2149#0" expanded="false" />
+                <element signature="e#2743#2769#0" expanded="false" />
+                <element signature="e#20947#20970#0" expanded="false" />
+                <element signature="e#22573#22603#0" expanded="false" />
+                <element signature="e#23635#23658#0" expanded="false" />
+                <element signature="e#25189#25219#0" expanded="false" />
+                <element signature="e#26039#26068#0" expanded="false" />
+                <element signature="e#27433#27450#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentManager.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Service/CommentManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="56" column="100" selection-start="2203" selection-end="2203" vertical-scroll-proportion="-8.115385" vertical-offset="622" max-vertical-offset="1156">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentManager.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Service/CommentManager.php">
+      <file leaf-file-name="ZaghrutaUserProvider.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Security/User/Provider/ZaghrutaUserProvider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="49" selection-start="2152" selection-end="2152" vertical-scroll-proportion="0.39513108" vertical-offset="622" max-vertical-offset="1156">
+            <state line="90" column="0" selection-start="3293" selection-end="3293" vertical-scroll-proportion="0.36329588" vertical-offset="1149" max-vertical-offset="2125">
               <folding />
             </state>
           </provider>
@@ -81,7 +133,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Like.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Comment.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Experience.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Tip.php" />
@@ -127,11 +178,12 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/TwigExtension/WidgetsExtension.php" />
         <option value="$PROJECT_DIR$/web/js/877e5b7.js" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php" />
         <option value="$PROJECT_DIR$/web/.htaccess" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Security/login.html.twig" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Service/CommentManager.php" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Security/User/Provider/ZaghrutaUserProvider.php" />
       </list>
     </option>
   </component>
@@ -1061,16 +1113,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="91" selection-start="1930" selection-end="1930" vertical-scroll-proportion="-5.8846154" vertical-offset="1241" max-vertical-offset="18224" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/BranchController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="54" selection-start="494" selection-end="494" vertical-scroll-proportion="-8.538462" vertical-offset="33" max-vertical-offset="884" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_branches_content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="66" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.43079922" vertical-offset="0" max-vertical-offset="513" />
@@ -1231,11 +1273,6 @@
         <state line="87" column="28" selection-start="3030" selection-end="3030" vertical-scroll-proportion="-0.65384614" vertical-offset="884" max-vertical-offset="2754" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="61" selection-start="9843" selection-end="9843" vertical-scroll-proportion="0.35018727" vertical-offset="2771" max-vertical-offset="9979" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/post_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="62" selection-start="51" selection-end="123" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="391" />
@@ -1330,23 +1367,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="329" column="49" selection-start="18623" selection-end="18623" vertical-scroll-proportion="-7.4615383" vertical-offset="5399" max-vertical-offset="6222">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Security/login.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="312" column="57" selection-start="20122" selection-end="20122" vertical-scroll-proportion="-198.11539" vertical-offset="153" max-vertical-offset="8279">
+          <folding>
+            <element signature="e#2123#2149#0" expanded="false" />
+            <element signature="e#2743#2769#0" expanded="false" />
+            <element signature="e#20947#20970#0" expanded="false" />
+            <element signature="e#22573#22603#0" expanded="false" />
+            <element signature="e#23635#23658#0" expanded="false" />
+            <element signature="e#25189#25219#0" expanded="false" />
+            <element signature="e#26039#26068#0" expanded="false" />
+            <element signature="e#27433#27450#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="274" column="23" selection-start="14089" selection-end="14089" vertical-scroll-proportion="-5.5" vertical-offset="4515" max-vertical-offset="9979">
+          <folding>
+            <element signature="e#1695#1726#0" expanded="true" />
+            <element signature="e#3453#3492#0" expanded="true" />
+            <element signature="e#4521#4550#0" expanded="true" />
+            <element signature="e#6018#6037#0" expanded="true" />
+            <element signature="e#6575#6607#0" expanded="true" />
+            <element signature="e#6854#6890#0" expanded="true" />
+            <element signature="e#7116#7150#0" expanded="true" />
+            <element signature="e#7401#7440#0" expanded="true" />
+            <element signature="e#7763#7795#0" expanded="true" />
+            <element signature="e#8034#8070#0" expanded="true" />
+            <element signature="e#8286#8322#0" expanded="true" />
+            <element signature="e#8540#8574#0" expanded="true" />
+            <element signature="e#8817#8849#0" expanded="true" />
+            <element signature="e#9089#9128#0" expanded="true" />
+            <element signature="e#9876#9901#0" expanded="true" />
+            <element signature="e#16093#16126#0" expanded="true" />
+            <element signature="e#16757#16790#0" expanded="true" />
+            <element signature="e#17638#17669#0" expanded="true" />
+            <element signature="e#23316#23355#0" expanded="true" />
+            <element signature="e#24970#24993#0" expanded="true" />
+            <element signature="e#25060#25094#0" expanded="true" />
+            <element signature="e#25880#25903#0" expanded="true" />
+            <element signature="e#25970#26004#0" expanded="true" />
+            <element signature="e#27240#27260#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="230" column="44" selection-start="13787" selection-end="13787" vertical-scroll-proportion="-7.4615383" vertical-offset="3716" max-vertical-offset="6222">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Service/CommentManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="49" selection-start="2152" selection-end="2152" vertical-scroll-proportion="0.39513108" vertical-offset="622" max-vertical-offset="1156">
+        <state line="56" column="100" selection-start="2203" selection-end="2203" vertical-scroll-proportion="-8.115385" vertical-offset="622" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/hwi/oauth-bundle/HWI/Bundle/OAuthBundle/OAuth/Response/UserResponseInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="10" selection-start="561" selection-end="561" vertical-scroll-proportion="-0.98876405" vertical-offset="766" max-vertical-offset="1632">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Security/User/Provider/ZaghrutaUserProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="0" selection-start="3293" selection-end="3293" vertical-scroll-proportion="0.36329588" vertical-offset="1149" max-vertical-offset="2125">
           <folding />
         </state>
       </provider>
