@@ -28,7 +28,6 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
 
         //Getting resource owner (e.g. facebook, google, etc..)
         $service = $response->getResourceOwner()->getName();
-
         //Getting setters names in User entity
         $setter = 'set'.ucfirst($service);
         $setter_id = $setter.'Id';
@@ -83,7 +82,9 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
 
             $about = new UserInfo();
             $about->setGender(strtolower(($response->getResponse()["gender"]) == "male" ? 0 : 1));
-            $about->setBirthday(new \DateTime(in_array("birthday", $response->getResponse() ? $response->getResponse()["birthday"] : null )));
+
+            $responseData = $response->getResponse();
+            $about->setBirthday(new \DateTime(( isset($responseData['birthday'])) ? $responseData["birthday"] : null ));
             $about->setFacebook($response->getResponse()["link"]);
             $user->setUserInfo($about);
 

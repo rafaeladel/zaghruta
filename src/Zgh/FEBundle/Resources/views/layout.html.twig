@@ -195,6 +195,15 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script type="text/javascript">
+        var UrlContainer = {
+            newPhoto: "{{ url("zgh_fe.photos.photo.new", {"id": app.user.id}) }}",
+            newAlbum: "{{ url("zgh_fe.photos.album.new", {"id": app.user.id}) }}",
+            photoParial: "{{ url("zgh_fe.user_profile.photos_partial", {"id": app.user.id}) }}",
+            albumPartial: "{{ url("zgh_fe.user_profile.albums_partial", {"id": app.user.id}) }}",
+        };
+    </script>
+
     {% javascripts
         "bundles/zghfe/js/magicsuggest-1.3.1.js"
         "bundles/zghfe/js/magicSuggestCustome.js"
@@ -205,26 +214,17 @@
         "bundles/zghfe/js/fancyCustom.js"
         "bundles/zghfe/plugins/select2-3.4.6/select2.js"
         "bundles/thraceform/js/select2.js"
-    "bundles/zghfe/plugins/dropzone-3.9.0/downloads/dropzone.js"
-    "bundles/zghfe/js/uploader_save.js"
-    "bundles/zghfe/js/post_actions.js"
-    "bundles/zghfe/js/ImgCrop.js"
-    "bundles/zghfe/js/autosize.js"
-
-    "bundles/zghfe/plugins/Imgareaselect/scripts/jquery.imgareaselect.js"
-
-
-    "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/vendor/jquery.ui.widget.js"
-        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/jquery.iframe-transport.js"
-        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/jquery.fileupload.js"
-        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/load-image.min.js"
-        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/jquery.fileupload-process.js"
-        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/jquery.fileupload-image.js"
-        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/jquery.fileupload-validate.js"
-        "bundles/zghfe/plugins/jQuery-File-Upload-9.5.7/js/jquery.fileupload-ui.js"
+        "bundles/zghfe/plugins/dropzone-3.9.0/downloads/dropzone.js"
+        "bundles/zghfe/js/uploader_save.js"
+        "bundles/zghfe/js/post_actions.js"
+        "bundles/zghfe/js/ImgCrop.js"
+        "bundles/zghfe/js/autosize.js"
+        "bundles/zghfe/plugins/Imgareaselect/scripts/jquery.imgareaselect.js"
+        "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
     <script type="text/javascript">
         $(document).ready(function(){
 
@@ -244,115 +244,9 @@
 
             $(document).on("ajaxSuccess", function(e){
 
-                var photo_uploader = new Uploader({
-                    wrapperID: "c_photos",
-                    modalID: "addPhotoPopup",
-                    listBtnID: "btnPhots",
-                    listWrapperClass: "content_wrapper",
-                    browseClass: "dropzone_photo",
-                    saveButtonClass: "photo_submitBtn",
-                    previewClass: "photos_previews",
-                    targetUrl: '{{ url("zgh_fe.photos.photo.new", {"id": app.user.id}) }}',
-                    ajaxLoadUrl: '{{ url("zgh_fe.user_profile.photos_partial", {"id": app.user.id}) }}',
-                    imageRequired: true,
-                    additionalData: {
-                        "album_id": {
-                            "required": true,
-                            "message": "Please select an album"
-                        }
-                    },
-                    numOfFiles: 10
-                });
-                photo_uploader.init();
-
-                var album_uploader = new Uploader({
-                    wrapperID: "c_photos",
-                    modalID: "addAlbumPopup",
-                    listBtnID: "btnAlbums",
-                    listWrapperClass: "content_wrapper",
-                    browseClass: "dropzone_album",
-                    saveButtonClass: "album_submitBtn",
-                    previewClass: "albums_previews",
-                    targetUrl: "{{ url("zgh_fe.photos.album.new", {"id": app.user.id}) }}",
-                    ajaxLoadUrl: "{{ url("zgh_fe.user_profile.albums_partial", {"id": app.user.id}) }}",
-                    imageRequired: false,
-                    additionalData: {
-                        "album_name": {
-                            "required": true,
-                            "message": "Please enter album name."
-                        },
-                        "album_info": {
-                            "required": true,
-                            "message": "Please enter album info."
-                        }
-                    },
-                    numOfFiles: 10
-                });
-                album_uploader.init();
-
-                $("#exp_form").fileupload({
-                    autoUpload: false,
-                    filesContainer:  $("#exp_form").find(".thumbnail table"),
-                    uploadTemplate: function(o){
-                        var rows = $();
-                        $.each(o.files, function(index, file){
-                            var row = $('<tr class="template-upload fade">' +
-                                    '<td><span class="preview"></span></td>' +
-                                    (file.error ? '<div class="error"></div>' : '') +
-                                    '<td>' +
-                                    (o.files.error ? '' : '<div class="progress"></div>') +
-                                    '</td>' +
-                                    '<td>' +
-                                    (!index ? '<button class="cancel remove_img">Cancel</button>' : '') +
-                                    '</td>' +
-                                    '</tr>');
-                            if (file.error) {
-                                row.find('.error').text(file.error);
-                            }
-                            rows = rows.add(row);
-                        });
-                        return rows;
-                    }
-                })
-                        .bind("fileuploadadd", function(e, data){
-                            var form = $("#exp_form");
-                            form.find(".progress").css("display", "block").find(".progress-bar").css("width", "0%");
-                            $(".exp_submit").off("click");
-                            $("#exp_form").on("click", ".exp_submit", function(e)
-                            {
-                                e.preventDefault();
-                                $(e.target).attr("disabled", "disabled");
-                                data.submit();
-                            });
-                            $(".remove_img").off("click");
-                            $("#exp_form").on("click", ".remove_img", function(e){
-                                console.log("deleted");
-                                console.log(data.files.length);
-                            })
-
-                        })
-                        .bind("fileuploadprogressall", function(e, data){
-                            var form = $("#exp_form");
-                            var progress = parseInt(data.loaded / data.total * 100, 10);
-                            form.find(".progress").css("display", "block").find(".progress-bar").css("width", progress+"%");
-                            if(progress == 100){
-                                form.find(".progress").find(".progress-bar").append("<span>Done!</span>");
-                            }
-                        })
-                        .bind("fileuploaddone", function(e, data){
-                            if(data.result.status == 200){
-                                $(".content_wrapper").html('<img style="margin: auto; display: block;" src="{{ asset("bundles/zghfe/img/page-preloader.GIF") }}" />');
-                                $(".content_wrapper").load("{{ url("zgh_fe.user_profile.experiences_partial", {"id": app.user.id }) }}");
-                            }
-                            else if(data.result.status == 500)
-                            {
-                                $("body").find(".content_wrapper").html(data.result.view);
-                            }
-
-                        });
+                photoRefresh();
 
                 ThraceForm.select2();
-
             });
 
         });

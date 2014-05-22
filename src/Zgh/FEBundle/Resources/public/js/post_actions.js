@@ -122,18 +122,16 @@ $(document).ready(function(){
 
     $("body").on("click", ".comment-delete", function(e){
         e.preventDefault();
-        $(e.target).closest(".postComment").find(".modalClose").click();
         var form = $(e.target).closest("form");
         var count = $(e.target).closest(".post, .photo, .experience, .tip").find(".comments_count");
         var old_count = $(e.target).closest(".post, .photo, .experience, .tip").find(".comments_count").text();
-//        var del_modal = $(e.target).closest(".modal-dialog").parent();
-//        del_modal.modal("hide");
         count.text(--old_count);
         $.ajax({
             type: "POST",
             url: $(form).attr("action"),
             data: $(form).serialize()
         });
+        $(e.target).closest("[data-toggle='modal']").modal("hide");
         $(e.target).closest(".postComment").remove();
     });
 

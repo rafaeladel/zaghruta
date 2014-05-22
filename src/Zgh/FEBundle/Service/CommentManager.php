@@ -5,6 +5,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Zgh\FEBundle\Entity\Comment;
@@ -15,11 +16,13 @@ class CommentManager
     protected $em;
     protected $security_context;
     protected $router;
-    public function __construct(EntityManager $entityManager, SecurityContextInterface $contextInterface, RouterInterface $routerInterface)
+    protected $kernel;
+    public function __construct(EntityManager $entityManager, SecurityContextInterface $contextInterface, RouterInterface $routerInterface, Kernel $kernel)
     {
         $this->em = $entityManager;
         $this->security_context = $contextInterface;
         $this->router = $routerInterface;
+        $this->kernel = $kernel;
     }
 
     /**
