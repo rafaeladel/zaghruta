@@ -197,10 +197,11 @@
     {{ parent() }}
     <script type="text/javascript">
         var UrlContainer = {
+            loader: "{{ asset("bundles/zghfe/img/page-preloader.GIF") }}",
             newPhoto: "{{ url("zgh_fe.photos.photo.new", {"id": app.user.id}) }}",
             newAlbum: "{{ url("zgh_fe.photos.album.new", {"id": app.user.id}) }}",
-            photoParial: "{{ url("zgh_fe.user_profile.photos_partial", {"id": app.user.id}) }}",
-            albumPartial: "{{ url("zgh_fe.user_profile.albums_partial", {"id": app.user.id}) }}",
+            photoPartial: "{{ url("zgh_fe.user_profile.photos_partial", {"id": app.user.id}) }}",
+            albumPartial: "{{ url("zgh_fe.user_profile.albums_partial", {"id": app.user.id}) }}"
         };
     </script>
 

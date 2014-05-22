@@ -84,7 +84,7 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
             $about->setGender(strtolower(($response->getResponse()["gender"]) == "male" ? 0 : 1));
 
             $responseData = $response->getResponse();
-            $about->setBirthday(new \DateTime(( isset($responseData['birthday'])) ? $responseData["birthday"] : null ));
+            $about->setBirthday(new \DateTime( isset($responseData['birthday']) ? $responseData["birthday"] : null ));
             $about->setFacebook($response->getResponse()["link"]);
             $user->setUserInfo($about);
 

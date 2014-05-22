@@ -210,7 +210,6 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-        UrlContainer.loader = "{{ asset("bundles/zghfe/img/page-preloader.GIF") }}";
         UrlContainer.aboutPartial = "{{ url("zgh_fe.user_profile.about_partial", {"id": app.user.id}) }}";
         UrlContainer.wishlistPartial = "{{ url("zgh_fe.wishlist_partial_content", {"id": user.id}) }}";
         UrlContainer.branchesList = "{{ url("zgh_fe.branches.list", {"id": user.id}) }}";

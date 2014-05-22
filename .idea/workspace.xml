@@ -26,23 +26,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="experiences.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/pages_logic/experiences.js">
+      <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="6" selection-start="37" selection-end="1098" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1598">
+            <state line="199" column="38" selection-start="12229" selection-end="12229" vertical-scroll-proportion="-2.3846154" vertical-offset="3321" max-vertical-offset="4437">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_index.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="211" column="35" selection-start="10859" selection-end="10859" vertical-scroll-proportion="-2.4230769" vertical-offset="3524" max-vertical-offset="4046">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="photosRefresher.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/bundles/zghfe/js/pages_logic/partial/photosRefresher.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="42" selection-start="188" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="uploader_save.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/uploader_save.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="94" column="53" selection-start="4643" selection-end="4643" vertical-scroll-proportion="0.41001856" vertical-offset="1377" max-vertical-offset="2159">
               <folding>
-                <marker date="1400784282326" expanded="true" signature="1499:2163" placeholder="..." />
-                <marker date="1400784282326" expanded="true" signature="1557:1833" placeholder="..." />
-                <marker date="1400784282326" expanded="true" signature="3682:3711" placeholder="..." />
+                <marker date="1400789638216" expanded="true" signature="3540:4317" placeholder="..." />
+                <marker date="1400789638216" expanded="true" signature="3598:3874" placeholder="..." />
+                <marker date="1400789638216" expanded="true" signature="4661:4690" placeholder="..." />
+                <marker date="1400789638216" expanded="false" signature="5339:5387" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ZaghrutaUserProvider.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="about.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/bundles/zghfe/js/pages_logic/about.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="109" selection-start="194" selection-end="272" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
+              <folding>
+                <marker date="1400772015663" expanded="false" signature="208:237" placeholder="..." />
+                <marker date="1400772015663" expanded="false" signature="728:757" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ZaghrutaUserProvider.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Security/User/Provider/ZaghrutaUserProvider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="38" selection-start="3687" selection-end="3687" vertical-scroll-proportion="0.6296296" vertical-offset="1088" max-vertical-offset="1836">
+            <state line="89" column="0" selection-start="3540" selection-end="3540" vertical-scroll-proportion="-17.0" vertical-offset="884" max-vertical-offset="1853">
               <folding />
             </state>
           </provider>
@@ -66,24 +106,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="security.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/security.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.0" vertical-offset="294" max-vertical-offset="833">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HWIOAuthBundle.en.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/hwi/oauth-bundle/HWI/Bundle/OAuthBundle/Resources/translations/HWIOAuthBundle.en.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="OAuthProvider.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/hwi/oauth-bundle/HWI/Bundle/OAuthBundle/Security/Core/Authentication/Provider/OAuthProvider.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -102,20 +124,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_profile_experience_add.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_experience_add.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="111" selection-start="663" selection-end="671" vertical-scroll-proportion="3.2692308" vertical-offset="357" max-vertical-offset="1207">
-              <folding>
-                <element signature="e#287#326#0" expanded="false" />
-                <element signature="e#599#625#0" expanded="false" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#3;n#div#1;n#!!top" expanded="true" />
-                <element signature="e#2788#2826#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -126,8 +134,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_branches_content.html.twig" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/BranchController.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/branch_routing.xml" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Wishlist.php" />
@@ -168,8 +174,6 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/pages_logic/partial/photos_refresher.js" />
         <option value="$PROJECT_DIR$/web/bundles/zghfe/js/pages_logic/photos.js" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/pages_logic/photos.js" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/comments_section.html.twig" />
         <option value="$PROJECT_DIR$/web/bundles/zghfe/js/post_actions.js" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/post_actions.js" />
@@ -177,6 +181,10 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_experience_add.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/pages_logic/experiences.js" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Security/User/Provider/ZaghrutaUserProvider.php" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/web/bundles/zghfe/js/pages_logic/partial/photosRefresher.js" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/uploader_save.js" />
       </list>
     </option>
   </component>
@@ -427,6 +435,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pages_logic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zaghrota_dyn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PHP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bundles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zghfe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages_logic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partial" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -926,11 +968,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/post_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="62" selection-start="51" selection-end="123" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="391" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_main.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="58" selection-start="571" selection-end="571" vertical-scroll-proportion="0.5093633" vertical-offset="0" max-vertical-offset="731" />
@@ -1078,24 +1115,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/bundles/zghfe/js/pages_logic/about.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
-          <folding>
-            <marker date="1400772015663" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1400772015663" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/pages_logic/wishlist.js">
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/wishlist.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="64" selection-start="466" selection-end="466" vertical-scroll-proportion="0.3469388" vertical-offset="0" max-vertical-offset="539">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/pages_logic/about.js">
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/about.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="76" selection-start="1448" selection-end="1448" vertical-scroll-proportion="0.5584416" vertical-offset="328" max-vertical-offset="867">
           <folding>
@@ -1125,7 +1152,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/pages_logic/photos.js">
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/photos.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="0" selection-start="1215" selection-end="1215" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="646">
           <folding>
@@ -1136,7 +1163,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/pages_logic/branches.js">
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/branches.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="36" selection-start="471" selection-end="471" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
           <folding />
@@ -1151,19 +1178,6 @@
             <marker date="1400583362222" expanded="true" signature="-1:-1" placeholder="..." />
             <marker date="1400583362222" expanded="true" signature="-1:-1" placeholder="..." />
             <marker date="1400583362222" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="248" column="26" selection-start="14250" selection-end="14288" vertical-scroll-proportion="-29.538462" vertical-offset="3448" max-vertical-offset="4420">
-          <folding>
-            <element signature="e#703#720#0" expanded="true" />
-            <element signature="e#12222#12245#0" expanded="true" />
-            <element signature="e#12305#12328#0" expanded="true" />
-            <element signature="e#12391#12425#0" expanded="true" />
-            <element signature="e#12489#12523#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1187,7 +1201,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/post_actions.js">
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/post_actions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="134" column="52" selection-start="7358" selection-end="7358" vertical-scroll-proportion="0.0" vertical-offset="1569" max-vertical-offset="2465">
           <folding>
@@ -1206,7 +1220,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/pages_logic/partial/photosRefresher.js">
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/partial/photosRefresher.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="35" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
           <folding>
@@ -1240,98 +1254,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/uploader_save.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="34" selection-start="1159" selection-end="4362" vertical-scroll-proportion="0.0" vertical-offset="305" max-vertical-offset="1122">
-          <folding>
-            <element signature="e#1213#4359#0" expanded="false" />
-            <marker date="1400512398896" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400512398896" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400512398896" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/bundles/zghfe/js/pages_logic/experiences.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="4" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.8200371" vertical-offset="0" max-vertical-offset="680">
           <folding>
             <marker date="1400781145472" expanded="false" signature="-1:-1" placeholder="..." />
             <marker date="1400781145472" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="224" column="42" selection-start="11589" selection-end="11589" vertical-scroll-proportion="-9.923077" vertical-offset="3550" max-vertical-offset="4063">
-          <folding>
-            <element signature="e#12#35#0" expanded="true" />
-            <element signature="e#1695#1726#0" expanded="true" />
-            <element signature="e#3453#3492#0" expanded="true" />
-            <element signature="e#4521#4550#0" expanded="true" />
-            <element signature="e#6018#6037#0" expanded="true" />
-            <element signature="e#6575#6607#0" expanded="true" />
-            <element signature="e#6854#6890#0" expanded="true" />
-            <element signature="e#7116#7150#0" expanded="true" />
-            <element signature="e#7401#7440#0" expanded="true" />
-            <element signature="e#7763#7795#0" expanded="true" />
-            <element signature="e#8034#8070#0" expanded="true" />
-            <element signature="e#8286#8322#0" expanded="true" />
-            <element signature="e#8540#8574#0" expanded="true" />
-            <element signature="e#8817#8849#0" expanded="true" />
-            <element signature="e#9089#9128#0" expanded="true" />
-            <element signature="e#9876#9901#0" expanded="true" />
-            <element signature="e#10990#11023#0" expanded="true" />
-            <element signature="e#11100#11131#0" expanded="true" />
-            <element signature="e#11201#11221#0" expanded="true" />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400776409482" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1364,13 +1292,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/pages_logic/experiences.js">
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/experiences.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="6" selection-start="37" selection-end="1098" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1598">
           <folding>
-            <marker date="1400784282326" expanded="true" signature="1499:2163" placeholder="..." />
-            <marker date="1400784282326" expanded="true" signature="1557:1833" placeholder="..." />
-            <marker date="1400784282326" expanded="true" signature="3682:3711" placeholder="..." />
+            <marker date="1400784282326" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400784282326" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400784282326" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1445,8 +1373,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Security/User/Provider/ZaghrutaUserProvider.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="38" selection-start="3687" selection-end="3687" vertical-scroll-proportion="0.6296296" vertical-offset="1088" max-vertical-offset="1836">
+        <state line="89" column="0" selection-start="3540" selection-end="3540" vertical-scroll-proportion="-17.0" vertical-offset="884" max-vertical-offset="1853">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bundles/zghfe/js/pages_logic/about.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="109" selection-start="194" selection-end="272" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
+          <folding>
+            <marker date="1400772015663" expanded="false" signature="208:237" placeholder="..." />
+            <marker date="1400772015663" expanded="false" signature="728:757" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="211" column="35" selection-start="10859" selection-end="10859" vertical-scroll-proportion="-2.4230769" vertical-offset="3524" max-vertical-offset="4046">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="199" column="38" selection-start="12229" selection-end="12229" vertical-scroll-proportion="-2.3846154" vertical-offset="3321" max-vertical-offset="4437">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bundles/zghfe/js/pages_logic/partial/photosRefresher.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="42" selection-start="188" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/uploader_save.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="53" selection-start="4643" selection-end="4643" vertical-scroll-proportion="0.41001856" vertical-offset="1377" max-vertical-offset="2159">
+          <folding>
+            <marker date="1400789638216" expanded="true" signature="3540:4317" placeholder="..." />
+            <marker date="1400789638216" expanded="true" signature="3598:3874" placeholder="..." />
+            <marker date="1400789638216" expanded="true" signature="4661:4690" placeholder="..." />
+            <marker date="1400789638216" expanded="false" signature="5339:5387" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

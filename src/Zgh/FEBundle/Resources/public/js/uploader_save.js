@@ -88,15 +88,16 @@ function Uploader(params)
 function refresh_uploader(wrapper, list_btn_id, list_wrapper_class, ajax_url)
 {
     var w = $("#"+wrapper);
-    w.hide();
-    w.find(".modalReset").click();
-    w.find(".modalClose").click();
+//    w.hide();
+//    w.find(".modalReset").click();
+//    w.find(".modalClose").click();
+    w.modal("hide");
+    $("."+list_wrapper_class).find(".photosWrapper").html('<img style="margin: auto; display: block;" src='+UrlContainer.loader+' />');
     $("."+list_wrapper_class).load(ajax_url, null, function(){
         $("#"+list_btn_id).parent().find("a").each(function(){
             $(this).removeClass("active");
         });
         $("#"+list_btn_id).addClass("active");
-
     });
 }
 
