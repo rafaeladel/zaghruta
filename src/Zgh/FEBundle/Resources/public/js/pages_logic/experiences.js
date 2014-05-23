@@ -26,6 +26,7 @@ $(document).ready(function(){
 
     $("body").find(".exp_tip_browse").dropzone({
         url: $(".exp_tip_browse").closest("form").attr("action"),
+        paramName: $(".exp_tip_browse").attr("name"),
         parallelUploads: 1,
         maxFiles: 1,
         thumbnailWidth: 150,
@@ -46,19 +47,27 @@ $(document).ready(function(){
                             ',
         init: function(){
             var myDropzone = this;
+
+            $(myDropzone.element).on("click", function(e){
+                if($(e.target).is("input"))
+                {
+                    
+                }
+                e.preventDefault();
+                $(e.target).removeAttr("name");
+            });
+
             this.on("queuecomplete", function(file) {
                 alert("finished");
             });
 
             $("body").find(".exp_tip_submit").on("click", function(e){
                 e.preventDefault();
-
                 if (myDropzone.getQueuedFiles().length > 0) {
                     myDropzone.on("sending", function(file, xhr, formData) {
-//                        $.each(_this.additionalData, function(index, name){
-                            //TODO: Add form serialization
-//                            formData.append(""+index+"", $(e.target).closest("form").find("[name='"+index+"']").val());
-//                        });
+                        $(e.target).closest("form").find("[name]").each(function(i, v){
+                            formData.append($(v).attr("name"), $(v).val());
+                        });
                     });
                     myDropzone.processQueue();
                 } else {

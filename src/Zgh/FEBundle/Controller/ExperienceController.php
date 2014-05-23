@@ -46,6 +46,7 @@ class ExperienceController extends Controller
 
     public function postNewAction(Request $request, $id)
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $user = $em->getRepository("ZghFEBundle:User")->find($id);
@@ -69,7 +70,6 @@ class ExperienceController extends Controller
                 )
             );
         }
-
         $em->persist($user);
         $em->flush();
         return new JsonResponse(array("status" => 200));
