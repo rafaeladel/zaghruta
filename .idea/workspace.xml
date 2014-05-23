@@ -53,14 +53,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="experiences.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="experiences.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/experiences.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="20" selection-start="2454" selection-end="2454" vertical-scroll-proportion="0.6982143" vertical-offset="510" max-vertical-offset="1751">
+            <state line="48" column="0" selection-start="2258" selection-end="2258" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1802">
               <folding>
-                <marker date="1400849837014" expanded="true" signature="1553:2217" placeholder="..." />
-                <marker date="1400849837014" expanded="true" signature="1611:1887" placeholder="..." />
-                <marker date="1400849837014" expanded="true" signature="3900:3929" placeholder="..." />
+                <marker date="1400852558113" expanded="true" signature="1499:2163" placeholder="..." />
+                <marker date="1400852558113" expanded="true" signature="1557:1833" placeholder="..." />
+                <marker date="1400852558113" expanded="true" signature="4136:4165" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -84,19 +84,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CommentController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/CommentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="32" selection-start="1074" selection-end="1074" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="629">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ZaghrutaUserProvider.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Security/User/Provider/ZaghrutaUserProvider.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="0" selection-start="3540" selection-end="3540" vertical-scroll-proportion="0.0" vertical-offset="1513" max-vertical-offset="2023">
+            <state line="26" column="32" selection-start="1074" selection-end="1074" vertical-scroll-proportion="0.64981276" vertical-offset="61" max-vertical-offset="595">
               <folding />
             </state>
           </provider>
@@ -999,7 +990,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/services.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="51" selection-start="5067" selection-end="5067" vertical-scroll-proportion="0.41607141" vertical-offset="1331" max-vertical-offset="1955" />
+        <state line="92" column="51" selection-start="5067" selection-end="5067" vertical-scroll-proportion="0.41607141" vertical-offset="1331" max-vertical-offset="1955">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/tip_content.html.twig">
@@ -1054,7 +1047,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/hwi/oauth-bundle/HWI/Bundle/OAuthBundle/Security/Core/User/FOSUBUserProvider.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="40" selection-start="1048" selection-end="1049" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="2499" />
+        <state line="27" column="40" selection-start="1048" selection-end="1049" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="2499">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Form/Extension/HttpFoundation/HttpFoundationRequestHandler.php">
@@ -1098,7 +1093,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/hwi/oauth-bundle/HWI/Bundle/OAuthBundle/Security/Core/Exception/AccountNotLinkedException.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="6" selection-start="534" selection-end="534" vertical-scroll-proportion="49.576923" vertical-offset="1425" max-vertical-offset="1938" />
+        <state line="17" column="6" selection-start="534" selection-end="534" vertical-scroll-proportion="49.576923" vertical-offset="1425" max-vertical-offset="1938">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/hwi/oauth-bundle/HWI/Bundle/OAuthBundle/Security/Core/Authentication/Provider/OAuthProvider.php">
@@ -1108,7 +1105,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/hwi/oauth-bundle/HWI/Bundle/OAuthBundle/OAuth/Response/UserResponseInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="10" selection-start="561" selection-end="561" vertical-scroll-proportion="-6.8846154" vertical-offset="59" max-vertical-offset="1649" />
+        <state line="22" column="10" selection-start="561" selection-end="561" vertical-scroll-proportion="-6.8846154" vertical-offset="59" max-vertical-offset="1649">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/hwi/oauth-bundle/HWI/Bundle/OAuthBundle/OAuth/Response/PathUserResponse.php">
@@ -1131,20 +1130,6 @@
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Service/CommentManager.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="63" column="41" selection-start="2370" selection-end="2377" vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="1326">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/CommentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="32" selection-start="1074" selection-end="1074" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="629">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Security/User/Provider/ZaghrutaUserProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="0" selection-start="3540" selection-end="3540" vertical-scroll-proportion="0.0" vertical-offset="1513" max-vertical-offset="2023">
           <folding />
         </state>
       </provider>
@@ -1219,12 +1204,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/experiences.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="20" selection-start="2454" selection-end="2454" vertical-scroll-proportion="0.6982143" vertical-offset="510" max-vertical-offset="1751">
+        <state line="48" column="0" selection-start="2258" selection-end="2258" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1802">
           <folding>
-            <marker date="1400849837014" expanded="true" signature="1553:2217" placeholder="..." />
-            <marker date="1400849837014" expanded="true" signature="1611:1887" placeholder="..." />
-            <marker date="1400849837014" expanded="true" signature="3900:3929" placeholder="..." />
+            <marker date="1400852558113" expanded="true" signature="1499:2163" placeholder="..." />
+            <marker date="1400852558113" expanded="true" signature="1557:1833" placeholder="..." />
+            <marker date="1400852558113" expanded="true" signature="4136:4165" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Security/User/Provider/ZaghrutaUserProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="0" selection-start="3540" selection-end="3540" vertical-scroll-proportion="2.483146" vertical-offset="0" max-vertical-offset="1836">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/CommentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="32" selection-start="1074" selection-end="1074" vertical-scroll-proportion="0.64981276" vertical-offset="61" max-vertical-offset="595">
+          <folding />
         </state>
       </provider>
     </entry>

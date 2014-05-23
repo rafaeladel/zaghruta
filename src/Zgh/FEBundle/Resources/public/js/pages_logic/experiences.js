@@ -26,7 +26,6 @@ $(document).ready(function(){
 
     $("body").find(".exp_tip_browse").dropzone({
         url: $(".exp_tip_browse").closest("form").attr("action"),
-        paramName: $(".exp_tip_browse").attr("name"),
         parallelUploads: 1,
         maxFiles: 1,
         thumbnailWidth: 150,
@@ -48,13 +47,16 @@ $(document).ready(function(){
         init: function(){
             var myDropzone = this;
 
+            //setting dropzone name for post request
+            myDropzone.options.paramName = $(myDropzone.element).attr("name");
+
+            //If the element is input file, make sure not to browse for file twice
             $(myDropzone.element).on("click", function(e){
                 if($(e.target).is("input"))
                 {
-                    
+                    e.preventDefault();
+                    $(e.target).removeAttr("name");
                 }
-                e.preventDefault();
-                $(e.target).removeAttr("name");
             });
 
             this.on("queuecomplete", function(file) {
@@ -65,6 +67,7 @@ $(document).ready(function(){
                 e.preventDefault();
                 if (myDropzone.getQueuedFiles().length > 0) {
                     myDropzone.on("sending", function(file, xhr, formData) {
+                        //store every tag with name attribute into the FormData object
                         $(e.target).closest("form").find("[name]").each(function(i, v){
                             formData.append($(v).attr("name"), $(v).val());
                         });
