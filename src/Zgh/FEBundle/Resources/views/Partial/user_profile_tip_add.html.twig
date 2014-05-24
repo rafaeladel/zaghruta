@@ -14,7 +14,7 @@
     <div class="row">
         <h3>Add Tip</h3>
     </div>
-    {{ form_start(form, {"action": url("zgh_fe.tip.post_new", {"id": user.id} ), "attr": {"id": "tip_form"} }     ) }}
+    {{ form_start(form, {"action": url("zgh_fe.tip.post_new", {"id": user.id} ) }     ) }}
             <div class="form-group formGroup row">
                 {{ form_label(form.title, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
                 <div class="col-sm-9">
@@ -28,10 +28,11 @@
 
                 <div class="col-sm-9">
                     <div class="col-md12">
-                        {{ form_widget(form.image_file) }}
+                        {{ form_widget(form.image_file,  {"attr": {"class": "exp_tip_browse"} } ) }}
                         {{ form_errors(form.image_file) }}
                         <span class="error" style="color: red;"></span>
                     </div>
+                    <div class="col-sm-4 col-md-4 dropzone-previews photo_preview clearfix row"></div>
                 </div>
             </div>
 
@@ -43,7 +44,7 @@
                     {{ form_errors(form.content) }}
                 </div>
             </div>
-            <button type="submit" class="btn btn-wide btn-primary exp_tip_sbumit">save</button>
+            <button type="submit" class="btn btn-wide btn-primary exp_tip_submit">save</button>
         {{ form_rest(form) }}
     {{ form_end(form) }}
 </div>

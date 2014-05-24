@@ -222,6 +222,8 @@
         "bundles/zghfe/js/autosize.js"
         "bundles/zghfe/plugins/Imgareaselect/scripts/jquery.imgareaselect.js"
         "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
+        "bundles/zghfe/js/pages_logic/partial/expTipRefresher.js"
+
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -246,7 +248,7 @@
             $(document).on("ajaxSuccess", function(e){
 
                 photoRefresh();
-
+                expTipRefresh();
                 ThraceForm.select2();
             });
 

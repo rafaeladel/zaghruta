@@ -70,6 +70,7 @@ class ExperienceController extends Controller
                 )
             );
         }
+
         $em->persist($user);
         $em->flush();
         return new JsonResponse(array("status" => 200));

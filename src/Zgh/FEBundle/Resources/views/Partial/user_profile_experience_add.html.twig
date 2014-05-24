@@ -14,7 +14,7 @@
     <div class="row">
         <h3>Add Experience</h3>
     </div>
-    {{ form_start(form, {"action": url("zgh_fe.experience.post_new", {"id": user.id} ), "attr": {"id": "exp_form"} }) }}
+    {{ form_start(form, {"action": url("zgh_fe.experience.post_new", {"id": user.id} ) }) }}
             {{ form_errors(form) }}
             <div class="form-group formGroup row">
                 {{ form_label(form.title, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
@@ -43,7 +43,7 @@
                         <span class="error" style="color: red;"></span>
                     </div>
 
-                    <div class="col-sm-4 col-md-4 photo_preview clearfix row">
+                    <div class="col-sm-4 col-md-4 dropzone-previews photo_preview clearfix row">
 
                     </div>
                 </div>

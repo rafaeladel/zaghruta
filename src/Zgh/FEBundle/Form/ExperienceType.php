@@ -24,10 +24,7 @@ class ExperienceType extends AbstractType
                 ))
             ->add("content", "textarea")
             ->add("image_file", "file", array(
-                "required" => false,
-                "attr" => array(
-                    "class" => "photo_browse"
-                )
+                "required" => false
             ))
         ;
     }

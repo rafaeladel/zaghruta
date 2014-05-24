@@ -29,66 +29,105 @@
       <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="199" column="38" selection-start="12229" selection-end="12229" vertical-scroll-proportion="-2.3846154" vertical-offset="3321" max-vertical-offset="4437">
+            <state line="203" column="96" selection-start="12626" selection-end="12626" vertical-scroll-proportion="-7.3076925" vertical-offset="3261" max-vertical-offset="4471">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_index.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig">
+      <file leaf-file-name="user_profile_experience_add.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_experience_add.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="211" column="35" selection-start="10859" selection-end="10859" vertical-scroll-proportion="-2.8846154" vertical-offset="3512" max-vertical-offset="4046">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="comments_section.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/comments_section.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="147" selection-start="1757" selection-end="1762" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="1445">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="experiences.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/experiences.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="0" selection-start="2258" selection-end="2258" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1802">
+            <state line="5" column="135" selection-start="278" selection-end="349" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="1207">
               <folding>
-                <marker date="1400852558113" expanded="true" signature="1499:2163" placeholder="..." />
-                <marker date="1400852558113" expanded="true" signature="1557:1833" placeholder="..." />
-                <marker date="1400852558113" expanded="true" signature="4136:4165" placeholder="..." />
+                <element signature="e#287#326#0" expanded="true" />
+                <element signature="e#599#625#0" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#3;n#div#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExperienceController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/ExperienceController.php">
+      <file leaf-file-name="expTipRefresher.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/partial/expTipRefresher.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="9" selection-start="2533" selection-end="2533" vertical-scroll-proportion="-43.807693" vertical-offset="0" max-vertical-offset="1326">
+            <state line="91" column="93" selection-start="3986" selection-end="3986" vertical-scroll-proportion="0.0" vertical-offset="906" max-vertical-offset="1768">
               <folding>
-                <element signature="e#417#435#1" expanded="true" />
-                <element signature="e#526#584#0" expanded="true" />
-                <element signature="e#798#822#1" expanded="true" />
-                <element signature="e#869#914#0" expanded="true" />
-                <element signature="e#1161#1179#1" expanded="true" />
-                <element signature="e#1497#1551#0" expanded="true" />
-                <element signature="e#1813#1831#1" expanded="true" />
-                <element signature="e#2226#2280#0" expanded="true" />
+                <marker date="1400906426777" expanded="true" signature="426:1090" placeholder="..." />
+                <marker date="1400906426777" expanded="true" signature="484:760" placeholder="..." />
+                <marker date="1400906426777" expanded="true" signature="3524:3553" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentController.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/CommentController.php">
+      <file leaf-file-name="PhotoController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/PhotoController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="32" selection-start="1074" selection-end="1074" vertical-scroll-proportion="0.64981276" vertical-offset="61" max-vertical-offset="595">
+            <state line="71" column="58" selection-start="2633" selection-end="2633" vertical-scroll-proportion="-7.1923075" vertical-offset="850" max-vertical-offset="2278">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Album.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Album.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.153846" vertical-offset="238" max-vertical-offset="2601">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Photo.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Photo.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="4029">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AlbumType.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Form/AlbumType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="0" selection-start="425" selection-end="425" vertical-scroll-proportion="0.4639376" vertical-offset="0" max-vertical-offset="612">
+              <folding>
+                <element signature="e#36#76#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhotoType.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Form/PhotoType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="9" selection-start="439" selection-end="439" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="612">
+              <folding>
+                <element signature="e#36#76#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="photo_add_modal.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/photo_add_modal.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="49" selection-start="1741" selection-end="1758" vertical-scroll-proportion="-14.384615" vertical-offset="187" max-vertical-offset="901">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_profile_tip_add.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_tip_add.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="21" selection-start="508" selection-end="508" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="952">
+              <folding>
+                <element signature="e#287#319#0" expanded="false" />
+                <element signature="e#585#604#0" expanded="false" />
+                <element signature="e#1486#1505#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,11 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Wishlist.php" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Product.php" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/SecurityController_dep.php" />
-        <option value="$PROJECT_DIR$/app/AppKernel.php" />
-        <option value="$PROJECT_DIR$/web/app_dev.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/EventListener/RegisterListener.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/post_actions.js" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/shortcuts&amp;notifications.html.twig" />
@@ -130,7 +164,6 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Security/login.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/services.xml" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Service/CommentManager.php" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_tip_add.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/about.js" />
         <option value="$PROJECT_DIR$/web/bundles/zghfe/js/about.js" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/wishlist.js" />
@@ -144,16 +177,22 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/comments_section.html.twig" />
         <option value="$PROJECT_DIR$/web/bundles/zghfe/js/post_actions.js" />
         <option value="$PROJECT_DIR$/web/bundles/zghfe/js/pages_logic/experiences.js" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_experience_add.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/pages_logic/experiences.js" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Security/User/Provider/ZaghrutaUserProvider.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/web/bundles/zghfe/js/pages_logic/partial/photosRefresher.js" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/uploader_save.js" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/Public/js/post_actions.js" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/ExperienceController.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/experiences.js" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Form/ExperienceType.php" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/TipController.php" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_experience_add.html.twig" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_tip_add.html.twig" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/partial/expTipRefresher.js" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Form/PhotoType.php" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Form/AlbumType.php" />
       </list>
     </option>
   </component>
@@ -161,7 +200,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1378" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -227,7 +266,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
+              <option name="myItemId" value="zaghruta" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -237,37 +276,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
+              <option name="myItemId" value="zaghruta" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uploads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user_pp" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -277,37 +290,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
+              <option name="myItemId" value="zaghruta" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="uploads" />
+              <option name="myItemId" value="Zgh" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="FEBundle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -317,483 +312,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
+              <option name="myItemId" value="zaghruta" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="Zgh" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bundles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zghfe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bundles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zghfe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bundles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zghfe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages_logic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bundles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zghfe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages_logic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bundles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thrace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="form-bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Thrace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FormBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thrace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="form-bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Thrace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FormBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sensio" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hwi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="oauth-bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HWI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OAuthBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hwi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="oauth-bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HWI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OAuthBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Security" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hwi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="oauth-bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HWI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OAuthBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Security" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hwi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="oauth-bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HWI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OAuthBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Security" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Authentication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hwi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="oauth-bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HWI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OAuthBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Security" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Authentication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Provider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
+              <option name="myItemId" value="FEBundle" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
+              <option name="myItemId" value="Form" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -817,11 +352,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\htdocs\zaghruta\src\Zgh\FEBundle\Form" />
       <recent name="D:\www\Zaghruta\Website\Development\PHP\src\Zgh\FEBundle\Resources\views\Partial" />
       <recent name="D:\www\Zaghruta\Website\Development\PHP\src\Zgh\FEBundle\Resources\Public\img\init" />
       <recent name="D:\www\Zaghruta\Website\Development\PHP\src\Zgh\FEBundle\Resources\config\Routing" />
       <recent name="D:\www\Zaghruta\Website\Development\PHP\src\Zgh\FEBundle\Resources\views\Default" />
-      <recent name="D:\www\Zaghruta\Website\Development\PHP\src\Zgh\FEBundle\Form" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\www\Zaghruta\Website\Development\PHP\src\Zgh\FEBundle\Resources\Public\js\logic" />
@@ -893,7 +428,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -902,7 +437,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Symfony2" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33761328" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33761328" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -937,20 +472,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Service/CommentManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="41" selection-start="2370" selection-end="2377" vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="1326">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/CommentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="32" selection-start="1074" selection-end="1074" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="629">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Security/User/Provider/ZaghrutaUserProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="89" column="0" selection-start="3540" selection-end="3540" vertical-scroll-proportion="0.0" vertical-offset="1513" max-vertical-offset="2023">
@@ -980,7 +501,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Model/Utilities/Image.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="20" selection-start="754" selection-end="754" vertical-scroll-proportion="0.33333334" vertical-offset="434" max-vertical-offset="6035" />
+        <state line="38" column="20" selection-start="754" selection-end="754" vertical-scroll-proportion="0.33333334" vertical-offset="434" max-vertical-offset="6035">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.yml">
@@ -997,17 +520,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/tip_content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="51" selection-start="1711" selection-end="1711" vertical-scroll-proportion="-25.5" vertical-offset="0" max-vertical-offset="1054" />
+        <state line="39" column="51" selection-start="1711" selection-end="1711" vertical-scroll-proportion="-25.5" vertical-offset="0" max-vertical-offset="1054">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_tips.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="26" selection-start="684" selection-end="684" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="510" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_tip_add.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="22" selection-start="1045" selection-end="1045" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="935" />
+        <state line="22" column="26" selection-start="684" selection-end="684" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="510">
+          <folding>
+            <element signature="e#323#337#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/wishlist.js">
@@ -1035,16 +559,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="560" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/partial/photosRefresher.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="35" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/experience_content.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.12670565" vertical-offset="65" max-vertical-offset="1088" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/hwi/oauth-bundle/HWI/Bundle/OAuthBundle/Security/Core/User/FOSUBUserProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="40" selection-start="1048" selection-end="1049" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="2499">
@@ -1067,11 +581,6 @@
         <state line="487" column="51" selection-start="14801" selection-end="14801" vertical-scroll-proportion="0.41520467" vertical-offset="7811" max-vertical-offset="18717">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_experience_add.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="111" selection-start="663" selection-end="671" vertical-scroll-proportion="3.2692308" vertical-offset="357" max-vertical-offset="1207" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/security.yml">
@@ -1120,13 +629,6 @@
         <state line="23" column="1" selection-start="649" selection-end="649" vertical-scroll-proportion="8.5" vertical-offset="459" max-vertical-offset="2329" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="38" selection-start="12229" selection-end="12229" vertical-scroll-proportion="-2.3846154" vertical-offset="3321" max-vertical-offset="4437">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Service/CommentManager.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="63" column="41" selection-start="2370" selection-end="2377" vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="1326">
@@ -1153,36 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Form/ExperienceType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.6569201" vertical-offset="337" max-vertical-offset="850">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="35" selection-start="10859" selection-end="10859" vertical-scroll-proportion="-2.8846154" vertical-offset="3512" max-vertical-offset="4046">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/ExperienceController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="9" selection-start="2533" selection-end="2533" vertical-scroll-proportion="-43.807693" vertical-offset="0" max-vertical-offset="1326">
-          <folding>
-            <element signature="e#417#435#1" expanded="true" />
-            <element signature="e#526#584#0" expanded="true" />
-            <element signature="e#798#822#1" expanded="true" />
-            <element signature="e#869#914#0" expanded="true" />
-            <element signature="e#1161#1179#1" expanded="true" />
-            <element signature="e#1497#1551#0" expanded="true" />
-            <element signature="e#1813#1831#1" expanded="true" />
-            <element signature="e#2226#2280#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/uploader_save.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="99" column="46" selection-start="4953" selection-end="4953" vertical-scroll-proportion="0.07392996" vertical-offset="1645" max-vertical-offset="2159">
@@ -1191,24 +663,6 @@
             <marker date="1400839382010" expanded="true" signature="-1:-1" placeholder="..." />
             <marker date="1400839382010" expanded="false" signature="-1:-1" placeholder="..." />
             <marker date="1400839382010" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/comments_section.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="147" selection-start="1757" selection-end="1762" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="1445">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/experiences.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="2258" selection-end="2258" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1802">
-          <folding>
-            <marker date="1400852558113" expanded="true" signature="1499:2163" placeholder="..." />
-            <marker date="1400852558113" expanded="true" signature="1557:1833" placeholder="..." />
-            <marker date="1400852558113" expanded="true" signature="4136:4165" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1222,8 +676,191 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/CommentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="32" selection-start="1074" selection-end="1074" vertical-scroll-proportion="0.64981276" vertical-offset="61" max-vertical-offset="595">
+        <state line="26" column="32" selection-start="1074" selection-end="1074" vertical-scroll-proportion="-13.346154" vertical-offset="61" max-vertical-offset="595">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/comments_section.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="147" selection-start="1757" selection-end="1762" vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="1445">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/ExperienceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="9" selection-start="2533" selection-end="2533" vertical-scroll-proportion="-12.692307" vertical-offset="809" max-vertical-offset="1343">
+          <folding>
+            <element signature="e#417#435#1" expanded="false" />
+            <element signature="e#526#584#0" expanded="false" />
+            <element signature="e#798#822#1" expanded="false" />
+            <element signature="e#869#914#0" expanded="false" />
+            <element signature="e#1161#1179#1" expanded="false" />
+            <element signature="e#1497#1551#0" expanded="false" />
+            <element signature="e#1813#1831#1" expanded="false" />
+            <element signature="e#2226#2280#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/partial/photosRefresher.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="35" selection-start="60" selection-end="60" vertical-scroll-proportion="0.031539887" vertical-offset="0" max-vertical-offset="539">
+          <folding>
+            <element signature="e#709#1423#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="211" column="35" selection-start="10859" selection-end="10859" vertical-scroll-proportion="-2.8846154" vertical-offset="3512" max-vertical-offset="4046">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/experience_content.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="15.692307" vertical-offset="408" max-vertical-offset="1122">
+          <folding>
+            <marker date="1400839383621" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400839383621" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400839383621" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400839383621" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400839383621" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400839383621" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400839383621" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400839383621" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400839383621" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400839383621" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400839383621" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1400839383621" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/experiences.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="20" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <folding>
+            <marker date="1400900387996" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1400900387996" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Form/TipType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <folding>
+            <element signature="e#36#76#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Form/ExperienceType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="13" selection-start="942" selection-end="942" vertical-scroll-proportion="-6.6538463" vertical-offset="252" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/TipController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="0" selection-start="2438" selection-end="2438" vertical-scroll-proportion="-20.26923" vertical-offset="680" max-vertical-offset="1343">
+          <folding>
+            <element signature="e#492#543#0" expanded="true" />
+            <element signature="e#812#850#0" expanded="true" />
+            <element signature="e#1406#1453#0" expanded="true" />
+            <element signature="e#2085#2132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/photo_add_modal.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="49" selection-start="1741" selection-end="1758" vertical-scroll-proportion="-14.384615" vertical-offset="187" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_tip_add.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="21" selection-start="508" selection-end="508" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="952">
+          <folding>
+            <element signature="e#287#319#0" expanded="false" />
+            <element signature="e#585#604#0" expanded="false" />
+            <element signature="e#1486#1505#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="203" column="96" selection-start="12626" selection-end="12626" vertical-scroll-proportion="-7.3076925" vertical-offset="3261" max-vertical-offset="4471">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_experience_add.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="135" selection-start="278" selection-end="349" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="1207">
+          <folding>
+            <element signature="e#287#326#0" expanded="true" />
+            <element signature="e#599#625#0" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#3;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/partial/expTipRefresher.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="93" selection-start="3986" selection-end="3986" vertical-scroll-proportion="0.0" vertical-offset="906" max-vertical-offset="1768">
+          <folding>
+            <marker date="1400906426777" expanded="true" signature="426:1090" placeholder="..." />
+            <marker date="1400906426777" expanded="true" signature="484:760" placeholder="..." />
+            <marker date="1400906426777" expanded="true" signature="3524:3553" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/PhotoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="58" selection-start="2633" selection-end="2633" vertical-scroll-proportion="-7.1923075" vertical-offset="850" max-vertical-offset="2278">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Album.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.153846" vertical-offset="238" max-vertical-offset="2601">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Entity/Photo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4029">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Form/PhotoType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="9" selection-start="439" selection-end="439" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="612">
+          <folding>
+            <element signature="e#36#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Form/AlbumType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="425" selection-end="425" vertical-scroll-proportion="0.4639376" vertical-offset="0" max-vertical-offset="612">
+          <folding>
+            <element signature="e#36#76#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

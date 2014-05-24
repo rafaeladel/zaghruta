@@ -59,7 +59,6 @@ class TipController extends Controller
 
         if(!$form->isValid())
         {
-            return $this->render("@ZghFE/Partial/user_profile_tip_add.html.twig", ["user" => $user, "form" => $form->createView()]);
             return new JsonResponse(
                 array(
                     "status" => 500,
@@ -74,7 +73,6 @@ class TipController extends Controller
 
         $em->persist($user);
         $em->flush();
-        return $this->redirect($this->generateUrl("zgh_fe.user_profile.tips_partial", ["id" => $user->getId()]));
         return new JsonResponse(array("status" => 200));
     }
 }
