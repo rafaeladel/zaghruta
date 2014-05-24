@@ -14,12 +14,12 @@
     <div class="row">
         <h3>Add Experience</h3>
     </div>
-    {{ form_start(form, {"action": url("zgh_fe.experience.post_new", {"id": user.id} ) }) }}
+    {{ form_start(form, {"action": url("zgh_fe.experience.post_new", {"id": user.id} ), "attr":{"id": "myform"}  }) }}
             {{ form_errors(form) }}
             <div class="form-group formGroup row">
                 {{ form_label(form.title, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
                 <div class="col-sm-9">
-                    {{ form_widget(form.title, {"attr":{"class": "form-control", "placeholder": "Experience title"} }) }}
+                    {{ form_widget(form.title, {"attr":{"class": "form-control", "required" : "true" ,"placeholder": "Experience title"} }) }}
                    {{ form_errors(form.title) }}
                 </div>
             </div>

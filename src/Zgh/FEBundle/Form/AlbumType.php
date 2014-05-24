@@ -12,6 +12,11 @@ class AlbumType extends AbstractType
         $builder
             ->add("name", "text")
             ->add("info", "textarea", ["required" => false])
+            ->add("photos", "collection", [
+                "type" => new PhotoType(),
+                "required" => false,
+                "allow_add" => true
+            ])
         ;
     }
 

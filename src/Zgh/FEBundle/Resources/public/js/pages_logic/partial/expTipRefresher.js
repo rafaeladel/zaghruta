@@ -37,30 +37,35 @@ function expTipRefresh(){
 
 
             $("body").find(".exp_tip_submit").on("click", function(e){
-                e.preventDefault();
-                $(e.target).attr("disabled", "disabled").text("Saving");
-                if (myDropzone.getQueuedFiles().length > 0) {
-                    myDropzone.on("sending", function(file, xhr, formData) {
+                $("#myform").parsley().subscribe("parsley:form:validate", function(instance){
+                    instance.submitEvent.preventDefault();
+                    if(instance.isValid())
+                    {
+                        $(e.target).attr("disabled", "disabled").text("Saving");
+                        if (myDropzone.getQueuedFiles().length > 0) {
+                            myDropzone.on("sending", function(file, xhr, formData) {
 
-                        //store every tag with name attribute into the FormData object
-                        $(e.target).closest("form").find("[name]").each(function(i, v){
-                            formData.append($(v).attr("name"), $(v).val());
-                        });
-                    });
-                    myDropzone.processQueue();
-                } else {
-                    var form_data = new FormData($(e.target).closest("form").get(0));
-                    $.ajax({
-                        type: "POST",
-                        url: $(e.target).closest("form").attr("action"),
-                        data: form_data,
-                        processData: false,
-                        contentType: false,
-                        success: function(data){
-                            refreshWrapper(data);
+                                //store every tag with name attribute into the FormData object
+                                $(e.target).closest("form").find("[name]").each(function(i, v){
+                                    formData.append($(v).attr("name"), $(v).val());
+                                });
+                            });
+                            myDropzone.processQueue();
+                        } else {
+                            var form_data = new FormData($(e.target).closest("form").get(0));
+                            $.ajax({
+                                type: "POST",
+                                url: $(e.target).closest("form").attr("action"),
+                                data: form_data,
+                                processData: false,
+                                contentType: false,
+                                success: function(data){
+                                    refreshWrapper(data);
+                                }
+                            });
                         }
-                    });
-                }
+                    }
+                });
             });
 
             if(myDropzone.options.uploadMultiple){
