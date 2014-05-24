@@ -31,10 +31,12 @@
                     <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">Add Branch</h4>
                 </div>
-                {{ form_start(form, {"action": url("zgh_fe.branches.new", {"id": user.id }), "attr" : {"class": "form-horizontal"} }) }}
-                <div class="form_wrapper">
-                 {{ include("@ZghFE/Partial/user_profile_branch_add.html.twig", {"user": user, "form": form}) }}
-                </div>
+                {{ form_start(form, {"action": url("zgh_fe.branches.new", {"id": user.id }), "attr" : {"id": "myform", "class": "form-horizontal"} }) }}
+                    <div class="form_wrapper">
+                     {{ include("@ZghFE/Partial/user_profile_branch_add.html.twig", {"user": user, "form": form}) }}
+                    </div>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
                 {#</form>#}
             </div>
             <!-- /.modal-content -->
