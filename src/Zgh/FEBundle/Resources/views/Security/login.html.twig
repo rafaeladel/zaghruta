@@ -313,7 +313,7 @@
                         </div>
 
                         <fieldset>
-                            <legend class="text-center"> Or sign in with your email</legend>
+                            <legend class="text-center"> Or sign in with your username or email</legend>
                             {% if error %}
                             <div class=" alert alert-danger col-md-12">
                             {{ error|trans }}
@@ -324,7 +324,7 @@
                             <form action="{{ path("fos_user_security_check") }}" method="post">
                                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"  />
                                 <div class="form-group">
-                                    <input type="text" id="username" name="_username" value="" required="required" class="form-control" placeholder="Username" />
+                                    <input type="text" id="username" name="_username" value="" required="required" class="form-control" placeholder="Username or Email" />
                                     {#<div class="validation" style="">No suggestions</div>#}
                                 </div>
 
@@ -365,7 +365,7 @@
                         <form action="{{ path("fos_user_security_check") }}" method="post">
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"  />
                             <div class="form-group">
-                                <input type="text" id="username" name="_username" value="" required="required" class="form-control" placeholder="Username" />
+                                <input type="text" id="username" name="_username" value="" required="required" class="form-control" placeholder="Username or Email" />
                                 {#<div class="validation" style="">No suggestions</div>#}
                             </div>
 
