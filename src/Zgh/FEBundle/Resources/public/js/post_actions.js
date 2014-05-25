@@ -13,7 +13,7 @@ $(document).ready(function(){
         var form = $(e.currentTarget).closest("form");
         var count_wrapper = $(e.currentTarget).closest(".post, .photo, .experience, .tip").find(".likes_count");
         var old_count = count_wrapper.text();
-        if($(e.currentTarget).find("span").hasClass("glyphicon-heart-empty")){
+        if($(e.currentTarget).find("span").hasClass("liked")){
             count_wrapper.text(--old_count);
             $(e.currentTarget).attr('title', "Like")
                 .tooltip('fixTitle')
@@ -29,7 +29,17 @@ $(document).ready(function(){
             url: $(form).attr("action"),
             success: function(data){
                 count_wrapper.text(data.likes_count);
-                $(e.currentTarget).find("span").toggleClass("glyphicon-heart-empty");
+                if(data.like_state == 0){
+                    $(e.currentTarget).find("span").removeClass("glyphicon-heart-empty").removeClass("liked");
+                    $(e.currentTarget).attr('title', "Like")
+                        .tooltip('fixTitle')
+                        .tooltip('show');
+                } else {
+                    $(e.currentTarget).find("span").addClass("glyphicon-heart-empty").addClass("liked");
+                    $(e.currentTarget).attr('title', "Unlike")
+                        .tooltip('fixTitle')
+                        .tooltip('show');
+                }
                 $(e.currentTarget).removeAttr("disabled");
             }
         });
@@ -100,7 +110,7 @@ $(document).ready(function(){
                             <div class="clearfix"></div>\
                             </div>\
                             </div>';
-        $(e.target).closest(".row").before(comment_markup);
+        $(e.target).closest(".row").siblings(".comments_wrapper").append(comment_markup);
         $.ajax({
             type: "POST",
             url: $(form).attr("action"),
@@ -135,6 +145,13 @@ $(document).ready(function(){
             $(e.target).closest(".postComment").remove();
         });
 
+    });
+
+    $("body").on("focus", "*[name='comment_content']", function(e){
+        var id = $(e.currentTarget).data("e_i");
+        var entity_type = $(e.currentTarget).data("e_t");
+        var url = Routing.generate("zgh_fe.comment.list", { id: id, entity_type: entity_type }, true);
+        $(e.currentTarget).closest("form").parent().siblings(".comments_wrapper").load(url);
     });
 
 });

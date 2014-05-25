@@ -32,11 +32,13 @@ class LikeManager
     {
         $user = $this->security_context->getToken()->getUser();
         $result = $this->em->getRepository("ZghFEBundle:User")->hasLiked($user, $entity);
+        $state = 0;
         if($result != false)
         {
             //If user already liked the post remove it
             $this->em->remove($result);
             $entity->removeLike($result);
+            $state = 0;
         } else {
             //If not, like it
             $like = new Like();
@@ -44,10 +46,14 @@ class LikeManager
             $like->setObject($entity);
             $this->em->persist($like);
             $entity->addLike($like);
+            $state = 1;
         }
         $this->em->flush();
         $count = count($entity->getLikes());
-        return new JsonResponse(array("likes_count" => $count));
+        return new JsonResponse([
+            "likes_count" => $count,
+            "like_state" => $state
+        ]);
 
     }
 }

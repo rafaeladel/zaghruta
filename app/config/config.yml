@@ -146,4 +146,4 @@ hwi_oauth:
 #    permissions: [email, user_birthday, user_location]
 
 fos_js_routing:
-    routes_to_expose: [ zgh_fe.user.login_partial, zgh_fe.vendor.login_partial, zgh_fe.user_profile.privacy.set, zgh_fe.like.list ]
+    routes_to_expose: [ zgh_fe.user.login_partial, zgh_fe.vendor.login_partial, zgh_fe.user_profile.privacy.set, zgh_fe.like.list, zgh_fe.comment.list ]

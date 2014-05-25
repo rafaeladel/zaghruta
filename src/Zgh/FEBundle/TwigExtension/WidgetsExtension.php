@@ -3,6 +3,7 @@ namespace Zgh\FEBundle\TwigExtension;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Zgh\FEBundle\Entity\User;
+use Zgh\FEBundle\Model\CommentableInterface;
 
 class WidgetsExtension extends \Twig_Extension
 {
@@ -16,8 +17,8 @@ class WidgetsExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction("getOwnPosts", [$this, "getOwnPosts"]),
-            new \Twig_SimpleFunction("getExpriences", [$this, "getExpriences"])
+            new \Twig_SimpleFunction("getExpriences", [$this, "getExpriences"]),
+            new \Twig_SimpleFunction("getComments", [$this, "getComments"])
         ];
     }
 
@@ -25,6 +26,12 @@ class WidgetsExtension extends \Twig_Extension
     {
         $experiences = $this->em->getRepository("ZghFEBundle:Experience")->findByUser($user);
         return $experiences;
+    }
+
+    public function getComments(CommentableInterface $entity)
+    {
+        $comments = $entity->getComments();
+        return $comments;
     }
 
     public function getName()
