@@ -23,4 +23,38 @@ $(document).ready(function(){
            }
         });
     });
+
+    $("body").on("click", ".branch_edit", function(e){
+        e.preventDefault();
+        $(e.currentTarget).html('<img style="margin: auto; display: inline;" src="'+UrlContainer.loader+'" />');
+        var url = $(e.currentTarget).attr("href");
+       $(e.currentTarget).closest(".branch").load(url);
+    });
+
+    $("body").on("click", ".save_edit", function(e){
+        e.preventDefault();
+        var form = $(e.currentTarget).closest("form");
+        var url = form.attr("action");
+        $(e.currentTarget).html('<img style="margin: auto; display: inline;" src="'+UrlContainer.loader+'" />');
+        $.ajax({
+            type: "post",
+            url: url,
+            data: form.serialize(),
+            success: function(data){
+                if(data.status == 200){
+                    var list_url = $(e.currentTarget).siblings(".cancel_edit").attr("href");
+                    $(e.currentTarget).closest(".branch").load(list_url);
+                } else if(data.status == 500) {
+                    $(e.currentTarget).closest(".branch").html(data.view);
+                }
+            }
+        });
+    });
+
+    $("body").on("click", ".cancel_edit", function(e){
+        e.preventDefault();
+        var url = $(e.currentTarget).attr("href");
+        $(e.currentTarget).html('<img style="margin: auto; display: inline;" src="'+UrlContainer.loader+'" />');
+        $(e.currentTarget).closest(".branch").load(url);
+    });
 });

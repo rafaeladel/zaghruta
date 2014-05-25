@@ -55,5 +55,9 @@
 
 {% block javascripts %}
     {{ parent() }}
-
+    <script>
+        $(window).unload(function(e){
+            alert("unloaded");
+        })
+    </script>
 {% endblock javascripts %}

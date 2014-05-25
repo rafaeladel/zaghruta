@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Zgh\FEBundle\Entity\Branch;
 use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Form\BranchType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class BranchController extends Controller
 {
@@ -42,6 +44,72 @@ class BranchController extends Controller
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush($user);
 
+        return new JsonResponse(["status" => 200]);
+    }
+
+    /**
+     * @ParamConverter("branch", class="ZghFEBundle:Branch", options={"id" = "branch_id"})
+     * @param User $user
+     * @param Branch $branch
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getEditBranchAction(User $user, Branch $branch)
+    {
+        $form = $this->createForm(new BranchType(), $branch);
+        return $this->render("@ZghFE/Partial/user_profile_branch_edit.html.twig", [
+                    "user" => $user,
+                    "branch" => $branch,
+                    "form" => $form->createView()
+                ]);
+    }
+
+    /**
+     * @ParamConverter("branch", class="ZghFEBundle:Branch", options={"id" = "branch_id"})
+     * @param Request $request
+     * @param User $user
+     * @param Branch $branch
+     * @return JsonResponse
+     */
+    public function postEditBranchAction(Request $request, User $user, Branch $branch)
+    {
+        $form = $this->createForm(new BranchType(), $branch);
+        $form->handleRequest($request);
+        if($form->isValid())
+        {
+            $this->getDoctrine()->getManager()->persist($branch);
+            $this->getDoctrine()->getManager()->flush();
+            return new JsonResponse(["status" => 200]);
+        }
+
+        return new JsonResponse([
+            "status" => 500,
+            "view" => $this->renderView("@ZghFE/Partial/user_profile_branch_edit.html.twig", [
+                        "user" => $user,
+                        "branch" => $branch,
+                        "form" => $form->createView()
+                    ]),
+            "errors" => $form->getErrorsAsString()
+        ]);
+    }
+
+    /**
+     * @ParamConverter("branch", class="ZghFEBundle:Branch", options={"id" = "branch_id"})
+     */
+    public function getBranchInnerAction(User $user, Branch $branch)
+    {
+        return $this->render("@ZghFE/Partial/user_profile_branch_inner_content.html.twig", [
+                "user" => $user,
+                "branch" => $branch
+            ]);
+    }
+
+    /**
+     * @ParamConverter("branch", class="ZghFEBundle:Branch", options={"id" = "branch_id"})
+     */
+    public function postDeleteBranchAction(User $user, Branch $branch)
+    {
+        $this->getDoctrine()->getManager()->remove($branch);
+        $this->getDoctrine()->getManager()->flush();
         return new JsonResponse(["status" => 200]);
     }
 }

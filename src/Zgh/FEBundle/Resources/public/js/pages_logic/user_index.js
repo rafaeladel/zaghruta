@@ -1,7 +1,5 @@
 $(document).ready(function(){
-    $(window).on("popstate", function(e){
-        window.location.href = window.location.href;
-    });
+
 
     $("body").on("click", ".tab", function(e){
         e.preventDefault();

@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-
     $("body").find('.tooltip').tooltip();
 
     $('body').find('.collapse').collapse();
@@ -29,6 +28,7 @@ $(document).ready(function(){
             type: "POST",
             url: $(form).attr("action"),
             success: function(data){
+                count_wrapper.text(data.likes_count);
                 $(e.currentTarget).find("span").toggleClass("glyphicon-heart-empty");
                 $(e.currentTarget).removeAttr("disabled");
             }

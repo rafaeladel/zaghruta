@@ -8,8 +8,24 @@
         <default key="_controller">ZghFEBundle:Branch:getBranchesList</default>
     </route>
 
+    <route id="zgh_fe.branches.inner" pattern="/{id}/branches/{branch_id}/inner" methods="GET">
+        <default key="_controller">ZghFEBundle:Branch:getBranchInner</default>
+    </route>
+
     <route id="zgh_fe.branches.new" pattern="/{id}/branches/new" methods="POST">
         <default key="_controller">ZghFEBundle:Branch:postNewBranch</default>
+    </route>
+
+    <route id="zgh_fe.branches.delete" pattern="/{id}/branches/{branch_id}/delete" methods="POST">
+        <default key="_controller">ZghFEBundle:Branch:postDeleteBranch</default>
+    </route>
+
+    <route id="zgh_fe.branches.get_edit" pattern="/{id}/branches/{branch_id}/edit" methods="GET">
+        <default key="_controller">ZghFEBundle:Branch:getEditBranch</default>
+    </route>
+
+    <route id="zgh_fe.branches.post_edit" pattern="/{id}/branches/{branch_id}/edit" methods="POST">
+        <default key="_controller">ZghFEBundle:Branch:postEditBranch</default>
     </route>
 
 </routes>

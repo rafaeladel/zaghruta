@@ -232,6 +232,19 @@
     <script type="text/javascript">
         $(document).ready(function(){
 
+            $(window).on("popstate", function(e){
+                e.preventDefault();
+//                alert("Test");
+                window.location.href = window.location.href;
+            });
+//
+//            $("body").on("click", ".openExp", function(e){
+//                e.preventDefault();
+//                var url = $(e.currentTarget).attr("href");
+//                window.location.href = url;
+//                document.pushState(null, null, url);
+//            });
+
             $("body").on("click", ".btnFollowing", function(e){
                 e.preventDefault();
                 var form = $(e.target).closest("form");
@@ -245,6 +258,7 @@
                     }
                 })
             });
+
 
             $(document).on("ajaxSuccess", function(e){
 
