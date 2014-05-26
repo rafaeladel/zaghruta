@@ -7,12 +7,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Zgh\FEBundle\Entity\Branch;
 use Zgh\FEBundle\Entity\Experience;
 use Zgh\FEBundle\Entity\Post;
+use Zgh\FEBundle\Entity\Product;
 use Zgh\FEBundle\Entity\UserInfo;
 use Zgh\FEBundle\Entity\UserPP;
 use Zgh\FEBundle\Entity\Wishlist;
 use Zgh\FEBundle\Form\BranchType;
 use Zgh\FEBundle\Form\ExperienceType;
 use Zgh\FEBundle\Form\PostType;
+use Zgh\FEBundle\Form\ProductType;
 use Zgh\FEBundle\Form\UserInfoType;
 use Zgh\FEBundle\Form\WishlistType;
 
@@ -204,6 +206,23 @@ class UserProfileController extends Controller
         return $this->render("@ZghFE/Partial/user_profile_wishlist.html.twig", array(
                 "user" => $user,
                 "wishlist_form" => $form->createView()
+            ));
+    }
+
+    public function getProductsPartialAction($id)
+    {
+        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
+
+        $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
+        if(!$authorized)
+        {
+            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
+        }
+
+        $form = $this->createForm(new ProductType(), new Product());
+        return $this->render("@ZghFE/Partial/user_profile_products.html.twig", array(
+                "user" => $user,
+                "product_form" => $form->createView()
             ));
     }
 

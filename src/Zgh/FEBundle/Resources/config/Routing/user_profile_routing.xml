@@ -34,6 +34,10 @@
         <default key="_controller">ZghFEBundle:UserProfile:getWishlistPartial</default>
     </route>
 
+    <route id="zgh_fe.user_profile.products_partial" pattern="/{id}/products">
+        <default key="_controller">ZghFEBundle:UserProfile:getProductsPartial</default>
+    </route>
+
     <route id="zgh_fe.user_profile.photos_partial" pattern="/{id}/photos">
         <default key="_controller">ZghFEBundle:UserProfile:getPhotosPartial</default>
     </route>

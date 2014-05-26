@@ -61,7 +61,7 @@ class User extends BaseUser
     protected $show_interest_notification;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy ="user")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy ="user", cascade={"persist","remove"})
      */
     protected $products;
 
@@ -343,7 +343,7 @@ class User extends BaseUser
     public function addProduct(\Zgh\FEBundle\Entity\Product $products)
     {
         $this->products[] = $products;
-
+        $products->setUser($this);
         return $this;
     }
 

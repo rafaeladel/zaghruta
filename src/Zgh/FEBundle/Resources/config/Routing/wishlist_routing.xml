@@ -4,11 +4,11 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="zgh_fe.wishlist.new" pattern="/{id}/wlp/new" methods="POST">
+    <route id="zgh_fe.wishlist.new" pattern="/{id}/wishlists/new" methods="POST">
         <default key="_controller">ZghFEBundle:Wishlist:postNew</default>
     </route>
 
-    <route id="zgh_fe.wishlist_partial_content" pattern="/{id}/wlp/content">
+    <route id="zgh_fe.wishlist_partial_content" pattern="/{id}/wishlists/content">
         <default key="_controller">ZghFEBundle:Wishlist:getWishlistPartialContent</default>
     </route>
 

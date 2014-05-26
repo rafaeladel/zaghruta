@@ -6,5 +6,5 @@ $(document).ready(function(){
         history.pushState(null, null, $(e.currentTarget).attr("href"));
     });
 
-    expTipRefresh();
+    singleUpload("exp_tip_browse");
 });

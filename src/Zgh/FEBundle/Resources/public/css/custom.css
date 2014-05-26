@@ -2259,3 +2259,27 @@ border-top: none;
     float: none;
     margin: 0 auto;
 }
+.photoContent{
+    position: relative;
+}
+.photoContent .popupPost{
+    margin-top: 15px;
+}
+.photoContent .result {
+    position: absolute;
+    right: 88px;
+    top: -38px;
+}
+.btn-liked{
+    border:2px solid #DC5880 !important;
+    color:#DC5880 !important;
+    background: none;
+}
+.albumCont .thumbnail a{
+    display: block;
+    height: 176px !important;
+}
+.albumCont .thumbnail a img{
+    height: 100%;
+    width: auto;
+}

@@ -50,8 +50,7 @@
                   <img src="{{ "ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=500&height=500' : asset(user.profilePhoto.getWebPath) }}" alt="profile_photo" />
               </div>
           </div>
-            <h3><a href="">{{ user.firstname }}</a></h3>
-            <span class="title">{{ user.lastname }}</span>
+            <h3><a href="">{{ user.firstname }} {{ user.lastname }}</a></h3>
 
             {{ renderFollow(user) }}
 
@@ -135,8 +134,8 @@
                         <a href="#" data-target_url="{{ url("zgh_fe.user_profile.branches_partial", {'id': user.id}) }}" type="button"
                            class="tab btn btn-primary {{ "branch" in current_route ? "active" : "" }}">Branches</a>
 
-                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.wishlist_partial", {'id': user.id}) }}" type="button"
-                           class="tab btn btn-primary {{ "wishlist" in current_route ? "active" : "" }}">Products</a>
+                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.products_partial", {'id': user.id}) }}" type="button"
+                           class="tab btn btn-primary {{ "product" in current_route ? "active" : "" }}">Products</a>
 
                         <a href="#" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {'id': user.id}) }}" type="button"
                            class="tab btn btn-primary {{ "photos" in current_route or "albums" in current_route ? "active" : "" }}">Photos</a>
@@ -223,6 +222,8 @@
         "bundles/zghfe/js/pages_logic/photos.js"
         "bundles/zghfe/js/pages_logic/experiences.js"
         "bundles/zghfe/js/pages_logic/branches.js"
+        "bundles/zghfe/js/pages_logic/products.js"
+        "bundles/zghfe/js/custom.js"
     %}
         <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}

@@ -1,0 +1,49 @@
+<div class="form-group formGroup">
+    {{ form_label(product_form.name, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+    <div class="col-sm-9">
+        {{ form_widget(product_form.name, {"attr":{"class":"form-control", "placeholder": "Product name "} }) }}
+        {{ form_errors(product_form.name) }}
+    </div>
+</div>
+<div class="form-group formGroup">
+    {{ form_label(product_form.description, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+    <div class="col-sm-9">
+        {{ form_widget(product_form.description, {"attr":{"class":"form-control", "placeholder": "Product description"} }) }}
+        {{ form_errors(product_form.description) }}
+    </div>
+</div>
+<div class="form-group formGroup">
+    {{ form_label(product_form.categories, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+    <div class="col-sm-9">
+        {{ form_widget(product_form.categories, {"attr":{"class":"form-control", "placeholder": "Product categories"} }) }}
+        {{ form_errors(product_form.categories) }}
+
+    </div>
+</div>
+
+<div class="form-group formGroup">
+    {{ form_label(product_form.price, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+    <div class="col-sm-9">
+        {{ form_widget(product_form.price, {"attr":{"class":"form-control", "placeholder": "Product price", "data-parsley-type": "number"} }) }}
+        {{ form_errors(product_form.price) }}
+
+    </div>
+</div>
+<div class="form-group formGroup">
+    {{ form_label(product_form.image_file, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+    <div class="col-sm-9">
+        {{ form_widget(product_form.image_file, {"attr":{"class":"product_browse"} }) }}
+        {{ form_errors(product_form.image_file) }}
+
+        <div class="col-sm-4 col-md-4 dropzone-previews photo_preview clearfix row"></div>
+    </div>
+</div>
+<div class="form-group formGroup">
+    {{ form_label(product_form.tags, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+    <div class="col-sm-9">
+        {{ form_widget(product_form.tags, {"attr":{"class":"form-control"} }) }}
+        {{ form_errors(product_form.tags) }}
+
+    </div>
+</div>
+

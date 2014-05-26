@@ -44,7 +44,7 @@
                     {{ form_errors(form.content) }}
                 </div>
             </div>
-            <button type="submit" class="btn btn-wide btn-primary exp_tip_submit">save</button>
+            <button type="submit" class="btn btn-wide btn-primary exp_tip_submit" data-back_url="{{ url("zgh_fe.user_profile.tips_partial", {"id": user.id}) }}">save</button>
         {{ form_rest(form) }}
     {{ form_end(form) }}
 </div>

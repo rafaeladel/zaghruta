@@ -6,12 +6,12 @@
         <div class="col-xs-12 search-Results">
             {% if user.id == app.user.id %}
                 {% if albums|length > 0 %}
-                    <button id="addNewPhoto" class="btn btn-default btn-wide" type="button" data-toggle="modal"
+                    <button id="addNewPhoto" class="btn btn-primary btn-wide" type="button" data-toggle="modal"
                             data-target="#addPhotoPopup"><span class="glyphicon glyphicon-plus"></span>
                         Add new photo
                     </button>
                 {% endif %}
-                <button id="addNewAlbum" class="btn btn-default btn-wide" type="button" data-toggle="modal"
+                <button id="addNewAlbum" class="btn btn-primary btn-wide" type="button" data-toggle="modal"
                         data-target="#addAlbumPopup"><span
                             class="glyphicon glyphicon-plus"></span> Add new album
                 </button>
@@ -19,8 +19,8 @@
 
             <div class="btn-group pull-right">
                 <span class="album_nav"></span>
-                <a id="btnPhots" href="#" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {"id": user.id }) }}" class="photoTab btn btn-default"> Photos</a>
-                <a id="btnAlbums" href="#" data-target_url="{{ url("zgh_fe.user_profile.albums_partial", {"id": user.id }) }}" class="active photoTab albumTab btn btn-default"> Albums</a>
+                <a id="btnPhots" href="#" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {"id": user.id }) }}" class="photoTab btn btn-primary"> Photos</a>
+                <a id="btnAlbums" href="#" data-target_url="{{ url("zgh_fe.user_profile.albums_partial", {"id": user.id }) }}" class="active photoTab albumTab btn btn-primary"> Albums</a>
             </div>
 
         </div>

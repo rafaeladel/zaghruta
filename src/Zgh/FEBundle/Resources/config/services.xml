@@ -20,6 +20,7 @@
         <parameter key="zgh_fe.doctrine.listener.class">Zgh\FEBundle\EventListener\DoctrineListenerHandler</parameter>
         <parameter key="zgh_fe.like_manager.class">Zgh\FEBundle\Service\LikeManager</parameter>
         <parameter key="zgh_fe.comment_manager.class">Zgh\FEBundle\Service\CommentManager</parameter>
+        <parameter key="zgh_fe.tag.class">Zgh\FEBundle\Form\Type\TagInputType</parameter>
     </parameters>
 
     <services>
@@ -96,6 +97,11 @@
         <service id="zgh_fe.twig.widgets_extension" class="%zgh_fe.twig.widgets_extension.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <tag name="twig.extension" />
+        </service>
+
+        <service id="zgh_fe.tag" class="%zgh_fe.tag.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <tag name="form.type" alias="tag_input"/>
         </service>
 
         <!--<service id="zgh_fe.param_converter.social" class="Zgh\FEBundle\ParamConverter\SocialConverter">-->

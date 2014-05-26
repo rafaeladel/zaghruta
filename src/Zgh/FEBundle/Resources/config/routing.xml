@@ -13,6 +13,7 @@
     <import resource="@ZghFEBundle/Resources/config/Routing/about_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/branch_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/wishlist_routing.xml" />
+    <import resource="@ZghFEBundle/Resources/config/Routing/products_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/photos_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/experience_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/tip_routing.xml" />

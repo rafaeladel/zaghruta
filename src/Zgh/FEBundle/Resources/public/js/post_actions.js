@@ -1,10 +1,6 @@
 $(document).ready(function(){
 
-    $("body").find('.tooltip').tooltip();
-
-    $('body').find('.collapse').collapse();
-
-    $('body').find('.animated').autosize();
+    postRefresh();
 
     $("body").on("click", ".likeBtn", function(e){
         e.preventDefault();
@@ -69,11 +65,9 @@ $(document).ready(function(){
         e.preventDefault();
         var form = $(e.target).closest("form");
         var content = $(form).find('[name="comment_content"]').val();
-        var old_count = $(e.target).closest(".post, .photo, .experience, .tip").find(".comments_count").text();
         if(content.length == 0){
             return;
         }
-        $(e.target).closest(".post, .photo, .experience").find(".comments_count").text(++old_count);
         var uniqeID = Math.floor(Math.random() * 10000000000000001);
         var comment_markup = '<div class="row postComment margin-sm" id="'+ uniqeID +'">\
                                     <button data-target="#deleteComment_'+ uniqeID +'" data-toggle="modal" type="submit" class="row btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>\
@@ -121,7 +115,6 @@ $(document).ready(function(){
                     .find(".comment_author_pp").attr("src",data.author_pp).end()
                     .find(".comment_author").parent().attr("href", data.author_url).end().end()
                     .find(".comment_time").text(data.time);
-//                $(e.target).closest(".post, .photo, .experience").find(".comments_count").text(data.comments_count);
                 $(e.target).attr("disabled", "disabled");
             }
         });
@@ -133,9 +126,6 @@ $(document).ready(function(){
     $("body").on("click", ".comment-delete", function(e){
         e.preventDefault();
         var form = $(e.target).closest("form");
-        var count = $(e.target).closest(".post, .photo, .experience, .tip").find(".comments_count");
-        var old_count = $(e.target).closest(".post, .photo, .experience, .tip").find(".comments_count").text();
-        count.text(--old_count);
         $.ajax({
             type: "POST",
             url: $(form).attr("action"),

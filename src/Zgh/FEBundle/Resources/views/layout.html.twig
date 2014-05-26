@@ -206,6 +206,9 @@
     </script>
 
     {% javascripts
+        "bundles/zghfe/js/pages_logic/partial/postRefresher.js"
+        "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
+        "bundles/zghfe/js/pages_logic/partial/singleUploadRefresher.js"
         "bundles/zghfe/plugins/Parsley.js-2.0.0/dist/parsley.js"
         "bundles/zghfe/js/magicsuggest-1.3.1.js"
         "bundles/zghfe/js/magicSuggestCustome.js"
@@ -222,9 +225,6 @@
         "bundles/zghfe/js/ImgCrop.js"
         "bundles/zghfe/js/autosize.js"
         "bundles/zghfe/plugins/Imgareaselect/scripts/jquery.imgareaselect.js"
-        "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
-        "bundles/zghfe/js/pages_logic/partial/expTipRefresher.js"
-
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -262,8 +262,10 @@
 
             $(document).on("ajaxSuccess", function(e){
 
+                postRefresh();
                 photoRefresh();
-                expTipRefresh();
+                singleUpload("exp_tip_browse");
+                singleUpload("product_browse");
                 ThraceForm.select2();
             });
 

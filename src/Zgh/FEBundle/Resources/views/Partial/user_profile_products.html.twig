@@ -1,0 +1,156 @@
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
+
+{% block leftContent %}
+    <div id="c_products">
+        <div id="switcher" class="row GridView">
+            <div class="row margin search-Results">
+                {% if user.id == app.user.id %}
+                        <div class="col-sm-3">
+                            <button data-target="#addNewProductPopup" data-toggle="modal" type="button"
+                                    class="btn btn-default btn-wide">
+                                <span class="glyphicon glyphicon-plus"></span> Add new Product
+                            </button>
+                        </div>
+
+                {% endif %}
+                <div class="col-sm-5 ">
+                    <div class="mainSearch2 input-group">
+                        <div style="display: none;" class="input-group-btn">
+                            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Category <span
+                                        class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Everything</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Hotels &amp; Venues</a></li>
+                                <li><a href="#">Cake &amp; catering</a></li>
+                                <li><a href="#">Wedding Planners</a></li>
+                                <li><a href="#">Photography</a></li>
+                                <li><a href="#">Jewelry</a></li>
+                                <li><a href="#">Hony Moons</a></li>
+                                <li><a href="#">Category else here</a></li>
+                                <li><a href="#">Fashion</a></li>
+                                <li><a href="#">Real Estate</a></li>
+                                <li><a href="#">Furniture</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">People</a></li>
+
+                            </ul>
+                        </div>
+                        <!-- /btn-group -->
+
+                        <input type="text" placeholder="Search for your things" class="form-control custFc"
+                               style="border-radius: 6px 0px 0px 6px;">
+                        <a class="search-addon input-group-addon custAncor" href="#"></a>
+
+                    </div>
+                </div>
+                <div class="hidden-xs  pull-right  ">
+                    <div class="btn-group ">
+                        <a class="btn btn-primary active" href="javascript:SwitchView('grid');"><span
+                                    class="glyphicon glyphicon-th"></span></a>
+                        <a class="btn btn-primary" href="javascript:SwitchView('list');"><span
+                                    class="glyphicon glyphicon-th-list"></span></a>
+
+                    </div>
+                </div>
+            </div>
+            <div id="products_list" class="row">
+                <div class="product-G col-md-3 col-xs-6  col-sm-6">
+                    <div class="thumbnail clearfix">
+                        <a href="#product" class="textImageContainer fancybox">
+                            <div class="thumbOverlay img-responsive">
+                                <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
+                            </div>
+                            <img class="img-responsive" src="img/photo1.jpg">
+                        </a>
+                        <div class="caption">
+                            <a href="#"><h4>Dressing and dinning room</h4></a>
+                            <h6>Furniture & Home</h6>
+                            <span class="date">12 Sep 2013</span>
+                            <span class="price">Price:<span> 15000$</span></span>
+
+                            <p class="description">
+                                Discreption for the Discreption for the Product Discreption for the Product Discreption for the Produc
+                                Produ
+                                Produ Discreption for the Product Discreption for the Produc Product Discreption for the Product
+                                Discreption for the Discreption for the Product Discreption for the Product Discreption for the Produc
+                                Produ Produ Discreption
+                            </p>
+
+                            <div class="voting">
+                                <p>Decorama egypt</p>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-G col-md-3 col-xs-6  col-sm-6">
+                    <div class="thumbnail clearfix">
+                        <a href="#product" class="textImageContainer fancybox">
+                            <div class="thumbOverlay img-responsive">
+                                <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
+                            </div>
+                            <img class="img-responsive" src="img/photo1.jpg">
+                        </a>
+                        <div class="caption">
+                            <a href="#"><h4>Dressing and dinning room</h4></a>
+                            <h6>Furniture & Home</h6>
+                            <span class="date">12 Sep 2013</span>
+                            <span class="price">Price:<span> 15000$</span></span>
+
+                            <p class="description">
+                                Discreption for the Discreption for the Product Discreption for the Product Discreption for the Produc
+                                Produ
+                                Produ Discreption for the Product Discreption for the Produc Product Discreption for the Product
+                                Discreption for the Discreption for the Product Discreption for the Product Discreption for the Produc
+                                Produ Produ Discreption
+                            </p>
+
+                            <div class="voting">
+                                <p>Decorama egypt</p>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {#{{ render_esi(controller("ZghFEBundle:Wishlist:getWishlistPartialContent", {"id": user.id})) }}#}
+            </div>
+
+        </div>
+        <div id="addNewProductPopup" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+             class="modal fade in">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modalHeader">
+                        <button type="button" class="close modalClose" data-dismiss="modal"
+                                aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Add Product</h4>
+                    </div>
+                    {{ form_start(product_form, {"action": url("zgh_fe.products.new", {"id": app.user.id }), "attr" : {"id":"myform", "class": "form-horizontal"} }) }}
+
+                    <div class="modal-body form_wrapper">
+                        {{ include("@ZghFE/Partial/user_profile_product_add.html.twig", {"user": user, "product_form": product_form}) }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-wide btn-primary product_submit">Create</button>
+                    </div>
+                    {{ form_rest(product_form) }}
+                    {{ form_end(product_form) }}
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+    </div>
+
+{% endblock %}
+{% form_theme product_form with ['ThraceFormBundle:Form:fields.html.twig'] %}

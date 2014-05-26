@@ -20,6 +20,11 @@ class Category
     protected $experiences;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Product")
+     */
+    protected $products;
+
+    /**
      * @ORM\ManyToMany(targetEntity="User")
      */
     protected $users;
@@ -125,5 +130,38 @@ class Category
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add products
+     *
+     * @param \Zgh\FEBundle\Entity\Product $products
+     * @return Category
+     */
+    public function addProduct(\Zgh\FEBundle\Entity\Product $products)
+    {
+        $this->products[] = $products;
+
+        return $this;
+    }
+
+    /**
+     * Remove products
+     *
+     * @param \Zgh\FEBundle\Entity\Product $products
+     */
+    public function removeProduct(\Zgh\FEBundle\Entity\Product $products)
+    {
+        $this->products->removeElement($products);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }

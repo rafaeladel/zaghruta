@@ -4,23 +4,15 @@ namespace Zgh\FEBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Zgh\FEBundle\Model\Partial\BasicInfo;
-use Zgh\FEBundle\Model\Utilities\Image;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="products")
  * @ORM\HasLifecycleCallbacks
  */
-class Product extends Image
+class Product
 {
-    use BasicInfo;
-
-    protected $cat_dir = "products";
-    protected $thumb_dir = "thumb";
-
-    protected $thumb_h = 265;
-    protected $thumb_w = 682;
-
+//    use BasicInfo;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -28,12 +20,12 @@ class Product extends Image
     protected $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="Category")
      */
     protected $categories;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Tag", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="Tag")
      */
     protected $tags;
 
@@ -190,70 +182,4 @@ class Product extends Image
         return $this->wishlists;
     }
 
-
-    /**
-     * Add categories
-     *
-     * @param \Zgh\FEBundle\Entity\Category $categories
-     * @return Product
-     */
-    public function addCategory(\Zgh\FEBundle\Entity\Category $categories)
-    {
-        $this->categories[] = $categories;
-        $categories->addProduct($this);
-        return $this;
-    }
-
-    /**
-     * Remove categories
-     *
-     * @param \Zgh\FEBundle\Entity\Category $categories
-     */
-    public function removeCategory(\Zgh\FEBundle\Entity\Category $categories)
-    {
-        $this->categories->removeElement($categories);
-    }
-
-    /**
-     * Get categories
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCategories()
-    {
-        return $this->categories;
-    }
-
-    /**
-     * Add tags
-     *
-     * @param \Zgh\FEBundle\Entity\Tag $tags
-     * @return Product
-     */
-    public function addTag(\Zgh\FEBundle\Entity\Tag $tags)
-    {
-        $this->tags[] = $tags;
-        $tags->addProduct($this);
-        return $this;
-    }
-
-    /**
-     * Remove tags
-     *
-     * @param \Zgh\FEBundle\Entity\Tag $tags
-     */
-    public function removeTag(\Zgh\FEBundle\Entity\Tag $tags)
-    {
-        $this->tags->removeElement($tags);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
 }

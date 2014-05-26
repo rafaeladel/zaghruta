@@ -27,20 +27,19 @@ function fixingheight(){
 }
 function SwitchView(param) {
     $('#switcher .search-Results .btn-group a').removeClass('active')
-
     if (param == 'list') {
-        $('#vendProducts #switcher').removeClass('GridView').addClass('ListView');
-        $('#vendProducts .product-G').removeClass('col-md-3 col-xs-6  col-sm-6');
-        $('#vendProducts .product-G').addClass('col-md-12');
-        $('#vendProducts .textImageContainer').addClass('col-md-3');
-        $('#vendProducts .caption').addClass('col-md-9');
+        $('#c_products #switcher').removeClass('GridView').addClass('ListView');
+        $('#c_products .product-G').removeClass('col-md-3 col-xs-6  col-sm-6');
+        $('#c_products .product-G').addClass('col-md-12');
+        $('#c_products .textImageContainer').addClass('col-md-3');
+        $('#c_products .caption').addClass('col-md-9');
     }
     else {
-        $('#vendProducts #switcher').removeClass('ListView').addClass('GridView');
-        $('#vendProducts .product-G').removeClass('col-md-12');
-        $('#vendProducts .textImageContainer').removeClass('col-md-3');
-        $('#vendProducts .caption').removeClass('col-md-9');
-        $('#vendProducts .product-G').addClass('col-md-3 col-xs-6 col-sm-6');
+        $('#c_products #switcher').removeClass('ListView').addClass('GridView');
+        $('#c_products .product-G').removeClass('col-md-12');
+        $('#c_products .textImageContainer').removeClass('col-md-3');
+        $('#c_products .caption').removeClass('col-md-9');
+        $('#c_products .product-G').addClass('col-md-3 col-xs-6 col-sm-6');
     }
 }
 function photoAlbumTabs(param) {

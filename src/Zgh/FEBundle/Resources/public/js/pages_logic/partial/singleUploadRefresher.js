@@ -1,6 +1,6 @@
-function expTipRefresh(){
-    $("body").find(".exp_tip_browse").dropzone({
-        url: $(".exp_tip_browse").closest("form").attr("action"),
+function singleUpload(button_class){
+    $("body").find("."+button_class).dropzone({
+        url: $("."+button_class).closest("form").attr("action"),
         parallelUploads: 1,
         maxFiles: 1,
         thumbnailWidth: 150,
@@ -36,7 +36,7 @@ function expTipRefresh(){
 
 
 
-            $("body").find(".exp_tip_submit").on("click", function(e){
+            $("."+button_class).closest("form").find("[type='submit']").on("click", function(e){
                 $("#myform").parsley().subscribe("parsley:form:validate", function(instance){
                     instance.submitEvent.preventDefault();
                     if(instance.isValid())
@@ -82,12 +82,13 @@ function expTipRefresh(){
     });
 
     function refreshWrapper(data){
-        $("body").find(".exp_tip_submit").removeAttr("disabled").text("Save");
+        var submit_btn = $("."+button_class).closest("form").find("[type='submit']");
+        submit_btn.removeAttr("disabled").text("Save");
         if(data.status == 200){
-            var back_url = $(".content_wrapper").find(".moveExpTip").attr("href");
+            var back_url = submit_btn.data("back_url");
             $(".content_wrapper").html('<img style="margin: auto; display: block;" src="'+UrlContainer.loader+'" />');
             $(".content_wrapper").load(back_url , function(){
-                history.pushState(null, null, $(".content_wrapper").find(".moveExpTip").attr("href"));
+                history.pushState(null, null, back_url);
             });
         }
         else if(data.status == 500)
@@ -95,7 +96,7 @@ function expTipRefresh(){
             $("body").find(".content_wrapper").html(data.view);
 
             //re-initializing dropzone plugin, becaus ajaxSuccess event is not triggered here
-            expTipRefresh();
+            expTipRefresh(button_class);
 
             ThraceForm.select2();
         }
