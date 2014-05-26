@@ -219,10 +219,8 @@ class UserProfileController extends Controller
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
         }
 
-        $form = $this->createForm(new ProductType(), new Product());
         return $this->render("@ZghFE/Partial/user_profile_products.html.twig", array(
                 "user" => $user,
-                "product_form" => $form->createView()
             ));
     }
 

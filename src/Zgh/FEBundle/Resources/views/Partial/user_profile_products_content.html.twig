@@ -1,0 +1,33 @@
+{% for product in products %}
+    <div class="product-G col-md-3 col-xs-6  col-sm-6">
+        <div class="thumbnail clearfix">
+            <a href="#product" class="textImageContainer fancybox">
+                <div class="thumbOverlay img-responsive">
+                    <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
+                </div>
+                <img class="img-responsive" src="{{ asset(product.getWebPath()) }}">
+            </a>
+
+            <div class="caption">
+                <a href="#"><h4>{{ product.name }}</h4></a>
+                <h6>Furniture & Home</h6>
+                <span class="date">{{ product.createdAt|date() }}</span>
+                <span class="price">Price:<span> {{ product.price }}$</span></span>
+
+                <p class="description">
+                    {{ product.description }}
+                </p>
+
+                <div class="voting">
+                    <p>Decorama egypt</p>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}

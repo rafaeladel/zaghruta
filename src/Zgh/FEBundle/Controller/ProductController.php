@@ -9,6 +9,23 @@ use Zgh\FEBundle\Form\ProductType;
 
 class ProductController extends Controller
 {
+    public function getNewAction($id)
+    {
+        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
+
+        $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
+        if(!$authorized)
+        {
+            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
+        }
+
+        $form = $this->createForm(new ProductType(), new Product());
+        return $this->render("@ZghFE/Partial/user_profile_product_add.html.twig", array(
+                "user" => $user,
+                "product_form" => $form->createView()
+            ));
+    }
+
     public function postNewAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();

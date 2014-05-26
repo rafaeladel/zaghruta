@@ -1,17 +1,17 @@
 {% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
-
+{% set products = getProducts(user) %}
 {% block leftContent %}
     <div id="c_products">
         <div id="switcher" class="row GridView">
             <div class="row margin search-Results">
                 {% if user.id == app.user.id %}
-                        <div class="col-sm-3">
-                            <button data-target="#addNewProductPopup" data-toggle="modal" type="button"
-                                    class="btn btn-default btn-wide">
-                                <span class="glyphicon glyphicon-plus"></span> Add new Product
-                            </button>
-                        </div>
+                    <div class="col-sm-3">
 
+                        <a class="btn btn-default btn-wide moveExpTip"
+                           href="{{ url("zgh_fe.products.add", {"id": user.id}) }}">
+                            <span class="glyphicon glyphicon-plus"></span> Share your Product
+                        </a>
+                    </div>
                 {% endif %}
                 <div class="col-sm-5 ">
                     <div class="mainSearch2 input-group">
@@ -55,102 +55,9 @@
                 </div>
             </div>
             <div id="products_list" class="row">
-                <div class="product-G col-md-3 col-xs-6  col-sm-6">
-                    <div class="thumbnail clearfix">
-                        <a href="#product" class="textImageContainer fancybox">
-                            <div class="thumbOverlay img-responsive">
-                                <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
-                            </div>
-                            <img class="img-responsive" src="img/photo1.jpg">
-                        </a>
-                        <div class="caption">
-                            <a href="#"><h4>Dressing and dinning room</h4></a>
-                            <h6>Furniture & Home</h6>
-                            <span class="date">12 Sep 2013</span>
-                            <span class="price">Price:<span> 15000$</span></span>
-
-                            <p class="description">
-                                Discreption for the Discreption for the Product Discreption for the Product Discreption for the Produc
-                                Produ
-                                Produ Discreption for the Product Discreption for the Produc Product Discreption for the Product
-                                Discreption for the Discreption for the Product Discreption for the Product Discreption for the Produc
-                                Produ Produ Discreption
-                            </p>
-
-                            <div class="voting">
-                                <p>Decorama egypt</p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-G col-md-3 col-xs-6  col-sm-6">
-                    <div class="thumbnail clearfix">
-                        <a href="#product" class="textImageContainer fancybox">
-                            <div class="thumbOverlay img-responsive">
-                                <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
-                            </div>
-                            <img class="img-responsive" src="img/photo1.jpg">
-                        </a>
-                        <div class="caption">
-                            <a href="#"><h4>Dressing and dinning room</h4></a>
-                            <h6>Furniture & Home</h6>
-                            <span class="date">12 Sep 2013</span>
-                            <span class="price">Price:<span> 15000$</span></span>
-
-                            <p class="description">
-                                Discreption for the Discreption for the Product Discreption for the Product Discreption for the Produc
-                                Produ
-                                Produ Discreption for the Product Discreption for the Produc Product Discreption for the Product
-                                Discreption for the Discreption for the Product Discreption for the Product Discreption for the Produc
-                                Produ Produ Discreption
-                            </p>
-
-                            <div class="voting">
-                                <p>Decorama egypt</p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {#{{ render_esi(controller("ZghFEBundle:Wishlist:getWishlistPartialContent", {"id": user.id})) }}#}
+                {{ include("@ZghFE/Partial/user_profile_products_content.html.twig", {"products": products}) }}
             </div>
 
         </div>
-        <div id="addNewProductPopup" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
-             class="modal fade in">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header modalHeader">
-                        <button type="button" class="close modalClose" data-dismiss="modal"
-                                aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Add Product</h4>
-                    </div>
-                    {{ form_start(product_form, {"action": url("zgh_fe.products.new", {"id": app.user.id }), "attr" : {"id":"myform", "class": "form-horizontal"} }) }}
-
-                    <div class="modal-body form_wrapper">
-                        {{ include("@ZghFE/Partial/user_profile_product_add.html.twig", {"user": user, "product_form": product_form}) }}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-wide btn-primary product_submit">Create</button>
-                    </div>
-                    {{ form_rest(product_form) }}
-                    {{ form_end(product_form) }}
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-
     </div>
-
 {% endblock %}
-{% form_theme product_form with ['ThraceFormBundle:Form:fields.html.twig'] %}

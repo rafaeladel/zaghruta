@@ -18,6 +18,7 @@ class WidgetsExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction("getExpriences", [$this, "getExpriences"]),
+            new \Twig_SimpleFunction("getProducts", [$this, "getProducts"]),
             new \Twig_SimpleFunction("getComments", [$this, "getComments"])
         ];
     }
@@ -32,6 +33,12 @@ class WidgetsExtension extends \Twig_Extension
     {
         $comments = $entity->getComments();
         return $comments;
+    }
+
+    public function getProducts(User $user)
+    {
+        $products = $this->em->getRepository("ZghFEBundle:Product")->findByUser($user);
+        return $products;
     }
 
     public function getName()
