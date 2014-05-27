@@ -17,9 +17,7 @@
                                 {{ interest }}<br/>
                             {% endfor %}
                         </p>
-                        <button class="btn btn-primary btn-wide" type="button">
-                            <span class="glyphicon glyphicon-plus-sign"></span> {{ renderFollow(product.user) }}
-                        </button>
+                       {{ renderFollow(product.user) }}
                         <div class="groupItem">
                             <a href="#" class="boy"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> {{ product.user.followers|length }} </a>
 
@@ -33,7 +31,7 @@
                 <div class="col-md-9 Product">
                     <div class="row banner margin">
                         <div class="col-md-12">
-                            <img class="img-responsive" src="{{ asset(product.getWebPath()) }}">
+                            <img class="img-responsive" src="{{ asset(product.getThumbWebPath()) }}">
                         </div>
                     </div>
                     <div class="row hidden-md hidden-lg">
@@ -46,9 +44,53 @@
                             <button class="btn btn-danger btn-circle" type="button" data-target="#addwishlist" data-toggle="modal">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
-                            <button class="btn btn-danger btn-circle" type="button">
-                                <span class="glyphicon glyphicon-heart"></span>
-                            </button>
+                            <div id="addwishlist" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                                 class="modal fade in">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header modalHeader">
+                                            <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Add to Wishlist</h4>
+                                        </div>
+                                        {{ form_start(addWishlistForm, {"action": url("zgh_fe.products.add_to_wishlist", {"id": product.user.id, "product_id": product.id }), "attr": {"class": "form-horizontal"}  }) }}
+                                        <div class="modal-body">
+                                                <div class="form-group formGroup">
+                                                    {#<label class="col-sm-3 control-label">Select Wishlist</label>#}
+                                                    {{ form_label(addWishlistForm.wishlists, '', {"label_attr":{"class": "col-sm-3 control-label"} }) }}
+                                                    <div class="col-sm-9">
+                                                        {{ form_widget(addWishlistForm.wishlists, {"attr":{"class": ""} }) }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group formGroup">
+                                                    <label class="col-sm-3 control-label">List Name</label>
+
+                                                    <div class="col-sm-9">
+                                                        {{ form_widget(addWishlistForm.new_wishlist.wishlists, {"attr":{"class": "form-control", "placeholder": "Enter Caption"} }) }}
+                                                    </div>
+                                                </div>
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-wide btn-primary">Save</button>
+                                        </div>
+                                        {{ form_rest(addWishlistForm) }}
+                                        {{ form_end(addWishlistForm) }}
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+
+                            <form class="btnForm pull-right" action="{{ url("zgh_fe.like.post", {"id": product.id, "entity_type": product.getObjectType }) }}" method="post">
+                                <button type="submit" data-placement="top" data-toggle="tooltip" title="{{ checkLike(app.user, product) ? "Unlike" : "Like" }}" class="btn tooltip btn-danger likeBtn btn-circle {{ checkLike(app.user, product) ? "liked" : "" }}">
+                                    <span class="glyphicon glyphicon-heart"></span>
+                                </button>
+                                {#<button type="submit" data-placement="top" data-toggle="tooltip" title="{{ checkLike(app.user, post) ? "Unlike" : "Like" }}" class="btn tooltip btn-liked likeBtn btn-circle {{ checkLike(app.user, post) ? "liked" : "" }}">#}
+                                    {#<span class="glyphicon glyphicon-heart"></span>#}
+                                {#</button>#}
+                            </form>
 
                         </div>
                         <h2 class=col-md-4>{{ product.name }}</h2>
@@ -67,63 +109,8 @@
                     </div>
                     <div class="row">
                         <span class="col-md-4 price ">Price:<span> {{ product.price }}$</span></span>
-
-                        <div class="col-md-2 pull-right">
-                            <a href="#" class="girl pull-left iconHeart"> <span class="glyphicon glyphicon-heart"></span> 60 </a>
-                            <a href="#" class="girl pull-right"> <span class="glyphicon glyphicon-comment"></span> 800 </a>
-                            <span class="glyphicon "></span>
-                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="post">
-                                <button class="row   btn delete-post pull-right" type="button" data-toggle="modal" data-target="#deletePost"><span class="glyphicon glyphicon-remove pull-right"></span></button>
-                                <div class="header-post">
-
-                                    <div class="data-reacted col-xs-8 pull-left">
-                                        <div class="profile sm-img-post">
-                                            <a class="pull-left img-circle" href="#">
-                                                <img class="img-responsive  media-object" src="img/img-prf-comment2.jpg" alt="">
-                                            </a>
-
-                                            <h3><a href="">Ibrahem Ahmed</a></h3>
-                                            <span class="date-time">Saturday - 22 PM</span>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="clearfix"></div>
-                                </div>
-                                <!--End header-post-->
-
-                                <div class="content-post">
-                                    <p>
-                                        This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
-                                        sollicitudin,
-                                        lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio
-                                        sit amet nibh vulputate cursus a sit amet mauris.
-                                        Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris
-                                        vitae erat consequat auctor eu in elit. Class aptent
-
-                                    </p>
-
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                <!--End Footer-post-->
-
-                            </div>
-
-                            <div class="postBox">
-                                <textarea placeholder="Text input" class="form-control">  </textarea>
-                                <button type="button" class="btn btn-primary btn-sm btn-wide pull-right"> Post</button>
-                                <a href="#"><span class="glyphicon glyphicon-camera cam-post"></span> </a>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-
+                    {{ include("@ZghFE/Partial/common/comments_section.html.twig", {"entity": product}) }}
 
 
                 </div>

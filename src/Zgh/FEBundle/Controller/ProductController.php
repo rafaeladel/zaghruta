@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Zgh\FEBundle\Entity\Product;
 use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Form\ProductType;
+use Zgh\FEBundle\Form\ProductWishlistType;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductController extends Controller
         }
 
         $form = $this->createForm(new ProductType(), new Product());
-        return $this->render("@ZghFE/Partial/user_profile_product_add.html.twig", array(
+        return $this->render("@ZghFE/Partial/products/user_profile_product_add.html.twig", array(
                 "user" => $user,
                 "product_form" => $form->createView()
             ));
@@ -44,9 +45,9 @@ class ProductController extends Controller
             return new JsonResponse(
                 array(
                     "status" => 500,
-                    "view" => $this->renderView("@ZghFE/Partial/user_profile_product_add.html.twig", array(
+                    "view" => $this->renderView("@ZghFE/Partial/products/user_profile_product_add.html.twig", array(
                                 "user" => $user,
-                                "form" => $form->createView()
+                                "product_form" => $form->createView()
                             )),
                     "errors" => $form->getErrorsAsString()
                 )
@@ -79,9 +80,35 @@ class ProductController extends Controller
      */
     public function getProductContentAction(User $user, Product $product)
     {
+        $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
         return $this->render("@ZghFE/Default/product_content.html.twig",[
                 "user" => $user,
-                "product" => $product
+                "product" => $product,
+                "addWishlistForm" => $addWishlistForm->createView()
             ]);
     }
+
+    /**
+     * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
+     */
+    public function postAddToWishlistAction(Request $request, User $user, Product $product)
+    {
+        $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
+        $addWishlistForm->handleRequest($request);
+
+        if(!$addWishlistForm->isValid())
+        {
+            return new JsonResponse([
+                "status" => 500,
+                "errors" => $addWishlistForm->getErrorsAsString()
+            ]);
+        }
+        $this->getDoctrine()->getManager()->persist($product);
+        $this->getDoctrine()->getManager()->flush();
+
+        return new JsonResponse([
+            "status" => 200
+        ]);
+    }
+
 }

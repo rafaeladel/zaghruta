@@ -14,7 +14,7 @@ class TipController extends Controller
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $tips = $user->getTips();
-        return $this->render("@ZghFE/Partial/user_profile_tip_content.html.twig", array(
+        return $this->render("@ZghFE/Partial/tips/user_profile_tip_content.html.twig", array(
                 "tips" => $tips,
                 "user" => $user
             ));
@@ -38,7 +38,7 @@ class TipController extends Controller
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.tips_partial",array("id" => $user->getId())));
         }
         $form = $this->createForm(new TipType(), new Tip());
-        return $this->render("@ZghFE/Partial/user_profile_tip_add.html.twig", array(
+        return $this->render("@ZghFE/Partial/tips/user_profile_tip_add.html.twig", array(
                 "user" => $user,
                 "form" => $form->createView()
             ));
@@ -62,7 +62,7 @@ class TipController extends Controller
             return new JsonResponse(
                 array(
                     "status" => 500,
-                    "view" => $this->renderView("@ZghFE/Partial/user_profile_tip_add.html.twig", array(
+                    "view" => $this->renderView("@ZghFE/Partial/tips/user_profile_tip_add.html.twig", array(
                                 "user" => $user,
                                 "form" => $form->createView()
                             )),

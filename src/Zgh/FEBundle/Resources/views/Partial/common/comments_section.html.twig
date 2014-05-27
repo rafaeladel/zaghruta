@@ -22,7 +22,7 @@
     </div>
 
     <div class="comments_wrapper">
-    {{ include("@ZghFE/Partial/comments_list.html.twig", {"comments": comments} ) }}
+    {{ include("@ZghFE/Partial/common/comments_list.html.twig", {"comments": comments} ) }}
     </div>
     <div class="row">
         <form action="{{ url("zgh_fe.comment.new", {"id": entity.id, "entity_type": entity.getObjectType}) }}" method="post">

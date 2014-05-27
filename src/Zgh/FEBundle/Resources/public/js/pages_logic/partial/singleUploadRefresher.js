@@ -44,7 +44,6 @@ function singleUpload(button_class){
                         $(e.target).attr("disabled", "disabled").text("Saving");
                         if (myDropzone.getQueuedFiles().length > 0) {
                             myDropzone.on("sending", function(file, xhr, formData) {
-
                                 //store every tag with name attribute into the FormData object
                                 $(e.target).closest("form").find("[name]").each(function(i, v){
                                     formData.append($(v).attr("name"), $(v).val());
@@ -96,7 +95,7 @@ function singleUpload(button_class){
             $("body").find(".content_wrapper").html(data.view);
 
             //re-initializing dropzone plugin, becaus ajaxSuccess event is not triggered here
-            expTipRefresh(button_class);
+            singleUpload(button_class);
 
             ThraceForm.select2();
         }

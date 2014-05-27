@@ -19,4 +19,10 @@
     <route id="zgh_fe.products.content" pattern="/{id}/products/{product_id}" methods="GET">
         <default key="_controller">ZghFEBundle:Product:getProductContent</default>
     </route>
+
+    <route id="zgh_fe.products.add_to_wishlist" pattern="/{id}/products/{product_id}/wishlist" methods="POST">
+        <default key="_controller">ZghFEBundle:Product:postAddToWishlist</default>
+    </route>
+
+
 </routes>

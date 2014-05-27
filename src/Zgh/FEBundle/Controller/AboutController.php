@@ -15,7 +15,7 @@ class AboutController extends Controller
    {
        $user_info = $this->getDoctrine()->getRepository("ZghFEBundle:UserInfo")->find($id);
        $form = $this->createForm(new UserInfoType(), $user_info);
-       return $this->render("@ZghFE/Partial/user_profile_about_edit_customer.html.twig", array(
+       return $this->render("@ZghFE/Partial/about/user_profile_about_edit_customer.html.twig", array(
                "info" => $user_info,
                "form" => $form->createView()
            ));
@@ -31,7 +31,7 @@ class AboutController extends Controller
        {
            return new JsonResponse(array(
                    "status" => 500,
-                   "view" => $this->renderView("@ZghFE/Partial/user_profile_about_edit_customer.html.twig", array(
+                   "view" => $this->renderView("@ZghFE/Partial/about/user_profile_about_edit_customer.html.twig", array(
                                "info" => $user_info,
                                "form" => $form->createView()
                            ))
@@ -49,7 +49,7 @@ class AboutController extends Controller
     {
         $vendor_info = $this->getDoctrine()->getRepository("ZghFEBundle:VendorInfo")->find($id);
         $form = $this->createForm(new VendorInfoType(), $vendor_info);
-        return $this->render("@ZghFE/Partial/user_profile_about_edit_vendor.html.twig", array(
+        return $this->render("@ZghFE/Partial/about/user_profile_about_edit_vendor.html.twig", array(
                 "info" => $vendor_info,
                 "form" => $form->createView()
             ));
@@ -65,7 +65,7 @@ class AboutController extends Controller
         {
             return new JsonResponse(array(
                 "status" => 500,
-                "view" => $this->renderView("@ZghFE/Partial/user_profile_about_edit_vendor.html.twig", array(
+                "view" => $this->renderView("@ZghFE/Partial/about/user_profile_about_edit_vendor.html.twig", array(
                             "info" => $vendor_info,
                             "form" => $form->createView()
                         ))

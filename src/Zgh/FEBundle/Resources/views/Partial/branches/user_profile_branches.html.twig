@@ -33,7 +33,7 @@
                 </div>
                 {{ form_start(form, {"action": url("zgh_fe.branches.new", {"id": user.id }), "attr" : {"id": "myform", "class": "form-horizontal"} }) }}
                     <div class="form_wrapper">
-                     {{ include("@ZghFE/Partial/user_profile_branch_add.html.twig", {"user": user, "form": form}) }}
+                     {{ include("@ZghFE/Partial/branches/user_profile_branch_add.html.twig", {"user": user, "form": form}) }}
                     </div>
                 {{ form_rest(form) }}
                 {{ form_end(form) }}

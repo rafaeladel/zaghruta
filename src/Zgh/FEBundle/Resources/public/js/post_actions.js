@@ -7,7 +7,7 @@ $(document).ready(function(){
         var btn = $(e.currentTarget);
         $(e.currentTarget).attr("disabled", "disabled");
         var form = $(e.currentTarget).closest("form");
-        var count_wrapper = $(e.currentTarget).closest(".post, .photo, .experience, .tip").find(".likes_count");
+        var count_wrapper = $(e.currentTarget).closest(".post, .photo, .experience, .tip, .product").find(".likes_count");
         var old_count = count_wrapper.text();
         if($(e.currentTarget).find("span").hasClass("liked")){
             count_wrapper.text(--old_count);
@@ -43,7 +43,7 @@ $(document).ready(function(){
 
     $("body").on("click", ".openLikes", function(e){
         e.preventDefault();
-        var wrapper = $(e.target).closest(".post, .experience, .photo, .tip").find(".likes_wrapper");
+        var wrapper = $(e.target).closest(".post, .experience, .photo, .tip, .product").find(".likes_wrapper");
         var id = $(e.currentTarget).data("entity_id");
         var entity_type = $(e.currentTarget).data("entity_type");
         var url = Routing.generate('zgh_fe.like.list', { id: id, entity_type: entity_type }, true);

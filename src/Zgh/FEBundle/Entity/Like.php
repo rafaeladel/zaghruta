@@ -19,6 +19,7 @@ class Like
     const LIKE_TYPE_PHOTO = 1;
     const LIKE_TYPE_EXPERIENCE = 2;
     const LIKE_TYPE_TIP = 3;
+    const LIKE_TYPE_PRODUCT = 4;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="likes")
@@ -128,7 +129,8 @@ class Like
             self::LIKE_TYPE_POST => 'Zgh\FEBundle\Entity\Post',
             self::LIKE_TYPE_PHOTO => 'Zgh\FEBundle\Entity\Photo',
             self::LIKE_TYPE_EXPERIENCE => 'Zgh\FEBundle\Entity\Experience',
-            self::LIKE_TYPE_TIP => 'Zgh\FEBundle\Entity\Tip'
+            self::LIKE_TYPE_TIP => 'Zgh\FEBundle\Entity\Tip',
+            self::LIKE_TYPE_PRODUCT => 'Zgh\FEBundle\Entity\Product'
         ];
     }
 }

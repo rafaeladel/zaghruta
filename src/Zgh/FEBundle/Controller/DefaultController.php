@@ -22,7 +22,7 @@ class DefaultController extends Controller
         $csrfToken = $this->container->has('form.csrf_provider')
             ? $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate')
             : null;
-        return $this->render("@ZghFE/Partial/userLoginPartial.html.twig", array(
+        return $this->render("@ZghFE/Partial/security/userLoginPartial.html.twig", array(
                 "last_username" => $lastUsername,
                 "csrf_token" => $csrfToken
             ));
@@ -37,7 +37,7 @@ class DefaultController extends Controller
         $csrfToken = $this->container->has('form.csrf_provider')
             ? $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate')
             : null;
-        return $this->render("@ZghFE/Partial/vendorLoginPartial.html.twig", array(
+        return $this->render("@ZghFE/Partial/security/vendorLoginPartial.html.twig", array(
                 "last_username" => $lastUsername,
                 "csrf_token" => $csrfToken
             ));
@@ -45,6 +45,6 @@ class DefaultController extends Controller
 
     public function getShortcutsAndNotificationAction(Request $request)
     {
-        return $this->render("@ZghFE/Partial/shortcuts&notifications.html.twig");
+        return $this->render("@ZghFE/Partial/common/shortcuts&notifications.html.twig");
     }
 }

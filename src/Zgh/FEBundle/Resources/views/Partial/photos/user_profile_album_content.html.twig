@@ -54,13 +54,13 @@
 
         </div>
         <div class="row photosWrapper" id="photos">
-            {{ include("@ZghFE/Partial/user_profile_photos_p_content.html.twig", {"photos" : album.photos }) }}
+            {{ include("@ZghFE/Partial/photos/user_profile_photos_p_content.html.twig", {"photos" : album.photos }) }}
         </div>
 
         <div id="addPhotoPopup" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
              class="modal fade in" data-list_class="content_wrapper"
              data-ajax_url="{{ url("zgh_fe.photos_partial_albums_photos_content", {"id": user.id, "album_id": album.id }) }}">
-            {{ include("@ZghFE/Partial/photo_add_modal.html.twig") }}
+            {{ include("@ZghFE/Partial/photos/photo_add_modal.html.twig") }}
         </div>
 
     </div>

@@ -19,7 +19,10 @@ class CommentController extends Controller
             $entity = $em->getRepository(Comment::getTypes()[Comment::COMMENT_TYPE_EXPERIENCE])->find($id);
         } else if($entity_type == 3){
             $entity = $em->getRepository(Comment::getTypes()[Comment::COMMENT_TYPE_TIP])->find($id);
+        }else if($entity_type == 4){
+            $entity = $em->getRepository(Comment::getTypes()[Comment::COMMENT_TYPE_PRODUCT])->find($id);
         }
+
 
         return $this->get("zgh_fe.comment_manager")->postComment($request, $entity);
     }
@@ -42,10 +45,13 @@ class CommentController extends Controller
             $entity = $em->getRepository(Comment::getTypes()[Comment::COMMENT_TYPE_EXPERIENCE])->find($id);
         } else if($entity_type == 3){
             $entity = $em->getRepository(Comment::getTypes()[Comment::COMMENT_TYPE_TIP])->find($id);
+        } else if($entity_type == 4){
+            $entity = $em->getRepository(Comment::getTypes()[Comment::COMMENT_TYPE_PRODUCT])->find($id);
         }
 
+
         $comments = $entity->getComments();
-        return $this->render("@ZghFE/Partial/comments_list.html.twig",[
+        return $this->render("@ZghFE/Partial/common/comments_list.html.twig",[
                 "comments" => $comments
             ]);
     }

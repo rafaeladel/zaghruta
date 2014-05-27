@@ -18,10 +18,12 @@ class LikeController extends Controller
             $entity = $em->getRepository(Like::getTypes()[Like::LIKE_TYPE_EXPERIENCE])->find($id);
         } else if($entity_type == 3){
             $entity = $em->getRepository(Like::getTypes()[Like::LIKE_TYPE_TIP])->find($id);
+        } else if($entity_type == 4){
+            $entity = $em->getRepository(Like::getTypes()[Like::LIKE_TYPE_PRODUCT])->find($id);
         }
 
         $likes = $entity->getLikes();
-        return $this->render("@ZghFE/Partial/likes_popup.html.twig", array("likes" => $likes));
+        return $this->render("@ZghFE/Partial/common/likes_popup.html.twig", array("likes" => $likes));
     }
 
 
@@ -38,7 +40,10 @@ class LikeController extends Controller
             $entity = $em->getRepository(Like::getTypes()[Like::LIKE_TYPE_EXPERIENCE])->find($id);
         } else if($entity_type == 3){
             $entity = $em->getRepository(Like::getTypes()[Like::LIKE_TYPE_TIP])->find($id);
+        } else if($entity_type == 4){
+            $entity = $em->getRepository(Like::getTypes()[Like::LIKE_TYPE_PRODUCT])->find($id);
         }
+
 
         return $this->get("zgh_fe.like_manager")->postLike($entity);
     }

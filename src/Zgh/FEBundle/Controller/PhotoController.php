@@ -37,7 +37,7 @@ class PhotoController extends Controller
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $photos = $user->getPhotos();
-        return $this->render("@ZghFE/Partial/user_profile_photos_p_content.html.twig", array(
+        return $this->render("@ZghFE/Partial/photos/user_profile_photos_p_content.html.twig", array(
                 "photos" => $photos
             ));
     }
@@ -46,7 +46,7 @@ class PhotoController extends Controller
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $albums = $user->getAlbums();
-        return $this->render("@ZghFE/Partial/user_profile_photos_a_content.html.twig", array(
+        return $this->render("@ZghFE/Partial/photos/user_profile_photos_a_content.html.twig", array(
                 "albums" => $albums
             ));
     }
@@ -56,7 +56,7 @@ class PhotoController extends Controller
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $albums = $user->getAlbums();
         $album = $this->getDoctrine()->getRepository("ZghFEBundle:Album")->find($album_id);
-        return $this->render("@ZghFE/Partial/user_profile_album_content.html.twig", array(
+        return $this->render("@ZghFE/Partial/photos/user_profile_album_content.html.twig", array(
                 "user" => $user,
                 "albums" => $albums,
                 "album" => $album

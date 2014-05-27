@@ -2,7 +2,10 @@
 
 namespace Zgh\FEBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Zgh\FEBundle\Model\CommentableInterface;
+use Zgh\FEBundle\Model\LikeableInterface;
 use Zgh\FEBundle\Model\Partial\BasicInfo;
 use Zgh\FEBundle\Model\Utilities\Image;
 
@@ -11,7 +14,7 @@ use Zgh\FEBundle\Model\Utilities\Image;
  * @ORM\Table(name="products")
  * @ORM\HasLifecycleCallbacks
  */
-class Product extends Image
+class Product extends Image implements LikeableInterface, CommentableInterface
 {
     use BasicInfo;
 
@@ -53,9 +56,19 @@ class Product extends Image
     protected $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Wishlist")
+     * @ORM\ManyToMany(targetEntity="Wishlist", cascade={"persist", "remove"})
      */
     protected $wishlists;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $likes;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $comments;
 
     /**
      * Constructor
@@ -255,5 +268,61 @@ class Product extends Image
     public function getTags()
     {
         return $this->tags;
+    }
+
+    public function getObjectId()
+    {
+        return $this->getId();
+    }
+
+    public function getObjectType()
+    {
+        return Like::LIKE_TYPE_PRODUCT;
+    }
+
+    public function addComment(Comment $comment)
+    {
+        $this->comments[] = $comment;
+        return $this;
+    }
+
+    public function setComments(ArrayCollection $comments)
+    {
+        $this->comments = $comments;
+        return $this;
+    }
+
+    public function removeComment(\Zgh\FEBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+        return $this;
+    }
+
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    public function addLike(Like $like)
+    {
+        $this->likes[] = $like;
+        return $this;
+    }
+
+    public function setLikes(ArrayCollection $likes)
+    {
+        $this->likes = $likes;
+        return $this;
+    }
+
+    public function removeLike(\Zgh\FEBundle\Entity\Like $likes)
+    {
+        $this->likes->removeElement($likes);
+        return $this;
+    }
+
+    public function getLikes()
+    {
+        return $this->likes;
     }
 }

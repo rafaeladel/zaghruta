@@ -18,23 +18,23 @@ class TagInputType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-//        $transformer = new TagsTransformer($this->em);
-//        $builder->addModelTransformer($transformer);
+        $transformer = new TagsTransformer($this->em);
+        $builder->addModelTransformer($transformer);
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-                "class" => "Zgh\FEBundle\Entity\Tag",
-                "property" => "name",
-                "empty_value" => "Tag",
-                "multiple" => true
+//                "class" => "Zgh\FEBundle\Entity\Tag",
+//                "property" => "name",
+//                "empty_value" => "Tag",
+//                "multiple" => true
             ]);
     }
 
     public function getParent()
     {
-        return "thrace_select2_entity";
+        return "text";
     }
 
     public function getName()

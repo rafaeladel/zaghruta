@@ -15,7 +15,7 @@ class BranchController extends Controller
     public function getBranchesListAction(User $user)
     {
         $branches = $user->getBranches();
-        return $this->render("@ZghFE/Partial/user_profile_branches_content.html.twig", [
+        return $this->render("@ZghFE/Partial/branches/user_profile_branches_content.html.twig", [
                 "user" => $user,
                 "branches" => $branches
             ]);
@@ -32,7 +32,7 @@ class BranchController extends Controller
         {
             return new JsonResponse([
                 "status" => 500,
-                "view" => $this->renderView("@ZghFE/Partial/user_profile_branch_add.html.twig", [
+                "view" => $this->renderView("@ZghFE/Partial/branches/user_profile_branch_add.html.twig", [
                             "user" => $user,
                             "form" => $form->createView()
                         ])
@@ -56,7 +56,7 @@ class BranchController extends Controller
     public function getEditBranchAction(User $user, Branch $branch)
     {
         $form = $this->createForm(new BranchType(), $branch);
-        return $this->render("@ZghFE/Partial/user_profile_branch_edit.html.twig", [
+        return $this->render("@ZghFE/Partial/branches/user_profile_branch_edit.html.twig", [
                     "user" => $user,
                     "branch" => $branch,
                     "form" => $form->createView()
@@ -83,7 +83,7 @@ class BranchController extends Controller
 
         return new JsonResponse([
             "status" => 500,
-            "view" => $this->renderView("@ZghFE/Partial/user_profile_branch_edit.html.twig", [
+            "view" => $this->renderView("@ZghFE/Partial/branches/user_profile_branch_edit.html.twig", [
                         "user" => $user,
                         "branch" => $branch,
                         "form" => $form->createView()
@@ -97,7 +97,7 @@ class BranchController extends Controller
      */
     public function getBranchInnerAction(User $user, Branch $branch)
     {
-        return $this->render("@ZghFE/Partial/user_profile_branch_inner_content.html.twig", [
+        return $this->render("@ZghFE/Partial/branches/user_profile_branch_inner_content.html.twig", [
                 "user" => $user,
                 "branch" => $branch
             ]);

@@ -38,6 +38,7 @@ class LikeManager
             //If user already liked the post remove it
             $this->em->remove($result);
             $entity->removeLike($result);
+            //for ui classes
             $state = 0;
         } else {
             //If not, like it

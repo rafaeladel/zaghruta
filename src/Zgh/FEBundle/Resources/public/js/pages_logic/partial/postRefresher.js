@@ -7,7 +7,7 @@ function postRefresh()
     var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             var comments_count = $(mutation.target).find(".postComment").length;
-            $(mutation.target).closest(".post, .photo, .experience, .tip").find(".comments_count").text(comments_count);
+            $(mutation.target).closest(".post, .photo, .experience, .tip, .product").find(".comments_count").text(comments_count);
         });
     });
 

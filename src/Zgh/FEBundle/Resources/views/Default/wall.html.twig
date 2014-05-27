@@ -4,7 +4,7 @@
 
     {% block leftContent %}
         <div id="wall" class="col-md-8 col-sm-7 col-xs-12">
-            {{ include("@ZghFE/Partial/post_form.html.twig", {"return_url": app.request.getRequestURI() }) }}
+            {{ include("@ZghFE/Partial/common/post_form.html.twig", {"return_url": app.request.getRequestURI() }) }}
 
             <div class="posts_wrapper">
             {{ render_esi(controller("ZghFEBundle:Post:getPublicList")) }}

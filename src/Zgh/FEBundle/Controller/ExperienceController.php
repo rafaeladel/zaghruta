@@ -13,7 +13,7 @@ class ExperienceController extends Controller
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $experiences = $user->getExperiences();
-        return $this->render("@ZghFE/Partial/user_profile_experience_content.html.twig", array(
+        return $this->render("@ZghFE/Partial/experiences/user_profile_experience_content.html.twig", array(
             "experiences" => $experiences,
             "user" => $user
         ));
@@ -37,7 +37,7 @@ class ExperienceController extends Controller
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.experiences_partial",array("id" => $user->getId())));
         }
         $form = $this->createForm(new ExperienceType(), new Experience());
-        return $this->render("@ZghFE/Partial/user_profile_experience_add.html.twig", array(
+        return $this->render("@ZghFE/Partial/experiences/user_profile_experience_add.html.twig", array(
                 "user" => $user,
                 "form" => $form->createView()
             ));
@@ -62,7 +62,7 @@ class ExperienceController extends Controller
             return new JsonResponse(
                 array(
                     "status" => 500,
-                    "view" => $this->renderView("@ZghFE/Partial/user_profile_experience_add.html.twig", array(
+                    "view" => $this->renderView("@ZghFE/Partial/experiences/user_profile_experience_add.html.twig", array(
                                 "user" => $user,
                                 "form" => $form->createView()
                             )),

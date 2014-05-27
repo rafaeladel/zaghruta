@@ -161,7 +161,7 @@ class UserProfileController extends Controller
         }
 
         $post_form = $this->createForm(new PostType(), new Post());
-        return $this->render('@ZghFE/Partial/user_profile_main.html.twig', array(
+        return $this->render('@ZghFE/Partial/common/user_profile_main.html.twig', array(
                 'user' => $user,
                 'post_form' => $post_form->createView()
             ));
@@ -172,12 +172,12 @@ class UserProfileController extends Controller
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         if(in_array("ROLE_CUSTOMER", $user->getRoles())){
             $about = $user->getUserInfo();
-            return $this->render('@ZghFE/Partial/user_profile_about_customer.html.twig', array(
+            return $this->render('@ZghFE/Partial/about/user_profile_about_customer.html.twig', array(
                     "about" => $about
                 ));
         } else if(in_array("ROLE_VENDOR", $user->getRoles())){
             $about = $user->getVendorInfo();
-            return $this->render('@ZghFE/Partial/user_profile_about_vendor.html.twig', array(
+            return $this->render('@ZghFE/Partial/about/user_profile_about_vendor.html.twig', array(
                     "about" => $about
                 ));
         }
@@ -187,7 +187,7 @@ class UserProfileController extends Controller
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $form = $this->createForm(new BranchType(), new Branch());
-        return $this->render("@ZghFE/Partial/user_profile_branches.html.twig", [
+        return $this->render("@ZghFE/Partial/branches/user_profile_branches.html.twig", [
                 "user" => $user,
                 "form" => $form->createView()
             ]);
@@ -204,7 +204,7 @@ class UserProfileController extends Controller
         }
 
         $form = $this->createForm(new WishlistType(), new Wishlist());
-        return $this->render("@ZghFE/Partial/user_profile_wishlist.html.twig", array(
+        return $this->render("@ZghFE/Partial/wishlists/user_profile_wishlist.html.twig", array(
                 "user" => $user,
                 "wishlist_form" => $form->createView()
             ));
@@ -218,7 +218,7 @@ class UserProfileController extends Controller
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
         }
 
-        return $this->render("@ZghFE/Partial/user_profile_products.html.twig", array(
+        return $this->render("@ZghFE/Partial/products/user_profile_products.html.twig", array(
                 "user" => $user,
             ));
     }
@@ -233,7 +233,7 @@ class UserProfileController extends Controller
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
         }
         $albums = $user->getAlbums();
-        return $this->render("@ZghFE/Partial/user_profile_photos.html.twig", array(
+        return $this->render("@ZghFE/Partial/photos/user_profile_photos.html.twig", array(
                 "user" => $user,
                 "albums" => $albums
             ));
@@ -249,7 +249,7 @@ class UserProfileController extends Controller
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
         }
         $albums = $user->getAlbums();
-        return $this->render("@ZghFE/Partial/user_profile_albums.html.twig", array(
+        return $this->render("@ZghFE/Partial/photos/user_profile_albums.html.twig", array(
                 "user" => $user,
                 "albums" => $albums
             ));
@@ -264,7 +264,7 @@ class UserProfileController extends Controller
         {
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
         }
-        return $this->render("@ZghFE/Partial/user_profile_experiences.html.twig",array(
+        return $this->render("@ZghFE/Partial/experiences/user_profile_experiences.html.twig",array(
                 "user" => $user,
             ));
     }
@@ -278,7 +278,7 @@ class UserProfileController extends Controller
 //            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
 //        }
 
-        return $this->render("@ZghFE/Partial/user_profile_tips.html.twig",array(
+        return $this->render("@ZghFE/Partial/tips/user_profile_tips.html.twig",array(
                 "user" => $user,
             ));
     }
@@ -291,7 +291,7 @@ class UserProfileController extends Controller
 //                "user" => $user,
 //                "form" => $form->createView()
 //            ));
-        return $this->render("ZghFEBundle:Partial:user_profile_connections.html.twig", array(
+        return $this->render("@ZghFE/Partial/connections/user_profile_connections.html.twig", array(
                 "user" => $user
             ));
     }

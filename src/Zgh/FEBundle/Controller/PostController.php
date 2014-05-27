@@ -16,7 +16,7 @@ class PostController extends Controller
     public function getOwnListAction($id)
     {
         $posts = $this->getDoctrine()->getRepository("ZghFEBundle:Post")->findPosts($id);
-        return $this->render("@ZghFE/Partial/posts_partials.html.twig", array(
+        return $this->render("@ZghFE/Partial/posts/posts_partials.html.twig", array(
                 "posts" => $posts
             ));
     }
@@ -25,7 +25,7 @@ class PostController extends Controller
     {
         $user = $this->get("security.context")->getToken()->getUser();
         $posts = $this->getDoctrine()->getRepository("ZghFEBundle:User")->getPosts($user);
-        return $this->render("@ZghFE/Partial/posts_partials.html.twig", array(
+        return $this->render("@ZghFE/Partial/posts/posts_partials.html.twig", array(
                 "posts" => $posts
             ));
     }

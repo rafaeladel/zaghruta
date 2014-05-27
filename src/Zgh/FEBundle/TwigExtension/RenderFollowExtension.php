@@ -35,9 +35,8 @@ class RenderFollowExtension extends \Twig_Extension
     }
 
     /**
-     * Returns follow button markup
-     *
      * @param User $user
+     * @param string $classes
      * @return null|string
      */
     public function renderFollow(User $user, $classes = "")

@@ -19,6 +19,7 @@ class Comment
     const COMMENT_TYPE_PHOTO = 1;
     const COMMENT_TYPE_EXPERIENCE = 2;
     const COMMENT_TYPE_TIP = 3;
+    const COMMENT_TYPE_PRODUCT = 4;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -110,7 +111,8 @@ class Comment
             self::COMMENT_TYPE_POST => 'Zgh\FEBundle\Entity\Post',
             self::COMMENT_TYPE_PHOTO => 'Zgh\FEBundle\Entity\Photo',
             self::COMMENT_TYPE_EXPERIENCE => 'Zgh\FEBundle\Entity\Experience',
-            self::COMMENT_TYPE_TIP => 'Zgh\FEBundle\Entity\Tip'
+            self::COMMENT_TYPE_TIP => 'Zgh\FEBundle\Entity\Tip',
+            self::COMMENT_TYPE_PRODUCT => 'Zgh\FEBundle\Entity\Product'
         ];
     }
 
