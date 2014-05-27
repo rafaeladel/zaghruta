@@ -43,7 +43,7 @@ class Product extends Image
     protected $description;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="decimal", scale=2, nullable=true)
      */
     protected $price;
 

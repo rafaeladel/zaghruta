@@ -1,14 +1,14 @@
 {% for product in products %}
     <div class="product-G col-md-3 col-xs-6  col-sm-6">
         <div class="thumbnail clearfix">
-            <a href="#product" class="textImageContainer fancybox">
+            <a data-fancybox-href="#product_{{ product.id }}" href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}" class="textImageContainer fancybox">
                 <div class="thumbOverlay img-responsive">
                     <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
                 </div>
                 <img class="img-responsive" src="{{ asset(product.getWebPath()) }}">
             </a>
 
-            <div class="caption">
+            <div id="#product_{{ product.id }}" class="caption">
                 <a href="#"><h4>{{ product.name }}</h4></a>
                 <h6>Furniture & Home</h6>
                 <span class="date">{{ product.createdAt|date() }}</span>

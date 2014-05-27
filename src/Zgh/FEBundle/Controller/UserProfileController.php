@@ -8,6 +8,7 @@ use Zgh\FEBundle\Entity\Branch;
 use Zgh\FEBundle\Entity\Experience;
 use Zgh\FEBundle\Entity\Post;
 use Zgh\FEBundle\Entity\Product;
+use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Entity\UserInfo;
 use Zgh\FEBundle\Entity\UserPP;
 use Zgh\FEBundle\Entity\Wishlist;
@@ -209,14 +210,12 @@ class UserProfileController extends Controller
             ));
     }
 
-    public function getProductsPartialAction($id)
+    public function getProductsPartialAction(User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
-
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
         if(!$authorized)
         {
-            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
+            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
         }
 
         return $this->render("@ZghFE/Partial/user_profile_products.html.twig", array(

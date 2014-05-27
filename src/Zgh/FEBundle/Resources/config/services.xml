@@ -21,6 +21,7 @@
         <parameter key="zgh_fe.like_manager.class">Zgh\FEBundle\Service\LikeManager</parameter>
         <parameter key="zgh_fe.comment_manager.class">Zgh\FEBundle\Service\CommentManager</parameter>
         <parameter key="zgh_fe.tag.class">Zgh\FEBundle\Form\Type\TagInputType</parameter>
+        <parameter key="zgh_fe.delete_manager.class">Zgh\FEBundle\Service\DeleteManager</parameter>
     </parameters>
 
     <services>
@@ -102,6 +103,10 @@
         <service id="zgh_fe.tag" class="%zgh_fe.tag.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <tag name="form.type" alias="tag_input"/>
+        </service>
+
+        <service id="zgh_fe.delete_manager" class="%zgh_fe.delete_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
         </service>
 
         <!--<service id="zgh_fe.param_converter.social" class="Zgh\FEBundle\ParamConverter\SocialConverter">-->
