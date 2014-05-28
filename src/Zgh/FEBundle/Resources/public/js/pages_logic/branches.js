@@ -13,10 +13,11 @@ $(document).ready(function(){
                        if(data.status == 200){
                            form[0].reset();
                            $("#addBranch").modal("hide");
+                           $(e.currentTarget).removeAttr("disabled").text("Create");
                            $(".content_wrapper").find("#branches_list").load(UrlContainer.branchesList);
                        } else if(data.status == 500){
-                           $(e.currentTarget).closest("#addBranch").find(".form_wrapper").html(data.view);
                            $(e.currentTarget).removeAttr("disabled").text("Create");
+                           $(e.currentTarget).closest("#addBranch").find(".form_wrapper").html(data.view);
                        }
                    }
                });

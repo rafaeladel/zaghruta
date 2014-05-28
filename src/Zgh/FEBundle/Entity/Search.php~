@@ -1,0 +1,22 @@
+<?php
+
+namespace Zgh\FEBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Zgh\FEBundle\Model\Partial\BasicInfo;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="searches")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Search
+{
+//    use BasicInfo;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $search_text;
+
+}

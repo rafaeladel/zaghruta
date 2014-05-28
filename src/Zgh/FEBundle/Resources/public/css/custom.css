@@ -2284,3 +2284,11 @@ border-top: none;
     height: 100%;
     width: auto;
 }
+#profile_pic_popup{
+    height: 450px;
+    width: 600px;
+}
+#profile_pic_popup img{
+    height: auto;
+    width: 100%;
+}

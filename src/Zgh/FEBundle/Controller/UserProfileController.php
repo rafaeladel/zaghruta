@@ -8,6 +8,7 @@ use Zgh\FEBundle\Entity\Branch;
 use Zgh\FEBundle\Entity\Experience;
 use Zgh\FEBundle\Entity\Post;
 use Zgh\FEBundle\Entity\Product;
+use Zgh\FEBundle\Entity\Search;
 use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Entity\UserInfo;
 use Zgh\FEBundle\Entity\UserPP;
@@ -16,6 +17,7 @@ use Zgh\FEBundle\Form\BranchType;
 use Zgh\FEBundle\Form\ExperienceType;
 use Zgh\FEBundle\Form\PostType;
 use Zgh\FEBundle\Form\ProductType;
+use Zgh\FEBundle\Form\SearchType;
 use Zgh\FEBundle\Form\UserInfoType;
 use Zgh\FEBundle\Form\WishlistType;
 
@@ -218,8 +220,11 @@ class UserProfileController extends Controller
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
         }
 
+        $search_form = $this->createForm(new SearchType(), new Search());
+
         return $this->render("@ZghFE/Partial/products/user_profile_products.html.twig", array(
                 "user" => $user,
+                "search_form" => $search_form->createView()
             ));
     }
 

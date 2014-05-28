@@ -1,0 +1,54 @@
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/inner_ajax_layout.html.twig':'@ZghFE/Default/product_content.html.twig' %}
+
+{% block innerPartial %}
+    {% form_theme product_form with ['ThraceFormBundle:Form:fields.html.twig'] %}
+    {{ form_start(product_form, {"action": url("zgh_fe.products.post_edit", {"id": app.user.id, "product_id": product.id }), "attr" : {"id":"myform", "class": "form-horizontal"} }) }}
+
+    <div class="form-group formGroup">
+        {{ form_label(product_form.name, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+        <div class="col-sm-9">
+            {{ form_widget(product_form.name, {"attr":{"class":"form-control", "placeholder": "Product name "} }) }}
+            {{ form_errors(product_form.name) }}
+
+        </div>
+    </div>
+    <div class="form-group formGroup">
+        {{ form_label(product_form.description, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+        <div class="col-sm-9">
+            {{ form_widget(product_form.description, {"attr":{"class":"form-control", "placeholder": "Product description"} }) }}
+            {{ form_errors(product_form.description) }}
+        </div>
+    </div>
+    <div class="form-group formGroup">
+        {{ form_label(product_form.categories, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+        <div class="col-sm-9">
+            {{ form_widget(product_form.categories, {"attr":{"class":"form-control", "placeholder": "Product categories"} }) }}
+            {{ form_errors(product_form.categories) }}
+        </div>
+    </div>
+    <div class="form-group formGroup">
+        {{ form_label(product_form.price, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+        <div class="col-sm-9">
+            {{ form_widget(product_form.price, {"attr":{"class":"form-control", "placeholder": "Product price", "data-parsley-type": "number"} }) }}
+            {{ form_errors(product_form.price) }}
+
+        </div>
+    </div>
+    <div class="form-group formGroup">
+        {{ form_label(product_form.tags, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+        <div class="col-sm-9">
+            {{ form_widget(product_form.tags, {"attr":{"class":"form-control"} }) }}
+            {{ form_errors(product_form.tags) }}
+
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-wide btn-primary product_edit_submit"
+            data-back_url="{{ url("zgh_fe.products.get_content_widget", {"id": user.id, "product_id": product.id }) }}">
+        Save
+    </button>
+    <a href="{{ url("zgh_fe.products.get_content_widget", {"id": user.id, "product_id": product.id }) }}"
+       class="moveEditProduct">Cancel</a>
+    {{ form_rest(product_form) }}
+    {{ form_end(product_form) }}
+{% endblock innerPartial %}

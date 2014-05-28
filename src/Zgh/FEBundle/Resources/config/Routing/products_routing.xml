@@ -12,6 +12,18 @@
         <default key="_controller">ZghFEBundle:Product:postNew</default>
     </route>
 
+    <route id="zgh_fe.products.get_content_widget" pattern="/{id}/products/{product_id}/content" methods="GET">
+        <default key="_controller">ZghFEBundle:Product:getProductContentWidget</default>
+    </route>
+
+    <route id="zgh_fe.products.get_edit" pattern="/{id}/products/{product_id}/edit" methods="GET">
+        <default key="_controller">ZghFEBundle:Product:getEdit</default>
+    </route>
+
+    <route id="zgh_fe.products.post_edit" pattern="/{id}/products/{product_id}/edit" methods="POST">
+        <default key="_controller">ZghFEBundle:Product:postEdit</default>
+    </route>
+
     <route id="zgh_fe.products.delete" pattern="/{id}/products/{product_id}/delete">
         <default key="_controller">ZghFEBundle:Product:postDelete</default>
     </route>

@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Zgh\FEBundle\Entity\Product;
 use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Form\ProductType;
@@ -21,7 +22,7 @@ class ProductController extends Controller
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
         }
 
-        $form = $this->createForm(new ProductType(), new Product());
+        $form = $this->createForm(new ProductType(), new Product(), ["type" => "add"]);
         return $this->render("@ZghFE/Partial/products/user_profile_product_add.html.twig", array(
                 "user" => $user,
                 "product_form" => $form->createView()
@@ -57,6 +58,60 @@ class ProductController extends Controller
         $em->persist($user);
         $em->flush();
         return new JsonResponse(array("status" => 200));
+    }
+
+    /**
+     * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
+     */
+    public function getProductContentWidgetAction(User $user, Product $product)
+    {
+        $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
+        return $this->render("@ZghFE/Partial/products/user_profile_product_content_widget.html.twig",[
+                "user" => $user,
+                "product" => $product,
+                "addWishlistForm" => $addWishlistForm->createView()
+            ]);
+    }
+
+    /**
+     * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
+     */
+    public function getEditAction(User $user, Product $product)
+    {
+        if($product->getUser()->getId() != $this->getUser()->getId())
+        {
+            throw new AccessDeniedException;
+        }
+        $product_form = $this->createForm(new ProductType(), $product, ["type" => "edit"]);
+        return $this->render("@ZghFE/Partial/products/user_profile_product_edit_widget.html.twig", [
+                "user" => $user,
+                "product" => $product,
+                "product_form" => $product_form->createView()
+            ]);
+    }
+
+    /**
+     * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
+     */
+    public function postEditAction(Request $request, User $user, Product $product)
+    {
+        $product_form = $this->createForm(new ProductType(), $product, ["type" => "edit"]);
+        $product_form->handleRequest($request);
+        if(!$product_form->isValid())
+        {
+            return new JsonResponse([
+                "status" => 500,
+                "view" => $this->renderView("@ZghFE/Partial/products/user_profile_product_edit_widget.html.twig", [
+                            "user" => $user,
+                            "product" => $product,
+                            "product_form" => $product_form->createView()
+                        ]),
+                "errors" => $product_form->getErrorsAsString()
+            ]);
+        }
+        $this->getDoctrine()->getManager()->persist($product);
+        $this->getDoctrine()->getManager()->flush();
+        return new JsonResponse(["status" => 200]);
     }
 
     /**

@@ -118,8 +118,8 @@
 	background: transparent url('../img/fancybox/blank.gif'); /* helps IE */
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	z-index: 8040;
+    max-height: 640px;
 }
-
 .fancybox-prev {
 	left: -50px;
 }

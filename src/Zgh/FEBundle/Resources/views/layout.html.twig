@@ -2,12 +2,12 @@
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets
-        "bundles/zghfe/plugins/Imgareaselect/css/imgareaselect-default.css"
-        "bundles/zghfe/plugins/select2-3.4.6/select2-bootstrap.css"
-        "bundles/zghfe/plugins/dropzone-3.9.0/downloads/css/dropzone.css"
-        filter="cssrewrite"
-    %}
-        <link href="{{ asset_url }}" rel="stylesheet" type="text/css" media="screen">
+    "bundles/zghfe/plugins/Imgareaselect/css/imgareaselect-default.css"
+    "bundles/zghfe/plugins/select2-3.4.6/select2.css"
+    "bundles/zghfe/plugins/select2-3.4.6/select2-bootstrap.css"
+    "bundles/zghfe/plugins/dropzone-3.9.0/downloads/css/dropzone.css"
+    filter="cssrewrite" %}
+    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" media="screen">
     {% endstylesheets %}
 {% endblock %}
 {% block body %}
@@ -16,8 +16,10 @@
             <header class="fixed-header">
 
                 <div class="container hidden-xs">
-                    <div class="logo col-md-3 hidden-sm"><a href="{{ url("zgh_fe.wall.index") }}"><img src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
-                    <div class=" col-md-5 visible-sm col-sm-push-4"><a href="#"><img src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
+                    <div class="logo col-md-3 hidden-sm"><a href="{{ url("zgh_fe.wall.index") }}"><img
+                                    src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
+                    <div class=" col-md-5 visible-sm col-sm-push-4"><a href="#"><img
+                                    src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
                     <div class="divider visible-sm"></div>
 
                     <div class="col-md-6 col-sm-8 search-box">
@@ -28,20 +30,29 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="#"><i class="icon-list-alt"></i>Everything</a></li>
                                     <li class="divider"></li>
-                                    <li class="has_sub"> <a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels &amp; Venues</a></li>
-                                    <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp; catering</a></li>
-                                    <li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a></li>
-                                    <li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a></li>
+                                    <li class="has_sub"><a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels
+                                            &amp; Venues</a></li>
+                                    <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp;
+                                            catering</a></li>
+                                    <li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a>
+                                    </li>
+                                    <li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a>
+                                    </li>
                                     <li><a href="#"><i class="iconMenu iconJewelry pull-left"></i>Jewelry</a></li>
                                     <li><a href="#"><i class="iconMenu iconHonymoons pull-left"></i>Honeymoons</a></li>
                                     <li><a href="#"><i class="iconMenu iconFashion pull-left"></i>Fashion</a></li>
-                                    <li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a></li>
+                                    <li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a>
+                                    </li>
                                     <li><a href="#"><i class="iconMenu iconFlorists pull-left"></i>Florists </a></li>
                                     <li><a href="#"><i class="iconMenu iconFurniture pull-left"></i>Furniture</a></li>
-                                    <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health </a></li>
+                                    <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health
+                                        </a></li>
                                     <li><a href="#"><i class="iconMenu iconLimousines pull-left"></i>Limousines</a></li>
-                                    <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home Appliances</a></li>
-                                    <li><a href="#"><i class="iconMenu iconEntertainment pull-left"></i>Entertainment</a></li>
+                                    <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home
+                                            Appliances</a></li>
+                                    <li><a href="#"><i
+                                                    class="iconMenu iconEntertainment pull-left"></i>Entertainment</a>
+                                    </li>
                                     <li class="divider"></li>
                                     <li><a href="#"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
                                 </ul>
@@ -61,8 +72,10 @@
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="icon-list-alt"></i>Everything</a></li>
                                 <li class="divider"></li>
-                                <li class="has_sub"> <a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels &amp; Venues</a></li>
-                                <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp; catering</a></li>
+                                <li class="has_sub"><a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels
+                                        &amp; Venues</a></li>
+                                <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp; catering</a>
+                                </li>
                                 <li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a></li>
                                 <li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a></li>
                                 <li><a href="#"><i class="iconMenu iconJewelry pull-left"></i>Jewelry</a></li>
@@ -71,10 +84,13 @@
                                 <li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a></li>
                                 <li><a href="#"><i class="iconMenu iconFlorists pull-left"></i>Florists </a></li>
                                 <li><a href="#"><i class="iconMenu iconFurniture pull-left"></i>Furniture</a></li>
-                                <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health </a></li>
+                                <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health </a>
+                                </li>
                                 <li><a href="#"><i class="iconMenu iconLimousines pull-left"></i>Limousines</a></li>
-                                <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home Appliances</a></li>
-                                <li><a href="#"><i class="iconMenu iconEntertainment pull-left"></i>Entertainment</a></li>
+                                <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home Appliances</a>
+                                </li>
+                                <li><a href="#"><i class="iconMenu iconEntertainment pull-left"></i>Entertainment</a>
+                                </li>
                                 <li class="divider"></li>
                                 <li><a href="#"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
                             </ul>
@@ -90,7 +106,8 @@
 
                 <div class="container visible-xs ">
                     <div class="row">
-                        <div class="logo text-center"><a href="#"><img src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
+                        <div class="logo text-center"><a href="#"><img src="{{ asset("bundles/zghfe/img/logo.png") }}"></a>
+                        </div>
                     </div>
                     <div class="divider"></div>
 
@@ -98,7 +115,8 @@
                         <div class="col-xs-12 search-box col-centered">
                             <div class="mainSearch input-group">
                                 <div class="input-group-btn" style="display:none;">
-                                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Category <span
+                                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        Category <span
                                                 class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Everything</a></li>
@@ -141,8 +159,10 @@
                             </button>
 
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary btn-circle  dropdown-toggle" data-toggle="dropdown">
-                                    <img src="{{ asset("bundles/zghfe/img/img-prf-comment2.jpg") }}" alt="" width="25" height="25"
+                                <button type="button" class="btn btn-primary btn-circle  dropdown-toggle"
+                                        data-toggle="dropdown">
+                                    <img src="{{ asset("bundles/zghfe/img/img-prf-comment2.jpg") }}" alt="" width="25"
+                                         height="25"
                                          style="border-radius:50%;">
                                 </button>
                                 <ul class="dropdown-menu">
@@ -177,17 +197,17 @@
     </div>
 
     {% block footer %}
-            <footer>
-                <div class="container">
-                    <p class="pull-right"><a href="#">
-                            <button type="button" class="btn btn-primary">
-                                <span class="glyphicon glyphicon-chevron-up"></span>
-                            </button>
-                        </a></p>
-                    <p>Zaghruta &copy; 2013 Designed by <a href="#">thesevenlayers</a></p>
-                </div>
-            </footer>
-        {% endblock footer %}
+        <footer>
+            <div class="container">
+                <p class="pull-right"><a href="#">
+                        <button type="button" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-chevron-up"></span>
+                        </button>
+                    </a></p>
+                <p>Zaghruta &copy; 2013 Designed by <a href="#">thesevenlayers</a></p>
+            </div>
+        </footer>
+    {% endblock footer %}
     {% block modals %}
     {% endblock modals %}
 
@@ -206,33 +226,35 @@
     </script>
 
     {% javascripts
-        "bundles/zghfe/js/pages_logic/partial/postRefresher.js"
-        "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
-        "bundles/zghfe/js/pages_logic/partial/singleUploadRefresher.js"
-        "bundles/zghfe/plugins/Parsley.js-2.0.0/dist/parsley.js"
-        "bundles/zghfe/js/magicsuggest-1.3.1.js"
-        "bundles/zghfe/js/magicSuggestCustome.js"
-        "bundles/zghfe/js/jquery.fancybox.pack.js"
-        "bundles/zghfe/js/jquery.fancybox-buttons.js"
-        "bundles/zghfe/js/jquery.fancybox-media.js"
-        "bundles/zghfe/js/jquery.fancybox-thumbs.js"
-        "bundles/zghfe/js/fancyCustom.js"
-        "bundles/zghfe/plugins/select2-3.4.6/select2.js"
-        "bundles/thraceform/js/select2.js"
-        "bundles/zghfe/plugins/dropzone-3.9.0/downloads/dropzone.js"
-        "bundles/zghfe/js/uploader_save.js"
-        "bundles/zghfe/js/post_actions.js"
-        "bundles/zghfe/js/ImgCrop.js"
-        "bundles/zghfe/js/autosize.js"
-        "bundles/zghfe/plugins/Imgareaselect/scripts/jquery.imgareaselect.js"
+    "bundles/zghfe/js/pages_logic/partial/postRefresher.js"
+    "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
+    "bundles/zghfe/js/pages_logic/partial/singleUploadRefresher.js"
+    "bundles/zghfe/js/pages_logic/products.js"
+    "bundles/zghfe/plugins/Parsley.js-2.0.0/dist/parsley.js"
+    "bundles/zghfe/js/magicsuggest-1.3.1.js"
+    "bundles/zghfe/js/magicSuggestCustome.js"
+    "bundles/zghfe/js/jquery.fancybox.pack.js"
+    "bundles/zghfe/js/jquery.fancybox-buttons.js"
+    "bundles/zghfe/js/jquery.fancybox-media.js"
+    "bundles/zghfe/js/jquery.fancybox-thumbs.js"
+    "bundles/zghfe/js/fancyCustom.js"
+    "bundles/zghfe/plugins/select2-3.4.6/select2.js"
+    "bundles/thraceform/js/select2.js"
+    "bundles/zghfe/plugins/dropzone-3.9.0/downloads/dropzone.js"
+    "bundles/zghfe/js/uploader_save.js"
+    "bundles/zghfe/js/post_actions.js"
+    "bundles/zghfe/js/ImgCrop.js"
+    "bundles/zghfe/js/autosize.js"
+    "bundles/zghfe/plugins/Imgareaselect/scripts/jquery.imgareaselect.js"
+    "bundles/zghfe/js/pages_logic/search.js"
     %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function () {
 
-            $(window).on("popstate", function(e){
+            $(window).on("popstate", function (e) {
                 e.preventDefault();
 //                alert("Test");
                 window.location.href = window.location.href;
@@ -245,14 +267,14 @@
 //                document.pushState(null, null, url);
 //            });
 
-            $("body").on("click", ".btnFollowing", function(e){
+            $("body").on("click", ".btnFollowing", function (e) {
                 e.preventDefault();
                 var form = $(e.target).closest("form");
                 $(e.target).attr("disabled", "disabled");
                 $.ajax({
                     type: "post",
                     url: form.attr("action"),
-                    success: function(data){
+                    success: function (data) {
                         $(e.target).removeAttr("disabled");
                         $(e.target).find(".following_msg").text(data.msg);
                     }
@@ -260,7 +282,7 @@
             });
 
 
-            $(document).on("ajaxSuccess", function(e){
+            $(document).on("ajaxSuccess", function (e) {
 
                 postRefresh();
                 photoRefresh();
