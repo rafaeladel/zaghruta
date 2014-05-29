@@ -19,4 +19,42 @@ class Search
      */
     protected $search_text;
 
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    protected $search_filter;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    protected $search_sort;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $search_type;
+
+
+    /**
+     * Set search_text
+     *
+     * @param string $searchText
+     * @return Search
+     */
+    public function setSearchText($searchText)
+    {
+        $this->search_text = $searchText;
+
+        return $this;
+    }
+
+    /**
+     * Get search_text
+     *
+     * @return string 
+     */
+    public function getSearchText()
+    {
+        return $this->search_text;
+    }
 }
