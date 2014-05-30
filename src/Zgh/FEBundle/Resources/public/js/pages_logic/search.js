@@ -12,6 +12,10 @@ $(document).ready(function(){
 //        }
     });
 
+    $("body").find(".searchText").autocomplete({
+       source: tstSrc
+    });
+
     function startSearch(target)
     {
         var form = $(target).closest("form");

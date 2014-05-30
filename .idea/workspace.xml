@@ -26,18 +26,67 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="user_profile_connections.html.twig" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/connections/user_profile_connections.html.twig">
+      <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="0" selection-start="3211" selection-end="3211" vertical-scroll-proportion="0.7059925" vertical-offset="694" max-vertical-offset="1377">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="4600" max-vertical-offset="5134">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="74" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="782">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_profile_wishlist_content.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/wishlists/user_profile_wishlist_content.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="14" selection-start="417" selection-end="417" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="306">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product_content.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/product_content.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="112" column="0" selection-start="7371" selection-end="7371" vertical-scroll-proportion="0.0" vertical-offset="1904" max-vertical-offset="2635">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/search.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="21" selection-start="430" selection-end="436" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="663">
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#1166#1191#0" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#2253#2278#0" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#3103#3128#0" expanded="true" />
+                <marker date="1401272685053" expanded="false" signature="697:726" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchController.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/SearchController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="46" selection-start="516" selection-end="516" vertical-scroll-proportion="0.1835206" vertical-offset="89" max-vertical-offset="646">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_routing.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/search_routing.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="70" selection-start="484" selection-end="503" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="425">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -52,10 +101,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Form/ProductType.php" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/services.xml" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Service/DeleteManager.php" />
-        <option value="E:/UI/product.html" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_products_content.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/user_profile_tip_add.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/partial/singleUploadRefresher.js" />
@@ -103,6 +148,10 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/posts/posts_partials.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/products/user_profile_products.html.twig" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/connections/user_profile_connections.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/search.js" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/SearchController.php" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/search_routing.xml" />
       </list>
     </option>
   </component>
@@ -241,8 +290,38 @@
               <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="zaghrota_dyn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zaghruta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zgh" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FEBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -272,523 +351,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Registration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wishlists" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tips" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="security" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="products" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="posts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="photos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="experiences" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="connections" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="branches" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Partial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="about" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Default" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ChangePassword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghrota_dyn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zaghruta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Zgh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FEBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -812,11 +375,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\htdocs\zaghruta\src\Zgh\FEBundle\Resources\public\plugins" />
       <recent name="D:\www\Zaghruta\Website\Development\PHP\src\Zgh\FEBundle\Resources\views\Default" />
       <recent name="D:\www\Zaghruta\Website\Development\PHP\src\Zgh\FEBundle\Resources\views\Partial" />
       <recent name="D:\www\Zaghruta\Website\Development\PHP\src\Zgh\FEBundle\Form" />
       <recent name="D:\www\Zaghruta\Website\Development\PHP\app\Resources\FOSUserBundle\translations" />
-      <recent name="E:\htdocs\zaghruta\src\Zgh\FEBundle\Form" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\htdocs\zaghruta\src\Zgh\FEBundle\Resources\views\Partial\security" />
@@ -905,11 +468,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35494882" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -932,579 +495,274 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/messages.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4675">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/notifications.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="1564">
-          <folding>
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383630" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/photo.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="26" selection-start="274" selection-end="281" vertical-scroll-proportion="-3.0" vertical-offset="0" max-vertical-offset="476">
-          <folding>
-            <marker date="1400839383631" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383631" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/photo_content.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="42" selection-start="2741" selection-end="2741" vertical-scroll-proportion="-3.5686274" vertical-offset="685" max-vertical-offset="1173">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/product.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="98" selection-start="2057" selection-end="2057" vertical-scroll-proportion="0.49019608" vertical-offset="722" max-vertical-offset="2618">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/product_content.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="54" selection-start="7120" selection-end="7120" vertical-scroll-proportion="1.8235294" vertical-offset="1997" max-vertical-offset="2584">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/productEdit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="1819">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/search.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2210">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/settings.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2380">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2380" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/tip_content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="54" selection-start="1714" selection-end="1714" vertical-scroll-proportion="-2.509804" vertical-offset="535" max-vertical-offset="1054">
-          <folding />
-        </state>
+        <state line="39" column="54" selection-start="1714" selection-end="1714" vertical-scroll-proportion="-2.509804" vertical-offset="535" max-vertical-offset="1054" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/user_index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="34" selection-start="9769" selection-end="9776" vertical-scroll-proportion="5.490196" vertical-offset="3170" max-vertical-offset="4471">
-          <folding />
-        </state>
+        <state line="170" column="34" selection-start="9769" selection-end="9776" vertical-scroll-proportion="5.490196" vertical-offset="3170" max-vertical-offset="4471" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/vendor_intro.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="280" column="53" selection-start="18299" selection-end="18306" vertical-scroll-proportion="16.490196" vertical-offset="5601" max-vertical-offset="6239">
-          <folding />
-        </state>
+        <state line="280" column="53" selection-start="18299" selection-end="18306" vertical-scroll-proportion="16.490196" vertical-offset="5601" max-vertical-offset="6239" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/vendor_profile.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="38811">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="38811" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/wall.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="46" selection-start="223" selection-end="223" vertical-scroll-proportion="5.0" vertical-offset="357" max-vertical-offset="4097">
-          <folding />
-        </state>
+        <state line="6" column="46" selection-start="223" selection-end="223" vertical-scroll-proportion="5.0" vertical-offset="357" max-vertical-offset="4097" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/about/user_profile_about_customer.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="1020">
-          <folding>
-            <element signature="e#254#284#0" expanded="false" />
-            <element signature="e#1078#1103#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="1020" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/about/user_profile_about_edit_customer.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
-          <folding>
-            <element signature="e#26#64#0" expanded="false" />
-            <element signature="e#107#138#0" expanded="false" />
-            <element signature="e#1594#1619#0" expanded="false" />
-            <element signature="e#1889#1914#0" expanded="false" />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383694" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/about/user_profile_about_edit_vendor.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
-          <folding>
-            <element signature="e#37#66#0" expanded="false" />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1400839383696" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/about/user_profile_about_vendor.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
-          <folding>
-            <element signature="e#238#266#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/branches/user_profile_branch_add.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="1037">
-          <folding>
-            <element signature="e#36#55#0" expanded="false" />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613295" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="1037" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/branches/user_profile_branch_edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-          <folding>
-            <element signature="e#36#61#0" expanded="false" />
-            <element signature="e#740#761#0" expanded="false" />
-            <marker date="1401175613297" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613297" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613297" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613297" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613297" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613297" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613297" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613297" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/branches/user_profile_branch_inner_content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518">
-          <folding>
-            <element signature="e#199#223#0" expanded="false" />
-            <marker date="1401175613309" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613309" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613309" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613309" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613309" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613309" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/branches/user_profile_branches.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="31" selection-start="1719" selection-end="1726" vertical-scroll-proportion="-1.7058823" vertical-offset="508" max-vertical-offset="1003">
-          <folding>
-            <element signature="e#1547#1566#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="35" column="31" selection-start="1719" selection-end="1726" vertical-scroll-proportion="-1.7058823" vertical-offset="508" max-vertical-offset="1003" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/branches/user_profile_branches_content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="44" selection-start="107" selection-end="107" vertical-scroll-proportion="-0.6666667" vertical-offset="0" max-vertical-offset="187">
-          <folding />
-        </state>
+        <state line="2" column="44" selection-start="107" selection-end="107" vertical-scroll-proportion="-0.6666667" vertical-offset="0" max-vertical-offset="187" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/common/comments_list.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="117" selection-start="448" selection-end="448" vertical-scroll-proportion="-0.84313726" vertical-offset="25" max-vertical-offset="1054">
-          <folding>
-            <element signature="e#1332#1353#0" expanded="false" />
-            <element signature="e#2213#2238#0" expanded="false" />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613287" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="4" column="117" selection-start="448" selection-end="448" vertical-scroll-proportion="-0.84313726" vertical-offset="25" max-vertical-offset="1054" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/common/comments_section.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="38" selection-start="1380" selection-end="1380" vertical-scroll-proportion="-1.2352941" vertical-offset="345" max-vertical-offset="816">
-          <folding>
-            <element signature="e#1497#1515#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="24" column="38" selection-start="1380" selection-end="1380" vertical-scroll-proportion="-1.2352941" vertical-offset="345" max-vertical-offset="816" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/common/likes_popup.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/common/post_form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518">
-          <folding>
-            <element signature="e#100#115#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/common/shortcuts&amp;notifications.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
-          <folding>
-            <element signature="e#1421#1446#0" expanded="false" />
-            <element signature="e#1576#1600#0" expanded="false" />
-            <element signature="e#2173#2198#0" expanded="false" />
-            <element signature="e#2328#2352#0" expanded="false" />
-            <element signature="e#2497#2524#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/common/user_profile_main.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="22" selection-start="373" selection-end="380" vertical-scroll-proportion="1.5098039" vertical-offset="298" max-vertical-offset="765">
-          <folding>
-            <element signature="e#447#472#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="13" column="22" selection-start="373" selection-end="380" vertical-scroll-proportion="1.5098039" vertical-offset="298" max-vertical-offset="765" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/experiences/user_profile_experience_add.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518">
-          <folding>
-            <element signature="e#121#2884#0" expanded="false" />
-            <element signature="e#287#326#0" expanded="false" />
-            <element signature="e#599#625#0" expanded="false" />
-            <element signature="e#2731#2770#0" expanded="false" />
-            <element signature="e#2911#2949#0" expanded="false" />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613313" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/experiences/user_profile_experience_content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518">
-          <folding>
-            <element signature="e#270#295#0" expanded="false" />
-            <marker date="1401175613315" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613315" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401175613315" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/experiences/user_profile_experiences.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="51" selection-start="692" selection-end="692" vertical-scroll-proportion="-4.490196" vertical-offset="60" max-vertical-offset="561">
-          <folding>
-            <element signature="e#375#396#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="17" column="51" selection-start="692" selection-end="692" vertical-scroll-proportion="-4.490196" vertical-offset="60" max-vertical-offset="561" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/photos/album_add_modal.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="918">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="918" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/photos/photo_add_modal.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="935">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="935" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/photos/user_profile_album_content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="22" selection-start="3681" selection-end="3688" vertical-scroll-proportion="-4.8235292" vertical-offset="808" max-vertical-offset="1275">
-          <folding>
-            <element signature="e#723#757#0" expanded="false" />
-            <element signature="e#2550#2576#0" expanded="false" />
-            <element signature="e#3575#3618#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="62" column="22" selection-start="3681" selection-end="3688" vertical-scroll-proportion="-4.8235292" vertical-offset="808" max-vertical-offset="1275" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/photos/user_profile_albums.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="18" selection-start="2082" selection-end="2089" vertical-scroll-proportion="-4.1568627" vertical-offset="451" max-vertical-offset="918">
-          <folding />
-        </state>
+        <state line="39" column="18" selection-start="2082" selection-end="2089" vertical-scroll-proportion="-4.1568627" vertical-offset="451" max-vertical-offset="918" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/photos/user_profile_photos.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="18" selection-start="1978" selection-end="1985" vertical-scroll-proportion="-4.1568627" vertical-offset="400" max-vertical-offset="867">
-          <folding>
-            <element signature="e#1120#1154#0" expanded="false" />
-            <element signature="e#1299#1333#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="36" column="18" selection-start="1978" selection-end="1985" vertical-scroll-proportion="-4.1568627" vertical-offset="400" max-vertical-offset="867" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/photos/user_profile_photos_a_content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518">
-          <folding>
-            <element signature="e#164#207#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/photos/user_profile_photos_p_content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="26" selection-start="808" selection-end="815" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="459">
-          <folding>
-            <element signature="e#210#237#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="15" column="26" selection-start="808" selection-end="815" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="459" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/posts/posts_partials.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="35" selection-start="3870" selection-end="3870" vertical-scroll-proportion="-0.49019608" vertical-offset="1148" max-vertical-offset="1615">
-          <folding>
-            <element signature="e#1211#1229#0" expanded="false" />
-            <element signature="e#2038#2063#0" expanded="false" />
-            <element signature="e#2351#2367#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="69" column="35" selection-start="3870" selection-end="3870" vertical-scroll-proportion="-0.49019608" vertical-offset="1148" max-vertical-offset="1615" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/products/user_profile_product_add.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.049115915" vertical-offset="25" max-vertical-offset="1428">
-          <folding>
-            <element signature="e#288#324#0" expanded="false" />
-            <element signature="e#622#641#0" expanded="false" />
-            <element signature="e#3500#3536#0" expanded="false" />
-            <element signature="e#3709#3747#0" expanded="false" />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1401177517645" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.049115915" vertical-offset="25" max-vertical-offset="1428" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/products/user_profile_products.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="52" selection-start="3168" selection-end="3168" vertical-scroll-proportion="-4.8235292" vertical-offset="723" max-vertical-offset="1207">
-          <folding />
-        </state>
+        <state line="57" column="52" selection-start="3168" selection-end="3168" vertical-scroll-proportion="-4.8235292" vertical-offset="723" max-vertical-offset="1207" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/products/user_profile_products_content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/security/userLoginPartial.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="986">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="986" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/security/vendorLoginPartial.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/tips/user_profile_tip_add.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/tips/user_profile_tip_content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/tips/user_profile_tips.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="518" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/wishlists/user_profile_wishlist.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/wishlists/user_profile_wishlist_content.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="14" selection-start="417" selection-end="417" vertical-scroll-proportion="0.33398822" vertical-offset="0" max-vertical-offset="509">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.49019608" vertical-offset="25" max-vertical-offset="1156" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/connections/user_profile_connections.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="0" selection-start="3211" selection-end="3211" vertical-scroll-proportion="0.7059925" vertical-offset="694" max-vertical-offset="1377">
+        <state line="63" column="0" selection-start="3211" selection-end="3211" vertical-scroll-proportion="0.7059925" vertical-offset="694" max-vertical-offset="1377" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Default/product_content.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="0" selection-start="7371" selection-end="7371" vertical-scroll-proportion="-0.0" vertical-offset="1904" max-vertical-offset="2686">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/plugins/jquery-ui-1.10.4/js/jquery-1.10.2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="167263" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Partial/wishlists/user_profile_wishlist_content.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="14" selection-start="417" selection-end="417" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="306">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="4600" max-vertical-offset="5134">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="74" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="782">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/public/js/pages_logic/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="21" selection-start="430" selection-end="436" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#1166#1191#0" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#2253#2278#0" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#3103#3128#0" expanded="true" />
+            <marker date="1401272685053" expanded="false" signature="697:726" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/search_routing.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="70" selection-start="484" selection-end="503" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Controller/SearchController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="46" selection-start="516" selection-end="516" vertical-scroll-proportion="0.1835206" vertical-offset="89" max-vertical-offset="646">
+          <folding />
         </state>
       </provider>
     </entry>
