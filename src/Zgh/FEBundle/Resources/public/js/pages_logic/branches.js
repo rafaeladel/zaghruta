@@ -56,6 +56,8 @@ $(document).ready(function(){
         e.preventDefault();
         var url = $(e.currentTarget).attr("href");
         $(e.currentTarget).html('<img style="margin: auto; display: inline;" src="'+UrlContainer.loader+'" />');
-        $(e.currentTarget).closest(".branch").load(url);
+        $(e.currentTarget).closest(".branch").load(url, function(){
+            $("body").find('.tooltip').tooltip();
+        });
     });
 });

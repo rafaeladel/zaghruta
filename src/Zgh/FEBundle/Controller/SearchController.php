@@ -14,10 +14,10 @@ class SearchController extends Controller
         $search = new Search();
         $search_form = $this->createForm(new SearchType(), $search);
         $search_form->handleRequest($request);
-        $em = $this->getDoctrine()->getManager();
+//        $products = $this->getDoctrine()->getRepository("ZghFEBundle:Search")->getSearchResult($search);
 //        $em->persist($search);
 //        $em->flush();
-        $products = $em->getRepository("ZghFEBundle:Product")->findBy(["name" => $search->getSearchText()]);
+//        $products = $em->getRepository("ZghFEBundle:Product")->findBy(["name" => $search->getSearchText()]);
         return $this->render("@ZghFE/Partial/products/user_profile_products_content.html.twig", [
                 "products" => $products
             ]);

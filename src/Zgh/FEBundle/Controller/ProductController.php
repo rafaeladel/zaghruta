@@ -36,7 +36,7 @@ class ProductController extends Controller
         $user = $em->getRepository("ZghFEBundle:User")->find($id);
 
         $product = new Product();
-        $form = $this->createForm(new ProductType(), $product);
+        $form = $this->createForm(new ProductType(), $product, ["type" => "add"]);
         $form->handleRequest($request);
 
         $user->addProduct($product);
