@@ -43,47 +43,51 @@ $(document).ready(function () {
         });
     });
 
-    function split( val ) {
-        return val.split( /,\s*/ );
-    }
-    function extractLast( term ) {
-        return split( term ).pop();
-    }
 
-//    $("body").find(".tags_input")
-//        // don't navigate away from the field on tab when selecting an item
-//        .bind( "keydown", function( event ) {
-//            if ( event.keyCode === $.ui.keyCode.TAB &&
-//                $( this ).data( "ui-autocomplete" ).menu.active ) {
-//                event.preventDefault();
-//            }
-//        })
-//        .autocomplete({
-//            minLength: 0,
-//            source: function( request, response ) {
-//                // delegate back to autocomplete, but extract the last term
-//                response( $.ui.autocomplete.filter(
-//                    ["rafael", "adel", "nadia", "nardeen"], extractLast( request.term ) ) );
-//            },
-////            response: function(event, ui){
-////                console.log(event);
-////            },
-//            focus: function() {
-//                // prevent value inserted on focus
-//                return false;
-//            },
-//            select: function( event, ui ) {
-//                var terms = split( this.value );
-//                // remove the current input
-//                terms.pop();
-//                // add the selected item
-//                terms.push( ui.item.value );
-//                // add placeholder to get the comma-and-space at the end
-//                terms.push( "" );
-//                this.value = terms.join( ", " );
-//                return false;
-//            }
-//        });
+    $("body").on("click", ".moveWishlist", function(e){
+        e.preventDefault();
+        var url = $(e.currentTarget).data("url");
+        var wrapper = $(e.currentTarget).closest(".form_wrapper");
+        wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+        wrapper.load(url);
+    });
+
+    $("body").on("click", ".newWishlistSubmit", function(e){
+        var form = $(e.currentTarget).closest("form");
+        var back_url = $(e.currentTarget).closest("form").find(".moveWishlist").data("url");
+        var wrapper = $(e.currentTarget).closest(".form_wrapper");
+        $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
+            instance.submitEvent.preventDefault();
+            if (instance.isValid()) {
+                $(e.currentTarget).attr("disabled", "disabled").text("Saving");
+                $.ajax({
+                    type: "post",
+                    url: form.attr("action"),
+                    data: form.serialize(),
+                    success: function(data){
+                        wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+                        wrapper.load(back_url);
+                    }
+                });
+
+            }
+        });
+    });
+
+    $("body").on("click", ".addToWishlistSubmit", function(e){
+        e.preventDefault();
+        $(e.currentTarget).attr("disabled","disabled").text("Saving");
+        var form = $(e.currentTarget).closest("form");
+        $.ajax({
+            type: "post",
+            url: form.attr("action"),
+            data: form.serialize(),
+            success: function(data){
+                $(e.currentTarget).closest("div.modal").modal("hide");
+                $(e.currentTarget).removeAttr("disabled").text("Save");
+            }
+        });
+    });
 
     singleUpload("product_browse");
 });

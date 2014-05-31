@@ -26,27 +26,9 @@
                 <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">Add List</h4>
             </div>
-            {{ form_start(wishlist_form, {"action": url("zgh_fe.wishlist.new", {"id": app.user.id }), "attr" : {"class": "form-horizontal"} }) }}
-            {#<form role="form" class="form-horizontal">#}
-
-                <div class="modal-body">
-                    <div class="form-group formGroup">
-                        <label class="col-sm-3 control-label">Name</label>
-                        {#{{ form_label(wishlist_form.name, null, {"attr": {"class": "col-sm-3 control-label"} }) }}#}
-                        <div class="col-sm-9">
-                            {{ form_widget(wishlist_form.name, {"attr": {"class": "form-control", "placeholder": "Enter Product Name" } }) }}
-                            {#<input type="text" placeholder="Enter Product Name" class="form-control">#}
-                        </div>
-                    </div>
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-wide btn-primary wishlistSubmit">Create</button>
-                </div>
-                {{ form_rest(wishlist_form) }}
-            {{ form_end(wishlist_form) }}
+            <div class="form_wrapper">
+                {{ include("@ZghFE/Partial/wishlists/wishlist_add_widget.html.twig", {"form": wishlist_form, "post_url": url("zgh_fe.wishlist.new", {"id": app.user.id })}) }}
+            </div>
             {#</form>#}
         </div>
         <!-- /.modal-content -->

@@ -30,4 +30,18 @@ class WishlistController extends Controller
         $this->getDoctrine()->getManager()->flush();
         return new JsonResponse(array("status" => 200));
     }
+
+    public function getSerializedAction()
+    {
+        $wishlists_arr = [];
+        $wishlists = $this->getUser()->getWishlists();
+        foreach ($wishlists as $wishlist) {
+            $wishlist_entry = [];
+            $wishlist_entry['id'] = $wishlist->getName();
+            $wishlist_entry['text'] = $wishlist->getName();
+            $wishlists_arr[] = $wishlist_entry;
+        }
+        return new JsonResponse($wishlists_arr);
+
+    }
 }

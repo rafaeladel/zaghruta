@@ -12,4 +12,8 @@
         <default key="_controller">ZghFEBundle:Wishlist:getWishlistPartialContent</default>
     </route>
 
+    <route id="zgh_fe.wishlists.serialized" pattern="/wishlists/serialized" methods="get">
+        <default key="_controller">ZghFEBundle:Wishlist:getSerialized</default>
+    </route>
+
 </routes>

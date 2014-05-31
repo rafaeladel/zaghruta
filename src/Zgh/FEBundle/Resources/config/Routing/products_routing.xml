@@ -32,9 +32,22 @@
         <default key="_controller">ZghFEBundle:Product:getProductContent</default>
     </route>
 
+    <route id="zgh_fe.products.get_wishlist_current_edit" pattern="/{id}/products/{product_id}/wishlist/edit" methods="get">
+        <default key="_controller">ZghFEBundle:Product:getEditCurrentWishlist</default>
+    </route>
+
     <route id="zgh_fe.products.add_to_wishlist" pattern="/{id}/products/{product_id}/wishlist" methods="POST">
         <default key="_controller">ZghFEBundle:Product:postAddToWishlist</default>
     </route>
+
+    <route id="zgh_fe.products.get_wishlist_new" pattern="/{id}/products/{product_id}/wishlist/new" methods="get">
+        <default key="_controller">ZghFEBundle:Product:getNewWishlist</default>
+    </route>
+
+    <route id="zgh_fe.products.post_wishlist_new" pattern="/{id}/products/{product_id}/wishlist/new" methods="post">
+        <default key="_controller">ZghFEBundle:Product:postNewWishlist</default>
+    </route>
+
 
 
 </routes>

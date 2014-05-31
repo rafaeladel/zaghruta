@@ -9,8 +9,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Zgh\FEBundle\Entity\Product;
 use Zgh\FEBundle\Entity\User;
+use Zgh\FEBundle\Entity\Wishlist;
 use Zgh\FEBundle\Form\ProductType;
 use Zgh\FEBundle\Form\ProductWishlistType;
+use Zgh\FEBundle\Form\WishlistType;
 
 class ProductController extends Controller
 {
@@ -146,6 +148,22 @@ class ProductController extends Controller
     /**
      * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
      */
+    public function getEditCurrentWishlistAction(User $user, Product $product)
+    {
+        $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
+        return $this->render("@ZghFE/Partial/products/wishlist_edit_widget.html.twig", [
+            "product" => $product,
+            "form" => $addWishlistForm->createView(),
+            "post_url" => $this->generateUrl("zgh_fe.products.add_to_wishlist", [
+                    "id" => $user->getId(),
+                    "product_id" => $product->getId()
+                ])
+        ]);
+    }
+
+    /**
+     * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
+     */
     public function postAddToWishlistAction(Request $request, User $user, Product $product)
     {
         $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
@@ -166,4 +184,50 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
+     */
+    public function getNewWishlistAction(User $user, Product $product)
+    {
+        $wishlist = new Wishlist();
+        $new_form = $this->createForm(new WishlistType(), $wishlist);
+        return $this->render("ZghFEBundle:Partial/wishlists:wishlist_add_widget.html.twig", [
+            "form" => $new_form->createView(),
+            "post_url" => $this->generateUrl("zgh_fe.products.post_wishlist_new", [
+                    "id" => $user->getId(),
+                    "product_id" => $product->getId(),
+                ]),
+            "product" => $product,
+            "product_partial" => true
+        ]);
+    }
+
+    /**
+     * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
+     */
+    public function postNewWishlistAction(Request $request, User $user, Product $product)
+    {
+        $current_user = $this->getUser();
+        $wishlist = new Wishlist();
+        $new_form = $this->createForm(new WishlistType(), $wishlist);
+        $new_form->handleRequest($request);
+        if(!$new_form->isValid())
+        {
+            return new JsonResponse([
+                "status" => 500,
+                "view" => $this->renderView("@ZghFE/Partial/wishlists/wishlist_add_widget.html.twig", [
+                        "form" => $new_form->createView(),
+                        "post_url" => $this->generateUrl("zgh_fe.products.post_wishlist_new", [
+                                "id" => $user->getId(),
+                                "product_id" => $product->getId(),
+                            ])
+                    ]),
+                "errors" => $new_form->getErrorsAsString()
+            ]);
+        }
+        $current_user->addWishlist($wishlist);
+        $this->getDoctrine()->getManager()->persist($current_user);
+        $this->getDoctrine()->getManager()->flush();
+        return new JsonResponse(['status' => 200]);
+    }
 }
