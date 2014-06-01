@@ -1,6 +1,7 @@
 <?php
 namespace Zgh\FEBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,6 +19,12 @@ class WishlistController extends Controller
             ));
     }
 
+    /**
+     * @Security("has_role('ROLE_CUSTOMER')")
+     * @param Request $request
+     * @param $id
+     * @return JsonResponse
+     */
     public function postNewAction(Request $request, $id)
     {
 //        $user = $this->get("security.context")->getToken()->getUser();

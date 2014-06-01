@@ -1,6 +1,7 @@
 <?php
 namespace Zgh\FEBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,6 +28,11 @@ class ExperienceController extends Controller
         ));
     }
 
+    /**
+     * @Security("has_role('ROLE_CUSTOMER')")
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function getAddContentAction($id)
     {
         $curr_user = $this->get("security.context")->getToken()->getUser();
@@ -44,6 +50,12 @@ class ExperienceController extends Controller
 
     }
 
+    /**
+     * @Security("has_role('ROLE_CUSTOMER')")
+     * @param Request $request
+     * @param $id
+     * @return JsonResponse
+     */
     public function postNewAction(Request $request, $id)
     {
 

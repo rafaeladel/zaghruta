@@ -1,6 +1,7 @@
 <?php
 namespace Zgh\FEBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -16,6 +17,12 @@ use Zgh\FEBundle\Form\WishlistType;
 
 class ProductController extends Controller
 {
+    /**
+     * @Security("has_role('ROLE_VENDOR')")
+     *
+     * @param User $user
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function getNewAction(User $user)
     {
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
@@ -31,6 +38,13 @@ class ProductController extends Controller
             ));
     }
 
+    /**
+     * @Security("has_role('ROLE_VENDOR')")
+     *
+     * @param Request $request
+     * @param $id
+     * @return JsonResponse
+     */
     public function postNewAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -76,6 +90,8 @@ class ProductController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_VENDOR')")
+     *
      * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
      */
     public function getEditAction(User $user, Product $product)
@@ -93,6 +109,7 @@ class ProductController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_VENDOR')")
      * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
      */
     public function postEditAction(Request $request, User $user, Product $product)
@@ -117,6 +134,7 @@ class ProductController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_VENDOR')")
      * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
      * @param User $user
      * @param Product $product

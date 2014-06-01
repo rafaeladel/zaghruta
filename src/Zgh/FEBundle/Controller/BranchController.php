@@ -1,6 +1,7 @@
 <?php
 namespace Zgh\FEBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +22,12 @@ class BranchController extends Controller
             ]);
     }
 
+    /**
+     * @Security("has_role('ROLE_VENDOR')")
+     * @param Request $request
+     * @param User $user
+     * @return JsonResponse
+     */
     public function postNewBranchAction(Request $request, User $user)
     {
         $branch = new Branch();
@@ -48,6 +55,7 @@ class BranchController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_VENDOR')")
      * @ParamConverter("branch", class="ZghFEBundle:Branch", options={"id" = "branch_id"})
      * @param User $user
      * @param Branch $branch
@@ -64,6 +72,7 @@ class BranchController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_VENDOR')")
      * @ParamConverter("branch", class="ZghFEBundle:Branch", options={"id" = "branch_id"})
      * @param Request $request
      * @param User $user
@@ -104,6 +113,7 @@ class BranchController extends Controller
     }
 
     /**
+     * @Security("has_role('ROLE_VENDOR')")
      * @ParamConverter("branch", class="ZghFEBundle:Branch", options={"id" = "branch_id"})
      */
     public function postDeleteBranchAction(User $user, Branch $branch)

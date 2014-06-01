@@ -60,9 +60,6 @@ class PostController extends Controller
 
         }
 
-
-        $token = $this->get("security.context")->getToken();
-
         $post->setContent($content);
 
         if($photo != null)
@@ -70,7 +67,7 @@ class PostController extends Controller
             $post->setImage((new PostImage())->setImageFile($photo));
         }
 
-        $post->setUser($token->getUser());
+        $post->setUser($this->getUser());
 
 
         $this->getDoctrine()->getManager()->persist($post);
@@ -78,51 +75,6 @@ class PostController extends Controller
         return $this->redirect($return_url);
     }
 
-
-    public function postLikeAction(Request $request, Post $post)
-    {
-        return $this->get("zgh_fe.like_manager")->postLike($post);
-    }
-
-    public function postCommentAction(Request $request, Post $post)
-    {
-        $content = $request->request->get("comment_content", null);
-//        var_dump($content);
-//        die;
-        if($content == null)
-        {
-            return $this->redirect($this->generateUrl("zgh_fe.wall.index"));
-        }
-
-        $user = $this->get("security.context")->getToken()->getUser();
-        $comment = new Comment();
-        $comment->setUser($user);
-        $comment->setContent($content);
-        $post->addComment($comment);
-        $this->getDoctrine()->getManager()->persist($post);
-        $this->getDoctrine()->getManager()->flush();
-        return new JsonResponse(array(
-            "deleteUrl" => $this->generateUrl("zgh_fe.post.comment.delete", array("id" => $comment->getId())),
-            "author" => $comment->getUser()->getFullName(),
-            "author_url" => "user_url",
-            "time" => $comment->getCreatedAt()->format("D - h A"),
-            "comments_count" => count($post->getComments()),
-            "author_pp" => in_array("ROLE_FACEBOOK", $user->getRoles()) ?
-                                        'https://graph.facebook.com/'.$user->getFacebookId().'/picture' :
-                                        str_replace("app_dev.php", "", $request->getUriForPath($user->getProfilePhoto()->getWebPath()))
-        ));
-    }
-
-    public function postCommentDeleteAction(Request $request, $id)
-    {
-        $comment = $this->getDoctrine()->getRepository("ZghFEBundle:Comment")->find($id);
-        $this->getDoctrine()->getManager()->remove($comment);
-        $this->getDoctrine()->getManager()->flush();
-        $post = $comment->getPost();
-        $count = count($post->getComments());
-//        return $this->redirect($this->generateUrl("zgh_fe.wall.index"));
-        return new JsonResponse(array("comments_count" => $count));
-    }
 
     public function postDeleteAction(Request $request,Post $post)
     {
