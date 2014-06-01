@@ -1,26 +1,27 @@
 {{ form_start(form, {"action": url("zgh_fe.branches.post_edit", {"id": user.id , "branch_id": branch.id })}) }}
-    <div class="panel panel-default">
+    <div class="panel panel-default editBranch">
         <div class="panel-heading">
-            <h5>{{ form_widget(form.address, {"attr": { "placeholder": "Address" } }) }}
-                {{ form_errors(form.address) }}
-
+            <div class="btnPanel">
                     <a href="#" class="save_edit"> <span title=""
+                                       data-original-title="Save"
                                        data-placement="top"
                                        data-toggle="tooltip"
-                                       class="glyphicon glyphicon-floppy-disk pull-right top"
-                                       data-original-title="Save"></span></a>
+                                       class="glyphicon  glyphicon-check tooltip pull-right top">
+                                       </span></a>
                     <a class="cancel_edit" href="{{ url("zgh_fe.branches.inner", {"id": user.id, "branch_id": branch.id}) }}"> <span title=""
                                        data-placement="top"
                                        data-toggle="tooltip"
-                                       class="glyphicon glyphicon-arrow-left pull-right top"
-                                       data-original-title="Cancel"></span></a>
-            </h5>
+                                       class="glyphicon glyphicon-arrow-left tooltip pull-right top"
+                                       data-original-title="Cancel"></span>
+                    </a>
+            </div>
         </div>
 
         <ul class="list-group">
-            <li class="list-group-item">{{ form_widget(form.phone, {"attr": { "placeholder": "Phone" } }) }} {{ form_errors(form.phone) }}</li>
-            <li class="list-group-item">{{ form_widget(form.mobile, {"attr": { "placeholder": "Mobile" } }) }} {{ form_errors(form.mobile) }}</li>
-            <li class="list-group-item">{{ form_widget(form.email, {"attr": { "placeholder": "Email" } }) }} {{ form_errors(form.email) }}</li>
+            <li class="form-group">{{ form_widget(form.address, {"attr": { "class":"form-control", "placeholder": "Address" } }) }} {{ form_errors(form.address) }}</li>
+            <li class="form-group">{{ form_widget(form.phone, {"attr": { "class":"form-control","placeholder": "Phone" } }) }} {{ form_errors(form.phone) }}</li>
+            <li class="form-group">{{ form_widget(form.mobile, {"attr": { "class":"form-control","placeholder": "Mobile" } }) }} {{ form_errors(form.mobile) }}</li>
+            <li class="form-group">{{ form_widget(form.email, {"attr": { "class":"form-control","placeholder": "Email" } }) }} {{ form_errors(form.email) }}</li>
         </ul>
 
     </div>

@@ -1,10 +1,10 @@
     <div class="panel panel-default">
         <div class="panel-heading"><h5>{{ branch.address }}
                 {% if user.id == app.user.id %}
-                <a class="branch_edit tooltip" href="{{ url("zgh_fe.branches.get_edit", {"id": user.id, "branch_id": branch.id }) }}"> <span title=""
+                <a class="branch_edit" href="{{ url("zgh_fe.branches.get_edit", {"id": user.id, "branch_id": branch.id }) }}"> <span title=""
                                                                                                      data-placement="top"
                                                                                                      data-toggle="tooltip"
-                                                                                                     class="glyphicon glyphicon-edit pull-right top"
+                                                                                                     class="glyphicon glyphicon-edit tooltip pull-right top"
                                                                                                      data-original-title="Edit"></span></a>
                 {% endif %}
             </h5></div>

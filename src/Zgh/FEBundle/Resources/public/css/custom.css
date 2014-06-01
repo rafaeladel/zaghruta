@@ -175,8 +175,8 @@ a.boy {
 }
 
 .cover {
-    background: url(../img/bg-login.jpg) no-repeat left top;
-    background-size: cover;
+    /*background: url(../img/bg-login.jpg) no-repeat left top;*/
+    /*background-size: cover;*/
     border-radius: 6px 6px 6px 6px;
     position: relative;
 /*    padding: 20px;
@@ -258,7 +258,7 @@ a.boy {
 }
 
 .cover .profile h3 {
-    margin-top: 10px;
+    margin:10px 0 !important;
 }
 
 .cover .profile h3 a, .cover .profile .title {
@@ -1060,7 +1060,7 @@ footer a {
 }
 
 .glyphicon-edit {
-    color: grey;
+    /*color: grey;*/
     font-size: 12px;
 }
 
@@ -2292,3 +2292,56 @@ border-top: none;
     height: auto;
     width: 100%;
 }
+.cover_input{
+    margin-bottom: 10px;
+}
+.editBranch{
+    position: relative;
+}
+.editBranch .panel-heading{
+    position: absolute;
+    top: 10px;
+    right: 3px;
+    display:block;
+    height:auto;
+    z-index: 10;
+    border: none !important;
+}
+.editBranch ul{
+    list-style-type:none ;
+}
+.editBranch ul .form-group{
+    margin-bottom: 3px !important;
+    padding: 0 5px;
+}
+.editBranch ul .form-group .form-control{
+   /*border-top:1px solid #CCCCCC ;*/
+   /*border-right: none !important;*/
+   /*border-bottom: none !important;*/
+   /*border-left: none !important;*/
+   box-shadow: none;
+}
+.editBranch ul .form-group:first-child > .form-control{
+    margin-top: 3px;
+}
+.editBranch .btnPanel{
+    position: absolute;
+    right: 25px;
+}
+.save_edit{
+    float: right;
+    position: relative;
+    display:block;
+}
+/*.save_edit .tooltip ,.cancel_edit .tooltip{position: relative !important;}*/
+
+.cancel_edit {
+    float: left;
+    margin-right: 6px;
+    position: relative;
+    display:block;
+    left: -15px;
+}
+.branch{
+    height: 174px !important;
+ }
