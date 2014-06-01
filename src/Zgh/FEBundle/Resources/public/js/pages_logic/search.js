@@ -11,6 +11,10 @@ $(document).ready(function(){
             startSearch(e.target);
 //        }
     });
+//
+//    $("body").find(".searchText").autocomplete({
+//       source: tstSrc
+//    });
 
     function startSearch(target)
     {

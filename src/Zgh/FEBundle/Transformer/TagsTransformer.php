@@ -19,32 +19,33 @@ class TagsTransformer implements  DataTransformerInterface
     //From DB to View
     public function transform($tags)
     {
+        //If returned "", Exception : Expected a Doctrine\Common\Collections\Collection object. Is generated.
         if(!($tags instanceof Tag)){
-            return "";
+            return [];
         }
 
-        $tags_arr = [];
-        foreach ($tags as $tag) {
-            $tags_arr[] = $tag->getName();
-        }
-        return implode(", ", $tags_arr);
+        return $tags->toArray();
+//        $tags_arr = [];
+//        foreach ($tags as $tag) {
+//            $tags_arr[] = $tag->getName();
+//        }
+//        return implode(", ", $tags_arr);
     }
 
     //From View To DB
     public function reverseTransform($tags)
     {
-        if(count(trim($tags)) == 0){
-            return new ArrayCollection();
+        if($tags == null){
+            return [];
         }
 
-        $tags_arr = array_filter(array_map("trim", explode(",", $tags)));
         $entity_arr = [];
-        foreach($tags_arr as $tag_name){
-            $entity = $this->em->getRepository("ZghFEBundle:Tag")->findOneByName($tag_name);
+        foreach($tags as $tag){
+            $entity = $this->em->getRepository("ZghFEBundle:Tag")->findOneByName($tag);
             if($entity == null)
             {
                 $entity = new Tag();
-                $entity->setName($tag_name);
+                $entity->setName($tag);
             }
             $entity_arr[] = $entity;
         }

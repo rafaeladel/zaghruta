@@ -19,8 +19,6 @@ class ProductWishlistType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $transformer = new WishlistTransformer($this->security_context);
-
         $builder
             ->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event) {
                 $user = $this->security_context->getToken()->getUser();
@@ -35,16 +33,6 @@ class ProductWishlistType extends AbstractType
                 ]);
             })
         ;
-
-        $builder->add("new_wishlist", new ProductWishlistNewType($this->security_context),[
-            "mapped" => false
-        ]);
-
-//        $builder->add(
-//            $builder->create("wishlists", "text")
-//                    ->addModelTransformer($transformer)
-//        );
-
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
