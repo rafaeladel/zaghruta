@@ -19,17 +19,15 @@ class TagsTransformer implements  DataTransformerInterface
     //From DB to View
     public function transform($tags)
     {
-        //If returned "", Exception : Expected a Doctrine\Common\Collections\Collection object. Is generated.
-        if(!($tags instanceof Tag)){
+        if(!$tags instanceof \ArrayAccess){
             return [];
         }
 
-        return $tags->toArray();
-//        $tags_arr = [];
-//        foreach ($tags as $tag) {
-//            $tags_arr[] = $tag->getName();
-//        }
-//        return implode(", ", $tags_arr);
+        $tags_arr = [];
+        foreach ($tags as $tag) {
+            $tags_arr[] = $tag->getName();
+        }
+        return $tags_arr;
     }
 
     //From View To DB

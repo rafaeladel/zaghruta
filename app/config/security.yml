@@ -1,7 +1,8 @@
 security:
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
-
+    acl:
+        connection: default
     role_hierarchy:
         ROLE_CUSTOMER:     ROLE_USER
         ROLE_VENDOR:       ROLE_USER

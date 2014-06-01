@@ -1,54 +1,37 @@
-{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/inner_ajax_layout.html.twig':'@ZghFE/Default/product_content.html.twig' %}
+{% extends app.request.xmlHttpRequest or init is defined ? '@ZghFE/Default/inner_ajax_layout.html.twig':'@ZghFE/Default/product_content.html.twig' %}
 
 {% block innerPartial %}
     <div class="row headerProduct">
         <div class="col-md-2 pull-right icons-G">
-            <a href="{{ url("zgh_fe.products.get_edit", {"id": app.user.id, "product_id": product.id}) }}"
-               class="moveEditProduct">edit</a>
-            <button class="btn btn-danger btn-circle" type="button" data-target="#addwishlist"
-                    data-toggle="modal">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-            <div id="addwishlist" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
-                 tabindex="-1"
-                 class="modal fade in">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header modalHeader">
-                            <button type="button" class="close modalClose" data-dismiss="modal"
-                                    aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Add to Wishlist</h4>
-                        </div>
-                        {{ form_start(addWishlistForm, {"action": url("zgh_fe.products.add_to_wishlist", {"id": product.user.id, "product_id": product.id }), "attr": {"class": "form-horizontal"}  }) }}
-                        <div class="modal-body">
-                            <div class="form-group formGroup">
-                                {#<label class="col-sm-3 control-label">Select Wishlist</label>#}
-                                {{ form_label(addWishlistForm.wishlists, '', {"label_attr":{"class": "col-sm-3 control-label"} }) }}
-                                <div class="col-sm-9">
-                                    {{ form_widget(addWishlistForm.wishlists, {"attr":{"class": ""} }) }}
-                                </div>
+            {% if user.id == app.user.id %}
+                <a href="{{ url("zgh_fe.products.get_edit", {"id": app.user.id, "product_id": product.id}) }}"
+                   class="moveEditProduct">edit</a>
+            {% endif %}
+            {% if "ROLE_CUSTOMER" in app.user.roles %}
+                <button class="btn btn-danger btn-circle" type="button" data-target="#addwishlist"
+                        data-toggle="modal">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+                <div id="addwishlist" aria-hidden="true" aria-labelledby="myModalLabel"
+                     role="dialog"
+                     tabindex="-1"
+                     class="modal fade in">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modalHeader">
+                                <button type="button" class="close modalClose" data-dismiss="modal"
+                                        aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Add to Wishlist</h4>
                             </div>
-
-                            <div class="form-group formGroup">
-                                <label class="col-sm-3 control-label">List Name</label>
-
-                                <div class="col-sm-9">
-                                    {{ form_widget(addWishlistForm.new_wishlist.wishlists, {"attr":{"class": "form-control", "placeholder": "Enter Caption"} }) }}
-                                </div>
+                            <div class="form_wrapper">
+                                {{ include("@ZghFE/Partial/products/wishlist_edit_widget.html.twig", {"form" : addWishlistForm, "post_url": url("zgh_fe.products.add_to_wishlist", {"id": product.user.id, "product_id": product.id }) }) }}
                             </div>
-
-
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-wide btn-primary">Save</button>
-                        </div>
-                        {{ form_rest(addWishlistForm) }}
-                        {{ form_end(addWishlistForm) }}
+                        <!-- /.modal-content -->
                     </div>
-                    <!-- /.modal-content -->
+                    <!-- /.modal-dialog -->
                 </div>
-                <!-- /.modal-dialog -->
-            </div>
+            {% endif %}
 
             <form class="btnForm pull-right"
                   action="{{ url("zgh_fe.like.post", {"id": product.id, "entity_type": product.getObjectType }) }}"
@@ -68,10 +51,10 @@
 
         <div class="clearfix"></div>
         <p class="col-md-4">Category:<span>
-                                {% for category in product.categories %}
-                                    {{ category.name }} {{ loop.index == loop.length ? "" : "-" }}
-                                {% endfor %}
-                        </span></p>
+                                    {% for category in product.categories %}
+                                        {{ category.name }} {{ loop.index == loop.length ? "" : "-" }}
+                                    {% endfor %}
+                            </span></p>
 
     </div>
     <div class="row contentProduct">

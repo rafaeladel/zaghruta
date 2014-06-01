@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Zgh\FEBundle\Entity\Comment;
 use Zgh\FEBundle\Model\CommentableInterface;
@@ -49,6 +50,7 @@ class CommentManager
         $entity->addComment($comment);
         $this->em->persist($comment);
         $this->em->flush();
+
         return new JsonResponse(array(
             "deleteUrl" => $this->router->generate("zgh_fe.comment.delete", array("id" => $comment->getId())),
             "author" => $comment->getUser()->getFullName(),
@@ -63,11 +65,15 @@ class CommentManager
 
     public function deleteComment(Comment $comment)
     {
-        $this->em->remove($comment);
-        $this->em->flush();
-        $object = $comment->getObject();
-        $object->removeComment($comment);
-        $count = count($object->getComments());
-        return new JsonResponse(array("comments_count" => $count));
+        if($this->security_context->isGranted("DELETE", $comment)){
+            $this->em->remove($comment);
+            $this->em->flush();
+            $object = $comment->getObject();
+            $object->removeComment($comment);
+            $count = count($object->getComments());
+            return $count;
+        } else {
+            throw new AccessDeniedException();
+        }
     }
 }

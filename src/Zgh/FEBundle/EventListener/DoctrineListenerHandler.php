@@ -5,6 +5,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\OnFlushEventArgs;
+use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\Security\Acl\Dbal\AclProvider;
+use Symfony\Component\Security\Acl\Dbal\MutableAclProvider;
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
+use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
+use Symfony\Component\Security\Acl\Model\AclProviderInterface;
+use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 use Zgh\FEBundle\Entity\Comment;
 use Zgh\FEBundle\Entity\Like;
 use Zgh\FEBundle\Entity\User;
@@ -25,14 +33,42 @@ class DoctrineListenerHandler implements EventSubscriber
      */
     private $em;
 
+    private $container;
+
+    public function __construct(Container $container)
+    {
+        $this->container = $container;
+    }
+
     public function getSubscribedEvents()
     {
         return array(
             "postLoad",
 //            "prePersist",
+            "postPersist",
             "onFlush",
 //            "postRemove"
         );
+    }
+
+    public function postPersist(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+        $this->em = $args->getEntityManager();
+        if($entity instanceof Comment)
+        {
+            $aclProvider = $this->container->get("security.acl.provider");
+            $objectIdentity = ObjectIdentity::fromDomainObject($entity);
+            $acl = $aclProvider->createAcl($objectIdentity);
+
+            // retrieving the security identity of the currently logged-in user
+            $user = $this->container->get("security.context")->getToken()->getUser();
+            $securityIdentity = UserSecurityIdentity::fromAccount($user);
+
+            // grant owner access
+            $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
+            $aclProvider->updateAcl($acl);
+        }
     }
 
     public function postLoad(LifecycleEventArgs $args)

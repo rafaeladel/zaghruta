@@ -3,13 +3,15 @@ namespace Zgh\FEBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class TagController extends Controller
 {
-    public function getSerializedAction()
+    public function getSerializedAction(Request $request)
     {
         $tags_arr = [];
-        $tags = $this->getDoctrine()->getRepository("ZghFEBundle:Tag")->findAll();
+        $criteria = $request->query->get("q");
+        $tags = $this->getDoctrine()->getRepository("ZghFEBundle:Tag")->findSearchResult($criteria);
         foreach ($tags as $tag) {
             $tag_entry = [];
             $tag_entry['id'] = $tag->getName();

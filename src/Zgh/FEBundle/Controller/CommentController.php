@@ -2,6 +2,7 @@
 namespace Zgh\FEBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Zgh\FEBundle\Entity\Comment;
 
@@ -30,7 +31,8 @@ class CommentController extends Controller
     public function deleteCommentAction($id)
     {
         $comment = $this->getDoctrine()->getRepository("ZghFEBundle:Comment")->find($id);
-        return $this->get("zgh_fe.comment_manager")->deleteComment($comment);
+        $count = $this->get("zgh_fe.comment_manager")->deleteComment($comment);
+        return new JsonResponse(['comments_count' => $count]);
     }
 
     public function listCommentAction($id, $entity_type)
