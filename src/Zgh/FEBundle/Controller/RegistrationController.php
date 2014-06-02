@@ -44,9 +44,11 @@ class RegistrationController extends BaseController
         $user->setEnabled(true);
 
         if($t == "vendor"){
-            $user->setRoles(array("ROLE_VENDOR"));
+            $user->addRole("ROLE_VENDOR");
         }elseif($t == "customer"){
-            $user->setRoles(array("ROLE_CUSTOMER"));
+            $user->addRole("ROLE_CUSTOMER");
+        } else {
+            throw new NotFoundHttpException;
         }
 
         $event = new GetResponseUserEvent($user, $request);

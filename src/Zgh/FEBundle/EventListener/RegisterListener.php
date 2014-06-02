@@ -46,18 +46,19 @@ class RegisterListener implements EventSubscriberInterface
 
     public function onRegistrationCompleted(FilterUserResponseEvent $event)
     {
-        $role = $event->getRequest()->request->get("zgh_fe_registration_form_type")["entity_type"];
+//        $role = $event->getRequest()->request->get("zgh_fe_registration_form_type")["entity_type"];
 
         $user = $event->getUser();
-        $user->addRole($role);
+        $roles = $user->getRoles();
+//        $user->addRole($role);
 
-        if($role == "ROLE_CUSTOMER")
+        if(in_array("ROLE_CUSTOMER", $roles))
         {
             $info = new UserInfo();
             $user->setUserInfo($info);
 //            $info->setStatus("Single");
         }
-        elseif($role == "ROLE_VENDOR")
+        elseif(in_array("ROLE_VENDOR", $roles))
         {
             $info = new VendorInfo();
             $user->setVendorInfo($info);
