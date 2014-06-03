@@ -2,7 +2,7 @@
 
 {% block leftContent %}
 <div id="c_photos" style="display: block;">
-    <div class="row">
+    <div class="row collectionsAlbums">
         <div class="col-xs-12 search-Results">
             {% if user.id == app.user.id %}
                 {% if albums|length > 0 %}
@@ -25,6 +25,7 @@
 
         </div>
     </div>
+    <h2 CLASS="text-left titlePhotos">All Photos</h2>
     <div class="row photosWrapper" id="photos">
         {{ render_esi(controller("ZghFEBundle:Photo:getPhotoPhotosPartialContent", {"id" : user.id} )) }}
     </div>

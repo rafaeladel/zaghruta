@@ -15,7 +15,7 @@
     <div class="form-group formGroup">
         {{ form_label(product_form.description, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
         <div class="col-sm-9">
-            {{ form_widget(product_form.description, {"attr":{"class":"form-control", "placeholder": "Product description"} }) }}
+            {{ form_widget(product_form.description, {"attr":{"class":"form-control animated", "placeholder": "Product description"} }) }}
             {{ form_errors(product_form.description) }}
         </div>
     </div>
@@ -43,12 +43,12 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-wide btn-primary product_edit_submit"
+    <button type="submit" class="btn btn-wide btn-primary product_edit_submit btn-save pull-right"
             data-back_url="{{ url("zgh_fe.products.get_content_widget", {"id": user.id, "product_id": product.id }) }}">
         Save
     </button>
     <a href="{{ url("zgh_fe.products.get_content_widget", {"id": user.id, "product_id": product.id }) }}"
-       class="moveEditProduct">Cancel</a>
+       class="moveEditProduct btn btn-primary btn-wide pull-right"><i class="glyphicon glyphicon-arrow-left"></i> Cancel</a>
     {{ form_rest(product_form) }}
     {{ form_end(product_form) }}
 {% endblock innerPartial %}

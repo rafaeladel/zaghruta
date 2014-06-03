@@ -51,23 +51,10 @@ function singleUpload(button_class){
                             });
                             myDropzone.processQueue();
                         } else {
-                            alert("test");
+                            $(myDropzone.options.previewsContainer).siblings(".photo_error").html("<p>Image required</p>");
                             var submit_btn = $("."+button_class).closest("form").find("[type='submit']");
                             submit_btn.removeAttr("disabled").text("Save");
                         }
-//                        else {
-//                            var form_data = new FormData($(e.target).closest("form").get(0));
-//                            $.ajax({
-//                                type: "POST",
-//                                url: $(e.target).closest("form").attr("action"),
-//                                data: form_data,
-//                                processData: false,
-//                                contentType: false,
-//                                success: function(data){
-//                                    refreshWrapper(data);
-//                                }
-//                            });
-//                        }
                     }
                 });
             });
@@ -81,6 +68,10 @@ function singleUpload(button_class){
                     refreshWrapper(data);
                 });
             }
+
+            myDropzone.on("addedfile", function(file){
+                $(myDropzone.options.previewsContainer).siblings(".photo_error").empty();
+            });
         }
     });
 

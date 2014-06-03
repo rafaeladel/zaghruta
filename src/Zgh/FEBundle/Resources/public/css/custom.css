@@ -873,6 +873,17 @@ footer .container {
     margin-bottom: 15px;
     padding-bottom: 15px
 }
+.collectionsAlbums{
+    margin-bottom: 15px;
+}
+#c_photos .search-Results{
+    margin-bottom: 0;
+}
+.titleAlbums,.titlePhotos{
+    padding-left: 15px;
+    color:#72c6ba;
+
+}
 
 .icon-Res {
     float: left;
@@ -1024,7 +1035,7 @@ footer a {
 .header-post{
     position: relative;
 }
-.product-G, .header-post, .content-post, .footer-post, .footer-post .form-control, .img-post, .postBox .btn, .search-Results-lest, .popupPost .form-control {
+.product-G, .header-post, .content-post, .footer-post, .footer-post .form-control, .img-post, .postBox .btn, .search-Results-lest, .popupPost .form-control,.formComments .form-control {
     margin-bottom: 15px;
 }
 
@@ -1035,6 +1046,14 @@ footer a {
 .product-G .thumbnail .caption h6, .product-l h6 {
     color: #898989;
     margin: 0 0 5px;
+}
+.product-G .photoThumb{
+    height: 200px;
+    overflow: hidden;
+}
+.product-G .photoThumb img {
+    width: 100%;
+    height: 100%;
 }
 
 .fr-suggest a, .fr-suggest a img {
@@ -1117,6 +1136,10 @@ footer a {
 .btnRemove .glyphicon-remove {
     cursor: pointer;
     color: grey;
+}
+.btn-save{
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .sidebarMessage .data-reacted .btnMessages {
@@ -1214,6 +1237,13 @@ footer a {
 
 .headerProduct .icons-G {
     margin-top: 0;
+    position: relative; !important;
+    right: 0 !important;
+}
+.btnEditProduct{
+    margin-left: 10px;
+    margin-top: 5px !important;
+    display: inline-block;
 }
 
 .Product .price >span {
@@ -2183,8 +2213,13 @@ border-top: none;
   font-size: 14px !important;
 }
 .resizePhoto{
-    max-height: 450px;
+    height: auto;
     overflow: hidden;
+    max-height: 550px;
+}
+.resizePhoto img{
+    width: 100%;
+    height:auto;
 }
 .ZaghrutaTitle{
    margin-top: 10px;
@@ -2345,3 +2380,17 @@ border-top: none;
 .branch{
     height: 174px !important;
  }
+.branch_edit{
+    position: absolute;
+    right: 40px;
+    top: 10px;
+}
+.fancybox-inner .product{
+    width: 100%;
+}
+.fancybox-inner .product h2, .fancybox-inner .product .contentProduct p,.fancybox-inner .product  .price{
+    color:#fff !important;
+}
+.fancybox-inner .product .form-group label{
+    color: #fff;
+}

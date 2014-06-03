@@ -230,7 +230,6 @@
     "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
     "bundles/zghfe/js/pages_logic/partial/singleUploadRefresher.js"
     "bundles/zghfe/js/pages_logic/products.js"
-    "bundles/zghfe/js/pages_logic/wishlist.js"
     "bundles/zghfe/plugins/Parsley.js-2.0.0/dist/parsley.js"
     "bundles/zghfe/js/jquery.fancybox.pack.js"
     "bundles/zghfe/js/jquery.fancybox-buttons.js"
@@ -245,8 +244,7 @@
     "bundles/zghfe/js/ImgCrop.js"
     "bundles/zghfe/js/autosize.js"
     "bundles/zghfe/plugins/Imgareaselect/scripts/jquery.imgareaselect.js"
-    "bundles/zghfe/js/pages_logic/search.js"
-    %}
+    "bundles/zghfe/js/pages_logic/search.js" %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
@@ -280,13 +278,22 @@
                 })
             });
 
+            $(document).on("ajaxSend", function (e) {
+                var target = $(e.target.activeElement);
+                if (target.is("input[type='submit']") || target.is("button[type='submit']")) {
+                    target.attr("disabled", "disabled").text("Saving");
+                }
+            });
 
             $(document).on("ajaxSuccess", function (e) {
-
                 postRefresh();
                 photoRefresh();
                 singleUpload("exp_tip_browse");
                 singleUpload("product_browse");
+                var target = $(e.target.activeElement);
+                if (target.is("input[type='submit']") || target.is("button[type='submit']")) {
+                    target.removeAttr("disabled").text("Save");
+                }
                 ThraceForm.select2();
             });
 

@@ -14,7 +14,7 @@
                     </div>
                 {% endif %}
                 <div class="col-sm-5 ">
-                    {{ form_start(search_form, {"action": ""}) }}
+                    {#{{ form_start(search_form, {"action": ""}) }}#}
                     <div class="mainSearch2 input-group">
                         <div style="display: none;" class="input-group-btn">
                             <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Category <span
@@ -39,15 +39,15 @@
                         </div>
                         <!-- /btn-group -->
 
-                        {{ form_widget(search_form.search_text, {"attr":{"placeholder": "Search", "class":"form-control custFc searchText","style":"border-radius: 6px 0px 0px 6px;"} }) }}
-                        {#<input type="text" placeholder="Search for your things" class="form-control custFc"#}
-                               {#style="border-radius: 6px 0px 0px 6px;">#}
+                        {#{{ form_widget(search_form.search_text, {"attr":{"placeholder": "Search", "class":"form-control custFc searchText","style":"border-radius: 6px 0px 0px 6px;"} }) }}#}
+                        <input type="text" placeholder="Search for your things" class="form-control custFc"
+                               style="border-radius: 6px 0px 0px 6px;">
                         {#<input type="submit" class="search-addon input-group-addon custAncor" />#}
                         <a class="search-addon input-group-addon custAncor doSearch" href="#"></a>
 
                     </div>
-                    {{ form_rest(search_form) }}
-                    {{ form_end(search_form) }}
+                    {#{{ form_rest(search_form) }}#}
+                    {#{{ form_end(search_form) }}#}
                 </div>
                 <div class="hidden-xs  pull-right  ">
                     <div class="btn-group ">

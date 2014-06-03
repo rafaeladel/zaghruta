@@ -14,7 +14,7 @@
 
     </div>
     {% endif %}
-    <div id="wishlists_list">
+    <div id="wishlists_list" class="content_wrapper">
         {{ render_esi(controller("ZghFEBundle:Wishlist:getWishlistPartialContent", {"id": user.id})) }}
     </div>
 </div>

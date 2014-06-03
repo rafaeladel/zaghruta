@@ -3,7 +3,7 @@
 {% block leftContent %}
     <div class="row">
         <div class="col-xs-12 search-Results">
-            <a class="btn btn-default btn-wide moveProduct" href="{{ url("zgh_fe.user_profile.products_partial", {"id": user.id}) }}">
+            <a class="btn btn-primary btn-wide moveProduct" href="{{ url("zgh_fe.user_profile.products_partial", {"id": user.id}) }}">
                 <span class="glyphicon glyphicon-arrow-left"></span> Cancel
             </a>
 
@@ -26,7 +26,7 @@
             <div class="form-group formGroup">
                 {{ form_label(product_form.description, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
                 <div class="col-sm-9">
-                    {{ form_widget(product_form.description, {"attr":{"class":"form-control", "placeholder": "Product description"} }) }}
+                    {{ form_widget(product_form.description, {"attr":{"class":"animated form-control", "placeholder": "Product description"} }) }}
                     {{ form_errors(product_form.description) }}
                 </div>
             </div>
@@ -51,7 +51,7 @@
                 <div class="col-sm-9">
                     {{ form_widget(product_form.image_file, {"attr":{"class":"product_browse"} }) }}
                     {{ form_errors(product_form.image_file) }}
-
+                    <div class="photo_error"></div>
                     <div class="col-sm-4 col-md-4 dropzone-previews photo_preview clearfix row"></div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-wide btn-primary product_submit" data-back_url="{{ url("zgh_fe.user_profile.products_partial", {"id": user.id}) }}">save</button>
+            <button type="submit" class="btn btn-wide pull-right  btn-primary product_submit" data-back_url="{{ url("zgh_fe.user_profile.products_partial", {"id": user.id}) }}">save</button>
         {{ form_rest(product_form) }}
         {{ form_end(product_form) }}
     </div>

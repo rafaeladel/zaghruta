@@ -56,7 +56,11 @@ class Product extends Image implements LikeableInterface, CommentableInterface
     protected $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Wishlist", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="Wishlist", inversedBy="products", cascade={"persist", "remove"})
+     * @ORM\JoinTable(name="wishlist_products",
+     *      joinColumns={@ORM\JoinColumn(name="wishlist_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")}
+     *      )
      */
     protected $wishlists;
 
@@ -179,7 +183,7 @@ class Product extends Image implements LikeableInterface, CommentableInterface
     public function addWishlist(\Zgh\FEBundle\Entity\Wishlist $wishlists)
     {
         $this->wishlists[] = $wishlists;
-
+        $wishlists->addProduct($this);
         return $this;
     }
 

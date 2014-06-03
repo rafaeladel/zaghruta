@@ -32,6 +32,10 @@ hwi_oauth_redirect:
 facebook_login:
     pattern: /login/check-facebook
 
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /thread
+
 zgh_fe:
     resource: "@ZghFEBundle/Resources/config/routing.xml"
     prefix:   /

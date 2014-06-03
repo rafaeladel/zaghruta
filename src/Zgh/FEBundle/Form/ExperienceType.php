@@ -16,7 +16,6 @@ class ExperienceType extends AbstractType
                     "class" => 'Zgh\FEBundle\Entity\Category',
                     "property" => "name",
                     'label' => 'Categories',
-                    'multiple' => true,
                     'empty_value' => 'Select category',
                     "configs" => array(
                         "width" => '100%',

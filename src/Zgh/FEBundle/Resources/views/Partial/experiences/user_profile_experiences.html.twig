@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-xs-12 search-Results">
                 {% if user.id == app.user.id %}
-                    <a class="btn btn-default btn-wide moveExpTip" href="{{ url("zgh_fe.experience.add", {"id": user.id}) }}">
+                    <a class="btn btn-primary     btn-wide moveExpTip" href="{{ url("zgh_fe.experience.add", {"id": user.id}) }}">
                         <span class="glyphicon glyphicon-plus"></span> Share your Experince
                     </a>
                 {% endif %}

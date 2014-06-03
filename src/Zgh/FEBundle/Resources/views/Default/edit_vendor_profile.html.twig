@@ -1,12 +1,7 @@
 {% extends "@ZghFE/layout.html.twig" %}
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets
-    "bundles/zghfe/css/magicsuggest-1.3.1.css"
-    filter="cssrewrite"
-    %}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen"/>
-    {% endstylesheets %}
+
 {% endblock stylesheets %}
 {% block content %}
 
@@ -2121,8 +2116,6 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts
-    "bundles/zghfe/js/magicsuggest-1.3.1.js"
-    "bundles/zghfe/js/magicSuggestCustome.js"
     "bundles/zghfe/js/jquery.fancybox.pack.js"
     "bundles/zghfe/js/jquery.fancybox-buttons.js"
     "bundles/zghfe/js/jquery.fancybox-media.js"

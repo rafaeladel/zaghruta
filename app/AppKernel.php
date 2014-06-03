@@ -21,7 +21,8 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Liip\UrlAutoConverterBundle\LiipUrlAutoConverterBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
-            new Thrace\FormBundle\ThraceFormBundle()
+            new Thrace\FormBundle\ThraceFormBundle(),
+            new \FOS\MessageBundle\FOSMessageBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -147,3 +147,8 @@ hwi_oauth:
 
 fos_js_routing:
     routes_to_expose: [ zgh_fe.user.login_partial, zgh_fe.vendor.login_partial, zgh_fe.user_profile.privacy.set, zgh_fe.like.list, zgh_fe.comment.list ]
+
+fos_message:
+    db_driver: orm
+    thread_class: Zgh\FEBundle\Entity\Thread
+    message_class: Zgh\FEBundle\Entity\Message
