@@ -4,10 +4,6 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="fos_user_registration_register" pattern="/register/{t}">
-        <default key="_controller">FOSUserBundle:Registration:register</default>
-    </route>
-
     <route id="zgh_fe.user.login_partial" pattern="/user_login">
         <default key="_controller">ZghFEBundle:Default:getUserLoginPartial</default>
     </route>
