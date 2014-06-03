@@ -1,17 +1,16 @@
 <?php
 
-namespace Zgh\FEBundle\Entity;
+namespace Zgh\MsgBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\MessageBundle\Entity\ThreadMetadata as BaseThreadMetadata;
+use FOS\MessageBundle\Entity\MessageMetadata as BaseMessageMetadata;
+use FOS\MessageBundle\Model\MessageInterface;
 use FOS\MessageBundle\Model\ParticipantInterface;
-use FOS\MessageBundle\Model\ThreadInterface;
-use Zgh\FEBundle\Model\Partial\BasicInfo;
 
 /**
  * @ORM\Entity
  */
-class ThreadMetadata extends BaseThreadMetadata
+class MessageMetadata extends BaseMessageMetadata
 {
     /**
      * @ORM\Id
@@ -22,12 +21,12 @@ class ThreadMetadata extends BaseThreadMetadata
 
     /**
      * @ORM\ManyToOne(
-     *   targetEntity="Zgh\FEBundle\Entity\Thread",
+     *   targetEntity="Zgh\MsgBundle\Entity\Message",
      *   inversedBy="metadata"
      * )
-     * @var ThreadInterface
+     * @var MessageInterface
      */
-    protected $thread;
+    protected $message;
 
     /**
      * @ORM\ManyToOne(targetEntity="Zgh\FEBundle\Entity\User")

@@ -1,7 +1,9 @@
 <div class="col-md-2 col-sm-3  note-box">
-    <a href="messages.html" type="button" class="btn btn-primary btn-circle counter">
+    <a href="{{ url("fos_message_inbox") }}" type="button" class="btn btn-primary btn-circle counter">
         <span class="glyphicon glyphicon-envelope"></span>
-        <span class="notCounter img-circle text-center">15</span>
+        {% if fos_message_nb_unread() != 0 %}
+        <span class="notCounter img-circle text-center">{{ fos_message_nb_unread() }}</span>
+        {% endif %}
     </a>
 
     <a href="notifications.html" type="button" class="btn btn-primary btn-circle counter">

@@ -1,6 +1,6 @@
 <?php
 
-namespace Zgh\FEBundle\Entity;
+namespace Zgh\MsgBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -8,7 +8,6 @@ use FOS\MessageBundle\Entity\Message as BaseMessage;
 use FOS\MessageBundle\Entity\MessageMetadata;
 use FOS\MessageBundle\Model\ParticipantInterface;
 use FOS\MessageBundle\Model\ThreadInterface;
-use Zgh\FEBundle\Model\Partial\BasicInfo;
 
 /**
  * @ORM\Entity
@@ -24,7 +23,7 @@ class Message extends BaseMessage
 
     /**
      * @ORM\ManyToOne(
-     *   targetEntity="Zgh\FEBundle\Entity\Thread",
+     *   targetEntity="Zgh\MsgBundle\Entity\Thread",
      *   inversedBy="messages"
      * )
      * @var ThreadInterface
@@ -39,7 +38,7 @@ class Message extends BaseMessage
 
     /**
      * @ORM\OneToMany(
-     *   targetEntity="Zgh\FEBundle\Entity\MessageMetadata",
+     *   targetEntity="Zgh\MsgBundle\Entity\MessageMetadata",
      *   mappedBy="message",
      *   cascade={"all"}
      * )

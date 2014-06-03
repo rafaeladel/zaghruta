@@ -1,3 +1,7 @@
+zgh_msg:
+    resource: "@ZghMsgBundle/Resources/config/routing.xml"
+    prefix:   /
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -34,7 +38,7 @@ facebook_login:
 
 fos_message:
     resource: "@FOSMessageBundle/Resources/config/routing.xml"
-    prefix: /thread
+    prefix: /messages
 
 zgh_fe:
     resource: "@ZghFEBundle/Resources/config/routing.xml"

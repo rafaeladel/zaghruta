@@ -1,11 +1,10 @@
 <?php
 
-namespace Zgh\FEBundle\Entity;
+namespace Zgh\MsgBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\MessageBundle\Entity\Thread as BaseThread;
-use Zgh\FEBundle\Model\Partial\BasicInfo;
 
 /**
  * @ORM\Entity
@@ -26,7 +25,7 @@ class Thread extends BaseThread
 
     /**
      * @ORM\OneToMany(
-     *   targetEntity="Zgh\FEBundle\Entity\Message",
+     *   targetEntity="Zgh\MsgBundle\Entity\Message",
      *   mappedBy="thread"
      * )
      * @var Message[]|\Doctrine\Common\Collections\Collection
@@ -35,11 +34,16 @@ class Thread extends BaseThread
 
     /**
      * @ORM\OneToMany(
-     *   targetEntity="Zgh\FEBundle\Entity\ThreadMetadata",
+     *   targetEntity="Zgh\MsgBundle\Entity\ThreadMetadata",
      *   mappedBy="thread",
      *   cascade={"all"}
      * )
      * @var ThreadMetadata[]|\Doctrine\Common\Collections\Collection
      */
     protected $metadata;
+
+    public function setSubject($subject)
+    {
+        $this->subject = "Conversation";
+    }
 }

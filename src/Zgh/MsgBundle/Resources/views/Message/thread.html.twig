@@ -1,0 +1,26 @@
+{% for message in thread.messages %}
+    <div class="msg msgUser">
+        <div class="profile  sm-img-post">
+            <a href="#" class="pull-left img-circle ">
+                <img alt="" src="{{ asset(message.sender.profilePhoto.getThumbWebPath()) }}"
+                     class="media-object img-responsive">
+            </a>
+            <h5><a href="">{{ message.sender.fullname }}</a></h5>
+        </div>
+        <div class="clearfix"></div>
+        <div class="pull-right time">{{ message.createdAt|date() }}</div>
+        <p class="img-rounded">
+            <span></span>
+            {{ message.body }}
+        </p>
+
+    </div>
+{% endfor %}
+    {{ form_start(reply_form, {"action": url('fos_message_thread_view', {'threadId': thread.id}) , "method":"post"} ) }}
+            {{ form_widget(reply_form.body, {"attr":{"class":"form-control  textMsg" }}) }}
+
+<button class="btn btn-primary btn-wide pull-right reply_submit sendMsg" data-t_id="{{ thread.id }}" type="submit">
+    <span class="glyphicon glyphicon-envelope"></span> Send
+</button>
+{{ form_rest(reply_form) }}
+    {{ form_end(reply_form) }}
