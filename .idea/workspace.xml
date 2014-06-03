@@ -55,10 +55,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterListener.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RegisterListener.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/EventListener/RegisterListener.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="43" selection-start="1456" selection-end="1456" vertical-scroll-proportion="0.44444445" vertical-offset="197" max-vertical-offset="1207">
+            <state line="41" column="43" selection-start="1456" selection-end="1456" vertical-scroll-proportion="-6.8076925" vertical-offset="248" max-vertical-offset="1207">
               <folding />
             </state>
           </provider>
@@ -73,13 +73,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register_content.html.twig" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="register_content.html.twig" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Registration/register_content.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="55" selection-start="99" selection-end="99" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="561">
+            <state line="2" column="86" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0662768" vertical-offset="0" max-vertical-offset="561">
               <folding>
                 <element signature="e#67#97#0" expanded="true" />
-                <element signature="e#1181#1204#0" expanded="true" />
+                <element signature="e#1217#1240#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,7 +88,7 @@
       <file leaf-file-name="RegistrationController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Controller/RegistrationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="45.115383" vertical-offset="1173" max-vertical-offset="2414">
+            <state line="65" column="83" selection-start="2430" selection-end="2430" vertical-scroll-proportion="-9.807693" vertical-offset="561" max-vertical-offset="2414">
               <folding />
             </state>
           </provider>
@@ -179,9 +179,9 @@
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Controller/RegistrationController.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Form/RegistrationType.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/services.xml" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Registration/register_content.html.twig" />
-        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/EventListener/RegisterListener.php" />
         <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/misc_routing.xml" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/EventListener/RegisterListener.php" />
+        <option value="$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Registration/register_content.html.twig" />
       </list>
     </option>
   </component>
@@ -1032,23 +1032,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Controller/RegistrationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="45.115383" vertical-offset="1173" max-vertical-offset="2414">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Registration/register_content.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="55" selection-start="99" selection-end="99" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="561">
-          <folding>
-            <element signature="e#67#97#0" expanded="true" />
-            <element signature="e#1181#1204#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/config/Routing/misc_routing.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
@@ -1072,10 +1055,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Controller/RegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="83" selection-start="2430" selection-end="2430" vertical-scroll-proportion="-9.807693" vertical-offset="561" max-vertical-offset="2414">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/EventListener/RegisterListener.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="43" selection-start="1456" selection-end="1456" vertical-scroll-proportion="0.44444445" vertical-offset="197" max-vertical-offset="1207">
+        <state line="41" column="43" selection-start="1456" selection-end="1456" vertical-scroll-proportion="-6.8076925" vertical-offset="248" max-vertical-offset="1207">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Zgh/FEBundle/Resources/views/Registration/register_content.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="86" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0662768" vertical-offset="0" max-vertical-offset="561">
+          <folding>
+            <element signature="e#67#97#0" expanded="true" />
+            <element signature="e#1217#1240#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
