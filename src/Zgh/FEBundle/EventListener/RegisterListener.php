@@ -11,6 +11,7 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Kernel;
 use Zgh\FEBundle\Entity\UserCP;
 use Zgh\FEBundle\Entity\UserInfo;
@@ -31,32 +32,34 @@ class RegisterListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return(array(
-//           FOSUserEvents::REGISTRATION_INITIALIZE => "onRegistrationInitialize",
+           FOSUserEvents::REGISTRATION_INITIALIZE => "onRegistrationInitialize",
            FOSUserEvents::REGISTRATION_COMPLETED => "onRegistrationCompleted"
         ));
     }
 
     public function onRegistrationInitialize(GetResponseUserEvent $event)
     {
-        $form = $event->getRequest()->request;
-//        $role = $form->get("entity_type")->getData();
-        var_dump($form);
-        die;
+        $type = $event->getRequest()->query->get("t");
+        $user = $event->getUser();
+        if($type == "vendor"){
+            $user->addRole("ROLE_VENDOR");
+        }elseif($type == "customer"){
+            $user->addRole("ROLE_CUSTOMER");
+        } else {
+            throw new NotFoundHttpException;
+        }
     }
 
     public function onRegistrationCompleted(FilterUserResponseEvent $event)
     {
-//        $role = $event->getRequest()->request->get("zgh_fe_registration_form_type")["entity_type"];
 
         $user = $event->getUser();
         $roles = $user->getRoles();
-//        $user->addRole($role);
 
         if(in_array("ROLE_CUSTOMER", $roles))
         {
             $info = new UserInfo();
             $user->setUserInfo($info);
-//            $info->setStatus("Single");
         }
         elseif(in_array("ROLE_VENDOR", $roles))
         {
