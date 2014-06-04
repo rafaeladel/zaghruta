@@ -18,10 +18,18 @@ class ProductType extends AbstractType
                     "property" => "name",
                     'label' => 'Categories',
                     'empty_value' => 'Select category',
+                    "multiple" => true,
                     "configs" => array(
                         "width" => '100%',
                     ),
                 ))
+//            ->add("categories", "entity", array(
+//                    "class" => 'Zgh\FEBundle\Entity\Category',
+//                    "property" => "name",
+//                    'label' => 'Categories',
+//                    'empty_value' => 'Select category',
+//                    "multiple" => true
+//                ))
             ->add("price", "number", ["required" => false])
         ;
 
@@ -37,7 +45,7 @@ class ProductType extends AbstractType
         $resolver->setDefaults(array(
                 "data_class" => 'Zgh\FEBundle\Entity\Product',
                 "type" => null,
-                "cascade_validation" => true,
+//                "cascade_validation" => true,
             ));
     }
 

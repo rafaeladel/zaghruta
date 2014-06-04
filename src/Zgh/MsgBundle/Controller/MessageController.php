@@ -2,6 +2,7 @@
 
 namespace Zgh\MsgBundle\Controller;
 
+use FOS\MessageBundle\Model\ThreadInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\DependencyInjection\ContainerAware;
@@ -19,7 +20,7 @@ class MessageController extends ContainerAware
     {
         $container = $this->container;
         $threads = $container->get("fos_message.provider")->getRelatedThreads();
-        $new_form = $container->get('fos_message.new_thread_form.factory')->create();
+        $new_form = $container->get('fos_message.new_thread_form.factory')->create($container->get("security.context"));
         $formHandler = $container->get('fos_message.new_thread_form.handler');
 
         if ($message = $formHandler->process($new_form)) {
@@ -27,8 +28,18 @@ class MessageController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:inbox.html.twig', array(
-                'threads' => $threads,
+                "threads" => $threads,
                 'new_form' => $new_form->createView()
+            ));
+    }
+
+    public function inboxContentAction()
+    {
+        $container = $this->container;
+        $threads = $container->get("fos_message.provider")->getRelatedThreads();
+
+        return $this->container->get('templating')->renderResponse('ZghMsgBundle:Message:inbox_content.html.twig', array(
+                'threads' => $threads,
             ));
     }
 
@@ -53,6 +64,15 @@ class MessageController extends ContainerAware
         //todo!
         return $this->container->get('templating')->renderResponse('@ZghMsg/Message/thread.html.twig', array(
                 'reply_form' => $reply_form->createView(),
+                'thread' => $thread
+            ));
+    }
+
+    public function messageListAction($threadId)
+    {
+        $container = $this->container;
+        $thread = $container->get("fos_message.provider")->getThread($threadId);
+        return $this->container->get('templating')->renderResponse('@ZghMsg/Message/message_list.html.twig', array(
                 'thread' => $thread
             ));
     }

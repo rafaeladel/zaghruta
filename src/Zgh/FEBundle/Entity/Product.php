@@ -31,7 +31,11 @@ class Product extends Image implements LikeableInterface, CommentableInterface
     protected $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="products", cascade={"persist", "remove"})
+     * @ORM\JoinTable(name="categories_products",
+     *      joinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")}
+     *      )
      */
     protected $categories;
 

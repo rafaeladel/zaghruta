@@ -10,6 +10,7 @@
         <parameter key="zgh_fe.login_handler_success.class">Zgh\FEBundle\EventListener\LoginSuccessHandler</parameter>
         <parameter key="zgh_fe.login_handler_failure.class">Zgh\FEBundle\EventListener\LoginFailureHandler</parameter>
         <parameter key="zgh_fe.register_handler.class">Zgh\FEBundle\EventListener\RegisterListener</parameter>
+        <parameter key="zgh_fe.twig.message_user.class">Zgh\FEBundle\TwigExtension\MessageUserExtension</parameter>
         <parameter key="zgh_fe.twig.like_check.class">Zgh\FEBundle\TwigExtension\LikeCheckExtension</parameter>
         <parameter key="zgh_fe.twig.follow_check.class">Zgh\FEBundle\TwigExtension\FollowCheckExtension</parameter>
         <parameter key="zgh_fe.twig.widgets_extension.class">Zgh\FEBundle\TwigExtension\WidgetsExtension</parameter>
@@ -47,6 +48,11 @@
         <service id="zgh_fe.twig.like_check" class="%zgh_fe.twig.like_check.class%">
             <tag name="twig.extension" />
             <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+
+        <service id="zgh_fe.twig.message_user" class="%zgh_fe.twig.message_user.class%">
+            <tag name="twig.extension" />
+            <argument type="service" id="fos_message.new_thread_form.factory"/>
         </service>
 
         <service id="zgh_fe.twig.follow_check" class="%zgh_fe.twig.follow_check.class%">

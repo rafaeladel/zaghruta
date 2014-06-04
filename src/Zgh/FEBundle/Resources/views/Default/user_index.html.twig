@@ -48,9 +48,13 @@
 
             {{ renderFollow(user) }}
 
-            <button class="btn-Message  btn btn-primary " type="button">
-                <span class="glyphicon glyphicon-envelope"></span>
-            </button>
+            {% if user.id != app.user.id %}
+                <button class="btn-Message  btn btn-primary "  data-toggle="modal"
+                        data-target="#msgModal" type="button">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                </button>
+                {{ message_user_popup("msgModal")|raw }}
+            {% endif %}
             <a href="{{ url("zgh_fe.user_profile.connections_partial", {id: user.id}) }}" class="boy"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> {{ user.followees|length }} </a>
         </div>
             {% if user.id == app.user.id %}

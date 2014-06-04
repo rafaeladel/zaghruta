@@ -29,5 +29,12 @@ $(document).ready(function () {
         });
     });
 
-    $("")
+    var inbox_content_url = Routing.generate("zgh_message_inbox_content");
+
+    setInterval(function(){
+        $("body").find(".sidebarMessage").load(inbox_content_url);
+        var thread_id = $("body").find(".messagesWrapper").data("t_id");
+        var message_list_url = Routing.generate("fos_message_list_view", {threadId: thread_id});
+        $("body").find(".messagesWrapper").load(message_list_url);
+    }, 10000);
 });

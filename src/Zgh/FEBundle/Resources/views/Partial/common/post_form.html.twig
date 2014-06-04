@@ -1,7 +1,13 @@
 <div class="row margin">
     <div class="postBox">
+      <div class="posts">
         {{ form_start(post_form, {"action": url("zgh_fe.post.new")}) }}
         {{ form_widget(post_form.content, {"attr": {"class":"form-control animated", "placeholder": "Post something.." }}) }}
+        <div class="thumbnailUpload">
+            <button data-target="#deletePost" data-toggle="modal" type="submit" class="row   btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
+            <img src="../EP.jpg"/>
+        </div>
+      </div>
         <button class="btn btn-primary btn-sm btn-wide pull-right newPost" type="submit"> Post</button>
         {#<a href="#"><span class="glyphicon glyphicon-camera cam-post"></span> </a>#}
         <input type="hidden" name="return_url" value="{{ return_url }}" />

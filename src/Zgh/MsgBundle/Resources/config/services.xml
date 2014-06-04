@@ -5,7 +5,9 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="zgh_msg.new_thread_form.type" class="Zgh\MsgBundle\Form\NewThreadMessageFormType" public="false" />
+        <service id="zgh_msg.new_thread_form.type" class="Zgh\MsgBundle\Form\NewThreadMessageFormType" public="false">
+            <argument type="service" id="security.context"/>
+        </service>
 
         <service id="zgh_message.thread_manager" class="Zgh\MsgBundle\Entity\ZghThreadManager" public="false">
             <argument type="service" id="doctrine.orm.entity_manager" />
@@ -35,6 +37,8 @@
             <argument type="service" id="zgh_message.message_manager"/>
             <tag name="twig.extension" alias="zgh_message" />
         </service>
+
+
 
     </services>
 </container>

@@ -258,12 +258,12 @@
                         {{ form_start(form, {"action": url("zgh_fe.user_profile.user_post_intro_edit", {"id": app.user.id})}) }}
                             <div class="form-group">
                                 {{ form_label(form.first_name) }}
-                                {{ form_widget(form.first_name, {"attr": {"class": "form-control", "placeholder": "Firstname"} }) }}
+                                {{ form_widget(form.first_name, {"attr": {"class": "form-control", "placeholder": "First name"} }) }}
                                 <div class="validation" style="">{{ form_errors(form.first_name) }}</div>
                             </div>
                             <div class="form-group">
                                 {{ form_label(form.last_name) }}
-                                {{ form_widget(form.last_name, {"attr": {"class": "form-control", "placeholder": "Lastname"} }) }}
+                                {{ form_widget(form.last_name, {"attr": {"class": "form-control", "placeholder": "Last name"} }) }}
                                 <div class="validation" style="">{{ form_errors(form.last_name) }}</div>
                             </div>
                             <div class="form-group">
@@ -271,7 +271,7 @@
                                 {{ form_widget(form.birthday) }}
                                 <div class="validation" style="">{{ form_errors(form.birthday) }}</div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group ">
                                 {{ form_label(form.gender) }}
                                 {{ form_widget(form.gender) }}
                                 <div class="validation" style="">{{ form_errors(form.gender) }}</div>
