@@ -31,7 +31,7 @@ class UserPrivacyManager extends \Twig_Extension
 
         $followed = $this->em->getRepository("ZghFEBundle:FollowUsers")->checkFollow($current_user->getId() , $user->getId());
 
-        if($user->getIsPrivate() && $followed == null){
+        if($user->getIsPrivate() && ( $followed == null || !$followed->getIsApproved())){
             return false;
         } else {
             return true;

@@ -17,57 +17,30 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Ahmed Liked your <a href="#"> post</a></td>
-                            <td><span class="glyphicon glyphicon-thumbs-up pull-right"></span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#"> Ahmed </a>Add you as a friend</td>
-                            <td><span class="glyphicon glyphicon-user pull-right"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Ahmed gived you Zaghruta</td>
-                            <td><span class="glyphicon glyphicon-user pull-right"></span></td>
-                        </tr>
+                        {% for notification in notifications %}
+                            {% if notification.content.type == 0 %}
+                                <tr>
+                                    <td>{{ notification.content.user }} Liked your <a href="{{ url("zgh_fe.post.display", {"id": notification.user.id, "post_id": notification.content.post_id }) }}"> post</a></td>
+                                    <td><span class="glyphicon glyphicon-thumbs-up pull-right"></span></td>
+                                </tr>
+                            {% elseif notification.content.type == 1 %}
+                                <tr>
+                                    <td>{{ notification.content.user }} Commented on your <a href="{{ url("zgh_fe.post.display", {"id": notification.user.id, "post_id": notification.content.post_id }) }}"> post</a></td>
+                                    <td><span class="glyphicon glyphicon-comment pull-right"></span></td>
+                                </tr>
+                            {% elseif notification.content.type == 2 %}
+                                <tr>
+                                    <td><a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a>Add you as a friend</td>
+                                    <td><span class="glyphicon glyphicon-user pull-right"></span></td>
+                                </tr>
+                            {% elseif notification.content.type == 3 %}
+                                <tr>
+                                    <td><a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a> Wants to add you as a friend. <a href="{{ url("zgh_fe.user.accept_follow", {"id": notification.actionId, "n_id": notification.id }) }}">Yes</a> <a href="{{ url("zgh_fe.user.deny_follow", {"id": notification.actionId, "n_id": notification.id }) }}">No</a> </td>
+                                    <td><span class="glyphicon glyphicon-user pull-right"></span></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
 
-
-                        <tr>
-                            <td>Ahmed Liked your <a href="#"> post</a></td>
-                            <td><span class="glyphicon glyphicon-thumbs-up pull-right"></span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#"> Ahmed </a>Add you as a friend</td>
-                            <td><span class="glyphicon glyphicon-user pull-right"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Ahmed gived you Zaghruta</td>
-                            <td><span class="glyphicon glyphicon-user pull-right"></span></td>
-                        </tr>
-
-                        <tr>
-                            <td>Ahmed Liked your <a href="#"> post</a></td>
-                            <td><span class="glyphicon glyphicon-thumbs-up pull-right"></span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#"> Ahmed </a>Add you as a friend</td>
-                            <td><span class="glyphicon glyphicon-user pull-right"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Ahmed gived you Zaghruta</td>
-                            <td><span class="glyphicon glyphicon-user pull-right"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Ahmed Liked your <a href="#"> post</a></td>
-                            <td><span class="glyphicon glyphicon-thumbs-up pull-right"></span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#"> Ahmed </a>Add you as a friend</td>
-                            <td><span class="glyphicon glyphicon-user pull-right"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Ahmed gived you Zaghruta</td>
-                            <td><span class="glyphicon glyphicon-user pull-right"></span></td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>

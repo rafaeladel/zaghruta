@@ -12,12 +12,11 @@ use Zgh\FEBundle\Model\Partial\BasicInfo;
  */
 class Notification
 {
-    use BasicInfo;
+//    use BasicInfo;
 
     const TYPE_lIKE = 0;
     const TYPE_COMMENT = 1;
     const TYPE_FOLLOW = 2;
-    const TYPE_FOLLOW_REQUEST = 3;
 
 
     /**
@@ -115,28 +114,5 @@ class Notification
     public function setIsReadValue()
     {
         $this->setIsRead(false);
-    }
-
-    /**
-     * Set action_id
-     *
-     * @param string $actionId
-     * @return Notification
-     */
-    public function setActionId($actionId)
-    {
-        $this->action_id = $actionId;
-
-        return $this;
-    }
-
-    /**
-     * Get action_id
-     *
-     * @return string 
-     */
-    public function getActionId()
-    {
-        return $this->action_id;
     }
 }

@@ -12,7 +12,7 @@
         <default key="_controller">ZghFEBundle:Default:getVendorLoginPartial</default>
     </route>
 
-    <route id="zgh_fe.notifications" pattern="/notifications">
+    <route id="zgh_fe.notifications" pattern="/notifications_partial">
         <default key="_controller">ZghFEBundle:Default:getShortcutsAndNotification</default>
     </route>
 

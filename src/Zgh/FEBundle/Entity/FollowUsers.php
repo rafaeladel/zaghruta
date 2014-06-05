@@ -24,6 +24,10 @@ class FollowUsers
      */
     protected $followee;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_approved;
 
     /**
      * Set follower
@@ -69,5 +73,28 @@ class FollowUsers
     public function getFollowee()
     {
         return $this->followee;
+    }
+
+    /**
+     * Set is_approved
+     *
+     * @param boolean $isApproved
+     * @return FollowUsers
+     */
+    public function setIsApproved($isApproved)
+    {
+        $this->is_approved = $isApproved;
+
+        return $this;
+    }
+
+    /**
+     * Get is_approved
+     *
+     * @return boolean 
+     */
+    public function getIsApproved()
+    {
+        return $this->is_approved;
     }
 }

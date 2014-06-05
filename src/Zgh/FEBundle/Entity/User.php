@@ -97,24 +97,9 @@ class User extends BaseUser implements ParticipantInterface
     protected $vendor_info;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Notification")
+     * @ORM\OneToMany(targetEntity="Notification", mappedBy="user", cascade={"persist", "remove"})
      */
     protected $notifications;
-
-    /**
-     * @ORM\OneToOne(targetEntity="NotificationRead", mappedBy="user")
-     */
-    protected $n_read;
-
-    /**
-     * @ORM\OneToOne(targetEntity="ConfRead", mappedBy="user")
-     */
-    protected $c_read;
-
-    /**
-     * @ORM\OneToMany(targetEntity="ConfReply", mappedBy="user")
-     */
-    protected $user_confs_replies;
 
     /**
      * @ORM\OneToMany(targetEntity="FollowUsers", mappedBy="follower", cascade={"persist", "remove"})
@@ -465,118 +450,6 @@ class User extends BaseUser implements ParticipantInterface
     public function getBranches()
     {
         return $this->branches;
-    }
-
-    /**
-     * Add notifications
-     *
-     * @param \Zgh\FEBundle\Entity\Notification $notifications
-     * @return User
-     */
-    public function addNotification(\Zgh\FEBundle\Entity\Notification $notifications)
-    {
-        $this->notifications[] = $notifications;
-
-        return $this;
-    }
-
-    /**
-     * Remove notifications
-     *
-     * @param \Zgh\FEBundle\Entity\Notification $notifications
-     */
-    public function removeNotification(\Zgh\FEBundle\Entity\Notification $notifications)
-    {
-        $this->notifications->removeElement($notifications);
-    }
-
-    /**
-     * Get notifications
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getNotifications()
-    {
-        return $this->notifications;
-    }
-
-    /**
-     * Set n_read
-     *
-     * @param \Zgh\FEBundle\Entity\NotificationRead $nRead
-     * @return User
-     */
-    public function setNRead(\Zgh\FEBundle\Entity\NotificationRead $nRead = null)
-    {
-        $this->n_read = $nRead;
-
-        return $this;
-    }
-
-    /**
-     * Get n_read
-     *
-     * @return \Zgh\FEBundle\Entity\NotificationRead
-     */
-    public function getNRead()
-    {
-        return $this->n_read;
-    }
-
-    /**
-     * Set c_read
-     *
-     * @param \Zgh\FEBundle\Entity\ConfRead $cRead
-     * @return User
-     */
-    public function setCRead(\Zgh\FEBundle\Entity\ConfRead $cRead = null)
-    {
-        $this->c_read = $cRead;
-
-        return $this;
-    }
-
-    /**
-     * Get c_read
-     *
-     * @return \Zgh\FEBundle\Entity\ConfRead
-     */
-    public function getCRead()
-    {
-        return $this->c_read;
-    }
-
-    /**
-     * Add user_confs_replies
-     *
-     * @param \Zgh\FEBundle\Entity\ConfReply $userConfsReplies
-     * @return User
-     */
-    public function addUserConfsReply(\Zgh\FEBundle\Entity\ConfReply $userConfsReplies)
-    {
-        $this->user_confs_replies[] = $userConfsReplies;
-
-        return $this;
-    }
-
-    /**
-     * Remove user_confs_replies
-     *
-     * @param \Zgh\FEBundle\Entity\ConfReply $userConfsReplies
-     */
-    public function removeUserConfsReply(\Zgh\FEBundle\Entity\ConfReply $userConfsReplies)
-    {
-        $this->user_confs_replies->removeElement($userConfsReplies);
-    }
-
-    /**
-     * Get user_confs_replies
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUserConfsReplies()
-    {
-        return $this->user_confs_replies;
     }
 
     /**
@@ -1064,5 +937,38 @@ class User extends BaseUser implements ParticipantInterface
     public function getTips()
     {
         return $this->tips;
+    }
+
+    /**
+     * Add notifications
+     *
+     * @param \Zgh\FEBundle\Entity\Notification $notifications
+     * @return User
+     */
+    public function addNotification(\Zgh\FEBundle\Entity\Notification $notifications)
+    {
+        $this->notifications[] = $notifications;
+        $notifications->setUser($this);
+        return $this;
+    }
+
+    /**
+     * Remove notifications
+     *
+     * @param \Zgh\FEBundle\Entity\Notification $notifications
+     */
+    public function removeNotification(\Zgh\FEBundle\Entity\Notification $notifications)
+    {
+        $this->notifications->removeElement($notifications);
+    }
+
+    /**
+     * Get notifications
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
     }
 }

@@ -2,6 +2,7 @@
 namespace Zgh\FEBundle\Service;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,6 +12,9 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Zgh\FEBundle\Entity\Comment;
 use Zgh\FEBundle\Model\CommentableInterface;
+use Zgh\FEBundle\Model\Event\NotifyCommentEvent;
+use Zgh\FEBundle\Model\Event\NotifyDeleteEvent;
+use Zgh\FEBundle\Model\Event\NotifyEvents;
 
 class CommentManager
 {
@@ -18,12 +22,15 @@ class CommentManager
     protected $security_context;
     protected $router;
     protected $kernel;
-    public function __construct(EntityManager $entityManager, SecurityContextInterface $contextInterface, RouterInterface $routerInterface, Kernel $kernel)
+    protected $dispatcher;
+
+    public function __construct(EntityManager $entityManager, SecurityContextInterface $contextInterface, RouterInterface $routerInterface, Kernel $kernel, EventDispatcherInterface $eventDispatcherInterface)
     {
         $this->em = $entityManager;
         $this->security_context = $contextInterface;
         $this->router = $routerInterface;
         $this->kernel = $kernel;
+        $this->dispatcher = $eventDispatcherInterface;
     }
 
     /**
@@ -37,8 +44,7 @@ class CommentManager
     {
         $content = $request->request->get("comment_content", null);
 
-        if($content == null)
-        {
+        if ($content == null) {
             return new RedirectResponse($this->router->generate(("zgh_fe.wall.index")));
         }
 
@@ -49,6 +55,12 @@ class CommentManager
         $comment->setObject($entity);
         $entity->addComment($comment);
         $this->em->persist($comment);
+
+
+        if ($user->getId() != $entity->getUser()->getId()) {
+            $comment_event = new NotifyCommentEvent($user, $comment);
+            $this->dispatcher->dispatch(NotifyEvents::NOTIFY_COMMENT, $comment_event);
+        }
         $this->em->flush();
 
         return new JsonResponse(array(
@@ -58,18 +70,23 @@ class CommentManager
             "time" => $comment->getCreatedAt()->format("D - h A"),
             "comments_count" => count($entity->getComments()),
             "author_pp" => in_array("ROLE_FACEBOOK", $user->getRoles()) ?
-                    'https://graph.facebook.com/'.$user->getFacebookId().'/picture' :
-                    str_replace("app_dev.php/", "", "/".$user->getProfilePhoto()->getThumbWebPath())
+                    'https://graph.facebook.com/' . $user->getFacebookId() . '/picture' :
+                    str_replace("app_dev.php/", "", "/" . $user->getProfilePhoto()->getThumbWebPath())
         ));
     }
 
     public function deleteComment(Comment $comment)
     {
-        if($this->security_context->isGranted("DELETE", $comment)){
+        if ($this->security_context->isGranted("DELETE", $comment)) {
+            $current_user = $this->security_context->getToken()->getUser();
             $this->em->remove($comment);
-            $this->em->flush();
             $object = $comment->getObject();
             $object->removeComment($comment);
+            $this->em->flush();
+
+            $notification_delete_event = new NotifyDeleteEvent($object->getUser(), $comment->getId());
+            $this->dispatcher->dispatch(NotifyEvents::NOTIFY_DELETE, $notification_delete_event);
+
             $count = count($object->getComments());
             return $count;
         } else {

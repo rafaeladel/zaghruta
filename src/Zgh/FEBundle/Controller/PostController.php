@@ -1,6 +1,9 @@
 <?php
 namespace Zgh\FEBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,6 +31,21 @@ class PostController extends Controller
         return $this->render("@ZghFE/Partial/posts/posts_partials.html.twig", array(
                 "posts" => $posts
             ));
+    }
+
+    /**
+     * @ParamConverter("post", class="ZghFEBundle:Post", options={"id" = "post_id"})
+     *
+     * @param User $user
+     * @param Post $post
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getDisplayAction(User $user, Post $post)
+    {
+        return $this->render("@ZghFE/Partial/posts/post_display.html.twig", array(
+            "user" => $user,
+            "post" => $post
+        ));
     }
 
     public function postNewAction(Request $request)

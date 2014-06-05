@@ -3,7 +3,7 @@
 namespace Zgh\FEBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Zgh\FEBundle\Entity\Partial\BasicInfo;
+use Zgh\FEBundle\Model\Partial\BasicInfo;
 
 /**
  * @ORM\Entity(repositoryClass="Zgh\FEBundle\Repository\FollowRepository")
@@ -24,4 +24,54 @@ class FollowUsers
      */
     protected $followee;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_approved;
+
+    /**
+     * Set follower
+     *
+     * @param \Zgh\FEBundle\Entity\User $follower
+     * @return FollowUsers
+     */
+    public function setFollower(\Zgh\FEBundle\Entity\User $follower = null)
+    {
+        $this->follower = $follower;
+
+        return $this;
+    }
+
+    /**
+     * Get follower
+     *
+     * @return \Zgh\FEBundle\Entity\User 
+     */
+    public function getFollower()
+    {
+        return $this->follower;
+    }
+
+    /**
+     * Set followee
+     *
+     * @param \Zgh\FEBundle\Entity\User $followee
+     * @return FollowUsers
+     */
+    public function setFollowee(\Zgh\FEBundle\Entity\User $followee = null)
+    {
+        $this->followee = $followee;
+
+        return $this;
+    }
+
+    /**
+     * Get followee
+     *
+     * @return \Zgh\FEBundle\Entity\User 
+     */
+    public function getFollowee()
+    {
+        return $this->followee;
+    }
 }

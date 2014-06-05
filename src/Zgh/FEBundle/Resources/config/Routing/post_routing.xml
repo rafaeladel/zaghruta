@@ -4,8 +4,12 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="zgh_fe.post.list" pattern="/posts/list">
-        <default key="_controller">ZghFEBundle:Post:getList</default>
+    <route id="zgh_fe.post.list" pattern="/{id}/posts">
+        <default key="_controller">ZghFEBundle:Post:getOwnList</default>
+    </route>
+
+    <route id="zgh_fe.post.display" pattern="/{id}/posts/{post_id}">
+        <default key="_controller">ZghFEBundle:Post:getDisplay</default>
     </route>
 
     <route id="zgh_fe.post.new" pattern="/posts/new" methods="POST">

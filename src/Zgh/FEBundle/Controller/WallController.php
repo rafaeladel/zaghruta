@@ -21,6 +21,7 @@ class WallController extends Controller
             }
         }
         return $this->render("@ZghFE/Default/wall.html.twig", array(
+                "user" => $user,
                 "post_form" => $post_form->createView()
             ));
     }

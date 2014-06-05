@@ -14,6 +14,7 @@ class RenderFollowExtension extends \Twig_Extension
     protected $security_context;
     protected $follow_check;
     protected $router;
+    protected $status;
 
     public function __construct(
         EntityManagerInterface $entityManagerInterface,
@@ -53,11 +54,18 @@ class RenderFollowExtension extends \Twig_Extension
                 "ing_id"    => $user->getId()
              ));
 
-        $markup = "<form action='".$path."' method='post'>
-            <button class='btn btn-primary btn-wide  btnFollowing ".$classes."' type='submit'>".
-                $this->currentFollowMarkup($current_user->getId(), $user->getId())
-            ."</button>
-        </form>";
+        $result = $this->currentFollowMarkup($current_user->getId(), $user->getId());
+
+        if($result != null)
+        {
+            $markup = "<form action='".$path."' method='post'>
+                <button class='btn btn-primary btn-wide  btnFollowing ".$classes."' type='submit'>".
+                    $this->currentFollowMarkup($current_user->getId(), $user->getId())
+                ."</button>
+            </form>";
+        } else {
+            $markup = "<p style='color: white;'>".$this->status."</p>";
+        }
 
         return $markup;
 
@@ -77,7 +85,17 @@ class RenderFollowExtension extends \Twig_Extension
         $txt = '';
         if($status != null)
         {
-            $txt = "Unfollow";
+            if($status->getIsApproved() == true)
+            {
+                $txt = "Unfollow";
+            }
+            else
+            {
+
+                $txt = "Pending";
+                $this->status = $txt;
+                return null;
+            }
         }
         elseif($status == null)
         {

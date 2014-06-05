@@ -2,15 +2,17 @@
 namespace Zgh\FEBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use FOS\MessageBundle\Model\ParticipantInterface;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="Zgh\FEBundle\Repository\UserRepository")
  * @ORM\Table(name="fos_user")
  * @ORM\HasLifecycleCallbacks
  */
-class User extends BaseUser
+class User extends BaseUser implements ParticipantInterface
 {
     /**
      * @ORM\Column(type="string", length=255)
@@ -60,7 +62,7 @@ class User extends BaseUser
     protected $show_interest_notification;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy ="user")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy ="user", cascade={"persist","remove"})
      */
     protected $products;
 
@@ -80,7 +82,7 @@ class User extends BaseUser
     protected $tips;
 
     /**
-     * @ORM\OneToMany(targetEntity="Branch", mappedBy ="user")
+     * @ORM\OneToMany(targetEntity="Branch", mappedBy ="user", cascade={"persist","remove"})
      */
     protected $branches;
 
@@ -95,24 +97,9 @@ class User extends BaseUser
     protected $vendor_info;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Notification")
+     * @ORM\OneToMany(targetEntity="Notification", mappedBy="user", cascade={"persist", "remove"})
      */
     protected $notifications;
-
-    /**
-     * @ORM\OneToOne(targetEntity="NotificationRead", mappedBy="user")
-     */
-    protected $n_read;
-
-    /**
-     * @ORM\OneToOne(targetEntity="ConfRead", mappedBy="user")
-     */
-    protected $c_read;
-
-    /**
-     * @ORM\OneToMany(targetEntity="ConfReply", mappedBy="user")
-     */
-    protected $user_confs_replies;
 
     /**
      * @ORM\OneToMany(targetEntity="FollowUsers", mappedBy="follower", cascade={"persist", "remove"})
@@ -342,7 +329,7 @@ class User extends BaseUser
     public function addProduct(\Zgh\FEBundle\Entity\Product $products)
     {
         $this->products[] = $products;
-
+        $products->setUser($this);
         return $this;
     }
 
@@ -441,7 +428,7 @@ class User extends BaseUser
     public function addBranch(\Zgh\FEBundle\Entity\Branch $branches)
     {
         $this->branches[] = $branches;
-
+        $branches->setUser($this);
         return $this;
     }
 
@@ -463,118 +450,6 @@ class User extends BaseUser
     public function getBranches()
     {
         return $this->branches;
-    }
-
-    /**
-     * Add notifications
-     *
-     * @param \Zgh\FEBundle\Entity\Notification $notifications
-     * @return User
-     */
-    public function addNotification(\Zgh\FEBundle\Entity\Notification $notifications)
-    {
-        $this->notifications[] = $notifications;
-
-        return $this;
-    }
-
-    /**
-     * Remove notifications
-     *
-     * @param \Zgh\FEBundle\Entity\Notification $notifications
-     */
-    public function removeNotification(\Zgh\FEBundle\Entity\Notification $notifications)
-    {
-        $this->notifications->removeElement($notifications);
-    }
-
-    /**
-     * Get notifications
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getNotifications()
-    {
-        return $this->notifications;
-    }
-
-    /**
-     * Set n_read
-     *
-     * @param \Zgh\FEBundle\Entity\NotificationRead $nRead
-     * @return User
-     */
-    public function setNRead(\Zgh\FEBundle\Entity\NotificationRead $nRead = null)
-    {
-        $this->n_read = $nRead;
-
-        return $this;
-    }
-
-    /**
-     * Get n_read
-     *
-     * @return \Zgh\FEBundle\Entity\NotificationRead
-     */
-    public function getNRead()
-    {
-        return $this->n_read;
-    }
-
-    /**
-     * Set c_read
-     *
-     * @param \Zgh\FEBundle\Entity\ConfRead $cRead
-     * @return User
-     */
-    public function setCRead(\Zgh\FEBundle\Entity\ConfRead $cRead = null)
-    {
-        $this->c_read = $cRead;
-
-        return $this;
-    }
-
-    /**
-     * Get c_read
-     *
-     * @return \Zgh\FEBundle\Entity\ConfRead
-     */
-    public function getCRead()
-    {
-        return $this->c_read;
-    }
-
-    /**
-     * Add user_confs_replies
-     *
-     * @param \Zgh\FEBundle\Entity\ConfReply $userConfsReplies
-     * @return User
-     */
-    public function addUserConfsReply(\Zgh\FEBundle\Entity\ConfReply $userConfsReplies)
-    {
-        $this->user_confs_replies[] = $userConfsReplies;
-
-        return $this;
-    }
-
-    /**
-     * Remove user_confs_replies
-     *
-     * @param \Zgh\FEBundle\Entity\ConfReply $userConfsReplies
-     */
-    public function removeUserConfsReply(\Zgh\FEBundle\Entity\ConfReply $userConfsReplies)
-    {
-        $this->user_confs_replies->removeElement($userConfsReplies);
-    }
-
-    /**
-     * Get user_confs_replies
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUserConfsReplies()
-    {
-        return $this->user_confs_replies;
     }
 
     /**
@@ -1029,5 +904,38 @@ class User extends BaseUser
 
     public function  __toString(){
         return $this->getFullName();
+    }
+
+    /**
+     * Add tips
+     *
+     * @param \Zgh\FEBundle\Entity\Tip $tips
+     * @return User
+     */
+    public function addTip(\Zgh\FEBundle\Entity\Tip $tips)
+    {
+        $this->tips[] = $tips;
+        $tips->setUser($this);
+        return $this;
+    }
+
+    /**
+     * Remove tips
+     *
+     * @param \Zgh\FEBundle\Entity\Tip $tips
+     */
+    public function removeTip(\Zgh\FEBundle\Entity\Tip $tips)
+    {
+        $this->tips->removeElement($tips);
+    }
+
+    /**
+     * Get tips
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTips()
+    {
+        return $this->tips;
     }
 }
