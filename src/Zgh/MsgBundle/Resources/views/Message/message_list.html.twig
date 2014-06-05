@@ -1,0 +1,18 @@
+{% for message in thread.messages %}
+    <div class="msg msgUser">
+        <div class="profile  sm-img-post">
+            <a href="#" class="pull-left img-circle ">
+                <img alt="" src="{{ asset(message.sender.profilePhoto.getThumbWebPath()) }}"
+                     class="media-object img-responsive">
+            </a>
+            <h5><a href="{{ url("zgh_fe.user_profile.index", {"id": message.sender.id }) }}">{{ message.sender.fullname }}</a></h5>
+        </div>
+        <div class="clearfix"></div>
+        <div class="pull-right time">{{ message.createdAt|date() }}</div>
+        <p class="img-rounded">
+            <span></span>
+            {{ message.body }}
+        </p>
+
+    </div>
+{% endfor %}

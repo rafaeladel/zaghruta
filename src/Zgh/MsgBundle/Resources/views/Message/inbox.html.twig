@@ -1,0 +1,30 @@
+{% extends 'ZghMsgBundle::layout.html.twig' %}
+
+{% block fos_message_content %}
+    <div class="row">
+        <div class="col-md-4 col-sm-5 hidden-xs sectionLeft">
+            <h2>Messages</h2>
+
+            <div id="scrol" class="sidebarMessage">
+                {{ render_esi(controller("FOSMessageBundle:Message:inboxContent")) }}
+            </div>
+        </div>
+            <div class="col-md-8 col-sm-7 ms-input-1 sectionRight">
+                <button class="btn btn-default btn-wide pull-right" type="button" data-toggle="modal"
+                        data-target="#myModal">
+                    <span class="glyphicon glyphicon-envelope"></span> New Message
+                </button>
+                <div class=clearfix></div>
+                <div class="listMessage">
+                    {% if threads|length > 0 %}
+                        {{ render_esi(controller("FOSMessageBundle:Message:thread", {"threadId": threads[0]})) }}
+                        {#{{ include("@ZghMsg/Message/thread.html.twig", {"thread": threads[0]}) }}#}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block modals %}
+    {{ message_user_popup("myModal")|raw }}
+{% endblock modals %}

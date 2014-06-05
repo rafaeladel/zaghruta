@@ -20,7 +20,7 @@ class Category
     protected $experiences;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Product")
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="categories")
      */
     protected $products;
 

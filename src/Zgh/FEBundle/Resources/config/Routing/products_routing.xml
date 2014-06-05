@@ -12,6 +12,10 @@
         <default key="_controller">ZghFEBundle:Product:postNew</default>
     </route>
 
+    <route id="zgh_fe.products.get_parent_content_widget" pattern="/{id}/products/{product_id}/parent_content" methods="GET">
+        <default key="_controller">ZghFEBundle:Product:getProductParentContentWidget</default>
+    </route>
+
     <route id="zgh_fe.products.get_content_widget" pattern="/{id}/products/{product_id}/content" methods="GET">
         <default key="_controller">ZghFEBundle:Product:getProductContentWidget</default>
     </route>

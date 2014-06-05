@@ -3,7 +3,6 @@ $(document).ready(function(){
         $("#myform").parsley().subscribe("parsley:form:validate", function(instance){
            instance.submitEvent.preventDefault();
            if(instance.isValid()){
-               $(e.currentTarget).attr("disabled", "disabled").text("Saving");
                var form = $(e.currentTarget).closest("form");
                $.ajax({
                    type: "post",
@@ -13,10 +12,8 @@ $(document).ready(function(){
                        if(data.status == 200){
                            form[0].reset();
                            $("#addBranch").modal("hide");
-                           $(e.currentTarget).removeAttr("disabled").text("Create");
                            $(".content_wrapper").find("#branches_list").load(UrlContainer.branchesList);
                        } else if(data.status == 500){
-                           $(e.currentTarget).removeAttr("disabled").text("Create");
                            $(e.currentTarget).closest("#addBranch").find(".form_wrapper").html(data.view);
                        }
                    }

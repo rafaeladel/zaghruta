@@ -2,8 +2,8 @@
 
 {% block leftContent %}
 <div id="c_photos" style="display: block;">
-    <div class="row">
-        <div class="col-xs-12 search-Results">
+    <div class="row collectionsAlbums">
+        <div class="col-xs-12 search-Results ">
             {% if user.id == app.user.id %}
                 {% if albums|length > 0 %}
                     <button id="addNewPhoto" class="btn btn-primary btn-wide" type="button" data-toggle="modal"
@@ -25,6 +25,7 @@
 
         </div>
     </div>
+    <h2 class="text-left titleAlbums">All Albums</h2>
     {% for msg in app.session.flashBag.get("notice") %}
         <span>{{ msg }}</span>
     {% endfor %}

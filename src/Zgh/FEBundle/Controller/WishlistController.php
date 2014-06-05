@@ -2,9 +2,12 @@
 namespace Zgh\FEBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Entity\Wishlist;
 use Zgh\FEBundle\Form\WishlistType;
 
@@ -15,7 +18,19 @@ class WishlistController extends Controller
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $wishlists = $user->getWishlists();
         return $this->render("@ZghFE/Partial/wishlists/user_profile_wishlist_content.html.twig", array(
+                "user" => $user,
                 "wishlists" => $wishlists
+            ));
+    }
+
+    /**
+     * @ParamConverter("wishlist", class="ZghFEBundle:Wishlist", options={"id" = "wishlist_id"})
+     */
+    public function getWishlistIndexAction(User $user, Wishlist $wishlist)
+    {
+        return $this->render("@ZghFE/Partial/wishlists/user_profile_wishlist_index.html.twig", array(
+                "user" => $user,
+                "wishlist" => $wishlist
             ));
     }
 

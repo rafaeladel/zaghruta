@@ -18,7 +18,6 @@ $(document).ready(function () {
 
     $("body").on("click", ".product_edit_submit", function (e) {
         var form = $(e.target).closest("form");
-        $(e.currentTarget).attr("disabled", "disabled").text("Saving");
         $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
             instance.submitEvent.preventDefault();
             if (instance.isValid()) {
@@ -59,7 +58,6 @@ $(document).ready(function () {
         $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
             instance.submitEvent.preventDefault();
             if (instance.isValid()) {
-                $(e.currentTarget).attr("disabled", "disabled").text("Saving");
                 $.ajax({
                     type: "post",
                     url: form.attr("action"),
@@ -76,15 +74,14 @@ $(document).ready(function () {
 
     $("body").on("click", ".addToWishlistSubmit", function(e){
         e.preventDefault();
-        $(e.currentTarget).attr("disabled","disabled").text("Saving");
         var form = $(e.currentTarget).closest("form");
         $.ajax({
             type: "post",
             url: form.attr("action"),
             data: form.serialize(),
             success: function(data){
-                $(e.currentTarget).closest("div.modal").modal("hide");
                 $(e.currentTarget).removeAttr("disabled").text("Save");
+                $(e.currentTarget).closest("div.modal").modal("hide");
             }
         });
     });

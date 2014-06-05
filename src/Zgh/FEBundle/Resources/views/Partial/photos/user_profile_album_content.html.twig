@@ -2,7 +2,7 @@
 
 {% block leftContent %}
     <div id="c_photos" style="display: block;">
-        <div class="row">
+        <div class="row collectionsAlbums">
             <div class="col-xs-12 search-Results">
                 <button id="addNewPhoto" class="btn btn-primary btn-wide" type="button" data-toggle="modal"
                         data-target="#addPhotoPopup"><span class="glyphicon glyphicon-plus"></span>
@@ -53,14 +53,15 @@
             </div>
 
         </div>
+        <h2 class="text-left titlePhotos">{{ album.name }}</h2>
         <div class="row photosWrapper" id="photos">
-            {{ include("@ZghFE/Partial/user_profile_photos_p_content.html.twig", {"photos" : album.photos }) }}
+            {{ include("@ZghFE/Partial/photos/user_profile_photos_p_content.html.twig", {"photos" : album.photos }) }}
         </div>
 
         <div id="addPhotoPopup" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
              class="modal fade in" data-list_class="content_wrapper"
              data-ajax_url="{{ url("zgh_fe.photos_partial_albums_photos_content", {"id": user.id, "album_id": album.id }) }}">
-            {{ include("@ZghFE/Partial/photo_add_modal.html.twig") }}
+            {{ include("@ZghFE/Partial/photos/photo_add_modal.html.twig") }}
         </div>
 
     </div>

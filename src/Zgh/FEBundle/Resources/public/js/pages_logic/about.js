@@ -26,8 +26,6 @@ $(document).ready(function(){
     $("body").on("click", ".save_about", function(e){
         e.preventDefault();
 
-        $(e.target).attr("disabled", "disabled");
-        $(e.target).val("Saving");
         var form = $(e.target).closest("form");
         $.ajax({
             type: "POST",

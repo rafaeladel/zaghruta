@@ -1,3 +1,7 @@
+zgh_msg:
+    resource: "@ZghMsgBundle/Resources/config/routing.xml"
+    prefix:   /
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -31,6 +35,10 @@ hwi_oauth_redirect:
 
 facebook_login:
     pattern: /login/check-facebook
+
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /messages
 
 zgh_fe:
     resource: "@ZghFEBundle/Resources/config/routing.xml"

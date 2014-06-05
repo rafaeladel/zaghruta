@@ -33,7 +33,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ZghFEBundle ]
+    bundles:        [ ZghFEBundle, ZghMsgBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -146,4 +146,15 @@ hwi_oauth:
 #    permissions: [email, user_birthday, user_location]
 
 fos_js_routing:
-    routes_to_expose: [ zgh_fe.user.login_partial, zgh_fe.vendor.login_partial, zgh_fe.user_profile.privacy.set, zgh_fe.like.list, zgh_fe.comment.list ]
+    routes_to_expose: [ zgh_fe.user.login_partial, zgh_fe.vendor.login_partial, zgh_fe.user_profile.privacy.set, zgh_fe.like.list, zgh_fe.comment.list, fos_message_thread_view, zgh_fe.notifications, zgh_message_inbox_content, fos_message_list_view ]
+
+fos_message:
+    db_driver: orm
+    thread_class: Zgh\MsgBundle\Entity\Thread
+    message_class: Zgh\MsgBundle\Entity\Message
+    thread_manager: zgh_message.thread_manager
+    message_manager: zgh_message.message_manager
+    provider: zgh_message.provider
+    twig_extension: zgh_message.twig_extension
+    new_thread_form:
+        type:               zgh_msg.new_thread_form.type    # See FormType\NewThreadMessageFormType

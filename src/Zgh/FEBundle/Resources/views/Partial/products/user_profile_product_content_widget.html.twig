@@ -5,7 +5,7 @@
         <div class="col-md-2 pull-right icons-G">
             {% if user.id == app.user.id %}
                 <a href="{{ url("zgh_fe.products.get_edit", {"id": app.user.id, "product_id": product.id}) }}"
-                   class="moveEditProduct">edit</a>
+                   class="moveEditProduct btnEditProduct"><i class="glyphicon glyphicon-edit"></i> Edit</a>
             {% endif %}
             {% if "ROLE_CUSTOMER" in app.user.roles %}
                 <button class="btn btn-danger btn-circle" type="button" data-target="#addwishlist"
@@ -65,5 +65,7 @@
     <div class="row">
         <span class="col-md-4 price ">Price:<span> {{ product.price }}$</span></span>
     </div>
+    <div class="col-md-12">
     {{ include("@ZghFE/Partial/common/comments_section.html.twig", {"entity": product}) }}
+    </div>
 {% endblock innerPartial %}

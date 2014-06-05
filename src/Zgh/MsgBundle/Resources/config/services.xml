@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="zgh_msg.new_thread_form.type" class="Zgh\MsgBundle\Form\NewThreadMessageFormType" public="false">
+            <argument type="service" id="security.context"/>
+        </service>
+
+        <service id="zgh_message.thread_manager" class="Zgh\MsgBundle\Entity\ZghThreadManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%fos_message.thread_class%</argument>
+            <argument>%fos_message.thread_meta_class%</argument>
+            <argument type="service" id="zgh_message.message_manager" />
+        </service>
+
+        <service id="zgh_message.message_manager" class="Zgh\MsgBundle\Entity\ZghMessageManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%fos_message.message_class%</argument>
+            <argument>%fos_message.message_meta_class%</argument>
+        </service>
+
+        <service id="zgh_message.provider" class="Zgh\MsgBundle\Provider\ZghMsgProvider" public="false">
+            <argument type="service" id="fos_message.thread_manager" />
+            <argument type="service" id="fos_message.message_manager" />
+            <argument type="service" id="fos_message.thread_reader" />
+            <argument type="service" id="fos_message.authorizer" />
+            <argument type="service" id="fos_message.participant_provider" />
+        </service>
+
+        <service id="zgh_message.twig_extension" class="Zgh\MsgBundle\Twig\Extension\ZghMessageExtension" public="false">
+            <argument type="service" id="fos_message.participant_provider" />
+            <argument type="service" id="fos_message.provider" />
+            <argument type="service" id="fos_message.authorizer" />
+            <argument type="service" id="zgh_message.message_manager"/>
+            <tag name="twig.extension" alias="zgh_message" />
+        </service>
+
+
+
+    </services>
+</container>

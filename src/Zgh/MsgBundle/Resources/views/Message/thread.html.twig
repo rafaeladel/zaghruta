@@ -1,0 +1,11 @@
+<div class="messagesWrapper" data-t_id="{{ thread.id }}">
+    {{ include("@ZghMsg/Message/message_list.html.twig", {"thread": thread}) }}
+</div>
+{{ form_start(reply_form, {"action": url('fos_message_thread_view', {'threadId': thread.id}) , "method":"post"} ) }}
+            {{ form_widget(reply_form.body, {"attr":{"class":"form-control  textMsg" }}) }}
+
+<button class="btn btn-primary btn-wide pull-right reply_submit sendMsg" data-t_id="{{ thread.id }}" type="submit">
+    <span class="glyphicon glyphicon-envelope"></span> Send
+</button>
+{{ form_rest(reply_form) }}
+    {{ form_end(reply_form) }}

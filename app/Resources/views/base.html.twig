@@ -14,7 +14,9 @@
             "bundles/zghfe/css/jquery.fancybox.css"
             "bundles/zghfe/css/jquery.fancybox-buttons.css"
             "bundles/zghfe/css/jquery.fancybox-thumbs.css"
-            filter="cssrewrite"
+            "bundles/zghfe/plugins/select2-3.4.6/select2.css"
+            "bundles/zghfe/css/select2-bootstrap-css-master/select2-bootstrap.css"
+        filter="cssrewrite"
         %}
             <link href="{{ asset_url }}" rel="stylesheet" type="text/css" media="screen">
         {% endstylesheets %}
@@ -23,7 +25,184 @@
     <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
 </head>
 <body>
-    {% block body %}{% endblock %}
+    {% block body %}
+        {% block header %}
+            <header class="fixed-header">
+
+                <div class="container hidden-xs">
+                    <div class="logo col-md-3 hidden-sm"><a href="{{ url("zgh_fe.wall.index") }}"><img
+                                    src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
+                    <div class=" col-md-5 visible-sm col-sm-push-4"><a href="#"><img
+                                    src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
+                    <div class="divider visible-sm"></div>
+
+                    <div class="col-md-6 col-sm-8 search-box">
+                        <div class="mainSearch input-group">
+                            <div class="input-group-btn" style="display:none;">
+                                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Category <span
+                                            class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><i class="icon-list-alt"></i>Everything</a></li>
+                                    <li class="divider"></li>
+                                    <li class="has_sub"><a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels
+                                            &amp; Venues</a></li>
+                                    <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp;
+                                            catering</a></li>
+                                    <li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a>
+                                    </li>
+                                    <li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a>
+                                    </li>
+                                    <li><a href="#"><i class="iconMenu iconJewelry pull-left"></i>Jewelry</a></li>
+                                    <li><a href="#"><i class="iconMenu iconHonymoons pull-left"></i>Honeymoons</a></li>
+                                    <li><a href="#"><i class="iconMenu iconFashion pull-left"></i>Fashion</a></li>
+                                    <li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a>
+                                    </li>
+                                    <li><a href="#"><i class="iconMenu iconFlorists pull-left"></i>Florists </a></li>
+                                    <li><a href="#"><i class="iconMenu iconFurniture pull-left"></i>Furniture</a></li>
+                                    <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health
+                                        </a></li>
+                                    <li><a href="#"><i class="iconMenu iconLimousines pull-left"></i>Limousines</a></li>
+                                    <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home
+                                            Appliances</a></li>
+                                    <li><a href="#"><i
+                                                    class="iconMenu iconEntertainment pull-left"></i>Entertainment</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li><a href="#"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+
+                            <input type="text" class="form-control custFc" placeholder="Search for your things">
+                            <a href="#" class="search-addon input-group-addon custAncor"></a>
+
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-sm-1">
+                        <div class="input-btn">
+                            <button class="btn btn-primary dropdown-toggle search-box" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-align-justify"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="icon-list-alt"></i>Everything</a></li>
+                                <li class="divider"></li>
+                                <li class="has_sub"><a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels
+                                        &amp; Venues</a></li>
+                                <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp; catering</a>
+                                </li>
+                                <li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a></li>
+                                <li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a></li>
+                                <li><a href="#"><i class="iconMenu iconJewelry pull-left"></i>Jewelry</a></li>
+                                <li><a href="#"><i class="iconMenu iconHonymoons pull-left"></i>Honeymoons</a></li>
+                                <li><a href="#"><i class="iconMenu iconFashion pull-left"></i>Fashion</a></li>
+                                <li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a></li>
+                                <li><a href="#"><i class="iconMenu iconFlorists pull-left"></i>Florists </a></li>
+                                <li><a href="#"><i class="iconMenu iconFurniture pull-left"></i>Furniture</a></li>
+                                <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health </a>
+                                </li>
+                                <li><a href="#"><i class="iconMenu iconLimousines pull-left"></i>Limousines</a></li>
+                                <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home Appliances</a>
+                                </li>
+                                <li><a href="#"><i class="iconMenu iconEntertainment pull-left"></i>Entertainment</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="#"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="notificationsWidget">
+                        {% if app.security.isGranted("ROLE_USER") %}
+                            {{ render_esi(controller("ZghFEBundle:Default:getShortcutsAndNotification")) }}
+                        {% endif %}
+                    </div>
+
+                </div>
+                <!-- Header To Xs -->
+
+                <div class="container visible-xs ">
+                    <div class="row">
+                        <div class="logo text-center"><a href="#"><img src="{{ asset("bundles/zghfe/img/logo.png") }}"></a>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+
+                    <div class="row">
+                        <div class="col-xs-12 search-box col-centered">
+                            <div class="mainSearch input-group">
+                                <div class="input-group-btn" style="display:none;">
+                                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        Category <span
+                                                class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Everything</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Hotels &amp; Venues</a></li>
+                                        <li><a href="#">Cake &amp; catering</a></li>
+                                        <li><a href="#">Wedding Planners</a></li>
+                                        <li><a href="#">Photography</a></li>
+                                        <li><a href="#">Jewelry</a></li>
+                                        <li><a href="#">Hony Moons</a></li>
+                                        <li><a href="#">Category else here</a></li>
+                                        <li><a href="#">Fashion</a></li>
+                                        <li><a href="#">Real Estate</a></li>
+                                        <li><a href="#">Furniture</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">People</a></li>
+
+                                    </ul>
+                                </div>
+                                <!-- /btn-group -->
+
+                                <input type="text" class="form-control custFc" placeholder="Search for your things">
+                                <a href="#" class="search-addon input-group-addon custAncor"></a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="note-box text-center">
+                            <button type="button" class="btn btn-primary btn-circle counter">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                                <span class="notCounter img-circle text-center">15</span>
+                            </button>
+
+                            <button type="button" class="btn btn-primary btn-circle counter">
+                                <span class="glyphicon glyphicon-globe"></span>
+                                <span class="notCounter img-circle text-center">3</span>
+                            </button>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-circle  dropdown-toggle"
+                                        data-toggle="dropdown">
+                                    <img src="{{ asset("bundles/zghfe/img/img-prf-comment2.jpg") }}" alt="" width="25"
+                                         height="25"
+                                         style="border-radius:50%;">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><span class="glyphicon glyphicon-heart"></span> Likes</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-list"></span> Wish Lists</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-star"></span> Vendors</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Friends</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-circle">
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Header from Xs -->
+
+
+            </header>
+        {% endblock header %}
+    {% endblock %}
     {% block javascripts %}
         <script src="{{ asset("bundles/zghfe/js/jquery-1.11.0.js") }}"></script>
         {% javascripts

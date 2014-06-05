@@ -30,7 +30,7 @@ class Wishlist
     protected $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Product")
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="wishlists")
      */
     protected $products;
 
@@ -121,7 +121,7 @@ class Wishlist
     public function addProduct(\Zgh\FEBundle\Entity\Product $products)
     {
         $this->products[] = $products;
-
+//        $products->addWishlist($this);
         return $this;
     }
 

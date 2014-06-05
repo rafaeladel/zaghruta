@@ -51,6 +51,15 @@ class UserRepository extends EntityRepository
         return $q;
     }
 
+    public function getOtherUsers($user)
+    {
+        $q = $this->createQueryBuilder("u");
+        $q->where("u.id != :user")
+            ->setParameter("user", $user)
+        ;
+        return $q;
+    }
+
     public function hasLiked(User $user, LikeableInterface $criteria)
     {
         $q = $this->createQueryBuilder("u")

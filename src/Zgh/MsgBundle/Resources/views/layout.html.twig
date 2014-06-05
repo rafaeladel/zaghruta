@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+
+    {% block content %}
+        <div class="container">
+
+            {% block leftContent %}
+                {% block fos_message_content %}{% endblock %}
+            {% endblock leftContent %}
+
+            {% block rightContent %}
+            {% endblock rightContent %}
+        </div>
+    {% endblock content %}
+
+    {% block footer %}
+        <footer>
+            <div class="container">
+                <p class="pull-right"><a href="#">
+                        <button type="button" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-chevron-up"></span>
+                        </button>
+                    </a></p>
+                <p>Zaghruta &copy; 2013 Designed by <a href="#">thesevenlayers</a></p>
+            </div>
+        </footer>
+    {% endblock footer %}
+    {% block modals %}
+    {% endblock modals %}
+
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        var UrlContainer = {
+            loader: "{{ asset("bundles/zghfe/img/page-preloader.GIF") }}"
+        };
+    </script>
+    {% javascripts
+    "bundles/zghfe/js/jquery.mCustomScrollbar.min.js"
+    "bundles/zghfe/plugins/Parsley.js-2.0.0/dist/parsley.js"
+    "bundles/zghfe/plugins/select2-3.4.6/select2.js"
+    "bundles/thraceform/js/select2.js"
+    "bundles/zghmsg/js/messages.js"
+    "bundles/zghfe/js/base.js"
+
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        (function ($) {
+            $(window).load(function () {
+                $("body").find("#scrol").mCustomScrollbar({
+                    scrollButtons: {
+                        enable: true
+                    },
+                    theme: "dark",
+                    set_height: 500
+                });
+
+            });
+        })(jQuery);
+
+    </script>
+
+{% endblock javascripts %}

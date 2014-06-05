@@ -6,7 +6,7 @@
 
     <div class="container">
         {% block leftContent %}
-            <div class="row product">
+            <div class="row">
 
                 <div class="col-md-3 hidden-xs hidden-sm">
                     <div class="companyData">
@@ -25,32 +25,17 @@
                                         class="glyphicon glyphicon-user glyphicon-user-boy"></span> {{ product.user.followers|length }}
                             </a>
                             {% if user.id != app.user.id %}
-                                <button class="btn btn-primary pull-right btn-sm" type="button">
+                                <button class="btn btn-primary pull-right btn-sm" data-toggle="modal"
+                                        data-target="#msgModal"  type="button">
                                     <span class="glyphicon glyphicon-envelope"></span>
                                 </button>
+                                {{ message_user_popup("msgModal") }}
                             {% endif %}
                         </div>
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                <div class="col-md-9 Product">
-                    <div class="row banner margin">
-                        <div class="col-md-12">
-                            <img class="img-responsive" src="{{ asset(product.getThumbWebPath()) }}">
-                        </div>
-                    </div>
-                    <div class="row hidden-md hidden-lg">
-                        <div class="col-sm-12 btnTitle  margin">
-                            <button class="btn btn-primary btn-wide btn-block" type="button"> Decorama Co</button>
-                        </div>
-                    </div>
-                    <div class="content_wrapper">
-                        {% block innerPartial %}
-                            {{ include("@ZghFE/Partial/products/user_profile_product_content_widget.html.twig", {"init": true}) }}
-                        {% endblock innerPartial %}
-                    </div>
-                </div>
-
+                {{ include("@ZghFE/Partial/products/product_content_widget.html.twig", {"product": product }) }}
             </div>
         {% endblock leftContent %}
 

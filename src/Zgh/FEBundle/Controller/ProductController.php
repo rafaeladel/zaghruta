@@ -79,6 +79,19 @@ class ProductController extends Controller
     /**
      * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
      */
+    public function getProductParentContentWidgetAction(User $user, Product $product)
+    {
+        $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
+        return $this->render("@ZghFE/Partial/products/product_content_widget.html.twig",[
+                "user" => $user,
+                "product" => $product,
+                "addWishlistForm" => $addWishlistForm->createView()
+            ]);
+    }
+
+    /**
+     * @ParamConverter("product", class="ZghFEBundle:Product", options={"id" = "product_id"})
+     */
     public function getProductContentWidgetAction(User $user, Product $product)
     {
         $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
