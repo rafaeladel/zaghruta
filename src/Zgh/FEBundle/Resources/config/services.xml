@@ -27,6 +27,7 @@
         <parameter key="zgh_fe.tag.class">Zgh\FEBundle\Form\Type\TagInputType</parameter>
         <parameter key="zgh_fe.wishlist.class">Zgh\FEBundle\Form\Type\WishlistInputType</parameter>
         <parameter key="zgh_fe.delete_manager.class">Zgh\FEBundle\Service\DeleteManager</parameter>
+        <parameter key="zgh_fe.search_manager.class">Zgh\FEBundle\Service\SearchManager</parameter>
     </parameters>
 
     <services>
@@ -146,6 +147,10 @@
         </service>
 
         <service id="zgh_fe.delete_manager" class="%zgh_fe.delete_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+
+        <service id="zgh_fe.search_manager" class="%zgh_fe.search_manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>
         </service>
 

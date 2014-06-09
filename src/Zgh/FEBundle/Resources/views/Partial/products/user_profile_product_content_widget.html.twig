@@ -51,9 +51,7 @@
 
         <div class="clearfix"></div>
         <p class="col-md-4">Category:<span>
-                                    {% for category in product.categories %}
-                                        {{ category.name }} {{ loop.index == loop.length ? "" : "-" }}
-                                    {% endfor %}
+                                        {{ product.category.name }}
                             </span></p>
 
     </div>
@@ -66,6 +64,6 @@
         <span class="col-md-4 price ">Price:<span> {{ product.price }}$</span></span>
     </div>
     <div class="col-md-12">
-    {{ include("@ZghFE/Partial/common/comments_section.html.twig", {"entity": product}) }}
+        {{ include("@ZghFE/Partial/common/comments_section.html.twig", {"entity": product}) }}
     </div>
 {% endblock innerPartial %}

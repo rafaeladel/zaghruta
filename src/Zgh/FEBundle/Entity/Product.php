@@ -31,13 +31,9 @@ class Product extends Image implements LikeableInterface, CommentableInterface
     protected $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="products", cascade={"persist", "remove"})
-     * @ORM\JoinTable(name="categories_products",
-     *      joinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")}
-     *      )
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products", cascade={"persist", "remove"})
      */
-    protected $categories;
+    protected $category;
 
     /**
      * @ORM\ManyToMany(targetEntity="Tag", cascade={"persist", "remove"})
@@ -211,40 +207,6 @@ class Product extends Image implements LikeableInterface, CommentableInterface
         return $this->wishlists;
     }
 
-
-    /**
-     * Add categories
-     *
-     * @param \Zgh\FEBundle\Entity\Category $categories
-     * @return Product
-     */
-    public function addCategory(\Zgh\FEBundle\Entity\Category $categories)
-    {
-        $this->categories[] = $categories;
-        $categories->addProduct($this);
-        return $this;
-    }
-
-    /**
-     * Remove categories
-     *
-     * @param \Zgh\FEBundle\Entity\Category $categories
-     */
-    public function removeCategory(\Zgh\FEBundle\Entity\Category $categories)
-    {
-        $this->categories->removeElement($categories);
-    }
-
-    /**
-     * Get categories
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCategories()
-    {
-        return $this->categories;
-    }
-
     /**
      * Add tags
      *
@@ -332,5 +294,29 @@ class Product extends Image implements LikeableInterface, CommentableInterface
     public function getLikes()
     {
         return $this->likes;
+    }
+
+
+    /**
+     * Set category
+     *
+     * @param \Zgh\FEBundle\Entity\Category $category
+     * @return Product
+     */
+    public function setCategory(\Zgh\FEBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Zgh\FEBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

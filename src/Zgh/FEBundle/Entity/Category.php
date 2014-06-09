@@ -15,12 +15,12 @@ class Category
     use BasicInfo;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Zgh\FEBundle\Entity\Experience")
+     * @ORM\OneToMany(targetEntity="Zgh\FEBundle\Entity\Experience", mappedBy="category")
      */
     protected $experiences;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="categories")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="categories")
      */
     protected $products;
 
@@ -43,38 +43,6 @@ class Category
     }
 
 
-    /**
-     * Add experiences
-     *
-     * @param \Zgh\FEBundle\Entity\Experience $experiences
-     * @return Category
-     */
-    public function addExperience(\Zgh\FEBundle\Entity\Experience $experiences)
-    {
-        $this->experiences[] = $experiences;
-
-        return $this;
-    }
-
-    /**
-     * Remove experiences
-     *
-     * @param \Zgh\FEBundle\Entity\Experience $experiences
-     */
-    public function removeExperience(\Zgh\FEBundle\Entity\Experience $experiences)
-    {
-        $this->experiences->removeElement($experiences);
-    }
-
-    /**
-     * Get experiences
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getExperiences()
-    {
-        return $this->experiences;
-    }
 
     /**
      * Set name
@@ -163,5 +131,38 @@ class Category
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * Add experiences
+     *
+     * @param \Zgh\FEBundle\Entity\Experience $experiences
+     * @return Category
+     */
+    public function addExperience(\Zgh\FEBundle\Entity\Experience $experiences)
+    {
+        $this->experiences[] = $experiences;
+
+        return $this;
+    }
+
+    /**
+     * Remove experiences
+     *
+     * @param \Zgh\FEBundle\Entity\Experience $experiences
+     */
+    public function removeExperience(\Zgh\FEBundle\Entity\Experience $experiences)
+    {
+        $this->experiences->removeElement($experiences);
+    }
+
+    /**
+     * Get experiences
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getExperiences()
+    {
+        return $this->experiences;
     }
 }

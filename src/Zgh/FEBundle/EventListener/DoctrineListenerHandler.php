@@ -19,6 +19,8 @@ use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Entity\UserInfo;
 use Zgh\FEBundle\Entity\VendorInfo;
 use Zgh\FEBundle\Model\CommentableInterface;
+use Zgh\FEBundle\Model\Event\NotifyEvents;
+use Zgh\FEBundle\Model\Event\NotifyRelationshipRequestEvent;
 use Zgh\FEBundle\Model\LikeableInterface;
 
 class DoctrineListenerHandler implements EventSubscriber
@@ -146,19 +148,25 @@ class DoctrineListenerHandler implements EventSubscriber
 
                 if($entity->getStatus() != null){
                     if($entity->getStatus() == "Single"){
-                        if($entity->getRelationshipUser() != null){
+                        if($entity->getRelationshipUser() instanceof User){
+                            //Setting the other side relationship info
                             $target_user_info = $this->setUserInfoData($entity->getRelationshipUser()->getUserInfo(), "Single", null);
                         }
                         $entity->setRelationshipUser(null);
+
+                        $this->persistAssoc($old_user_info);
+                        $this->persistAssoc($target_user_info);
                     } else {
-                        $old_user_info = $this->resetUserInfo($entity);
-                        if($entity->getRelationshipUser() != null){
-                            $target_user_info = $this->setUserInfoData($entity->getRelationshipUser()->getUserInfo(), $entity->getStatus(), $entity->getUser());
-                        }
+
+                        $rel_event = new NotifyRelationshipRequestEvent($entity);
+                        $this->container->get("event_dispatcher")->dispatch(NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST, $rel_event);
+
+//                        $old_user_info = $this->resetUserInfo($entity);
+//                        if($entity->getRelationshipUser() instanceof User){
+//                            $target_user_info = $this->setUserInfoData($entity->getRelationshipUser()->getUserInfo(), $entity->getStatus(), $entity->getUser());
+//                        }
                     }
 
-                    $this->persistAssoc($old_user_info);
-                    $this->persistAssoc($target_user_info);
                 }
             }
 
@@ -184,27 +192,18 @@ class DoctrineListenerHandler implements EventSubscriber
         }
     }
 
-//    public function postRemove(LifecycleEventArgs $args)
-//    {
-//        $entity = $args->getEntity();
-//        $this->em = $args->getEntityManager();
-//
-//        //Likes
-//        if($entity instanceof Like)
-//        {
-//            $obj = $entity->getObject();
-//            $likes = $this->em->getRepository("ZghFEBundle:Like")->findBy([
-//                "object_id" => $entity->getObjectId(),
-//                "object_type" => $entity->getObjectType()
-//            ]);
-//            $obj->setLikes(new ArrayCollection($likes));
-//        }
-//    }
 
-
+    /**
+     * Resetting the other side status (If they broke up)
+     *
+     * @param $entity
+     * @return null|UserInfo
+     */
     private function resetUserInfo($entity)
     {
         $old_change = $this->uow->getEntityChangeSet($entity);
+//        var_dump($old_change);
+//        die;
         if(in_array("relationship_user",array_keys($old_change))){
             $old_user = $old_change["relationship_user"][0];
             if($old_user instanceof User){

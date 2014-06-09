@@ -2,16 +2,20 @@
 
 namespace Zgh\FEBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Zgh\FEBundle\Entity\Partial\BasicInfo;
-use Zgh\FEBundle\Entity\Utilities\Image;
+use Zgh\FEBundle\Model\Partial\BasicInfo;
+use Zgh\FEBundle\Model\Utilities\Image;
+use Symfony\Component\Validator\Constraints as Assert;
+use Zgh\FEBundle\Model\CommentableInterface;
+use Zgh\FEBundle\Model\LikeableInterface;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="experiences")
  * @ORM\HasLifecycleCallbacks
  */
-class Experience
+class Experience implements LikeableInterface, CommentableInterface
 {
 //    use BasicInfo;
 
@@ -19,17 +23,19 @@ class Experience
     protected $cat_dir = "experiences";
     protected $thumb_dir = "thumb";
 
-    protected $thumb_h = 332;
-    protected $thumb_w = 561;
+    protected $thumb_h = 265;
+    protected $thumb_w = 682;
 
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     protected $title;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     protected $content;
 
@@ -39,18 +45,19 @@ class Experience
     protected $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Zgh\FEBundle\Entity\Category", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Zgh\FEBundle\Entity\Category", inversedBy="experiences", cascade={"persist", "remove"})
+     * @Assert\NotBlank()
      */
-    protected $categories;
+    protected $category;
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", cascade={"persist", "remove"}, mappedBy="experience")
+     * @var ArrayCollection::
      */
     protected $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="Like", cascade={"persist", "remove"}, mappedBy="experience")
+     * @var ArrayCollection
      */
     protected $likes;
 
@@ -131,37 +138,87 @@ class Experience
         $this->category = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function addLike(Like $like)
+    {
+        $this->likes[] = $like;
+    }
+
+    public function setLikes(ArrayCollection $likes)
+    {
+        $this->likes = $likes;
+    }
 
     /**
-     * Add categories
+     * Remove likes
      *
-     * @param \Zgh\FEBundle\Entity\Category $categories
+     * @param \Zgh\FEBundle\Entity\Like $likes
+     */
+    public function removeLike(\Zgh\FEBundle\Entity\Like $likes)
+    {
+        $this->likes->removeElement($likes);
+    }
+
+    /**
+     * Get likes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLikes()
+    {
+        return $this->likes;
+    }
+
+
+    /**
+     * Add comment
+     *
+     * @param \Zgh\FEBundle\Entity\Comment $comment
      * @return Experience
      */
-    public function addCategory(\Zgh\FEBundle\Entity\Category $categories)
+    public function addComment(\Zgh\FEBundle\Entity\Comment $comment)
     {
-        $this->categories[] = $categories;
-        $categories->addExperience($this);
+        $this->comments[] = $comment;
         return $this;
     }
 
     /**
-     * Remove categories
+     * Remove comment
      *
-     * @param \Zgh\FEBundle\Entity\Category $categories
+     * @param \Zgh\FEBundle\Entity\Comment $comment
      */
-    public function removeCategory(\Zgh\FEBundle\Entity\Category $categories)
+    public function removeComment(\Zgh\FEBundle\Entity\Comment $comment)
     {
-        $this->categories->removeElement($categories);
+        $this->comments->removeElement($comment);
     }
 
     /**
-     * Get categories
+     * Get comments
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCategories()
+    public function getComments()
     {
-        return $this->categories;
+        return $this->comments;
+    }
+
+    public function getObjectId()
+    {
+        return $this->getId();
+    }
+
+    public function getObjectType()
+    {
+        //TODO: How to put COMMENT::LIKE_TYPE_EXPERIENCE too ?!
+        return Like::LIKE_TYPE_EXPERIENCE;
+    }
+
+    /**
+     * @param ArrayCollection $comments
+     * @return $this
+     */
+    public function setComments(ArrayCollection $comments)
+    {
+        $this->comments = $comments;
+        return $this;
     }
 }

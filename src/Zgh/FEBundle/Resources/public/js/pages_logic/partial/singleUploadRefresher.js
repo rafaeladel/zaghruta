@@ -51,9 +51,17 @@ function singleUpload(button_class){
                             });
                             myDropzone.processQueue();
                         } else {
-                            $(myDropzone.options.previewsContainer).siblings(".photo_error").html("<p>Image required</p>");
-                            var submit_btn = $("."+button_class).closest("form").find("[type='submit']");
-                            submit_btn.removeAttr("disabled").text("Save");
+                            var form_data = new FormData($("."+button_class).closest("form")[0]);
+                            $.ajax({
+                                type: "post",
+                                url: $("."+button_class).closest("form").attr("action"),
+                                data: form_data,
+                                processData: false,
+                                contentType: false,
+                                success: function(data) {
+                                    refreshWrapper(data);
+                                }
+                            });
                         }
                     }
                 });

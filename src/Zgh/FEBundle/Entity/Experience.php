@@ -45,10 +45,10 @@ class Experience extends Image implements LikeableInterface, CommentableInterfac
     protected $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Zgh\FEBundle\Entity\Category", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Zgh\FEBundle\Entity\Category", inversedBy="experiences", cascade={"persist", "remove"})
      * @Assert\NotBlank()
      */
-    protected $categories;
+    protected $category;
 
 
     /**
@@ -138,42 +138,6 @@ class Experience extends Image implements LikeableInterface, CommentableInterfac
         $this->category = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
-    /**
-     * Add categories
-     *
-     * @param \Zgh\FEBundle\Entity\Category $categories
-     * @return Experience
-     */
-    public function addCategory(\Zgh\FEBundle\Entity\Category $categories)
-    {
-        $this->categories[] = $categories;
-        $categories->addExperience($this);
-        return $this;
-    }
-
-    /**
-     * Remove categories
-     *
-     * @param \Zgh\FEBundle\Entity\Category $categories
-     */
-    public function removeCategory(\Zgh\FEBundle\Entity\Category $categories)
-    {
-        $this->categories->removeElement($categories);
-    }
-
-    /**
-     * Get categories
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCategories()
-    {
-        return $this->categories;
-    }
-
-
-
     public function addLike(Like $like)
     {
         $this->likes[] = $like;
@@ -256,5 +220,28 @@ class Experience extends Image implements LikeableInterface, CommentableInterfac
     {
         $this->comments = $comments;
         return $this;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Zgh\FEBundle\Entity\Category $category
+     * @return Experience
+     */
+    public function setCategory(\Zgh\FEBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Zgh\FEBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

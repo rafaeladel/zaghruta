@@ -11,16 +11,18 @@ class SearchController extends Controller
 {
     public function postSearchAction(Request $request)
     {
-        $search = new Search();
-        $search_form = $this->createForm(new SearchType(), $search);
-        $search_form->handleRequest($request);
-//        $products = $this->getDoctrine()->getRepository("ZghFEBundle:Search")->getSearchResult($search);
-//        $em->persist($search);
-//        $em->flush();
-//        $products = $em->getRepository("ZghFEBundle:Product")->findBy(["name" => $search->getSearchText()]);
-        return $this->render("@ZghFE/Partial/products/user_profile_products_content.html.twig", [
-                "products" => $products
-            ]);
+        $query = $request->query->get("q");
+        $cat_id = $request->query->get("category");
+
+        if($cat_id == -1) {
+            $results = $this->get("zgh_fe.search_manager")->getAllResults($query);
+        } else if ($cat_id == -2) {
+            $results = $this->get("zgh_fe.search_manager")->getPeopleResults($query);
+        } else {
+            $results = $this->get("zgh_fe.search_manager")->getCategoryResults($cat_id, $query);
+        }
+
+        return $this->render("@ZghFE/Default/search.html.twig", ["results" => $results]);
     }
 
     public function getSearchJsonAction($term)

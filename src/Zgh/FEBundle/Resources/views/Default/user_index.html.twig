@@ -25,7 +25,14 @@
                               <form action="{{ url("zgh_fe.user_profile.picture.set", {"id": app.user.id}) }}" method="post" enctype="multipart/form-data">
 
                                   <div class="modal-body">
-                                      <input name="picture" type="file"/>
+                                    <div class="btnBrowsePhoto">
+                                        <input class="btnBrowseMine photo_btn" name="picture" type="file" title="Browse"/>
+                                        <button class="btnBrowseNew btn btn-primary btn-wide" type="submit"><i class="glyphicon glyphicon-camera"></i> Browse</button>
+                                    </div>
+                                      <div class="thumbnailUpload">
+                                          <button class="row reset_photo btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
+                                          <img src="../EP.jpg"/>
+                                      </div>
                                   </div>
                                   <div class="modal-footer">
                                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -65,14 +72,18 @@
             <div class="modal fade cover_wrapper" id="cp_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header modalHeader">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title" id="myModalLabel">Select cover photo</h4>
                         </div>
                         <form action="{{ url("zgh_fe.user_profile.cover.set", {"id": app.user.id}) }}" method="post" class="cover_form" enctype="multipart/form-data">
 
                             <div class="modal-body">
-                                <input name="cover" type="file" class="cover_input"/>
+                                <div class="btnBrowsePhoto  margin-bottom">
+                                    <input name="cover" type="file" class="cover_input btnBrowseMine"/>
+                                    <button class="btnBrowseNew btn btn-primary btn-wide" type="submit" class="btn btn-primary btn-wide"><i class="glyphicon glyphicon-camera"></i> Browse</button>
+                                </div>
+
                                 <div id="testtt" class="cover_thumb"  width="540px" height="400px"  style=" position: relative;">
                                     <img src="{{ asset("bundles/zghfe/img/thumb.jpg") }}" width="100%" height="auto" alt="cover"/>
                                 </div>

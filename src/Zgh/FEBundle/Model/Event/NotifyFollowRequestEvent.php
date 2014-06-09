@@ -30,7 +30,7 @@ class NotifyFollowRequestEvent extends Event
         $followee = $follow_obj->getFollowee();
 
         $this->content = [
-            "type" => Notification::TYPE_FOLLOW_REQUEST,
+            "type" => NotifyEvents::NOTIFY_FOLLOW_REQUEST,
             "user" => $follower->getFullName(),
             "follower_id" => $follower->getId()
         ];

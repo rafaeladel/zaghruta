@@ -14,7 +14,7 @@ class NotificationController extends Controller
             $this->getDoctrine()->getManager()->persist($notification);
         }
         $this->getDoctrine()->getManager()->flush();
-        $notifications = $user->getNotifications();
+        $notifications = $this->getDoctrine()->getRepository("ZghFEBundle:User")->getAllNotifications($user)[0]->getNotifications();
         return $this->render("ZghFEBundle:Default:notifications.html.twig",[
             "notifications" => $notifications
         ]);

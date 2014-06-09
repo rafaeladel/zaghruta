@@ -28,7 +28,7 @@ class NotifyCommentEvent extends Event
         $obj = $comment->getObject();
 
         $this->content = [
-            "type" => Notification::TYPE_COMMENT,
+            "type" => NotifyEvents::NOTIFY_COMMENT,
             "user" => $user->getFullName(),
             "post_id" => $obj->getId()
         ];

@@ -12,7 +12,7 @@ class ExperienceType extends AbstractType
     {
         $builder
             ->add("title", "text")
-            ->add("categories", "thrace_select2_entity", array(
+            ->add("category", "thrace_select2_entity", array(
                     "class" => 'Zgh\FEBundle\Entity\Category',
                     "property" => "name",
                     'label' => 'Categories',

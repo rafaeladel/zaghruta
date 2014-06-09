@@ -85,6 +85,36 @@
 //                document.pushState(null, null, url);
 //            });
 
+            $("body").on("click", ".search_submit", function(e){
+                e.preventDefault();
+                var form = $(e.currentTarget).closest("form");
+                form.submit();
+            });
+
+            $("body").on("click", ".searchOption", function(e){
+                e.preventDefault();
+                var cat = $(e.currentTarget).data("cat");
+                $(e.currentTarget).closest(".cat_ddl_btn").find("button").text($(e.currentTarget).text());
+                $(e.currentTarget).closest("form").find("input[type='hidden']").val(cat);
+            });
+
+            $("body").on("change", ".photo_btn", function(e){
+                e.preventDefault();
+                var wrapper = $(e.currentTarget).closest("form").find(".thumbnailUpload");
+                wrapper.show();
+                var imgWrapper = wrapper.find("img");
+                imgWrapper.attr("src", URL.createObjectURL(this.files[0]));
+            });
+
+            $("body").on("click", ".reset_photo", function(e){
+                e.preventDefault();
+                var wrapper = $(e.currentTarget).closest("form").find(".thumbnailUpload");
+                wrapper.hide();
+                var file_input = $(e.currentTarget).closest("form").find(".photo_btn");
+                file_input.wrap('<form>').closest('form').get(0).reset();
+                file_input.unwrap();
+            });
+
             $("body").on("click", ".btnFollowing", function (e) {
                 e.preventDefault();
                 var form = $(e.target).closest("form");

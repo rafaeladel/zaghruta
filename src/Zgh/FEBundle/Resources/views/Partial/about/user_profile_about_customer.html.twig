@@ -24,7 +24,7 @@
                 <td>Status</td>
                 <td>
                     {{ about.status }}
-                    {% if about.relationshipUser %}
+                    {% if about.relationshipUser and about.relationshipAccepted %}
                         {{ about.status == "In relationship" ? "with" : "to" }} <a href="{{ url("zgh_fe.user_profile.index", {"id": about.relationshipUser.id}) }}">{{ about.relationshipUser }}</a>
                     {% endif %}
                 </td>

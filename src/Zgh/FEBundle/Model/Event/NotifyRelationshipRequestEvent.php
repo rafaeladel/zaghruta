@@ -6,9 +6,10 @@ use Zgh\FEBundle\Entity\FollowUsers;
 use Zgh\FEBundle\Entity\Like;
 use Zgh\FEBundle\Entity\Notification;
 use Zgh\FEBundle\Entity\User;
+use Zgh\FEBundle\Entity\UserInfo;
 use Zgh\FEBundle\Service\NotificationManager;
 
-class NotifyFollowEvent extends Event
+class NotifyRelationshipRequestEvent extends Event
 {
     protected $content;
 
@@ -24,17 +25,18 @@ class NotifyFollowEvent extends Event
      */
     protected $notification;
 
-    public function __construct(FollowUsers $follow)
+    public function __construct(UserInfo $userInfo)
     {
+        $requester = $userInfo->getUser();
+        $receiver = $userInfo->getRelationshipUser();
 
         $this->content = [
-            "type" => NotifyEvents::NOTIFY_FOLLOW,
-            "user" => $follow->getFollower()->getFullName(),
-            "follower_id" => $follow->getFollower()->getId()
+            "type" => NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST,
+            "user" => $requester->getFullName(),
+            "requester_id" => $requester->getId()
         ];
-
-        $this->user = $follow->getFollowee();
-        $this->action_id = $follow->getId();
+        $this->user = $receiver;
+        $this->action_id = $userInfo->getId();
     }
 
     public function getNotification()

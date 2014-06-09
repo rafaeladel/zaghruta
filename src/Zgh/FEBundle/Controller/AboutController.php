@@ -5,6 +5,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Zgh\FEBundle\Entity\Notification;
 use Zgh\FEBundle\Entity\UserInfo;
 use Zgh\FEBundle\Form\UserInfoType;
 use Zgh\FEBundle\Form\VendorInfoType;
@@ -54,6 +56,53 @@ class AboutController extends Controller
         $this->getDoctrine()->getManager()->flush();
 
         return new JsonResponse(array("status" => 200));
+    }
+
+    /**
+     * @param UserInfo $userInfo
+     * @param Notification $notification
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     */
+    public function acceptRelationshipAction(UserInfo $userInfo, Notification $notification)
+    {
+        if($this->getUser()->getId() != $userInfo->getRelationshipUser()->getId())
+        {
+            throw new AccessDeniedException();
+        }
+        $reciever = $this->getUser();
+        $reciever_userInfo = $reciever->getUserInfo();
+        $reciever_userInfo->setStatus($userInfo->getStatus());
+        $reciever_userInfo->setRelationshipUser($userInfo->getUser());
+        $reciever_userInfo->setRelationshipAccepted(true);
+
+        $userInfo->setRelationshipAccepted(true);
+        $this->getDoctrine()->getManager()->persist($userInfo);
+        $this->getDoctrine()->getManager()->persist($reciever);
+        $this->getDoctrine()->getManager()->remove($notification);
+        $this->getDoctrine()->getManager()->flush();
+        $requester_id = $userInfo->getUser()->getId();
+        return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", ["id"=> $requester_id]));
+    }
+
+    /**
+     * @param UserInfo $userInfo
+     * @param Notification $notification
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     */
+    public function denyRelationshipAction(UserInfo $userInfo, Notification $notification)
+    {
+        if($this->getUser()->getId() != $userInfo->getRelationshipUser()->getId())
+        {
+            throw new AccessDeniedException();
+        }
+        $reciever = $this->getUser();
+        $userInfo->setRelationshipUser(null);
+        $this->getDoctrine()->getManager()->persist($userInfo);
+        $this->getDoctrine()->getManager()->remove($notification);
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirect($this->generateUrl("zgh_fe.notifications"));
     }
 
     /**

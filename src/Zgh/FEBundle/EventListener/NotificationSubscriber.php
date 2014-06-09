@@ -10,6 +10,7 @@ use Zgh\FEBundle\Model\Event\NotifyEvents;
 use Zgh\FEBundle\Model\Event\NotifyFollowEvent;
 use Zgh\FEBundle\Model\Event\NotifyFollowRequestEvent;
 use Zgh\FEBundle\Model\Event\NotifyLikeEvent;
+use Zgh\FEBundle\Model\Event\NotifyRelationshipRequestEvent;
 
 class NotificationSubscriber implements EventSubscriberInterface
 {
@@ -27,6 +28,7 @@ class NotificationSubscriber implements EventSubscriberInterface
             NotifyEvents::NOTIFY_COMMENT => ["onNotifyComment", 0],
             NotifyEvents::NOTIFY_FOLLOW => ["onNotifyFollow", 0],
             NotifyEvents::NOTIFY_FOLLOW_REQUEST => ["onNotifyFollowRequest", 0],
+            NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST => ["onNotifyRelationshipRequest", 0],
             NotifyEvents::NOTIFY_DELETE => ["onNotifyDelete", 0]
         ];
     }
@@ -59,6 +61,15 @@ class NotificationSubscriber implements EventSubscriberInterface
     }
 
     public function onNotifyFollowRequest(NotifyFollowRequestEvent $event)
+    {
+        $notification = $event->getNotification();
+        $user = $event->getUserToNotify();
+        $user->addNotification($notification);
+        $this->em->persist($user);
+        $this->em->flush();
+    }
+
+    public function onNotifyRelationshipRequest(NotifyRelationshipRequestEvent $event)
     {
         $notification = $event->getNotification();
         $user = $event->getUserToNotify();

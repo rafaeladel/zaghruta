@@ -4,10 +4,10 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
+    <import resource="@ZghFEBundle/Resources/config/Routing/search_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/notification_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/misc_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/messages_routing.xml" />
-    <import resource="@ZghFEBundle/Resources/config/Routing/search_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/tags_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/wall_routing.xml" />
     <import resource="@ZghFEBundle/Resources/config/Routing/settings_routing.xml" />

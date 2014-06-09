@@ -4,12 +4,8 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="zgh_fe.search.post_search" pattern="/search" methods="post">
+    <route id="zgh_fe.search.post_search" pattern="/search" methods="get">
         <default key="_controller">ZghFEBundle:Search:postSearch</default>
-    </route>
-
-    <route id="zgh_fe.search.post_search" pattern="/search/ajax/{term}" methods="get">
-        <default key="_controller">ZghFEBundle:Search:getSearchJson</default>
     </route>
 
     <!--<route id="zgh_fe.settings.postBasicInfo" pattern="/settings" methods="post">-->

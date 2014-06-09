@@ -13,23 +13,15 @@ class ProductType extends AbstractType
         $builder
             ->add("name", "text")
             ->add("description", "textarea", ["required" => false])
-            ->add("categories", "thrace_select2_entity", array(
+            ->add("category", "thrace_select2_entity", array(
                     "class" => 'Zgh\FEBundle\Entity\Category',
                     "property" => "name",
                     'label' => 'Categories',
                     'empty_value' => 'Select category',
-                    "multiple" => true,
                     "configs" => array(
                         "width" => '100%',
                     ),
                 ))
-//            ->add("categories", "entity", array(
-//                    "class" => 'Zgh\FEBundle\Entity\Category',
-//                    "property" => "name",
-//                    'label' => 'Categories',
-//                    'empty_value' => 'Select category',
-//                    "multiple" => true
-//                ))
             ->add("price", "number", ["required" => false])
         ;
 

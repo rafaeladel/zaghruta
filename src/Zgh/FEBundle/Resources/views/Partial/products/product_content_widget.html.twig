@@ -1,7 +1,7 @@
 <div class="col-md-9 product">
     <div class="row banner margin">
         <div class="col-md-12">
-            <img class="img-responsive" src="{{ asset(product.getThumbWebPath()) }}">
+            <img class="img-responsive" src="{{ product.getThumbWebPath ? asset(product.getThumbWebPath) : asset("bundles/zghfe/img/thumb.jpg") }}">
         </div>
     </div>
     <div class="row hidden-md hidden-lg">

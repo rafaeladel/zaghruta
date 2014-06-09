@@ -2319,7 +2319,7 @@ border-top: none;
 .btn-liked{
     border:2px solid #DC5880 !important;
     color:#DC5880 !important;
-    background: none;
+    background: none !important;
 }
 .albumCont .thumbnail a{
     display: block;
@@ -2410,9 +2410,11 @@ border-top: none;
  margin-bottom:10px;
 }
 .thumbnailUpload{
+   display:none;
    width:96px;
-   height: 96px;
+   height: auto;
    position: relative;
+   margin: 0 0 10px 10px;
 }
 .thumbnailUpload
 .posts:focus{
@@ -2451,4 +2453,25 @@ border-top: none;
 }
 .select2-container{
     height: 27px;
+}
+.btnBrowsePhoto{
+    width:auto;
+    height:34px;
+    position: relative;
+}
+.btnBrowsePhoto .btnBrowseMine, .btnBrowsePhoto .btnBrowseNew{
+   position: absolute;
+    left:0;
+    top: 0;
+}
+.btnBrowseMine{
+    height: 34px;
+    width: 140px;
+    overflow: hidden;
+    z-index: 2;
+    cursor: pointer;
+    opacity: 0;
+}
+.btnBrowseNew{
+
 }

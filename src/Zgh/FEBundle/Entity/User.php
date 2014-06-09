@@ -876,7 +876,15 @@ class User extends BaseUser implements ParticipantInterface
      */
     public function setShowInterestNotificationValue()
     {
-        $this->setShowInterestNotification(true);
+        if(in_array("ROLE_CUSTOMER", $this->getRoles()))
+        {
+            $this->setShowInterestNotification(true);
+        }
+        elseif(in_array("ROLE_VENDOR", $this->getRoles()))
+        {
+            $this->setShowInterestNotification(false);
+
+        }
     }
 
     /**

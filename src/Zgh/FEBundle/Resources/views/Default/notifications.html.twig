@@ -18,24 +18,29 @@
                         </thead>
                         <tbody>
                         {% for notification in notifications %}
-                            {% if notification.content.type == 0 %}
+                            {% if notification.content.type == 'notify.like' %}
                                 <tr>
                                     <td>{{ notification.content.user }} Liked your <a href="{{ url("zgh_fe.post.display", {"id": notification.user.id, "post_id": notification.content.post_id }) }}"> post</a></td>
                                     <td><span class="glyphicon glyphicon-thumbs-up pull-right"></span></td>
                                 </tr>
-                            {% elseif notification.content.type == 1 %}
+                            {% elseif notification.content.type == 'notify.comment' %}
                                 <tr>
                                     <td>{{ notification.content.user }} Commented on your <a href="{{ url("zgh_fe.post.display", {"id": notification.user.id, "post_id": notification.content.post_id }) }}"> post</a></td>
                                     <td><span class="glyphicon glyphicon-comment pull-right"></span></td>
                                 </tr>
-                            {% elseif notification.content.type == 2 %}
+                            {% elseif notification.content.type == 'notify.follow' %}
                                 <tr>
                                     <td><a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a>Add you as a friend</td>
                                     <td><span class="glyphicon glyphicon-user pull-right"></span></td>
                                 </tr>
-                            {% elseif notification.content.type == 3 %}
+                            {% elseif notification.content.type == 'notify.follow_request' %}
                                 <tr>
                                     <td><a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a> Wants to add you as a friend. <a href="{{ url("zgh_fe.user.accept_follow", {"id": notification.actionId, "n_id": notification.id }) }}">Yes</a> <a href="{{ url("zgh_fe.user.deny_follow", {"id": notification.actionId, "n_id": notification.id }) }}">No</a> </td>
+                                    <td><span class="glyphicon glyphicon-user pull-right"></span></td>
+                                </tr>
+                            {% elseif notification.content.type == 'notify.relationship.request' %}
+                                <tr>
+                                    <td><a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.requester_id }) }}"> {{ notification.content.user }} </a> Wants to add you in {{ notification.content.user.gender == 0 ? "his" : "her" }} relationship info. <a href="{{ url("zgh_fe.about.accept_relationship", {"id": notification.actionId, "n_id": notification.id }) }}">Yes</a> <a href="{{ url("zgh_fe.about.deny_relationship", {"id": notification.actionId, "n_id": notification.id }) }}">No</a> </td>
                                     <td><span class="glyphicon glyphicon-user pull-right"></span></td>
                                 </tr>
                             {% endif %}

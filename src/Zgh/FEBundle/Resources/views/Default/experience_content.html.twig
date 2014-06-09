@@ -10,7 +10,7 @@
                 <div class="col-md-9 tipExp">
                     <div class="row banner margin">
                         <div class="col-md-12">
-                            <img src="{{ asset(experience.getThumbWebPath) }}" class="img-responsive">
+                            <img src="{{ experience.getThumbWebPath ? asset(experience.getThumbWebPath) : asset("bundles/zghfe/img/thumb.jpg") }}" class="img-responsive">
                         </div>
                     </div>
 
@@ -26,9 +26,7 @@
                         <h2 class="col-md-4">{{ experience.title }}</h2>
                         <div class="clearfix"></div>
                         <p class="by col-md-12">Category:
-                            {% for category in experience.categories %}
-                                <span> {{ category.name }}</span>
-                            {% endfor %}
+                                <span> {{ experience.category.name }}</span>
                         </p>
                         <span class="col-md-12 date-time">{{ experience.createdAt|date() }}</span>
                         <p class="by col-md-12">By: <span>{{ experience.user.getFullname }}</span></p>

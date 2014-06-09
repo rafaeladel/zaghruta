@@ -11,8 +11,8 @@ class BranchType extends AbstractType
     {
         $builder
             ->add("address", "text")
-            ->add("phone", "text", ["required" => false])
-            ->add("mobile", "text", ["required" => false])
+            ->add("phone", "number", ["required" => false])
+            ->add("mobile", "number", ["required" => false])
             ->add("email", "email", ["required" => false])
         ;
     }

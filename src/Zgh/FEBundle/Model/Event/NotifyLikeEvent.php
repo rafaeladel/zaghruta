@@ -28,7 +28,7 @@ class NotifyLikeEvent extends Event
         $obj = $like->getObject();
 
         $this->content = [
-            "type" => Notification::TYPE_lIKE,
+            "type" => NotifyEvents::NOTIFY_LIKE,
             "user" => $user->getFullName(),
             "post_id" => $obj->getId()
         ];
