@@ -15,12 +15,12 @@ class Category
     use BasicInfo;
 
     /**
-     * @ORM\OneToMany(targetEntity="Zgh\FEBundle\Entity\Experience", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Experience", mappedBy="category")
      */
     protected $experiences;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="categories")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
      */
     protected $products;
 

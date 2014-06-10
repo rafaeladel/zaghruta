@@ -130,6 +130,7 @@
 
         <service id="zgh_fe.twig.widgets_extension" class="%zgh_fe.twig.widgets_extension.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="zgh_fe.search_manager" />
             <tag name="twig.extension" />
         </service>
 

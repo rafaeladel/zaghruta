@@ -3,7 +3,7 @@
 {% block leftContent %}
 <div id="c_photos" style="display: block;">
     <div class="row collectionsAlbums">
-        <div class="col-xs-12 search-Results">
+        <div class="col-xs-12 search-Results pull-left">
             {% if user.id == app.user.id %}
                 {% if albums|length > 0 %}
                     <button id="addNewPhoto" class="btn btn-primary btn-wide" type="button" data-toggle="modal"

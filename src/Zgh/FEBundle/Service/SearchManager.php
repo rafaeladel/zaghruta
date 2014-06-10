@@ -34,6 +34,45 @@ class SearchManager
         return $q->execute();
     }
 
+    public function getProductsResults($query)
+    {
+        $q = $this->em->createQuery(
+            "
+                select pr
+                from Zgh\FEBundle\Entity\Product pr
+                where pr.name like :crit
+            "
+        );
+        $q->setParameter("crit", "%" .  strtolower($query) . "%");
+        return $q->execute();
+    }
+
+    public function getTipsResults($query)
+    {
+        $q = $this->em->createQuery(
+            "
+                select t
+                from Zgh\FEBundle\Entity\Tip t
+                where t.title like :crit
+            "
+        );
+        $q->setParameter("crit", "%" .  strtolower($query) . "%");
+        return $q->execute();
+    }
+
+    public function getExperiencesResults($query)
+    {
+        $q = $this->em->createQuery(
+            "
+                select ex
+                from Zgh\FEBundle\Entity\Experience ex
+                where ex.title like :crit
+            "
+        );
+        $q->setParameter("crit", "%" .  strtolower($query) . "%");
+        return $q->execute();
+    }
+
     public function getPeopleResults($query)
     {
         $q = $this->em->createQuery(
@@ -41,27 +80,80 @@ class SearchManager
                 select u
                 from Zgh\FEBundle\Entity\User u
                 where u.firstname like :crit
+                and u.roles like '%ROLE_CUSTOMER%'
             "
         );
         $q->setParameter("crit", "%" .  strtolower($query) . "%");
         return $q->execute();
     }
 
-    public function getCategoryResults($cat, $query)
+    public function getVendorsResults($query)
+    {
+        $q = $this->em->createQuery(
+            "
+                select u
+                from Zgh\FEBundle\Entity\User u
+                where u.firstname like :crit
+                and u.roles like '%ROLE_VENDOR%'
+            "
+        );
+        $q->setParameter("crit", "%" .  strtolower($query) . "%");
+        return $q->execute();
+    }
+
+    public function getProductByCategoryResults($cat_id, $query)
     {
         $q = $this->em->createQuery("
-                select c, pr
-                from Zgh\FEBundle\Entity\Category c
-                left join c.products pr
+                select pr
+                from Zgh\FEBundle\Entity\Product pr
+                inner join pr.category c
                 where c.id = :cat
                 and pr.name like :crit
             ");
 
         $q->setParameters([
-                "cat" => $cat,
+                "cat" => $cat_id,
                 "crit" => "%" .  strtolower($query) . "%"
             ]);
 
         return $q->execute();
     }
+
+    public function getVendorByCategoryResults($cat_id, $query)
+    {
+        $q = $this->em->createQuery("
+                select u
+                from Zgh\FEBundle\Entity\User u
+                inner join u.interests i
+                where i.id = :cat
+                and u.firstname like :crit
+                and u.roles like '%ROLE_VENDOR%'
+            ");
+
+        $q->setParameters([
+                "cat" => $cat_id,
+                "crit" => "%" .  strtolower($query) . "%"
+            ]);
+
+        return $q->execute();
+    }
+
+    public function getExperiencesByCategory($cat_id, $query)
+    {
+        $q = $this->em->createQuery("
+                select e
+                from Zgh\FEBundle\Entity\Experience e
+                inner join e.category c
+                where c.id = :cat
+                and e.name like :crit
+            ");
+
+        $q->setParameters([
+                "cat" => $cat_id,
+                "crit" => "%" .  strtolower($query) . "%"
+            ]);
+
+        return $q->execute();
+    }
+
 }

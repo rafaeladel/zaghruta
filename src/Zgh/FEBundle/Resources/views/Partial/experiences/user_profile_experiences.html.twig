@@ -1,7 +1,7 @@
 {% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
 
 {% block leftContent %}
-    <div id="vendTips">
+    <div id="vendTips" class="tips_Experience">
         <div class="row">
             <div class="col-xs-12 search-Results">
                 {% if user.id == app.user.id %}
@@ -15,7 +15,7 @@
         </div>
 
         <div class="row exp_wrapper">
-            {{ include("@ZghFE/Partial/experiences/user_profile_experience_content.html.twig") }}
+            {{ render_esi(controller("ZghFEBundle:Experience:getList", {"id": user.id})) }}
         </div>
 
     </div>

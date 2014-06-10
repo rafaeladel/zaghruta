@@ -3,12 +3,13 @@
 {% block leftContent %}
     <div id="c_photos" style="display: block;">
         <div class="row collectionsAlbums">
-            <div class="col-xs-12 search-Results">
-                <button id="addNewPhoto" class="btn btn-primary btn-wide" type="button" data-toggle="modal"
-                        data-target="#addPhotoPopup"><span class="glyphicon glyphicon-plus"></span>
-                    Add new photo
-                </button>
-
+            <div class="col-xs-12 search-Results pull-left">
+                {% if user.id == app.user.id %}
+                    <button id="addNewPhoto" class="btn btn-primary btn-wide" type="button" data-toggle="modal"
+                            data-target="#addPhotoPopup"><span class="glyphicon glyphicon-plus"></span>
+                        Add new photo
+                    </button>
+                {% endif %}
                 <div class="album_nav btn-group pull-right">
                     <button class="back_btn btn btn-primary btn-wide"
                             data-target_url="{{ url("zgh_fe.user_profile.albums_partial", {"id": user.id }) }}"><span
@@ -37,7 +38,8 @@
                                         <button type="button" class="btn btn-wide modalClose btn-default"
                                                 data-dismiss="modal" aria-hidden="true">Cancel
                                         </button>
-                                        <form class="btnForm" action="{{ url("zgh_fe.photos.album.delete", {"id": album.id}) }}"
+                                        <form class="btnForm"
+                                              action="{{ url("zgh_fe.photos.album.delete", {"id": album.id}) }}"
                                               method="post">
                                             <button type="submit" class="btn btn-wide btn-primary">Delete</button>
                                         </form>
@@ -54,6 +56,7 @@
 
         </div>
         <h2 class="text-left titlePhotos">{{ album.name }}</h2>
+
         <div class="row photosWrapper" id="photos">
             {{ include("@ZghFE/Partial/photos/user_profile_photos_p_content.html.twig", {"photos" : album.photos }) }}
         </div>

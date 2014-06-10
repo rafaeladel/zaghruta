@@ -12,37 +12,25 @@
             <span class="notCounter img-circle text-center">{{ notifications_count() }}</span>
         {% endif %}
     </a>
+    <a href="{{ url("zgh_fe.user_profile.index", {"id": app.user.id }) }}" class="btn  btn-circle">
+        <img src="{{ "ROLE_FACEBOOK" in app.user.roles ? 'https://graph.facebook.com/'~app.user.facebookId~'/picture' : asset(app.user.profilePhoto.getThumbWebPath()) }}"
+             alt="" width="25" height="25" style="border-radius:50%;">
+    </a>
+
+
 
     <div class="btn-group">
         <button type="button" class="btn btn-primary btn-circle  dropdown-toggle" data-toggle="dropdown">
-            <img src="{{ "ROLE_FACEBOOK" in app.user.roles ? 'https://graph.facebook.com/'~app.user.facebookId~'/picture' : asset(app.user.profilePhoto.getThumbWebPath()) }}"
-                 alt="" width="25" height="25" style="border-radius:50%;">
+            <span class="glyphicon glyphicon-user"></span>
         </button>
         <ul class="dropdown-menu">
-            {% if app.security.isGranted("ROLE_CUSTOMER") %}
-                <li><a href="#"><span class="glyphicon glyphicon-heart"></span> Likes</a></li>
-                <li><a href="userProfile.html"><span class="glyphicon glyphicon-list"></span> Wish Lists</a></li>
-                <li><a href="userProfile.html"><span class="glyphicon glyphicon-star"></span> Vendors</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Followers</a></li>
-                <li><a href="{{ url("zgh_fe.user_profile.index", {"id": app.user.id }) }}"><span
-                                class="glyphicon glyphicon-user"></span> Profile</a></li>
+
+                <li><a href="{{ url("zgh_fe.settings.getSettings") }}" ><span class="glyphicon glyphicon-cog"></span> Setting</a></li>
                 <li><a href="{{ url("fos_user_security_logout") }}"><span class="glyphicon glyphicon-log-out"></span>
                         Logout</a></li>
-            {% elseif app.security.isGranted("ROLE_VENDOR") %}
-                <li><a href="#"><span class="glyphicon glyphicon-heart"></span> About</a></li>
-                <li><a href="userProfile.html"><span class="glyphicon glyphicon-list"></span> Products</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Tips</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Connections</a></li>
-                <li><a href="{{ url("zgh_fe.user_profile.index", {"id": app.user.id }) }}"><span
-                                class="glyphicon glyphicon-user"></span> Profile</a></li>
-                <li><a href="{{ url("fos_user_security_logout") }}"><span class="glyphicon glyphicon-log-out"></span>
-                        Logout</a></li>
-            {% endif %}
 
         </ul>
     </div>
 
-    <a href="{{ url("zgh_fe.settings.getSettings") }}" class="btn btn-primary btn-circle">
-        <span class="glyphicon glyphicon-cog"></span>
-    </a>
+
 </div>

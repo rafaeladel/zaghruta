@@ -40,7 +40,7 @@
             <!-- /btn-group -->
             <input type="hidden" name="category" value="0"/>
             <input type="text" name="q" class="form-control custFc"
-                   placeholder="Search for your things">
+                   value="{{ app.request.get("q") }}" placeholder="Search for your things">
             <a href="#" class="search-addon input-group-addon custAncor search_submit"></a>
         </div>
     </div>

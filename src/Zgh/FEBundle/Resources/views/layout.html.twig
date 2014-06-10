@@ -85,6 +85,16 @@
 //                document.pushState(null, null, url);
 //            });
 
+            $("body").on("click",".filtr",function(e){
+                var wrapperid=$(e.currentTarget).data("id");
+                if(wrapperid=="all"){
+                    $(".resultWrapper").show();
+                }else{
+                    $(".resultWrapper").hide();
+                    $(wrapperid).show();
+                }
+            });
+
             $("body").on("click", ".search_submit", function(e){
                 e.preventDefault();
                 var form = $(e.currentTarget).closest("form");

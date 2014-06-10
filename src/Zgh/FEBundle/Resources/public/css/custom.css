@@ -953,8 +953,8 @@ footer .container {
 }
 
 .effect a img {
-    width: 137px;
-    height: 137px;
+    /*width: 137px;*/
+    /*height: 137px;*/
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     -o-transition: all .5s ease;
@@ -2423,6 +2423,11 @@ border-top: none;
 .thumbnailUpload img{
     width: 100%;
     height: auto;
+}.thumbnailUpload .delete-post{
+    right:-5px;
+ }
+.thumbnailUpload .delete-post .glyphicon-remove{
+   color:#fff;
 }
 .posts .form-control{
     border: none !important;
@@ -2473,5 +2478,28 @@ border-top: none;
     opacity: 0;
 }
 .btnBrowseNew{
+
+}
+#wishlists_list .delete-post{
+    right: 15px;
+    top: 5px;
+}
+.tips_Experience .thumbnail p{
+   color: #fff;
+
+}
+.tips_Experience .caption{
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+.tips_Experience .caption p{
+    height: 182px;
+    overflow: hidden;
+}
+.experience .delete-post{
+   right:15px;
+   top:5px;
+   color:#fff;
 
 }

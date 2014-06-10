@@ -1,6 +1,7 @@
 <?php
 namespace Zgh\FEBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,15 +15,7 @@ class SearchController extends Controller
         $query = $request->query->get("q");
         $cat_id = $request->query->get("category");
 
-        if($cat_id == -1) {
-            $results = $this->get("zgh_fe.search_manager")->getAllResults($query);
-        } else if ($cat_id == -2) {
-            $results = $this->get("zgh_fe.search_manager")->getPeopleResults($query);
-        } else {
-            $results = $this->get("zgh_fe.search_manager")->getCategoryResults($cat_id, $query);
-        }
-
-        return $this->render("@ZghFE/Default/search.html.twig", ["results" => $results]);
+        return $this->render("@ZghFE/Default/search.html.twig", ["query" => $query, "catId" => $cat_id]);
     }
 
     public function getSearchJsonAction($term)
