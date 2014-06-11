@@ -1,0 +1,60 @@
+<div class="followFriend  margin">
+
+    <h5 class="pull-left">Popular Vendors</h5>
+    <a href="#" class="pull-right">See all</a><br>
+
+    <hr>
+    <div class="clearfix"></div>
+    {% for vendor in vendors|first %}
+
+    <div class="row media profile fr-suggest ">
+        <div class="col-sm-4">
+            <a class="pull-left img-rounded" href="#">
+                <img class="media-object " src="{{ vendor.profilePhoto.getThumbWebPath ? asset(vendor.profilePhoto.getThumbWebPath) : asset("bundles/zghfe/img/thumb.jpg") }}" alt="">
+            </a>
+        </div>
+        <div class="col-sm-8">
+            <h3><a href="">{{ vendor.fullname }}</a></h3>
+            {#<span class="title">Teacher</span>#}
+            <button type="button" class="btn btn-primary btn-sm">
+                <span class="glyphicon glyphicon-plus-sign"></span> Follow
+            </button>
+            <a href="#" class="boy"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+        </div>
+    </div>
+    {% endfor %}
+    {#<hr>#}
+    {#<div class="row media profile fr-suggest ">#}
+        {#<div class="col-sm-4">#}
+            {#<a class="pull-left img-rounded" href="#">#}
+                {#<img class="media-object" src="img/banner.jpg" alt="">#}
+            {#</a>#}
+        {#</div>#}
+        {#<div class="col-sm-8">#}
+            {#<h3><a href="">Ahmed Mohamed</a></h3>#}
+            {#<span class="title">Teacher</span>#}
+            {#<button type="button" class="btn btn-primary btn-sm">#}
+                {#<span class="glyphicon glyphicon-plus-sign"></span> Follow#}
+            {#</button>#}
+            {#<a href="#" class="boy"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>#}
+        {#</div>#}
+    {#</div>#}
+    {#<hr>#}
+    {#<div class="row media profile fr-suggest ">#}
+        {#<div class="col-sm-4">#}
+            {#<a class="pull-left img-rounded" href="#">#}
+                {#<img class="media-object" src="img/banner.jpg" alt="">#}
+            {#</a>#}
+        {#</div>#}
+        {#<div class="col-sm-8">#}
+            {#<h3><a href="">Ahmed Mohamed</a></h3>#}
+            {#<span class="title">Teacher</span>#}
+            {#<button type="button" class="btn btn-primary btn-sm">#}
+                {#<span class="glyphicon glyphicon-plus-sign"></span> Follow#}
+            {#</button>#}
+            {#<a href="#" class="boy"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>#}
+        {#</div>#}
+    {#</div>#}
+
+
+</div>

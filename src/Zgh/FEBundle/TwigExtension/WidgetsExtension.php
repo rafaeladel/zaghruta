@@ -5,6 +5,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Twig_Environment;
 use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Model\CommentableInterface;
+use Zgh\FEBundle\Service\RightSideManager;
 use Zgh\FEBundle\Service\SearchManager;
 
 class WidgetsExtension extends \Twig_Extension
@@ -13,15 +14,18 @@ class WidgetsExtension extends \Twig_Extension
 
     protected $searchManager;
 
+    protected $rightSideManager;
+
     /**
      * @var Twig_Environment
      */
     protected $env;
 
-    public function __construct(EntityManagerInterface $entityManagerInterface, SearchManager $searchManager)
+    public function __construct(EntityManagerInterface $entityManagerInterface, SearchManager $searchManager, RightSideManager $rightSideManager)
     {
         $this->em = $entityManagerInterface;
         $this->searchManager = $searchManager;
+        $this->rightSideManager = $rightSideManager;
     }
 
     public function initRuntime(Twig_Environment $environment)
@@ -45,6 +49,9 @@ class WidgetsExtension extends \Twig_Extension
             new \Twig_SimpleFunction("getProductsByCategory", [$this, "getProductsByCategory"] ),
             new \Twig_SimpleFunction("getVendorByCategory", [$this, "getVendorByCategory"] ),
             new \Twig_SimpleFunction("getExperienceByCategory", [$this, "getExperienceByCategory"] ),
+            new \Twig_SimpleFunction("getRecommendedPeople", [$this, "getRecommendedPeople"] ),
+            new \Twig_SimpleFunction("getRecommendedVendor", [$this, "getRecommendedVendor"] ),
+            new \Twig_SimpleFunction("getNewVendors", [$this, "getNewVendors"] )
 
         ];
     }
@@ -119,6 +126,27 @@ class WidgetsExtension extends \Twig_Extension
     {
         $experiences = $this->searchManager->getExperiencesByCategory($cat_id, $crit);
         return $this->env->render("@ZghFE/Partial/experiences/user_profile_experience_content.html.twig", ["experiences" => $experiences]);
+    }
+
+    public function getRecommendedPeople()
+    {
+        $people = $this->rightSideManager->getRecommendedPeople();
+        return $people;
+    }
+
+    public function getRecommendedVendor()
+    {
+        $vendors = $this->rightSideManager->getRecommendedVendors();
+
+        return $this->env->render("@ZghFE/Partial/right_side/recommendedVendors.html.twig", [
+                "vendors" => $vendors
+            ]);
+    }
+
+    public function getNewVendors()
+    {
+        $vendors = $this->rightSideManager->getNewVendors();
+        return $vendors;
     }
 
     public function getName()

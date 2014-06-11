@@ -214,7 +214,7 @@ class User extends BaseUser implements ParticipantInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {

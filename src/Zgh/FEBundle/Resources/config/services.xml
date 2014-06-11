@@ -28,6 +28,7 @@
         <parameter key="zgh_fe.wishlist.class">Zgh\FEBundle\Form\Type\WishlistInputType</parameter>
         <parameter key="zgh_fe.delete_manager.class">Zgh\FEBundle\Service\DeleteManager</parameter>
         <parameter key="zgh_fe.search_manager.class">Zgh\FEBundle\Service\SearchManager</parameter>
+        <parameter key="zgh_fe.right_side_manager.class">Zgh\FEBundle\Service\RightSideManager</parameter>
     </parameters>
 
     <services>
@@ -131,6 +132,7 @@
         <service id="zgh_fe.twig.widgets_extension" class="%zgh_fe.twig.widgets_extension.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="zgh_fe.search_manager" />
+            <argument type="service" id="zgh_fe.right_side_manager" />
             <tag name="twig.extension" />
         </service>
 
@@ -152,6 +154,10 @@
         </service>
 
         <service id="zgh_fe.search_manager" class="%zgh_fe.search_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+
+        <service id="zgh_fe.right_side_manager" class="%zgh_fe.right_side_manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>
         </service>
 
