@@ -157,7 +157,9 @@ class ProductController extends Controller
     {
         $deleter = $this->get("zgh_fe.delete_manager");
         $deleter->delete($product);
-        return new JsonResponse(["status" => "200"]);
+        return $this->redirect($this->generateUrl("zgh_fe.user_profile.products_partial", [
+            "id" => $user->getId()
+        ]));
     }
 
     /**
@@ -260,5 +262,13 @@ class ProductController extends Controller
         $this->getDoctrine()->getManager()->persist($current_user);
         $this->getDoctrine()->getManager()->flush();
         return new JsonResponse(['status' => 200]);
+    }
+
+    public function getSearchAction(Request $request, User $user)
+    {
+        $query = $request->query->get("q");
+        $cat_id = $request->query->get("cat_id");
+        $products = $this->get("zgh_fe.search_manager")->getProductByUserAndCategory($user, $cat_id, $query);
+        return $this->render("@ZghFE/Partial/products/user_profile_products_content.html.twig",["user" => $user, "products" => $products]);
     }
 }

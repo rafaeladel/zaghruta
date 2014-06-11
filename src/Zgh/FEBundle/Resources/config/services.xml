@@ -148,6 +148,7 @@
         </service>
 
         <service id="zgh_fe.delete_manager" class="%zgh_fe.delete_manager.class%">
+            <argument type="service" id="security.context"/>
             <argument type="service" id="doctrine.orm.entity_manager"/>
         </service>
 

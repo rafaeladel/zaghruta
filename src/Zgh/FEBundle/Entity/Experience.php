@@ -45,7 +45,7 @@ class Experience extends Image implements LikeableInterface, CommentableInterfac
     protected $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Zgh\FEBundle\Entity\Category", inversedBy="experiences", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Zgh\FEBundle\Entity\Category", inversedBy="experiences")
      * @Assert\NotBlank()
      */
     protected $category;

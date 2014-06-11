@@ -156,4 +156,24 @@ class SearchManager
         return $q->execute();
     }
 
+    public function getProductByUserAndCategory($user_id, $cat_id, $query)
+    {
+        $q = $this->em->createQuery("
+                select pr
+                from Zgh\FEBundle\Entity\Product pr
+                inner join pr.category c
+                where pr.user = :user
+                and c.id = :cat
+                and pr.name like :crit
+            ");
+
+        $q->setParameters([
+            "user" => $user_id,
+            "cat" => $cat_id,
+            "crit" => "%" .  strtolower($query) . "%"
+        ]);
+
+        return $q->execute();
+    }
+
 }

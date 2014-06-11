@@ -15,7 +15,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-wide modalClose btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                                <form class="btnForm" action="{{ url("zgh_fe.post.delete", {"id": wishlist.id}) }}" method="post">
+                                <form class="btnForm" action="{{ url("zgh_fe.wishlist.delete", {"id": user.id, "wishlist_id": wishlist.id}) }}" method="post">
                                     <button type="submit" class="btn btn-wide btn-primary">Delete</button>
                                 </form>
                             </div>
@@ -25,7 +25,7 @@
             {% endif %}
             <div class="thumbnail">
                 <a href="{{ url("zgh_fe.wishlist.index", {"id": user.id, "wishlist_id": wishlist.id }) }}"
-                   class="moveWishlistIndex"><img src="{{ wishlist.products|length > 0 ? asset(wishlist.products[0].getWebPath()) : asset("bundles/zghfe/img/thumb.jpg") }}"
+                   class="moveWishlistIndex"><img src="{{ wishlist.products|length > 0 ? (wishlist.products[0].getWebPath() ? asset(wishlist.products[0].getWebPath()) : asset("bundles/zghfe/img/thumb.jpg")) : asset("bundles/zghfe/img/thumb.jpg") }}"
                                                   class="img-responsive" alt="Responsive image"></a>
 
                 <div class="caption">

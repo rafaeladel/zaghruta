@@ -1,11 +1,14 @@
 <?php
 namespace Zgh\FEBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Zgh\FEBundle\Entity\Experience;
+use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Form\ExperienceType;
 
 class ExperienceController extends Controller
@@ -27,6 +30,18 @@ class ExperienceController extends Controller
             "experience" => $experience
         ));
     }
+
+    /**
+     * @ParamConverter("experience", class="ZghFEBundle:Experience", options={"id" = "exp_id"})
+     */
+    public function deleteAction(User $user, Experience $experience)
+    {
+        $this->get("zgh_fe.delete_manager")->delete($experience);
+        return $this->redirect($this->generateUrl("zgh_fe.user_profile.experiences_partial",[
+                "id" => $user->getId()
+        ]));
+    }
+
 
     /**
      * @Security("has_role('ROLE_CUSTOMER')")
