@@ -16,6 +16,16 @@ class VendorInfoType extends AbstractType
     {
         $builder
             ->add("company_name", "text")
+            ->add("categories", "thrace_select2_entity", [
+                    "class" => 'Zgh\FEBundle\Entity\Category',
+                    "property" => "name",
+                    'label' => 'Categories',
+                    'empty_value' => 'Select category',
+                    "multiple" => true,
+                    "configs" => array(
+                        "width" => '100%',
+                    ),
+                ])
             ->add("mobile", "text", ["required" => false])
             ->add("website", "url", ["required" => false])
             ->add("email", "email", ["required" => false])

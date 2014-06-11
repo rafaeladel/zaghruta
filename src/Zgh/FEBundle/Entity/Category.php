@@ -34,6 +34,12 @@ class Category
      */
     protected $name;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="VendorInfo", mappedBy="categories")
+     */
+    protected $vendors;
+
     /**
      * Constructor
      */
@@ -164,5 +170,38 @@ class Category
     public function getExperiences()
     {
         return $this->experiences;
+    }
+
+    /**
+     * Add vendors
+     *
+     * @param \Zgh\FEBundle\Entity\VendorInfo $vendors
+     * @return Category
+     */
+    public function addVendor(\Zgh\FEBundle\Entity\VendorInfo $vendors)
+    {
+        $this->vendors[] = $vendors;
+
+        return $this;
+    }
+
+    /**
+     * Remove vendors
+     *
+     * @param \Zgh\FEBundle\Entity\VendorInfo $vendors
+     */
+    public function removeVendor(\Zgh\FEBundle\Entity\VendorInfo $vendors)
+    {
+        $this->vendors->removeElement($vendors);
+    }
+
+    /**
+     * Get vendors
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVendors()
+    {
+        return $this->vendors;
     }
 }

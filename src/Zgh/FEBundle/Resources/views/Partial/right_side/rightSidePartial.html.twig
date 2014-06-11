@@ -1,0 +1,20 @@
+{% for entry in result %}
+    <div class="row media profile fr-suggest ">
+        <div class="col-sm-4">
+            <a class="pull-left img-circle" href="#">
+                <img class="media-object "
+                     src="{{ entry.profilePhoto.getThumbWebPath ? asset(entry.profilePhoto.getThumbWebPath) : asset("bundles/zghfe/img/thumb.jpg") }}"
+                     alt="">
+            </a>
+        </div>
+        <div class="col-sm-8">
+            <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": entry.id}) }}">{{ entry.fullname }}</a></h3>
+            {{ renderFollow(entry, "btn-sm") }}
+            <a href="#" class="boy"> <span
+                        class="glyphicon glyphicon-user glyphicon-user-boy"></span> {{ entry.followees|length }}</a>
+        </div>
+    </div>
+    {% if loop.index != result|length %}
+        <hr>
+    {% endif %}
+{% endfor %}

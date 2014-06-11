@@ -5,7 +5,7 @@
                 <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Category <span
                             class="caret"></span></button>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="searchOption" data-cat="-1"><i class="icon-list-alt"></i>Everything</a></li>
+                    <li><a href="#" class="searchOption" data-cat="0"><i class="icon-list-alt"></i>Everything</a></li>
                     <li class="divider"></li>
                     {% for category in categories %}
                         <li><a href="#" class="searchOption" data-cat="{{ category.id }}"><i class="iconMenu pull-left"></i>{{ category.name }}</a></li>

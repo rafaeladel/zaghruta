@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class VendorInfo
 {
-    use BasicInfo;
+//    use BasicInfo;
 
     /**
      * @ORM\Column(type="text")
@@ -267,45 +267,5 @@ class VendorInfo
     public function setCompanyNameValue()
     {
         $this->setCompanyName("Company Name");
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add categories
-     *
-     * @param \Zgh\FEBundle\Entity\Category $categories
-     * @return VendorInfo
-     */
-    public function addCategory(\Zgh\FEBundle\Entity\Category $categories)
-    {
-        $this->categories[] = $categories;
-
-        return $this;
-    }
-
-    /**
-     * Remove categories
-     *
-     * @param \Zgh\FEBundle\Entity\Category $categories
-     */
-    public function removeCategory(\Zgh\FEBundle\Entity\Category $categories)
-    {
-        $this->categories->removeElement($categories);
-    }
-
-    /**
-     * Get categories
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCategories()
-    {
-        return $this->categories;
     }
 }

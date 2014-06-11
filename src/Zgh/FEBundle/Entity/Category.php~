@@ -15,12 +15,12 @@ class Category
 //    use BasicInfo;
 
     /**
-     * @ORM\OneToMany(targetEntity="Zgh\FEBundle\Entity\Experience", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Experience", mappedBy="category")
      */
     protected $experiences;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="categories")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
      */
     protected $products;
 
@@ -33,6 +33,12 @@ class Category
      * @ORM\Column(type="text")
      */
     protected $name;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="VendorInfo", mappedBy="categories")
+     */
+    protected $vendors;
 
     /**
      * Constructor
@@ -131,5 +137,38 @@ class Category
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * Add experiences
+     *
+     * @param \Zgh\FEBundle\Entity\Experience $experiences
+     * @return Category
+     */
+    public function addExperience(\Zgh\FEBundle\Entity\Experience $experiences)
+    {
+        $this->experiences[] = $experiences;
+
+        return $this;
+    }
+
+    /**
+     * Remove experiences
+     *
+     * @param \Zgh\FEBundle\Entity\Experience $experiences
+     */
+    public function removeExperience(\Zgh\FEBundle\Entity\Experience $experiences)
+    {
+        $this->experiences->removeElement($experiences);
+    }
+
+    /**
+     * Get experiences
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getExperiences()
+    {
+        return $this->experiences;
     }
 }

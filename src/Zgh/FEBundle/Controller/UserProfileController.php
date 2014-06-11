@@ -19,6 +19,7 @@ use Zgh\FEBundle\Form\PostType;
 use Zgh\FEBundle\Form\ProductType;
 use Zgh\FEBundle\Form\SearchType;
 use Zgh\FEBundle\Form\UserInfoType;
+use Zgh\FEBundle\Form\VendorInfoType;
 use Zgh\FEBundle\Form\WishlistType;
 
 class UserProfileController extends Controller
@@ -75,11 +76,17 @@ class UserProfileController extends Controller
 
     private function getVendorInfo()
     {
+        /**
+         * @var User
+         */
+        $user = $this->getUser();
+
         $defaultData = array("message" => "Default form data");
-        $form = $this->createFormBuilder($defaultData)
-            ->add("company_name", "text", array("mapped" => false));
+        $form = $this->createForm(new VendorInfoType(), $user->getVendorInfo());
+//        $form = $this->createFormBuilder($defaultData)
+//            ->add("company_name", "text", array("mapped" => false));
         return $this->render("@ZghFE/Default/vendor_intro.html.twig", array(
-            "form" => $form->getForm()->createView()
+            "form" => $form->createView()
         ));
     }
 
@@ -131,15 +138,19 @@ class UserProfileController extends Controller
     private function postVendorInfo($request, $user)
     {
         $em = $this->getDoctrine()->getManager();
-        $company_name = $request->request->get("form")["company_name"];
+        $vendor_info= $user->getVendorInfo();
+        $form = $this->createForm(new VendorInfoType(), $vendor_info);
+        $form->handleRequest($request);
+        if(!$form->isValid()) {
+            return $this->render("@ZghFE/Default/vendor_intro.html.twig", [
+                    "form" => $form->createView()
+                ]);
+        }
 
-        $info = $user->getVendorInfo();
-        $info->setCompanyName($company_name);
-        $user->setFirstname("$company_name");
-
+        $user->setFirstname($vendor_info->getCompanyName());
         $user->setFirstTime(false);
-
-        $em->persist($info);
+        $em->persist($vendor_info);
+        $em->persist($user);
         $em->flush();
         return $this->redirect($this->generateUrl("zgh_fe.wall.index"));
     }

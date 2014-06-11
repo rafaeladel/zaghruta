@@ -156,6 +156,17 @@ class User extends BaseUser implements ParticipantInterface
     protected $relationship_with_table;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $created_at;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $updated_at;
+
+
+    /**
      * @ORM\PrePersist
      */
     public function setId()
@@ -979,4 +990,43 @@ class User extends BaseUser implements ParticipantInterface
     {
         return $this->notifications;
     }
+
+    public function setCreatedAt($created_at)
+    {
+        $this->created_at = $created_at;
+        return $this;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    public function setUpdatedAt($updated_at)
+    {
+        $this->updated_at = $updated_at;
+        return $this;
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        $this->setUpdatedAt(new \DateTime());
+    }
+
 }

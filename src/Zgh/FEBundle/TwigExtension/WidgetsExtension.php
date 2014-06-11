@@ -128,25 +128,36 @@ class WidgetsExtension extends \Twig_Extension
         return $this->env->render("@ZghFE/Partial/experiences/user_profile_experience_content.html.twig", ["experiences" => $experiences]);
     }
 
-    public function getRecommendedPeople()
+    public function getRecommendedPeople(User $user)
     {
-        $people = $this->rightSideManager->getRecommendedPeople();
-        return $people;
-    }
-
-    public function getRecommendedVendor()
-    {
-        $vendors = $this->rightSideManager->getRecommendedVendors();
-
-        return $this->env->render("@ZghFE/Partial/right_side/recommendedVendors.html.twig", [
-                "vendors" => $vendors
+        $result = $this->rightSideManager->getRecommendedPeople($user);
+        $result_arr = [];
+        foreach($result as $entry) {
+            $result_arr[] = $entry[0];
+        }
+        return $this->env->render("@ZghFE/Partial/right_side/rightSidePartial.html.twig", [
+                "result" => $result_arr
             ]);
     }
 
-    public function getNewVendors()
+    public function getRecommendedVendor(User $user)
     {
-        $vendors = $this->rightSideManager->getNewVendors();
-        return $vendors;
+        $result = $this->rightSideManager->getRecommendedVendors($user);
+        $result_arr = [];
+        foreach($result as $entry) {
+            $result_arr[] = $entry[0];
+        }
+        return $this->env->render("@ZghFE/Partial/right_side/rightSidePartial.html.twig", [
+                "result" => $result_arr
+            ]);
+    }
+
+    public function getNewVendors(User $user)
+    {
+        $result = $this->rightSideManager->getNewVendors($user);
+        return $this->env->render("@ZghFE/Partial/right_side/rightSidePartial.html.twig", [
+                "result" => $result
+            ]);
     }
 
     public function getName()

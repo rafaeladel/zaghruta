@@ -1,3 +1,4 @@
+{% form_theme form with ['ThraceFormBundle:Form:fields.html.twig'] %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +9,14 @@
     <link href="{{ asset("bundles/zghfe/css/bootstrap.css") }}" rel="stylesheet" media="screen">
     <link href="{{ asset("bundles/zghfe/css/custom.css") }}" rel="stylesheet" media="screen">
 
+
+    <link href="{{ asset("bundles/zghfe/plugins/select2-3.4.6/select2.css") }}" rel="stylesheet" media="screen">
+    <link href="{{ asset("bundles/zghfe/css/select2-bootstrap-css-master/select2-bootstrap.css") }}" rel="stylesheet" media="screen">
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="{{ asset("bundles/zghfe/js/html5shiv.js") }}"></script>
+    <script src="{{ asset("bundles/zghfe/js/respond.js") }}"></script>
     <script src="{{ asset("bundles/zghfe/js/respond.js") }}"></script>
     <![endif]-->
 
@@ -255,9 +261,43 @@
                     <div id="register_user" class="tab-pane active">
                         {{ form_start(form, {"action": url("zgh_fe.user_profile.user_post_intro_edit", {"id": app.user.id})}) }}
                             <div class="form-group">
-                                {{ form_label(form.company_name) }}
+                                {{ form_label(form.company_name) }} <span>(Required)</span>
                                 {{ form_widget(form.company_name, {"attr": {"class": "form-control", "placeholder": "Company name"} }) }}
                                 <div class="validation" style="">{{ form_errors(form.company_name) }}</div>
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.categories) }} <span>(Required)</span>
+                                {{ form_widget(form.categories, {"attr": {"class": "", "placeholder": "Categories"} }) }}
+                                <div class="validation" style="">{{ form_errors(form.categories) }}</div>
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.mobile) }}
+                                {{ form_widget(form.mobile, {"attr": {"class": "form-control", "placeholder": "Mobile"} }) }}
+                                <div class="validation" style="">{{ form_errors(form.mobile) }}</div>
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.website) }}
+                                {{ form_widget(form.website, {"attr": {"class": "form-control", "placeholder": "Website"} }) }}
+                                <div class="validation" style="">{{ form_errors(form.website) }}</div>
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.email) }}
+                                {{ form_widget(form.email, {"attr": {"class": "form-control", "placeholder": "Email"} }) }}
+                                <div class="validation" style="">{{ form_errors(form.email) }}</div>
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.facebook) }}
+                                {{ form_widget(form.facebook, {"attr": {"class": "form-control", "placeholder": "Facebook"} }) }}
+                                <div class="validation" style="">{{ form_errors(form.facebook) }}</div>
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.twitter) }}
+                                {{ form_widget(form.twitter, {"attr": {"class": "form-control", "placeholder": "Twitter"} }) }}
+                                <div class="validation" style="">{{ form_errors(form.twitter) }}</div>
+                            </div><div class="form-group">
+                                {{ form_label(form.info) }}
+                                {{ form_widget(form.info, {"attr": {"class": "form-control", "placeholder": "Info"} }) }}
+                                <div class="validation" style="">{{ form_errors(form.info) }}</div>
                             </div>
                             <div class="row">
                                 <input type="submit" class="btn btn-danger btn-wide pull-right" value="Submit" />
@@ -286,6 +326,10 @@
 
 <script src="{{ asset("bundles/zghfe/js/custom.js") }}"></script>
 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+
+
+<script src="{{ asset("bundles/zghfe/plugins/select2-3.4.6/select2.js") }}"></script>
+<script src="{{ asset("bundles/thraceform/js/select2.js") }}"></script>
 <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
 <script>
     $(document).ready(function(){
