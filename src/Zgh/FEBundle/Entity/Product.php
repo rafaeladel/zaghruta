@@ -31,7 +31,7 @@ class Product extends Image implements LikeableInterface, CommentableInterface
     protected $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
      */
     protected $category;
 
@@ -56,7 +56,7 @@ class Product extends Image implements LikeableInterface, CommentableInterface
     protected $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Wishlist", inversedBy="products", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="Wishlist", inversedBy="products")
      * @ORM\JoinTable(name="wishlist_products",
      *      joinColumns={@ORM\JoinColumn(name="wishlist_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")}

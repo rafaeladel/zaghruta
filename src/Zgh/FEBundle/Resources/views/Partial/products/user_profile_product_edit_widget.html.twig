@@ -22,7 +22,7 @@
     <div class="form-group formGroup">
         {{ form_label(product_form.category, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
         <div class="col-sm-9">
-            {{ form_widget(product_form.category, {"attr":{"class":"form-control", "placeholder": "Product category"} }) }}
+            {{ form_widget(product_form.category, {"attr":{"class":"", "placeholder": "Product category"} }) }}
             {{ form_errors(product_form.category) }}
         </div>
     </div>
@@ -37,7 +37,7 @@
     <div class="form-group formGroup">
         {{ form_label(product_form.tags, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
         <div class="col-sm-9">
-            {{ form_widget(product_form.tags, {"attr":{"class":"form-control"} }) }}
+            {{ form_widget(product_form.tags, {"attr":{"class":""} }) }}
             {{ form_errors(product_form.tags) }}
 
         </div>

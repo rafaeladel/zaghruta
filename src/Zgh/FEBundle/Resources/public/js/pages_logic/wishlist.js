@@ -1,7 +1,6 @@
 $(document).ready(function(){
     $("body").on("click", ".wishlistSubmit", function(e){
         e.preventDefault();
-        alert("tst");
         var form = $(e.target).closest("form");
         $.ajax({
             type: "POST",

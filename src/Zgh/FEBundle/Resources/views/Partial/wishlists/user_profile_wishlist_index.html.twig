@@ -5,7 +5,7 @@
                 <div class="thumbOverlay img-responsive">
                     <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
                 </div>
-                <img class="img-responsive" src="{{ asset(product.getWebPath()) }}">
+                <img class="img-responsive" src="{{ product.getWebPath() ? asset(product.getWebPath()) : asset("bundles/zghfe/img/thumb.jpg") }}">
             </a>
         </div>
     </div>

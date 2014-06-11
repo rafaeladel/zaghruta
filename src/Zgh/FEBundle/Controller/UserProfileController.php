@@ -28,32 +28,26 @@ class UserProfileController extends Controller
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $post_form = $this->createForm(new PostType(), new Post());
 
-        if($user == null)
-        {
+        if ($user == null) {
             return $this->render("@ZghFE/Default/404.html.twig");
-        }
-        elseif(!in_array("ROLE_FACEBOOK", $user->getRoles()))
-        {
-            if ($user->getFirstTime() == true)
-            {
+        } elseif (!in_array("ROLE_FACEBOOK", $user->getRoles())) {
+            if ($user->getFirstTime() == true) {
                 return $this->forward("ZghFEBundle:UserProfile:getUserIntro", array("id" => $user->getId()));
             }
         }
 
         return $this->render('ZghFEBundle:Default:user_index.html.twig', array(
-                "user" => $user,
-                'post_form' => $post_form->createView()
-            ));
+            "user" => $user,
+            'post_form' => $post_form->createView()
+        ));
     }
 
     public function getUserIntroAction($id)
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
-        if(in_array("ROLE_CUSTOMER", $user->getRoles())){
+        if (in_array("ROLE_CUSTOMER", $user->getRoles())) {
             return $this->getCustomerInfo();
-        }
-        elseif(in_array("ROLE_VENDOR", $user->getRoles()))
-        {
+        } elseif (in_array("ROLE_VENDOR", $user->getRoles())) {
             return $this->getVendorInfo();
         }
         return false;
@@ -63,41 +57,38 @@ class UserProfileController extends Controller
     {
         $defaultData = array("message" => "Default form data");
         $form = $this->createFormBuilder($defaultData)
-            ->add("first_name", "text", array("mapped" => false ))
-            ->add("last_name", "text", array("mapped" => false ))
+            ->add("first_name", "text", array("mapped" => false))
+            ->add("last_name", "text", array("mapped" => false))
             ->add("birthday", "birthday", array("mapped" => false))
             ->add("gender", "choice", array(
-                    "mapped" => false,
-                    "expanded" => true,
-                    "choices" => array(
-                        "0" => "Male",
-                        "1" => "Female"
-                    )
-                ));
-        return $this->render("ZghFEBundle:Default:customer_intro.html.twig", array(
-                "form" => $form->getForm()->createView()
+                "mapped" => false,
+                "expanded" => true,
+                "choices" => array(
+                    "0" => "Male",
+                    "1" => "Female"
+                )
             ));
+        return $this->render("ZghFEBundle:Default:customer_intro.html.twig", array(
+            "form" => $form->getForm()->createView()
+        ));
     }
 
     private function getVendorInfo()
     {
         $defaultData = array("message" => "Default form data");
         $form = $this->createFormBuilder($defaultData)
-            ->add("company_name", "text", array("mapped" => false ))
-           ;
+            ->add("company_name", "text", array("mapped" => false));
         return $this->render("@ZghFE/Default/vendor_intro.html.twig", array(
-                "form" => $form->getForm()->createView()
-            ));
+            "form" => $form->getForm()->createView()
+        ));
     }
 
     public function postUserIntroAction(Request $request, $id)
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
-        if(in_array("ROLE_CUSTOMER", $user->getRoles())){
+        if (in_array("ROLE_CUSTOMER", $user->getRoles())) {
             return $this->postCustomerInfo($request, $user);
-        }
-        elseif(in_array("ROLE_VENDOR", $user->getRoles()))
-        {
+        } elseif (in_array("ROLE_VENDOR", $user->getRoles())) {
             return $this->postVendorInfo($request, $user);
         }
         return false;
@@ -114,11 +105,11 @@ class UserProfileController extends Controller
         $b_month = $request->request->get("form")["birthday"]["month"];
         $b_year = $request->request->get("form")["birthday"]["year"];
 
-        try{
-            $birthday = new \DateTime($b_day."-".$b_month."-".$b_year);
-        }catch(\Exception $e){
+        try {
+            $birthday = new \DateTime($b_day . "-" . $b_month . "-" . $b_year);
+        } catch (\Exception $e) {
             $birthday = null;
-            $this->get('logger')->emergency($b_day. '' . $b_month.''.$b_year.' error message ='. $e->getMessage());
+            $this->get('logger')->emergency($b_day . '' . $b_month . '' . $b_year . ' error message =' . $e->getMessage());
         }
 
 
@@ -157,31 +148,30 @@ class UserProfileController extends Controller
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
-        if(!$authorized)
-        {
+        if (!$authorized) {
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
         }
 
         $post_form = $this->createForm(new PostType(), new Post());
         return $this->render('@ZghFE/Partial/common/user_profile_main.html.twig', array(
-                'user' => $user,
-                'post_form' => $post_form->createView()
-            ));
+            'user' => $user,
+            'post_form' => $post_form->createView()
+        ));
     }
 
     public function getAboutPartialAction($id)
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
-        if(in_array("ROLE_CUSTOMER", $user->getRoles())){
+        if (in_array("ROLE_CUSTOMER", $user->getRoles())) {
             $about = $user->getUserInfo();
             return $this->render('@ZghFE/Partial/about/user_profile_about_customer.html.twig', array(
-                    "about" => $about
-                ));
-        } else if(in_array("ROLE_VENDOR", $user->getRoles())){
+                "about" => $about
+            ));
+        } else if (in_array("ROLE_VENDOR", $user->getRoles())) {
             $about = $user->getVendorInfo();
             return $this->render('@ZghFE/Partial/about/user_profile_about_vendor.html.twig', array(
-                    "about" => $about
-                ));
+                "about" => $about
+            ));
         }
     }
 
@@ -190,9 +180,9 @@ class UserProfileController extends Controller
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $form = $this->createForm(new BranchType(), new Branch());
         return $this->render("@ZghFE/Partial/branches/user_profile_branches.html.twig", [
-                "user" => $user,
-                "form" => $form->createView()
-            ]);
+            "user" => $user,
+            "form" => $form->createView()
+        ]);
     }
 
     public function getWishlistPartialAction($id)
@@ -200,32 +190,37 @@ class UserProfileController extends Controller
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
 
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
-        if(!$authorized)
-        {
+        if (!$authorized) {
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
         }
 
         $form = $this->createForm(new WishlistType(), new Wishlist());
         return $this->render("@ZghFE/Partial/wishlists/user_profile_wishlist.html.twig", array(
-                "user" => $user,
-                "wishlist_form" => $form->createView()
-            ));
+            "user" => $user,
+            "wishlist_form" => $form->createView()
+        ));
     }
 
-    public function getProductsPartialAction(User $user)
+    public function getProductsPartialAction(Request $request, User $user)
     {
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
-        if(!$authorized)
-        {
+        if (!$authorized) {
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
         }
 
-        $search_form = $this->createForm(new SearchType(), new Search());
+        $query = $request->query->get("q", null);
+        $cat_id = $request->query->get("category");
+        if ($query != null) {
+            $products = $this->get("zgh_fe.search_manager")->getProductByUserAndCategory($user, $cat_id, $query);
+        } else {
+            $products = $user->getProducts();
+        }
+
 
         return $this->render("@ZghFE/Partial/products/user_profile_products.html.twig", array(
-                "user" => $user,
-                "search_form" => $search_form->createView()
-            ));
+            "user" => $user,
+            "products" => $products
+        ));
     }
 
     public function getPhotosPartialAction($id)
@@ -233,15 +228,14 @@ class UserProfileController extends Controller
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
 
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
-        if(!$authorized)
-        {
+        if (!$authorized) {
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
         }
         $albums = $user->getAlbums();
         return $this->render("@ZghFE/Partial/photos/user_profile_photos.html.twig", array(
-                "user" => $user,
-                "albums" => $albums
-            ));
+            "user" => $user,
+            "albums" => $albums
+        ));
     }
 
     public function getAlbumsPartialAction($id)
@@ -249,15 +243,14 @@ class UserProfileController extends Controller
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
 
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
-        if(!$authorized)
-        {
+        if (!$authorized) {
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
         }
         $albums = $user->getAlbums();
         return $this->render("@ZghFE/Partial/photos/user_profile_albums.html.twig", array(
-                "user" => $user,
-                "albums" => $albums
-            ));
+            "user" => $user,
+            "albums" => $albums
+        ));
     }
 
     public function getExperiencesPartialsAction($id)
@@ -265,14 +258,14 @@ class UserProfileController extends Controller
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
 
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
-        if(!$authorized)
-        {
+        if (!$authorized) {
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
         }
-        return $this->render("@ZghFE/Partial/experiences/user_profile_experiences.html.twig",array(
-                "user" => $user,
-            ));
+        return $this->render("@ZghFE/Partial/experiences/user_profile_experiences.html.twig", array(
+            "user" => $user,
+        ));
     }
+
     public function getTipsPartialsAction($id)
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
@@ -283,9 +276,9 @@ class UserProfileController extends Controller
 //            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
 //        }
 
-        return $this->render("@ZghFE/Partial/tips/user_profile_tips.html.twig",array(
-                "user" => $user,
-            ));
+        return $this->render("@ZghFE/Partial/tips/user_profile_tips.html.twig", array(
+            "user" => $user,
+        ));
     }
 
     public function getConnectionsPartialsAction($id)
@@ -297,8 +290,8 @@ class UserProfileController extends Controller
 //                "form" => $form->createView()
 //            ));
         return $this->render("@ZghFE/Partial/connections/user_profile_connections.html.twig", array(
-                "user" => $user
-            ));
+            "user" => $user
+        ));
     }
 
     public function postProfilePictureAction(Request $request, $id)

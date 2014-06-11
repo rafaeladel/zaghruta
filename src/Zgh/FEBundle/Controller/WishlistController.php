@@ -34,6 +34,20 @@ class WishlistController extends Controller
             ));
     }
 
+
+    /**
+     * @ParamConverter("wishlist", class="ZghFEBundle:Wishlist", options={"id" = "wishlist_id"})
+     */
+    public function deleteAction(User $user, Wishlist $wishlist)
+    {
+        $this->get("zgh_fe.delete_manager")->delete($wishlist);
+        return $this->redirect($this->generateUrl("zgh_fe.user_profile.wishlist_partial",[
+            "id" => $user->getId()
+        ]));
+    }
+
+
+
     /**
      * @Security("has_role('ROLE_CUSTOMER')")
      * @param Request $request
