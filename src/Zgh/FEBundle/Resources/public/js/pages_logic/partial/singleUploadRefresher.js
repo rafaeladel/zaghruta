@@ -63,6 +63,8 @@ function singleUpload(button_class){
                                 }
                             });
                         }
+                    } else {
+                        $("#myform").parsley().unsubscribe("parsley:form:validate");
                     }
                 });
             });

@@ -7,10 +7,6 @@
         <div class="validation" style="">{{ form_errors(form.email) }}</div>
     </div>
     <div class="form-group">
-        {{ form_widget(form.username, {"attr": {"class": "form-control", "placeholder": "Username"} }) }}
-        <div class="validation" style="">{{ form_errors(form.username) }}</div>
-    </div>
-    <div class="form-group">
         {{ form_widget(form.plainPassword.first, {"attr": {"class": "form-control", "placeholder": "Password"} }) }}
         <div class="validation" style="">{{ form_errors(form.plainPassword.first) }}</div>
     </div>

@@ -4,17 +4,17 @@
 {% endblock stylesheets %}
 {% block content %}
 
-    <div class="container">
+    <div class="container interest">
         {% block leftContent %}
             <h3>Add your interests</h3>
             <div class="row">
 
             </div>
             <div class="row">
-                {{ form_start(form, {"action": url("zgh_fe.interest.post") }) }}
+                {{ form_start(form,  {"action": url("zgh_fe.interest.post") }) }}
                     {{ form_widget(form.interests) }}
 
-                    <input type="submit" value="Save"/>
+                    <input class="btn btn-primary btn-wide pull-right" type="submit" value="Save"/>
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
             </div>

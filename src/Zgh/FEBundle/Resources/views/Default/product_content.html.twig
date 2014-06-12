@@ -12,14 +12,15 @@
                     <div class="companyData">
                         <img src="{{ asset(product.user.profilePhoto.getThumbWebPath()) }}">
 
-                        <h2 class="text-center">{{ product.user.firstname }}</h2>
+                        <h2 class="text-center"><a href="{{ url("zgh_fe.user_profile.index", {"id": product.user.id}) }}">{{ product.user.firstname }}</a></h2>
 
-                        <p class="text-center">Company<br>
-                            {% for interest in product.user.interests %}
-                                {{ interest }}<br/>
-                            {% endfor %}
+                        <p class="text-center">Company
+                            <br>
+                            {#{% for interest in product.user.vendorInfo.categories %}#}
+                                {#{{ interest }}<br/>#}
+                            {#{% endfor %}#}
                         </p>
-                        {{ renderFollow(product.user) }}
+                        {{ renderFollow(product.user,"margin-bottom") }}
                         <div class="groupItem">
                             <a href="#" class="boy"> <span
                                         class="glyphicon glyphicon-user glyphicon-user-boy"></span> {{ product.user.followers|length }}

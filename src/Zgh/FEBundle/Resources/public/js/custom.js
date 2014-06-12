@@ -108,9 +108,9 @@ $( ".mainSearch2 input" ).focus(function() {
 }).blur(function(){
     if($('.input-group-btn').data("hovered") ) {
         $(".mainSearch2 input" ).css('border-radius', '0px 0 0 0px') ;
-    }
-    else{
+    } else{
         $( ".input-group-btn" ).hide();}
+
 });
 
 

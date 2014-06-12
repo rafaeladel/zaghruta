@@ -19,13 +19,13 @@
                       <div class="panel-body">
                         <div class="radio">
                             <label>
-                                <input class="privacyToggle" type="radio" name="privacySetting" id="optionsRadios1" value="0" checked>
+                                <input class="privacyToggle" type="radio" name="privacySetting" id="optionsRadios1" value="0" {{ not app.user.isPrivate ? "checked" : "" }}>
                                 public
                             </label>
                        </div>
                         <div class="radio">
                             <label>
-                                <input class="privacyToggle" type="radio" name="privacySetting" id="optionsRadios2" value="1">
+                                <input class="privacyToggle" type="radio" name="privacySetting" id="optionsRadios2" value="1" {{ app.user.isPrivate ? "checked" : "" }}>
                                 private
                             </label>
                         </div>
@@ -42,10 +42,12 @@
                     <div id="collapseTwo" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div class="checkbox">
-                               <label>
-                                <input type="checkbox" value="">
-                                   Send To Email
-                               </label>
+                                <form action="" method="post">
+                                   <label>
+                                    <input class="emailNotification" type="checkbox" value="" {{ app.user.emailNotification ? "checked" : "" }}>
+                                       Send To Email
+                                   </label>
+                                </form>
                          </div>
   
                         </div><!--Panel Body-->
@@ -121,6 +123,18 @@
                     url: url,
                     success: function(data){
                         $(".privacyToggle").removeAttr("disabled");
+                    }
+                })
+            });
+
+            $("body").on("click", ".emailNotification", function(e){
+                $(e.currentTarget).attr("disabled", "disabled");
+                var url = Routing.generate('zgh_fe.email_notification.set', { id: "{{ app.user.id }}" }, true);
+                $.ajax({
+                    type: "post",
+                    url: url,
+                    success: function(data){
+                        $(e.currentTarget).removeAttr("disabled");
                     }
                 })
             });

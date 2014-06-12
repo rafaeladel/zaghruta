@@ -21,6 +21,8 @@ use Zgh\FEBundle\Form\SearchType;
 use Zgh\FEBundle\Form\UserInfoType;
 use Zgh\FEBundle\Form\VendorInfoType;
 use Zgh\FEBundle\Form\WishlistType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class UserProfileController extends Controller
 {
@@ -344,6 +346,15 @@ class UserProfileController extends Controller
     {
         $user = $this->get("security.context")->getToken()->getUser();
         $user->setIsPrivate($pv);
+        $this->getDoctrine()->getManager()->persist($user);
+        $this->getDoctrine()->getManager()->flush();
+        return new JsonResponse(array("status" => 200));
+    }
+
+
+    public function setEmailNotificationAction(User $user)
+    {
+        $user->setEmailNotification(!$user->getEmailNotification());
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush();
         return new JsonResponse(array("status" => 200));

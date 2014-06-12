@@ -10,37 +10,48 @@
                 <div class="col-md-9 tipExp">
                     <div class="row banner margin">
                         <div class="col-md-12">
-                            <img src="{{ experience.getThumbWebPath ? asset(experience.getThumbWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}" class="img-responsive">
+                            <img src="{{ experience.getThumbWebPath ? asset(experience.getThumbWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}"
+                                 class="img-responsive">
                         </div>
                     </div>
 
-                    <div class="row headerProduct">
-                        <div class="col-md-2 pull-right icons-G">
-                            <form action="{{ url("zgh_fe.like.post", {"id": experience.id, "entity_type": experience.getObjectType }) }}" method="post">
-                                <button type="submit" class="btn btn-danger likeBtn btn-circle {{ checkLike(app.user, experience) ? "liked" : "" }}">
-                                    <span class="glyphicon glyphicon-heart"></span>
-                                </button>
-                            </form>
+                    <div class="content_wrapper">
+                        {% block innerPartial %}
+                        <a class="moveEditExpTip"
+                           href="{{ url("zgh_fe.experiences.get_edit", {"id": experience.user.id, "exp_id": experience.id}) }}">Edit</a>
 
-                        </div>
-                        <h2 class="col-md-4">{{ experience.title }}</h2>
-                        <div class="clearfix"></div>
-                        <p class="by col-md-12">Category:
+                        <div class="row headerProduct">
+                            <div class="col-md-2 pull-right icons-G">
+                                <form action="{{ url("zgh_fe.like.post", {"id": experience.id, "entity_type": experience.getObjectType }) }}"
+                                      method="post">
+                                    <button type="submit"
+                                            class="btn btn-danger likeBtn btn-circle {{ checkLike(app.user, experience) ? "liked" : "" }}">
+                                        <span class="glyphicon glyphicon-heart"></span>
+                                    </button>
+                                </form>
+
+                            </div>
+                            <h2 class="col-md-4">{{ experience.title }}</h2>
+
+                            <div class="clearfix"></div>
+                            <p class="by col-md-12">Category:
                                 <span> {{ experience.category.name }}</span>
-                        </p>
-                        <span class="col-md-12 date-time">{{ experience.createdAt|date() }}</span>
-                        <p class="by col-md-12">By: <span>{{ experience.user.getFullname }}</span></p>
+                            </p>
+                            <span class="col-md-12 date-time">{{ experience.createdAt|date() }}</span>
 
+                            <p class="by col-md-12">By: <span>{{ experience.user.getFullname }}</span></p>
+
+                        </div>
+                        <div class="row">
+                            <p class="col-md-12">
+                                {{ experience.content }}
+                            </p>
+
+                        </div>
+
+                        {{ include("@ZghFE/Partial/common/comments_section.html.twig", { 'entity': experience }) }}
+                        {% endblock innerPartial %}
                     </div>
-                    <div class="row">
-                        <p class="col-md-12">
-                            {{ experience.content }}
-                        </p>
-
-                    </div>
-
-                    {{ include("@ZghFE/Partial/common/comments_section.html.twig", { 'entity': experience }) }}
-
                 </div>
 
             </div>
@@ -54,7 +65,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
-        $(window).unload(function(e){
+        $(window).unload(function (e) {
             alert("unloaded");
         })
     </script>

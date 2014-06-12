@@ -13,6 +13,25 @@
     </route>
 
 
+    <route id="zgh_fe.tip.single_content" pattern="/{id}/tip/{tip_id}/single">
+        <default key="_controller">ZghFEBundle:Tip:getSingleContent</default>
+    </route>
+
+
+    <route id="zgh_fe.tips.get_edit" pattern="/{id}/tip/{tip_id}/edit" methods="GET">
+        <default key="_controller">ZghFEBundle:Tip:getEdit</default>
+    </route>
+
+    <route id="zgh_fe.tips.post_edit" pattern="/{id}/tip/{tip_id}/edit" methods="POST">
+        <default key="_controller">ZghFEBundle:Tip:postEdit</default>
+    </route>
+
+
+    <route id="zgh_fe.tip.delete" pattern="/{id}/tip/{tip_id}/delete">
+        <default key="_controller">ZghFEBundle:Tip:delete</default>
+    </route>
+
+
     <route id="zgh_fe.tip.post_new" pattern="/{id}/tips/new" methods="POST">
         <default key="_controller">ZghFEBundle:Tip:postNew</default>
     </route>

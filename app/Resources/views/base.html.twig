@@ -29,13 +29,13 @@
         <header class="fixed-header">
 
             <div class="container">
-                <div class="logo col-md-3 hidden-sm"><a href="{{ url("zgh_fe.wall.index") }}"><img
+                <div class="logo col-md-3 hidden-sm text-center-xs"><a href="{{ url("zgh_fe.wall.index") }}"><img
                                 src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
                 <div class=" col-md-5 visible-sm col-sm-push-4"><a href="#"><img
                                 src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
                 <div class="divider visible-sm"></div>
                 {{ getSearchWidget()|raw }}
-                <div class="notificationsWidget">
+                <div class="notificationsWidget text-center-xs">
                     {% if app.security.isGranted("ROLE_USER") %}
                         {{ render_esi(controller("ZghFEBundle:Default:getShortcutsAndNotification")) }}
                     {% endif %}

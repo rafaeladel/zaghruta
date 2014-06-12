@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Branch
 {
-    use BasicInfo;
+//    use BasicInfo;
 
     /**
      * @ORM\Column(type="text")
@@ -161,28 +161,5 @@ class Branch
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set city
-     *
-     * @param string $city
-     * @return Branch
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return string 
-     */
-    public function getCity()
-    {
-        return $this->city;
     }
 }

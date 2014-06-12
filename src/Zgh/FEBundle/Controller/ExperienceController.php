@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Zgh\FEBundle\Entity\Experience;
 use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Form\ExperienceType;
@@ -30,6 +31,63 @@ class ExperienceController extends Controller
             "experience" => $experience
         ));
     }
+
+
+    /**
+     * @ParamConverter("experience", class="ZghFEBundle:Experience", options={"id" = "exp_id"})
+     */
+    public function getSingleContentAction(User $user, Experience $experience)
+    {
+        return $this->render("@ZghFE/Partial/experiences/user_profile_single_experience_content.html.twig",[
+                "user" => $user,
+                "experience" => $experience
+            ]);
+    }
+
+    /**
+     * @Security("has_role('ROLE_CUSTOMER')")
+     *
+     * @ParamConverter("experience", class="ZghFEBundle:Experience", options={"id" = "exp_id"})
+     */
+    public function getEditAction(User $user, Experience $experience)
+    {
+        if($experience->getUser()->getId() != $this->getUser()->getId())
+        {
+            throw new AccessDeniedException;
+        }
+        $experience_form = $this->createForm(new ExperienceType(), $experience, ["type" => "edit"]);
+        return $this->render("@ZghFE/Partial/experiences/user_profile_experience_edit_widget.html.twig", [
+                "user" => $user,
+                "experience" => $experience,
+                "experience_form" => $experience_form->createView()
+            ]);
+    }
+
+    /**
+     * @Security("has_role('ROLE_CUSTOMER')")
+     * @ParamConverter("experience", class="ZghFEBundle:Experience", options={"id" = "exp_id"})
+     */
+    public function postEditAction(Request $request, User $user, Experience $experience)
+    {
+        $experience_form = $this->createForm(new ExperienceType(), $experience, ["type" => "edit"]);
+        $experience_form->handleRequest($request);
+        if(!$experience_form->isValid())
+        {
+            return new JsonResponse([
+                "status" => 500,
+                "view" => $this->renderView("@ZghFE/Partial/experiences/user_profile_experience_edit_widget.html.twig", [
+                            "user" => $user,
+                            "experience" => $experience,
+                            "experience_form" => $experience_form->createView()
+                        ]),
+                "errors" => $experience_form->getErrorsAsString()
+            ]);
+        }
+        $this->getDoctrine()->getManager()->persist($experience);
+        $this->getDoctrine()->getManager()->flush();
+        return new JsonResponse(["status" => 200]);
+    }
+
 
     /**
      * @ParamConverter("experience", class="ZghFEBundle:Experience", options={"id" = "exp_id"})

@@ -165,6 +165,11 @@ class User extends BaseUser implements ParticipantInterface
      */
     protected $updated_at;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $emailNotification;
+
 
     /**
      * @ORM\PrePersist
@@ -1029,4 +1034,42 @@ class User extends BaseUser implements ParticipantInterface
         $this->setUpdatedAt(new \DateTime());
     }
 
+    public function setEmail($email)
+    {
+        parent::setEmail($email);
+        $this->setUsername($email);
+    }
+
+
+
+    /**
+     * Set emailNotification
+     *
+     * @param boolean $emailNotification
+     * @return User
+     */
+    public function setEmailNotification($emailNotification)
+    {
+        $this->emailNotification = $emailNotification;
+
+        return $this;
+    }
+
+    /**
+     * Get emailNotification
+     *
+     * @return boolean 
+     */
+    public function getEmailNotification()
+    {
+        return $this->emailNotification;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setEmailNotificationValue()
+    {
+        $this->setEmailNotification(false);
+    }
 }

@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ExperienceType extends AbstractType
 {
 
-    public function buildForm(FormBuilderInterface $builder, array $option)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add("title", "text")
@@ -21,11 +21,12 @@ class ExperienceType extends AbstractType
                         "width" => '100%',
                     ),
                 ))
-            ->add("content", "textarea")
-            ->add("image_file", "file", array(
-                "required" => false
-            ))
-        ;
+            ->add("content", "textarea");
+
+        if($options["type"] != "edit"){
+            $builder->add("image_file", "file", ["required" => false]);
+        }
+
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -33,6 +34,7 @@ class ExperienceType extends AbstractType
         $resolver->setDefaults(array(
                 "data_class" => 'Zgh\FEBundle\Entity\Experience',
                 "cascade_validation" => true,
+                "type" => null
             ));
     }
 

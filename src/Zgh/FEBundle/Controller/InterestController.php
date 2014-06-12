@@ -2,6 +2,7 @@
 
 namespace Zgh\FEBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,6 +11,12 @@ use Zgh\FEBundle\Form\InterestType;
 
 class InterestController extends Controller
 {
+
+    /**
+     * @Security("has_role('ROLE_CUSTOMER')")
+     * @param Request $request
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function getIndexAction(Request $request)
     {
         $user = $this->getUser();

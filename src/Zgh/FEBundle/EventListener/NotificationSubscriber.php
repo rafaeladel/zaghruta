@@ -3,6 +3,7 @@ namespace Zgh\FEBundle\EventListener;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\EntityManagerInterface;
+use Swift_Mailer;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Zgh\FEBundle\Model\Event\NotifyCommentEvent;
 use Zgh\FEBundle\Model\Event\NotifyDeleteEvent;
@@ -15,10 +16,12 @@ use Zgh\FEBundle\Model\Event\NotifyRelationshipRequestEvent;
 class NotificationSubscriber implements EventSubscriberInterface
 {
     protected $em;
+    protected $mailer;
 
-    public function __construct(EntityManagerInterface $entityManagerInterface)
+    public function __construct(EntityManagerInterface $entityManagerInterface, Swift_Mailer $mailer)
     {
         $this->em = $entityManagerInterface;
+        $this->mailer = $mailer;
     }
 
     public static function getSubscribedEvents()
@@ -35,6 +38,16 @@ class NotificationSubscriber implements EventSubscriberInterface
 
     public function onNotifyLike(NotifyLikeEvent $event)
     {
+        $target_user = $event->getUserToNotify();
+//        if ($target_user->getEmailNotification()) {
+//            $message = \Swift_Message::newInstance()
+//                        ->setSubject("Notification from zagh")
+//                        ->setFrom("qwe@ewqe.com")
+//                        ->setTo($target_user->getEmail())
+//                        ->setBody("tesswt")
+//            ;
+//            $this->mailer->send($message);
+//        }
         $notification = $event->getNotification();
         $user = $event->getUserToNotify();
         $user->addNotification($notification);
@@ -80,10 +93,12 @@ class NotificationSubscriber implements EventSubscriberInterface
 
     public function onNotifyDelete(NotifyDeleteEvent $event)
     {
-        $notification = $this->em->getRepository("ZghFEBundle:Notification")->findOneBy([
-            "user" => $event->getUser(),
-            "action_id" => $event->getActionId()
-        ]);
+        $notification = $this->em->getRepository("ZghFEBundle:Notification")->findOneBy(
+            [
+                "user" => $event->getUser(),
+                "action_id" => $event->getActionId()
+            ]
+        );
         if ($notification != null) {
             $this->em->remove($notification);
             $this->em->flush();

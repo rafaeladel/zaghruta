@@ -1,7 +1,7 @@
 {% for entry in result %}
     <div class="row media profile fr-suggest ">
         <div class="col-sm-4">
-            <a class="pull-left img-circle" href="#">
+            <a class="pull-left {{ "ROLE_VENDOR" in entry.roles ? "img-rounded" : "img-circle" }}" href="#">
                 <img class="media-object "
                      src="{{ entry.profilePhoto.getThumbWebPath ? asset(entry.profilePhoto.getThumbWebPath) : asset("bundles/zghfe/img/thumb.jpg") }}"
                      alt="">

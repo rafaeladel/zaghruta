@@ -27,8 +27,8 @@ class RightSideManager
                         from Zgh\FEBundle\Entity\FollowUsers currentFollowUser
                         inner join currentFollowUser.followee mutual
                         where currentFollowUser.follower = :user
-                        and mutual not member of recUser.followers
                     )
+                    and recUser.roles like '%ROLE_CUSTOMER%'
                 group by recUser.id
                 order by recUserCount desc
             ");

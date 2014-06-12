@@ -1,0 +1,31 @@
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/inner_ajax_layout.html.twig':'@ZghFE/Default/tip_content.html.twig' %}
+
+{% block innerPartial %}
+    {% form_theme tip_form with ['ThraceFormBundle:Form:fields.html.twig'] %}
+    {{ form_start(tip_form, {"action": url("zgh_fe.tips.get_edit", {"id": app.user.id, "tip_id": tip.id }), "attr" : {"id":"myform", "class": "form-horizontal"} }) }}
+
+    <div class="form-group formGroup">
+        {{ form_label(tip_form.title, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+        <div class="col-sm-9">
+            {{ form_widget(tip_form.title, {"attr":{"class":"form-control", "placeholder": "Tip title "} }) }}
+            {{ form_errors(tip_form.title) }}
+
+        </div>
+    </div>
+    <div class="form-group formGroup">
+        {{ form_label(tip_form.content, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+        <div class="col-sm-9">
+            {{ form_widget(tip_form.content, {"attr":{"class":"form-control animated", "placeholder": "Tip content"} }) }}
+            {{ form_errors(tip_form.content) }}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-wide btn-primary exptip_edit_submit btn-save pull-right"
+            data-back_url="{{ url("zgh_fe.tip.single_content", {"id": user.id, "tip_id": tip.id }) }}">
+        Save
+    </button>
+    <a href="{{ url("zgh_fe.tip.single_content", {"id": user.id, "tip_id": tip.id }) }}"
+       class="moveEditExpTip btn btn-primary btn-wide pull-right"><i class="glyphicon glyphicon-arrow-left"></i> Cancel</a>
+    {{ form_rest(tip_form) }}
+    {{ form_end(tip_form) }}
+{% endblock innerPartial %}

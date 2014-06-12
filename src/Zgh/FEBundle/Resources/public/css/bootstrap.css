@@ -2400,7 +2400,7 @@ input[type="button"].btn-block {
 .glyphicon-chevron-right:before {
   content: "\e080";
 }
-  content: "\e081";
+{content: "\e081";
 }
 .glyphicon-minus-sign:before {
   content: "\e082";
@@ -5040,7 +5040,7 @@ button.close {
 body.modal-open,
 .modal-open .navbar-fixed-top,
 .modal-open .navbar-fixed-bottom {
-  margin-right: 15px;
+  /*margin-right: 15px;*/
 }
 .modal {
   display: none;
@@ -5392,6 +5392,9 @@ body.modal-open,
   @-ms-viewport {
     width: 320px;
   }
+}
+.text-center-xs{
+    text-align: center;
 }
 .hidden {
   display: none !important;

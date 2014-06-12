@@ -2,7 +2,6 @@
     {% for experience in experiences %}
         <div class="col-md-4 col-xs-6 experience">
             <div class="thumbnail">
-                {{ getTipsSearchResult(app.request.get("q"))|raw }}
                 {% if experience.user.id == app.user.id %}
                     <button data-target="#deleteExperince_{{ experience.id }}" data-toggle="modal"  type="submit" class="row   btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
                     <div id="deleteExperince_{{ experience.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
@@ -25,7 +24,7 @@
                         </div><!-- /.modal-dialog -->
                     </div>
                 {% endif %}
-                <a class="openExp" href="{{ url("zgh_fe.experience.content", {"id": experience.user.id, "exp_id": experience.id }) }}"><img alt="Responsive image" class="img-responsive"
+                <a class="openExp" href="{{ url("zgh_fe.experience.content", {"id": experience.user.id, "exp_id": experience.id }) }}" target="_blank"><img alt="Responsive image" class="img-responsive"
                  src="{{ experience.getThumbWebPath ? asset(experience.getThumbWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}"></a>
 
                 <div class="caption">

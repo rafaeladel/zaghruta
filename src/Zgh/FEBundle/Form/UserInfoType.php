@@ -24,7 +24,7 @@ class UserInfoType extends AbstractType
                     "Married" => "Married"
                 )))
             ->add("city", "text")
-            ->add("work", "text")
+            ->add("job", "text")
             ->add("facebook", "url")
             ->add("twitter", "url")
         ;

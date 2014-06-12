@@ -1,11 +1,11 @@
 {% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
 
 {% block leftContent %}
-    <div id="vendTips">
+    <div id="vendTips tips_Experience">
         <div class="row">
             <div class="col-xs-12 search-Results">
-                <a class="btn btn-default btn-wide moveExpTip" href="{{ url("zgh_fe.tip.add", {"id": user.id}) }}">
-                    <span class="glyphicon glyphicon-plus"></span> Share your Tips
+                <a class="btn btn-primary btn-wide moveExpTip" href="{{ url("zgh_fe.tip.add", {"id": user.id}) }}">
+                    <span class="glyphicon glyphicon-plus"></span> Add Your Tips
                 </a>
 
             </div>

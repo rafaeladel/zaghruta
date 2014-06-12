@@ -9,7 +9,6 @@
             <div class="btn-group btn-group-justified">
                 <a href="javascript:connectionsTabs('followers');" class="btn btn-default active"> Followers</a>
                 <a href="javascript:connectionsTabs('following');" class="btn btn-default"> Following</a>
-                <a href="javascript:connectionsTabs('vendors');" class="btn btn-default"> Vendors</a>
             </div>
         </div>
     </div>
@@ -17,56 +16,34 @@
     <div class="row" id="connections">
 
     <div class="followerCont" style="display: block;">
-        {% for followee in user.followees if "ROLE_CUSTOMER" in followee.follower.roles %}
+        {% for followee in user.followees %}
         <div class="media profile effect col-sm-4">
-            <a class="pull-left img-circle profile-pic-boy" href="#">
+            <a class="pull-left {{ "ROLE_VENDOR" in followee.follower.roles ? "img-rounded" : (followee.follower.userInfo.gender == 0 ? "profile-pic-boy img-circle" : "profile-pic-girl img-circle") }}" href="{{ url("zgh_fe.user_profile.index", {"id": followee.follower.id }) }}">
                 <img class="media-object" src="{{ asset(followee.follower.profilePhoto.getWebPath) }}" alt="">
             </a>
 
             <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": followee.follower.id }) }}">{{ followee.follower.getFullname }}</a></h3>
-            <span class="title">{{ followee.follower.userInfo.work}}</span>
-            {{ renderFollow(followee.follower) }}
-            <a href="#" class="boy followerStats"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
-
-            <div class="dropdown">
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">remove</a></li>
-                    <li><a href="#">Block</a></li>
-                </ul>
-            </div>
+            {{ renderFollow(followee.follower,  "ROLE_CUSTOMER" in followee.follower.roles ? (followee.follower.userInfo.gender == 0 ? "" : "btn-danger") : "" ) }}
+            <a href="{{ url("zgh_fe.user_profile.connections_partial", {"id": followee.follower.id}) }}" class="boy followerStats"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> {{ followee.follower.followees|length }} </a>
 
         </div>
         {% endfor %}
     </div>
     <div class="followingCont" style="display: none;">
-        {% for follower in user.followers if "ROLE_CUSTOMER" in follower.followee.roles %}
+        {% for follower in user.followers %}
             <div class=" profile effect col-sm-4">
-                <a class="pull-left img-circle profile-pic-boy" href="#">
+                <a class="pull-left {{ "ROLE_VENDOR" in follower.followee.roles ? "img-rounded" : (follower.followee.userInfo.gender == 0 ? "profile-pic-boy img-circle" : "profile-pic-girl img-circle") }}" href="{{ url("zgh_fe.user_profile.index", {"id": follower.followee.id }) }}">
                     <img class="media-object" src="{{ asset(follower.followee.profilePhoto.getWebPath) }}" alt="">
                 </a>
 
                 <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": follower.followee.id }) }}">{{ follower.followee.getFullname }}</a></h3>
-                <span class="title">{{ follower.followee.userInfo.work}}</span>
-                {{ renderFollow(follower.followee) }}
-                <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
+                {{ renderFollow(follower.followee,   "ROLE_CUSTOMER" in follower.followee.roles ? (follower.followee.userInfo.gender == 0 ? "" : "btn-danger") : "" ) }}
+                <a class="boy" href="{{ url("zgh_fe.user_profile.connections_partial", {"id": follower.followee.id}) }}"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> {{ follower.followee.followers|length }} </a>
 
             </div>
         {% endfor %}
     </div>
-    <div class="vendorsCont" style="display: none;">
-        {% for follower in user.followers if "ROLE_VENDOR" in follower.followee.roles %}
-            <div class=" profile effect col-sm-4">
-                <a class="pull-left img-circle profile-pic-boy" href="#">
-                    <img class="media-object" src="{{ asset(follower.followee.profilePhoto.getWebPath) }}" alt="">
-                </a>
 
-                <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": follower.followee.id }) }}">{{ follower.followee.getFullname }}</a></h3>
-                {{ renderFollow(follower.followee) }}
-                <a class="boy" href="#"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> 60 </a>
-
-            </div>
-        {%  endfor  %}
-    </div>
     </div>
     </div>
 

@@ -6,9 +6,9 @@
                 {% if user.id == app.user.id %}
                     <div class="col-sm-3">
 
-                        <a class="btn btn-default btn-wide moveExpTip"
+                        <a class="btn btn-primary btn-wide moveExpTip"
                            href="{{ url("zgh_fe.products.add", {"id": user.id}) }}">
-                            <span class="glyphicon glyphicon-plus"></span> Share your Product
+                            <span class="glyphicon glyphicon-plus"></span> Add your Product
                         </a>
                     </div>
                 {% endif %}

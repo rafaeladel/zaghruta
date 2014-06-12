@@ -118,8 +118,9 @@ class BranchController extends Controller
      */
     public function postDeleteBranchAction(User $user, Branch $branch)
     {
-        $this->getDoctrine()->getManager()->remove($branch);
-        $this->getDoctrine()->getManager()->flush();
-        return new JsonResponse(["status" => 200]);
+        $this->get("zgh_fe.delete_manager")->delete($branch);
+        return $this->redirect($this->generateUrl("zgh_fe.user_profile.branches_partial", [
+            "id" => $user->getId()
+        ]));
     }
 }

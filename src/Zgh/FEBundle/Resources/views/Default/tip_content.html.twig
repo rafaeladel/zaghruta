@@ -13,32 +13,36 @@
                             <img src="{{ tip.getThumbWebPath ? asset(tip.getThumbWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}" class="img-responsive">
                         </div>
                     </div>
+                    <div class="content_wrapper">
+                        {% block innerPartial %}
+                        <a class="moveEditExpTip" href="{{ url("zgh_fe.tips.get_edit", {"id": tip.user.id, "tip_id": tip.id}) }}">Edit</a>
+                        <div class="row headerProduct">
+                            <div class="col-md-2 pull-right icons-G">
+                                <form class="pull-right" action="{{ url("zgh_fe.like.post", {"id": tip.id, "entity_type": tip.getObjectType }) }}" method="post">
+                                    <button type="submit" class="btn btn-danger likeBtn btn-circle {{ checkLike(app.user, tip) ? "glyphicon-heart-empty" : "" }}">
+                                        <span class="glyphicon glyphicon-heart"></span>
+                                    </button>
+                                </form>
 
-                    <div class="row headerProduct">
-                        <div class="col-md-2 pull-right icons-G">
-                            <form action="{{ url("zgh_fe.like.post", {"id": tip.id, "entity_type": tip.getObjectType }) }}" method="post">
-                                <button type="submit" class="btn btn-danger likeBtn btn-circle {{ checkLike(app.user, tip) ? "glyphicon-heart-empty" : "" }}">
-                                    <span class="glyphicon glyphicon-heart"></span>
-                                </button>
-                            </form>
+                            </div>
+                            <h2 class="col-md-4">{{ tip.title }}</h2>
+                            <div class="clearfix"></div>
+
+                            <span class="col-md-12 date-time">{{ tip.createdAt|date() }}</span>
+                            <p class="by col-md-12">By: <span>{{ tip.user.getFullname }}</span></p>
 
                         </div>
-                        <h2 class="col-md-4">{{ tip.title }}</h2>
-                        <div class="clearfix"></div>
+                        <div class="row">
+                            <p class="col-md-12">
+                                {{ tip.content }}
+                            </p>
 
-                        <span class="col-md-12 date-time">{{ tip.createdAt|date() }}</span>
-                        <p class="by col-md-12">By: <span>{{ tip.user.getFullname }}</span></p>
+                        </div>
 
+
+                        {{ include("@ZghFE/Partial/common/comments_section.html.twig", { 'entity': tip }) }}
+                            {% endblock innerPartial %}
                     </div>
-                    <div class="row">
-                        <p class="col-md-12">
-                            {{ tip.content }}
-                        </p>
-
-                    </div>
-
-                    {{ include("@ZghFE/Partial/common/comments_section.html.twig", { 'entity': tip }) }}
-
                 </div>
 
             </div>

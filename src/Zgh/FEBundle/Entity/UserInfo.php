@@ -41,7 +41,7 @@ class UserInfo
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    protected $work;
+    protected $job;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -192,26 +192,26 @@ class UserInfo
     }
 
     /**
-     * Set work
+     * Set job
      *
-     * @param string $work
+     * @param string $job
      * @return About
      */
-    public function setWork($work)
+    public function setJob($job)
     {
-        $this->work = $work;
+        $this->job = $job;
 
         return $this;
     }
 
     /**
-     * Get work
+     * Get job
      *
      * @return string
      */
-    public function getWork()
+    public function getJob()
     {
-        return $this->work;
+        return $this->job;
     }
 
     /**

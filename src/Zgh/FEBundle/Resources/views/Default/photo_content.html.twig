@@ -10,9 +10,15 @@
             </p>
         </div>
     </div>
+    <div class="row PhotoCaption">
+        <div class="col-md-12">
+            <p>{{ photo.createdAt|date }}
+            </p>
+        </div>
+    </div>
     <div class="row  actionPhoto">
         <div class="col-sm-4 col-xs-12 titlealbum">
-            <a href=""> <h4>{{ photo.album.name }}</h4></a>
+            <a href="{{ url("zgh_fe.user_profile.albums_partial", {"id": photo.user.id}) }}"> <h4>{{ photo.album.name }}</h4></a>
 
         </div>
         <div class="col-sm-4 col-xs-12 col-md-4 pull-right buttonWrapper">
@@ -23,7 +29,7 @@
                 </button>
             </form>
             {% if photo.user.id == app.user.id %}
-                <button data-target="#deletePhoto_{{ photo.id }}" data-toggle="modal" class="btn btnDeleteimg btn-danger  btn-circle pull-right"><span class="glyphicon glyphicon-trash"></span></button>
+                <a href="#" data-target="#deletePhoto_{{ photo.id }}" data-toggle="modal" class="btn-delete pull-right"><i class="glyphicon glyphicon-trash"></i> Delete</a>
                 <div id="deletePhoto_{{ photo.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
                     <div class="modal-dialog">
                         <div class="modal-content">

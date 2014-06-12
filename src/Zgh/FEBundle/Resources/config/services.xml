@@ -53,6 +53,7 @@
         <service id="zgh_fe.notification_subscriber" class="%zgh_fe.notification_subscriber.class%">
             <tag name="kernel.event_subscriber"/>
             <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="mailer"/>
         </service>
 
         <service id="zgh_fe.twig.like_check" class="%zgh_fe.twig.like_check.class%">

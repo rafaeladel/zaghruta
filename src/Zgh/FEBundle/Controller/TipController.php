@@ -1,11 +1,15 @@
 <?php
 namespace Zgh\FEBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Zgh\FEBundle\Entity\Tip;
+use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Form\TipType;
 
 
@@ -27,6 +31,73 @@ class TipController extends Controller
         return $this->render("@ZghFE/Default/tip_content.html.twig", array(
                 "tip" => $tip
             ));
+    }
+
+    /**
+     * @ParamConverter("tip", class="ZghFEBundle:Tip", options={"id" = "tip_id"})
+     */
+    public function getSingleContentAction(User $user, Tip $tip)
+    {
+        return $this->render("@ZghFE/Partial/tips/user_profile_single_tip_content.html.twig",[
+                "user" => $user,
+                "tip" => $tip
+            ]);
+    }
+
+    /**
+     * @Security("has_role('ROLE_VENDOR')")
+     *
+     * @ParamConverter("tip", class="ZghFEBundle:Tip", options={"id" = "tip_id"})
+     */
+    public function getEditAction(User $user, Tip $tip)
+    {
+        if($tip->getUser()->getId() != $this->getUser()->getId())
+        {
+            throw new AccessDeniedException;
+        }
+        $tip_form = $this->createForm(new TipType(), $tip, ["type" => "edit"]);
+        return $this->render("@ZghFE/Partial/tips/user_profile_tip_edit_widget.html.twig", [
+                "user" => $user,
+                "tip" => $tip,
+                "tip_form" => $tip_form->createView()
+            ]);
+    }
+
+    /**
+     * @Security("has_role('ROLE_VENDOR')")
+     * @ParamConverter("tip", class="ZghFEBundle:Tip", options={"id" = "tip_id"})
+     */
+    public function postEditAction(Request $request, User $user, Tip $tip)
+    {
+        $tip_form = $this->createForm(new TipType(), $tip, ["type" => "edit"]);
+        $tip_form->handleRequest($request);
+        if(!$tip_form->isValid())
+        {
+            return new JsonResponse([
+                "status" => 500,
+                "view" => $this->renderView("@ZghFE/Partial/tips/user_profile_tip_edit_widget.html.twig", [
+                            "user" => $user,
+                            "tip" => $tip,
+                            "tip_form" => $tip_form->createView()
+                        ]),
+                "errors" => $tip_form->getErrorsAsString()
+            ]);
+        }
+        $this->getDoctrine()->getManager()->persist($tip);
+        $this->getDoctrine()->getManager()->flush();
+        return new JsonResponse(["status" => 200]);
+    }
+
+
+    /**
+     * @ParamConverter("tip", class="ZghFEBundle:Tip", options={"id" = "tip_id"})
+     */
+    public function deleteAction(User $user, Tip $tip)
+    {
+        $this->get("zgh_fe.delete_manager")->delete($tip);
+        return $this->redirect($this->generateUrl("zgh_fe.user_profile.tips_partial",[
+                    "id" => $user->getId()
+                ]));
     }
 
     /**

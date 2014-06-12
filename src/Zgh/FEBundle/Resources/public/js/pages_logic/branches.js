@@ -18,6 +18,8 @@ $(document).ready(function(){
                        }
                    }
                });
+           } else {
+               $("#myform").parsley().unsubscribe("parsley:form:validate");
            }
         });
     });

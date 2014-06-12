@@ -70,5 +70,11 @@
         <default key="_controller">ZghFEBundle:UserProfile:postSetPrivacy</default>
     </route>
 
+    <route id="zgh_fe.email_notification.set" pattern="/{id}/email_notifications">
+        <default key="_controller">ZghFEBundle:UserProfile:setEmailNotification</default>
+    </route>
+
+
+
 
 </routes>

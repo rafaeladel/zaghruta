@@ -146,7 +146,7 @@ hwi_oauth:
 #    permissions: [email, user_birthday, user_location]
 
 fos_js_routing:
-    routes_to_expose: [ zgh_fe.user.login_partial, zgh_fe.vendor.login_partial, zgh_fe.user_profile.privacy.set, zgh_fe.like.list, zgh_fe.comment.list, fos_message_thread_view, zgh_fe.notifications, zgh_message_inbox_content, fos_message_list_view ]
+    routes_to_expose: [ zgh_fe.user.login_partial, zgh_fe.vendor.login_partial, zgh_fe.user_profile.privacy.set, zgh_fe.like.list, zgh_fe.comment.list, fos_message_thread_view, zgh_fe.notifications, zgh_message_inbox_content, fos_message_list_view, zgh_fe.email_notification.set ]
 
 fos_message:
     db_driver: orm
