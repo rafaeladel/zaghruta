@@ -322,6 +322,11 @@ a.boy {
     font-size: 10px;
     color: #ff0000
 }
+.validation ul{
+    list-style-type: none;
+    margin-left: 10px;
+    padding: 0;
+}
 /*-------------indexHeader-------*/
 .indexHeader {
     height: auto;
