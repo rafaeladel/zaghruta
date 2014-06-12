@@ -17,12 +17,9 @@
 
                     <div class="content_wrapper">
                         {% block innerPartial %}
-                        <a class="moveEditExpTip"
-                           href="{{ url("zgh_fe.experiences.get_edit", {"id": experience.user.id, "exp_id": experience.id}) }}">Edit</a>
-
                         <div class="row headerProduct">
                             <div class="col-md-2 pull-right icons-G">
-                                <form action="{{ url("zgh_fe.like.post", {"id": experience.id, "entity_type": experience.getObjectType }) }}"
+                                <form class="pull-right" action="{{ url("zgh_fe.like.post", {"id": experience.id, "entity_type": experience.getObjectType }) }}"
                                       method="post">
                                     <button type="submit"
                                             class="btn btn-danger likeBtn btn-circle {{ checkLike(app.user, experience) ? "liked" : "" }}">
@@ -30,16 +27,18 @@
                                     </button>
                                 </form>
 
+                                <a class="pull-right moveEditExpTip "
+                                   href="{{ url("zgh_fe.experiences.get_edit", {"id": experience.user.id, "exp_id": experience.id}) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
                             </div>
                             <h2 class="col-md-4">{{ experience.title }}</h2>
 
                             <div class="clearfix"></div>
                             <p class="by col-md-12">Category:
-                                <span> {{ experience.category.name }}</span>
+                                <span>{{ experience.category.name }}</span>
                             </p>
                             <span class="col-md-12 date-time">{{ experience.createdAt|date() }}</span>
 
-                            <p class="by col-md-12">By: <span>{{ experience.user.getFullname }}</span></p>
+                            <p class="by col-md-12">By: <a href="{{ url("zgh_fe.user_profile.index", {"id": experience.user.id}) }}"> {{ experience.user.getFullname }}</a></p>
 
                         </div>
                         <div class="row">

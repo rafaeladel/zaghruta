@@ -78,7 +78,7 @@ class AboutController extends Controller
 
         $userInfo->setRelationshipAccepted(true);
         $this->getDoctrine()->getManager()->persist($userInfo);
-        $this->getDoctrine()->getManager()->persist($reciever);
+        $this->getDoctrine()->getManager()->persist($reciever_userInfo);
         $this->getDoctrine()->getManager()->remove($notification);
         $this->getDoctrine()->getManager()->flush();
         $requester_id = $userInfo->getUser()->getId();

@@ -24,7 +24,7 @@
 
             <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": followee.follower.id }) }}">{{ followee.follower.getFullname }}</a></h3>
             {{ renderFollow(followee.follower,  "ROLE_CUSTOMER" in followee.follower.roles ? (followee.follower.userInfo.gender == 0 ? "" : "btn-danger") : "" ) }}
-            <a href="{{ url("zgh_fe.user_profile.connections_partial", {"id": followee.follower.id}) }}" class="boy followerStats"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> {{ followee.follower.followees|length }} </a>
+            <a href="{{ url("zgh_fe.user_profile.connections_partial", {"id": followee.follower.id}) }}" class="boy followerStats"> <span class="glyphicon glyphicon-user {{ user.userInfo.gender == 0 ? "glyphicon-user-boy" : "glyphicon-user-girl" }}"></span> {{ followee.follower.followees|length }} </a>
 
         </div>
         {% endfor %}

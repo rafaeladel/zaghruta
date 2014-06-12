@@ -19,14 +19,14 @@
 
                 <div class="followFriend  margin">
                     <h5 class="pull-left">People you may know</h5>
-                    <a href="#" class="pull-right">See all</a><br>
+                    <a href="{{ url("zgh_fe.wall.recommended_people") }}" class="pull-right">See all</a><br>
                     <hr>
                     <div class="clearfix"></div>
                     {{ getRecommendedPeople(app.user)|raw }}
                 </div>
                 <div class="followFriend  margin">
                     <h5 class="pull-left">Popular Vendors</h5>
-                    <a href="#" class="pull-right">See all</a><br>
+                    <a href="{{ url("zgh_fe.wall.recommended_vendors") }}" class="pull-right">See all</a><br>
                     <hr>
                     <div class="clearfix"></div>
                     {{ getRecommendedVendor(app.user)|raw }}
@@ -34,7 +34,7 @@
 
                 <div class="followFriend  margin">
                     <h5 class="pull-left">New Vendors</h5>
-                    <a href="#" class="pull-right">See all</a><br>
+                    <a href="{{ url("zgh_fe.wall.new_vendors") }}" class="pull-right">See all</a><br>
                     <hr>
                     <div class="clearfix"></div>
                     {{ getNewVendors(app.user)|raw }}

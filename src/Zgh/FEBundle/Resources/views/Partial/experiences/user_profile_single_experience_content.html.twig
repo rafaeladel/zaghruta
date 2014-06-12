@@ -1,7 +1,6 @@
 {% extends app.request.xmlHttpRequest ? '@ZghFE/Default/inner_ajax_layout.html.twig':'@ZghFE/Default/experience_content.html.twig' %}
 
 {% block innerPartial %}
-<a class="moveEditExpTip" href="{{ url("zgh_fe.experiences.get_edit", {"id": experience.user.id, "exp_id": experience.id}) }}">Edit</a>
 <div class="row headerProduct">
     <div class="col-md-2 pull-right icons-G">
         <form class="pull-right" action="{{ url("zgh_fe.like.post", {"id": experience.id, "entity_type": experience.getObjectType }) }}" method="post">
@@ -9,6 +8,8 @@
                 <span class="glyphicon glyphicon-heart"></span>
             </button>
         </form>
+        <a class="pull-right moveEditExpTip "
+           href="{{ url("zgh_fe.experiences.get_edit", {"id": experience.user.id, "exp_id": experience.id}) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
 
     </div>
     <h2 class="col-md-4">{{ experience.title }}</h2>

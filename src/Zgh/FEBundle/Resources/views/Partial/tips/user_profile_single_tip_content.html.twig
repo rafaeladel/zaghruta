@@ -1,4 +1,3 @@
-<a class="moveEditExpTip" href="{{ url("zgh_fe.tips.get_edit", {"id": tip.user.id, "tip_id": tip.id}) }}">Edit</a>
 <div class="row headerProduct">
     <div class="col-md-2 pull-right icons-G">
         <form class="pull-right" action="{{ url("zgh_fe.like.post", {"id": tip.id, "entity_type": tip.getObjectType }) }}" method="post">
@@ -6,7 +5,7 @@
                 <span class="glyphicon glyphicon-heart"></span>
             </button>
         </form>
-
+        <a class="moveEditExpTip btnEditTip pull-right" href="href="{{ url("zgh_fe.tips.get_edit", {"id": tip.user.id, "tip_id": tip.id}) }}"><i class="glyphicon glyphicon-edit"></i>Edit</a>
     </div>
     <h2 class="col-md-4">{{ tip.title }}</h2>
     <div class="clearfix"></div>

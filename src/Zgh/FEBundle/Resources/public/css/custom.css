@@ -638,7 +638,11 @@ footer .container {
 
 .profile h3 {
     color: #111;
-    margin: 10px 0 0 0 !important;
+    margin: 10px 0 10px 0 !important;
+}
+.profile .boy{
+    margin-top: 10px;
+    float:left;
 }
 
 .profile h3 a {
@@ -650,6 +654,9 @@ footer .container {
     color: #464646;
     display: block;
     font-size: 16px;
+    margin-bottom: 10px;
+}
+div.profile{
     margin-bottom: 10px;
 }
 
@@ -714,13 +721,18 @@ footer .container {
 .fr-suggest h3 {
     font-size: 12px;
     font-weight: 700;
-    margin-top: 0;
+    margin-top: 0 !important;
+    margin-bottom: 6px !important;
 }
 
 .fr-suggest .title {
     font-size: 12px;
     font-weight: 400;
     margin-bottom: 5px;
+}
+.fr-suggest .boy{
+    margin-top: 5px;
+    float: left;
 }
 
 .adv {
@@ -838,6 +850,7 @@ footer .container {
 .data-reacted .profile h3 {
     font-size: 16px;
 }
+
 
 .img-post {
     padding: 0;
@@ -1278,6 +1291,12 @@ footer a {
 
 .Product .post {
     margin: 30px 0 20px 0
+}
+.headerProduct .moveEditExpTip{
+   margin: 5px 10px 0 0;
+}
+.btnEditTip{
+
 }
 
 /*------------------------------------*/
@@ -2334,6 +2353,9 @@ border-top: none;
     right:126px;
     top: -37px;
 }
+.result2 .result{
+    right: 64px !important;
+}
 .btn-liked{
     border:2px solid #DC5880 !important;
     color:#DC5880 !important;
@@ -2406,7 +2428,8 @@ border-top: none;
     left: -15px;
 }
 .branch{
-    height: 174px !important;
+    height: 205px !important;
+
  }
 .branch .delete-post{
     top: 7px;
@@ -2531,7 +2554,7 @@ border-top: none;
     height: 142px;
     overflow: hidden;
 }
-.experience .delete-post, .tip .delete-post{
+.experience .thumbnail .delete-post, .tip .thumbnail .delete-post{
    right:15px;
    top:5px;
    color:#fff;

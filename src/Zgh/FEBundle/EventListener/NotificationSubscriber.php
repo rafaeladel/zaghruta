@@ -38,7 +38,8 @@ class NotificationSubscriber implements EventSubscriberInterface
 
     public function onNotifyLike(NotifyLikeEvent $event)
     {
-        $target_user = $event->getUserToNotify();
+        $user = $event->getUserToNotify();
+
 //        if ($target_user->getEmailNotification()) {
 //            $message = \Swift_Message::newInstance()
 //                        ->setSubject("Notification from zagh")
@@ -49,7 +50,6 @@ class NotificationSubscriber implements EventSubscriberInterface
 //            $this->mailer->send($message);
 //        }
         $notification = $event->getNotification();
-        $user = $event->getUserToNotify();
         $user->addNotification($notification);
         $this->em->persist($user);
         $this->em->flush();
