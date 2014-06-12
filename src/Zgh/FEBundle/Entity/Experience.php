@@ -177,7 +177,9 @@ class Experience extends Image implements LikeableInterface, CommentableInterfac
      */
     public function addComment(\Zgh\FEBundle\Entity\Comment $comment)
     {
-        $this->comments[] = $comment;
+        if(!$comment->getIsRemoved()){
+            $this->comments[] = $comment;
+        }
         return $this;
     }
 
@@ -218,7 +220,14 @@ class Experience extends Image implements LikeableInterface, CommentableInterfac
      */
     public function setComments(ArrayCollection $comments)
     {
-        $this->comments = $comments;
+        $approved_arr = new ArrayCollection();
+        foreach($comments as $comment)
+        {
+            if(!$comment->getIsRemoved()) {
+                $approved_arr[] = $comment;
+            }
+        }
+        $this->comments = $approved_arr;
         return $this;
     }
 

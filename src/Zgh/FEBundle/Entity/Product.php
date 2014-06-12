@@ -252,13 +252,22 @@ class Product extends Image implements LikeableInterface, CommentableInterface
 
     public function addComment(Comment $comment)
     {
-        $this->comments[] = $comment;
+        if(!$comment->getIsRemoved()){
+            $this->comments[] = $comment;
+        }
         return $this;
     }
 
     public function setComments(ArrayCollection $comments)
     {
-        $this->comments = $comments;
+        $approved_arr = new ArrayCollection();
+        foreach($comments as $comment)
+        {
+            if(!$comment->getIsRemoved()) {
+                $approved_arr[] = $comment;
+            }
+        }
+        $this->comments = $approved_arr;
         return $this;
     }
 

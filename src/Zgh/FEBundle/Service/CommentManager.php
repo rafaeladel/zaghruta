@@ -79,9 +79,9 @@ class CommentManager
     {
         if ($this->security_context->isGranted("DELETE", $comment)) {
             $current_user = $this->security_context->getToken()->getUser();
-            $this->em->remove($comment);
             $object = $comment->getObject();
-            $object->removeComment($comment);
+            $comment->setIsRemoved(true);
+            $this->em->persist($comment);
             $this->em->flush();
 
             $notification_delete_event = new NotifyDeleteEvent($object->getUser(), $comment->getId());

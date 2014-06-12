@@ -7,7 +7,7 @@ use Zgh\FEBundle\Model\Partial\BasicInfo;
 use Zgh\FEBundle\Model\CommentableInterface;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Zgh\FEBundle\Repository\CommentRepository")
  * @ORM\Table(name="comments")
  * @ORM\HasLifecycleCallbacks
  */
@@ -30,6 +30,11 @@ class Comment
      * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      */
     protected $user;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_removed;
 
     /**
      * @ORM\Column(type="text")
@@ -160,5 +165,36 @@ class Comment
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set is_removed
+     *
+     * @param boolean $isRemoved
+     * @return Comment
+     */
+    public function setIsRemoved($isRemoved)
+    {
+        $this->is_removed = $isRemoved;
+
+        return $this;
+    }
+
+    /**
+     * Get is_removed
+     *
+     * @return boolean 
+     */
+    public function getIsRemoved()
+    {
+        return $this->is_removed;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setIsRemovedValue()
+    {
+        $this->setIsRemoved(false);
     }
 }

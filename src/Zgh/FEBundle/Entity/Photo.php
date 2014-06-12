@@ -199,7 +199,9 @@ class Photo extends Image implements LikeableInterface, CommentableInterface
      */
     public function addComment(\Zgh\FEBundle\Entity\Comment $comments)
     {
-        $this->comments[] = $comments;
+        if(!$comment->getIsRemoved()){
+            $this->comments[] = $comment;
+        }
         return $this;
     }
 
@@ -230,7 +232,14 @@ class Photo extends Image implements LikeableInterface, CommentableInterface
      */
     public function setComments(ArrayCollection $comments)
     {
-        $this->comments = $comments;
+        $approved_arr = new ArrayCollection();
+        foreach($comments as $comment)
+        {
+            if(!$comment->getIsRemoved()) {
+                $approved_arr[] = $comment;
+            }
+        }
+        $this->comments = $approved_arr;
         return $this;
     }
 }
