@@ -5,7 +5,7 @@ namespace Zgh\MsgBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\MessageBundle\Entity\Message as BaseMessage;
-use FOS\MessageBundle\Entity\MessageMetadata;
+use Zgh\MsgBundle\Entity\MessageMetadata;
 use FOS\MessageBundle\Model\ParticipantInterface;
 use FOS\MessageBundle\Model\ThreadInterface;
 
