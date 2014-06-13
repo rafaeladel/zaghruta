@@ -19,7 +19,7 @@
         {% for followee in user.followees %}
         <div class="media profile effect col-sm-4">
             <a class="pull-left {{ "ROLE_VENDOR" in followee.follower.roles ? "img-rounded" : (followee.follower.userInfo.gender == 0 ? "profile-pic-boy img-circle" : "profile-pic-girl img-circle") }}" href="{{ url("zgh_fe.user_profile.index", {"id": followee.follower.id }) }}">
-                <img class="media-object" src="{{ asset(followee.follower.profilePhoto.getWebPath) }}" alt="">
+                <img class="media-object" src="{{ "ROLE_FACEBOOK" in followee.follower.roles ? 'https://graph.facebook.com/'~followee.follower.facebookId~'/picture?width=125&height=125' : asset(followee.follower.profilePhoto.getThumbWebPath) }}" alt="">
             </a>
 
             <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": followee.follower.id }) }}">{{ followee.follower.getFullname }}</a></h3>
@@ -33,7 +33,7 @@
         {% for follower in user.followers %}
             <div class=" profile effect col-sm-4">
                 <a class="pull-left {{ "ROLE_VENDOR" in follower.followee.roles ? "img-rounded" : (follower.followee.userInfo.gender == 0 ? "profile-pic-boy img-circle" : "profile-pic-girl img-circle") }}" href="{{ url("zgh_fe.user_profile.index", {"id": follower.followee.id }) }}">
-                    <img class="media-object" src="{{ asset(follower.followee.profilePhoto.getWebPath) }}" alt="">
+                    <img class="media-object" src="{{ "ROLE_FACEBOOK" in follower.followee.roles ? 'https://graph.facebook.com/'~follower.followee.facebookId~'/picture?width=125&height=125' : asset(follower.followee.profilePhoto.getThumbWebPath) }}" alt="">
                 </a>
 
                 <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": follower.followee.id }) }}">{{ follower.followee.getFullname }}</a></h3>
