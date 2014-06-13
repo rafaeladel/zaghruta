@@ -3,7 +3,7 @@
         <li>
             <a class="pull-left" href="">
                 <div class="imgProfileList">
-                    <img alt="" src="{{ asset(like.user.profilePhoto.getThumbWebPath) }}"/>
+                    <img alt="{{ url("zgh_fe.user_profile.index",{"id": like.user.id}) }}" src="{{ asset(like.user.profilePhoto.getThumbWebPath) }}"/>
                 </div>
 
                 <span>{{ like.user.fullname }}</span>
