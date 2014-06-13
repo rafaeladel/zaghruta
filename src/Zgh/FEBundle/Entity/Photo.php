@@ -197,7 +197,7 @@ class Photo extends Image implements LikeableInterface, CommentableInterface
      * @param \Zgh\FEBundle\Entity\Comment $comments
      * @return Photo
      */
-    public function addComment(\Zgh\FEBundle\Entity\Comment $comments)
+    public function addComment(\Zgh\FEBundle\Entity\Comment $comment)
     {
         if(!$comment->getIsRemoved()){
             $this->comments[] = $comment;
