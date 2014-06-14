@@ -26,7 +26,7 @@
 <body>
 {% block body %}
     {% block header %}
-        <header class="fixed-header">
+        <header class="fixed-header {% block innerHeader %}{% endblock %}">
 
             <div class="container">
                 <div class="logo col-md-3 hidden-sm text-center-xs"><a href="{{ url("zgh_fe.wall.index") }}"><img
@@ -44,9 +44,6 @@
             </div>
             <!-- Header To Xs -->
 
-
-
-
         </header>
     {% endblock header %}
 {% endblock %}
@@ -59,5 +56,6 @@
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
+{% block misc %}{% endblock misc %}
 </body>
 </html>
