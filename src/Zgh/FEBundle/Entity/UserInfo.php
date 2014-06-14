@@ -16,7 +16,7 @@ class UserInfo
     use BasicInfo;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $birthday;
 
