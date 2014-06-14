@@ -17,7 +17,6 @@ class UserInfo
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank(groups={"intro", "Default"})
      */
     protected $birthday;
 

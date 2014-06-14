@@ -29,13 +29,12 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
         //Getting resource owner (e.g. facebook, google, etc..)
         $service = $response->getResourceOwner()->getName();
         //Getting setters names in User entity
-        $setter = 'set'.ucfirst($service);
-        $setter_id = $setter.'Id';
-        $setter_token = $setter.'AccessToken';
+        $setter = 'set' . ucfirst($service);
+        $setter_id = $setter . 'Id';
+        $setter_token = $setter . 'AccessToken';
 
         //Checking if a previous user is already connected. If so, reset its id and token to null
-        if(null !== $previousUser = $this->userManager->findUserBy(array($property => $username)))
-        {
+        if (null !== $previousUser = $this->userManager->findUserBy(array($property => $username))) {
             $previousUser->$setter_id(null);
             $previousUser->$setter_token(null);
             $this->userManager->updateUser($previousUser);
@@ -57,13 +56,12 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
 
         $user = $this->userManager->findUserBy(array($property => $username));
 
-        if(null === $user)
-        {
+        if (null === $user) {
             $service = $response->getResourceOwner()->getName();
 
-            $setter = 'set'.ucfirst($service);
-            $setter_id = $setter.'Id';
-            $setter_token = $setter.'AccessToken';
+            $setter = 'set' . ucfirst($service);
+            $setter_id = $setter . 'Id';
+            $setter_token = $setter . 'AccessToken';
 
             //create new user
             $user = $this->userManager->createUser();
@@ -84,7 +82,9 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
             $about->setGender(strtolower(($response->getResponse()["gender"]) == "male" ? 0 : 1));
 
             $responseData = $response->getResponse();
-            $about->setBirthday(new \DateTime( isset($responseData['birthday']) ? $responseData["birthday"] : null ));
+            if (isset($responseData['birthday'])) {
+                $about->setBirthday(new \DateTime($responseData["birthday"]));
+            }
             $about->setFacebook($response->getResponse()["link"]);
             $user->setUserInfo($about);
 
