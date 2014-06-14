@@ -16,14 +16,14 @@ class UserInfo
     use BasicInfo;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
-     * @Assert\NotBlank
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(groups={"intro", "Default"})
      */
     protected $birthday;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
-     * @Assert\NotBlank
+     * @ORM\Column(type="boolean")
+     * @Assert\NotBlank(groups={"intro", "Default"})
      */
     protected $gender;
 
