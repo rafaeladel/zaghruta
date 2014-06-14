@@ -134,16 +134,16 @@ class User extends BaseUser implements ParticipantInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
-     * @Assert\NotBlank(groups={"intro", "Default"})
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(groups={"intro"})
      */
     protected $firstname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=255)
-     * @Assert\NotBlank(groups={"intro", "Default"})
+     * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(groups={"intro"})
      */
     protected $lastname;
 

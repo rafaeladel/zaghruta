@@ -2,6 +2,7 @@
 
 <form action="{{ path('fos_user_registration_register', {"t": app.request.query.get("t")} ) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
     <div class="form-group">
+        {{ form_errors(form) }}
         {{ form_widget(form.email, {"attr": {"class": "form-control", "placeholder": "Email"} }) }}
 
         <div class="validation" style="">{{ form_errors(form.email) }}</div>
