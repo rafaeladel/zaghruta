@@ -317,6 +317,10 @@ a.boy {
 #vendPosts .content-post, #wall .postContent{
     width: 100% !important;
 }
+.postContent iframe{
+    width: 100% !important;
+
+}
 
 .validation {
     font-size: 10px;
@@ -2602,3 +2606,4 @@ border-top: none;
 .interest ul li label{
     font-size: 14px;
 }
+.note-box .tooltip{display: inline-block}
