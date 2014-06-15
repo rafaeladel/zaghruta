@@ -12,16 +12,21 @@ use Zgh\FEBundle\Model\Event\NotifyFollowEvent;
 use Zgh\FEBundle\Model\Event\NotifyFollowRequestEvent;
 use Zgh\FEBundle\Model\Event\NotifyLikeEvent;
 use Zgh\FEBundle\Model\Event\NotifyRelationshipRequestEvent;
+use Zgh\FEBundle\Service\EmailNotifier;
 
 class NotificationSubscriber implements EventSubscriberInterface
 {
     protected $em;
-    protected $mailer;
 
-    public function __construct(EntityManagerInterface $entityManagerInterface, Swift_Mailer $mailer)
+    /**
+     * @var EmailNotifier
+     */
+    protected $emailNotifier;
+
+    public function __construct(EntityManagerInterface $entityManagerInterface, EmailNotifier $emailNotifier)
     {
         $this->em = $entityManagerInterface;
-        $this->mailer = $mailer;
+        $this->emailNotifier = $emailNotifier;
     }
 
     public static function getSubscribedEvents()
@@ -40,19 +45,15 @@ class NotificationSubscriber implements EventSubscriberInterface
     {
         $user = $event->getUserToNotify();
 
-//        if ($target_user->getEmailNotification()) {
-//            $message = \Swift_Message::newInstance()
-//                        ->setSubject("Notification from zagh")
-//                        ->setFrom("qwe@ewqe.com")
-//                        ->setTo($target_user->getEmail())
-//                        ->setBody("tesswt")
-//            ;
-//            $this->mailer->send($message);
-//        }
+
         $notification = $event->getNotification();
         $user->addNotification($notification);
         $this->em->persist($user);
         $this->em->flush();
+
+        if ($user->getEmailNotification()) {
+            $this->emailNotifier->sendNotification($event);
+        }
     }
 
     public function onNotifyComment(NotifyCommentEvent $event)
@@ -62,6 +63,10 @@ class NotificationSubscriber implements EventSubscriberInterface
         $user->addNotification($notification);
         $this->em->persist($user);
         $this->em->flush();
+
+        if ($user->getEmailNotification()) {
+            $this->emailNotifier->sendNotification($event);
+        }
     }
 
     public function onNotifyFollow(NotifyFollowEvent $event)

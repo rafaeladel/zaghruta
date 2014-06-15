@@ -408,11 +408,20 @@ footer .container {
 .signBox .tab-content {
     padding: 20px 40px;
 }
-.tab-content #register_user #form_birthday #form_birthday_year, .tab-content #register_user #form_birthday #form_birthday_month,  #form_gender .required:first-child{
+.form-group .form_birthday select,  .form_gender .required:first-child{
     margin-right: 10px !important;
 }
-.tab-content #register_user #form_gender .required{
+.form_gender  .required{
+    margin-right: 10px;
+}
+.tab-content #register_user .form_gender .required{
     margin-left: 10px;
+}
+.form-group .select2-container{
+    height: auto;
+}
+.form-group .select2-container .select2-choices{
+    padding-top: 11px;
 }
 #form_gender #form_gender_1{ margin-left: 10px;}
 

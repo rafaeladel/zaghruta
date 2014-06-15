@@ -29,6 +29,7 @@
         <parameter key="zgh_fe.delete_manager.class">Zgh\FEBundle\Service\DeleteManager</parameter>
         <parameter key="zgh_fe.search_manager.class">Zgh\FEBundle\Service\SearchManager</parameter>
         <parameter key="zgh_fe.right_side_manager.class">Zgh\FEBundle\Service\RightSideManager</parameter>
+        <parameter key="zgh_fe.email_notifier.class">Zgh\FEBundle\Service\EmailNotifier</parameter>
     </parameters>
 
     <services>
@@ -53,7 +54,7 @@
         <service id="zgh_fe.notification_subscriber" class="%zgh_fe.notification_subscriber.class%">
             <tag name="kernel.event_subscriber"/>
             <argument type="service" id="doctrine.orm.entity_manager"/>
-            <argument type="service" id="mailer"/>
+            <argument type="service" id="zgh_fe.email_notifier"/>
         </service>
 
         <service id="zgh_fe.twig.like_check" class="%zgh_fe.twig.like_check.class%">
@@ -161,6 +162,11 @@
 
         <service id="zgh_fe.right_side_manager" class="%zgh_fe.right_side_manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+
+        <service id="zgh_fe.email_notifier" class="%zgh_fe.email_notifier.class%">
+            <argument type="service" id="mailer"/>
+            <argument type="service" id="router"/>
         </service>
 
         <!--<service id="zgh_fe.param_converter.social" class="Zgh\FEBundle\ParamConverter\SocialConverter">-->
