@@ -2379,8 +2379,9 @@ border-top: none;
     width: auto;
 }
 #profile_pic_popup{
-    height: 450px;
+    height: auto;
     width: 600px;
+    overflow: hidden;
 }
 #profile_pic_popup img{
     height: auto;
