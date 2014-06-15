@@ -57,8 +57,7 @@ class DoctrineListenerHandler implements EventSubscriber
     {
         $entity = $args->getEntity();
         $this->em = $args->getEntityManager();
-        if($entity instanceof Comment)
-        {
+        if ($entity instanceof Comment) {
             $aclProvider = $this->container->get("security.acl.provider");
             $objectIdentity = ObjectIdentity::fromDomainObject($entity);
             $acl = $aclProvider->createAcl($objectIdentity);
@@ -78,34 +77,38 @@ class DoctrineListenerHandler implements EventSubscriber
         $entity = $args->getEntity();
         $this->em = $args->getEntityManager();
 
-        if($entity instanceof Like)
-        {
-            $parent = $this->em->getRepository(Like::getTypes()[$entity->getObjectType()])->find($entity->getObjectId());
+        if ($entity instanceof Like) {
+            $parent = $this->em->getRepository(Like::getTypes()[$entity->getObjectType()])->find(
+                $entity->getObjectId()
+            );
             $entity->setObject($parent);
         }
 
-        if($entity instanceof LikeableInterface)
-        {
-            $likes = $this->em->getRepository("ZghFEBundle:Like")->findBy([
-                "object_id" => $entity->getObjectId(),
-                "object_type" => $entity->getObjectType()
-            ]);
+        if ($entity instanceof LikeableInterface) {
+            $likes = $this->em->getRepository("ZghFEBundle:Like")->findBy(
+                [
+                    "object_id" => $entity->getObjectId(),
+                    "object_type" => $entity->getObjectType()
+                ]
+            );
 
             $entity->setLikes(new ArrayCollection($likes));
         }
 
-        if($entity instanceof Comment)
-        {
-            $parent = $this->em->getRepository(Comment::getTypes()[$entity->getObjectType()])->find($entity->getObjectId());
+        if ($entity instanceof Comment) {
+            $parent = $this->em->getRepository(Comment::getTypes()[$entity->getObjectType()])->find(
+                $entity->getObjectId()
+            );
             $entity->setObject($parent);
         }
 
-        if($entity instanceof CommentableInterface)
-        {
-            $comments = $this->em->getRepository("ZghFEBundle:Comment")->findBy([
-                "object_id" => $entity->getObjectId(),
-                "object_type" => $entity->getObjectType()
-            ]);
+        if ($entity instanceof CommentableInterface) {
+            $comments = $this->em->getRepository("ZghFEBundle:Comment")->findBy(
+                [
+                    "object_id" => $entity->getObjectId(),
+                    "object_type" => $entity->getObjectType()
+                ]
+            );
             $entity->setComments(new ArrayCollection($comments));
         }
     }
@@ -141,50 +144,57 @@ class DoctrineListenerHandler implements EventSubscriber
         foreach ($updates as $entity) {
 
             //Relationship status
-            if($entity instanceof UserInfo){
+            if ($entity instanceof UserInfo) {
 
-                $old_user_info = null;
-                $target_user_info = null;
-
-                if($entity->getStatus() != null){
-                    if($entity->getStatus() == "Single"){
-                        if($entity->getRelationshipUser() instanceof User){
-                            //Setting the other side relationship info
-                            $target_user_info = $this->setUserInfoData($entity->getRelationshipUser()->getUserInfo(), "Single", null);
-                        }
-                        $entity->setRelationshipUser(null);
-
-                        $this->persistAssoc($old_user_info);
-                        $this->persistAssoc($target_user_info);
-                    } else {
-
-                        $rel_event = new NotifyRelationshipRequestEvent($entity);
-                        $this->container->get("event_dispatcher")->dispatch(NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST, $rel_event);
-
-//                        $old_user_info = $this->resetUserInfo($entity);
-//                        if($entity->getRelationshipUser() instanceof User){
-//                            $target_user_info = $this->setUserInfoData($entity->getRelationshipUser()->getUserInfo(), $entity->getStatus(), $entity->getUser());
+//                $old_user_info = null;
+//                $target_user_info = null;
+//
+//                if ($entity->getStatus() != null) {
+//                    if ($entity->getStatus() == "Single") {
+//                        if ($entity->getRelationshipUser() instanceof User) {
+//                            //Setting the other side relationship info
+//                            $target_user_info = $this->setUserInfoData(
+//                                $entity->getRelationshipUser()->getUserInfo(),
+//                                "Single",
+//                                null
+//                            );
 //                        }
-                    }
-
-                }
+//                        $entity->setRelationshipUser(null);
+//
+//                        $this->persistAssoc($old_user_info);
+//                        $this->persistAssoc($target_user_info);
+//                    } else {
+//                        var_dump("test");
+//                        $rel_event = new NotifyRelationshipRequestEvent($entity);
+//                        $this->container->get("event_dispatcher")->dispatch(
+//                            NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST,
+//                            $rel_event
+//                        );
+//
+////                        $old_user_info = $this->resetUserInfo($entity);
+////                        if($entity->getRelationshipUser() instanceof User){
+////                            $target_user_info = $this->setUserInfoData($entity->getRelationshipUser()->getUserInfo(), $entity->getStatus(), $entity->getUser());
+////                        }
+//                    }
+//
+//                }
             }
 
-            if($entity instanceof VendorInfo)
-            {
+            if ($entity instanceof VendorInfo) {
                 $user = $this->em->getRepository("ZghFEBundle:User")->find($entity->getUser()->getId());
                 $user->setFirstname($entity->getCompanyName());
                 $this->persistAssoc($user);
             }
 
             //Likes
-            if($entity instanceof Like)
-            {
+            if ($entity instanceof Like) {
                 $obj = $entity->getObject();
-                $likes = $this->em->getRepository("ZghFEBundle:Like")->findBy([
-                    "object_id" => $entity->getObjectId(),
-                    "object_type" => $entity->getObjectType()
-                ]);
+                $likes = $this->em->getRepository("ZghFEBundle:Like")->findBy(
+                    [
+                        "object_id" => $entity->getObjectId(),
+                        "object_type" => $entity->getObjectType()
+                    ]
+                );
                 $obj->setLikes(new ArrayCollection($likes));
             }
 
@@ -204,13 +214,15 @@ class DoctrineListenerHandler implements EventSubscriber
         $old_change = $this->uow->getEntityChangeSet($entity);
 //        var_dump($old_change);
 //        die;
-        if(in_array("relationship_user",array_keys($old_change))){
+        if (in_array("relationship_user", array_keys($old_change))) {
             $old_user = $old_change["relationship_user"][0];
-            if($old_user instanceof User){
+            if ($old_user instanceof User) {
                 $old_user_info = $this->setUserInfoData($old_user->getUserInfo(), "Single", null);
+
                 return $old_user_info;
             }
         }
+
         return null;
     }
 
@@ -218,12 +230,13 @@ class DoctrineListenerHandler implements EventSubscriber
     {
         $user_info->setStatus($status);
         $user_info->setRelationshipUser($other_user);
+
         return $user_info;
     }
 
     private function persistAssoc($obj)
     {
-        if($obj != null){
+        if ($obj != null) {
             $this->em->persist($obj);
             $this->uow->computeChangeSet($this->em->getClassMetadata(get_class($obj)), $obj);
         }

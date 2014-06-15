@@ -49,7 +49,11 @@
             <div class="form-group formGroup">
                 {{ form_label(product_form.image_file, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
                 <div class="col-sm-9">
-                    {{ form_widget(product_form.image_file, {"attr":{"class":"product_browse"} }) }}
+                  <div class="btnBrowsePhoto">
+                    {{ form_widget(product_form.image_file, {"attr":{"class":"product_browse btnBrowseMine photo_btn"} }) }}
+                    <button class="btnBrowseNew btn btn-primary btn-wide" type="submit" class="btn btn-primary btn-wide"><i class="glyphicon glyphicon-camera"></i> Browse</button>
+                  </div>
+                    
                     {{ form_errors(product_form.image_file) }}
                     <div class="photo_error"></div>
                     <div class="col-sm-4 col-md-4 dropzone-previews photo_preview clearfix row"></div>

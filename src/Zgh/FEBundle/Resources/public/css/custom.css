@@ -421,8 +421,26 @@ footer .container {
     height: auto;
 }
 .form-group .select2-container .select2-choices{
-    padding-top: 11px;
+    height: 34px !important;
 }
+.select2-container-multi .select2-choices .select2-search-choice{
+    margin: 6px 0 3px 7px !important;
+}
+..select2-container-multi .select2-choices .select2-search-field input{
+    padding: 0 !important;
+}
+.select2-input{
+    padding: 0 !important;
+}
+.select2-search-field{
+    padding: 2px 5px 0 8px !important;
+}
+.select2-container .select2-choice, .select2-container-multi .select2-choices{
+    height: 34px !important;
+}
+/*.select2-container .select2-choice > .select2-chosen{
+    margin-top: 10px;
+}*/
 #form_gender #form_gender_1{ margin-left: 10px;}
 
 
@@ -1107,14 +1125,17 @@ footer a {
     margin-right: 10px;
 }
 .product-G .photoThumb img {
-    height: auto;
-    min-height: 100%;
-    width: 100%;
+    
+    height: 100%;
+    width: auto;
 }
 
 .fr-suggest a, .fr-suggest a img {
     width: 80px !important;
     height: 80px !important;
+}
+.fr-suggest .boy{
+    height: auto !important;
 }
 
 .sm-img-post a, .sm-img-post a img, .por-post a:hover img {
@@ -2565,13 +2586,16 @@ border-top: none;
 
 }
 .tips_Experience .caption, .tip .caption{
-  height: 200px;
+  height: 130px;
   overflow: hidden;
   position: relative;
 }
 .tips_Experience .caption p, .tip .caption p {
-    height: 142px;
+    height: 70px;
     overflow: hidden;
+}
+.tip_add h2, .exp_add h2{
+    margin-bottom: 45px;
 }
 .experience .thumbnail .delete-post, .tip .thumbnail .delete-post{
    right:15px;

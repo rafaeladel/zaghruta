@@ -2,14 +2,19 @@
 namespace Zgh\FEBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Zgh\FEBundle\Entity\Notification;
+use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Entity\UserInfo;
 use Zgh\FEBundle\Form\UserInfoType;
 use Zgh\FEBundle\Form\VendorInfoType;
+use Zgh\FEBundle\Model\Event\NotifyEvents;
+use Zgh\FEBundle\Model\Event\NotifyRelationshipRequestEvent;
 
 
 class AboutController extends Controller
@@ -38,9 +43,9 @@ class AboutController extends Controller
     public function postCustomerEditAction(Request $request, $id)
     {
         $user_info = $this->getDoctrine()->getRepository("ZghFEBundle:UserInfo")->find($id);
+        $old_user_info = $this->getDoctrine()->getRepository("ZghFEBundle:UserInfo")->find($id);
         $form = $this->createForm(new UserInfoType(), $user_info);
         $form->handleRequest($request);
-
         if (!$form->isValid()) {
             return new JsonResponse(array(
                 "status" => 500,
@@ -52,6 +57,36 @@ class AboutController extends Controller
         }
 
 
+        if ($user_info->getStatus() != null) {
+
+            $target_user = $old_user_info->getRelationshipUser() instanceof User ? $user_info->getRelationshipUser() : null;
+            $target_user_info = $target_user instanceof User ? $target_user->getUserInfo() : null;
+            var_dump($target_user);
+            var_dump($target_user_info);
+            if ($user_info->getStatus() == "Single") {
+                if ($target_user_info instanceof UserInfo ) {
+                    //Setting the other side relationship info
+                    $target_user_info->setStatus("Single");
+                    $target_user_info->setRelationshipUser(null);
+                    $this->getDoctrine()->getManager()->persist($target_user_info);
+                }
+                $user_info->setRelationshipUser(null);
+            } else {
+                $user_info->setRelationshipAccepted(false);
+                $rel_event = new NotifyRelationshipRequestEvent($user_info);
+                $this->container->get("event_dispatcher")->dispatch(
+                    NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST,
+                    $rel_event
+                );
+
+//                        $old_user_info = $this->resetUserInfo($entity);
+//                        if($entity->getRelationshipUser() instanceof User){
+//                            $target_user_info = $this->setUserInfoData($entity->getRelationshipUser()->getUserInfo(), $entity->getStatus(), $entity->getUser());
+//                        }
+            }
+
+        }
+
         $this->getDoctrine()->getManager()->persist($user_info);
         $this->getDoctrine()->getManager()->flush();
 
@@ -59,6 +94,7 @@ class AboutController extends Controller
     }
 
     /**
+     * @ParamConverter("notification", class="ZghFEBundle:Notification", options={"id" = "n_id"})
      * @param UserInfo $userInfo
      * @param Notification $notification
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -77,6 +113,7 @@ class AboutController extends Controller
         $reciever_userInfo->setRelationshipAccepted(true);
 
         $userInfo->setRelationshipAccepted(true);
+
         $this->getDoctrine()->getManager()->persist($userInfo);
         $this->getDoctrine()->getManager()->persist($reciever_userInfo);
         $this->getDoctrine()->getManager()->remove($notification);
@@ -86,6 +123,7 @@ class AboutController extends Controller
     }
 
     /**
+     * @ParamConverter("notification", class="ZghFEBundle:Notification", options={"id" = "n_id"})
      * @param UserInfo $userInfo
      * @param Notification $notification
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -99,10 +137,11 @@ class AboutController extends Controller
         }
         $reciever = $this->getUser();
         $userInfo->setRelationshipUser(null);
+        $userInfo->setStatus(null);
         $this->getDoctrine()->getManager()->persist($userInfo);
         $this->getDoctrine()->getManager()->remove($notification);
         $this->getDoctrine()->getManager()->flush();
-        return $this->redirect($this->generateUrl("zgh_fe.notifications"));
+        return $this->redirect($this->generateUrl("zgh_fe.notification.get_list"));
     }
 
     /**

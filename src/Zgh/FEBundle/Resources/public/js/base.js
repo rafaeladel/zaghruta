@@ -12,14 +12,14 @@ $(document).ready(function(){
 
 
     $(document).on("ajaxSend", function (e) {
-        var target = $(e.target.activeElement);
+        var target = $(e.currentTarget.activeElement);
         if (target.is("input[type='submit']") || target.is("button[type='submit']")) {
             target.attr("disabled", "disabled");
         }
     });
 
     $(document).on("ajaxSuccess", function (e) {
-        var target = $(e.target.activeElement);
+        var target = $(e.currentTarget.activeElement);
         if (target.is("input[type='submit']") || target.is("button[type='submit']")) {
             target.removeAttr("disabled");
         }

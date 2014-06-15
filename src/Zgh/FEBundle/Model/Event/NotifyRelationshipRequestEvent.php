@@ -33,7 +33,8 @@ class NotifyRelationshipRequestEvent extends Event
         $this->content = [
             "type" => NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST,
             "user" => $requester->getFullName(),
-            "requester_id" => $requester->getId()
+            "requester_id" => $requester->getId(),
+            "requester_gender" => $requester->getUserInfo()->getGender()
         ];
         $this->user = $receiver;
         $this->action_id = $userInfo->getId();

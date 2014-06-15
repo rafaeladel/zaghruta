@@ -55,7 +55,7 @@ class UserInfo
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Assert\Regex(
-     *      pattern = "/http:\/\/twitter\.com\/(#!\/)?[a-zA-Z0-9_]+/",
+     *      pattern = "/https?:\/\/twitter\.com\/(#!\/)?[a-zA-Z0-9_]+/",
      *      message = "Invalid Twitter link"
      * )
      */
