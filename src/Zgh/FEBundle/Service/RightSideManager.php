@@ -29,6 +29,7 @@ class RightSideManager
                         where currentFollowUser.follower = :user
                     )
                     and recUser.roles like '%ROLE_CUSTOMER%'
+                    and recUser.id != :user
                 group by recUser.id
                 order by recUserCount desc
             ");

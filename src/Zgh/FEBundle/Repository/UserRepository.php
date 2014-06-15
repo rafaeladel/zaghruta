@@ -109,10 +109,11 @@ class UserRepository extends EntityRepository
             "
                                 select u, n from Zgh\FEBundle\Entity\User u
                                 left join u.notifications n
+                                where u.id = :user
                                 order by n.created_at DESC
                             "
         );
-
+        $q->setParameter("user", $user);
         return $q->execute();
     }
 }

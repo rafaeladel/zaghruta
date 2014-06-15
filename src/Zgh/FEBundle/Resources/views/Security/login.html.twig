@@ -1,50 +1,38 @@
-{% trans_default_domain 'FOSUserBundle' %}
+{% extends "@ZghFE/layout_security.html.twig" %}
+    {% trans_default_domain 'FOSUserBundle' %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Zaghruta your weeding planner guide</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block body %}
 
-    <!-- Bootstrap -->
-    <link href="{{ asset("bundles/zghfe/css/bootstrap.css") }}" rel="stylesheet" media="screen">
-    <link href="{{ asset("bundles/zghfe/css/custom.css") }}" rel="stylesheet" media="screen">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="{{ asset("bundles/zghfe/js/html5shiv.js") }}"></script>
-    <script src="{{ asset("bundles/zghfe/js/respond.js") }}"></script>
-    <![endif]-->
-
-</head>
-<body>
     <div id="fb-root"></div>
     <script>
-        window.fbAsyncInit = function() {
+        window.fbAsyncInit = function () {
             // init the FB JS SDK
             FB.init({
-                appId      : '1403397396596528',                        // App ID from the app dashboard
-                channelUrl : '//zaghrota.local.com/channel.html',      // Channel file for x-domain comms
-                status     : true,                                 // Check Facebook Login status
-                xfbml      : true                                  // Look for social plugins on the page
+                appId: '1403397396596528', // App ID from the app dashboard
+                channelUrl: '//zaghrota.local.com/channel.html', // Channel file for x-domain comms
+                status: true, // Check Facebook Login status
+                xfbml: true // Look for social plugins on the page
             });
         };
 
         // Load the SDK asynchronously
-        (function(d, s, id){
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
             js.src = "//connect.facebook.net/en_US/all.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
 
         function fb_login() {
-            FB.getLoginStatus(function(response) {
+            FB.getLoginStatus(function (response) {
 
                 if (response.status === 'connected') {
-                    FB.login(function(response) {
+                    FB.login(function (response) {
                         if (response.authResponse) {
                             document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
                         } else {
@@ -53,7 +41,7 @@
                     }, {scope: ''});
                 } else {
                     // not_authorized
-                    FB.login(function(response) {
+                    FB.login(function (response) {
                         if (response.authResponse) {
                             document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
                         }
@@ -62,395 +50,219 @@
             });
         }
     </script>
-<header class="fixed-header indexHeader">
 
-    <div class="container">
-        <div class="logo col-md-3 col-sm-4 col-md-offset-1"><a href="#"><img src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
-        <div class="col-md-6 col-sm-8 search-box">
-            <div class="mainSearch input-group">
-                <div class="input-group-btn" style="display:none;">
-                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Category <span
-                                class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#"><i class="icon-list-alt"></i>Everything</a></li>
-                        <li class="divider"></li>
-                        <li class="has_sub"><a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels &amp; Venues</a>
-                        </li>
-                        <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp; catering</a></li>
-                        <li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a></li>
-                        <li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a></li>
-                        <li class="dropdown-submenu"><a href="#"><i class="iconMenu iconJewelry pull-left"></i>Jewelry</a>    <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Second level</a></li>
-                                <li class="dropdown-submenu">
-                                    <a href="#">More..</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">3rd level</a></li>
-                                        <li><a href="#">3rd level</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Second level</a></li>
-                                <li><a href="#">Second level</a></li>
-                            </ul></li>
-                        <li><a href="#"><i class="iconMenu iconHonymoons pull-left"></i>Honeymoons</a></li>
-                        <li><a href="#"><i class="iconMenu iconFashion pull-left"></i>Fashion</a></li>
-                        <li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a></li>
-                        <li><a href="#"><i class="iconMenu iconFlorists pull-left"></i>Florists </a></li>
-                        <li><a href="#"><i class="iconMenu iconFurniture pull-left"></i>Furniture</a></li>
-                        <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health </a></li>
-                        <li><a href="#"><i class="iconMenu iconLimousines pull-left"></i>Limousines</a></li>
-                        <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home Appliances</a></li>
-                        <li><a href="#"><i class="iconMenu iconEntertainment pull-left"></i>Entertainment</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
-                    </ul>
-                </div>
-                <!-- /btn-group -->
+    {% block header %}
+        {{ parent() }}
+    {% endblock header %}
+    {% block descHeader %}
+        {{ parent() }}
+    {% endblock descHeader %}
 
-                <input type="text" class="form-control custFc" placeholder="Search for your things">
-                <a href="#" class="search-addon input-group-addon custAncor"></a>
-
-            </div>
-        </div>
-        <div class="col-md-1 col-sm-1">
-            <div class="input-btn">
-                <button class="btn btn-primary dropdown-toggle search-box" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-align-justify"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#"><i class="icon-list-alt"></i>Everything</a></li>
-                    <li class="divider"></li>
-                    <li class="has_sub"><a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels &amp; Venues</a>
-                    </li>
-                    <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp; catering</a></li>
-                    <li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a></li>
-                    <li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a></li>
-                    <li class="dropdown-submenu"><a href="#"><i class="iconMenu iconJewelry pull-left"></i>Jewelry</a>    <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#">Second level</a></li>
-                            <li class="dropdown-submenu">
-                                <a href="#">More..</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">3rd level</a></li>
-                                    <li><a href="#">3rd level</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Second level</a></li>
-                            <li><a href="#">Second level</a></li>
-                        </ul></li>
-                    <li><a href="#"><i class="iconMenu iconHonymoons pull-left"></i>Honeymoons</a></li>
-                    <li><a href="#"><i class="iconMenu iconFashion pull-left"></i>Fashion</a></li>
-                    <li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a></li>
-                    <li><a href="#"><i class="iconMenu iconFlorists pull-left"></i>Florists </a></li>
-                    <li><a href="#"><i class="iconMenu iconFurniture pull-left"></i>Furniture</a></li>
-                    <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health </a></li>
-                    <li><a href="#"><i class="iconMenu iconLimousines pull-left"></i>Limousines</a></li>
-                    <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home Appliances</a></li>
-                    <li><a href="#"><i class="iconMenu iconEntertainment pull-left"></i>Entertainment</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
-                </ul>
-            </div>
-        </div>
-
-
-    </div>
-
-</header>
-<!-- Header -->
-<div class="row loginSwitch">
-    <section class="container" id="sprite-iconPlug">
-        <h3>Technology</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-    <section class="container hide-show" id="sprite-iconChair">
-        <h3>Furniture</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-    <section class="container hide-show" id="sprite-iconCalendar">
-        <h3>Wedding Planner</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-    <section class="container hide-show" id="sprite-iconHome">
-        <h3>Real State</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-    <section class="container hide-show" id="sprite-iconGirl">
-        <h3>Beauty</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-
-    <section class="container hide-show" id="sprite-iconAccessories">
-        <h3>Accessories</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-
-    <section class="container hide-show" id="sprite-iconFashion">
-        <h3>Fashon</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-    <section class="container hide-show" id="sprite-iconPhotographers">
-        <h3>Photographers</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-    <section class="container hide-show" id="sprite-iconHotels">
-        <h3>Hotels</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-    <section class="container hide-show" id="sprite-iconBouquet">
-        <h3>Bouquet</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-
-    <section class="container hide-show" id="sprite-iconHoneymoon">
-        <h3>Honymoon</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-    <section class="container hide-show" id="sprite-iconCakes">
-        <h3>Cake</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-    <section class="container hide-show" id="sprite-iconMusic">
-        <h3>Music</h3>
-        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
-            Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque
-            elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit. Sed ut
-            imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc. Etiam
-            pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
-    </section>
-</div>
-<div class="mainContent">
-    <div>
-        <div class="loginBG img-responsive visible-lg"></div>
-        <div class="iconGroup img-responsive  visible-lg">
-            <div style="position: relative">
-                <a href="#" class="sprite-iconPlug"></a>
-                <a href="#" class="sprite-iconChair"></a>
-                <a href="#" class="sprite-iconCalendar"></a>
-                <a href="#" class="sprite-iconHome"></a>
-                <a href="#" class="sprite-iconGirl"></a>
-                <a href="#" class="sprite-iconAccessories"></a>
-                <a href="#" class="sprite-iconFashion"></a>
-                <a href="#" class="sprite-iconPhotographers"></a>
-                <a href="#" class="sprite-iconHotels"></a>
-                <a href="#" class="sprite-iconBouquet"></a>
-                <a href="#" class="sprite-iconCar"></a>
-                <a href="#" class="sprite-iconHoneymoon"></a>
-                <a href="#" class="sprite-iconCakes"></a>
-                <a href="#" class="sprite-iconMusic"></a>
-            </div>
-        </div>
-    </div>
-    <div class="BGlogin img-responsive visible-lg" style="display: none !important;"></div>
-    <section class="container">
-        <div class="control-group">&nbsp;</div>
-        <div class="row">
-            <div class="signBox  col-md-6">
-
-                <ul class="nav nav-tabs nav-login" id="loginTabs">
-                    <li class="active"><a href="#User" data-route="zgh_fe.user.login_partial">Customer</a></li>
-                    <li><a href="#Vendor" data-route="zgh_fe.vendor.login_partial">Vendor</a></li>
-                </ul>
-                <div class="tab-content">
-
-                    <div id="User" class="tab-pane active">
-                        <div class="alert descriptionUser fade in">
-                            <p>For data attributes, append the option name to Options can be passed via data attributes or JavaScript.</p>
-                        </div>
-                        <div class="row push-botton">
-                            <div class="col-lg-12">
-                                <div class="col-md-6 col-sm-4 col-xs-8 btnFb">
-                                    <a href="#" onclick="fb_login();return false;" class="fbLogin"></a>
-                                    {#<a href="{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}">Facebook Connect Button (Dialog)</a>#}
-                                </div>
-                            </div>
-                        </div>
-
-                        <fieldset>
-                            <legend class="text-center"> Or sign in with your username or email</legend>
-                            {% if error %}
-                            <div class=" alert alert-danger col-md-12">
-                            {{ error|trans }}
-                            <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
-                            </div>
-                            {% endif %}
-
-                            <form action="{{ path("fos_user_security_check") }}" method="post">
-                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"  />
-                                <div class="form-group">
-                                    <input type="text" id="username" name="_username" value="" required="required" class="form-control" placeholder="Email" />
-                                    {#<div class="validation" style="">No suggestions</div>#}
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password"/>
-                                    {#<div class="validation" style="">No suggestions</div>#}
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                                    <label class="RememberMe text-center" for="remember_me">Remember Me</label>
-                                </div>
-
-                                <div class="row">
-                                    <a type="button" class=" pull-left pinkLink linkForgotPass"
-                                       data-toggle="modal" data-target="#modalResetPass">Forgot your Password </a>
-
-                                    <input type="submit" id="_submit" name="_submit" value="Login"  class="btn btn-danger btn-wide pull-right" />
-                                    <a href="{{ url("fos_user_registration_register", {"t": "customer"}) }}" class="signUp pull-right">Sign Up</a>
-                                    {#<a href="#" class="pull-right">Sign Up</a>#}
-                                </div>
-                            </form>
-                        </fieldset>
+    {% block content %}
+        <div class="mainContent">
+            <div>
+                <div class="loginBG img-responsive visible-lg"></div>
+                <div class="iconGroup img-responsive visible-lg">
+                    <div style="position: relative">
+                        <a href="#" class="sprite-iconPlug"></a>
+                        <a href="#" class="sprite-iconChair"></a>
+                        <a href="#" class="sprite-iconCalendar"></a>
+                        <a href="#" class="sprite-iconHome"></a>
+                        <a href="#" class="sprite-iconGirl"></a>
+                        <a href="#" class="sprite-iconAccessories"></a>
+                        <a href="#" class="sprite-iconFashion"></a>
+                        <a href="#" class="sprite-iconPhotographers"></a>
+                        <a href="#" class="sprite-iconHotels"></a>
+                        <a href="#" class="sprite-iconBouquet"></a>
+                        <a href="#" class="sprite-iconCar"></a>
+                        <a href="#" class="sprite-iconHoneymoon"></a>
+                        <a href="#" class="sprite-iconCakes"></a>
+                        <a href="#" class="sprite-iconMusic"></a>
                     </div>
-                    <div id="Vendor" class="tab-pane">
-                        <div class="alert descriptionVandor fade in">
-                            <p>
-                                Options can be passed via data attributes or JavaScript. For data attributes, append the option name to
-                            </p>
+                </div>
+            </div>
+
+            {% block inner_content %}
+                <div class="BGlogin img-responsive visible-lg" style="display: none !important;"></div>
+                <section class="container">
+                    <div class="control-group">&nbsp;</div>
+                    <div class="row">
+                        <div class="signBox col-md-6">
+
+                            <ul class="nav nav-tabs nav-login" id="loginTabs">
+                                <li class="active"><a href="#User" data-route="zgh_fe.user.login_partial">Customer</a>
+                                </li>
+                                <li><a href="#Vendor" data-route="zgh_fe.vendor.login_partial">Vendor</a></li>
+                            </ul>
+                            <div class="tab-content">
+
+                                <div id="User" class="tab-pane active">
+                                    <div class="alert descriptionUser fade in">
+                                        <p>For data attributes, append the option name to Options can be passed via data
+                                            attributes or JavaScript.</p>
+                                    </div>
+                                    <div class="row push-botton">
+                                        <div class="col-lg-12">
+                                            <div class="col-md-6 col-sm-4 col-xs-8 btnFb">
+                                                <a href="#" onclick="fb_login();return false;" class="fbLogin"></a>
+                                                {#<a href="{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}">Facebook Connect Button (Dialog)</a>#}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <fieldset>
+                                        <legend class="text-center"> Or sign in with your username or email</legend>
+                                        {% if error %}
+                                            <div class=" alert alert-danger col-md-12">
+                                                {{ error|trans }}
+                                                <a class="close" data-dismiss="alert" href="#"
+                                                   aria-hidden="true">&times;</a>
+                                            </div>
+                                        {% endif %}
+
+                                        <form action="{{ path("fos_user_security_check") }}" method="post">
+                                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+                                            <div class="form-group">
+                                                <input type="text" id="username" name="_username" value=""
+                                                       required="required"
+                                                       class="form-control" placeholder="Email"/>
+                                                {#<div class="validation" style="">No suggestions</div>#}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="password" id="password" name="_password"
+                                                       required="required"
+                                                       class="form-control" placeholder="Password"/>
+                                                {#<div class="validation" style="">No suggestions</div>#}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                                                <label class="RememberMe text-center" for="remember_me">Remember
+                                                    Me</label>
+                                            </div>
+
+                                            <div class="row">
+                                                <a type="button" class=" pull-left pinkLink linkForgotPass"
+                                                   data-toggle="modal" data-target="#modalResetPass">Forgot your
+                                                    Password </a>
+
+                                                <input type="submit" id="_submit" name="_submit" value="Login"
+                                                       class="btn btn-danger btn-wide pull-right"/>
+                                                <a href="{{ url("fos_user_registration_register", {"t": "customer"}) }}"
+                                                   class="signUp pull-right">Sign Up</a>
+                                                {#<a href="#" class="pull-right">Sign Up</a>#}
+                                            </div>
+                                        </form>
+                                    </fieldset>
+                                </div>
+                                <div id="Vendor" class="tab-pane">
+                                    <div class="alert descriptionVandor fade in">
+                                        <p>
+                                            Options can be passed via data attributes or JavaScript. For data
+                                            attributes, append
+                                            the option name to
+                                        </p>
+                                    </div>
+
+                                    {% if error %}
+                                        <div class=" alert alert-danger col-md-12">
+                                            {{ error|trans }}
+                                            <a class="close" data-dismiss="alert" href="#"
+                                               aria-hidden="true">&times;</a>
+                                        </div>
+                                    {% endif %}
+                                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+                                        <div class="form-group">
+                                            <input type="text" id="username" name="_username" value=""
+                                                   required="required"
+                                                   class="form-control" placeholder="Email"/>
+                                            {#<div class="validation" style="">No suggestions</div>#}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="password" id="password" name="_password" required="required"
+                                                   class="form-control" placeholder="Password"/>
+                                            {#<div class="validation" style="">No suggestions</div>#}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                                            <label class="RememberMe text-center" for="remember_me">Remember Me</label>
+                                        </div>
+
+                                        <div class="row">
+                                            <a type="button" class=" pull-left pinkLink linkForgotPass"
+                                               data-toggle="modal" data-target="#modalResetPass">Forgot your
+                                                Password </a>
+
+                                            <input type="submit" id="_submit" name="_submit" value="Login"
+                                                   class="btn btn-danger btn-wide pull-right"/>
+                                            <a href="{{ url("fos_user_registration_register", {"t": "vendor"}) }}"
+                                               class="signUp pull-right">Sign Up</a>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                            </div>
                         </div>
-
-                        {% if error %}
-                            <div class=" alert alert-danger col-md-12">
-                                {{ error|trans }}
-                                <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </section>
+            {% endblock inner_content %}
+        </div>
+    {% endblock content %}
+    {% block modals %}
+        <!-- Modal -->
+        <div class="modal fade" id="modalResetPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modalHeader">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Reset your password</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ path('fos_user_resetting_send_email') }}" method="POST"
+                              class="fos_user_resetting_request">
+                            <div>
+                                <label for="username">{{ 'resetting.request.username'|trans }}</label>
+                                <input type="text" id="username" name="username" class="form-control" placeholder="">
                             </div>
-                        {% endif %}
-                        <form action="{{ path("fos_user_security_check") }}" method="post">
-                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"  />
-                            <div class="form-group">
-                                <input type="text" id="username" name="_username" value="" required="required" class="form-control" placeholder="Email" />
-                                {#<div class="validation" style="">No suggestions</div>#}
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-primary reset_btn"
+                                       value="{{ 'resetting.request.submit'|trans }}"/>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
-
-                            <div class="form-group">
-                                <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password"/>
-                                {#<div class="validation" style="">No suggestions</div>#}
-                            </div>
-
-                            <div class="form-group">
-                                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                                <label class="RememberMe text-center" for="remember_me">Remember Me</label>
-                            </div>
-
-                            <div class="row">
-                                <a type="button" class=" pull-left pinkLink linkForgotPass"
-                                   data-toggle="modal" data-target="#modalResetPass">Forgot your Password </a>
-
-                                <input type="submit" id="_submit" name="_submit" value="Login"  class="btn btn-danger btn-wide pull-right" />
-                                <a href="{{ url("fos_user_registration_register", {"t": "vendor"}) }}" class="signUp pull-right">Sign Up</a>
-                            </div>
-
+                            <div class="reset_request_result"></div>
                         </form>
                     </div>
 
                 </div>
+                <!-- /.modal-content -->
             </div>
+            <!-- /.modal-dialog -->
         </div>
-        <div class="clearfix"></div>
-    </section>
+        <!-- /.modal -->
+    {% endblock modals %}
+{% endblock body %}
 
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="modalResetPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header modalHeader">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Reset your password</h4>
-            </div>
-            <div class="modal-body">
-            <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
-                <div>
-                    <label for="username">{{ 'resetting.request.username'|trans }}</label>
-                    <input type="text" id="username" name="username" class="form-control" placeholder="">
-                </div>
-                <div class="modal-footer">
-                    <input type="submit"  class="btn btn-primary reset_btn" value="{{ 'resetting.request.submit'|trans }}" />
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-                <div class="reset_request_result"></div>
-            </form>
-            </div>
-
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
-
-<!-- JavaScript plugins (requires jQuery) -->
-<script src="{{ asset("bundles/zghfe/js/jquery-1.10.2.min.js") }}"></script>
-
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{ asset("bundles/zghfe/js/bootstrap.js") }}"></script>
-
-<!-- Optionally enable responsive features in IE8 -->
-<script src="{{ asset("bundles/zghfe/js/respond.js") }}"></script>
-
-<script src="{{ asset("bundles/zghfe/js/custom.js") }}"></script>
-<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-<script>
-        $(document).ready(function(){
-            $(".iconGroup a").mouseenter(function(){
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".iconGroup a").mouseenter(function () {
                 var secName = $(this).attr('class');
                 $('#' + secName + '').siblings().hide();
                 $('#' + secName + '').fadeIn(100);
 
             });
 
-            $(".reset_btn").on("click", function(e){
+            $(".reset_btn").on("click", function (e) {
                 e.preventDefault();
                 $(e.target).attr("disabled", "disabled").val("Please wait");
                 var form = $(e.target).closest("form");
@@ -458,21 +270,12 @@
                     type: "POST",
                     url: $(form).attr("action"),
                     data: form.serialize(),
-                    success: function(data)
-                    {
-                        $(e.target).parent().siblings("div.reset_request_result").html("<p>"+data.message+"</p>");
+                    success: function (data) {
+                        $(e.target).parent().siblings("div.reset_request_result").html("<p>" + data.message + "</p>");
                         $(e.target).removeAttr("disabled").val("Reset Password");
                     }
                 })
             });
-//            $("#loginTabs").on("click", "li a", function(e){
-//                e.preventDefault();
-//                $(".tab-content").html("<p>Loading</p>")
-//                var url = Routing.generate($(e.target).data("route"));
-//                $(".tab-content").load(url);
-//            })
         });
-</script>
-<div id="theH" style=""></div>
-</body>
-</html>
+    </script>
+{% endblock javascripts %}

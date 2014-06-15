@@ -254,31 +254,30 @@
                 </ul>
                 <div class="tab-content">
                     <div id="register_user" class="tab-pane active">
-                        {#<form action="{{ path('fos_user_registration_register', {"type": type} ) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">#}
                         {{ form_start(form, {"action": url("zgh_fe.user_profile.user_post_intro_edit", {"id": app.user.id})}) }}
                             <div class="form-group">
-                                {{ form_label(form.first_name) }}
-                                {{ form_widget(form.first_name, {"attr": {"class": "form-control", "placeholder": "First name"} }) }}
-                                <div class="validation" style="">{{ form_errors(form.first_name) }}</div>
+                                {{ form_label(form.name.firstname) }}
+                                {{ form_widget(form.name.firstname, {"attr": {"class": "form-control", "placeholder": "First name"} }) }}
+                                <div class="validation" style="">{{ form_errors(form.name.firstname) }}</div>
                             </div>
                             <div class="form-group">
-                                {{ form_label(form.last_name) }}
-                                {{ form_widget(form.last_name, {"attr": {"class": "form-control", "placeholder": "Last name"} }) }}
-                                <div class="validation" style="">{{ form_errors(form.last_name) }}</div>
+                                {{ form_label(form.name.lastname) }}
+                                {{ form_widget(form.name.lastname, {"attr": {"class": "form-control", "placeholder": "Last name"} }) }}
+                                <div class="validation" style="">{{ form_errors(form.name.lastname) }}</div>
                             </div>
                             <div class="form-group">
-                                {{ form_label(form.birthday) }}
-                                {{ form_widget(form.birthday) }}
-                                <div class="validation" style="">{{ form_errors(form.birthday) }}</div>
+                                {{ form_label(form.info.birthday) }}
+                                {{ form_widget(form.info.birthday) }}
+                                <div class="validation" style="">{{ form_errors(form.info.birthday) }}</div>
                             </div>
                             <div class="form-group ">
-                                {{ form_label(form.gender) }}
-                                {{ form_widget(form.gender) }}
-                                <div class="validation" style="">{{ form_errors(form.gender) }}</div>
+                                {{ form_label(form.info.gender) }}
+                                {{ form_widget(form.info.gender) }}
+                                <div class="validation" style="">{{ form_errors(form.info.gender) }}</div>
 
                             </div>
                             <div class="row">
-                                <input type="submit" class="btn btn-danger btn-wide pull-right" value="Submit" />
+                                <input type="submit" name="submit" class="btn btn-danger btn-wide pull-right" value="Submit" />
                             </div>
                             {{ form_rest(form) }}
                         {{ form_end(form) }}

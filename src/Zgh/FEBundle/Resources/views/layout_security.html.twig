@@ -1,0 +1,245 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    {% block header %}
+        <header class="fixed-header indexHeader">
+
+            <div class="container">
+                <div class="logo col-md-3 col-sm-4 col-md-offset-1"><a href="{{ url("zgh_fe.wall.index") }}"><img
+                                src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
+                <div class=" col-md-5 visible-sm col-sm-push-4"><a href="#"><img
+                                src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
+                <div class="divider visible-sm"></div>
+                {{ getSearchWidget()|raw }}
+                <div class="notificationsWidget text-center-xs">
+                    {% if app.security.isGranted("ROLE_USER") %}
+                        {{ render_esi(controller("ZghFEBundle:Default:getShortcutsAndNotification")) }}
+                    {% endif %}
+                </div>
+
+            </div>
+            <!-- Header To Xs -->
+
+        </header>
+    {% endblock header %}
+
+    <!-- Header -->
+    {% block descHeader %}
+        <div class="row loginSwitch">
+            <section class="container" id="sprite-iconPlug">
+                <h3>Technology</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+            <section class="container hide-show" id="sprite-iconChair">
+                <h3>Furniture</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+            <section class="container hide-show" id="sprite-iconCalendar">
+                <h3>Wedding Planner</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+            <section class="container hide-show" id="sprite-iconHome">
+                <h3>Real State</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+            <section class="container hide-show" id="sprite-iconGirl">
+                <h3>Beauty</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+
+            <section class="container hide-show" id="sprite-iconAccessories">
+                <h3>Accessories</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+
+            <section class="container hide-show" id="sprite-iconFashion">
+                <h3>Fashon</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+            <section class="container hide-show" id="sprite-iconPhotographers">
+                <h3>Photographers</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+            <section class="container hide-show" id="sprite-iconHotels">
+                <h3>Hotels</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+            <section class="container hide-show" id="sprite-iconBouquet">
+                <h3>Bouquet</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+
+            <section class="container hide-show" id="sprite-iconHoneymoon">
+                <h3>Honymoon</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+            <section class="container hide-show" id="sprite-iconCakes">
+                <h3>Cake</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+            <section class="container hide-show" id="sprite-iconMusic">
+                <h3>Music</h3>
+
+                <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                    sollicitudin,
+                    Morbi accumsan ipsum velit. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non
+                    neque
+                    elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Sed non neque elit.
+                    Sed ut
+                    imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra,Proin condimentum fermentum nunc.
+                    Etiam
+                    pharetra Proin condimentum fermentum nunc. Etiam pharetra</p>
+            </section>
+        </div>
+    {% endblock descHeader %}
+
+    {% block content %}
+    <div class="mainContent">
+        <div>
+            <div class="loginBG img-responsive visible-lg"></div>
+            <div class="iconGroup img-responsive visible-lg">
+                <div style="position: relative">
+                    <a href="#" class="sprite-iconPlug"></a>
+                    <a href="#" class="sprite-iconChair"></a>
+                    <a href="#" class="sprite-iconCalendar"></a>
+                    <a href="#" class="sprite-iconHome"></a>
+                    <a href="#" class="sprite-iconGirl"></a>
+                    <a href="#" class="sprite-iconAccessories"></a>
+                    <a href="#" class="sprite-iconFashion"></a>
+                    <a href="#" class="sprite-iconPhotographers"></a>
+                    <a href="#" class="sprite-iconHotels"></a>
+                    <a href="#" class="sprite-iconBouquet"></a>
+                    <a href="#" class="sprite-iconCar"></a>
+                    <a href="#" class="sprite-iconHoneymoon"></a>
+                    <a href="#" class="sprite-iconCakes"></a>
+                    <a href="#" class="sprite-iconMusic"></a>
+                </div>
+            </div>
+        </div>
+
+
+        {% block inner_content %}
+        {% endblock inner_content %}
+    </div>
+    {% endblock content %}
+
+    {% block modals %}
+
+    {% endblock modals %}
+
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock javascripts %}
+{% block misc %}<div id="theH" style=""></div>{% endblock misc %}

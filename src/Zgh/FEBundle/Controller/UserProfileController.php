@@ -23,6 +23,7 @@ use Zgh\FEBundle\Form\VendorInfoType;
 use Zgh\FEBundle\Form\WishlistType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Zgh\FEBundle\Form\UserIntroType\IntroUserType;
 
 class UserProfileController extends Controller
 {
@@ -58,21 +59,9 @@ class UserProfileController extends Controller
 
     private function getCustomerInfo()
     {
-        $defaultData = array("message" => "Default form data");
-        $form = $this->createFormBuilder($defaultData)
-            ->add("first_name", "text", array("mapped" => false))
-            ->add("last_name", "text", array("mapped" => false))
-            ->add("birthday", "birthday", array("mapped" => false))
-            ->add("gender", "choice", array(
-                "mapped" => false,
-                "expanded" => true,
-                "choices" => array(
-                    "0" => "Male",
-                    "1" => "Female"
-                )
-            ));
+        $form = $this->createForm(new IntroUserType(), null);
         return $this->render("ZghFEBundle:Default:customer_intro.html.twig", array(
-            "form" => $form->getForm()->createView()
+            "form" => $form->createView()
         ));
     }
 
@@ -103,37 +92,37 @@ class UserProfileController extends Controller
         return false;
     }
 
-    private function postCustomerInfo($request, $user)
+    private function postCustomerInfo($request,User $user)
     {
-        $em = $this->getDoctrine()->getManager();
-        $first_name = $request->request->get("form")["first_name"];
-        $last_name = $request->request->get("form")["last_name"];
-        $gender = $request->request->get("form")["gender"];
+        $form = $this->createForm(new IntroUserType());
+        $form->handleRequest($request);
 
-        $b_day = $request->request->get("form")["birthday"]["day"];
-        $b_month = $request->request->get("form")["birthday"]["month"];
-        $b_year = $request->request->get("form")["birthday"]["year"];
+        if($form->isValid())
+        {
+            $first_name = $form->get("name")->get("firstname")->getData();
+            $last_name = $form->get("name")->get("lastname")->getData();
+            $user->setFirstname($first_name);
+            $user->setLastname($last_name);
 
-        try {
-            $birthday = new \DateTime($b_day . "-" . $b_month . "-" . $b_year);
-        } catch (\Exception $e) {
-            $birthday = null;
-            $this->get('logger')->emergency($b_day . '' . $b_month . '' . $b_year . ' error message =' . $e->getMessage());
+            $user_info = $user->getUserInfo();
+            $birthday = $form->get("info")->get("birthday")->getData();
+            $gender = $form->get("info")->get("gender")->getData();
+            $user_info->setBirthday($birthday);
+            $user_info->setGender($gender);
+
+            $user->setFirstTime(false);
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($user);
+            $em->persist($user_info);
+            $em->flush();
+            return $this->redirect($this->generateUrl("zgh_fe.wall.index"));
         }
 
-
-        $user->setFirstname($first_name);
-        $user->setLastname($last_name);
-        $info = $user->getUserInfo();
-        $info->setBirthday($birthday);
-        $info->setGender($gender);
-
-        $user->setFirstTime(false);
-
-        $em->persist($user);
-        $em->persist($info);
-        $em->flush();
-        return $this->redirect($this->generateUrl("zgh_fe.wall.index"));
+        return $this->render("@ZghFE/Default/customer_intro.html.twig", [
+           "form" => $form->createView()
+        ]);
 
     }
 
