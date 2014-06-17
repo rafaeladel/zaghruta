@@ -34,6 +34,15 @@ class Category
      */
     protected $name;
 
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    protected $name_slug;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $css_class;
 
     /**
      * @ORM\OneToMany(targetEntity="VendorInfo", mappedBy="categories")
@@ -203,5 +212,51 @@ class Category
     public function getVendors()
     {
         return $this->vendors;
+    }
+
+    /**
+     * Set css_class
+     *
+     * @param string $cssClass
+     * @return Category
+     */
+    public function setCssClass($cssClass)
+    {
+        $this->css_class = $cssClass;
+
+        return $this;
+    }
+
+    /**
+     * Get css_class
+     *
+     * @return string 
+     */
+    public function getCssClass()
+    {
+        return $this->css_class;
+    }
+
+    /**
+     * Set name_slug
+     *
+     * @param string $nameSlug
+     * @return Category
+     */
+    public function setNameSlug($nameSlug)
+    {
+        $this->name_slug = $nameSlug;
+
+        return $this;
+    }
+
+    /**
+     * Get name_slug
+     *
+     * @return string 
+     */
+    public function getNameSlug()
+    {
+        return $this->name_slug;
     }
 }

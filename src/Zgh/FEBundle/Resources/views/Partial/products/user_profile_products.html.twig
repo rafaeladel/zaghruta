@@ -3,7 +3,7 @@
     <div id="c_products">
         <div id="switcher" class="row GridView">
             <div class="row margin search-Results">
-                {% if user.id == app.user.id %}
+                {% if app.user and user.id == app.user.id %}
                     <div class="col-sm-3">
 
                         <a class="btn btn-primary btn-wide moveExpTip"
@@ -13,30 +13,7 @@
                     </div>
                 {% endif %}
                 {#<form action="{{ url("zgh_fe.products.search", {"id": user.id}) }}" method="get">#}
-                <form action="" method="get">
-                    <div class="col-sm-5 ">
-                        <div class="mainSearch2 input-group">
-                            <div style="display: none;" class="input-group-btn">
-                                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Category <span
-                                            class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="searchOption" data-cat="0" href="#">Everything</a></li>
-                                    <li class="divider"></li>
-                                    <li><a class="searchOption" data-cat="" href="#">Hotels &amp; Venues</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">People</a></li>
-                                </ul>
-                            </div>
-                            <!-- /btn-group -->
-                            <input type="hidden" name="category" value="0"/>
-
-                            <input type="text" name="q" placeholder="Search for your things" class="form-control custFc"
-                                   value="{{ app.request.get("q") }}" style="border-radius: 6px 0px 0px 6px;">
-                            <a class="search-addon input-group-addon custAncor doSearch search_submit" href="#"></a>
-
-                        </div>
-                    </div>
-                </form>
+                {{ renderSearch(user, true)|raw }}
                 <div class="hidden-xs  pull-right  ">
                     <div class="btn-group ">
                         <a class="btn btn-primary active" href="javascript:SwitchView('grid');"><span

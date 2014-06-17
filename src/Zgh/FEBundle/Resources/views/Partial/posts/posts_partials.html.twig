@@ -1,6 +1,6 @@
 {% for post in posts %}
 <div class="post margin">
-    {% if post.user.id == app.user.id %}
+    {% if app.user and post.user.id == app.user.id %}
         <button data-target="#deletePost_{{ post.id }}" data-toggle="modal" type="submit" class="row test   btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
         <div id="deletePost_{{ post.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
             <div class="modal-dialog">
@@ -30,11 +30,12 @@
                 </a>
 
                 <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": post.user.id } ) }}">{{ post.user.fullname }}</a></h3>
-                <a href="{{ url("zgh_fe.post.display", {"id": post.user.id, "post_id": post.id}) }}"><span class="date-time">{{ post.createdAt|date("D - h A") }}</span></a>
+                <a href="{{ url("zgh_fe.post.display", {"id": post.user.id, "post_id": post.id}) }}"><span class="date-time">{{ post.createdAt|date("D - h:m A") }}</span></a>
 
             </div>
 
         </div>
+        {% if app.user %}
         <div class="icons-G pull-right">
 
             <form class="btnForm pull-right" action="{{ url("zgh_fe.like.post", {"id": post.id, "entity_type": post.getObjectType }) }}" method="post">
@@ -44,13 +45,14 @@
             </form>
 
         </div>
+        {% endif %}
         <div class="clearfix"></div>
     </div>
     <!--End header-post-->
 
     <div class="content-post postContent">
         {% if post.image %}
-            <a class="fancyboxArrow" href="{{ asset(post.image.getWebPath) }}" class="fancybox"><img alt="" src="{{ asset(post.image.getThumbWebPath) }}" class="img-responsive margin-md"> </a>
+            <a class="fancybox fancyboxArrow" href="{{ asset(post.image.getWebPath) }}"><img alt="" src="{{ asset(post.image.getThumbWebPath) }}" class="img-responsive margin-md"> </a>
         {% elseif post.video %}
             {{ post.video|raw }}
         {% endif %}

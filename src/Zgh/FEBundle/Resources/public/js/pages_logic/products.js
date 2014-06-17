@@ -18,6 +18,8 @@ $(document).ready(function () {
 
     $("body").on("click", ".product_edit_submit", function (e) {
         var form = $(e.target).closest("form");
+        var btn = $(e.currentTarget);
+        btn.attr("disabled", "disabled");
         $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
             instance.submitEvent.preventDefault();
             if (instance.isValid()) {
@@ -27,17 +29,21 @@ $(document).ready(function () {
                     data: form.serialize(),
                     success: function (data) {
                         if (data.status == 200) {
+                            btn.removeAttr("disabled");
                             var back_url = $(e.currentTarget).data("back_url");
                             $(".content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
                             $("body").find(".content_wrapper").load(back_url);
                         } else if (data.status == 500) {
+                            btn.removeAttr("disabled");
+
                             $(".content_wrapper").html(data.view);
 
                         }
                     }
                 });
             } else {
-                $(e.currentTarget).removeAttr("disabled").text("Save");
+                btn.removeAttr("disabled");
+
             }
         });
     });

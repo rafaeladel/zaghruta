@@ -12,7 +12,7 @@
             </div>
             <div class="row">
                 {{ form_start(form,  {"action": url("zgh_fe.interest.post") }) }}
-                    {{ form_widget(form.interests) }}
+                    {{ form_widget(form.interests, {"attr": {"class": "contentInterests" } }) }}
 
                     <input class="btn btn-primary btn-wide pull-right" type="submit" value="Save"/>
                 {{ form_rest(form) }}

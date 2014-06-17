@@ -18,6 +18,8 @@ $(document).ready(function(){
 
     $("body").on("click", ".exptip_edit_submit", function (e) {
         var form = $(e.target).closest("form");
+        var btn = $(e.currentTarget);
+        btn.attr("disabled", "disabled");
         $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
             instance.submitEvent.preventDefault();
             if (instance.isValid()) {
@@ -28,17 +30,19 @@ $(document).ready(function(){
                     success: function (data) {
                         var wrapper = $("body").find(".content_wrapper");
                         if (data.status == 200) {
-                            var back_url = $(e.currentTarget).data("back_url");
+                            btn.removeAttr("disabled");
+                            var back_url = btn.data("back_url");
                             wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
                             wrapper.load(back_url);
                         } else if (data.status == 500) {
+                            btn.removeAttr("disabled");
                             wrapper.html(data.view);
 
                         }
                     }
                 });
             } else {
-                $(e.currentTarget).removeAttr("disabled").text("Save");
+                btn.removeAttr("disabled");
             }
         });
     });

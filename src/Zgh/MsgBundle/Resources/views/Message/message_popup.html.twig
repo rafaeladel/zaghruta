@@ -9,10 +9,10 @@
                 <h4 class="modal-title" id="myModalLabel">New Message</h4>
             </div>
             {{ form_start(new_form, {"action": url('fos_message_inbox'), "method" : "post"}) }}
-            <div class="modal-body">
-                {{ form_widget(new_form.recipient) }}
+            <div class="modal-body messagePopup">
+                {{ form_widget(new_form.recipient, {"attr" : {"class" : "margin-bottom" } }) }}
                 <br>
-                {{ form_widget(new_form.body, {"rows": "6" ,"attr":{"class":"form-control", "placeholder": "Write Message"} }) }}
+                {{ form_widget(new_form.body, {"rows": "6" ,"attr":{"class":"form-control animated", "placeholder": "Write Message"} }) }}
             </div>
             <div class="modal-footer">
                 <input type="submit" class="btn btn-wide btn-primary" value="Send"/>

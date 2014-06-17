@@ -61,8 +61,6 @@ class AboutController extends Controller
 
             $target_user = $old_user_info->getRelationshipUser() instanceof User ? $user_info->getRelationshipUser() : null;
             $target_user_info = $target_user instanceof User ? $target_user->getUserInfo() : null;
-            var_dump($target_user);
-            var_dump($target_user_info);
             if ($user_info->getStatus() == "Single") {
                 if ($target_user_info instanceof UserInfo ) {
                     //Setting the other side relationship info

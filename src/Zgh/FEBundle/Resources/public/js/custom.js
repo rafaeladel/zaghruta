@@ -19,9 +19,9 @@ $(".top").tooltip({
     title: "Edit"
 });
 
-function fixingheight(){
+function fixingheight() {
 
-    $('.mainContent').height(function(index, height) {
+    $('.mainContent').height(function (index, height) {
         return $("#theH").height() - $(this).offset().top;
     });
 }
@@ -72,47 +72,48 @@ function connectionsTabs(param) {
 }
 //////////// End of Vendor Profile ///////////
 $('#loginTabs a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
+    e.preventDefault()
+    $(this).tab('show')
 })
 
 fixingheight();
 
 
-$( window ).resize(function() {
+$(window).resize(function () {
     fixingheight()
 
 });
 
-    $(".input-group-btn").hover(function() {
+$(".input-group-btn").hover(function () {
     $(this).data("hovered", true);
-}, function() {
+}, function () {
     $(this).data("hovered", false);
 });
 
-
-$( ".mainSearch input" ).focus(function() {
-    $(this).css('border-radius', '6px 0 0 6px') ;
-	$(".mainSearch .input-group-btn" ).show();
-}).blur(function(){
-	if($('.input-group-btn').data("hovered") ) {
-        $(".mainSearch input" ).css('border-radius', '0px 0 0 0px') ;
-	}
-	else{
-      $( ".input-group-btn" ).hide();}
-  });
-
-$( ".mainSearch2 input" ).focus(function() {
-    $(this).css('border-radius', '6px 0 0 6px') ;
-    $(".mainSearch2 .input-group-btn" ).show();
-}).blur(function(){
-    if($('.input-group-btn').data("hovered") ) {
-        $(".mainSearch2 input" ).css('border-radius', '0px 0 0 0px') ;
-    } else{
-        $( ".input-group-btn" ).hide();}
-
-});
-
+//
+//$(".mainSearch input").focus(function (e) {
+//    $(e.currentTarget).css('border-radius', '6px 0 0 6px');
+//    $(e.currentTarget).closest(".input-group").find(".input-group-btn").show();
+//}).blur(function (e) {
+//        if ($(e.currentTarget).closest(".input-group").find(".input-group-btn").data("hovered")) {
+//            $(e.currentTarget).css('border-radius', '0px 0 0 0px');
+//        }
+//        else {
+//            $(e.currentTarget).closest(".input-group").find(".input-group-btn").hide();
+//        }
+//    });
+//
+//$(".mainSearch2 input").focus(function (e) {
+//    $(e.currentTarget).css('border-radius', '6px 0 0 6px');
+//    $(e.currentTarget).closest(".input-group").find(".input-group-btn").show();
+//}).blur(function (e) {
+//        if ($(e.currentTarget).closest(".input-group").find(".input-group-btn").data("hovered")) {
+//            $(e.currentTarget).css('border-radius', '0px 0 0 0px');
+//        }
+//        else {
+//            $(e.currentTarget).closest(".input-group").find(".input-group-btn").hide();
+//        }
+//});
 
 
 

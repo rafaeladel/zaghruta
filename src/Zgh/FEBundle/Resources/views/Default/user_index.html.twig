@@ -1,4 +1,4 @@
-{% extends "@ZghFE/layout.html.twig" %}
+{% extends app.user ? "@ZghFE/layout.html.twig" : "@ZghFE/layout_anonymous.html.twig" %}
 {% block stylesheets %}
     {{ parent() }}
 
@@ -6,11 +6,11 @@
 {% block content %}
     <div class="container">
         <div class="row cover">
-        <div class="photoCover"><img src="{{ asset(user.coverPhoto.getWebPath) }}"/></div>
+        <div class="photoCover img-rounded"><img src="{{ asset(user.coverPhoto.getWebPath) }}"/></div>
         <div class="SVb"></div>
         <div class="media profilePic profile col-md-6 col-xs-10">
           <div class="imgProfile pull-left">
-              {% if user.id == app.user.id %}
+              {% if app.user and user.id == app.user.id %}
                   <button data-toggle="modal" data-target="#pp_modal" type="button" class="btn btn-primary btn-circle ch-pr">
                       <span class="glyphicon glyphicon-camera cam-post"></span>
                       {#<input type="file" class="glyphicon glyphicon-camera cam-post"/>#}
@@ -27,7 +27,7 @@
                                   <div class="modal-body">
                                     <div class="btnBrowsePhoto margin-bottom">
                                         <input class="btnBrowseMine photo_btn" accept="image/*" name="picture" type="file" title="Browse"/>
-                                        <button class="btnBrowseNew btn btn-primary btn-wide" type="submit"><i class="glyphicon glyphicon-camera"></i> Browse</button>
+                                        <button class="btnBrowseNew btn btn-primary btn-wide"><i class="glyphicon glyphicon-camera"></i> Browse</button>
                                     </div>
                                       <div class="thumbnailUpload">
                                           <button class="row reset_photo btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
@@ -51,24 +51,23 @@
                   <img src="{{ "ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=500&height=500' : asset(user.profilePhoto.getWebPath) }}" alt="profile_photo" />
               </div>
           </div>
-            <h3><a href="">{{ user.firstname }} {{ user.lastname }}</a></h3>
+            <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": user.id}) }}">{{ user.firstname }} {{ user.lastname }}</a></h3>
 
             {{ renderFollow(user) }}
 
-            {% if user.id != app.user.id %}
+            {% if app.user and user.id != app.user.id %}
                 <button class="btn-Message  btn btn-primary "  data-toggle="modal"
                         data-target="#msgModal" type="button">
                     <span class="glyphicon glyphicon-envelope"></span>
                 </button>
-                {{ message_user_popup("msgModal")|raw }}
+                {{ message_user_popup("msgModal", user)|raw }}
             {% endif %}
             <a href="{{ url("zgh_fe.user_profile.connections_partial", {id: user.id}) }}" class="boy"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> {{ user.followees|length }} </a>
         </div>
-            {% if user.id == app.user.id %}
+            {% if app.user and user.id == app.user.id %}
                 <button data-toggle="modal" data-target="#cp_modal" class="btn btn-default btn-wide  btn-cover" type="button">
                     <span class="glyphicon glyphicon-pencil"></span> Change Cover
                 </button>
-            {% endif %}
             <div class="modal fade cover_wrapper" id="cp_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -81,7 +80,7 @@
                             <div class="modal-body">
                                 <div class="btnBrowsePhoto  margin-bottom">
                                     <input name="cover" type="file" accept="image/*" class="cover_input btnBrowseMine"/>
-                                    <button class="btnBrowseNew btn btn-primary btn-wide" type="submit" class="btn btn-primary btn-wide"><i class="glyphicon glyphicon-camera"></i> Browse</button>
+                                    <button class="btnBrowseNew btn btn-primary btn-wide"><i class="glyphicon glyphicon-camera"></i> Browse</button>
                                 </div>
 
                                 <div id="testtt" class="cover_thumb"  width="540px" height="400px"  style=" position: relative;">
@@ -97,6 +96,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
 
 
         <div style="display: none;" class="col-md-6 col-sm-6 warning">
@@ -108,7 +108,7 @@
 
         <div class="divider"></div>
 
-        {% if user.id == app.user.id %}
+        {% if app.user and user.id == app.user.id %}
             {% if app.user.showInterestNotification and "ROLE_CUSTOMER" in app.user.roles %}
                 <div class="alert alert-success">
                     <p>You may need to add some interests to your profile. <a href="{{ url("zgh_fe.interest.get") }}">Click here</a></p>
@@ -176,7 +176,7 @@
                 <div class="col-md-7 col-sm-7">
 
                     <!--Compose Post -->
-                    {% if user.id == app.user.id %}
+                    {% if app.user and user.id == app.user.id %}
                         {{ include("@ZghFE/Partial/common/post_form.html.twig", {"return_url": path("zgh_fe.user_profile.index", {"id": user.id} ) }) }}
                     {% endif %}
 
@@ -218,22 +218,10 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-        UrlContainer.aboutPartial = "{{ url("zgh_fe.user_profile.about_partial", {"id": app.user.id}) }}";
+        UrlContainer.photoPartial = "{{ url("zgh_fe.user_profile.photos_partial", {"id": user.id}) }}";
+        UrlContainer.albumPartial = "{{ url("zgh_fe.user_profile.albums_partial", {"id": user.id}) }}";
+        UrlContainer.aboutPartial = "{{ url("zgh_fe.user_profile.about_partial", {"id": user.id}) }}";
         UrlContainer.wishlistPartial = "{{ url("zgh_fe.wishlist_partial_content", {"id": user.id}) }}";
         UrlContainer.branchesList = "{{ url("zgh_fe.branches.list", {"id": user.id}) }}";
     </script>
-
-    {% javascripts
-        "bundles/zghfe/js/pages_logic/user_index.js"
-        "bundles/zghfe/js/pages_logic/about.js"
-        "bundles/zghfe/js/pages_logic/wishlist.js"
-        "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
-        "bundles/zghfe/js/pages_logic/photos.js"
-        "bundles/zghfe/js/pages_logic/experiences.js"
-        "bundles/zghfe/js/pages_logic/branches.js"
-        "bundles/zghfe/js/pages_logic/products.js"
-        "bundles/zghfe/js/custom.js"
-    %}
-        <script src="{{ asset_url }}" type="text/javascript"></script>
-    {% endjavascripts %}
 {% endblock javascripts %}

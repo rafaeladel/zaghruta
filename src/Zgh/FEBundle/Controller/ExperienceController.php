@@ -24,10 +24,11 @@ class ExperienceController extends Controller
         ));
     }
 
-    public function getContentAction($id, $exp_id)
+    public function getContentAction(User $user, $exp_id)
     {
         $experience = $this->getDoctrine()->getRepository("ZghFEBundle:Experience")->find($exp_id);
         return $this->render("@ZghFE/Default/experience_content.html.twig", array(
+            "user" => $user,
             "experience" => $experience
         ));
     }

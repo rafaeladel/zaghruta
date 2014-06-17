@@ -25,15 +25,19 @@ function Uploader(params)
             init: function(){
                 var myDropzone = this;
                 this.on("queuecomplete", function(file) {
-                    refresh_uploader(_this.modalID, _this.listBtnID, _this.listWrapperClass, _this.ajaxLoadUrl);
+                    refresh_uploader(_this.modalID, _this.listBtnID, _this.listWrapperClass, _this.ajaxLoadUrl, _this.saveButtonClass);
                 });
 
 //                $("body").off("click", "."+_this.saveButtonClass, false);
                 $("."+_this.saveButtonClass).on("click", function(e){
                     e.preventDefault();
-
+                    var btn = $(e.currentTarget);
+                    btn.attr("disabled","disabled");
+                    if(!validate(_this.additionalData, $(e.target).closest("form"))) {
+                        btn.removeAttr("disabled");
+                        return false;
+                    }
                     //Validating inputs
-                    if(!validate(_this.additionalData, $(e.target).closest("form"))) return false;
 
                     if (myDropzone.getQueuedFiles().length > 0) {
                         myDropzone.on("sending", function(file, xhr, formData) {
@@ -57,7 +61,15 @@ function Uploader(params)
                                     refresh_uploader(_this.modalID, _this.listBtnID, _this.listWrapperClass, _this.ajaxLoadUrl);
                                 }
                             });
+                        } else {
+                            btn.removeAttr("disabled");
                         }
+                    }
+                });
+                myDropzone.on("addedfile", function (file) {
+                    if(this.files.length > _this.numOfFiles)
+                    {
+                        this.removeFile(file);
                     }
                 });
             },
@@ -73,25 +85,25 @@ function Uploader(params)
                                 <div class="dz-details">\
                                     <div class="dz-filename"><span data-dz-name></span></div>\
                                     <div class="dz-size" data-dz-size></div>\
-                                    <img data-dz-thumbnail />\
+                                    <div class="dz-photo"><img data-dz-thumbnail /></div>\
                                 </div>\
                                 <input type="text" class="form-control" placeholder="caption" name="caption" />\
-                                <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>\
                                 <div class="dz-error-message"><span data-dz-errormessage></span></div>\
-                                <a href="#" data-dz-remove>Delete</a>\
-                            </div>\
+                                <a class="btn-dz-remove pull-left" href="#" data-dz-remove>Delete</a>\
+                                <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>\
+                              </div>\
                             '
         });
+
     }
 }
 
-function refresh_uploader(wrapper, list_btn_id, list_wrapper_class, ajax_url)
+function refresh_uploader(wrapper, list_btn_id, list_wrapper_class, ajax_url, saveBtnClass)
 {
     var w = $("#"+wrapper);
-//    w.hide();
-//    w.find(".modalReset").click();
-//    w.find(".modalClose").click();
+    var saveBtn = $("."+saveBtnClass);
     w.modal("hide");
+    saveBtn.removeAttr("disabled");
     $("."+list_wrapper_class).find(".photosWrapper").html('<img style="margin: auto; display: block;" src='+UrlContainer.loader+' />');
     $("."+list_wrapper_class).load(ajax_url, null, function(){
         $("#"+list_btn_id).parent().find("a").each(function(){

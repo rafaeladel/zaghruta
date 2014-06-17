@@ -29,6 +29,12 @@ $(document).ready(function () {
         });
     });
 
+    $("body").on("click", ".btnRemove", function(e){
+        var deleteModal = $("body").find("#deleteThread");
+        var deleteUrl = $(e.currentTarget).data("url");
+        deleteModal.find("form").attr("action", deleteUrl);
+    });
+
     var inbox_content_url = Routing.generate("zgh_message_inbox_content");
 
     setInterval(function(){

@@ -81,11 +81,13 @@ class ProductController extends Controller
      */
     public function getProductParentContentWidgetAction(User $user, Product $product)
     {
-        $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
+        if($this->getUser() instanceof User) {
+            $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
+        }
         return $this->render("@ZghFE/Partial/products/product_content_widget.html.twig",[
                 "user" => $user,
                 "product" => $product,
-                "addWishlistForm" => $addWishlistForm->createView()
+                "addWishlistForm" => $this->getUser() instanceof User ? $addWishlistForm->createView() : null
             ]);
     }
 
@@ -94,11 +96,13 @@ class ProductController extends Controller
      */
     public function getProductContentWidgetAction(User $user, Product $product)
     {
-        $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
+        if($this->getUser() instanceof User) {
+            $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
+        }
         return $this->render("@ZghFE/Partial/products/user_profile_product_content_widget.html.twig",[
                 "user" => $user,
                 "product" => $product,
-                "addWishlistForm" => $addWishlistForm->createView()
+                "addWishlistForm" => $this->getUser() instanceof User ? $addWishlistForm->createView() : null
             ]);
     }
 
@@ -170,11 +174,13 @@ class ProductController extends Controller
      */
     public function getProductContentAction(User $user, Product $product)
     {
-        $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
+        if($this->getUser() instanceof User) {
+            $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
+        }
         return $this->render("@ZghFE/Default/product_content.html.twig",[
                 "user" => $user,
                 "product" => $product,
-                "addWishlistForm" => $addWishlistForm->createView()
+                "addWishlistForm" => $this->getUser() instanceof User ? $addWishlistForm->createView() : null
             ]);
     }
 
@@ -267,8 +273,8 @@ class ProductController extends Controller
     public function getSearchAction(Request $request, User $user)
     {
         $query = $request->query->get("q");
-        $cat_id = $request->query->get("cat_id");
-        $products = $this->get("zgh_fe.search_manager")->getProductByUserAndCategory($user, $cat_id, $query);
+        $cat_slug = $request->query->get("category");
+        $products = $this->get("zgh_fe.search_manager")->getProductByUserAndCategory($user, $cat_slug, $query);
         return $this->render("@ZghFE/Partial/products/user_profile_products_content.html.twig",["user" => $user, "products" => $products]);
     }
 }

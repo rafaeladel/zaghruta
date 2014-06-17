@@ -20,7 +20,7 @@ class MessageController extends ContainerAware
     {
         $container = $this->container;
         $threads = $container->get("fos_message.provider")->getRelatedThreads();
-        $new_form = $container->get('fos_message.new_thread_form.factory')->create($container->get("security.context"));
+        $new_form = $container->get('fos_message.new_thread_form.factory')->create();
         $formHandler = $container->get('fos_message.new_thread_form.handler');
 
         if ($message = $formHandler->process($new_form)) {

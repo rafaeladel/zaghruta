@@ -3,20 +3,21 @@
     {{ parent() }}
 {% endblock %}
 {% block body %}
-    {{ parent() }}
+    <div id="wrap">
+        {{ parent() }}
 
-    {% block content %}
-        <div class="container">
+        {% block content %}
+            <div class="container">
 
-            {% block leftContent %}
-                {% block fos_message_content %}{% endblock %}
-            {% endblock leftContent %}
+                {% block leftContent %}
+                    {% block fos_message_content %}{% endblock %}
+                {% endblock leftContent %}
 
-            {% block rightContent %}
-            {% endblock rightContent %}
-        </div>
-    {% endblock content %}
-
+                {% block rightContent %}
+                {% endblock rightContent %}
+            </div>
+        {% endblock content %}
+    </div>
     {% block footer %}
         <footer>
             <div class="container">
@@ -42,14 +43,14 @@
         };
     </script>
     {% javascripts
+    "bundles/zghfe/js/autosize.js"
     "bundles/zghfe/js/jquery.mCustomScrollbar.min.js"
     "bundles/zghfe/plugins/Parsley.js-2.0.0/dist/parsley.js"
     "bundles/zghfe/plugins/select2-3.4.6/select2.js"
     "bundles/thraceform/js/select2.js"
     "bundles/zghmsg/js/messages.js"
-    "bundles/zghfe/js/base.js"
-
-    %}
+    "bundles/zghfe/js/pages_logic/search.js"
+    "bundles/zghfe/js/base.js" %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script>
@@ -64,6 +65,8 @@
                 });
 
             });
+
+            $("body").find(".animated").autosize();
         })(jQuery);
 
     </script>

@@ -27,10 +27,10 @@ class MessageUserExtension extends \Twig_Extension
         ];
     }
 
-    public function messageUserPopup($popupId)
+    public function messageUserPopup($popupId, $user = null)
     {
         $new_form = $this->newThreadFormFactory->create();
-
+        $new_form->get("recipient")->setData($user);
         return $this->environment->render('ZghMsgBundle:Message:message_popup.html.twig', array(
                 'popup_id' => $popupId,
                 'new_form' => $new_form->createView()

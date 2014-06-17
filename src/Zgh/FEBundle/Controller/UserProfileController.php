@@ -205,6 +205,7 @@ class UserProfileController extends Controller
 
     public function getProductsPartialAction(Request $request, User $user)
     {
+
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
         if (!$authorized) {
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
@@ -217,6 +218,8 @@ class UserProfileController extends Controller
         } else {
             $products = $user->getProducts();
         }
+
+        $this->get("zgh_fe.paginator")->getNext($products, $products->first());
 
 
         return $this->render("@ZghFE/Partial/products/user_profile_products.html.twig", array(

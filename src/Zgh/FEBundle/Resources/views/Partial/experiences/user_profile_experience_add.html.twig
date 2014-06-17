@@ -1,4 +1,5 @@
 {% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
+{% form_theme form with ['ThraceFormBundle:Form:fields.html.twig'] %}
 
 {% block leftContent %}
     <div class="row">
@@ -19,7 +20,7 @@
             <div class="form-group formGroup row">
                 {{ form_label(form.title, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
                 <div class="col-sm-9">
-                    {{ form_widget(form.title, {"attr":{"class": "form-control", "required" : "true" ,"placeholder": "Experience title"} }) }}
+                    {{ form_widget(form.title, {"attr":{"class": "form-control", "required" : "true" ,"placeholder": "Experience Title"} }) }}
                    {{ form_errors(form.title) }}
                 </div>
             </div>
@@ -38,7 +39,10 @@
 
                 <div class="col-sm-9">
                     <div class="col-md12">
-                        {{ form_widget(form.image_file, {"attr": {"class": "exp_tip_browse"} }) }}
+                      <div class="btnBrowsePhoto">
+                        {{ form_widget(form.image_file, {"attr": {"class": "exp_tip_browse btnBrowseMine"} }) }}
+                        <button class="btnBrowseNew btn btn-primary btn-wide"><i class="glyphicon glyphicon-camera"></i> Browse</button>
+                        </div>
                         {{ form_errors(form.image_file) }}
                     <div class="photo_error"></div>
                     <div class="col-sm-4 col-md-4 dropzone-previews photo_preview clearfix row">
@@ -56,9 +60,8 @@
                     {{ form_errors(form.content) }}
                 </div>
             </div>
-            <button type="submit" class="btn btn-wide btn-primary exp_tip_submit" data-back_url="{{ url("zgh_fe.user_profile.experiences_partial", {"id": user.id}) }}">save</button>
+            <button type="submit" class="btn btn-wide btn-primary margin-right pull-right" data-back_url="{{ url("zgh_fe.user_profile.experiences_partial", {"id": user.id}) }}">save</button>
         {{ form_rest(form) }}
     {{ form_end(form) }}
 </div>
 {% endblock %}
-{% form_theme form with ['ThraceFormBundle:Form:fields.html.twig'] %}

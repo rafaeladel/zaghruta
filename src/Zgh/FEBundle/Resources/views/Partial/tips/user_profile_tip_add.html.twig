@@ -30,7 +30,7 @@
                     <div class="col-md12">
                       <div class="btnBrowsePhoto">
                       {{ form_widget(form.image_file,  {"attr": {"class": "exp_tip_browse btnBrowseMine photo_btn"} } ) }}
-                      <button class="btnBrowseNew btn btn-primary btn-wide" type="submit" class="btn btn-primary btn-wide"><i class="glyphicon glyphicon-camera"></i> Browse</button>
+                      <button class="btnBrowseNew btn btn-primary btn-wide"><i class="glyphicon glyphicon-camera"></i> Browse</button>
                       </div>
                         
 
@@ -50,7 +50,7 @@
                     {{ form_errors(form.content) }}
                 </div>
             </div>
-            <button type="submit" class="btn pull-right btn-wide btn-primary exp_tip_submit" data-back_url="{{ url("zgh_fe.user_profile.tips_partial", {"id": user.id}) }}">save</button>
+            <button type="submit" class="btn pull-right btn-wide btn-primary exp_tip_submit margin-right pull-right" data-back_url="{{ url("zgh_fe.user_profile.tips_partial", {"id": user.id}) }}">save</button>
         {{ form_rest(form) }}
     {{ form_end(form) }}
 </div>

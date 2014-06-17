@@ -1,34 +1,8 @@
-<div class="row">
+<div class="row PopupPhotoContent">
     <div class="col-md-12 resizePhoto">
         <img src="{{ asset(photo.getWebPath) }}" class="img-responsive" width="720" rel="photo" alt="">
-    </div>
-</div>
-<div class="row photoContent">
-    <div class="row PhotoCaption">
-        <div class="col-md-12">
-            <p>{{ photo.caption }}
-            </p>
-        </div>
-    </div>
-    <div class="row PhotoCaption">
-        <div class="col-md-12">
-            <p>{{ photo.createdAt|date }}
-            </p>
-        </div>
-    </div>
-    <div class="row  actionPhoto">
-        <div class="col-sm-4 col-xs-12 titlealbum">
-            <a href="{{ url("zgh_fe.user_profile.albums_partial", {"id": photo.user.id}) }}"> <h4>{{ photo.album.name }}</h4></a>
-
-        </div>
-        <div class="col-sm-4 col-xs-12 col-md-4 pull-right buttonWrapper">
-            <form class="btnForm pull-right" action="{{ url("zgh_fe.like.post", {"id": photo.id, "entity_type": photo.getObjectType }) }}" method="post">
-                <button type="submit" data-placement="top" data-toggle="tooltip" title="Like" class="btn tooltip btn-danger likeBtn btn-circle {{ checkLike(app.user, photo) ? "liked" : "" }}">
-                    <span class="glyphicon glyphicon-heart"></span>
-                    {#<span><span class="likes_count"> {{ photo.likes|length }}people like this  </span> </span>#}
-                </button>
-            </form>
-            {% if photo.user.id == app.user.id %}
+        <div class="deteilsPhoto">  
+           {% if app.user and photo.user.id == app.user.id %}
                 <a href="#" data-target="#deletePhoto_{{ photo.id }}" data-toggle="modal" class="btn-delete pull-right"><i class="glyphicon glyphicon-trash"></i> Delete</a>
                 <div id="deletePhoto_{{ photo.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
                     <div class="modal-dialog">
@@ -50,7 +24,37 @@
                     </div><!-- /.modal-dialog -->
                 </div>
             {% endif %}
-
+            <a class="pull-left nameAlbum" href="{{ url("zgh_fe.user_profile.albums_partial", {"id": photo.user.id}) }}"> <h4>{{ photo.album.name }}</h4></a>
+        </div>
+    </div>
+</div>
+<div class="row photoContent">
+    <div class="row PhotoCaption">
+        <div class="col-md-12">
+            <p>{{ photo.caption }}
+            </p>
+        </div>
+    </div>
+    <div class="row PhotoCaption">
+        <div class="col-md-12">
+            
+        </div>
+    </div>
+    <div class="row  actionPhoto">
+        {% if app.user %}
+        <div class="col-sm-4 col-xs-12 col-md-4 pull-right buttonWrapper">
+            <form class="btnForm pull-right" action="{{ url("zgh_fe.like.post", {"id": photo.id, "entity_type": photo.getObjectType }) }}" method="post">
+                <button type="submit" data-placement="top" data-toggle="tooltip" title="Like" class="btn tooltip btn-danger likeBtn btn-circle {{ checkLike(app.user, photo) ? "liked" : "" }}">
+                    <span class="glyphicon glyphicon-heart"></span>
+                    {#<span><span class="likes_count"> {{ photo.likes|length }}people like this  </span> </span>#}
+                </button>
+            </form>
+        </div>
+        {% endif %}
+        <div class="col-md-4 col-sm-4">
+            <p class="photodate">
+                {{ photo.createdAt|date }}
+            </p>
         </div>
     </div>
     <div class="col-md-12 popupPost {{ app.user.id == photo.user.id ? "" : "result2" }} ">

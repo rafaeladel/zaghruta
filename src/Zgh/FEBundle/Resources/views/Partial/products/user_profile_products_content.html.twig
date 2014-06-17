@@ -6,12 +6,12 @@
                 <div class="thumbOverlay img-responsive">
                     <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
                 </div>
-                <img class="" src="{{ product.getThumbWebPath() ? asset(product.getThumbWebPath()) : asset("bundles/zghfe/img/init/init_pp.jpg") }}">
+                <img class="" src="{{ product.getWebPath() ? asset(product.getWebPath()) : asset("bundles/zghfe/img/avatar_Product.jpg") }}">
             </a>
 
             <div class="productContent">
                 <a href="#"><h4>{{ product.name }}</h4></a>
-                <h6>Furniture & Home</h6>
+                <h6>{{ product.category.name }}</h6>
                 <span class="date">{{ product.createdAt|date() }}</span>
                 <span class="price">Price:<span> {{ product.price }}$</span></span>
 

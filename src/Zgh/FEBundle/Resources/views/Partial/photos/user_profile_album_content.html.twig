@@ -4,7 +4,7 @@
     <div id="c_photos" style="display: block;">
         <div class="row collectionsAlbums">
             <div class="col-xs-12 search-Results pull-left">
-                {% if user.id == app.user.id %}
+                {% if app.user and user.id == app.user.id %}
                     <button id="addNewPhoto" class="btn btn-primary btn-wide" type="button" data-toggle="modal"
                             data-target="#addPhotoPopup"><span class="glyphicon glyphicon-plus"></span>
                         Add new photo
@@ -17,7 +17,7 @@
                     </button>
 
 
-                    {% if user.id == app.user.id %}
+                    {% if app.user and user.id == app.user.id %}
                         <button data-target="#deletePhoto_{{ album.id }}" data-toggle="modal"
                                 class="btnDelete btn btn-primary btn-wide pull-right"><span
                                     class="glyphicon  glyphicon-trash"></span> Delete album
@@ -61,12 +61,13 @@
             {{ include("@ZghFE/Partial/photos/user_profile_photos_p_content.html.twig", {"photos" : album.photos }) }}
         </div>
 
+        {% if app.user %}
         <div id="addPhotoPopup" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
              class="modal fade in" data-list_class="content_wrapper"
              data-ajax_url="{{ url("zgh_fe.photos_partial_albums_photos_content", {"id": user.id, "album_id": album.id }) }}">
             {{ include("@ZghFE/Partial/photos/photo_add_modal.html.twig") }}
         </div>
-
+        {% endif %}
     </div>
 
 {% endblock %}

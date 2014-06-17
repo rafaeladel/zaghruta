@@ -1,4 +1,4 @@
-{% extends "@ZghFE/layout.html.twig" %}
+{% extends app.user ? "@ZghFE/layout.html.twig" : "@ZghFE/layout_anonymous.html.twig" %}
 {% block stylesheets %}
     {{ parent() }}
 {% endblock stylesheets %}
@@ -15,8 +15,20 @@
                     </div>
                     <div class="content_wrapper">
                         {% block innerPartial %}
+                            <div class="row">
+                                {% set tips = user.tips %}
+                                {% set next_id = nextId(tips, tip) %}
+                                {% set prev_id = prevId(tips, tip) %}
 
+                                {% if prev_id != null %}
+                                    <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": prev_id }) }}" class="pull-left">Previous</a>
+                                {% endif %}
+                                {% if next_id != null %}
+                                    <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": next_id }) }}" class="pull-right">Next</a>
+                                {% endif %}
+                            </div>
                         <div class="row headerProduct">
+                            {% if app.user %}
                             <div class="col-md-2 pull-right icons-G">
                                 <form class="pull-right" action="{{ url("zgh_fe.like.post", {"id": tip.id, "entity_type": tip.getObjectType }) }}" method="post">
                                     <button type="submit" class="btn btn-danger likeBtn btn-circle {{ checkLike(app.user, tip) ? "glyphicon-heart-empty" : "" }}">
@@ -25,11 +37,12 @@
                                 </form>
                                 <a class="moveEditExpTip btnEditTip pull-right" href="{{ url("zgh_fe.tips.get_edit", {"id": tip.user.id, "tip_id": tip.id}) }}"><i class="glyphicon glyphicon-edit"></i>Edit</a>
                             </div>
+                            {% endif %}
                             <h2 class="col-md-4">{{ tip.title }}</h2>
                             <div class="clearfix"></div>
 
                             <span class="col-md-12 date-time">{{ tip.createdAt|date() }}</span>
-                            <p class="by col-md-12">By: <a href="{{ url("zgh_fe.user_profile.index", {"id": experience.user.id}) }}"> {{ tip.user.getFullname }}</a></p>
+                            <p class="by col-md-12">By: <a href="{{ url("zgh_fe.user_profile.index", {"id": tip.user.id}) }}"> {{ tip.user.getFullname }}</a></p>
 
                         </div>
                         <div class="row">

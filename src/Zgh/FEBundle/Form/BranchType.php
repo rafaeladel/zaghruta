@@ -59,7 +59,7 @@ class BranchType extends AbstractType
         $resolver->setDefaults([
                 "data_class" => "Zgh\FEBundle\Entity\Branch",
                 "cascade_validation" => true
-            ]);
+        ]);
     }
 
     public function getName()

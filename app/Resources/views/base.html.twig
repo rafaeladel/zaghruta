@@ -38,7 +38,7 @@
                 <div class="divider visible-sm"></div>
                 {{ getSearchWidget()|raw }}
                 <div class="notificationsWidget text-center-xs">
-                    {% if app.security.isGranted("ROLE_USER") %}
+                    {% if app.user %}
                         {{ render_esi(controller("ZghFEBundle:Default:getShortcutsAndNotification")) }}
                     {% endif %}
                 </div>

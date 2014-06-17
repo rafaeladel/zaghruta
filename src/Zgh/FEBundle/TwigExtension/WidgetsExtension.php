@@ -77,7 +77,9 @@ class WidgetsExtension extends \Twig_Extension
     public function getSearchWidget()
     {
         $categories = $this->em->getRepository("ZghFEBundle:Category")->findAll();
-        return $this->env->render("@ZghFE/Partial/search/search_widget.html.twig", ["categories" => $categories]);
+        return $this->env->render("@ZghFE/Partial/search/search_header.html.twig", [
+                "categories" => $categories
+            ]);
     }
 
     public function getProductsSearchResult($crit)

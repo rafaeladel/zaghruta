@@ -1,6 +1,6 @@
-function singleUpload(button_class){
-    $("body").find("."+button_class).dropzone({
-        url: $("."+button_class).closest("form").attr("action"),
+function singleUpload(button_class) {
+    $("body").find("." + button_class).dropzone({
+        url: $("." + button_class).closest("form").attr("action"),
         parallelUploads: 1,
         maxFiles: 1,
         maxFilesize: 2,
@@ -20,46 +20,43 @@ function singleUpload(button_class){
                                 <a href="#" data-dz-remove>Delete</a>\
                             </div>\
                             ',
-        init: function(){
+        init: function () {
             var myDropzone = this;
 
             //setting dropzone name for post request
             myDropzone.options.paramName = $(myDropzone.element).attr("name");
 
             //If the element is input file, make sure not to browse for file twice
-            $(myDropzone.element).on("click", function(e){
-                if($(e.target).is("input"))
-                {
+            $(myDropzone.element).on("click", function (e) {
+                if ($(e.target).is("input")) {
                     e.preventDefault();
                     $(e.target).removeAttr("name");
                 }
             });
 
 
-
-            $("."+button_class).closest("form").find("[type='submit']").on("click", function(e){
-                $("#myform").parsley().subscribe("parsley:form:validate", function(instance){
+            $("." + button_class).closest("form").find("[type='submit']").on("click", function (e) {
+                $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
                     instance.submitEvent.preventDefault();
-                    if(instance.isValid())
-                    {
-                        $(e.target).attr("disabled", "disabled").text("Saving");
+                    if (instance.isValid()) {
+                        $(e.target).attr("disabled", "disabled");
                         if (myDropzone.getQueuedFiles().length > 0) {
-                            myDropzone.on("sending", function(file, xhr, formData) {
+                            myDropzone.on("sending", function (file, xhr, formData) {
                                 //store every tag with name attribute into the FormData object
-                                $(e.target).closest("form").find("[name]").each(function(i, v){
+                                $(e.target).closest("form").find("[name]").each(function (i, v) {
                                     formData.append($(v).attr("name"), $(v).val());
                                 });
                             });
                             myDropzone.processQueue();
                         } else {
-                            var form_data = new FormData($("."+button_class).closest("form")[0]);
+                            var form_data = new FormData($("." + button_class).closest("form")[0]);
                             $.ajax({
                                 type: "post",
-                                url: $("."+button_class).closest("form").attr("action"),
+                                url: $("." + button_class).closest("form").attr("action"),
                                 data: form_data,
                                 processData: false,
                                 contentType: false,
-                                success: function(data) {
+                                success: function (data) {
                                     refreshWrapper(data);
                                 }
                             });
@@ -70,34 +67,36 @@ function singleUpload(button_class){
                 });
             });
 
-            if(myDropzone.options.uploadMultiple){
-                this.on("successmultiple", function(files, response){
+            if (myDropzone.options.uploadMultiple) {
+                this.on("successmultiple", function (files, response) {
                     refreshWrapper(data);
                 });
             } else {
-                this.on("success", function(file, data){
+                this.on("success", function (file, data) {
                     refreshWrapper(data);
                 });
             }
 
-            myDropzone.on("addedfile", function(file){
-                $(myDropzone.options.previewsContainer).siblings(".photo_error").empty();
+            myDropzone.on("addedfile", function (file) {
+                if (this.files[1]!=null){
+                    this.removeFile(this.files[0]);
+                }
             });
+
         }
     });
 
-    function refreshWrapper(data){
-        var submit_btn = $("."+button_class).closest("form").find("[type='submit']");
-        submit_btn.removeAttr("disabled").text("Save");
-        if(data.status == 200){
+    function refreshWrapper(data) {
+        var submit_btn = $("." + button_class).closest("form").find("[type='submit']");
+        submit_btn.removeAttr("disabled");
+        if (data.status == 200) {
             var back_url = submit_btn.data("back_url");
-            $(".content_wrapper").html('<img style="margin: auto; display: block;" src="'+UrlContainer.loader+'" />');
-            $(".content_wrapper").load(back_url , function(){
+            $("body").find(".content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+            $("body").find(".content_wrapper").load(back_url, function () {
                 history.pushState(null, null, back_url);
             });
         }
-        else if(data.status == 500)
-        {
+        else if (data.status == 500) {
             $("body").find(".content_wrapper").html(data.view);
 
             //re-initializing dropzone plugin, becaus ajaxSuccess event is not triggered here

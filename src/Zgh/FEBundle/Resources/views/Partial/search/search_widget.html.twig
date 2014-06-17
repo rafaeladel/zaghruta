@@ -1,79 +1,30 @@
-<form action="{{ url("zgh_fe.search.post_search") }}" method="get">
+<form action="{{ search_url }}" method="get">
     <div class="col-md-6 col-sm-8 search-box">
         <div class="mainSearch input-group">
             <div class="input-group-btn cat_ddl_btn" style="display:none;">
                 <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Category <span
                             class="caret"></span></button>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="searchOption" data-cat="0"><i class="icon-list-alt"></i>Everything</a></li>
-                    <li class="divider"></li>
+                    {#{% if not in_product %}#}
+                        <li><a href="#" class="searchOption {{ in_product ? "searchOptionProd" : "" }}" data-cat="all"><i class="icon-list-alt"></i>Everything</a></li>
+                        <li class="divider"></li>
+                    {#{% endif %}#}
                     {% for category in categories %}
-                        <li><a href="#" class="searchOption" data-cat="{{ category.id }}"><i class="iconMenu pull-left"></i>{{ category.name }}</a></li>
+                        <li><a href="#" class="searchOption {{ in_product ? "searchOptionProd" : "" }}" data-cat="{{ category.nameSlug }}"><i
+                                        class="iconMenu {{ category.cssClass }} pull-left"></i>{{ category.name }}</a>
+                        </li>
                     {% endfor %}
-                    {#<li class="has_sub"><a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels#}
-                            {#&amp; Venues</a></li>#}
-                    {#<li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp;#}
-                            {#catering</a></li>#}
-                    {#<li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a>#}
-                    {#</li>#}
-                    {#<li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a>#}
-                    {#</li>#}
-                    {#<li><a href="#"><i class="iconMenu iconJewelry pull-left"></i>Jewelry</a></li>#}
-                    {#<li><a href="#"><i class="iconMenu iconHonymoons pull-left"></i>Honeymoons</a></li>#}
-                    {#<li><a href="#"><i class="iconMenu iconFashion pull-left"></i>Fashion</a></li>#}
-                    {#<li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a>#}
-                    {#</li>#}
-                    {#<li><a href="#"><i class="iconMenu iconFlorists pull-left"></i>Florists </a></li>#}
-                    {#<li><a href="#"><i class="iconMenu iconFurniture pull-left"></i>Furniture</a></li>#}
-                    {#<li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health#}
-                        {#</a></li>#}
-                    {#<li><a href="#"><i class="iconMenu iconLimousines pull-left"></i>Limousines</a></li>#}
-                    {#<li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home#}
-                            {#Appliances</a></li>#}
-                    {#<li><a href="#"><i#}
-                                    {#class="iconMenu iconEntertainment pull-left"></i>Entertainment</a>#}
-                    {#</li>#}
-                    <li class="divider"></li>
-                    <li><a href="#" class="searchOption" data-cat="-2"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
+                    {% if not in_product %}
+                        <li class="divider"></li>
+                        <li><a href="#" class="searchOption" data-cat="people"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
+                    {% endif %}
                 </ul>
             </div>
             <!-- /btn-group -->
-            <input type="hidden" name="category" value="0"/>
-            <input type="text" name="q" class="form-control custFc"
+            <input type="hidden" name="category" value="all"/>
+            <input type="text" name="q" class="form-control custFc search_text {{ custome_class }}"
                    value="{{ app.request.get("q") }}" placeholder="Search for your things">
-            <a href="#" class="search-addon input-group-addon custAncor search_submit"></a>
-        </div>
-    </div>
-    <div class="col-md-1 col-sm-1 hidden-xs">
-        <div class="input-btn">
-            <button class="btn btn-primary dropdown-toggle search-box" data-toggle="dropdown">
-                <span class="glyphicon glyphicon-align-justify"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="#"><i class="icon-list-alt"></i>Everything</a></li>
-                <li class="divider"></li>
-                <li class="has_sub"><a href="#"><i class="iconMenu iconHotels pull-left"></i>Hotels
-                        &amp; Venues</a></li>
-                <li><a href="#"><i class="iconMenu iconCatering pull-left"></i>Cake &amp; catering</a>
-                </li>
-                <li><a href="#"><i class="iconMenu iconWedding pull-left"></i>Wedding Planners</a></li>
-                <li><a href="#"><i class="iconMenu iconPhotography pull-left"></i>Photography</a></li>
-                <li><a href="#"><i class="iconMenu iconJewelry pull-left"></i>Jewelry</a></li>
-                <li><a href="#"><i class="iconMenu iconHonymoons pull-left"></i>Honeymoons</a></li>
-                <li><a href="#"><i class="iconMenu iconFashion pull-left"></i>Fashion</a></li>
-                <li><a href="#"><i class="iconMenu iconRealEstate pull-left"></i>Real Estate</a></li>
-                <li><a href="#"><i class="iconMenu iconFlorists pull-left"></i>Florists </a></li>
-                <li><a href="#"><i class="iconMenu iconFurniture pull-left"></i>Furniture</a></li>
-                <li><a href="#"><i class="iconMenu iconHealth pull-left"></i>Beauty &amp; Health </a>
-                </li>
-                <li><a href="#"><i class="iconMenu iconLimousines pull-left"></i>Limousines</a></li>
-                <li><a href="#"><i class="iconMenu iconHAppliances pull-left"></i>Home Appliances</a>
-                </li>
-                <li><a href="#"><i class="iconMenu iconEntertainment pull-left"></i>Entertainment</a>
-                </li>
-                <li class="divider"></li>
-                <li><a href="#"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
-            </ul>
+            <a href="#" class="search-addon input-group-addon custAncor  {{ in_product ? "doSearch" : "search_submit" }}"></a>
         </div>
     </div>
 </form>

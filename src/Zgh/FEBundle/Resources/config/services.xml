@@ -16,6 +16,8 @@
         <parameter key="zgh_fe.twig.notification.class">Zgh\FEBundle\TwigExtension\NotificationExtension</parameter>
         <parameter key="zgh_fe.twig.follow_check.class">Zgh\FEBundle\TwigExtension\FollowCheckExtension</parameter>
         <parameter key="zgh_fe.twig.widgets_extension.class">Zgh\FEBundle\TwigExtension\WidgetsExtension</parameter>
+        <parameter key="zgh_fe.twig.paginator.class">Zgh\FEBundle\TwigExtension\PaginatorExtension</parameter>
+        <parameter key="zgh_fe.render_search.class">Zgh\FEBundle\TwigExtension\SearchWidgetExtension</parameter>
         <parameter key="zgh_fe.twig.render_follow.class">Zgh\FEBundle\TwigExtension\RenderFollowExtension</parameter>
         <parameter key="zgh_user_provider.class">Zgh\FEBundle\Security\User\Provider\ZaghrutaUserProvider</parameter>
         <parameter key="zgh_fe.user_privacy.manager.class">Zgh\FEBundle\TwigExtension\UserPrivacyManager</parameter>
@@ -30,6 +32,8 @@
         <parameter key="zgh_fe.search_manager.class">Zgh\FEBundle\Service\SearchManager</parameter>
         <parameter key="zgh_fe.right_side_manager.class">Zgh\FEBundle\Service\RightSideManager</parameter>
         <parameter key="zgh_fe.email_notifier.class">Zgh\FEBundle\Service\EmailNotifier</parameter>
+        <parameter key="zgh_fe.slugifier.class">Zgh\FEBundle\Service\Slugifier</parameter>
+        <parameter key="zgh_fe.paginator.class">Zgh\FEBundle\Service\Paginator</parameter>
     </parameters>
 
     <services>
@@ -138,6 +142,7 @@
             <tag name="twig.extension" />
         </service>
 
+
         <service id="zgh_fe.tag" class="%zgh_fe.tag.class%">
             <argument type="service" id="router" />
             <argument type="service" id="doctrine.orm.entity_manager"/>
@@ -167,6 +172,25 @@
         <service id="zgh_fe.email_notifier" class="%zgh_fe.email_notifier.class%">
             <argument type="service" id="mailer"/>
             <argument type="service" id="router"/>
+        </service>
+
+        <service id="zgh_fe.slugifier" class="%zgh_fe.slugifier.class%">
+        </service>
+
+        <service id="zgh_fe.paginator" class="%zgh_fe.paginator.class%">
+        </service>
+
+        <service id="zgh_fe.twig.paginator.class" class="%zgh_fe.twig.paginator.class%">
+            <argument type="service" id="zgh_fe.paginator"/>
+            <tag name="twig.extension"/>
+        </service>
+
+
+        <service id="zgh_fe.render_search" class="%zgh_fe.render_search.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="zgh_fe.search_manager" />
+            <argument type="service" id="router" />
+            <tag name="twig.extension" />
         </service>
 
         <!--<service id="zgh_fe.param_converter.social" class="Zgh\FEBundle\ParamConverter\SocialConverter">-->

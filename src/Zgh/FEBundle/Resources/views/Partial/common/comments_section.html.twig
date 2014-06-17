@@ -23,6 +23,7 @@
     <div class="comments_wrapper">
     {{ include("@ZghFE/Partial/common/comments_list.html.twig", {"comments": comments} ) }}
     </div>
+    {% if app.user %}
     <div class="row">
         <form action="{{ url("zgh_fe.comment.new", {"id": entity.id, "entity_type": entity.getObjectType}) }}" class="formComments" method="post">
             <textarea name="comment_content" placeholder="Post comment.." class="form-control animated" data-e_i="{{ entity.id }}" data-e_t="{{ entity.getObjectType }}" rows="1"></textarea>
@@ -31,4 +32,5 @@
             </button>
         </form>
     </div>
+    {% endif %}
     <div class="clearfix"></div>

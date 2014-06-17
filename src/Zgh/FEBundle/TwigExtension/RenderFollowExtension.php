@@ -44,6 +44,11 @@ class RenderFollowExtension extends \Twig_Extension
     {
         $current_user = $this->security_context->getToken()->getUser();
 
+        if(!$current_user instanceof User)
+        {
+            return null;
+        }
+
         //User viewing his own profile. No follow button needed
         if($user->getId() == $current_user->getId()){
             return null;

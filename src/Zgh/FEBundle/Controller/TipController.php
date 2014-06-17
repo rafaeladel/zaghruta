@@ -25,10 +25,11 @@ class TipController extends Controller
             ));
     }
 
-    public function getContentAction($id, $tip_id)
+    public function getContentAction(User $user, $tip_id)
     {
         $tip = $this->getDoctrine()->getRepository("ZghFEBundle:Tip")->find($tip_id);
         return $this->render("@ZghFE/Default/tip_content.html.twig", array(
+                "user" => $user,
                 "tip" => $tip
             ));
     }

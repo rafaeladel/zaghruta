@@ -5,18 +5,18 @@ $(document).ready(function(){
     $("body").on("click", ".likeBtn", function(e){
         e.preventDefault();
         var btn = $(e.currentTarget);
-        $(e.currentTarget).attr("disabled", "disabled");
-        var form = $(e.currentTarget).closest("form");
-        var count_wrapper = $(e.currentTarget).closest(".post, .photo, .experience, .tip, .product").find(".likes_count");
+        btn.attr("disabled", "disabled");
+        var form = btn.closest("form");
+        var count_wrapper = btn.closest(".post, .photo, .experience, .tip, .product").find(".likes_count");
         var old_count = count_wrapper.text();
-        if($(e.currentTarget).find("span").hasClass("liked")){
+        if(btn.find("span").hasClass("liked")){
             count_wrapper.text(--old_count);
-            $(e.currentTarget).attr('title', "Like")
+            btn.attr('title', "Like")
                 .tooltip('fixTitle')
                 .tooltip('show');
         } else {
             count_wrapper.text(++old_count);
-            $(e.currentTarget).attr('title', "Unlike")
+            btn.attr('title', "Unlike")
                 .tooltip('fixTitle')
                 .tooltip('show');
         }
@@ -26,17 +26,18 @@ $(document).ready(function(){
             success: function(data){
                 count_wrapper.text(data.likes_count);
                 if(data.like_state == 0){
-                    $(e.currentTarget).find("span").removeClass("glyphicon-heart-empty").removeClass("liked");
-                    $(e.currentTarget).attr('title', "Like")
+                    btn.find("span").removeClass("glyphicon-heart-empty").removeClass("liked");
+                    btn.attr('title', "Like")
                         .tooltip('fixTitle')
                         .tooltip('show');
+                    btn.removeAttr("disabled");
                 } else {
-                    $(e.currentTarget).find("span").addClass("glyphicon-heart-empty").addClass("liked");
-                    $(e.currentTarget).attr('title', "Unlike")
+                    btn.find("span").addClass("glyphicon-heart-empty").addClass("liked");
+                    btn.attr('title', "Unlike")
                         .tooltip('fixTitle')
                         .tooltip('show');
+                    btn.removeAttr("disabled");
                 }
-                $(e.currentTarget).removeAttr("disabled");
             }
         });
     });
@@ -53,11 +54,11 @@ $(document).ready(function(){
     });
 
     $("body").on("keyup", "form [name='comment_content']",  function(e){
-       if($(e.target).val() == 0){
-           $(e.target).closest("form").find(".btn-comment").attr("disabled", "disabled");
-       } else {
-           $(e.target).closest("form").find(".btn-comment").removeAttr("disabled");
-       }
+        if($(e.target).val() == 0){
+            $(e.target).closest("form").find(".btn-comment").attr("disabled", "disabled");
+        } else {
+            $(e.target).closest("form").find(".btn-comment").removeAttr("disabled");
+        }
     });
 
 

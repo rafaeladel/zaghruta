@@ -426,8 +426,10 @@ footer .container {
 .select2-container-multi .select2-choices .select2-search-choice{
     margin: 6px 0 3px 7px !important;
 }
-..select2-container-multi .select2-choices .select2-search-field input{
+.select2-container-multi .select2-choices .select2-search-field input{
     padding: 0 !important;
+    font-size: 14px;
+    color: #ccc;
 }
 .select2-input{
     padding: 0 !important;
@@ -437,10 +439,12 @@ footer .container {
 }
 .select2-container .select2-choice, .select2-container-multi .select2-choices{
     height: 34px !important;
+    width: 100%;
 }
-/*.select2-container .select2-choice > .select2-chosen{
-    margin-top: 10px;
-}*/
+.select2-container .select2-choice > .select2-chosen{
+    font-size: 14px;
+    color: #cccccc;
+}
 #form_gender #form_gender_1{ margin-left: 10px;}
 
 
@@ -954,6 +958,7 @@ div.profile{
     width: 24px;
     height: 24px;
     display: block;
+    background: #9dd8cf;
 }
 
 .srh-Res-Heading h1 {
@@ -1274,15 +1279,19 @@ footer a {
     margin: 0 auto;
     display: block;
 }
+.companyData img{
+    width: 100%;
+}
 
 .companyData h2 {
     display: block;
     font-weight: bold;
     margin-bottom: 0;
+     font-size: 16px;
 }
 
 .companyData p {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: normal;
 }
 
@@ -1318,7 +1327,7 @@ footer a {
     right: 0 !important;
 }
 .btnEditProduct{
-    margin-left: 20px;
+    margin-right: 20px;
     margin-top: 5px !important;
     display: inline-block;
 }
@@ -1907,8 +1916,10 @@ footer a {
 }
 
 .modalClose {
-    color: #333;
     opacity: 1;
+}
+.close{
+    color: #fff;
 }
 
 .formGroup {
@@ -2389,9 +2400,33 @@ border-top: none;
 }
 .photoContent .result {
     position: absolute;
-    right:126px;
+    right:65px;
     top: -37px;
 }
+.PopupPhotoContent{
+    position: relative;
+}
+.nameAlbum h4{
+   margin: 0 !important;
+}
+.deteilsPhoto, .deteilsProduct{
+   position: absolute;
+   bottom: 0;
+   height: 42px;
+   background: rgba(000, 000, 000, 0.5);
+   width: 95.6%;
+   padding: 12px;
+}
+.deteilsProduct h2{
+    margin: 0;
+    font-size: 16px;
+    padding-left: 0;
+    color: #fff;
+}
+.messagePopup .margin-bottom {
+margin-bottom: 15px !important;
+}
+
 .result2 .result{
     right: 64px !important;
 }
@@ -2487,10 +2522,10 @@ border-top: none;
 .fancybox-inner .btnEditProduct{
     display: none;
 }
-.fancybox-inner .product .btn-delete {
+/*.fancybox-inner .product .btn-delete {
     margin-left: 52px !important;
     margin-top: 5px !important;
-}
+}*/
 .fancybox-inner .product h2, .fancybox-inner .product .contentProduct p,.fancybox-inner .product  .price, .headerProduct>p {
     color:#fff !important;
 }
@@ -2640,4 +2675,31 @@ border-top: none;
 .interest ul li label{
     font-size: 14px;
 }
-.note-box .tooltip{display: inline-block}
+.note-box .tooltip
+
+{display: inline-block}
+.photoDate{
+   margin-bottom: 0 !important;
+   margin-top: 13px;
+}
+.banner{
+    position: relative;
+}
+.headerProduct{
+    margin-bottom: 10px;
+}
+.margin-right{
+    margin-right: 15px;
+}
+.dz-preview .dz-photo{
+    width: 100%;
+    height: 200px;
+   overflow: hidden;
+}
+.dz-preview .dz-photo img{
+    width: 100%;
+    height: auto;
+}
+.exp_add{
+    
+}

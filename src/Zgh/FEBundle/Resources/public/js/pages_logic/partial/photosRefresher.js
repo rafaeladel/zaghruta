@@ -16,7 +16,7 @@ function photoRefresh(){
                 "message": "Please select an album"
             }
         },
-        numOfFiles: 20
+        numOfFiles: 5
     });
     photo_uploader.init();
 
@@ -41,7 +41,7 @@ function photoRefresh(){
                 "message": "Please enter album info."
             }
         },
-        numOfFiles: 20
+        numOfFiles: 5
     });
     album_uploader.init();
 }

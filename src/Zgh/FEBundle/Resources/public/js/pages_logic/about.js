@@ -25,7 +25,8 @@ $(document).ready(function(){
 
     $("body").on("click", ".save_about", function(e){
         e.preventDefault();
-
+        var btn = $(e.currentTarget);
+        btn.attr("disabled", "disabled");
         var form = $(e.target).closest("form");
         $.ajax({
             type: "POST",
@@ -35,9 +36,12 @@ $(document).ready(function(){
             success: function(data){
                 if(data.status == 200){
                     $(e.target).parents(".about_wrapper").load(UrlContainer.aboutPartial);
+                    btn.removeAttr("disabled");
                 } else if(data.status == 500)
                 {
                     $(e.target).parents(".about_wrapper").html(data.view);
+                    btn.removeAttr("disabled");
+
                 }
             }
         })

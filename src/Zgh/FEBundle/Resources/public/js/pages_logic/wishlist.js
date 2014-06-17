@@ -1,16 +1,20 @@
 $(document).ready(function () {
     $("body").on("click", ".wishlistSubmit", function (e) {
+        $("body").off("click", ".wishlistSubmit");
+        var btn = $(e.currentTarget);
         $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
             instance.submitEvent.preventDefault();
             if (instance.isValid()) {
-                var form = $(e.target).closest("form");
+                btn.attr("disabled", "disabled");
+                var form = btn.closest("form");
                 $.ajax({
                     type: "POST",
                     url: $(form).attr('action'),
                     data: $(form).serialize(),
                     success: function () {
-                        $(".modalClose").click();
-                        $(form).get(0).reset();
+                        btn.removeAttr("disabled");
+                        form.get(0).reset();
+                        $("#addNewListPopup").modal("hide");
                         $("#wishlists_list").load(UrlContainer.wishlistPartial);
                     }
                 });

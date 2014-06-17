@@ -84,6 +84,8 @@ class SearchManager
             "
         );
         $q->setParameter("crit", "%" .  strtolower($query) . "%");
+//        var_dump($q->execute());
+//        die;
         return $q->execute();
     }
 
@@ -101,72 +103,86 @@ class SearchManager
         return $q->execute();
     }
 
-    public function getProductByCategoryResults($cat_id, $query)
+    public function getProductByCategoryResults($cat_slug, $query)
     {
         $q = $this->em->createQuery("
                 select pr
                 from Zgh\FEBundle\Entity\Product pr
                 inner join pr.category c
-                where c.id = :cat
+                where c.name_slug = :cat
                 and pr.name like :crit
             ");
-
         $q->setParameters([
-                "cat" => $cat_id,
+                "cat" => $cat_slug,
                 "crit" => "%" .  strtolower($query) . "%"
             ]);
 
         return $q->execute();
     }
 
-    public function getVendorByCategoryResults($cat_id, $query)
+    public function getCategoryByProductResults($user)
+    {
+        $q = $this->em->createQuery("
+                select c
+                from Zgh\FEBundle\Entity\Category c
+                inner join c.products pr
+                where pr.user = :user
+            ");
+        $q->setParameters([
+                "user" => $user,
+            ]);
+
+        return $q->execute();
+    }
+
+    public function getVendorByCategoryResults($cat_slug, $query)
     {
         $q = $this->em->createQuery("
                 select u
                 from Zgh\FEBundle\Entity\User u
                 inner join u.interests i
-                where i.id = :cat
+                where i.name_slug = :cat
                 and u.firstname like :crit
                 and u.roles like '%ROLE_VENDOR%'
             ");
 
         $q->setParameters([
-                "cat" => $cat_id,
+                "cat" => $cat_slug,
                 "crit" => "%" .  strtolower($query) . "%"
             ]);
 
         return $q->execute();
     }
 
-    public function getExperiencesByCategory($cat_id, $query)
+    public function getExperiencesByCategory($cat_slug, $query)
     {
         $q = $this->em->createQuery("
                 select e
                 from Zgh\FEBundle\Entity\Experience e
                 inner join e.category c
-                where c.id = :cat
+                where c.name_slug = :cat
                 and e.name like :crit
             ");
 
         $q->setParameters([
-                "cat" => $cat_id,
+                "cat" => $cat_slug,
                 "crit" => "%" .  strtolower($query) . "%"
             ]);
 
         return $q->execute();
     }
 
-    public function getProductByUserAndCategory($user_id, $cat_id, $crit)
+    public function getProductByUserAndCategory($user_id, $cat_slug, $crit)
     {
         $query = "select pr
                 from Zgh\FEBundle\Entity\Product pr";
 
-        $query .= $cat_id != 0 ? " inner join pr.category c" : "";
+        $query .= $cat_slug == "all" ? "" :  " inner join pr.category c" ;
 
         $query .= " where pr.user = :user
                     and pr.name like :crit";
 
-        $query .= $cat_id != 0 ? " and c.id = :cat" : "";
+        $query .= $cat_slug == "all" ? "" : " and c.name_slug = :cat" ;
 
         $q = $this->em->createQuery($query);
 
@@ -176,9 +192,9 @@ class SearchManager
         ]);
 
 
-        if($cat_id != 0)
+        if($cat_slug != "all")
         {
-            $q->setParameter("cat", $cat_id);
+            $q->setParameter("cat", $cat_slug);
         }
 
 

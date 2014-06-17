@@ -34,6 +34,15 @@ class Category
      */
     protected $name;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $name_slug;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $css_class;
 
     /**
      * @ORM\OneToMany(targetEntity="VendorInfo", mappedBy="categories")
@@ -170,5 +179,61 @@ class Category
     public function getExperiences()
     {
         return $this->experiences;
+    }
+
+    /**
+     * Add vendors
+     *
+     * @param \Zgh\FEBundle\Entity\VendorInfo $vendors
+     * @return Category
+     */
+    public function addVendor(\Zgh\FEBundle\Entity\VendorInfo $vendors)
+    {
+        $this->vendors[] = $vendors;
+
+        return $this;
+    }
+
+    /**
+     * Remove vendors
+     *
+     * @param \Zgh\FEBundle\Entity\VendorInfo $vendors
+     */
+    public function removeVendor(\Zgh\FEBundle\Entity\VendorInfo $vendors)
+    {
+        $this->vendors->removeElement($vendors);
+    }
+
+    /**
+     * Get vendors
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVendors()
+    {
+        return $this->vendors;
+    }
+
+    /**
+     * Set css_class
+     *
+     * @param string $cssClass
+     * @return Category
+     */
+    public function setCssClass($cssClass)
+    {
+        $this->css_class = $cssClass;
+
+        return $this;
+    }
+
+    /**
+     * Get css_class
+     *
+     * @return string 
+     */
+    public function getCssClass()
+    {
+        return $this->css_class;
     }
 }

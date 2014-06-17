@@ -37,7 +37,7 @@ class NotificationSubscriber implements EventSubscriberInterface
             NotifyEvents::NOTIFY_FOLLOW                 => [["onNotifyFollow", 10],             ["onEmailNotify", 0]],
             NotifyEvents::NOTIFY_FOLLOW_REQUEST         => [["onNotifyFollowRequest", 10],      ["onEmailNotify", 0]],
             NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST   => [["onNotifyRelationshipRequest", 10],["onEmailNotify", 0]],
-            NotifyEvents::NOTIFY_DELETE                 => [["onNotifyDelete", 10],             ["onEmailNotify", 0]]
+            NotifyEvents::NOTIFY_DELETE                 => ["onNotifyDelete", 10]
         ];
     }
 

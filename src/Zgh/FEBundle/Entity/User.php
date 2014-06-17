@@ -16,9 +16,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User extends BaseUser implements ParticipantInterface
 {
     /**
-     * @ORM\Column(type="string", length=255)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
@@ -172,15 +172,6 @@ class User extends BaseUser implements ParticipantInterface
      * @ORM\Column(type="boolean")
      */
     protected $emailNotification;
-
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setId()
-    {
-        $this->id = uniqid();
-    }
 
     /**
      * @return string

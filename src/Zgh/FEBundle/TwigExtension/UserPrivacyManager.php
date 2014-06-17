@@ -25,6 +25,16 @@ class UserPrivacyManager extends \Twig_Extension
     public function isVisitable(User $user)
     {
         $current_user = $this->security_context->getToken()->getUser();
+
+        if(in_array("ROLE_VENDOR", $user->getRoles())){
+            return true;
+        }
+
+        if(!$current_user instanceof User)
+        {
+            return false;
+        }
+
         if($user->getId() == $current_user->getId()){
             return true;
         }

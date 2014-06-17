@@ -1,8 +1,11 @@
 $(document).ready(function(){
     $("body").on("click", ".branchSubmit", function(e){
+        $("body").off("click", ".branchSubmit");
+        var btn = $(e.currentTarget);
         $("#myform").parsley().subscribe("parsley:form:validate", function(instance){
            instance.submitEvent.preventDefault();
            if(instance.isValid()){
+               btn.attr("disabled", "disabled");
                var form = $(e.currentTarget).closest("form");
                $.ajax({
                    type: "post",
@@ -12,8 +15,10 @@ $(document).ready(function(){
                        if(data.status == 200){
                            form[0].reset();
                            $("#addBranch").modal("hide");
+                           btn.removeAttr("disabled");
                            $(".content_wrapper").find("#branches_list").load(UrlContainer.branchesList);
                        } else if(data.status == 500){
+                           btn.removeAttr("disabled");
                            $(e.currentTarget).closest("#addBranch").find(".form_wrapper").html(data.view);
                        }
                    }

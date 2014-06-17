@@ -3,7 +3,7 @@
         <thead>
         <tr>
             <th colspan="2">Contact Information
-                {% if about.user.id == app.user.id %}
+                {% if app.user and about.user.id == app.user.id %}
                     <a href="{{ url("zgh_fe.about.get_vendor_edit", {"id": about.id }) }}" class="pull-right about_edit">
                         <span class="glyphicon glyphicon-edit top"></span>
                     </a>
