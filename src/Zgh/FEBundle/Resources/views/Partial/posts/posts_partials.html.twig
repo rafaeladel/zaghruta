@@ -30,7 +30,7 @@
                 </a>
 
                 <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": post.user.id } ) }}">{{ post.user.fullname }}</a></h3>
-                <a href="{{ url("zgh_fe.post.display", {"id": post.user.id, "post_id": post.id}) }}"><span class="date-time">{{ post.createdAt|date("D - h:m A") }}</span></a>
+                <a href="{{ url("zgh_fe.post.display", {"id": post.user.id, "post_id": post.id}) }}"><span class="date-time">{{ post.createdAt|date("D d Y - h:m A") }}</span></a>
 
             </div>
 

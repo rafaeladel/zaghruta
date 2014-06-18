@@ -66,7 +66,7 @@ class CommentManager
         return new JsonResponse(array(
             "deleteUrl" => $this->router->generate("zgh_fe.comment.delete", array("id" => $comment->getId())),
             "author" => $comment->getUser()->getFullName(),
-            "author_url" => "user_url",
+            "author_url" => $this->router->generate("zgh_fe.user_profile.index", ["id" => $user->getId()]),
             "time" => $comment->getCreatedAt()->format("D - h A"),
             "comments_count" => count($entity->getComments()),
             "author_pp" => in_array("ROLE_FACEBOOK", $user->getRoles()) ?

@@ -12,11 +12,6 @@
                                 src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
                 <div class="divider visible-sm"></div>
                 {{ getSearchWidget()|raw }}
-                <div class="notificationsWidget text-center-xs">
-                    {% if app.user and app.user.firstTime == false %}
-                        {{ render_esi(controller("ZghFEBundle:Default:getShortcutsAndNotification")) }}
-                    {% endif %}
-                </div>
 
             </div>
             <!-- Header To Xs -->
