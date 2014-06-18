@@ -84,11 +84,15 @@ $(window).resize(function () {
 
 });
 
-$(".input-group-btn").hover(function () {
-    $(this).data("hovered", true);
-}, function () {
-    $(this).data("hovered", false);
-});
+$(".contentInterests ul").addClass("col-md-12");
+$(".contentInterests ul li").addClass("col-md-3");
+
+
+//$(".input-group-btn").hover(function () {
+//    $(this).data("hovered", true);
+//}, function () {
+//    $(this).data("hovered", false);
+//});
 
 //
 //$(".mainSearch input").focus(function (e) {

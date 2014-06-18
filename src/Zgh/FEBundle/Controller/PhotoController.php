@@ -1,6 +1,8 @@
 <?php
 namespace Zgh\FEBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,28 +18,21 @@ use Zgh\FEBundle\Form\WishlistType;
 class PhotoController extends Controller
 {
     /**
-     * @param $id
-     * @param Photo $photo
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @ParamConverter("photo", class="ZghFEBundle:Photo", options={"id" = "photo_id"})
      */
-    public function getPhotoContentAction($id, $photo_id)
+    public function getPhotoContentAction(User $user, Photo $photo)
     {
-        $photo = $this->getDoctrine()->getRepository("ZghFEBundle:Photo")->findOneBy([
-            "user" => $id,
-            "id" => $photo_id
-        ]);
-        if(!$photo)
-        {
-            return $this->render("@ZghFE/Default/404.html.twig");
-        }
-        return $this->render("@ZghFE/Default/photo.html.twig", ["photo" => $photo]);
+        return $this->render("@ZghFE/Default/photo.html.twig", [
+                "user" => $user,
+                "photo" => $photo,
+            ]);
     }
 
-    public function getPhotoPhotosPartialContentAction($id)
+    public function getPhotoPhotosPartialContentAction(User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $photos = $user->getPhotos();
         return $this->render("@ZghFE/Partial/photos/user_profile_photos_p_content.html.twig", array(
+                "user" => $user,
                 "photos" => $photos
             ));
     }

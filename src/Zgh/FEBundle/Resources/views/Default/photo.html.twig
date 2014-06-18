@@ -7,7 +7,7 @@
     <div class="container">
         {% block leftContent %}
             <div class="photo col-md-9 col-md-offset-3 center">
-                {{ include("@ZghFE/Default/photo_content.html.twig", {"photo": photo}) }}
+                {{ include("@ZghFE/Default/photo_content.html.twig", {"user": user,"photo": photo, "is_popup": false}) }}
             </div>
 
         {% endblock leftContent %}

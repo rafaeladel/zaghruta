@@ -45,6 +45,7 @@ class NotificationSubscriber implements EventSubscriberInterface
     {
         $notification = $event->getNotification();
         $user = $event->getUserToNotify();
+        $notification->setLike($event->getLikeObject());
         $user->addNotification($notification);
         $this->em->persist($user);
         $this->em->flush();
@@ -55,6 +56,7 @@ class NotificationSubscriber implements EventSubscriberInterface
     {
         $notification = $event->getNotification();
         $user = $event->getUserToNotify();
+        $notification->setComment($event->getCommentObject());
         $user->addNotification($notification);
         $this->em->persist($user);
         $this->em->flush();

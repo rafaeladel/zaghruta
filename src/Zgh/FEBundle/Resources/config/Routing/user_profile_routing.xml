@@ -30,7 +30,7 @@
         <default key="_controller">ZghFEBundle:UserProfile:getBranchPartial</default>
     </route>
 
-    <route id="zgh_fe.user_profile.wishlist_partial" pattern="/{id}/wishlist">
+    <route id="zgh_fe.user_profile.wishlist_partial" pattern="/{id}/wishlists">
         <default key="_controller">ZghFEBundle:UserProfile:getWishlistPartial</default>
     </route>
 

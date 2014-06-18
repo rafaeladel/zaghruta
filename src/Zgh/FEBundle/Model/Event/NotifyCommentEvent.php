@@ -16,6 +16,13 @@ class NotifyCommentEvent extends Event
      */
     protected $user;
 
+    /**
+     * @var \Zgh\FEBundle\Entity\Comment
+     */
+    protected $commentObj;
+
+    protected $objectType;
+
     protected $action_id;
 
     /**
@@ -30,10 +37,12 @@ class NotifyCommentEvent extends Event
         $this->content = [
             "type" => NotifyEvents::NOTIFY_COMMENT,
             "user" => $user->getFullName(),
-            "post_id" => $obj->getId()
+            "obj_id" => $obj->getId(),
+            "obj_type" => $comment->getObjectType()
         ];
 
         $this->user = $obj->getUser();
+        $this->commentObj = $comment;
         $this->action_id = $comment->getId();
     }
 
@@ -47,5 +56,10 @@ class NotifyCommentEvent extends Event
     public function getUserToNotify()
     {
         return $this->user;
+    }
+
+    public function getCommentObject()
+    {
+        return $this->commentObj;
     }
 }

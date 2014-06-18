@@ -31,8 +31,10 @@
         <td>Status</td>
         <td>
             {% if info.status == "In relationship" %}
-                <span>In relationship with</span>
-                <a href="{{ url("zgh_fe.user_profile.index", {"id": info.relationshipUser.id}) }}">{{ info.relationshipUser }}</a>
+                {% if info.relationshipUser %}
+                    <span>In relationship with</span>
+                    <a href="{{ url("zgh_fe.user_profile.index", {"id": info.relationshipUser.id}) }}">{{ info.relationshipUser }}</a>
+                {% endif %}
             {% elseif info.status == "Married" or info.status == "Engaged" %}
                 {% if info.relationshipUser %}
                     <span>{{ info.status }} to</span>

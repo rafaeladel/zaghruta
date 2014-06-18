@@ -45,9 +45,9 @@ class LikeManager
             //If user already liked the post remove it
             $this->em->remove($result);
             $entity->removeLike($result);
-
-            $notification_delete_event = new NotifyDeleteEvent($entity->getUser(), $result->getId());
-            $this->dispatcher->dispatch(NotifyEvents::NOTIFY_DELETE, $notification_delete_event);
+//
+//            $notification_delete_event = new NotifyDeleteEvent($entity->getUser(), $result->getId());
+//            $this->dispatcher->dispatch(NotifyEvents::NOTIFY_DELETE, $notification_delete_event);
 
 
             //for ui classes
@@ -61,6 +61,7 @@ class LikeManager
             $entity->addLike($like);
             $state = 1;
 
+            //Don't send notification if user liked his own post
             if ($user->getId() != $entity->getUser()->getId()) {
                 $like_event = new NotifyLikeEvent($user, $like);
                 $this->dispatcher->dispatch(NotifyEvents::NOTIFY_LIKE, $like_event);

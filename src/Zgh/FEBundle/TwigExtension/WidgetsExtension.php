@@ -112,21 +112,21 @@ class WidgetsExtension extends \Twig_Extension
         return $this->env->render("@ZghFE/Partial/experiences/user_profile_experience_content.html.twig", ["experiences" => $experiences]);
     }
 
-    public function getProductsByCategory($cat_id, $crit)
+    public function getProductsByCategory($cat_slug, $crit)
     {
-        $results = $this->searchManager->getProductByCategoryResults($cat_id, $crit);
+        $results = $this->searchManager->getProductByCategoryResults($cat_slug, $crit);
         return $this->env->render("@ZghFE/Partial/products/user_profile_products_content.html.twig", ["products" => $results]);
     }
 
-    public function getVendorByCategory($cat_id, $crit)
+    public function getVendorByCategory($cat_slug, $crit)
     {
-        $vendor = $this->searchManager->getVendorByCategoryResults($cat_id, $crit);
+        $vendor = $this->searchManager->getVendorByCategoryResults($cat_slug, $crit);
         return $this->env->render("@ZghFE/Partial/search/search_partial_users.html.twig", ["users" => $vendor]);
     }
 
-    public function getExperienceByCategory($cat_id, $crit)
+    public function getExperienceByCategory($cat_slug, $crit)
     {
-        $experiences = $this->searchManager->getExperiencesByCategory($cat_id, $crit);
+        $experiences = $this->searchManager->getExperiencesByCategory($cat_slug, $crit);
         return $this->env->render("@ZghFE/Partial/experiences/user_profile_experience_content.html.twig", ["experiences" => $experiences]);
     }
 

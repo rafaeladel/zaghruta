@@ -17,6 +17,8 @@ class Notification
     const TYPE_lIKE = 0;
     const TYPE_COMMENT = 1;
     const TYPE_FOLLOW = 2;
+    const TYPE_FOLLOW_REQUEST = 3;
+    const TYPE_RELATIONSHIP_REQUEST = 4;
 
 
     /**
@@ -38,6 +40,16 @@ class Notification
      * @ORM\Column(type="text")
      */
     protected $action_id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Like", mappedBy="notification")
+     */
+    protected $like;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Comment", mappedBy="notification")
+     */
+    protected $comment;
 
     /**
      * Set content
@@ -114,5 +126,51 @@ class Notification
     public function setIsReadValue()
     {
         $this->setIsRead(false);
+    }
+
+    /**
+     * Set action_id
+     *
+     * @param string $actionId
+     * @return Notification
+     */
+    public function setActionId($actionId)
+    {
+        $this->action_id = $actionId;
+
+        return $this;
+    }
+
+    /**
+     * Get action_id
+     *
+     * @return string 
+     */
+    public function getActionId()
+    {
+        return $this->action_id;
+    }
+
+    /**
+     * Set like
+     *
+     * @param \Zgh\FEBundle\Entity\Like $like
+     * @return Notification
+     */
+    public function setLike(\Zgh\FEBundle\Entity\Like $like = null)
+    {
+        $this->like = $like;
+        $like->setNotification($this);
+        return $this;
+    }
+
+    /**
+     * Get like
+     *
+     * @return \Zgh\FEBundle\Entity\Like 
+     */
+    public function getLike()
+    {
+        return $this->like;
     }
 }

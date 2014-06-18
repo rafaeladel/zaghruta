@@ -30,6 +30,15 @@ $(document).ready(function () {
         var wrapper = $(e.currentTarget).closest(".content_wrapper");
 
         wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+        history.pushState(null, null, url);
         wrapper.load(url);
+    });
+
+    $("body").on("click", ".wishlist_back_btn", function(e){
+        e.preventDefault();
+        var wrapper = $("body").find(".content_wrapper");
+        wrapper.html('<img style="margin: auto; display: block;" src="'+UrlContainer.loader+'" />');
+        wrapper.load($(e.target).data("target_url"));
+        history.pushState(null, null, $(e.target).data("target_url"));
     });
 });

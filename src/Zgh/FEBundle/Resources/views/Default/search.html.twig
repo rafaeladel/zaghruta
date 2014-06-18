@@ -120,7 +120,7 @@
                 </div>
                 {% if app.user %}
                     <div id="searchExperince" class="row resultWrapper">
-                        {{ getExperiencesSearchResult(query)|raw }}
+                        {{ getExperienceByCategory(catSlug, query)|raw }}
                     </div>
                 {% endif %}
             {% endif %}

@@ -42,6 +42,16 @@ class Notification
     protected $action_id;
 
     /**
+     * @ORM\OneToOne(targetEntity="Like", mappedBy="notification")
+     */
+    protected $like;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Comment", mappedBy="notification")
+     */
+    protected $comment;
+
+    /**
      * Set content
      *
      * @param array $content
@@ -139,5 +149,51 @@ class Notification
     public function getActionId()
     {
         return $this->action_id;
+    }
+
+    /**
+     * Set like
+     *
+     * @param \Zgh\FEBundle\Entity\Like $like
+     * @return Notification
+     */
+    public function setLike(\Zgh\FEBundle\Entity\Like $like = null)
+    {
+        $this->like = $like;
+        $like->setNotification($this);
+        return $this;
+    }
+
+    /**
+     * Get like
+     *
+     * @return \Zgh\FEBundle\Entity\Like 
+     */
+    public function getLike()
+    {
+        return $this->like;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param \Zgh\FEBundle\Entity\Comment $comment
+     * @return Notification
+     */
+    public function setComment(\Zgh\FEBundle\Entity\Comment $comment = null)
+    {
+        $this->comment = $comment;
+        $comment->setNotification($this);
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Zgh\FEBundle\Entity\Comment 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

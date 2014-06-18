@@ -29,6 +29,22 @@
     </div>
 </div>
 <div class="row photoContent">
+    {% if is_popup == false %}
+    <div class="row margin-bottom margin-top">
+        {% set photos = photo.user.photos %}
+        {% set next_id = nextId(photos, photo) %}
+        {% set prev_id = prevId(photos, photo) %}
+
+        {% if prev_id != null %}
+            <a href="{{ url("zgh_fe.photos.photo.content", {"id": photo.user.id, "photo_id": prev_id }) }}"
+               class="pull-left margin-left exp-Arrow"><span class="glyphicon glyphicon-chevron-left"></span> Previous</a>
+        {% endif %}
+        {% if next_id != null %}
+            <a href="{{ url("zgh_fe.photos.photo.content", {"id": photo.user.id, "photo_id": next_id }) }}"
+               class="pull-right margin-right exp-Arrow">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+        {% endif %}
+    </div>
+    {% endif %}
     <div class="row PhotoCaption">
         <div class="col-md-12">
             <p>{{ photo.caption }}

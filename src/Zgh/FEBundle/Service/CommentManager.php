@@ -81,6 +81,7 @@ class CommentManager
             $current_user = $this->security_context->getToken()->getUser();
             $object = $comment->getObject();
             $comment->setIsRemoved(true);
+            $comment->setNotification(null);
             $this->em->persist($comment);
             $this->em->flush();
 

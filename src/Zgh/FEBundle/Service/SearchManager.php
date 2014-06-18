@@ -161,7 +161,7 @@ class SearchManager
                 from Zgh\FEBundle\Entity\Experience e
                 inner join e.category c
                 where c.name_slug = :cat
-                and e.name like :crit
+                and e.title like :crit
             ");
 
         $q->setParameters([

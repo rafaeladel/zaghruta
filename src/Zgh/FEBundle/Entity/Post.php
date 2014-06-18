@@ -17,7 +17,6 @@ class Post implements LikeableInterface, CommentableInterface
 
     use BasicInfo;
 
-
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
      */

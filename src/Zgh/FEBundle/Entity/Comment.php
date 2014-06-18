@@ -49,6 +49,12 @@ class Comment
     protected $object;
 
     /**
+     * @ORM\OneToOne(targetEntity="Notification", inversedBy="comment", cascade={"remove"})
+     */
+    protected $notification;
+
+
+    /**
      * Set object_id
      *
      * @param integer $objectId
@@ -196,5 +202,28 @@ class Comment
     public function setIsRemovedValue()
     {
         $this->setIsRemoved(false);
+    }
+
+    /**
+     * Set notification
+     *
+     * @param \Zgh\FEBundle\Entity\Notification $notification
+     * @return Comment
+     */
+    public function setNotification(\Zgh\FEBundle\Entity\Notification $notification = null)
+    {
+        $this->notification = $notification;
+
+        return $this;
+    }
+
+    /**
+     * Get notification
+     *
+     * @return \Zgh\FEBundle\Entity\Notification 
+     */
+    public function getNotification()
+    {
+        return $this->notification;
     }
 }

@@ -13,6 +13,7 @@ use Zgh\FEBundle\Entity\Post;
 use Zgh\FEBundle\Entity\PostImage;
 use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Form\PostType;
+use Zgh\FEBundle\Model\Event\NotifyDeleteEvent;
 
 class PostController extends Controller
 {
@@ -98,6 +99,7 @@ class PostController extends Controller
     {
         $this->getDoctrine()->getManager()->remove($post);
         $this->getDoctrine()->getManager()->flush();
+
         return $this->redirect($this->generateUrl("zgh_fe.wall.index"));
     }
 }

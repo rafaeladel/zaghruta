@@ -16,6 +16,13 @@ class NotifyLikeEvent extends Event
      */
     protected $user;
 
+    /**
+     * @var \Zgh\FEBundle\Entity\Like
+     */
+    protected $likeObj;
+
+    protected $objectType;
+
     protected $action_id;
 
     /**
@@ -30,10 +37,12 @@ class NotifyLikeEvent extends Event
         $this->content = [
             "type" => NotifyEvents::NOTIFY_LIKE,
             "user" => $user->getFullName(),
-            "post_id" => $obj->getId()
+            "obj_id" => $obj->getId(),
+            "obj_type" => $like->getObjectType()
         ];
 
         $this->user = $obj->getUser();
+        $this->likeObj = $like;
         $this->action_id = $like->getId();
     }
 
@@ -47,5 +56,10 @@ class NotifyLikeEvent extends Event
     public function getUserToNotify()
     {
         return $this->user;
+    }
+
+    public function getLikeObject()
+    {
+        return $this->likeObj;
     }
 }

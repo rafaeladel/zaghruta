@@ -37,7 +37,7 @@
                         </ul>
                         <div class="tab-content">
                             <div id="register_user" class="tab-pane active">
-                                {{ form_start(form, {"action": url("zgh_fe.user_profile.user_post_intro_edit", {"id": app.user.id})}) }}
+                                {{ form_start(form, {"action": url("zgh_fe.user_profile.user_post_intro_edit", {"id": app.user.id}), "attr": {"novalidate": "novalidate"} }) }}
                                 <div class="form-group">
                                     {{ form_label(form.company_name) }} <span>(Required)</span>
                                     {{ form_widget(form.company_name, {"attr": {"class": "form-control", "placeholder": "Company name"} }) }}

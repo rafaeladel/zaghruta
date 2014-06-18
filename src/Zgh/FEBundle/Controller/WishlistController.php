@@ -17,9 +17,11 @@ class WishlistController extends Controller
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $wishlists = $user->getWishlists();
+        $form = $this->createForm(new WishlistType(), new Wishlist());
         return $this->render("@ZghFE/Partial/wishlists/user_profile_wishlist_content.html.twig", array(
                 "user" => $user,
-                "wishlists" => $wishlists
+                "wishlists" => $wishlists,
+                "wishlist_form" => $form->createView()
             ));
     }
 

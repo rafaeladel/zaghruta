@@ -70,17 +70,17 @@ class AboutController extends Controller
                 }
                 $user_info->setRelationshipUser(null);
             } else {
-                $user_info->setRelationshipAccepted(false);
-                $rel_event = new NotifyRelationshipRequestEvent($user_info);
-                $this->container->get("event_dispatcher")->dispatch(
-                    NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST,
-                    $rel_event
-                );
+                if(!$user_info->getRelationshipUser() instanceof User) {
+                    $user_info->setRelationshipAccepted(true);
+                } else {
+                    $user_info->setRelationshipAccepted(false);
+                    $rel_event = new NotifyRelationshipRequestEvent($user_info);
+                    $this->container->get("event_dispatcher")->dispatch(
+                        NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST,
+                        $rel_event
+                    );
+                }
 
-//                        $old_user_info = $this->resetUserInfo($entity);
-//                        if($entity->getRelationshipUser() instanceof User){
-//                            $target_user_info = $this->setUserInfoData($entity->getRelationshipUser()->getUserInfo(), $entity->getStatus(), $entity->getUser());
-//                        }
             }
 
         }

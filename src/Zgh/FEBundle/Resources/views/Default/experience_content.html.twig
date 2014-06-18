@@ -17,18 +17,18 @@
 
                     <div class="content_wrapper">
                         {% block innerPartial %}
-                            <div class="row">
+                            <div class="row margin-bottom">
                                 {% set experiences = user.experiences %}
                                 {% set next_id = nextId(experiences, experience) %}
                                 {% set prev_id = prevId(experiences, experience) %}
 
                                 {% if prev_id != null %}
                                     <a href="{{ url("zgh_fe.experience.content", {"id": user.id, "exp_id": prev_id }) }}"
-                                       class="pull-left">Previous</a>
+                                       class="pull-left margin-left exp-Arrow"><span class="glyphicon glyphicon-chevron-left"></span> Previous</a>
                                 {% endif %}
                                 {% if next_id != null %}
                                     <a href="{{ url("zgh_fe.experience.content", {"id": user.id, "exp_id": next_id }) }}"
-                                       class="pull-right">Next</a>
+                                       class="pull-right margin-right exp-Arrow">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
                                 {% endif %}
                             </div>
                             <div class="row headerProduct">

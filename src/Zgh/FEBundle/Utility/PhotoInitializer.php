@@ -46,8 +46,8 @@ class PhotoInitializer
         $finder = new Finder();
         $finder->files()->in($path)->name($name);
         foreach ($finder as $img) {
-            if(copy($img->getRealPath(), $path."/../".$img->getFilename())){
-                $dest_file = new File($path."/../".$img->getFilename());
+            if(copy($img->getRealPath(), $path."/tmp/".$img->getFilename())){
+                $dest_file = new File($path."/tmp/".$img->getFilename());
             }
         }
         return $dest_file;

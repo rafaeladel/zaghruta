@@ -39,6 +39,11 @@ class Like
     protected $object;
 
     /**
+     * @ORM\OneToOne(targetEntity="Notification", inversedBy="like", cascade={"remove"})
+     */
+    protected $notification;
+
+    /**
      * Set user
      *
      * @param \Zgh\FEBundle\Entity\User $user
@@ -132,5 +137,28 @@ class Like
             self::LIKE_TYPE_TIP => 'Zgh\FEBundle\Entity\Tip',
             self::LIKE_TYPE_PRODUCT => 'Zgh\FEBundle\Entity\Product'
         ];
+    }
+
+    /**
+     * Set notification
+     *
+     * @param \Zgh\FEBundle\Entity\Notification $notification
+     * @return Like
+     */
+    public function setNotification(\Zgh\FEBundle\Entity\Notification $notification = null)
+    {
+        $this->notification = $notification;
+
+        return $this;
+    }
+
+    /**
+     * Get notification
+     *
+     * @return \Zgh\FEBundle\Entity\Notification 
+     */
+    public function getNotification()
+    {
+        return $this->notification;
     }
 }

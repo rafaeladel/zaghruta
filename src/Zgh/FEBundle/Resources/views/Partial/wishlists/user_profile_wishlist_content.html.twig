@@ -1,37 +1,82 @@
-<div class="row">
-    {% for wishlist in wishlists %}
-        <div class="col-md-3 col-xs-6">
-            {% if wishlist.user.id == app.user.id %}
-                <button data-target="#deleteWishlist_{{ wishlist.id }}" data-toggle="modal" type="submit" class="row   btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
-                <div id="deleteWishlist_{{ wishlist.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header modalHeader">
-                                <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="myModalLabel">Delete Post</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to delete this?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-wide modalClose btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                                <form class="btnForm" action="{{ url("zgh_fe.wishlist.delete", {"id": user.id, "wishlist_id": wishlist.id}) }}" method="post">
-                                    <button type="submit" class="btn btn-wide btn-primary">Delete</button>
-                                </form>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div>
-            {% endif %}
-            <div class="thumbnail">
-                <a href="{{ url("zgh_fe.wishlist.index", {"id": user.id, "wishlist_id": wishlist.id }) }}"
-                   class="moveWishlistIndex"><img src="{{ wishlist.products|length > 0 ? (wishlist.products[0].getWebPath() ? asset(wishlist.products[0].getWebPath()) : asset("bundles/zghfe/img/thumb.jpg")) : asset("bundles/zghfe/img/thumb.jpg") }}"
-                                                  class="img-responsive" alt="Responsive image"></a>
+{% extends app.request.xmlHttpRequest or init_partial is defined ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
 
-                <div class="caption">
-                    <h5>{{ wishlist.name }}<span class="badge pull-right">{{ wishlist.products|length }}</span></h5>
+{% block leftContent %}
+    {% if user.id == app.user.id %}
+        <div class="row search-Results">
+
+            <div class="col-sm-3">
+                <button data-target="#addNewListPopup" data-toggle="modal" type="button"
+                        class="btn btn-primary btn-wide">
+                    <span class="glyphicon glyphicon-plus"></span> Add new list
+                </button>
+            </div>
+
+        </div>
+    {% endif %}
+    <div class="row">
+        {% for wishlist in wishlists %}
+            <div class="col-md-3 col-xs-6 wishList">
+                {% if wishlist.user.id == app.user.id %}
+                    <button data-target="#deleteWishlist_{{ wishlist.id }}" data-toggle="modal" type="submit"
+                            class="row   btn delete-post pull-right"><span
+                                class="glyphicon glyphicon-remove pull-right"></span></button>
+                    <div id="deleteWishlist_{{ wishlist.id }}" aria-hidden="true" aria-labelledby="myModalLabel"
+                         role="dialog" tabindex="-1" class="modal fade in">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header modalHeader">
+                                    <button type="button" class="close modalClose" data-dismiss="modal"
+                                            aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Delete Post</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete this?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-wide modalClose btn-default"
+                                            data-dismiss="modal" aria-hidden="true">Cancel
+                                    </button>
+                                    <form class="btnForm"
+                                          action="{{ url("zgh_fe.wishlist.delete", {"id": user.id, "wishlist_id": wishlist.id}) }}"
+                                          method="post">
+                                        <button type="submit" class="btn btn-wide btn-primary">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                {% endif %}
+                <div class="thumbnail">
+                    <a href="{{ url("zgh_fe.wishlist.index", {"id": user.id, "wishlist_id": wishlist.id }) }}"
+                       class="moveWishlistIndex"><img
+                                src="{{ wishlist.products|length > 0 ? (wishlist.products[0].getWebPath() ? asset(wishlist.products[0].getWebPath()) : asset("bundles/zghfe/img/thumb.jpg")) : asset("bundles/zghfe/img/thumb.jpg") }}"
+                                class="img-responsive" alt="Responsive image"></a>
+
+                    <div class="caption">
+                        <h5>{{ wishlist.name }}<span class="badge pull-right">{{ wishlist.products|length }}</span></h5>
+                    </div>
                 </div>
             </div>
+        {% endfor %}
+    </div>
+    <div id="addNewListPopup" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+         class="modal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modalHeader">
+                    <button type="button" class="close modalClose" data-dismiss="modal"
+                            aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Add List</h4>
+                </div>
+                <div class="form_wrapper">
+                    {{ include("@ZghFE/Partial/wishlists/wishlist_add_widget.html.twig", {"form": wishlist_form, "post_url": url("zgh_fe.wishlist.new", {"id": app.user.id })}) }}
+                </div>
+                {#</form>#}
+            </div>
+            <!-- /.modal-content -->
         </div>
-    {% endfor %}
-</div>
+        <!-- /.modal-dialog -->
+    </div>
+{% endblock leftContent %}

@@ -75,6 +75,7 @@ class UserInfoType extends AbstractType
                           return $repository->getUsersForRelationship($user);
                         },
                     'label' => 'User',
+                    "property" => "fullname",
                     'empty_value' => 'Select user',
                     "configs" => array(
                         "width" => '100%',
