@@ -127,12 +127,13 @@
             <argument type="service" id="event_dispatcher"/>
         </service>
 
-        <service id="zgh_fe.comment_manager" class="%zgh_fe.comment_manager.class%">
+        <service id="zgh_fe.comment_manager" class="%zgh_fe.comment_manager.class%" scope="request">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="security.context" />
             <argument type="service" id="router" />
             <argument type="service" id="kernel" />
             <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="templating.helper.assets"/>
         </service>
 
         <service id="zgh_fe.twig.widgets_extension" class="%zgh_fe.twig.widgets_extension.class%">

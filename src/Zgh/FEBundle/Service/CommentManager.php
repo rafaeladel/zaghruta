@@ -10,6 +10,7 @@ use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Templating\Helper\CoreAssetsHelper;
 use Zgh\FEBundle\Entity\Comment;
 use Zgh\FEBundle\Model\CommentableInterface;
 use Zgh\FEBundle\Model\Event\NotifyCommentEvent;
@@ -24,13 +25,19 @@ class CommentManager
     protected $kernel;
     protected $dispatcher;
 
-    public function __construct(EntityManager $entityManager, SecurityContextInterface $contextInterface, RouterInterface $routerInterface, Kernel $kernel, EventDispatcherInterface $eventDispatcherInterface)
+    /**
+     * @var CoreAssetsHelper
+     */
+    protected $assets;
+
+    public function __construct(EntityManager $entityManager, SecurityContextInterface $contextInterface, RouterInterface $routerInterface, Kernel $kernel, EventDispatcherInterface $eventDispatcherInterface, CoreAssetsHelper $assetsHelper)
     {
         $this->em = $entityManager;
         $this->security_context = $contextInterface;
         $this->router = $routerInterface;
         $this->kernel = $kernel;
         $this->dispatcher = $eventDispatcherInterface;
+        $this->assets = $assetsHelper;
     }
 
     /**
@@ -71,7 +78,7 @@ class CommentManager
             "comments_count" => count($entity->getComments()),
             "author_pp" => in_array("ROLE_FACEBOOK", $user->getRoles()) ?
                     'https://graph.facebook.com/' . $user->getFacebookId() . '/picture' :
-                    "/".$user->getProfilePhoto()->getThumbWebPath()
+                    $this->assets->getUrl($user->getProfilePhoto()->getThumbWebPath())
         ));
     }
 
