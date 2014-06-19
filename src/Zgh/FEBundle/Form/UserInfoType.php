@@ -63,17 +63,16 @@ class UserInfoType extends AbstractType
 
             $relation_choices = [
                 "Single" => "Single",
-                "In relationship" => "In relationship",
                 "Engaged" => "Engaged",
                 "Married" => "Married"
             ];
 
             if($user_info->getGender() == 0) {
                 $relation_choices["Best Man"] = "Best Man";
-                $relation_choices["Groomsmen"] = "Groomsmen";
+                $relation_choices["Groomsman"] = "Groomsman";
             } elseif($user_info->getGender() == 1) {
                 $relation_choices["Maid of honor"] = "Maid of honor";
-                $relation_choices["Bridesmaids"] = "Bridesmaids";
+                $relation_choices["Bridesmaid"] = "Bridesmaid";
             }
 
             $form->add("status", "choice", [

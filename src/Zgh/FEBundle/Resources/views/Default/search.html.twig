@@ -46,7 +46,7 @@
                             Tips
                         </div>
                         {% if app.user %}
-                            <div class="experince-filtration filtr  pull-left margin-sm" data-id="#searchExperince">
+                            <div class="experince-filtration filtr  pull-left margin-sm" data-id="#searchExperience">
                                 <span class="icon-Res icon-Res-Exp img-circle"></span>
                                 Experience
                             </div>
@@ -71,7 +71,7 @@
                         </div>
 
                         {% if app.user %}
-                            <div class="experince-filtration filtr  pull-left margin-sm" data-id="#searchExperince">
+                            <div class="experince-filtration filtr  pull-left margin-sm" data-id="#searchExperience">
                                 <span class="icon-Res icon-Res-Exp img-circle"></span>
                                 Experience
                             </div>
@@ -86,41 +86,86 @@
 
             {% if catSlug == "all" %}
                 <div id="searchProduct" class="row resultWrapper">
-                    {{ getProductsSearchResult(query)|raw }}
+                  {% set products =  getProductsSearchResult(query) %}
+                  {% if products != null %}
+                  <h2>Products</h2>
+                  <hr>
+                    {{ products|raw }}
+                  {% endif %}
                 </div>
                 <!--ENd Search Product-->
                 <div id="searchPeople" class="row resultWrapper">
-                    {{ getPeopleSearchResult(query)|raw }}
+                    {% set people = getPeopleSearchResult(query) %}
+                    {% if people != null %}
+                    <h2>People</h2>
+                    <hr>
+                    {{ people|raw }}
+                    {% endif %}
                 </div>
                 <!--ENd Search People-->
                 <div id="searchVendors" class="row resultWrapper">
-                    {{ getVendorSearchResult(query)|raw }}
+                    {% set vendors = getVendorSearchResult(query) %}
+                    {% if vendors != null %}
+                    <h2>Vendors</h2>
+                    <hr>
+                    {{ vendors|raw }}
+                    {% endif %}
                 </div>
                 <!--ENd Search Vendors-->
                 <div id="searchTips" class="row resultWrapper">
-                    {{ getTipsSearchResult(query)|raw }}
+                    {% set tips = getTipsSearchResult(query) %}
+                    {% if tips != null %}
+                    <h2>Tips</h2>
+                    <hr>
+                    {{ tips|raw }}
+                    {% endif %}
                 </div>
 
                 {% if app.user %}
                     <!--ENd Search Product-->
-                    <div id="searchExperince" class="row resultWrapper">
-                        {{ getExperiencesSearchResult(query)|raw }}
+                    <div id="searchExperience" class="row resultWrapper">
+                        {% set experiences = getExperiencesSearchResult(query) %}
+                        {% if experiences != null %}
+                        <h2>Experience</h2>
+                        <hr>
+                        {{ experiences|raw }}
+                        {% endif %}
                     </div>
                 {% endif %}
             {% elseif(catSlug == "people") %}
                 <div id="searchPeople" class="row resultWrapper">
-                    {{ getPeopleSearchResult(query)|raw }}
+                    {% set people = getPeopleSearchResult(query) %}
+                    {% if people != null %}
+                        <h2>People</h2>
+                        <hr>
+                        {{ people|raw }}
+                    {% endif %}
                 </div>
             {% else %}
                 <div id="searchVendors" class="row resultWrapper">
-                    {{ getVendorByCategory(catSlug, query)|raw }}
+                    {% set vendor_cat = getVendorByCategory(catSlug, query) %}
+                    {% if vendor_cat != null %}
+                     <h2>Vendors</h2>
+                     <hr>
+                    {{ vendor_cat|raw }}
+                        {% endif %}
                 </div>
                 <div id="searchProduct" class="row resultWrapper">
-                    {{ getProductsByCategory(catSlug, query)|raw }}
+                    {% set product_cat = getProductsByCategory(catSlug, query) %}
+                    {% if product_cat != null %}
+                    <h2>Product</h2>
+                     <hr>
+                    {{ product_cat|raw }}
+                    {% endif %}
                 </div>
                 {% if app.user %}
-                    <div id="searchExperince" class="row resultWrapper">
-                        {{ getExperienceByCategory(catSlug, query)|raw }}
+                    <div id="searchExperience" class="row resultWrapper">
+                        {% set exp_cat = getExperienceByCategory(catSlug, query) %}
+                        {% if exp_cat != null %}
+                        <h2>Experience</h2>
+                         <hr>
+                        {{ exp_cat|raw }}
+                        {% endif %}
                     </div>
                 {% endif %}
             {% endif %}

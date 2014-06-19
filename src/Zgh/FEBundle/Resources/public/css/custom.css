@@ -95,6 +95,9 @@ p {
 .input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child), .input-group .custFc:not(:first-child):not(:last-child) {
     border-radius: 6px 0 0 6px;
 }
+.search_text:focus, .search_text:active{
+border-radius: 0 !important;
+}
 
 .custFc:focus {
     box-shadow: none;
@@ -955,15 +958,27 @@ div.profile{
     color:#72c6ba;
 
 }
-
-.icon-Res {
+.icon-Res{
     float: left;
     margin-right: 10px;
+    display: block;
+}
+
+.icon-Res, .iconStatus {
     width: 24px;
     height: 24px;
-    display: block;
     background: #9dd8cf;
+    text-align: center;
+    color: #fff;
+    line-height: 24px;
 }
+.iconStatus {
+   vertical-align: middle;
+   position: absolute;
+   left: -27px;
+   top: 5px;
+}
+
 
 .srh-Res-Heading h1 {
     font-size: 20px;
@@ -2736,7 +2751,7 @@ margin-bottom: 15px !important;
     margin: 0;
     display: inline;
 }
-.icon-camera{
+.postBox .icon-camera{
     font-size: 30px;
 }
 .icon-interests{
@@ -2744,3 +2759,8 @@ margin-bottom: 15px !important;
 font-size: 18px !important;
 }
 
+.notification_date {
+    margin-left: 5px;
+    color: lightgray;
+    font-size: 12px;
+}

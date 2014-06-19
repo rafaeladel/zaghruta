@@ -85,48 +85,80 @@ class WidgetsExtension extends \Twig_Extension
     public function getProductsSearchResult($crit)
     {
         $results = $this->searchManager->getProductsResults($crit);
+        if(count($results) == 0)
+        {
+            return null;
+        }
         return $this->env->render("@ZghFE/Partial/products/user_profile_products_content.html.twig", ["products" => $results]);
     }
 
     public function getPeopleSearchResult($crit)
     {
         $people = $this->searchManager->getPeopleResults($crit);
+        if(count($people) == 0)
+        {
+            return null;
+        }
         return $this->env->render("@ZghFE/Partial/search/search_partial_users.html.twig", ["users" => $people]);
     }
 
     public function getVendorSearchResult($crit)
     {
         $vendors = $this->searchManager->getVendorsResults($crit);
+        if(count($vendors) == 0)
+        {
+            return null;
+        }
         return $this->env->render("@ZghFE/Partial/search/search_partial_users.html.twig", ["users" => $vendors]);
     }
 
     public function getTipsSearchResult($crit)
     {
         $tips = $this->searchManager->getTipsResults($crit);
+        if(count($tips) == 0)
+        {
+            return null;
+        }
         return $this->env->render("@ZghFE/Partial/tips/user_profile_tip_content.html.twig", ["tips" => $tips]);
     }
 
     public function getExperiencesSearchResult($crit)
     {
         $experiences = $this->searchManager->getExperiencesResults($crit);
+        if(count($experiences) == 0)
+        {
+            return null;
+        }
         return $this->env->render("@ZghFE/Partial/experiences/user_profile_experience_content.html.twig", ["experiences" => $experiences]);
     }
 
     public function getProductsByCategory($cat_slug, $crit)
     {
         $results = $this->searchManager->getProductByCategoryResults($cat_slug, $crit);
+        if(count($results) == 0)
+        {
+            return null;
+        }
         return $this->env->render("@ZghFE/Partial/products/user_profile_products_content.html.twig", ["products" => $results]);
     }
 
     public function getVendorByCategory($cat_slug, $crit)
     {
         $vendor = $this->searchManager->getVendorByCategoryResults($cat_slug, $crit);
+        if(count($vendor) == 0)
+        {
+            return null;
+        }
         return $this->env->render("@ZghFE/Partial/search/search_partial_users.html.twig", ["users" => $vendor]);
     }
 
     public function getExperienceByCategory($cat_slug, $crit)
     {
         $experiences = $this->searchManager->getExperiencesByCategory($cat_slug, $crit);
+        if(count($experiences) == 0)
+        {
+            return null;
+        }
         return $this->env->render("@ZghFE/Partial/experiences/user_profile_experience_content.html.twig", ["experiences" => $experiences]);
     }
 

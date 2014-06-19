@@ -22,11 +22,46 @@
             </tr>
             <tr>
                 <td>Status</td>
-                <td>
-                    {{ about.status }}
-                    {% if about.relationshipUser and about.relationshipAccepted %}
-                        {{ about.status == "In relationship" ? "with" : "to" }} <a href="{{ url("zgh_fe.user_profile.index", {"id": about.relationshipUser.id}) }}">{{ about.relationshipUser }}</a>
+                <td style="position: relative;">
+                    {% if about.status == "Married" %}
+                        {% if about.gender == 0 %}
+                            {% set rel_class = "icon-husband" %}
+                        {% else %}
+                            {% set rel_class = "icon-Wife" %}
+                        {% endif %}
+                    {% elseif about.status == "Engaged" %}
+                        {% if about.gender == 0 %}
+                            {% set rel_class = "icon-fiance" %}
+                        {% else %}
+                            {% set rel_class = "icon-Fiance" %}
+                        {% endif %}
+                    {% elseif about.status == "Best Man"%}
+                        {% set rel_class = "icon-man" %}
+                    {% elseif about.status == "Groomsman" %}
+                        {% set rel_class = "icon-men" %}
+                    {% elseif about.status == "Maid of honor" %}
+                        {% set rel_class = "icon-honor" %}
+                    {% elseif about.status == "Bridesmaid" %}
+                        {% set rel_class = "icon-men" %}
+                    {% elseif about.status == "Single" %}
+                        {% if about.gender == 0 %}
+                            {% set rel_class = "icon-fiance" %}
+                        {% else %}
+                            {% set rel_class = "icon-Fiance" %}
+                        {% endif %}
                     {% endif %}
+                    <span class="{{ about.status is not null ? "iconStatus img-circle "~rel_class : "" }}"></span>
+                    {% if about.relationshipUser and about.relationshipAccepted %}
+                        <a href="{{ url("zgh_fe.user_profile.index", {"id": about.relationshipUser.id}) }}">{{ about.relationshipUser }}</a>'s
+                    {% endif %}
+                    {% if about.status == "Married" %}
+                        {{ about.gender == 0 ? "Husband" : "Wife" }}
+                    {% elseif about.status == "Engaged" %}
+                        {{ about.gender == 0 ? "Fiance" : "Fiancee" }}
+                    {% else %}
+                        {{ about.status }}
+                    {% endif %}
+                    {#{{ about.status }}#}
                 </td>
             </tr>
 

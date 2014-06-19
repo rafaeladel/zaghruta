@@ -2,16 +2,16 @@
 
 {% block innerPartial %}
     <div class="row headerProduct">
-        <div class="row">
+        <div class="row margin-bottom">
             {% set products = user.products %}
             {% set next_id = nextId(products, product) %}
             {% set prev_id = prevId(products, product) %}
 
             {% if prev_id != null %}
-                <a href="{{ url("zgh_fe.products.content", {"id": user.id, "product_id": prev_id }) }}" class="pull-left">Previous</a>
+                <a href="{{ url("zgh_fe.products.content", {"id": user.id, "product_id": prev_id }) }}" class="pull-left margin-left exp-Arrow"><span class="glyphicon glyphicon-chevron-left"></span> Previous</a>
             {% endif %}
             {% if next_id != null %}
-                <a href="{{ url("zgh_fe.products.content", {"id": user.id, "product_id": next_id }) }}" class="pull-right">Next</a>
+                <a href="{{ url("zgh_fe.products.content", {"id": user.id, "product_id": next_id }) }}" class="pull-right margin-right exp-Arrow">Next <span class="glyphicon glyphicon-chevron-right"></a>
             {% endif %}
         </div>
         <div class="col-md-3 pull-right icons-G">

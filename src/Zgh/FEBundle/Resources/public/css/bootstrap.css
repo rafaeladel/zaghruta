@@ -2176,7 +2176,7 @@ input[type="button"].btn-block {
   position: relative;
   top: 1px;
   display: inline-block;
-  font-size: 16px;
+  font-size: 18px;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
@@ -2781,7 +2781,6 @@ input[type="button"].btn-block {
 .glyphicon-wrench:before {
   content: "\1f527";
 }
-
 .icon-camera:before {
   content: "\e60b";
 }

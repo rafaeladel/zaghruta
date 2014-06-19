@@ -12,8 +12,8 @@
           <div class="imgProfile pull-left">
               {% if app.user and user.id == app.user.id %}
                   <button data-toggle="modal" data-target="#pp_modal" type="button" class="btn btn-primary btn-circle ch-pr">
-                      <span class="glyphicon glyphicon-camera cam-post"></span>
-                      {#<input type="file" class="glyphicon glyphicon-camera cam-post"/>#}
+                      <span class="icon-camera cam-post"></span>
+                      {#<input type="file" class="icon-camera cam-post"/>#}
                   </button>
                   <div class="modal fade" id="pp_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
@@ -27,7 +27,7 @@
                                   <div class="modal-body">
                                     <div class="btnBrowsePhoto margin-bottom">
                                         <input class="btnBrowseMine photo_btn" accept="image/*" name="picture" type="file" title="Browse"/>
-                                        <button class="btnBrowseNew btn btn-primary btn-wide"><i class="glyphicon glyphicon-camera"></i> Browse</button>
+                                        <button class="btnBrowseNew btn btn-primary btn-wide"><i class="icon-camera"></i> Browse</button>
                                     </div>
                                       <div class="thumbnailUpload">
                                           <button class="row reset_photo btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
@@ -80,7 +80,7 @@
                             <div class="modal-body">
                                 <div class="btnBrowsePhoto  margin-bottom">
                                     <input name="cover" type="file" accept="image/*" class="cover_input btnBrowseMine"/>
-                                    <button class="btnBrowseNew btn btn-primary btn-wide"><i class="glyphicon glyphicon-camera"></i> Browse</button>
+                                    <button class="btnBrowseNew btn btn-primary btn-wide"><i class="icon-camera"></i> Browse</button>
                                 </div>
 
                                 <div id="testtt" class="cover_thumb"  width="540px" height="400px"  style=" position: relative;">

@@ -17,12 +17,16 @@ $(document).ready(function () {
     });
 
     $("body").on("click", ".product_edit_submit", function (e) {
+        e.preventDefault();
         var form = $(e.target).closest("form");
-        var btn = $(e.currentTarget);
+        var btn = $(e.target);
+        var wrapper = $("body").find(".content_wrapper");
         btn.attr("disabled", "disabled");
-        $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
-            instance.submitEvent.preventDefault();
-            if (instance.isValid()) {
+        console.log("in");
+//        $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
+//            console.log("out");
+//            instance.submitEvent.preventDefault();
+//            if (instance.isValid()) {
                 $.ajax({
                     type: "post",
                     url: form.attr("action"),
@@ -30,22 +34,21 @@ $(document).ready(function () {
                     success: function (data) {
                         if (data.status == 200) {
                             btn.removeAttr("disabled");
-                            var back_url = $(e.currentTarget).data("back_url");
-                            $(".content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+                            wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+                            var back_url = $(e.target).data("back_url");
                             $("body").find(".content_wrapper").load(back_url);
                         } else if (data.status == 500) {
                             btn.removeAttr("disabled");
-
-                            $(".content_wrapper").html(data.view);
+                            wrapper.html(data.view);
 
                         }
                     }
                 });
-            } else {
-                btn.removeAttr("disabled");
-
-            }
-        });
+//            } else {
+//                btn.removeAttr("disabled");
+//
+//            }
+//        });
     });
 
 
