@@ -443,7 +443,7 @@ footer .container {
 }
 .select2-container .select2-choice > .select2-chosen{
     font-size: 14px;
-    color: #cccccc;
+    color: #333;
 }
 #form_gender #form_gender_1{ margin-left: 10px;}
 
@@ -626,6 +626,10 @@ footer .container {
 
 .GridView .product-G .thumbnail .caption .description {
     display: none;
+}
+
+.GridView .search-box{
+    margin-top: 0 !important;
 }
 
 .ListView .product-G .thumbnail {
@@ -2417,11 +2421,11 @@ border-top: none;
    bottom: 0;
    height: 42px;
    background: rgba(000, 000, 000, 0.5);
-   width: 95.6%;
+   width: 95.6% !important;
    padding: 12px;
 }
 .PopupPhotoContent .deteilsPhoto{
-    width: 96%;
+    width: 96% !important;
 }
 .deteilsProduct h2{
     margin: 0;
@@ -2725,4 +2729,18 @@ margin-bottom: 15px !important;
 .exp-Arrow:hover{
     text-decoration: none;
 }
-.glyphicon-camera:before{content:"\1f4f7";}
+.margin-top{
+   margin-top: 10px;
+}
+.headBranche{
+    margin: 0;
+    display: inline;
+}
+.icon-camera{
+    font-size: 30px;
+}
+.icon-interests{
+   margin-left: 7px;
+font-size: 18px !important;
+}
+

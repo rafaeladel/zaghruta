@@ -1,6 +1,7 @@
 <?php
 namespace Zgh\FEBundle\Service;
 
+use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Component\Routing\RouterInterface;
 use Zgh\FEBundle\Model\Event\NotifyCommentEvent;
 use Zgh\FEBundle\Model\Event\NotifyFollowEvent;
@@ -20,10 +21,16 @@ class EmailNotifier
      */
     protected $router;
 
-    public function __construct(\Swift_Mailer $mailer, RouterInterface $routerInterface)
+    /**
+     * @var \Symfony\Bridge\Twig\TwigEngine
+     */
+    protected $templating;
+
+    public function __construct(\Swift_Mailer $mailer, RouterInterface $routerInterface, TwigEngine $engine)
     {
         $this->mailer = $mailer;
         $this->router = $routerInterface;
+        $this->templating = $engine;
     }
 
     public function sendNotification($event)
@@ -45,28 +52,18 @@ class EmailNotifier
     {
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
-        $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $notification->getContent()["post_id"]], true);
-        $message = \Swift_Message::newInstance()
-            ->setSubject("Someone commented on your post")
-            ->setFrom("notifications@zaghruta.com")
-            ->setTo($user->getEmail())
-            ->setBody("{$notification->getContent()["user"]} has commented on your post - {$url}")
-        ;
-        $this->mailer->send($message);
+        $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $notification->getContent()["obj_id"]], true);
+        $body = "{$notification->getContent()["user"]} has commented on your post - {$url}";
+        $this->send("Someone commented on your post", $user->getEmail(), $body);
     }
 
     protected function sendLikeNotification(NotifyLikeEvent $event)
     {
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
-        $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $notification->getContent()["post_id"]], true);
-        $message = \Swift_Message::newInstance()
-            ->setSubject("Someone liked your post")
-            ->setFrom("notifications@zaghruta.com")
-            ->setTo($user->getEmail())
-            ->setBody("{$notification->getContent()["user"]} has liked your post - {$url}")
-        ;
-        $this->mailer->send($message);
+        $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $notification->getContent()["obj_id"]], true);
+        $body = "{$notification->getContent()["user"]} has liked your post - {$url}";
+        $this->send("Someone liked your post", $user->getEmail(), $body);
     }
 
     protected function sendFollowNotification(NotifyFollowEvent $event)
@@ -74,13 +71,8 @@ class EmailNotifier
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $notification->getContent()["follower_id"]], true);
-        $message = \Swift_Message::newInstance()
-            ->setSubject("Someone has followed you")
-            ->setFrom("notifications@zaghruta.com")
-            ->setTo($user->getEmail())
-            ->setBody("{$notification->getContent()["user"]} has followed you.")
-        ;
-        $this->mailer->send($message);
+        $body = "{$notification->getContent()["user"]} has followed you.";
+        $this->send("Someone has followed you", $user->getEmail(), $body);
     }
 
     protected function sendFollowRequestNotification(NotifyFollowRequestEvent $event)
@@ -88,13 +80,8 @@ class EmailNotifier
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $notification->getContent()["follower_id"]], true);
-        $message = \Swift_Message::newInstance()
-            ->setSubject("Someone wants to followe you")
-            ->setFrom("notifications@zaghruta.com")
-            ->setTo($user->getEmail())
-            ->setBody("{$notification->getContent()["user"]} wants to follow you.")
-        ;
-        $this->mailer->send($message);
+        $body = "{$notification->getContent()["user"]} wants to follow you.";
+        $this->send("Someone wants to follow you", $user->getEmail(), $body);
     }
 
     protected function sendRelationshipRequest(NotifyRelationshipRequestEvent $event)
@@ -103,11 +90,23 @@ class EmailNotifier
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $notification->getContent()["requester_id"]], true);
         $hisOrHer = $notification->getContent()["requester_gender"] == 0 ? "his" : "her";
+        $body = "{$notification->getContent()["user"]} wants to add you in {$hisOrHer} relationship information.";
+        $this->send("Someone wants to add you in {$hisOrHer} relationship information", $user->getEmail(), $body);
+    }
+
+    protected function send($subject, $email, $notification_body)
+    {
         $message = \Swift_Message::newInstance()
-            ->setSubject("Someone wants to add you in {$hisOrHer} relationship information")
+            ->setSubject($subject)
             ->setFrom("notifications@zaghruta.com")
-            ->setTo($user->getEmail())
-            ->setBody("{$notification->getContent()["user"]} wants to add you in {$hisOrHer} relationship information.")
+            ->setTo($email)
+            ->setBody(
+                $this->templating->render("@ZghFE/Default/notification_email.txt.twig",[
+                        "notification_type" => $subject,
+                        "notification_body" => $notification_body
+                    ]),
+                'text/html'
+            )
         ;
         $this->mailer->send($message);
     }

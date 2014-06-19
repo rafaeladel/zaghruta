@@ -50,30 +50,3 @@
         {% endblock innerContent %}
     </div>
 {% endblock content %}
-
-
-<!-- JavaScript plugins (requires jQuery) -->
-<script src="{{ asset("bundles/zghfe/js/jquery-1.10.2.min.js") }}"></script>
-
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{ asset("bundles/zghfe/js/bootstrap.js") }}"></script>
-
-<!-- Optionally enable responsive features in IE8 -->
-<script src="{{ asset("bundles/zghfe/js/respond.js") }}"></script>
-
-<script src="{{ asset("bundles/zghfe/js/custom.js") }}"></script>
-<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-<script>
-    $(document).ready(function () {
-        $(".iconGroup a").mouseenter(function () {
-            var secName = $(this).attr('class');
-            $('#' + secName + '').siblings().hide();
-            $('#' + secName + '').fadeIn(100);
-
-        });
-    });
-</script>
-<div id="theH" style=""></div>
-</body>
-</html>

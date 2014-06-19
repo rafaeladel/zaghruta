@@ -87,7 +87,7 @@ fos_user:
             from_email:
                 address:        registration@zaghruta.com
                 sender_name:    Registration confirmation
-            enabled: false
+            enabled: true
         form:
             type: zgh_fe_registration_form_type
     resetting:
@@ -96,7 +96,7 @@ fos_user:
                 address:        zaghruta_password_resetting@zaghruta.com
                 sender_name:    Password resetting
     service:
-        mailer: fos_user.mailer.default
+        mailer: fos_user.mailer.twig_swift
 
 hwi_oauth:
 #    name of the firewall in which this bundle is active, this setting MUST be set

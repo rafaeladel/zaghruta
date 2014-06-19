@@ -151,13 +151,13 @@
             });
 
             $("body").on("click", ".emailNotification", function (e) {
-                $(e.currentTarget).attr("disabled", "disabled");
+                $(e.target).attr("disabled", "disabled");
                 var url = Routing.generate('zgh_fe.email_notification.set', { id: "{{ app.user.id }}" }, true);
                 $.ajax({
                     type: "post",
                     url: url,
                     success: function (data) {
-                        $(e.currentTarget).removeAttr("disabled");
+                        $(e.target).removeAttr("disabled");
                     }
                 })
             });

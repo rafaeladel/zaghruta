@@ -30,7 +30,6 @@ class ProductController extends Controller
         {
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
         }
-
         $form = $this->createForm(new ProductType(), new Product(), ["type" => "add"]);
         return $this->render("@ZghFE/Partial/products/user_profile_product_add.html.twig", array(
                 "user" => $user,

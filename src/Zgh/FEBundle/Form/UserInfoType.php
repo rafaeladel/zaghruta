@@ -17,12 +17,6 @@ class UserInfoType extends AbstractType
         $builder
             ->add("birthday", "birthday")
             ->add("gender", "choice", array("choices" => array("0" => "Male", "1" => "Female")))
-            ->add("status", "choice", array("choices" => array(
-                    "Single" => "Single",
-                    "In relationship" => "In relationship",
-                    "Engaged" => "Engaged",
-                    "Married" => "Married"
-                )))
             ->add("city", "thrace_select2_choice", [
                 "empty_value" => "City",
                     "choices" => [
@@ -66,6 +60,25 @@ class UserInfoType extends AbstractType
             $form = $event->getForm();
             $user_info = $event->getData();
             $user = $user_info->getUser();
+
+            $relation_choices = [
+                "Single" => "Single",
+                "In relationship" => "In relationship",
+                "Engaged" => "Engaged",
+                "Married" => "Married"
+            ];
+
+            if($user_info->getGender() == 0) {
+                $relation_choices["Best Man"] = "Best Man";
+                $relation_choices["Groomsmen"] = "Groomsmen";
+            } elseif($user_info->getGender() == 1) {
+                $relation_choices["Maid of honor"] = "Maid of honor";
+                $relation_choices["Bridesmaids"] = "Bridesmaids";
+            }
+
+            $form->add("status", "choice", [
+                    "choices" => $relation_choices
+                ]);
 
             $display = $user_info->getStatus() == "Single" ? "none" : "block";
 

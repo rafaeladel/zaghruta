@@ -1,26 +1,23 @@
 $(document).ready(function(){
 
-    $("body").on("focus", ".mainSearch .search_text", function (e) {
-        $(e.currentTarget).css('border-radius', '6px 0 0 6px');
-        $(e.currentTarget).closest(".input-group").find(".input-group-btn").show();
-    });
-
-    $("body").on("click", function(e){
-        if($(e.target).parents(".input-group-btn").length == 0) {
-            $(".input-group-btn").hide();
-        } else {
-            $(e.target).closest(".input-group").find(".search_text").css('border-radius', '6px 0 0 6px');
-        }
-    });
-//
-//    $("body").on("blur", ".mainSearch .search_text", function (e) {
-//        if ($(e.currentTarget).closest(".input-group").find(".input-group-btn").data("hovered")) {
-//            $(e.currentTarget).css('border-radius', '0px 0 0 0px');
-//        }
-//        else {
-//            $(e.currentTarget).closest(".input-group").find(".input-group-btn").hide();
+//    $("body").on("click", ".mainSearch .search_text", function(e){
+//        var ddl = $(e.currentTarget).closest(".input-group").find(".input-group-btn");
+//        if(!ddl.hasClass("shown")) {
+//            $(e.currentTarget).css('border-radius', '6px 0 0 6px');
+//            ddl.addClass("shown");
+//            ddl.show();
 //        }
 //    });
+
+    $("body").on("click", function(e){
+        $("body").find(".input-group-btn").hide();
+        if($(e.target).parents(".mainSearch").length == 1){
+//            $(e.target).closest(".mainSearch").find(".search_text").css('border-radius', '6px 0 0 6px');
+            var ddl = $(e.target).closest(".mainSearch").find(".input-group-btn");
+            ddl.show();
+        }
+    });
+
 
     $("body").on("click",".filtr",function(e){
         var wrapperid=$(e.currentTarget).data("id");
@@ -33,14 +30,7 @@ $(document).ready(function(){
             $(wrapperid).show();
         }
     });
-//
-//    $("body").on("keyup", ".search_text", function(e){
-//        e.preventDefault();
-//        var form = $(e.currentTarget).closest("form");
-//        if(e.which == 13) {
-//            form.submit();
-//        }
-//    });
+
 
     $("body").on("click", ".search_submit", function(e){
         e.preventDefault();

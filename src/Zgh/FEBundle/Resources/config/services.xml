@@ -173,6 +173,7 @@
         <service id="zgh_fe.email_notifier" class="%zgh_fe.email_notifier.class%">
             <argument type="service" id="mailer"/>
             <argument type="service" id="router"/>
+            <argument type="service" id="templating"/>
         </service>
 
         <service id="zgh_fe.slugifier" class="%zgh_fe.slugifier.class%">

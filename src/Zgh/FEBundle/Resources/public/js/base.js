@@ -2,7 +2,7 @@ $(document).ready(function(){
     var notificationsUrl = Routing.generate("zgh_fe.notifications");
     setInterval(function(){
         $("body").find(".notificationsWidget").load(notificationsUrl);
-    }, 10000);
+    }, 100000000);
 
 
     $(window).on("popstate", function (e) {
