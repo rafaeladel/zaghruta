@@ -8,7 +8,7 @@
 
             <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": user.id }) }}">{{ user.getFullname }}</a></h3>
             {{ renderFollow(user,  "ROLE_CUSTOMER" in user.roles ? (user.userInfo.gender == 0 ? "" : "btn-danger") : "" ) }}
-            <a href="{{ url("zgh_fe.user_profile.connections_partial", {"id": user.id}) }}" class="boy followerStats"> <span class="glyphicon glyphicon-user {{ "ROLE_CUSTOMER" in user.roles ? (user.userInfo.gender == 0 ? "glyphicon-user-boy" : "glyphicon-user-girl") : "" }}"></span> {{ user.followees|length }} </a>
+            <a href="{{ url("zgh_fe.user_profile.connections_partial", {"id": user.id}) }}" class="{{ "ROLE_CUSTOMER" in user.roles ? (user.userInfo.gender == 0 ? "boy" : "girl") : "" }}"> <span class="glyphicon glyphicon-user "></span> <span class="followerStats">{{ getApprovedFollowings(user)|length }}</span>  </a>
 
         </div>
     {% endfor %}

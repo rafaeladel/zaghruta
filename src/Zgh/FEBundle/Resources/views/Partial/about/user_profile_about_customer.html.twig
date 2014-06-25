@@ -27,7 +27,7 @@
                         {% if about.gender == 0 %}
                             {% set rel_class = "icon-husband" %}
                         {% else %}
-                            {% set rel_class = "icon-Wife" %}
+                            {% set rel_class = "icon-wife" %}
                         {% endif %}
                     {% elseif about.status == "Engaged" %}
                         {% if about.gender == 0 %}
@@ -49,6 +49,8 @@
                         {% else %}
                             {% set rel_class = "icon-Fiance" %}
                         {% endif %}
+                    {% else %}
+                        {% set rel_class = "" %}
                     {% endif %}
                     <span class="{{ about.status is not null ? "iconStatus img-circle "~rel_class : "" }}"></span>
                     {% if about.relationshipUser and about.relationshipAccepted %}

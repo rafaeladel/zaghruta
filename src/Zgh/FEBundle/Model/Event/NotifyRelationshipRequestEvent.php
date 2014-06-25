@@ -18,6 +18,8 @@ class NotifyRelationshipRequestEvent extends Event
      */
     protected $user;
 
+    protected $requester;
+
     protected $action_id;
 
     /**
@@ -29,14 +31,15 @@ class NotifyRelationshipRequestEvent extends Event
     {
         $requester = $userInfo->getUser();
         $receiver = $userInfo->getRelationshipUser();
-
+        $gender = $requester->getUserInfo()->getGender() == "0" ? "his" : "her";
         $this->content = [
             "type" => NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST,
             "user" => $requester->getFullName(),
             "requester_id" => $requester->getId(),
-            "requester_gender" => $requester->getUserInfo()->getGender()
+            "requester_gender" => $gender,
         ];
         $this->user = $receiver;
+        $this->requester = $requester;
         $this->action_id = $userInfo->getId();
     }
 
@@ -50,5 +53,10 @@ class NotifyRelationshipRequestEvent extends Event
     public function getUserToNotify()
     {
         return $this->user;
+    }
+
+    public function getRequester()
+    {
+        return $this->requester;
     }
 }

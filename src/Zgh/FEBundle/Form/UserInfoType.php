@@ -15,7 +15,10 @@ class UserInfoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $option)
     {
         $builder
-            ->add("birthday", "birthday")
+            ->add("birthday", "birthday", [
+                    "years" => range(1950, date("Y")),
+                    "data" => new \DateTime("1990-01-01")
+                ])
             ->add("gender", "choice", array("choices" => array("0" => "Male", "1" => "Female")))
             ->add("city", "thrace_select2_choice", [
                 "empty_value" => "City",

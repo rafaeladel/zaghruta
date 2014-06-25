@@ -36,7 +36,7 @@
     </div>
     <div class="content_wrapper">
         {% block innerPartial %}
-            {{ include("@ZghFE/Partial/products/user_profile_product_content_widget.html.twig", {"product": product, "init": true}) }}
+            {{ include("@ZghFE/Partial/products/user_profile_product_content_widget.html.twig", {"product": product, "is_popup": is_popup}) }}
         {% endblock innerPartial %}
     </div>
 </div>

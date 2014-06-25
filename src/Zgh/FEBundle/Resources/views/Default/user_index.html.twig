@@ -62,7 +62,7 @@
                 </button>
                 {{ message_user_popup("msgModal", user)|raw }}
             {% endif %}
-            <a href="{{ url("zgh_fe.user_profile.connections_partial", {id: user.id}) }}" class="boy"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> {{ user.followees|length }} </a>
+            <a href="{{ url("zgh_fe.user_profile.connections_partial", {id: user.id}) }}" class="boy"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> <span class="followerStats">{{ getApprovedFollowings(user)|length }}</span> </a>
         </div>
             {% if app.user and user.id == app.user.id %}
                 <button data-toggle="modal" data-target="#cp_modal" class="btn btn-default btn-wide  btn-cover" type="button">

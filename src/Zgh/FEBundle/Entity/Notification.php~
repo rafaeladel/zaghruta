@@ -52,6 +52,11 @@ class Notification
     protected $comment;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    protected $other_end;
+
+    /**
      * Set content
      *
      * @param array $content
@@ -173,4 +178,28 @@ class Notification
     {
         return $this->like;
     }
+
+    /**
+     * Set comment
+     *
+     * @param \Zgh\FEBundle\Entity\Comment $comment
+     * @return Notification
+     */
+    public function setComment(\Zgh\FEBundle\Entity\Comment $comment = null)
+    {
+        $this->comment = $comment;
+        $comment->setNotification($this);
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Zgh\FEBundle\Entity\Comment 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
 }

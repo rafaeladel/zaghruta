@@ -1064,6 +1064,6 @@ class User extends BaseUser implements ParticipantInterface
      */
     public function setEmailNotificationValue()
     {
-        $this->setEmailNotification(false);
+        $this->setEmailNotification(true);
     }
 }

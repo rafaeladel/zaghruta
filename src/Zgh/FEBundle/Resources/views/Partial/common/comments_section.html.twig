@@ -21,7 +21,7 @@
     </div>
 
     <div class="comments_wrapper">
-    {{ include("@ZghFE/Partial/common/comments_list.html.twig", {"comments": comments} ) }}
+    {{ include("@ZghFE/Partial/common/comments_list.html.twig", {"entity": entity, "comments": comments} ) }}
     </div>
     {% if app.user %}
     <div class="row">

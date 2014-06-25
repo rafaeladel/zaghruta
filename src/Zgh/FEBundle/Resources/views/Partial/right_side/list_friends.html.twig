@@ -23,7 +23,7 @@
                             <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": user.id}) }}">{{ user.fullname }}</a></h3>
                             {{ renderFollow(user, "ROLE_CUSTOMER" in user.roles ? (user.userInfo.gender == 0 ? "" : "btn-danger") : "") }}
 
-                            <a class="boy" href="#"> <span class="glyphicon glyphicon-user {{ user.userInfo.gender == 0 ? "glyphicon-user-boy" : "glyphicon-user-girl" }}"></span> {{ user.followees|length }}</a>
+                            <a class="{{ "ROLE_VENDOR" in user.roles ? "" : (user.userInfo.gender == 0 ? "boy" : "girl") }}" href="#"> <span class="glyphicon glyphicon-user "></span> <span class="followerStats">{{ getApprovedFollowings(user)|length }}</span></a>
                         </div>
                     {% endfor %}
 

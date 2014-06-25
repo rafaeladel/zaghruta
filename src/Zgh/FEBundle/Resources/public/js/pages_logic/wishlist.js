@@ -38,7 +38,7 @@ $(document).ready(function () {
         e.preventDefault();
         var wrapper = $("body").find(".content_wrapper");
         wrapper.html('<img style="margin: auto; display: block;" src="'+UrlContainer.loader+'" />');
-        wrapper.load($(e.target).data("target_url"));
-        history.pushState(null, null, $(e.target).data("target_url"));
+        wrapper.load($(e.currentTarget).data("target_url"));
+        history.pushState(null, null, $(e.currentTarget).data("target_url"));
     });
 });

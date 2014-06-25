@@ -51,8 +51,13 @@
                                 <h2 class="col-md-4">{{ experience.title }}</h2>
 
                                 <div class="clearfix"></div>
-                                <p class="by col-md-12">Category:
-                                    <span>{{ experience.category.name }}</span>
+                                <p class="by col-md-12">Categories:
+                                    {% for category in experience.categories %}
+                                        <span>{{ category.name }}</span>
+                                        {% if loop.index < experience.categories|length %}
+                                            <span>-</span>
+                                        {% endif %}
+                                    {% endfor %}
                                 </p>
                                 <span class="col-md-12 date-time">{{ experience.createdAt|date() }}</span>
 
@@ -83,9 +88,5 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script>
-        $(window).unload(function (e) {
-            alert("unloaded");
-        })
-    </script>
+
 {% endblock javascripts %}

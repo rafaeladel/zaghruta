@@ -183,7 +183,7 @@
 
         $("body").on("keyup", ".search_text", function(e){
             e.preventDefault();
-            var form = $(e.currentTarget).closest("form");
+            var form = $(e.target).closest("form");
             if(e.which == 13) {
                 form.submit();
             }
@@ -191,15 +191,15 @@
 
         $("body").on("click", ".search_submit", function(e){
             e.preventDefault();
-            var form = $(e.currentTarget).closest("form");
+            var form = $(e.target).closest("form");
             form.submit();
         });
 
         $("body").on("click", ".searchOption", function(e){
             e.preventDefault();
-            var cat = $(e.currentTarget).data("cat");
-            $(e.currentTarget).closest(".cat_ddl_btn").find("button").text($(e.currentTarget).text());
-            $(e.currentTarget).closest("form").find("input[type='hidden']").val(cat);
+            var cat = $(e.target).data("cat");
+            $(e.target).closest(".cat_ddl_btn").find("button").text($(e.target).text());
+            $(e.target).closest("form").find("input[type='hidden']").val(cat);
         });
 
     });

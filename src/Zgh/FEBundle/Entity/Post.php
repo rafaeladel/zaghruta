@@ -272,7 +272,7 @@ class Post implements LikeableInterface, CommentableInterface
      */
     public function removeComment(\Zgh\FEBundle\Entity\Comment $comment)
     {
-        $this->likes->removeElement($comment);
+        $this->comments->removeElement($comment);
         return $this;
     }
 

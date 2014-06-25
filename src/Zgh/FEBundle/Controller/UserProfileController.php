@@ -286,14 +286,8 @@ class UserProfileController extends Controller
         ));
     }
 
-    public function getConnectionsPartialsAction($id)
+    public function getConnectionsPartialsAction(User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
-//        $form = $this->createForm(new ExperienceType(), new Experience());
-//        return $this->render("@ZghFE/Partial/user_profile_experiences.html.twig",array(
-//                "user" => $user,
-//                "form" => $form->createView()
-//            ));
         return $this->render("@ZghFE/Partial/connections/user_profile_connections.html.twig", array(
             "user" => $user
         ));

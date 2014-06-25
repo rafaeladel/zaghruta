@@ -84,6 +84,7 @@ class ProductController extends Controller
             $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
         }
         return $this->render("@ZghFE/Partial/products/product_content_widget.html.twig",[
+                "is_popup" => true,
                 "user" => $user,
                 "product" => $product,
                 "addWishlistForm" => $this->getUser() instanceof User ? $addWishlistForm->createView() : null
@@ -177,6 +178,7 @@ class ProductController extends Controller
             $addWishlistForm = $this->createForm(new ProductWishlistType($this->get("security.context")), $product);
         }
         return $this->render("@ZghFE/Default/product_content.html.twig",[
+                "is_popup" => false,
                 "user" => $user,
                 "product" => $product,
                 "addWishlistForm" => $this->getUser() instanceof User ? $addWishlistForm->createView() : null

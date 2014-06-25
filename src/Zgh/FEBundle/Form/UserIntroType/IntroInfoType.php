@@ -4,13 +4,17 @@ namespace Zgh\FEBundle\Form\UserIntroType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class IntroInfoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add("birthday", "birthday")
+            ->add("birthday", "date", [
+                    "years" => range(1950, date("Y")),
+                    "data" => new \DateTime("1990-01-01")
+                ])
             ->add("gender", "choice",[
                 "expanded" => true,
                 "choices" => array(

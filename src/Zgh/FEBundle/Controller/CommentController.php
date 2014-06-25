@@ -54,6 +54,7 @@ class CommentController extends Controller
 
         $comments = $entity->getComments();
         return $this->render("@ZghFE/Partial/common/comments_list.html.twig",[
+                "entity" => $entity,
                 "comments" => $comments
             ]);
     }

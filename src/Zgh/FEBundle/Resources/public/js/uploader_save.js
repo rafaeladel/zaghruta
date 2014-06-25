@@ -31,7 +31,7 @@ function Uploader(params)
 //                $("body").off("click", "."+_this.saveButtonClass, false);
                 $("."+_this.saveButtonClass).on("click", function(e){
                     e.preventDefault();
-                    var btn = $(e.currentTarget);
+                    var btn = $(e.target);
                     btn.attr("disabled","disabled");
                     if(!validate(_this.additionalData, $(e.target).closest("form"))) {
                         btn.removeAttr("disabled");

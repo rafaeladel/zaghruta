@@ -99,7 +99,7 @@
 
             $("body").on("change", ".photo_btn", function(e){
                 e.preventDefault();
-                var wrapper = $(e.currentTarget).closest("form").find(".thumbnailUpload");
+                var wrapper = $(e.target).closest("form").find(".thumbnailUpload");
                 wrapper.show();
                 var imgWrapper = wrapper.find("img");
                 imgWrapper.attr("src", URL.createObjectURL(this.files[0]));
@@ -107,25 +107,29 @@
 
             $("body").on("click", ".reset_photo", function(e){
                 e.preventDefault();
-                var wrapper = $(e.currentTarget).closest("form").find(".thumbnailUpload");
+                var wrapper = $(e.target).closest("form").find(".thumbnailUpload");
                 wrapper.hide();
-                var file_input = $(e.currentTarget).closest("form").find(".photo_btn");
+                var file_input = $(e.target).closest("form").find(".photo_btn");
                 file_input.wrap('<form>').closest('form').get(0).reset();
                 file_input.unwrap();
             });
 
             $("body").on("click", ".btnFollowing", function (e) {
                 e.preventDefault();
-                var btn = $(e.currentTarget);
+                var btn = $(e.target);
                 btn.attr("disabled","disabled");
+                var followers_count = btn.closest(".profile").find(".followerStats");
                 var form = $(e.target).closest("form");
                 $(e.target).attr("disabled", "disabled");
                 $.ajax({
                     type: "post",
                     url: form.attr("action"),
                     success: function (data) {
-                        $(e.target).removeAttr("disabled");
-                        $(e.target).find(".following_msg").text(data.msg);
+                        btn.removeAttr("disabled");
+                        btn.find(".following_msg").text(data.msg);
+                        if(data.msg != "Pending") {
+                            followers_count.text(data.follower_count);
+                        }
                         btn.removeAttr("disabled");
                     }
                 })

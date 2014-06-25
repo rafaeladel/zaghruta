@@ -2,7 +2,7 @@ $(document).ready(function(){
     var notificationsUrl = Routing.generate("zgh_fe.notifications");
     setInterval(function(){
         $("body").find(".notificationsWidget").load(notificationsUrl);
-    }, 100000000);
+    }, 10000);
 
 
     $(window).on("popstate", function (e) {
@@ -12,7 +12,7 @@ $(document).ready(function(){
 
 
 //    $(document).on("ajaxSend", function (e) {
-//        var target = $(e.currentTarget.activeElement);
+//        var target = $(e.target.activeElement);
 //        if (target.is("input[type='submit']") || target.is("button[type='submit']")) {
 //            target.attr("disabled", "disabled");
 //        }

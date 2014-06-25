@@ -14,6 +14,7 @@ use Symfony\Component\Templating\Helper\CoreAssetsHelper;
 use Zgh\FEBundle\Entity\Comment;
 use Zgh\FEBundle\Model\CommentableInterface;
 use Zgh\FEBundle\Model\Event\NotifyCommentEvent;
+use Zgh\FEBundle\Model\Event\NotifyCommentOtherEvent;
 use Zgh\FEBundle\Model\Event\NotifyDeleteEvent;
 use Zgh\FEBundle\Model\Event\NotifyEvents;
 
@@ -30,8 +31,14 @@ class CommentManager
      */
     protected $assets;
 
-    public function __construct(EntityManager $entityManager, SecurityContextInterface $contextInterface, RouterInterface $routerInterface, Kernel $kernel, EventDispatcherInterface $eventDispatcherInterface, CoreAssetsHelper $assetsHelper)
-    {
+    public function __construct(
+        EntityManager $entityManager,
+        SecurityContextInterface $contextInterface,
+        RouterInterface $routerInterface,
+        Kernel $kernel,
+        EventDispatcherInterface $eventDispatcherInterface,
+        CoreAssetsHelper $assetsHelper
+    ) {
         $this->em = $entityManager;
         $this->security_context = $contextInterface;
         $this->router = $routerInterface;
@@ -41,8 +48,6 @@ class CommentManager
     }
 
     /**
-     * @TODO: replace $entity with Commentable Interface
-     *
      * @param Request $request
      * @param $entity
      * @return JsonResponse
@@ -64,10 +69,20 @@ class CommentManager
         $this->em->persist($comment);
 
 
+        //Check if current user is not the parent entity owner
         if ($user->getId() != $entity->getUser()->getId()) {
             $comment_event = new NotifyCommentEvent($user, $comment);
             $this->dispatcher->dispatch(NotifyEvents::NOTIFY_COMMENT, $comment_event);
+        } else {
+            //if current user commented on his own post, notify other subscribed ones
+            $users_to_notify = $this->em->getRepository("ZghFEBundle:Comment")->getValidCommentsAuthors($entity);
+            foreach ($users_to_notify as $user_to_notify) {
+                $event_other = new NotifyCommentOtherEvent($user_to_notify, $comment);
+                $this->dispatcher->dispatch(NotifyEvents::NOTIFY_COMMENT_OTHER, $event_other);
+            }
         }
+
+
         $this->em->flush();
 
         return new JsonResponse(array(
@@ -84,18 +99,22 @@ class CommentManager
 
     public function deleteComment(Comment $comment)
     {
-        if ($this->security_context->isGranted("DELETE", $comment)) {
-            $current_user = $this->security_context->getToken()->getUser();
-            $object = $comment->getObject();
+        $current_user = $this->security_context->getToken()->getUser();
+        $comment_author = $comment->getUser();
+        $parent_object = $comment->getObject();
+        $parent_user = $parent_object->getUser();
+
+        if ($current_user->getId() == $comment_author->getId() || $current_user->getId() == $parent_user->getId()) {
             $comment->setIsRemoved(true);
             $comment->setNotification(null);
             $this->em->persist($comment);
-            $this->em->flush();
 
-            $notification_delete_event = new NotifyDeleteEvent($object->getUser(), $comment->getId());
+            $notification_delete_event = new NotifyDeleteEvent($parent_object->getUser(), $comment->getId());
             $this->dispatcher->dispatch(NotifyEvents::NOTIFY_DELETE, $notification_delete_event);
 
-            $count = count($object->getComments());
+            $this->em->flush();
+            $count = count($parent_object->getComments());
+
             return $count;
         } else {
             throw new AccessDeniedException();

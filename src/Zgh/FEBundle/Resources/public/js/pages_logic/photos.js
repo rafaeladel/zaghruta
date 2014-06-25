@@ -14,9 +14,9 @@ $(document).ready(function(){
 
     $("body").on("click", ".load_images", function(e){
         e.preventDefault();
-        $(e.currentTarget).closest(".content_wrapper").load($(e.currentTarget).data("url"));
+        $(e.target).closest(".content_wrapper").load($(e.target).data("url"));
         $(".photosWrapper").html('<img style="margin: auto; display: block;" src="'+UrlContainer.loader+'" />');
-        history.pushState(null, null, $(e.currentTarget).data("url"));
+        history.pushState(null, null, $(e.target).data("url"));
     })
 
     $("body").on("click", ".back_btn", function(e){

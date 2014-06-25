@@ -51,7 +51,8 @@ class WidgetsExtension extends \Twig_Extension
             new \Twig_SimpleFunction("getExperienceByCategory", [$this, "getExperienceByCategory"] ),
             new \Twig_SimpleFunction("getRecommendedPeople", [$this, "getRecommendedPeople"] ),
             new \Twig_SimpleFunction("getRecommendedVendor", [$this, "getRecommendedVendor"] ),
-            new \Twig_SimpleFunction("getNewVendors", [$this, "getNewVendors"] )
+            new \Twig_SimpleFunction("getNewVendors", [$this, "getNewVendors"] ),
+            new \Twig_SimpleFunction("getApprovedFollowings", [$this, "getApprovedFollowings"])
 
         ];
     }
@@ -192,6 +193,15 @@ class WidgetsExtension extends \Twig_Extension
         return $this->env->render("@ZghFE/Partial/right_side/rightSidePartial.html.twig", [
                 "result" => $result
             ]);
+    }
+
+    public function getApprovedFollowings(User $user)
+    {
+        $follow_obj = $this->em->getRepository("ZghFEBundle:FollowUsers")->findBy([
+                "followee" => $user,
+                "is_approved" => true
+            ]);
+        return $follow_obj;
     }
 
     public function getName()

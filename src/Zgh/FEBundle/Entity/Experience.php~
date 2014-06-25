@@ -15,7 +15,7 @@ use Zgh\FEBundle\Model\LikeableInterface;
  * @ORM\Table(name="experiences")
  * @ORM\HasLifecycleCallbacks
  */
-class Experience implements LikeableInterface, CommentableInterface
+class Experience extends Image implements LikeableInterface, CommentableInterface
 {
 //    use BasicInfo;
 
@@ -45,10 +45,11 @@ class Experience implements LikeableInterface, CommentableInterface
     protected $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Zgh\FEBundle\Entity\Category", inversedBy="experiences", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="Zgh\FEBundle\Entity\Category", inversedBy="experiences")
+     * @ORM\JoinTable(name="experience_category")
      * @Assert\NotBlank()
      */
-    protected $category;
+    protected $categories;
 
 
     /**
@@ -168,7 +169,6 @@ class Experience implements LikeableInterface, CommentableInterface
         return $this->likes;
     }
 
-
     /**
      * Add comment
      *
@@ -177,7 +177,9 @@ class Experience implements LikeableInterface, CommentableInterface
      */
     public function addComment(\Zgh\FEBundle\Entity\Comment $comment)
     {
-        $this->comments[] = $comment;
+        if(!$comment->getIsRemoved()){
+            $this->comments[] = $comment;
+        }
         return $this;
     }
 
@@ -218,7 +220,14 @@ class Experience implements LikeableInterface, CommentableInterface
      */
     public function setComments(ArrayCollection $comments)
     {
-        $this->comments = $comments;
+        $approved_arr = new ArrayCollection();
+        foreach($comments as $comment)
+        {
+            if(!$comment->getIsRemoved()) {
+                $approved_arr[] = $comment;
+            }
+        }
+        $this->comments = $approved_arr;
         return $this;
     }
 }

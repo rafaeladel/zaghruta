@@ -1,6 +1,6 @@
 {% for comment in comments %}
     <div class="row postComment margin-sm ">
-        {% if comment.user.id == app.user.id %}
+        {% if app.user and (comment.user.id == app.user.id or entity.user.id == app.user.id) %}
             <button data-target="#deleteComment_{{ comment.id }}" data-toggle="modal" type="submit" class="row btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
             <div id="deleteComment_{{ comment.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
                 <div class="modal-dialog">

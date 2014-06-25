@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
 //    $("body").on("click", ".mainSearch .search_text", function(e){
-//        var ddl = $(e.currentTarget).closest(".input-group").find(".input-group-btn");
+//        var ddl = $(e.target).closest(".input-group").find(".input-group-btn");
 //        if(!ddl.hasClass("shown")) {
-//            $(e.currentTarget).css('border-radius', '6px 0 0 6px');
+//            $(e.target).css('border-radius', '6px 0 0 6px');
 //            ddl.addClass("shown");
 //            ddl.show();
 //        }
@@ -20,9 +20,9 @@ $(document).ready(function(){
 
 
     $("body").on("click",".filtr",function(e){
-        var wrapperid=$(e.currentTarget).data("id");
+        var wrapperid=$(e.target).data("id");
         $(".filtr").removeClass("active-filtration");
-        $(e.currentTarget).addClass("active-filtration");
+        $(e.target).addClass("active-filtration");
         if(wrapperid=="all"){
             $(".resultWrapper").show();
         }else{
@@ -34,15 +34,15 @@ $(document).ready(function(){
 
     $("body").on("click", ".search_submit", function(e){
         e.preventDefault();
-        var form = $(e.currentTarget).closest("form");
+        var form = $(e.target).closest("form");
         form.submit();
     });
 
     $("body").on("click", ".searchOption", function(e){
         e.preventDefault();
-        var cat = $(e.currentTarget).data("cat");
-        $(e.currentTarget).closest(".cat_ddl_btn").find("button").text($(e.currentTarget).text());
-        $(e.currentTarget).closest("form").find("input[type='hidden']").val(cat);
+        var cat = $(e.target).data("cat");
+        $(e.target).closest(".cat_ddl_btn").find("button").text($(e.target).text());
+        $(e.target).closest("form").find("input[type='hidden']").val(cat);
     });
 
     $("body").on("click", ".doSearch", function(e){

@@ -8,7 +8,7 @@ use Zgh\FEBundle\Entity\Notification;
 use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Service\NotificationManager;
 
-class NotifyFollowRequestEvent extends Event
+class NotifyFollowRequestAcceptedEvent extends Event
 {
     protected $content;
 
@@ -17,7 +17,7 @@ class NotifyFollowRequestEvent extends Event
      */
     protected $user;
 
-    protected $follower;
+    protected $followee;
 
     protected $action_id;
 
@@ -32,12 +32,12 @@ class NotifyFollowRequestEvent extends Event
         $followee = $follow_obj->getFollowee();
 
         $this->content = [
-            "type" => NotifyEvents::NOTIFY_FOLLOW_REQUEST,
-            "user" => $follower->getFullName(),
-            "follower_id" => $follower->getId(),
+            "type" => NotifyEvents::NOTIFY_FOLLOW_REQUEST_ACCEPTED,
+            "user" => $followee->getFullName(),
+            "followee_id" => $followee->getId(),
         ];
-        $this->user = $followee;
-        $this->follower = $follow_obj->getFollower();
+        $this->user = $follower;
+        $this->followee = $follow_obj->getFollowee();
         $this->action_id = $follow_obj->getId();
     }
 
@@ -53,9 +53,8 @@ class NotifyFollowRequestEvent extends Event
         return $this->user;
     }
 
-
-    public function getFollower()
+    public function getFollowee()
     {
-        return $this->follower;
+        return $this->followee;
     }
 }

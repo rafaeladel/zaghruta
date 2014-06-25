@@ -6,15 +6,30 @@ use Symfony\Component\Routing\Router;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use Twig_Environment;
 use Zgh\FEBundle\Entity\User;
 
 class RenderFollowExtension extends \Twig_Extension
 {
     protected $em;
+
+    /**
+     * @var SecurityContextInterface
+     */
     protected $security_context;
+
+    /**
+     * @var FollowCheckExtension
+     */
     protected $follow_check;
+
     protected $router;
     protected $status;
+
+    /**
+     * @var Twig_Environment
+     */
+    protected $env;
 
     public function __construct(
         EntityManagerInterface $entityManagerInterface,
@@ -27,6 +42,12 @@ class RenderFollowExtension extends \Twig_Extension
         $this->follow_check = $follow_check;
         $this->router = $router;
     }
+
+    public function initRuntime(Twig_Environment $environment)
+    {
+        $this->env = $environment;
+    }
+
 
     public function getFunctions()
     {
@@ -59,33 +80,7 @@ class RenderFollowExtension extends \Twig_Extension
                 "ing_id"    => $user->getId()
              ));
 
-        $result = $this->currentFollowMarkup($current_user->getId(), $user->getId());
-
-        if($result != null)
-        {
-            $markup = "<form action='".$path."' method='post'>
-                <button class='btn btn-primary btn-wide  btnFollowing ".$classes."' type='submit'>".
-                    $this->currentFollowMarkup($current_user->getId(), $user->getId())
-                ."</button>
-            </form>";
-        } else {
-            $markup = "<p style='color: white;'>".$this->status."</p>";
-        }
-
-        return $markup;
-
-    }
-
-    /**
-     * Checks viewed profile status, Followed or Not followed
-     *
-     * @param $follower_id
-     * @param $followee_id
-     * @return string
-     */
-    public function currentFollowMarkup($follower_id, $followee_id)
-    {
-        $status = $this->follow_check->checkFollow($follower_id, $followee_id);
+        $status = $this->follow_check->checkFollow($current_user, $user);
 
         $txt = '';
         if($status != null)
@@ -96,10 +91,7 @@ class RenderFollowExtension extends \Twig_Extension
             }
             else
             {
-
                 $txt = "Pending";
-                $this->status = $txt;
-                return null;
             }
         }
         elseif($status == null)
@@ -107,16 +99,12 @@ class RenderFollowExtension extends \Twig_Extension
             $txt = "Follow";
         }
 
-        $button = "
-                    <span class='follow'>
-                        <!--<span class='following'>Following</span>-->
-                        <!--<span class='Unfollow'><span class='glyphicon glyphicon-minus-sign'></span>Unfollow</span>-->
-                        <span class='following following_msg'>".$txt."</span>
-                        <!--<span class='Unfollow'><span class='glyphicon glyphicon-minus-sign'></span>Unfollow</span>-->
-                    </span>
-                    ";
+        return $this->env->render("@ZghFE/Partial/follow/follow_btn.html.twig", [
+                "path" => $path,
+                "msg" => $txt,
+                "classes" => $classes
+            ]);
 
-        return $button;
     }
 
     public function getName()

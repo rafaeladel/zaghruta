@@ -59,6 +59,7 @@ class RegisterListener implements EventSubscriberInterface
         if(in_array("ROLE_CUSTOMER", $roles))
         {
             $info = new UserInfo();
+            $info->setStatus("Single");
             $user->setUserInfo($info);
         }
         elseif(in_array("ROLE_VENDOR", $roles))

@@ -52,6 +52,11 @@ class Notification
     protected $comment;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    protected $other_end;
+
+    /**
      * Set content
      *
      * @param array $content
@@ -195,5 +200,29 @@ class Notification
     public function getComment()
     {
         return $this->comment;
+    }
+
+
+    /**
+     * Set other_end
+     *
+     * @param \Zgh\FEBundle\Entity\User $otherEnd
+     * @return Notification
+     */
+    public function setOtherEnd(\Zgh\FEBundle\Entity\User $otherEnd = null)
+    {
+        $this->other_end = $otherEnd;
+
+        return $this;
+    }
+
+    /**
+     * Get other_end
+     *
+     * @return \Zgh\FEBundle\Entity\User 
+     */
+    public function getOtherEnd()
+    {
+        return $this->other_end;
     }
 }

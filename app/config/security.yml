@@ -44,4 +44,5 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/search, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/[0-9]+, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/send_activation, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, role: [ ROLE_CUSTOMER, ROLE_VENDOR ] }

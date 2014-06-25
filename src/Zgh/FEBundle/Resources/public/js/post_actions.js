@@ -4,7 +4,7 @@ $(document).ready(function(){
 
     $("body").on("click", ".likeBtn", function(e){
         e.preventDefault();
-        var btn = $(e.currentTarget);
+        var btn = $(e.target);
         btn.attr("disabled", "disabled");
         var form = btn.closest("form");
         var count_wrapper = btn.closest(".post, .photo, .experience, .tip, .product").find(".likes_count");
@@ -45,8 +45,8 @@ $(document).ready(function(){
     $("body").on("click", ".openLikes", function(e){
         e.preventDefault();
         var wrapper = $(e.target).closest(".post, .experience, .photo, .tip, .product").find(".likes_wrapper");
-        var id = $(e.currentTarget).data("entity_id");
-        var entity_type = $(e.currentTarget).data("entity_type");
+        var id = $(e.target).data("entity_id");
+        var entity_type = $(e.target).data("entity_type");
         var url = Routing.generate('zgh_fe.like.list', { id: id, entity_type: entity_type }, true);
         var loader = wrapper.data("loader");
         wrapper.html('<img style="margin: auto; display: block;" src='+loader+' />');
@@ -139,10 +139,10 @@ $(document).ready(function(){
     });
 
     $("body").on("focus", "*[name='comment_content']", function(e){
-        var id = $(e.currentTarget).data("e_i");
-        var entity_type = $(e.currentTarget).data("e_t");
+        var id = $(e.target).data("e_i");
+        var entity_type = $(e.target).data("e_t");
         var url = Routing.generate("zgh_fe.comment.list", { id: id, entity_type: entity_type }, true);
-        $(e.currentTarget).closest("form").parent().siblings(".comments_wrapper").load(url);
+        $(e.target).closest("form").parent().siblings(".comments_wrapper").load(url);
     });
 
 });

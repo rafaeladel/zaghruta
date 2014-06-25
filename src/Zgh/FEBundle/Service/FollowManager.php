@@ -39,40 +39,40 @@ class FollowManager
         $this->dispatcher = $dispatcherInterface;
     }
 
-    public function follownize(User $user)
+    public function follownize(User $followee)
     {
-        $current_user = $this->security_context->getToken()->getUser();
-        $follow_obj = $this->follow_check->checkFollow($current_user, $user);
+        $follower = $this->security_context->getToken()->getUser();
+        $follow_obj = $this->follow_check->checkFollow($follower, $followee);
 
         if ($follow_obj == null) {
 
             $follow_obj = new FollowUsers();
 
-            $follower = $this->em->getRepository("ZghFEBundle:User")->find($current_user);
-            $followee = $this->em->getRepository("ZghFEBundle:User")->find($user);
-
             $follow_obj->setFollower($follower);
             $follow_obj->setFollowee($followee);
 
-            if ($user->getIsPrivate()) {
+            if ($followee->getIsPrivate()) {
                 $follow_obj->setIsApproved(false);
-
             } else {
                 $follow_obj->setIsApproved(true);
-
             }
 
             $this->em->persist($follow_obj);
             $this->em->flush();
 
-            if ($user->getIsPrivate()) {
+            $followers_count = count($followee->getFollowees());
+
+            if ($followee->getIsPrivate()) {
                 $notification_event = new NotifyFollowRequestEvent($follow_obj);
                 $this->dispatcher->dispatch(NotifyEvents::NOTIFY_FOLLOW_REQUEST, $notification_event);
             } else {
                 $follow_event = new NotifyFollowEvent($follow_obj);
                 $this->dispatcher->dispatch(NotifyEvents::NOTIFY_FOLLOW, $follow_event);
             }
-            return new JsonResponse(array("msg" => $follow_obj->getIsApproved() ? 'Unfollow' : "Pending"));
+            return new JsonResponse([
+                "msg" => $follow_obj->getIsApproved() ? 'Unfollow' : "Pending",
+                "follower_count" => $followers_count
+            ]);
 
 
         } else {
@@ -82,7 +82,12 @@ class FollowManager
             $this->dispatcher->dispatch(NotifyEvents::NOTIFY_DELETE, $notification_delete_event);
 
             $this->em->flush();
-            return new JsonResponse(array("msg" => "Follow"));
+            $followers_count = count($followee->getFollowees());
+
+            return new JsonResponse([
+                "msg" => "Follow",
+                "follower_count" => $followers_count
+            ]);
 
         }
     }

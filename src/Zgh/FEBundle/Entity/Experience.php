@@ -45,10 +45,11 @@ class Experience extends Image implements LikeableInterface, CommentableInterfac
     protected $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Zgh\FEBundle\Entity\Category", inversedBy="experiences")
+     * @ORM\ManyToMany(targetEntity="Zgh\FEBundle\Entity\Category", inversedBy="experiences")
+     * @ORM\JoinTable(name="experience_category")
      * @Assert\NotBlank()
      */
-    protected $category;
+    protected $categories;
 
 
     /**
@@ -168,7 +169,6 @@ class Experience extends Image implements LikeableInterface, CommentableInterfac
         return $this->likes;
     }
 
-
     /**
      * Add comment
      *
@@ -232,25 +232,36 @@ class Experience extends Image implements LikeableInterface, CommentableInterfac
     }
 
     /**
-     * Set category
+     * Add categories
      *
-     * @param \Zgh\FEBundle\Entity\Category $category
+     * @param \Zgh\FEBundle\Entity\Category $categories
      * @return Experience
      */
-    public function setCategory(\Zgh\FEBundle\Entity\Category $category = null)
+    public function addCategory(\Zgh\FEBundle\Entity\Category $categories)
     {
-        $this->category = $category;
+        $this->categories[] = $categories;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Remove categories
      *
-     * @return \Zgh\FEBundle\Entity\Category 
+     * @param \Zgh\FEBundle\Entity\Category $categories
      */
-    public function getCategory()
+    public function removeCategory(\Zgh\FEBundle\Entity\Category $categories)
     {
-        return $this->category;
+        $this->categories->removeElement($categories);
     }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
 }

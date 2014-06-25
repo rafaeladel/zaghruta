@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Zgh\FEBundle\Entity\FollowUsers;
 use Zgh\FEBundle\Entity\Notification;
+use Zgh\FEBundle\Model\Event\NotifyEvents;
+use Zgh\FEBundle\Model\Event\NotifyFollowRequestAcceptedEvent;
 
 
 class FollowController extends Controller
@@ -37,6 +39,11 @@ class FollowController extends Controller
         $this->getDoctrine()->getManager()->remove($notification);
         $this->getDoctrine()->getManager()->flush();
         $follower_id = $follow->getFollower()->getId();
+
+        //Notify the follower with acceptance
+        $notify_event_accepted = new NotifyFollowRequestAcceptedEvent($follow);
+        $this->get("event_dispatcher")->dispatch(NotifyEvents::NOTIFY_FOLLOW_REQUEST_ACCEPTED, $notify_event_accepted);
+
         return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", ["id"=> $follower_id]));
     }
 

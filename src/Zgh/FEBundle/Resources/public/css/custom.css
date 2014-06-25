@@ -1875,7 +1875,7 @@ footer a {
 }
 
 .followerStats {
-    float: left;
+    /*float: left;*/
     width: 40px !important;
     height: 20px !important;
 }
@@ -2639,6 +2639,19 @@ margin-bottom: 15px !important;
     right: 15px;
     top: 5px;
 }
+.wishList a{
+width: 200px;
+height: 148px;
+display: block;
+overflow: hidden;
+}
+
+.wishList a img{
+    width: auto !important;
+  height: 100% !important;
+
+}
+
 .tips_Experience .thumbnail p, .tip .thumbnail p {
    color: #fff;
 
@@ -2652,7 +2665,7 @@ margin-bottom: 15px !important;
 .tips_Experience .caption p, .tip .caption p, .experience .caption p {
     height: 70px;
     overflow: hidden;
-    color: fff;
+    color: #ffffff;
 }
 .tip_add h2, .exp_add h2{
     margin-bottom: 45px;
@@ -2763,4 +2776,20 @@ font-size: 18px !important;
     margin-left: 5px;
     color: lightgray;
     font-size: 12px;
+}
+.imgNotification{
+    display: block;
+    height: 22px;
+    width: 22px;
+}
+.tableImg{
+    width: 0 !important;
+}
+.imgNotification img{
+     height: auto;
+    width: 100%;
+}
+
+.login_anon {
+    margin-top: 8px;
 }

@@ -21,7 +21,12 @@ class FollowCheckExtension extends \Twig_Extension
 
     public function checkFollow($follower_id, $followee_id)
     {
-        $result = $this->em->getRepository("ZghFEBundle:FollowUsers")->checkFollow($follower_id, $followee_id);
+        $result = $this->em->getRepository("ZghFEBundle:FollowUsers")->findOneBy([
+                "follower" => $follower_id,
+                "followee" => $followee_id
+            ]);
+//        var_dump($result);
+//        die;
         return $result;
     }
 
