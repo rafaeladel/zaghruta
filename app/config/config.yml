@@ -70,14 +70,6 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-services:
-#    my.facebook.user:
-#        class: Zgh\FEBundle\Security\User\Provider\FacebookProvider
-#        arguments:
-#            facebook: "@fos_facebook.api"
-#            userManager: "@fos_user.user_manager"
-#            validator: "@validator"
-
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
@@ -87,7 +79,7 @@ fos_user:
             from_email:
                 address:        registration@zaghruta.com
                 sender_name:    Registration confirmation
-            enabled: false
+            enabled: true
         form:
             type: zgh_fe_registration_form_type
     resetting:
@@ -124,26 +116,6 @@ hwi_oauth:
                 status:           relationship_status
             options:
                 display:         popup
-    # an optional setting to configure a query string parameter which can be used to redirect
-    # the user after authentication, e.g. /connect/facebook?_destination=/my/destination will
-    # redirect the user to /my/destination after facebook authenticates them.  If this is not
-    # set then the user will be redirected to the original resource that they requested, or
-    # the base address if no resource was requested.  This is similar to the behaviour of
-    # [target_path_parameter for form login](http://symfony.com/doc/2.0/cookbook/security/form_login.html).
-    # target_path_parameter: _destination
-
-    # an optional setting to use the HTTP REFERER header to be used in case no
-    # previous URL was stored in the session (i.e. no resource was requested).
-    # This is similar to the behaviour of
-    # [using the referring URL for form login](http://symfony.com/doc/2.0/cookbook/security/form_login.html#using-the-referring-url).
-    # use_referer: true
-
-#fos_facebook:
-#    alias:  facebook
-#    app_id: 1403397396596528
-#    secret: 83f8f7e54bfbb0846d3c5bc91ef60b21
-#    cookie: true
-#    permissions: [email, user_birthday, user_location]
 
 fos_js_routing:
     routes_to_expose: [ zgh_fe.user.login_partial, zgh_fe.vendor.login_partial, zgh_fe.user_profile.privacy.set, zgh_fe.like.list, zgh_fe.comment.list, fos_message_thread_view, zgh_fe.notifications, zgh_message_inbox_content, fos_message_list_view, zgh_fe.email_notification.set ]

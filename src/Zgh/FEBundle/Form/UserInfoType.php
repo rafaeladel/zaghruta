@@ -17,7 +17,6 @@ class UserInfoType extends AbstractType
         $builder
             ->add("birthday", "birthday", [
                     "years" => range(1950, date("Y")),
-                    "data" => new \DateTime("1990-01-01")
                 ])
             ->add("gender", "choice", array("choices" => array("0" => "Male", "1" => "Female")))
             ->add("city", "thrace_select2_choice", [
