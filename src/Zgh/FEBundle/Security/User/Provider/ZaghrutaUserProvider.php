@@ -55,7 +55,12 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
         $username = $response->getUsername();
 
         $user = $this->userManager->findUserBy(array($property => $username));
-
+        if ($user === null) {
+            $user = $this->userManager->findUserByEmail($response->getEmail());
+            if ($user) {
+                return $user;
+            }
+        }
         if (null === $user) {
             $service = $response->getResourceOwner()->getName();
 
@@ -100,8 +105,6 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
 
         //if user with the specified username is in DB
         $user = parent::loadUserByOAuthUserResponse($response);
-//        var_dump($user->getRoles());
-//        die;
         $serviceName = $response->getResourceOwner()->getName();
         $setter = 'set' . ucfirst($serviceName) . 'AccessToken';
 

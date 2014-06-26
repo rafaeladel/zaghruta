@@ -678,8 +678,8 @@ footer .container {
 
 .profile a {
     margin-right: 10px !important;
-    width: 125px;
-    height: 125px;
+    /*width: 125px;*/
+    /*height: 125px;*/
     overflow: hidden;
 }
 
