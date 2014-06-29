@@ -140,8 +140,6 @@ class ExperienceController extends Controller
         $experience = new Experience();
         $form = $this->createForm(new ExperienceType(), $experience);
         $form->handleRequest($request);
-        var_dump($request->request->all());
-        die;
         $user->addExperience($experience);
 
         if(!$form->isValid())
