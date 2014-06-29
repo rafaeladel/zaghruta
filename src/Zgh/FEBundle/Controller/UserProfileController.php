@@ -20,6 +20,7 @@ use Zgh\FEBundle\Form\ProductType;
 use Zgh\FEBundle\Form\SearchType;
 use Zgh\FEBundle\Form\UserInfoType;
 use Zgh\FEBundle\Form\VendorInfoType;
+use Zgh\FEBundle\Form\VendorIntroType;
 use Zgh\FEBundle\Form\WishlistType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -73,7 +74,7 @@ class UserProfileController extends Controller
         $user = $this->getUser();
 
         $defaultData = array("message" => "Default form data");
-        $form = $this->createForm(new VendorInfoType(), $user->getVendorInfo());
+        $form = $this->createForm(new VendorIntroType(), $user->getVendorInfo());
 //        $form = $this->createFormBuilder($defaultData)
 //            ->add("company_name", "text", array("mapped" => false));
         return $this->render("@ZghFE/Default/vendor_intro.html.twig", array(
@@ -130,7 +131,7 @@ class UserProfileController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $vendor_info= $user->getVendorInfo();
-        $form = $this->createForm(new VendorInfoType(), $vendor_info);
+        $form = $this->createForm(new VendorIntroType(), $vendor_info);
         $form->handleRequest($request);
         if(!$form->isValid()) {
             return $this->render("@ZghFE/Default/vendor_intro.html.twig", [

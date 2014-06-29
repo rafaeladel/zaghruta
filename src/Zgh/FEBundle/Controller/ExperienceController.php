@@ -132,7 +132,8 @@ class ExperienceController extends Controller
      */
     public function postNewAction(Request $request, $id)
     {
-
+//        var_dump($request->request->all());
+//        die;
         $em = $this->getDoctrine()->getManager();
 
         $user = $em->getRepository("ZghFEBundle:User")->find($id);

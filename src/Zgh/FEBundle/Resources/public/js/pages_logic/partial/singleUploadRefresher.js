@@ -41,6 +41,7 @@ function singleUpload(button_class) {
                         $(e.target).attr("disabled", "disabled");
                         if (myDropzone.getQueuedFiles().length > 0) {
                             myDropzone.on("sending", function (file, xhr, formData) {
+                                var form_data = new FormData($("." + button_class).closest("form")[0]);
 //                                var arr_regex = new RegExp("\\[\\]", "g");
 //                                store every tag with name attribute into the FormData object
                                 $(e.target).closest("form").find("[name]").each(function (i, v) {

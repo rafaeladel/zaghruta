@@ -7,14 +7,14 @@
     <!-- Title-->
     <title>{% block title %}Zaghruta your wedding planner guide{% endblock %}</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset("bundles/zghfe/img/favicon.ico") }}" />
+    <script type="text/javascript" src="{{ asset("bundles/zghfe/js/modernizr.js") }}"></script>
+    <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
 
-    {#<!--[if lt IE 9]>#}
-        <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
-    {#<![endif]-->#}
 
     {% block stylesheets %}
         {% stylesheets
+        "bundles/zghfe/css/ie8.css"
         "bundles/zghfe/css/bootstrap.css"
         "bundles/zghfe/css/custom.css"
         "bundles/zghfe/css/jquery.fancybox.css"
