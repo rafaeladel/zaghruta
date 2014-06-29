@@ -8,6 +8,10 @@
     <title>{% block title %}Zaghruta your wedding planner guide{% endblock %}</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset("bundles/zghfe/img/favicon.ico") }}" />
 
+    {#<!--[if lt IE 9]>#}
+        <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    {#<![endif]-->#}
 
     {% block stylesheets %}
         {% stylesheets
@@ -22,6 +26,7 @@
         <link href="{{ asset_url }}" rel="stylesheet" type="text/css" media="screen">
         {% endstylesheets %}
     {% endblock stylesheets %}
+
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
 </head>

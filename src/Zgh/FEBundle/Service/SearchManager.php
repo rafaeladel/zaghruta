@@ -159,7 +159,7 @@ class SearchManager
         $q = $this->em->createQuery("
                 select e
                 from Zgh\FEBundle\Entity\Experience e
-                inner join e.category c
+                inner join e.categories c
                 where c.name_slug = :cat
                 and e.title like :crit
             ");

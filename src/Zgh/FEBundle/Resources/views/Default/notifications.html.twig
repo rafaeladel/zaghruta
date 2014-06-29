@@ -32,7 +32,7 @@
                                         {% elseif notification.content.obj_type == 4 %}
                                             <a href="{{ url("zgh_fe.products.content", {"id": notification.user.id, "product_id": notification.content.obj_id}) }}"> product</a>
                                         {% endif %}
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:m A") }}</span>
+                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
                                     </td>
                                     <td><span class="glyphicon glyphicon-thumbs-up pull-right"></span></td>
                                 </tr>
@@ -51,7 +51,7 @@
                                         {% elseif notification.content.obj_type == 4 %}
                                             <a href="{{ url("zgh_fe.products.content", {"id": notification.user.id, "product_id": notification.content.obj_id}) }}"> product</a>
                                         {% endif %}
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:m A") }}</span>
+                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
 
                                     </td>
                                     <td><span class="glyphicon glyphicon-comment pull-right"></span></td>
@@ -71,7 +71,7 @@
                                         {% elseif notification.content.obj_type == 4 %}
                                             <a href="{{ url("zgh_fe.products.content", {"id": notification.content.user_id, "product_id": notification.content.obj_id}) }}"> product</a>
                                         {% endif %}
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:m A") }}</span>
+                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
 
                                     </td>
                                     <td><span class="glyphicon glyphicon-comment pull-right"></span></td>
@@ -81,7 +81,7 @@
                                     <td class="tableImg"><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
                                     <td>
                                         <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a>Started following you
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:m A") }}</span>
+                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
                                     </td>
                                     <td><span class="glyphicon glyphicon-user pull-right"></span></td>
                                 </tr>
@@ -93,7 +93,7 @@
                                         Wants to follow you. <a
                                                 href="{{ url("zgh_fe.user.accept_follow", {"id": notification.actionId, "n_id": notification.id }) }}">Yes</a>
                                         <a href="{{ url("zgh_fe.user.deny_follow", {"id": notification.actionId, "n_id": notification.id }) }}">No</a>
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:m A") }}</span>
+                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
                                     </td>
                                     <td><span class="glyphicon glyphicon-user pull-right"></span></td>
                                 </tr>
@@ -103,7 +103,7 @@
                                     <td>
                                         <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.followee_id }) }}"> {{ notification.content.user }} </a>
                                         has accepted your follow request
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:m A") }}</span>
+                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
                                     </td>
                                     <td><span class="glyphicon glyphicon-user pull-right"></span></td>
                                 </tr>
@@ -116,7 +116,7 @@
                                         relationship info.
                                         <a href="{{ url("zgh_fe.about.accept_relationship", {"id": notification.actionId, "n_id": notification.id }) }}">Yes</a>
                                         <a href="{{ url("zgh_fe.about.deny_relationship", {"id": notification.actionId, "n_id": notification.id }) }}">No</a>
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:m A") }}</span>
+                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
                                     </td>
                                     <td><span class="glyphicon glyphicon-user pull-right"></span></td>
                                 </tr>

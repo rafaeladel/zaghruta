@@ -142,7 +142,8 @@ class ExperienceController extends Controller
         $form->handleRequest($request);
 
         $user->addExperience($experience);
-
+        var_dump($request->request->all());
+        die;
         if(!$form->isValid())
         {
             return new JsonResponse(
