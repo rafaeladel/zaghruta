@@ -41,20 +41,20 @@ function singleUpload(button_class) {
                         $(e.target).attr("disabled", "disabled");
                         if (myDropzone.getQueuedFiles().length > 0) {
                             myDropzone.on("sending", function (file, xhr, formData) {
-                                var arr_regex = new RegExp("/\\[\\]/g");
-                                //store every tag with name attribute into the FormData object
+//                                var arr_regex = new RegExp("\\[\\]", "g");
+//                                store every tag with name attribute into the FormData object
                                 $(e.target).closest("form").find("[name]").each(function (i, v) {
-                                    console.log($(v).attr("name"));
-                                    console.log(arr_regex.test($(v).attr("name")));
-                                    if($(v).attr("name").match("/\[\]$/")) {
-                                        console.log("test");
-                                        return false;
-                                    }
-
-                                    formData.append($(v).attr("name"), $(v).val());
+//                                    if(arr_regex.test($(v).attr("name"))) {
+//                                        var values = $(v).val();
+//                                        var values_arr = [];
+//                                        $(values).each(function(value_i, value_v){
+//                                            values_arr.push(value_v);
+//                                        });
+//                                        formData.append($(v).attr("name"), values_arr);
+//                                    } else {
+                                        formData.append($(v).attr("name"), $(v).val());
+//                                    }
                                 });
-                                return false;
-
                             });
                             myDropzone.processQueue();
                         } else {

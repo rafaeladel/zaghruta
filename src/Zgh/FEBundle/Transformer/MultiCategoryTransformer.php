@@ -2,10 +2,7 @@
 namespace Zgh\FEBundle\Transformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\DataTransformerInterface;
-use Symfony\Component\Form\Exception\TransformationFailedException;
-use Zgh\FEBundle\Entity\Tag;
 
 /**
  * Class MultiCategoryTransformer
@@ -40,7 +37,8 @@ class MultiCategoryTransformer implements  DataTransformerInterface
     //From View To DB
     public function reverseTransform($tags)
     {
-
+//        var_dump(1);
+//        die;
         if($tags == null){
             return [];
         }
@@ -56,26 +54,7 @@ class MultiCategoryTransformer implements  DataTransformerInterface
         }
 
         $values = explode(",", $tags[0]);
-        $result = [];
-        foreach($values as $value) {
-            $result[] = $value;
-        }
 
-        return new ArrayCollection($result);
-//        var_dump($tags);
-//        die;
-//
-//        $entity_arr = [];
-//        foreach($tags as $tag){
-//            $entity = $this->em->getRepository("ZghFEBundle:Tag")->findOneByName($tag);
-//            if($entity == null)
-//            {
-//                $entity = new Tag();
-//                $entity->setName($tag);
-//            }
-//            $entity_arr[] = $entity;
-//        }
-//        $collection = new ArrayCollection($entity_arr);
-//        return $collection;
+        return new ArrayCollection($values);
     }
 }
