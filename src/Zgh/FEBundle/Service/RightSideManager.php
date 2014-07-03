@@ -21,14 +21,14 @@ class RightSideManager
         $q = $this->em->createQuery("
                 select recUser, count(recUser.id) as recUserCount
                 from Zgh\FEBundle\Entity\User recUser
-                    inner join recUser.followees recFollowUser
-                    where recFollowUser.follower in (
+                    left join recUser.followees recFollowUser
+                    with recFollowUser.follower in (
                         select mutual.id
                         from Zgh\FEBundle\Entity\FollowUsers currentFollowUser
                         inner join currentFollowUser.followee mutual
                         where currentFollowUser.follower = :user
                     )
-                    and recUser.roles like '%ROLE_CUSTOMER%'
+                    where recUser.roles like '%ROLE_CUSTOMER%'
                     and recUser.id != :user
                 group by recUser.id
                 order by recUserCount desc
@@ -44,14 +44,22 @@ class RightSideManager
     {
         $q = $this->em->createQuery(
             "
-                select v, count(f) as f_count
+                select v, count(f) as f_count, count(v_c) as v_c_count
                 from Zgh\FEBundle\Entity\User v
                 left join v.followees f
-                left join f.follower fr
+                left join v.vendor_info v_i
+                left join v_i.categories v_c
+                with v_c in (
+                  select cat.id
+                  from Zgh\FEBundle\Entity\Category cat
+                  inner join cat.users u
+                  where u = :user
+                )
                 where v.id != :user
                 and v.roles like '%ROLE_VENDOR%'
+
                 group by v.id
-                order by f_count desc
+                order by f_count,v_c_count desc
             "
         );
 //        and fr.id != :user

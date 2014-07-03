@@ -1,14 +1,32 @@
 {% block choice_widget_expanded %}
     {% spaceless %}
-        <div {{ block('widget_container_attributes') }}>
-            <ul>
+        <div class="row {{ block('widget_container_attributes') }}">
                 {% for child in form %}
-                    <li>
-                        {{ form_widget(child) }}
-                        {{ form_label(child) }}
-                    </li>
+            <div class="col-md-12 pull-left mainCategory Category_Hotels_Venues">
+            {% set current = form.vars.choices[loop.index0].data %}
+                    {% if current.parentCategory|length == 0 %}
+                        {% set subs = current.subCategories %}
+                        <div class="headerInterests margin-bottom">
+                            {{ form_widget(child, { "attr": {"class": "pull-left selecctall"} }) }}
+                            <h2><span class="icon-Res {{ current.cssClass }} img-circle"></span>{{ current.name }}</h2>
+                        </div>
+                        {% if subs|length > 0 %}
+                        <div class="subCategory">
+                            {% for subCategory in subs %}
+                            <label class="col-md-2">
+                                {% for choice in form.children %}
+                                    {% if choice.vars.value == subCategory.id %}
+                                        {{ form_widget(choice, {"attr": {"class": "checkbox1" } }) }} {{ subCategory.name }}
+                                    {% endif %}
+                                {% endfor %}
+                            </label>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                     {% endif %}
+            </div>
                 {% endfor %}
-            </ul>
+
         </div>
     {% endspaceless %}
 {% endblock choice_widget_expanded %}

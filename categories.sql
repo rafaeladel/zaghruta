@@ -11,21 +11,21 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 -- Dumping data for table zaghruta_db.categories: ~14 rows (approximately)
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` (`id`, `name`, `css_class`, `created_at`, `updated_at`, `name_slug`) VALUES
-	('1', 'Hotels & Venues', 'iconHotels', '0000-00-00 00:00:00', NULL, 'hotels-venues'),
-	('10', 'Furniture', 'iconFurniture', '2014-06-16 11:11:49', '2014-06-16 11:11:50', 'furniture'),
-	('11', 'Beauty & Health', 'iconHealth', '2014-06-16 11:12:20', '2014-06-16 11:12:20', 'beauty-health'),
-	('12', 'Limousines', 'iconLimousines', '2014-06-16 11:12:43', '2014-06-16 11:12:43', 'limousines'),
-	('13', 'Home Appliances', 'iconHAppliances', '2014-06-16 11:13:07', '2014-06-16 11:13:07', 'home-appliances'),
-	('14', 'Entertainment', 'iconEntertainment', '2014-06-16 11:13:33', '2014-06-16 11:13:33', 'entertainment'),
-	('2', 'Cake & catering', 'iconCatering', '0000-00-00 00:00:00', NULL, 'cake-catering'),
-	('3', 'Wedding Planners', 'iconWedding', '0000-00-00 00:00:00', NULL, 'wedding-planners'),
-	('4', 'Photography', 'iconPhotography', '2014-06-16 11:08:50', '2014-06-16 11:08:51', 'photography'),
-	('5', 'Jewlery', 'iconJewelry', '2014-06-16 11:09:43', '2014-06-16 11:09:43', 'jewlery'),
-	('6', 'Honeymoons', 'iconHonymoons', '2014-06-16 11:10:16', '2014-06-16 11:10:16', 'honeymoons'),
-	('7', 'Fashion', 'iconFashion', '2014-06-16 11:10:43', '2014-06-16 11:10:43', 'fashion'),
-	('8', 'Real Estate', 'iconRealEstate', '2014-06-16 11:11:00', '2014-06-16 11:11:01', 'real-estate'),
-	('9', 'Florists', 'iconFlorists', '2014-06-16 11:11:33', '2014-06-16 11:11:33', 'florists');
+INSERT INTO `categories` (`id`, `parent_category_id`, `name`, `name_slug`, `css_class`, `created_at`, `updated_at`) VALUES
+	('1', NULL, 'Hotels & Venues', 'hotels-venues', 'icon-hotelsVenues', '0000-00-00 00:00:00', NULL),
+	('10', NULL, 'Furniture', 'furniture', 'icon-furniture', '2014-06-16 11:11:49', '2014-06-16 11:11:50'),
+	('11', NULL, 'Beauty & Health', 'beauty-health', 'icon-Health', '2014-06-16 11:12:20', '2014-06-16 11:12:20'),
+	('12', NULL, 'Limousines', 'limousines', 'icon-limousines', '2014-06-16 11:12:43', '2014-06-16 11:12:43'),
+	('13', NULL, 'Home Appliances', 'home-appliances', 'icon-homeAppliances', '2014-06-16 11:13:07', '2014-06-16 11:13:07'),
+	('14', NULL, 'Entertainment', 'entertainment', 'icon-entertainment', '2014-06-16 11:13:33', '2014-06-16 11:13:33'),
+	('2', NULL, 'Cake & catering', 'cake-catering', 'icon-cakeCatering', '0000-00-00 00:00:00', NULL),
+	('3', NULL, 'Wedding Planners', 'wedding-planners', 'icon-weddingPlanners', '0000-00-00 00:00:00', NULL),
+	('4', NULL, 'Photography', 'photography', 'icon-photography', '2014-06-16 11:08:50', '2014-06-16 11:08:51'),
+	('5', NULL, 'Jewlery', 'jewlery', 'icon-jewlery', '2014-06-16 11:09:43', '2014-06-16 11:09:43'),
+	('6', NULL, 'Honeymoons', 'honeymoons', 'icon-honeymoons', '2014-06-16 11:10:16', '2014-06-16 11:10:16'),
+	('7', NULL, 'Fashion', 'fashion', 'icon-fashion', '2014-06-16 11:10:43', '2014-06-16 11:10:43'),
+	('8', NULL, 'Real Estate', 'real-estate', 'icon-realEstate', '2014-06-16 11:11:00', '2014-06-16 11:11:01'),
+	('9', NULL, 'Florists', 'florists', 'icon-florists', '2014-06-16 11:11:33', '2014-06-16 11:11:33');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

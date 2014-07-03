@@ -9,9 +9,18 @@
                         <li><a href="#" class="searchOption {{ in_product ? "searchOptionProd" : "" }}" data-cat="all"><i class="icon-list-alt"></i>Everything</a></li>
                         <li class="divider"></li>
                     {#{% endif %}#}
-                    {% for category in categories %}
-                        <li><a href="#" class="searchOption {{ in_product ? "searchOptionProd" : "" }}" data-cat="{{ category.nameSlug }}"><i
-                                        class="iconMenu {{ category.cssClass }} pull-left"></i>{{ category.name }}</a>
+                    {% for category in categories if category.parentCategory|length == 0 %}
+                        <li {{ category.subCategories|length > 0 ? 'class="dropdown-submenu"' : '' }}>
+                            <a href="#" class="searchOption {{ in_product ? "searchOptionProd" : "" }}" data-cat="{{ category.nameSlug }}"><i class="iconMenu {{ category.cssClass }} pull-left"></i>{{ category.name }}</a>
+                            {% if category.subCategories|length > 0 %}
+                                <ul class="dropdown-menu">
+                                    {% for subCategory in category.subCategories %}
+                                        <li>
+                                            <a href="#" class="searchOption {{ in_product ? "searchOptionProd" : "" }}" data-cat="{{ subCategory.nameSlug }}"><i class="iconMenu {{ subCategory.cssClass }} pull-left"></i> {{ subCategory.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                         </li>
                     {% endfor %}
                     {% if not in_product %}

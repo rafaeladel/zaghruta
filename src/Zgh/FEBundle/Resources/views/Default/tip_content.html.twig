@@ -9,22 +9,22 @@
             <div class="row tip">
                 <div class="col-md-9 tipExp">
                     <div class="row banner margin">
-                        <div class="col-md-12">
-                            <img src="{{ tip.getThumbWebPath ? asset(tip.getThumbWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}" class="img-responsive">
+                        <div class="col-md-12 contentImg">
+                            <img src="{{ tip.getWebPath ? asset(tip.getWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}" class="img-responsive">
                         </div>
                     </div>
                     <div class="content_wrapper">
                         {% block innerPartial %}
-                            <div class="row">
+                            <div class="row margin-bottom">
                                 {% set tips = user.tips %}
                                 {% set next_id = nextId(tips, tip) %}
                                 {% set prev_id = prevId(tips, tip) %}
 
                                 {% if prev_id != null %}
-                                    <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": prev_id }) }}" class="pull-left">Previous</a>
+                                    <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": prev_id }) }}" class="pull-left margin-left exp-Arrow">Previous</a>
                                 {% endif %}
                                 {% if next_id != null %}
-                                    <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": next_id }) }}" class="pull-right">Next</a>
+                                    <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": next_id }) }}" class="pull-right margin-right exp-Arrow">Next</a>
                                 {% endif %}
                             </div>
                         <div class="row headerProduct">

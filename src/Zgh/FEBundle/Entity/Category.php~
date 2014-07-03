@@ -15,6 +15,16 @@ class Category
 //    use BasicInfo;
 
     /**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent_category")
+     **/
+    protected $sub_categories;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="sub_categories")
+     **/
+    protected $parent_category;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Experience", mappedBy="categories")
      */
     protected $experiences;
@@ -25,7 +35,7 @@ class Category
     protected $products;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User")
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="interests")
      */
     protected $users;
 
@@ -225,5 +235,94 @@ class Category
     public function getNameSlug()
     {
         return $this->name_slug;
+    }
+
+    /**
+     * Add experiences
+     *
+     * @param \Zgh\FEBundle\Entity\Experience $experiences
+     * @return Category
+     */
+    public function addExperience(\Zgh\FEBundle\Entity\Experience $experiences)
+    {
+        $this->experiences[] = $experiences;
+
+        return $this;
+    }
+
+    /**
+     * Remove experiences
+     *
+     * @param \Zgh\FEBundle\Entity\Experience $experiences
+     */
+    public function removeExperience(\Zgh\FEBundle\Entity\Experience $experiences)
+    {
+        $this->experiences->removeElement($experiences);
+    }
+
+    /**
+     * Get experiences
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getExperiences()
+    {
+        return $this->experiences;
+    }
+
+    /**
+     * Add sub_categories
+     *
+     * @param \Zgh\FEBundle\Entity\Category $subCategories
+     * @return Category
+     */
+    public function addSubCategory(\Zgh\FEBundle\Entity\Category $subCategories)
+    {
+        $this->sub_categories[] = $subCategories;
+
+        return $this;
+    }
+
+    /**
+     * Remove sub_categories
+     *
+     * @param \Zgh\FEBundle\Entity\Category $subCategories
+     */
+    public function removeSubCategory(\Zgh\FEBundle\Entity\Category $subCategories)
+    {
+        $this->sub_categories->removeElement($subCategories);
+    }
+
+    /**
+     * Get sub_categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSubCategories()
+    {
+        return $this->sub_categories;
+    }
+
+    /**
+     * Set parent_category
+     *
+     * @param \Zgh\FEBundle\Entity\Category $parentCategory
+     * @return Category
+     */
+    public function setParentCategory(\Zgh\FEBundle\Entity\Category $parentCategory = null)
+    {
+        $this->parent_category = $parentCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get parent_category
+     *
+     * @return \Zgh\FEBundle\Entity\Category 
+     */
+    public function getParentCategory()
+    {
+        return $this->parent_category;
     }
 }

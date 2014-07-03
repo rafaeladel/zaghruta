@@ -48,7 +48,8 @@ class User extends BaseUser implements ParticipantInterface
     protected $likes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category")
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="users")
+     * @ORM\JoinTable(name="categories_users")
      */
     protected $interests;
 

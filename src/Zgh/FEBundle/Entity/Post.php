@@ -14,7 +14,6 @@ use Zgh\FEBundle\Model\LikeableInterface;
  */
 class Post implements LikeableInterface, CommentableInterface
 {
-
     use BasicInfo;
 
     /**
@@ -48,11 +47,6 @@ class Post implements LikeableInterface, CommentableInterface
     protected $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Interest")
-     */
-    protected $interests;
-
-    /**
      * Set user
      *
      * @param \Zgh\FEBundle\Entity\User $user
@@ -81,7 +75,6 @@ class Post implements LikeableInterface, CommentableInterface
     {
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->likes = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->interests = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -106,40 +99,6 @@ class Post implements LikeableInterface, CommentableInterface
     {
         return $this->content;
     }
-
-    /**
-     * Add interests
-     *
-     * @param \Zgh\FEBundle\Entity\Interest $interests
-     * @return Post
-     */
-    public function addInterest(\Zgh\FEBundle\Entity\Interest $interests)
-    {
-        $this->interests[] = $interests;
-
-        return $this;
-    }
-
-    /**
-     * Remove interests
-     *
-     * @param \Zgh\FEBundle\Entity\Interest $interests
-     */
-    public function removeInterest(\Zgh\FEBundle\Entity\Interest $interests)
-    {
-        $this->interests->removeElement($interests);
-    }
-
-    /**
-     * Get interests
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getInterests()
-    {
-        return $this->interests;
-    }
-
 
     /**
      * Set image

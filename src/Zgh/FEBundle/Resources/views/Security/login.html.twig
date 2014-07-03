@@ -42,8 +42,17 @@
                 } else {
                     // not_authorized
                     FB.login(function (response) {
-                        if (response.authResponse) {
-                            document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                        var login_response = response;
+                        if(login_response.status == "connected") {
+                            {#{{ app.user.id }}#}
+                            FB.ui({
+                                method: 'apprequests',
+                                message: "Take a look at Zaghruta."
+                            }, function(response) {
+                                if (login_response.authResponse) {
+                                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                                }
+                            });
                         }
                     }, {scope: 'email'});
                 }

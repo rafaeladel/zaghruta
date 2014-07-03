@@ -7,6 +7,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * @ORM\Entity(repositoryClass="Zgh\FEBundle\Repository\UserRepository")
  * @ORM\Table(name="fos_user")
@@ -15,9 +16,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User extends BaseUser implements ParticipantInterface
 {
     /**
-     * @ORM\Column(type="string", length=255)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
@@ -47,7 +48,11 @@ class User extends BaseUser implements ParticipantInterface
     protected $likes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category")
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="users")
+     * @ORM\JoinTable(name="categories_users",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
+     *      )
      */
     protected $interests;
 
@@ -134,6 +139,7 @@ class User extends BaseUser implements ParticipantInterface
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(groups={"intro"})
      */
     protected $firstname;
 
@@ -141,6 +147,7 @@ class User extends BaseUser implements ParticipantInterface
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(groups={"intro"})
      */
     protected $lastname;
 
@@ -169,15 +176,6 @@ class User extends BaseUser implements ParticipantInterface
      * @ORM\Column(type="boolean")
      */
     protected $emailNotification;
-
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setId()
-    {
-        $this->id = uniqid();
-    }
 
     /**
      * @return string
@@ -1041,4 +1039,35 @@ class User extends BaseUser implements ParticipantInterface
     }
 
 
+
+    /**
+     * Set emailNotification
+     *
+     * @param boolean $emailNotification
+     * @return User
+     */
+    public function setEmailNotification($emailNotification)
+    {
+        $this->emailNotification = $emailNotification;
+
+        return $this;
+    }
+
+    /**
+     * Get emailNotification
+     *
+     * @return boolean 
+     */
+    public function getEmailNotification()
+    {
+        return $this->emailNotification;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setEmailNotificationValue()
+    {
+        $this->setEmailNotification(true);
+    }
 }

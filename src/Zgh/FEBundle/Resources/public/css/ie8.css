@@ -1,6 +1,13 @@
  #theH{
-    background-repeat: repeat !important;
+   position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
  }
+ #theH {
+
+ } 
 .img-circle{
     border-radius: 50% !important;
 }

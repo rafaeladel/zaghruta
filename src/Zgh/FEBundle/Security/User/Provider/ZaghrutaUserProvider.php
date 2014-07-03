@@ -58,7 +58,7 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
         if ($user === null) {
             $user = $this->userManager->findUserByEmail($response->getEmail());
             if ($user) {
-                return $user;
+                throw new AccountNotLinkedException("Email already exists.");
             }
         }
         if (null === $user) {

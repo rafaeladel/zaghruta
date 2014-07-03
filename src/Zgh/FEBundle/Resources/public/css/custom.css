@@ -2058,9 +2058,24 @@ footer a {
     height: 20px;
     display: block;
     margin-right: 4px;
+    font-size: 24px;
 }
-
-.iconHotels {
+.dropdown-menu li a .icon-homeAppliances,.dropdown-menu li a .icon-entertainment{
+    font-size: 32px;
+    line-height: 21px;
+}
+.dropdown-menu li a .icon-homeAppliances{
+   margin: 0px  9px 0 -5px
+}
+.dropdown-menu li a .icon-entertainment{
+    margin: 0 9px 0 -4px;;  
+}
+ .dropdown-menu li a .icon-jewlery{
+   margin: 0 8px 0 -2px;
+   font-size: 31px;
+   line-height: 24px;
+}
+/*.iconHotels {
     background: url(../img/iconSpriteMenu.png) no-repeat -1px -1px;
 }
 
@@ -2115,7 +2130,7 @@ footer a {
 .iconEntertainment {
     background: url(../img/iconSpriteMenu.png) no-repeat -1px -314px;
 }
-
+*/
 /*----------------------------------*/
 .dropdown-submenu {
     position: relative;
@@ -2249,8 +2264,30 @@ footer a {
 
  .vendorBox .signBox { margin-top: 20px}
 
- #theH{    top:0px; left:0px; position: fixed; height: 100%; width: 100%; background: url(../img/bg.jpg) no-repeat left bottom; background-size: cover; z-index: -1 ;
+ #theH{ 
+  top:0px; 
+  left:0px; 
+  position: fixed; 
+  height: 100%;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: -1 ;
 }
+ #theH img{
+   position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+  width:100%;
+  height: 100%;
+ }
 .RememberMe{
     border: 0 none;
     color: #B7B7B7;
@@ -2789,7 +2826,107 @@ font-size: 18px !important;
      height: auto;
     width: 100%;
 }
+.mainCategory{
+    margin-bottom: 15px;
+ }
+ .headerInterests{
+    padding: 15px 0;
+    border-bottom: 1px solid #c2c2c2;
+    margin-bottom: 15px;
+}
+ .headerInterests input{
+    margin-right: 10px;
+ }
+ .headerInterests h2{
+    margin-top: 0;
+ }
+ .headerInterests h2 .icon-Res{
+    line-height: 22px;
+ }
+ .subCategory label{
+    margin-bottom: 10px;
+ }
 
 .login_anon {
     margin-top: 8px;
+}
+.contentImg{
+ height: 350px;
+overflow: hidden;
+background: #f6f6f6;
+min-height: 100px !important;
+ 
+}
+.contentImg img{
+ width: auto; !important;
+ height: 100%;
+ margin: 0 auto;
+ min-width: none !important;
+
+}
+@font-face {
+  font-family: 'icons';
+  src:url('../fonts/icons.eot?-pk8qpa');
+  src:url('../fonts/icons.eot?#iefix-pk8qpa') format('embedded-opentype'),
+    url('../fonts/icons.woff?-pk8qpa') format('woff'),
+    url('../fonts/icons.ttf?-pk8qpa') format('truetype'),
+    url('../fonts/icons.svg?-pk8qpa#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-entertainment-"], [class*=" icon-"] {
+  font-family: 'icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-Health:before {
+  content: "\e600";
+}
+.icon-cakeCatering:before {
+  content: "\e601";
+}
+.icon-entertainment:before {
+  content: "\e602";
+}
+.icon-fashion:before {
+  content: "\e603";
+}
+.icon-florists:before {
+  content: "\e604";
+}
+.icon-furniture:before {
+  content: "\e605";
+}
+.icon-homeAppliances:before {
+  content: "\e606";
+}
+.icon-honeymoons:before {
+  content: "\e607";
+}
+.icon-hotelsVenues:before {
+  content: "\e608";
+}
+.icon-jewlery:before {
+  content: "\e609";
+}
+.icon-limousines:before {
+  content: "\e60a";
+}
+.icon-photography:before {
+  content: "\e60b";
+}
+.icon-realEstate:before {
+  content: "\e60c";
+}
+.icon-weddingPlanners:before {
+  content: "\e60d";
 }

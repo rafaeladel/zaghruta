@@ -6,7 +6,12 @@
 
     <div class="container interest">
         {% block leftContent %}
-            <h2>Add your interests</h2>
+            <div class="row search-Results">
+                <div class="srh-Res-Heading col-md-4 pull-left">
+                    <h1>Add Your Interests</h1>
+                </div>
+                <!----------------End  srh-Res-Heading -------------->
+            </div>
             <div class="row">
 
             </div>
@@ -27,5 +32,20 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.selecctall').click(function (e) {
+                if (e.target.checked) {
+                    $(e.target).closest(".mainCategory").find(".checkbox1").each(function () {
+                        this.checked = true;
+                    });
+                } else {
+                    $(e.target).closest(".mainCategory").find(".checkbox1").each(function () {
+                        this.checked = false;
+                    });
+                }
+            });
+        });
+    </script>
 {% endblock javascripts %}
 {% form_theme form with '@ZghFE/Form/checkbox_ul.html.twig' %}
