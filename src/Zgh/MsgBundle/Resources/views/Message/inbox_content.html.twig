@@ -2,7 +2,7 @@
     <div class="col-3 data-reacted thread" data-t_id="{{ thread.id }}">
         <div class="profile  sm-img-post">
             <a href="#" class="pull-left img-circle ">
-                <img alt="" src="{{ asset(thread.messages[thread.messages|length - 1].sender.profilePhoto.getThumbWebPath()) }}"
+                <img alt="" src="{{ "ROLE_FACEBOOK" in thread.messages[thread.messages|length - 1].sender.roles ? 'https://graph.facebook.com/'~thread.messages[thread.messages|length - 1].sender.facebookId~'/picture?width=125&height=125' : asset(thread.messages[thread.messages|length - 1].sender.profilePhoto.getThumbWebPath()) }}"
                      class="media-object img-responsive">
             </a>
             <h4><a href="">{{ thread.messages[thread.messages|length - 1].sender.fullname }}</a></h4>

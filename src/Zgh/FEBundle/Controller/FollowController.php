@@ -18,7 +18,8 @@ class FollowController extends Controller
     public function setFollowAction(Request $request, $er_id, $ing_id)
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($ing_id);
-        return $this->get("zgh_fe.follow.manager")->follownize($user);
+        $this->get("zgh_fe.follow.manager")->follownize($user);
+        return $this->redirect($request->headers->get("referer"));
     }
 
     /**

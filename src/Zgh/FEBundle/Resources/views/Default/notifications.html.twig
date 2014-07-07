@@ -19,7 +19,11 @@
                         {% for notification in notifications %}
                             {% if notification.content.type == 'notify.like' %}
                                 <tr>
-                                    <td class="tableImg" ><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
+                                    <td class="tableImg" >
+                                        <a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}">
+                                            <img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" />
+                                        </a>
+                                    </td>
                                     <td>{{ notification.content.user }} Liked your
                                         {% if notification.content.obj_type == 0 %}
                                             <a href="{{ url("zgh_fe.post.display", {"id": notification.user.id, "post_id": notification.content.obj_id }) }}"> post</a>
@@ -38,7 +42,7 @@
                                 </tr>
                             {% elseif notification.content.type == 'notify.comment' %}
                                 <tr>
-                                    <td class="tableImg" ><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
+                                    <td class="tableImg" ><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
                                     <td>{{ notification.content.user }} Commented on your
                                         {% if notification.content.obj_type == 0 %}
                                             <a href="{{ url("zgh_fe.post.display", {"id": notification.user.id, "post_id": notification.content.obj_id }) }}"> post</a>
@@ -58,7 +62,7 @@
                                 </tr>
                             {% elseif notification.content.type == 'notify.comment_other' %}
                                 <tr>
-                                    <td class="tableImg" ><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
+                                    <td class="tableImg" ><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
                                     <td>{{ notification.content.user }} Commented on {{ notification.content.user_gender }}
                                         {% if notification.content.obj_type == 0 %}
                                             <a href="{{ url("zgh_fe.post.display", {"id": notification.content.user_id, "post_id": notification.content.obj_id }) }}"> post</a>
@@ -78,7 +82,7 @@
                                 </tr>
                             {% elseif notification.content.type == 'notify.follow' %}
                                 <tr>
-                                    <td class="tableImg"><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
+                                    <td class="tableImg"><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
                                     <td>
                                         <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a>Started following you
                                         <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
@@ -87,7 +91,7 @@
                                 </tr>
                             {% elseif notification.content.type == 'notify.follow_request' %}
                                 <tr>
-                                    <td class="tableImg" ><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
+                                    <td class="tableImg" ><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
                                     <td>
                                         <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a>
                                         Wants to follow you. <a
@@ -99,7 +103,7 @@
                                 </tr>
                             {% elseif notification.content.type == "notify.follow_request_accepted" %}
                                 <tr>
-                                    <td class="tableImg"><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.followee_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
+                                    <td class="tableImg"><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.followee_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
                                     <td>
                                         <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.followee_id }) }}"> {{ notification.content.user }} </a>
                                         has accepted your follow request
@@ -109,7 +113,7 @@
                                 </tr>
                             {% elseif notification.content.type == 'notify.relationship.request' %}
                                 <tr>
-                                    <td class="tableImg"><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.requester_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
+                                    <td class="tableImg"><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.requester_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
                                     <td>
                                         <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.requester_id }) }}"> {{ notification.content.user }} </a>
                                         Wants to add you in {{ notification.content.requester_gender }}

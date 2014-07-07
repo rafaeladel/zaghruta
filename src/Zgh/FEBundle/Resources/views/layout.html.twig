@@ -57,7 +57,8 @@
     "bundles/zghfe/plugins/Parsley.js-2.0.0/dist/parsley.js"
     "bundles/zghfe/js/pages_logic/partial/postRefresher.js"
     "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
-    "bundles/zghfe/js/pages_logic/partial/singleUploadRefresher.js"
+    "bundles/zghfe/js/pages_logic/partial/singleUploadProduct.js"
+    "bundles/zghfe/js/pages_logic/partial/singleUploadExpTip.js"
     "bundles/zghfe/js/pages_logic/user_index.js"
     "bundles/zghfe/js/pages_logic/products.js"
     "bundles/zghfe/js/pages_logic/experiences.js"
@@ -114,32 +115,34 @@
                 file_input.unwrap();
             });
 
-            $("body").on("click", ".btnFollowing", function (e) {
-                e.preventDefault();
-                var btn = $(e.target);
-                btn.attr("disabled","disabled");
-                var followers_count = btn.closest(".profile").find(".followerStats");
-                var form = $(e.target).closest("form");
-                $(e.target).attr("disabled", "disabled");
-                $.ajax({
-                    type: "post",
-                    url: form.attr("action"),
-                    success: function (data) {
-                        btn.removeAttr("disabled");
-                        btn.find(".following_msg").text(data.msg);
-                        if(data.msg != "Pending") {
-                            followers_count.text(data.follower_count);
-                        }
-                        btn.removeAttr("disabled");
-                    }
-                })
-            });
+//            $("body").on("click", ".btnFollowing", function (e) {
+//                e.preventDefault();
+//                var btn = $(e.target);
+//                btn.attr("disabled","disabled");
+//                var followers_count = btn.closest(".profile").find(".followerStats");
+//                var form = $(e.target).closest("form");
+//                var url = btn.data("url");
+//                $(e.target).attr("disabled", "disabled");
+//                $.ajax({
+//                    type: "post",
+//                    url: form.attr("action"),
+//                    success: function (data) {
+//                        document.location = document.location;
+////                        btn.removeAttr("disabled");
+////                        btn.find(".following_msg").text(data.msg);
+////                        if(data.msg != "Pending") {
+////                            followers_count.text(data.follower_count);
+////                        }
+////                        btn.removeAttr("disabled");
+//                    }
+//                })
+//            });
 
             $(document).on("ajaxSuccess", function (e) {
                 postRefresh();
                 photoRefresh();
-                singleUpload("exp_tip_browse");
-                singleUpload("product_browse");
+                singleUploadProduct();
+                singleUploadExpTip();
             });
 
         });

@@ -8,7 +8,11 @@
         {% block leftContent %}
             <div class="row search-Results">
                 <div class="srh-Res-Heading col-md-4 pull-left">
-                    <h1>Add Your Interests</h1>
+                    {% if is_granted("ROLE_CUSTOMER") %}
+                        <h1>Add Your Interests</h1>
+                    {% elseif is_granted("ROLE_VENDOR") %}
+                        <h1>Add Your Categories</h1>
+                    {% endif %}
                 </div>
                 <!----------------End  srh-Res-Heading -------------->
             </div>
@@ -17,8 +21,11 @@
             </div>
             <div class="row">
                 {{ form_start(form,  {"action": url("zgh_fe.interest.post") }) }}
-                    {{ form_widget(form.interests, {"attr": {"class": "contentInterests" } }) }}
-
+                    {% if is_granted("ROLE_CUSTOMER") %}
+                        {{ form_widget(form.interests, {"attr": {"class": "contentInterests" } }) }}
+                    {% elseif is_granted("ROLE_VENDOR") %}
+                        {{ form_widget(form.categories, {"attr": {"class": "contentInterests" } }) }}
+                    {% endif %}
                     <input class="btn btn-primary btn-wide pull-right" type="submit" value="Save"/>
                 {{ form_rest(form) }}
                 {{ form_end(form) }}

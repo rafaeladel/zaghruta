@@ -41,10 +41,12 @@ class FollowManager
 
     public function follownize(User $followee)
     {
+
         $follower = $this->security_context->getToken()->getUser();
         $follow_obj = $this->follow_check->checkFollow($follower, $followee);
-
-        if ($follow_obj == null) {
+//        var_dump($follow_obj);
+//        die;
+        if (!$follow_obj instanceof FollowUsers) {
 
             $follow_obj = new FollowUsers();
 
@@ -69,13 +71,12 @@ class FollowManager
                 $follow_event = new NotifyFollowEvent($follow_obj);
                 $this->dispatcher->dispatch(NotifyEvents::NOTIFY_FOLLOW, $follow_event);
             }
-            return new JsonResponse([
-                "msg" => $follow_obj->getIsApproved() ? 'Unfollow' : "Pending",
-                "follower_count" => $followers_count
-            ]);
+//            var_dump(1);
+//            die;
 
-
+            return true;
         } else {
+
             $this->em->remove($follow_obj);
             $followee = $follow_obj->getFollowee();
             $notification_delete_event = new NotifyDeleteEvent($followee, $follow_obj->getId());
@@ -83,12 +84,9 @@ class FollowManager
 
             $this->em->flush();
             $followers_count = count($followee->getFollowees());
-
-            return new JsonResponse([
-                "msg" => "Follow",
-                "follower_count" => $followers_count
-            ]);
-
+//            var_dump(2);
+//            die;
+            return true;
         }
     }
 }

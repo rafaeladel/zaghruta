@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $("body").on("click", ".branchSubmit", function(e){
         $("body").off("click", ".branchSubmit");
+
         var btn = $(e.target);
         $("#myform").parsley().subscribe("parsley:form:validate", function(instance){
            instance.submitEvent.preventDefault();
@@ -23,34 +24,33 @@ $(document).ready(function(){
                        }
                    }
                });
-           } else {
-               $("#myform").parsley().unsubscribe("parsley:form:validate");
            }
         });
     });
 
     $("body").on("click", ".branch_edit", function(e){
         e.preventDefault();
-        $(e.target).html('<img style="margin: auto; display: inline;" src="'+UrlContainer.loader+'" />');
-        var url = $(e.target).attr("href");
-       $(e.target).closest(".branch").load(url);
+        var url = $(e.currentTarget).attr("href");
+        $(e.currentTarget).html('<img style="margin: auto; display: inline;" src="'+UrlContainer.loader+'" />');
+       $(e.currentTarget).closest(".branch").load(url);
     });
 
     $("body").on("click", ".save_edit", function(e){
         e.preventDefault();
-        var form = $(e.target).closest("form");
+        var form = $(e.currentTarget).closest("form");
         var url = form.attr("action");
-        $(e.target).html('<img style="margin: auto; display: inline;" src="'+UrlContainer.loader+'" />');
+        var back_url = $(e.currentTarget).siblings(".cancel_edit").attr("href");
+        var list_wrapper = $(e.currentTarget).closest(".branch");
+        $(e.currentTarget).html('<img style="margin: auto; display: inline;" src="'+UrlContainer.loader+'" />');
         $.ajax({
             type: "post",
             url: url,
             data: form.serialize(),
             success: function(data){
                 if(data.status == 200){
-                    var list_url = $(e.target).siblings(".cancel_edit").attr("href");
-                    $(e.target).closest(".branch").load(list_url);
+                    list_wrapper.load(back_url);
                 } else if(data.status == 500) {
-                    $(e.target).closest(".branch").html(data.view);
+                    list_wrapper.html(data.view);
                 }
             }
         });
@@ -58,9 +58,9 @@ $(document).ready(function(){
 
     $("body").on("click", ".cancel_edit", function(e){
         e.preventDefault();
-        var url = $(e.target).attr("href");
-        $(e.target).html('<img style="margin: auto; display: inline;" src="'+UrlContainer.loader+'" />');
-        $(e.target).closest(".branch").load(url, function(){
+        var url = $(e.currentTarget).attr("href");
+        $(e.currentTarget).html('<img style="margin: auto; display: inline;" src="'+UrlContainer.loader+'" />');
+        $(e.currentTarget).closest(".branch").load(url, function(){
             $("body").find('.tooltip').tooltip();
         });
     });

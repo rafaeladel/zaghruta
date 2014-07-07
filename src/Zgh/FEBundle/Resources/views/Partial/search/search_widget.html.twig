@@ -30,7 +30,7 @@
                 </ul>
             </div>
             <!-- /btn-group -->
-            <input type="hidden" name="category" value="all"/>
+            <input type="hidden" name="category" class="category_data" value="all"/>
             <input type="text" name="q" class="form-control custFc search_text {{ custome_class }}"
                    value="{{ app.request.get("q") }}" placeholder="Search for your things">
             <a href="#" class="search-addon input-group-addon custAncor  {{ in_product ? "doSearch" : "search_submit" }}"></a>

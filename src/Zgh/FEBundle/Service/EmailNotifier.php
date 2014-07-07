@@ -71,8 +71,9 @@ class EmailNotifier
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $notification->getContent()["follower_id"]], true);
-        $body = "{$notification->getContent()["user"]} has followed you.";
-        $this->send("Someone has followed you", $user->getEmail(), $body);
+        $title = "{$notification->getContent()["user"]} has followed you.";
+        $body = sprintf("<a href='%s'>{$notification->getContent()["user"]}</a> has followed you.", $url);
+        $this->send($title, $user->getEmail(), $body);
     }
 
     protected function sendFollowRequestNotification(NotifyFollowRequestEvent $event)
@@ -80,8 +81,9 @@ class EmailNotifier
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $notification->getContent()["follower_id"]], true);
-        $body = "{$notification->getContent()["user"]} wants to follow you.";
-        $this->send("Someone wants to follow you", $user->getEmail(), $body);
+        $title = "{$notification->getContent()["user"]} wants to follow you.";
+        $body = sprintf("<a href='%s'>{$notification->getContent()["user"]}</a> wants to follow you.", $url);
+        $this->send($title, $user->getEmail(), $body);
     }
 
     protected function sendRelationshipRequest(NotifyRelationshipRequestEvent $event)

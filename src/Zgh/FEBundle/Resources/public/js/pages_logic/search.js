@@ -40,9 +40,9 @@ $(document).ready(function(){
 
     $("body").on("click", ".searchOption", function(e){
         e.preventDefault();
-        var cat = $(e.target).data("cat");
-        $(e.target).closest(".cat_ddl_btn").find("button").text($(e.target).text());
-        $(e.target).closest("form").find("input[type='hidden']").val(cat);
+        var cat = $(e.currentTarget).data("cat");
+        $(e.currentTarget).closest(".cat_ddl_btn").find("button").text($(e.currentTarget).text());
+        $(e.currentTarget).closest("form").find(".category_data[type='hidden']").val(cat);
     });
 
     $("body").on("click", ".doSearch", function(e){

@@ -1,6 +1,6 @@
-function singleUpload(button_class) {
-    $("body").find("." + button_class).dropzone({
-        url: $("." + button_class).closest("form").attr("action"),
+function singleUploadExpTip() {
+    $("body").find(".exp_tip_browse").dropzone({
+        url: $(".exp_tip_browse").closest("form").attr("action"),
         parallelUploads: 1,
         maxFiles: 1,
         maxFilesize: 2,
@@ -34,7 +34,7 @@ function singleUpload(button_class) {
                 }
             });
 
-            $("." + button_class).closest("form").find("[type='submit']").on("click", function (e) {
+            $(".exp_tip_browse").closest("form").find("[type='submit']").on("click", function (e) {
                 $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
                     instance.submitEvent.preventDefault();
                     if (instance.isValid()) {
@@ -48,10 +48,10 @@ function singleUpload(button_class) {
                             });
                             myDropzone.processQueue();
                         } else {
-                            var form_data = new FormData($("." + button_class).closest("form")[0]);
+                            var form_data = new FormData($(".exp_tip_browse").closest("form")[0]);
                             $.ajax({
                                 type: "post",
-                                url: $("." + button_class).closest("form").attr("action"),
+                                url: $(".exp_tip_browse").closest("form").attr("action"),
                                 data: form_data,
                                 processData: false,
                                 contentType: false,
@@ -86,7 +86,7 @@ function singleUpload(button_class) {
     });
 
     function refreshWrapper(data) {
-        var submit_btn = $("." + button_class).closest("form").find("[type='submit']");
+        var submit_btn = $(".exp_tip_browse").closest("form").find("[type='submit']");
         submit_btn.removeAttr("disabled");
         if (data.status == 200) {
             var back_url = submit_btn.data("back_url");
@@ -98,8 +98,8 @@ function singleUpload(button_class) {
         else if (data.status == 500) {
             $("body").find(".content_wrapper").html(data.view);
 
-            //re-initializing dropzone plugin, becaus ajaxSuccess event is not triggered here
-            singleUpload(button_class);
+            //re-initializing dropzone plugin, because ajaxSuccess event is not triggered here
+            singleUploadExpTip();
 
             ThraceForm.select2();
         }

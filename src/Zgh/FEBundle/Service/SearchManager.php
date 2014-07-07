@@ -127,6 +127,7 @@ class SearchManager
                 from Zgh\FEBundle\Entity\Category c
                 inner join c.products pr
                 where pr.user = :user
+                order by c.name desc
             ");
         $q->setParameters([
                 "user" => $user,
@@ -138,12 +139,13 @@ class SearchManager
     public function getVendorByCategoryResults($cat_slug, $query)
     {
         $q = $this->em->createQuery("
-                select u
-                from Zgh\FEBundle\Entity\User u
-                inner join u.interests i
-                where i.name_slug = :cat
-                and u.firstname like :crit
-                and u.roles like '%ROLE_VENDOR%'
+                select v
+                from Zgh\FEBundle\Entity\User v
+                inner join v.vendor_info v_i
+                inner join v_i.categories c
+                where c.name_slug = :cat
+                and v.firstname like :crit
+                and v.roles like '%ROLE_VENDOR%'
             ");
 
         $q->setParameters([

@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Zgh\FEBundle\Form\InterestType;
 use Zgh\FEBundle\Form\VendorCategoryType;
 
-class InterestController extends Controller
+class VendorCategoriesController extends Controller
 {
 
     /**
@@ -19,23 +19,19 @@ class InterestController extends Controller
      */
     public function getIndexAction(Request $request)
     {
-        $user = $this->getUser();
+        $vendor = $this->getUser();
+        $vendor_info = $vendor->getVendorInfo();
         $user->setShowInterestNotification(false);
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush();
-
+        
         if($request->isXmlHttpRequest())
         {
             return new JsonResponse(array("status" => 200));
         }
         else
         {
-            if(in_array("ROLE_CUSTOMER", $user->getRoles())) {
-                $form = $this->createForm(new InterestType(), $user);
-            } elseif(in_array("ROLE_VENDOR", $user->getRoles())) {
-                $vendor_info = $user->getVendorInfo();
-                $form = $this->createForm(new VendorCategoryType(), $vendor_info);
-            }
+            $form = $this->createForm(new VendorCategoryType(), $vendor_info);
             return $this->render("@ZghFE/Default/interests.html.twig", array("form" => $form->createView()));
         }
     }
@@ -52,13 +48,7 @@ class InterestController extends Controller
     public function postInterestAction(Request $request)
     {
         $user = $this->getUser();
-
-        if(in_array("ROLE_CUSTOMER", $user->getRoles())) {
-            $form = $this->createForm(new InterestType(), $user);
-        } elseif(in_array("ROLE_VENDOR", $user->getRoles())) {
-            $vendor_info = $user->getVendorInfo();
-            $form = $this->createForm(new VendorCategoryType(), $vendor_info);
-        }
+        $form = $this->createForm(new InterestType(), $user);
         $form->handleRequest($request);
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush();

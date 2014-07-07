@@ -2930,3 +2930,6 @@ min-height: 100px !important;
 .icon-weddingPlanners:before {
   content: "\e60d";
 }
+.dropzone_custom_error > p{
+    color : red;
+}

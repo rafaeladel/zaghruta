@@ -60,7 +60,7 @@ class SearchWidgetExtension extends \Twig_Extension
             $categories = $this->searchManager->getCategoryByProductResults($user);
             $url = $this->router->generate("zgh_fe.products.search", ["id" => $user->getId()]);
         } else {
-            $categories = $this->em->getRepository("ZghFEBundle:Category")->findAll();
+            $categories = $this->em->getRepository("ZghFEBundle:Category")->findAllAsc();
             $url = $this->router->generate("zgh_fe.search.start_search");
         }
         return $this->env->render("@ZghFE/Partial/search/search_widget.html.twig", [

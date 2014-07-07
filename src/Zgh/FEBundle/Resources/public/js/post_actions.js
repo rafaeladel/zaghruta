@@ -45,8 +45,8 @@ $(document).ready(function(){
     $("body").on("click", ".openLikes", function(e){
         e.preventDefault();
         var wrapper = $(e.target).closest(".post, .experience, .photo, .tip, .product").find(".likes_wrapper");
-        var id = $(e.target).data("entity_id");
-        var entity_type = $(e.target).data("entity_type");
+        var id = $(e.currentTarget).data("entity_id");
+        var entity_type = $(e.currentTarget).data("entity_type");
         var url = Routing.generate('zgh_fe.like.list', { id: id, entity_type: entity_type }, true);
         var loader = wrapper.data("loader");
         wrapper.html('<img style="margin: auto; display: block;" src='+loader+' />');

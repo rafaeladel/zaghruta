@@ -49,5 +49,5 @@ $(document).ready(function(){
 
 
 
-    singleUpload("exp_tip_browse");
+    singleUploadExpTip();
 });

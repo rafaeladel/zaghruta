@@ -2,7 +2,7 @@
     <div class="msg msgUser">
         <div class="profile  sm-img-post">
             <a href="#" class="pull-left img-circle ">
-                <img alt="" src="{{ asset(message.sender.profilePhoto.getThumbWebPath()) }}"
+                <img alt="" src="{{ "ROLE_FACEBOOK" in message.sender.roles ? 'https://graph.facebook.com/'~message.sender.facebookId~'/picture?width=125&height=125' : asset(message.sender.profilePhoto.getThumbWebPath()) }}"
                      class="media-object img-responsive">
             </a>
             <h5><a href="{{ url("zgh_fe.user_profile.index", {"id": message.sender.id }) }}">{{ message.sender.fullname }}</a></h5>
