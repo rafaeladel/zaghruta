@@ -108,7 +108,9 @@ class SearchManager
         $q = $this->em->createQuery("
                 select pr
                 from Zgh\FEBundle\Entity\Product pr
-                inner join pr.category c
+                inner join pr.user v
+                inner join v.vendor_info v_i
+                inner join v_i.categories c
                 where c.name_slug = :cat
                 and pr.name like :crit
             ");
@@ -128,6 +130,22 @@ class SearchManager
                 inner join c.products pr
                 where pr.user = :user
                 order by c.name desc
+            ");
+        $q->setParameters([
+                "user" => $user,
+            ]);
+
+        return $q->execute();
+    }
+
+    public function getTagsByProductResults($user)
+    {
+        $q = $this->em->createQuery("
+                select t
+                from Zgh\FEBundle\Entity\Tag t
+                inner join t.products pr
+                where pr.user = :user
+                order by t.name desc
             ");
         $q->setParameters([
                 "user" => $user,
@@ -174,29 +192,29 @@ class SearchManager
         return $q->execute();
     }
 
-    public function getProductByUserAndCategory($user_id, $cat_slug, $crit)
+    public function getProductByUserAndTag($user_id, $tag_slug, $crit)
     {
         $query = "select pr
                 from Zgh\FEBundle\Entity\Product pr";
 
-        $query .= $cat_slug == "all" ? "" :  " inner join pr.category c" ;
+        $query .= $tag_slug == "all" ? "" :  " inner join pr.tags t" ;
 
         $query .= " where pr.user = :user
                     and pr.name like :crit";
 
-        $query .= $cat_slug == "all" ? "" : " and c.name_slug = :cat" ;
+        $query .= $tag_slug == "all" ? "" : " and t.name_slug = :tag" ;
 
         $q = $this->em->createQuery($query);
 
         $q->setParameters([
-            "user" => $user_id,
-            "crit" => "%" .  strtolower($crit) . "%"
-        ]);
+                "user" => $user_id,
+                "crit" => "%" .  strtolower($crit) . "%"
+            ]);
 
 
-        if($cat_slug != "all")
+        if($tag_slug != "all")
         {
-            $q->setParameter("cat", $cat_slug);
+            $q->setParameter("tag", $tag_slug);
         }
 
 

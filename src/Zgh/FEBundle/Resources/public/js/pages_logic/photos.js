@@ -14,16 +14,16 @@ $(document).ready(function(){
 
     $("body").on("click", ".load_images", function(e){
         e.preventDefault();
-        $(e.target).closest(".content_wrapper").load($(e.target).data("url"));
+        $(e.currentTarget).closest(".content_wrapper").load($(e.currentTarget).data("url"));
         $(".photosWrapper").html('<img style="margin: auto; display: block;" src="'+UrlContainer.loader+'" />');
-        history.pushState(null, null, $(e.target).data("url"));
+        history.pushState(null, null, $(e.currentTarget).data("url"));
     })
 
     $("body").on("click", ".back_btn", function(e){
         e.preventDefault();
         $(".photosWrapper").html('<img style="margin: auto; display: block;" src="'+UrlContainer.loader+'" />');
-        $(".content_wrapper").load($(e.target).data("target_url"));
-        history.pushState(null, null, $(e.target).data("target_url"));
+        $(".content_wrapper").load($(e.currentTarget).data("target_url"));
+        history.pushState(null, null, $(e.currentTarget).data("target_url"));
     });
 
     photoRefresh();

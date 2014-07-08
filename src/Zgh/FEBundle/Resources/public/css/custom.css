@@ -2306,6 +2306,7 @@ footer a {
 }
 .likeBtn{
     position: relative;
+    background: #ccc !important;
 }
 .likeBtn > span{
     position: absolute;
@@ -2850,6 +2851,7 @@ font-size: 18px !important;
 .login_anon {
     margin-top: 8px;
 }
+
 .contentImg{
  height: 350px;
 overflow: hidden;
@@ -2932,4 +2934,12 @@ min-height: 100px !important;
 }
 .dropzone_custom_error > p{
     color : red;
+}
+
+.custom_dpz_error {
+    display: block !important;
+    position: relative !important;
+    top:0 !important;
+    left:0 !important;
+    opacity: 1 !important;
 }

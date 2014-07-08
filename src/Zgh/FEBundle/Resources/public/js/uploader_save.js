@@ -24,7 +24,7 @@ function Uploader(params)
         $("body").find("."+this.browseClass).dropzone({
             init: function(){
                 var myDropzone = this;
-                this.on("queuecomplete", function(file) {
+                this.on("success", function(file, data) {
                     refresh_uploader(_this.modalID, _this.listBtnID, _this.listWrapperClass, _this.ajaxLoadUrl, _this.saveButtonClass);
                 });
 
@@ -71,11 +71,31 @@ function Uploader(params)
                     {
                         this.removeFile(file);
                     }
+                    $("#"+_this.modalID).find("."+_this.saveButtonClass).removeAttr("disabled", "disabled");
                 });
+
+                myDropzone.on("removedfile", function (file) {
+                    var escape = false;
+                    $(myDropzone.files).each(function(i, v) {
+                        if(v.accepted == false) {
+                            escape = true;
+                            return;
+                        }
+                    });
+                    if(!escape) {
+                        $("#"+_this.modalID).find("."+_this.saveButtonClass).removeAttr("disabled");
+                    }
+                });
+
+                myDropzone.on("error", function (file, msg) {
+                    $("#"+_this.modalID).find("."+_this.saveButtonClass).attr("disabled", "disabled");
+                });
+
             },
             url: _this.targetUrl,
             parallelUploads: _this.numOfFiles,
             maxFiles: _this.numOfFiles,
+            maxFilesize: 2,
             thumbnailWidth: 300,
             thumbnailHeight: 300,
             acceptedFiles: "image/*",
@@ -88,8 +108,8 @@ function Uploader(params)
                                     <div class="dz-photo"><img data-dz-thumbnail /></div>\
                                 </div>\
                                 <input type="text" class="form-control" placeholder="caption" name="caption" />\
-                                <div class="dz-error-message"><span data-dz-errormessage></span></div>\
-                                <a class="btn-dz-remove pull-left" href="#" data-dz-remove>Delete</a>\
+                                <a class="btn-dz-remove" href="#" data-dz-remove>Delete</a>\
+                                <div class="dz-error-message custom_dpz_error"><span data-dz-errormessage></span></div>\
                                 <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>\
                               </div>\
                             '

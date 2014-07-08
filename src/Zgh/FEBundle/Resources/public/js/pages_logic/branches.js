@@ -33,6 +33,7 @@ $(document).ready(function(){
         var url = $(e.currentTarget).attr("href");
         $(e.currentTarget).html('<img style="margin: auto; display: inline;" src="'+UrlContainer.loader+'" />');
        $(e.currentTarget).closest(".branch").load(url);
+        ThraceForm.select2();
     });
 
     $("body").on("click", ".save_edit", function(e){

@@ -1,5 +1,4 @@
 {% extends app.request.xmlHttpRequest or is_popup == false ? '@ZghFE/Default/inner_ajax_layout.html.twig':'@ZghFE/Default/product_content.html.twig' %}
-
 {% block innerPartial %}
     <div class="row headerProduct">
         <div class="row margin-bottom">
@@ -73,9 +72,12 @@
         </div>
 
 
-        <p class="col-md-4">Category:
+        <p class="col-md-4">
             <span>
-              {{ product.category.name }}
+              {% for tag in product.tags %}
+                {{ tag.name }}
+                {% if loop.index < product.tags|length %} - {% endif %}
+              {% endfor %}
             </span>
         </p>
 

@@ -16,8 +16,8 @@ function singleUploadExpTip() {
                                     <img data-dz-thumbnail />\
                                 </div>\
                                 <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>\
-                                <div class="dz-error-message"><span data-dz-errormessage></span></div>\
                                 <a href="#" data-dz-remove>Delete</a>\
+                                <div class="dz-error-message custom_dpz_error"><span data-dz-errormessage></span></div>\
                             </div>\
                             ',
         init: function () {
@@ -80,29 +80,39 @@ function singleUploadExpTip() {
                 if (this.files[1]!=null){
                     this.removeFile(this.files[0]);
                 }
+                $(".exp_tip_browse").closest("form").find("[type='submit']").removeAttr("disabled", "disabled");
+            });
+
+            myDropzone.on("removedfile", function (file) {
+                $(".exp_tip_browse").closest("form").find("[type='submit']").removeAttr("disabled");
+            });
+
+            myDropzone.on("error", function (file, msg) {
+                $(".exp_tip_browse").closest("form").find("[type='submit']").attr("disabled", "disabled");
             });
 
         }
     });
 
     function refreshWrapper(data) {
-        var submit_btn = $(".exp_tip_browse").closest("form").find("[type='submit']");
-        submit_btn.removeAttr("disabled");
-        if (data.status == 200) {
-            var back_url = submit_btn.data("back_url");
-            $("body").find(".content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
-            $("body").find(".content_wrapper").load(back_url, function () {
-                history.pushState(null, null, back_url);
-            });
-        }
-        else if (data.status == 500) {
-            $("body").find(".content_wrapper").html(data.view);
-
-            //re-initializing dropzone plugin, because ajaxSuccess event is not triggered here
-            singleUploadExpTip();
-
-            ThraceForm.select2();
-        }
+        document.location = data.url;
+//        var submit_btn = $(".exp_tip_browse").closest("form").find("[type='submit']");
+//        submit_btn.removeAttr("disabled");
+//        if (data.status == 200) {
+//            var back_url = submit_btn.data("back_url");
+//            $("body").find(".content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+//            $("body").find(".content_wrapper").load(back_url, function () {
+//                history.pushState(null, null, back_url);
+//            });
+//        }
+//        else if (data.status == 500) {
+//            $("body").find(".content_wrapper").html(data.view);
+//
+//            //re-initializing dropzone plugin, because ajaxSuccess event is not triggered here
+//            singleUploadExpTip();
+//
+//            ThraceForm.select2();
+//        }
     }
 
 }

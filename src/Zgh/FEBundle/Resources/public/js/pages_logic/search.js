@@ -1,14 +1,5 @@
 $(document).ready(function(){
 
-//    $("body").on("click", ".mainSearch .search_text", function(e){
-//        var ddl = $(e.target).closest(".input-group").find(".input-group-btn");
-//        if(!ddl.hasClass("shown")) {
-//            $(e.target).css('border-radius', '6px 0 0 6px');
-//            ddl.addClass("shown");
-//            ddl.show();
-//        }
-//    });
-
     $("body").on("click", function(e){
         $("body").find(".input-group-btn").hide();
         if($(e.target).parents(".mainSearch").length == 1){
@@ -31,6 +22,12 @@ $(document).ready(function(){
         }
     });
 
+    $("body").on("keyup", ".search_text", function(e){
+        e.preventDefault();
+       if(e.which == 13) {
+           return false;
+       }
+    });
 
     $("body").on("click", ".search_submit", function(e){
         e.preventDefault();

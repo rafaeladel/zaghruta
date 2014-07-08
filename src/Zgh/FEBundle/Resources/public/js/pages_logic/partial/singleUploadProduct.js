@@ -16,8 +16,8 @@ function singleUploadProduct() {
                                     <img data-dz-thumbnail />\
                                 </div>\
                                 <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>\
-                                <div class="dz-error-message"><span data-dz-errormessage></span></div>\
                                 <a href="#" data-dz-remove>Delete</a>\
+                                <div class="dz-error-message custom_dpz_error"><span data-dz-errormessage></span></div>\
                             </div>\
                             ',
         init: function () {
@@ -48,7 +48,7 @@ function singleUploadProduct() {
                             });
                             myDropzone.processQueue();
                         } else {
-                            $("body").find(".btnBrowsePhoto").after("<div class='dropzone_custom_error'><p>test</p></div>");
+                            $("body").find(".btnBrowsePhoto").after("<div class='dropzone_custom_error'><p style='font-weight: bold;'>Image is required</p></div>");
                         }
                     } else {
                         $("#myform").parsley().unsubscribe("parsley:form:validate");
@@ -71,7 +71,18 @@ function singleUploadProduct() {
                 if (this.files[1]!=null){
                     this.removeFile(this.files[0]);
                 }
+                $(".exp_tip_browse").closest("form").find("[type='submit']").removeAttr("disabled", "disabled");
             });
+
+
+            myDropzone.on("removedfile", function (file) {
+                $(".product_browse").closest("form").find("[type='submit']").removeAttr("disabled");
+            });
+
+            myDropzone.on("error", function (file, msg) {
+                $(".product_browse").closest("form").find("[type='submit']").attr("disabled", "disabled");
+            });
+
 
         }
     });

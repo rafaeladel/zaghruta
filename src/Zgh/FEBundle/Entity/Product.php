@@ -31,11 +31,6 @@ class Product extends Image implements LikeableInterface, CommentableInterface
     protected $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
-     */
-    protected $category;
-
-    /**
      * @ORM\ManyToMany(targetEntity="Tag", cascade={"persist", "remove"})
      */
     protected $tags;
@@ -303,29 +298,5 @@ class Product extends Image implements LikeableInterface, CommentableInterface
     public function getLikes()
     {
         return $this->likes;
-    }
-
-
-    /**
-     * Set category
-     *
-     * @param \Zgh\FEBundle\Entity\Category $category
-     * @return Product
-     */
-    public function setCategory(\Zgh\FEBundle\Entity\Category $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \Zgh\FEBundle\Entity\Category 
-     */
-    public function getCategory()
-    {
-        return $this->category;
     }
 }

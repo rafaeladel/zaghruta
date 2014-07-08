@@ -10,15 +10,15 @@ $(document).ready(function(){
         var count_wrapper = btn.closest(".post, .photo, .experience, .tip, .product").find(".likes_count");
         var old_count = count_wrapper.text();
         if(btn.find("span").hasClass("liked")){
-            count_wrapper.text(--old_count);
-            btn.attr('title', "Like")
-                .tooltip('fixTitle')
-                .tooltip('show');
+//            count_wrapper.text(--old_count);
+//            btn.attr('title', "Like")
+//                .tooltip('fixTitle')
+//                .tooltip('show');
         } else {
-            count_wrapper.text(++old_count);
-            btn.attr('title', "Unlike")
-                .tooltip('fixTitle')
-                .tooltip('show');
+//            count_wrapper.text(++old_count);
+//            btn.attr('title', "Unlike")
+//                .tooltip('fixTitle')
+//                .tooltip('show');
         }
         $.ajax({
             type: "POST",

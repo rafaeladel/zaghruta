@@ -34,7 +34,6 @@ class BranchController extends Controller
         $form = $this->createForm(new BranchType(), $branch);
 
         $form->handleRequest($request);
-
         if(!$form->isValid())
         {
             return new JsonResponse([

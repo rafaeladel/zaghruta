@@ -14,12 +14,6 @@
 
                         <h2 class="text-center"><a href="{{ url("zgh_fe.user_profile.index", {"id": product.user.id}) }}">{{ product.user.firstname }}</a></h2>
 
-                        <p class="text-center">Company
-                            <br>
-                            {#{% for interest in product.user.vendorInfo.categories %}#}
-                                {#{{ interest }}<br/>#}
-                            {#{% endfor %}#}
-                        </p>
                         {{ renderFollow(product.user,"margin-bottom") }}
                         <div class="groupItem text-center">
                             <a href="#" class="boy"> <span

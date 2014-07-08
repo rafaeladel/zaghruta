@@ -12,9 +12,12 @@
             <div class="productContent">
                 <a href="#"><h4>{{ product.name }}</h4></a>
                 <p><a href="{{ url("zgh_fe.user_profile.index", {"id": product.user.id}) }}">{{ product.user.fullname }}</a></p>
-                <h6>{{ product.category.name }}</h6>
+                <h6>{% for tag in product.tags %}
+                        {{ tag.name }}
+                        {% if loop.index < product.tags|length %} - {% endif %}
+                    {% endfor %}</h6>
                 <span class="date">{{ product.createdAt|date() }}</span>
-                <span class="price">Price:<span> {{ product.price }}$</span></span>
+                <span class="price">Price:<span> {{ product.price }} LE</span></span>
 
                 <p class="description">
                     {{ product.description }}

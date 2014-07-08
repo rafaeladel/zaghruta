@@ -17,6 +17,7 @@ use Zgh\FEBundle\Entity\Category;
 use Zgh\FEBundle\Entity\Comment;
 use Zgh\FEBundle\Entity\Like;
 use Zgh\FEBundle\Entity\Post;
+use Zgh\FEBundle\Entity\Tag;
 use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Entity\UserInfo;
 use Zgh\FEBundle\Entity\VendorInfo;
@@ -49,7 +50,7 @@ class DoctrineListenerHandler implements EventSubscriber
     {
         return array(
             "postLoad",
-//            "prePersist",
+            "prePersist",
             "postPersist",
             "onFlush",
             "postRemove"
@@ -121,7 +122,7 @@ class DoctrineListenerHandler implements EventSubscriber
         $entity = $args->getEntity();
         $this->em = $args->getEntityManager();
 
-        if($entity instanceof Category)
+        if($entity instanceof Tag)
         {
             $slugifier = $this->container->get("zgh_fe.slugifier");
             $entity->setNameSlug($slugifier->slugify($entity->getName()));

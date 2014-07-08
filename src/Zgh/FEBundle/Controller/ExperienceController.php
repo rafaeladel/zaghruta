@@ -159,6 +159,11 @@ class ExperienceController extends Controller
 
         $em->persist($user);
         $em->flush();
-        return new JsonResponse(array("status" => 200));
-    }
+        return new JsonResponse([
+            "status" => 200,
+            "url" => $this->generateUrl("zgh_fe.experience.content", [
+                        "id" => $user->getId(),
+                        "exp_id" => $experience->getId()
+                    ])
+        ]);    }
 }

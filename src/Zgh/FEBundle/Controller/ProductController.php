@@ -275,7 +275,7 @@ class ProductController extends Controller
     {
         $query = $request->query->get("q");
         $cat_slug = $request->query->get("category");
-        $products = $this->get("zgh_fe.search_manager")->getProductByUserAndCategory($user, $cat_slug, $query);
+        $products = $this->get("zgh_fe.search_manager")->getProductByUserAndTag($user, $cat_slug, $query);
         return $this->render("@ZghFE/Partial/products/user_profile_products_content.html.twig",["user" => $user, "products" => $products]);
     }
 }

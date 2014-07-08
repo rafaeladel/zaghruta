@@ -20,6 +20,11 @@ class Tag
     protected $name;
 
     /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    protected $name_slug;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Product")
      */
     protected $products;
@@ -85,5 +90,28 @@ class Tag
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set name_slug
+     *
+     * @param string $nameSlug
+     * @return Category
+     */
+    public function setNameSlug($nameSlug)
+    {
+        $this->name_slug = $nameSlug;
+
+        return $this;
+    }
+
+    /**
+     * Get name_slug
+     *
+     * @return string
+     */
+    public function getNameSlug()
+    {
+        return $this->name_slug;
     }
 }

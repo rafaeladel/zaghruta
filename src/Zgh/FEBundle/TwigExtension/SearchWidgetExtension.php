@@ -56,19 +56,24 @@ class SearchWidgetExtension extends \Twig_Extension
         $custome_class = "";
         $url = "";
         if($inProduct == true) {
-            $custome_class = "searchTextAjax";
-            $categories = $this->searchManager->getCategoryByProductResults($user);
+            $tags = $this->searchManager->getTagsByProductResults($user);
             $url = $this->router->generate("zgh_fe.products.search", ["id" => $user->getId()]);
+            return $this->env->render("@ZghFE/Partial/search/search_products.html.twig", [
+                    "tags" => $tags,
+                    "search_url" => $url
+                ]);
+
         } else {
             $categories = $this->em->getRepository("ZghFEBundle:Category")->findAllAsc();
             $url = $this->router->generate("zgh_fe.search.start_search");
-        }
-        return $this->env->render("@ZghFE/Partial/search/search_widget.html.twig", [
+            return $this->env->render("@ZghFE/Partial/search/search_widget.html.twig", [
                 "in_product" => $inProduct,
                 "categories" => $categories,
                 "custome_class" => $custome_class,
                 "search_url" => $url
             ]);
+        }
+
     }
 
     public function getName()
