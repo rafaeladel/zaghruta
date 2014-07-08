@@ -114,6 +114,7 @@
             <argument type="collection">
                 <argument key="facebook">facebook_id</argument>
             </argument>
+            <argument type="service" id="kernel" />
         </service>
 
         <service id="zgh_fe.doctrine.listener" class="%zgh_fe.doctrine.listener.class%">

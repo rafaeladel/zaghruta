@@ -60,7 +60,7 @@
         {% if app.user %}
         <div class="col-sm-4 col-xs-12 col-md-4 pull-right buttonWrapper">
             <form class="btnForm pull-right" action="{{ url("zgh_fe.like.post", {"id": photo.id, "entity_type": photo.getObjectType }) }}" method="post">
-                <button type="submit" data-placement="top" data-toggle="tooltip" title="Like" class="btn tooltip btn-danger likeBtn btn-circle {{ checkLike(app.user, photo) ? "liked" : "" }}">
+                <button type="submit" data-placement="top" data-toggle="tooltip" title="Like" class="btn tooltip btn-circle doLike {{ checkLike(app.user, photo) ? "btn-danger" : "likeBtn" }}">
                     <span class="glyphicon glyphicon-heart"></span>
                     {#<span><span class="likes_count"> {{ photo.likes|length }}people like this  </span> </span>#}
                 </button>

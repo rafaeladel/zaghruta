@@ -10,7 +10,7 @@
                 <div class="col-md-9 tipExp">
                     <div class="row banner margin">
                         <div class="col-md-12 contentImg">
-                            <img src="{{ tip.getWebPath ? asset(tip.getWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}" class="img-responsive">
+                            <img src="{{ tip.getWebPath ? asset(tip.getWebPath) : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}" class="img-responsive">
                         </div>
                     </div>
                     <div class="content_wrapper">
@@ -31,7 +31,7 @@
                             {% if app.user %}
                             <div class="col-md-2 pull-right icons-G">
                                 <form class="pull-right" action="{{ url("zgh_fe.like.post", {"id": tip.id, "entity_type": tip.getObjectType }) }}" method="post">
-                                    <button type="submit" class="btn btn-danger likeBtn btn-circle {{ checkLike(app.user, tip) ? "glyphicon-heart-empty" : "" }}">
+                                    <button type="submit" class="btn btn-circle doLike {{ checkLike(app.user, tip) ? "btn-danger" : "likeBtn" }}">
                                         <span class="glyphicon glyphicon-heart"></span>
                                     </button>
                                 </form>

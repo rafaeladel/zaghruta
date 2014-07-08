@@ -27,7 +27,7 @@ h2 {
 }
 
 h4 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
 }
 
@@ -2308,12 +2308,17 @@ footer a {
     position: relative;
     background: #ccc !important;
 }
-.likeBtn > span{
+
+.doLike {
+    position: relative;
+}
+.doLike > span{
     position: absolute;
     top:5px;
     right: 1px;
     left: 0;
     bottom: 0;
+    color: #fff;
 }
 .ProfileList{
     width: 100%;
@@ -2582,6 +2587,9 @@ margin-bottom: 15px !important;
 .fancybox-inner .product{
     width: 100%;
 }
+.fancybox-inner .product .banner .img-responsive{
+    margin: 0 auto;
+}
 .fancybox-inner .btnEditProduct{
     display: none;
 }
@@ -2695,7 +2703,7 @@ overflow: hidden;
 
 }
 .tips_Experience .experience .caption, .tip .caption, .experience .caption{
-  height: 130px;
+  height: 139px;
   overflow: hidden;
   position: relative;
 }
@@ -2714,6 +2722,7 @@ overflow: hidden;
    color:#fff;
 
 }
+
 .container .headerProduct .by, .container .product .headerProduct p{
     color: #000 !important;
 }

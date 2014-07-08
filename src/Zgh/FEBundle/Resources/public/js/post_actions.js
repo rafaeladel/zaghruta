@@ -2,9 +2,9 @@ $(document).ready(function(){
 
     postRefresh();
 
-    $("body").on("click", ".likeBtn", function(e){
+    $("body").on("click", ".doLike", function(e){
         e.preventDefault();
-        var btn = $(e.target);
+        var btn = $(e.currentTarget);
         btn.attr("disabled", "disabled");
         var form = btn.closest("form");
         var count_wrapper = btn.closest(".post, .photo, .experience, .tip, .product").find(".likes_count");
@@ -26,13 +26,13 @@ $(document).ready(function(){
             success: function(data){
                 count_wrapper.text(data.likes_count);
                 if(data.like_state == 0){
-                    btn.find("span").removeClass("glyphicon-heart-empty").removeClass("liked");
+                    btn.removeClass("btn-danger").addClass("likeBtn");
                     btn.attr('title', "Like")
                         .tooltip('fixTitle')
                         .tooltip('show');
                     btn.removeAttr("disabled");
                 } else {
-                    btn.find("span").addClass("glyphicon-heart-empty").addClass("liked");
+                    btn.addClass("btn-danger").removeClass("likeBtn");
                     btn.attr('title', "Unlike")
                         .tooltip('fixTitle')
                         .tooltip('show');

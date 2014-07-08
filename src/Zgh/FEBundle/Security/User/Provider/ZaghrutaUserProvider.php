@@ -8,15 +8,28 @@ use HWI\Bundle\OAuthBundle\Connect\AccountConnectorInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\Exception\AccountNotLinkedException;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Zgh\FEBundle\Entity\UserCP;
 use Zgh\FEBundle\Entity\UserInfo;
 use Zgh\FEBundle\Entity\UserPP;
+use Zgh\FEBundle\Utility\PhotoInitializer;
 
 class ZaghrutaUserProvider extends FOSUBUserProvider
 {
+    /**
+     * @var \Symfony\Component\HttpKernel\Kernel
+     */
+    protected $kernel;
+
+    public function __construct(UserManagerInterface $userManager, array $properties, Kernel $kernel)
+    {
+        parent::__construct($userManager, $properties);
+        $this->kernel = $kernel;
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -93,8 +106,11 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
             $about->setFacebook($response->getResponse()["link"]);
             $user->setUserInfo($about);
 
+            $initializer = new PhotoInitializer($this->kernel->getRootDir()."/../src/Zgh/FEBundle/Resources/public/img/init", "init_pp.jpg", "init_cp.jpg");
+
+
             $pp = new UserPP();
-            $cp = new UserCP();
+            $cp = $initializer->initCoverPhoto();
 
             $user->setProfilePhoto($pp);
             $user->setCoverPhoto($cp);

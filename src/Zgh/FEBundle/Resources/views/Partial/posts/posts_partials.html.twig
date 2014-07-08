@@ -39,7 +39,7 @@
         <div class="icons-G pull-right">
 
             <form class="btnForm pull-right" action="{{ url("zgh_fe.like.post", {"id": post.id, "entity_type": post.getObjectType }) }}" method="post">
-                <button type="submit" data-placement="top" data-toggle="tooltip" title="{{ checkLike(app.user, post) ? "Unlike" : "Like" }}" class="btn tooltip btn-danger likeBtn btn-circle {{ checkLike(app.user, post) ? "liked" : "" }}">
+                <button type="submit" data-placement="top" data-toggle="tooltip" title="{{ checkLike(app.user, post) ? "Unlike" : "Like" }}" class="btn tooltip btn-circle doLike {{ checkLike(app.user, post) ? "btn-danger" : "likeBtn" }}">
                     <span class="glyphicon glyphicon-heart"></span>
                 </button>
             </form>

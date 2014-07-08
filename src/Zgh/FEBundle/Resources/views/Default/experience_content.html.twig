@@ -10,7 +10,7 @@
                 <div class="col-md-9 tipExp">
                     <div class="row banner margin">
                         <div class="col-md-12 contentImg">
-                            <img src="{{ experience.getWebPath ? asset(experience.getWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}"
+                            <img src="{{ experience.getWebPath ? asset(experience.getWebPath) : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}"
                                  class="img-responsive">
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                                           action="{{ url("zgh_fe.like.post", {"id": experience.id, "entity_type": experience.getObjectType }) }}"
                                           method="post">
                                         <button type="submit"
-                                                class="btn btn-danger likeBtn btn-circle {{ checkLike(app.user, experience) ? "liked" : "" }}">
+                                                class="btn btn-circle doLike {{ checkLike(app.user, experience) ? "btn-danger" : "likeBtn" }}">
                                             <span class="glyphicon glyphicon-heart"></span>
                                         </button>
                                     </form>
@@ -48,7 +48,7 @@
                                                     class="glyphicon glyphicon-edit"></i> Edit</a>
                                     {% endif %}
                                 </div>
-                                <h2 class="col-md-4">{{ experience.title }}</h2>
+                                <h2 class="col-md-10">{{ experience.title }}</h2>
 
                                 <div class="clearfix"></div>
                                 <p class="by col-md-12">Categories:
