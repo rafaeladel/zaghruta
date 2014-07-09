@@ -59,7 +59,13 @@ class InterestController extends Controller
             $vendor_info = $user->getVendorInfo();
             $form = $this->createForm(new VendorCategoryType(), $vendor_info);
         }
+
+        //for vendor registration
+
         $form->handleRequest($request);
+        $user->setFirstTime(false);
+//        var_dump($user->getFirstTime());
+//        die;
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush();
         return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId() )));

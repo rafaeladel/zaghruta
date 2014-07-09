@@ -1,12 +1,19 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <form action="{{ path('fos_user_registration_register', {"t": app.request.query.get("t")} ) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+
     <div class="form-group">
-        {{ form_errors(form) }}
         {{ form_widget(form.email, {"attr": {"class": "form-control", "placeholder": "Email"} }) }}
 
         <div class="validation" style="">{{ form_errors(form.email) }}</div>
     </div>
+    {% if app.request.query.get("t") == "vendor" %}
+        <div class="form-group">
+            <input type="text" class="form-control" name="company_name" required="required" placeholder="Company name" />
+
+            <div class="validation" style=""></div>
+        </div>
+    {% endif %}
     <div class="form-group">
         {{ form_widget(form.plainPassword.first, {"attr": {"class": "form-control", "placeholder": "Password"} }) }}
         <div class="validation" style="">{{ form_errors(form.plainPassword.first) }}</div>
@@ -16,6 +23,9 @@
         <div class="validation" style="">{{ form_errors(form.plainPassword.second) }}</div>
 
     </div>
+
+
+
     <div class="row">
         <a href="{{ url("fos_user_security_login") }}">Back</a>
         <input type="submit" class="btn btn-danger btn-wide pull-right" value="{{ 'registration.submit'|trans }}" />

@@ -68,18 +68,19 @@ class UserProfileController extends Controller
 
     private function getVendorInfo()
     {
-        /**
-         * @var User
-         */
-        $user = $this->getUser();
-
-        $defaultData = array("message" => "Default form data");
-        $form = $this->createForm(new VendorIntroType(), $user->getVendorInfo());
-//        $form = $this->createFormBuilder($defaultData)
-//            ->add("company_name", "text", array("mapped" => false));
-        return $this->render("@ZghFE/Default/vendor_intro.html.twig", array(
-            "form" => $form->createView()
-        ));
+        return $this->redirect($this->generateUrl("zgh_fe.vendor_categories.get"));
+//        /**
+//         * @var User
+//         */
+//        $user = $this->getUser();
+//
+//        $defaultData = array("message" => "Default form data");
+//        $form = $this->createForm(new VendorIntroType(), $user->getVendorInfo());
+////        $form = $this->createFormBuilder($defaultData)
+////            ->add("company_name", "text", array("mapped" => false));
+//        return $this->render("@ZghFE/Default/vendor_intro.html.twig", array(
+//            "form" => $form->createView()
+//        ));
     }
 
     public function postUserIntroAction(Request $request, $id)

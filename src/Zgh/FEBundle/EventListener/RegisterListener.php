@@ -52,9 +52,9 @@ class RegisterListener implements EventSubscriberInterface
 
     public function onRegistrationCompleted(FilterUserResponseEvent $event)
     {
-
         $user = $event->getUser();
         $roles = $user->getRoles();
+        $request = $event->getRequest();
 
         if(in_array("ROLE_CUSTOMER", $roles))
         {
@@ -65,6 +65,10 @@ class RegisterListener implements EventSubscriberInterface
         elseif(in_array("ROLE_VENDOR", $roles))
         {
             $info = new VendorInfo();
+            if($request->request->has("company_name")) {
+                $info->setCompanyName($request->request->get("company_name"));
+            }
+
             $user->setVendorInfo($info);
         }
 

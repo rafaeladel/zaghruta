@@ -266,7 +266,7 @@ class VendorInfo
      */
     public function setCompanyNameValue()
     {
-        $this->setCompanyName("Company Name");
+//        $this->setCompanyName("Company Name");
     }
     /**
      * Constructor
