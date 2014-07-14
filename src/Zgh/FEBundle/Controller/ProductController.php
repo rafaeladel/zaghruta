@@ -101,6 +101,7 @@ class ProductController extends Controller
         }
         return $this->render("@ZghFE/Partial/products/user_profile_product_content_widget.html.twig",[
                 "user" => $user,
+                "is_popup" => false,
                 "product" => $product,
                 "addWishlistForm" => $this->getUser() instanceof User ? $addWishlistForm->createView() : null
             ]);
@@ -120,6 +121,7 @@ class ProductController extends Controller
         $product_form = $this->createForm(new ProductType(), $product, ["type" => "edit"]);
         return $this->render("@ZghFE/Partial/products/user_profile_product_edit_widget.html.twig", [
                 "user" => $user,
+                "is_popup" => false,
                 "product" => $product,
                 "product_form" => $product_form->createView()
             ]);

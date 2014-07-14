@@ -2651,12 +2651,12 @@ margin-bottom: 15px !important;
 .titlealbum a h4{
     font-size: 14px!important;
 }
-.parsley-errors-list{
+.errors-list-wrapper{
     list-style-type: none;
     padding-left: 10px;
     color: #ff0000;
 }
-.parsley-errors-list li{
+.errors-list-wrapper li{
     margin-top: 5px;
 }
 .select2-container{

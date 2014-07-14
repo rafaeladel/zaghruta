@@ -30,8 +30,9 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-
+                {% block parent_inner %}
                 {{ include("@ZghFE/Partial/products/product_content_widget.html.twig", {"product": product, "is_popup": is_popup }) }}
+                {% endblock parent_inner %}
             </div>
         {% endblock leftContent %}
 

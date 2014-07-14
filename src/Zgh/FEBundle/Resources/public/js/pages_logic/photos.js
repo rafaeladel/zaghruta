@@ -1,7 +1,6 @@
 $(document).ready(function(){
     $("body").on("click", ".photoTab", function(e){
         e.preventDefault();
-
         if(!$(e.target).is(".active")){
             $(".photosWrapper").html('<img style="margin: auto; display: block;" src="'+UrlContainer.loader+'" />');
             $(".photoTab").removeClass("active");

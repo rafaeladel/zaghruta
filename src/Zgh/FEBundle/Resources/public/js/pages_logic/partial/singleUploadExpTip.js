@@ -34,36 +34,34 @@ function singleUploadExpTip() {
                 }
             });
 
-            $(".exp_tip_browse").closest("form").find("[type='submit']").on("click", function (e) {
-                $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
-                    instance.submitEvent.preventDefault();
-                    if (instance.isValid()) {
-                        $(e.target).attr("disabled", "disabled");
-                        if (myDropzone.getQueuedFiles().length > 0) {
-                            myDropzone.on("sending", function (file, xhr, formData) {
-                                var serialzedForm = $(e.target).closest("form").serializeArray();
-                                $(serialzedForm).each(function(i, v){
-                                    formData.append(v.name, v.value);
-                                });
+            var form = $(".exp_tip_browse").closest("form");
+            form.find("[type='submit']").on("click", function (e) {
+                e.preventDefault();
+                form.validate();
+                if(form.valid()) {
+                    $(e.target).attr("disabled", "disabled");
+                    if (myDropzone.getQueuedFiles().length > 0) {
+                        myDropzone.on("sending", function (file, xhr, formData) {
+                            var serialzedForm = $(e.target).closest("form").serializeArray();
+                            $(serialzedForm).each(function(i, v){
+                                formData.append(v.name, v.value);
                             });
-                            myDropzone.processQueue();
-                        } else {
-                            var form_data = new FormData($(".exp_tip_browse").closest("form")[0]);
-                            $.ajax({
-                                type: "post",
-                                url: $(".exp_tip_browse").closest("form").attr("action"),
-                                data: form_data,
-                                processData: false,
-                                contentType: false,
-                                success: function (data) {
-                                    refreshWrapper(data);
-                                }
-                            });
-                        }
+                        });
+                        myDropzone.processQueue();
                     } else {
-                        $("#myform").parsley().unsubscribe("parsley:form:validate");
+                        var form_data = new FormData($(".exp_tip_browse").closest("form")[0]);
+                        $.ajax({
+                            type: "post",
+                            url: $(".exp_tip_browse").closest("form").attr("action"),
+                            data: form_data,
+                            processData: false,
+                            contentType: false,
+                            success: function (data) {
+                                refreshWrapper(data);
+                            }
+                        });
                     }
-                });
+                }
             });
 
             if (myDropzone.options.uploadMultiple) {

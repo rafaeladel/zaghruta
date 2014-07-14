@@ -1,4 +1,9 @@
-{% extends app.request.xmlHttpRequest or is_popup == false ? '@ZghFE/Default/inner_ajax_layout.html.twig':'@ZghFE/Default/product_content.html.twig' %}
+{% if app.request.xmlHttpRequest or is_popup == true%}
+    {% set layout = '@ZghFE/Default/inner_ajax_layout.html.twig' %}
+{% elseif is_popup == false %}
+    {% set layout = '@ZghFE/Partial/products/product_content_widget.html.twig' %}
+{% endif %}
+{% extends layout %}
 {% block innerPartial %}
     <div class="row headerProduct">
         <div class="row margin-bottom">
@@ -89,7 +94,7 @@
         </p>
     </div>
     <div class="row">
-        <span class="col-md-4 price ">Price:<span> {{ product.price }}$</span></span>
+        <span class="col-md-4 price ">Price:<span> {{ product.price }} LE</span></span>
     </div>
     <div class="col-md-12">
         {{ include("@ZghFE/Partial/common/comments_section.html.twig", {"entity": product}) }}

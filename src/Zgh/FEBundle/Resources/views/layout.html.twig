@@ -54,7 +54,6 @@
     </script>
 
     {% javascripts
-    "bundles/zghfe/plugins/Parsley.js-2.0.0/dist/parsley.js"
     "bundles/zghfe/js/pages_logic/partial/postRefresher.js"
     "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
     "bundles/zghfe/js/pages_logic/partial/singleUploadProduct.js"
@@ -85,9 +84,22 @@
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js" type="text/javascript"></script>
+
     <script type="text/javascript">
 
         $(document).ready(function () {
+
+            jQuery.validator.setDefaults({
+                debug: true,
+                wrapper: "ul",
+                errorElement: "li",
+                errorPlacement: function(label, element) {
+                    label.addClass('errors-list-wrapper');
+                    label.insertAfter(element);
+                }
+            });
 
 //            $("body").on("click", ".openExp", function(e){
 //                e.preventDefault();
