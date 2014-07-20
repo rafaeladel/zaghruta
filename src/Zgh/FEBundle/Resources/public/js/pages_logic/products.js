@@ -61,24 +61,23 @@ $(document).ready(function () {
     });
 
     $("body").on("click", ".newWishlistSubmit", function(e){
+        e.preventDefault();
         var form = $(e.target).closest("form");
         var back_url = $(e.target).closest("form").find(".moveWishlist").data("url");
         var wrapper = $(e.target).closest(".form_wrapper");
-        $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
-            instance.submitEvent.preventDefault();
-            if (instance.isValid()) {
-                $.ajax({
-                    type: "post",
-                    url: form.attr("action"),
-                    data: form.serialize(),
-                    success: function(data){
-                        wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
-                        wrapper.load(back_url);
-                    }
-                });
+        form.validate();
+        if(form.valid()) {
+            $.ajax({
+                type: "post",
+                url: form.attr("action"),
+                data: form.serialize(),
+                success: function(data){
+                    wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+                    wrapper.load(back_url);
+                }
+            });
+        }
 
-            }
-        });
     });
 
     $("body").on("click", ".addToWishlistSubmit", function(e){
