@@ -84,12 +84,29 @@
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
+<<<<<<< HEAD
 
+=======
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js" type="text/javascript"></script>
+>>>>>>> 315c09bf3d9ffeb03a7df7b19a235c427c3ddfdf
 
     <script type="text/javascript">
 
         $(document).ready(function () {
 
+<<<<<<< HEAD
+=======
+            jQuery.validator.setDefaults({
+                debug: true,
+                wrapper: "ul",
+                errorElement: "li",
+                errorPlacement: function(label, element) {
+                    label.addClass('errors-list-wrapper');
+                    label.insertAfter(element);
+                }
+            });
+>>>>>>> 315c09bf3d9ffeb03a7df7b19a235c427c3ddfdf
 
 //            $("body").on("click", ".openExp", function(e){
 //                e.preventDefault();
