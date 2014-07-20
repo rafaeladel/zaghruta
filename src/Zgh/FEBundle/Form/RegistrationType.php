@@ -19,8 +19,8 @@ class RegistrationType extends BaseType
    public function setDefaultOptions(OptionsResolverInterface $resolver)
    {
        $resolver->setDefaults(array(
-               "data_class" => 'Zgh\FEBundle\Entity\User',
-               "validation_groups" => array("Registration")
+               "data_class" => 'Zgh\FEBundle\Entity\User'
+               //Validation groups is configured in config.yml
            ));
    }
 

@@ -1,6 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_registration_register', {"t": app.request.query.get("t")} ) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+<form action="{{ path('fos_user_registration_register', {"t": app.request.query.get("t")} ) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register register_form">
 
     <div class="form-group">
         {{ form_widget(form.email, {"attr": {"class": "form-control", "placeholder": "Email"} }) }}

@@ -45,9 +45,15 @@ class PhotoInitializer
         $dest_file = null;
         $finder = new Finder();
         $finder->files()->in($path)->name($name);
+        $temp_dir = $path."/tmp/";
+        if(!file_exists($temp_dir)) {
+            $old_umask = umask(0);
+            mkdir($temp_dir,0777, true);
+            umask($old_umask);
+        }
         foreach ($finder as $img) {
-            if(copy($img->getRealPath(), $path."/tmp/".$img->getFilename())){
-                $dest_file = new File($path."/tmp/".$img->getFilename());
+            if(copy($img->getRealPath(), $temp_dir.$img->getFilename())){
+                $dest_file = new File($temp_dir.$img->getFilename());
             }
         }
         return $dest_file;

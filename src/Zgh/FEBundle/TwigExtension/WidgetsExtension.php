@@ -49,6 +49,7 @@ class WidgetsExtension extends \Twig_Extension
             new \Twig_SimpleFunction("getProductsByCategory", [$this, "getProductsByCategory"] ),
             new \Twig_SimpleFunction("getVendorByCategory", [$this, "getVendorByCategory"] ),
             new \Twig_SimpleFunction("getExperienceByCategory", [$this, "getExperienceByCategory"] ),
+            new \Twig_SimpleFunction("getTipByCategory", [$this, "getTipByCategory"] ),
             new \Twig_SimpleFunction("getRecommendedPeople", [$this, "getRecommendedPeople"] ),
             new \Twig_SimpleFunction("getRecommendedVendor", [$this, "getRecommendedVendor"] ),
             new \Twig_SimpleFunction("getNewVendors", [$this, "getNewVendors"] ),
@@ -161,6 +162,16 @@ class WidgetsExtension extends \Twig_Extension
             return null;
         }
         return $this->env->render("@ZghFE/Partial/experiences/user_profile_experience_content.html.twig", ["experiences" => $experiences]);
+    }
+
+    public function getTipByCategory($cat_slug, $crit)
+    {
+        $tips = $this->searchManager->gettipsByCategory($cat_slug, $crit);
+        if(count($tips) == 0)
+        {
+            return null;
+        }
+        return $this->env->render("@ZghFE/Partial/tips/user_profile_tip_content.html.twig", ["tips" => $tips]);
     }
 
     public function getRecommendedPeople(User $user)

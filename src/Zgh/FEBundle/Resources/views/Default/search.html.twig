@@ -168,6 +168,16 @@
                         {% endif %}
                     </div>
                 {% endif %}
+                {% if app.user %}
+                    <div id="searchTip" class="row resultWrapper">
+                        {% set tip_cat = getTipByCategory(catSlug, query) %}
+                        {% if tip_cat != null %}
+                        <h2>Tips</h2>
+                         <hr>
+                        {{ tip_cat|raw }}
+                        {% endif %}
+                    </div>
+                {% endif %}
             {% endif %}
             {% endblock leftContent %}
 

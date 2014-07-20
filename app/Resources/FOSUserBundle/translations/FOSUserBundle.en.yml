@@ -12,14 +12,14 @@ group:
         deleted: The group has been deleted
 
 # Security
-"Bad credentials": Invalid username or password
+"Bad credentials": Invalid email or password
 "User account is disabled.": You must activate your account trough the e-mail sent to you earlier.
 security:
     login:
         username: "Username:"
         password: "Password:"
         remember_me: Remember me
-        submit: Login
+        submit: Log In
 
 # Profile
 profile:
@@ -61,7 +61,7 @@ resetting:
     check_email: An email has been sent to %email%. It contains a link you must click to reset your password.
     request:
         invalid_username: The username or email address "%username%" does not exist.
-        username: "Username or email address:"
+        username: "Email address:"
         submit: Reset password
     reset:
         submit: Change password
@@ -79,8 +79,8 @@ resetting:
 
 # Global strings
 layout:
-    logout: Logout
-    login: Login
+    logout: Log Out
+    login: Log In
     register: Register
     logged_in_as: Logged in as %username%
 
@@ -91,6 +91,6 @@ form:
     email: "Email:"
     current_password: "Current password:"
     password: "Password:"
-    password_confirmation: "Verification:"
+    password_confirmation: "Confirm password:"
     new_password: "New password:"
-    new_password_confirmation: "Verification:"
+    new_password_confirmation: "Confirm password:"

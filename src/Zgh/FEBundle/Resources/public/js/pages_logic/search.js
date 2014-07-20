@@ -11,9 +11,9 @@ $(document).ready(function(){
 
 
     $("body").on("click",".filtr",function(e){
-        var wrapperid=$(e.target).data("id");
+        var wrapperid=$(e.currentTarget).data("id");
         $(".filtr").removeClass("active-filtration");
-        $(e.target).addClass("active-filtration");
+        $(e.currentTarget).addClass("active-filtration");
         if(wrapperid=="all"){
             $(".resultWrapper").show();
         }else{
@@ -25,7 +25,7 @@ $(document).ready(function(){
     $("body").on("keyup", ".search_text", function(e){
         e.preventDefault();
        if(e.which == 13) {
-           return false;
+           $("body").siblings(".search_submit").click();
        }
     });
 
@@ -54,7 +54,7 @@ $(document).ready(function(){
 
     $("body").on("keyup", ".searchTextAjax", function(e){
         e.preventDefault();
-        var term = $.trim($(e.target).val());
+        var term = $.trim($(e.currentTarget).val());
         term = term.length == 0 ? "" : term;
         if(term == "" || term.length > 2) {
             var prevent_keys = [27,16,20,17,18,91,39,37,38,40,16,36,35,33,34];

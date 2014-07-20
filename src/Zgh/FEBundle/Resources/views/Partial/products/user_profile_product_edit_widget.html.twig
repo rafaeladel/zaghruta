@@ -1,4 +1,4 @@
-{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/inner_ajax_layout.html.twig':'@ZghFE/Default/product_content.html.twig' %}
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/inner_ajax_layout.html.twig':'@ZghFE/Partial/products/product_content_widget.html.twig' %}
 
 {% block innerPartial %}
     {% form_theme product_form with ['ThraceFormBundle:Form:fields.html.twig'] %}

@@ -55,3 +55,44 @@
 </div>
 
 {% endblock content %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".register_form").validate({
+                rules: {
+                    "fos_user_registration_form[email]": {
+                        required: true,
+                        email: true
+                    },
+                    "company_name": {
+                        required: true
+                    },
+                    "fos_user_registration_form[plainPassword][first]": {
+                        required: true,
+                        minlength: 6,
+                        pattern: /^\S*$/
+                    },
+                    "fos_user_registration_form[plainPassword][second]": {
+                        required: true,
+                        equalTo: "[name='fos_user_registration_form[plainPassword][first]']"
+                    }
+                },
+                messages: {
+                    "fos_user_registration_form[email]": {
+                        required: "Email is required"
+                    },
+                    "fos_user_registration_form[plainPassword][first]": {
+                        required: "Password is required",
+                        pattern: "Should not contain spaces"
+                    },
+                    "fos_user_registration_form[plainPassword][second]": "Confirm password is required"
+                },
+                submitHandler: function(form){
+                    form.submit();
+                }
+            });
+        });
+    </script>
+{% endblock javascripts  %}

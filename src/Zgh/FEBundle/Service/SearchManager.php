@@ -192,6 +192,24 @@ class SearchManager
         return $q->execute();
     }
 
+    public function getTipsByCategory($cat_slug, $query)
+    {
+        $q = $this->em->createQuery("
+                select t
+                from Zgh\FEBundle\Entity\Tip t
+                inner join t.categories c
+                where c.name_slug = :cat
+                and t.title like :crit
+            ");
+
+        $q->setParameters([
+                "cat" => $cat_slug,
+                "crit" => "%" .  strtolower($query) . "%"
+            ]);
+
+        return $q->execute();
+    }
+
     public function getProductByUserAndTag($user_id, $tag_slug, $crit)
     {
         $query = "select pr

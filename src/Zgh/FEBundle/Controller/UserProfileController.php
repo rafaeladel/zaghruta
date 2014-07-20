@@ -109,6 +109,8 @@ class UserProfileController extends Controller
             $user_info = $user->getUserInfo();
             $birthday = $form->get("info")->get("birthday")->getData();
             $gender = $form->get("info")->get("gender")->getData();
+//            var_dump($user_info);
+//            die;
             $user_info->setBirthday($birthday);
             $user_info->setGender($gender);
 

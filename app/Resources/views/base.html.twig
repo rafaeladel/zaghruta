@@ -8,7 +8,7 @@
     <title>{% block title %}Zaghruta your wedding planner guide{% endblock %}</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset("bundles/zghfe/img/favicon.ico") }}" />
     <script type="text/javascript" src="{{ asset("bundles/zghfe/js/modernizr.js") }}"></script>
-    <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script type='text/javascript' src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
 
 
@@ -48,7 +48,7 @@
                         {{ render_esi(controller("ZghFEBundle:Default:getShortcutsAndNotification")) }}
                     {% else %}
                         <a class="btn btn-primary btn-wide login_anon" href="{{ url("fos_user_security_login") }}">
-                            <span class="glyphicon  glyphicon-log-in"></span> Login
+                            <span class="glyphicon  glyphicon-log-in"></span> Log In
                         </a>
                     {% endif %}
                 </div>
@@ -62,6 +62,8 @@
 {% block javascripts %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js" type="text/javascript"></script>
     {% javascripts
     "bundles/zghfe/js/respond.js"
     "bundles/zghfe/js/custom.js"
@@ -71,6 +73,31 @@
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $.validator.setDefaults({
+                debug: true,
+                wrapper: "ul",
+                errorElement: "li",
+                errorPlacement: function(label, element) {
+                    label.addClass('errors-list-wrapper');
+                    label.insertAfter(element);
+                }
+            });
+            $.validator.addMethod(
+                    "regex",
+                    function(value, element, regexp) {
+                        console.log(value);
+                        console.log(regexp);
+                        var re = new RegExp(regexp);
+                        console.log(re.test(value));
+                        return this.optional(element) || re.test(value);
+                    },
+                    "Shouldn't contain spaces."
+            );
+
+        });
+    </script>
 {% endblock %}
 {% block misc %}{% endblock misc %}
 <script>

@@ -82,6 +82,10 @@ fos_user:
             enabled: false
         form:
             type: zgh_fe_registration_form_type
+            validation_groups: ["customRegistration", "Default"]
+    profile:
+        form:
+            validation_groups: ["customProfile", "Default"]
     resetting:
         email:
             from_email:

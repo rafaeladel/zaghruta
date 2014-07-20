@@ -12,7 +12,7 @@ fos_user:
         invalid: The email is not valid
     password:
         blank: Please enter a password
-        short: "[-Inf,Inf]The password must be 4 letters minimum"
+        short: "[-Inf,Inf]The password must be 6 letters minimum"
         mismatch: The entered passwords don't match
     new_password:
         blank: Please enter a new password

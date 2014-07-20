@@ -1,12 +1,30 @@
-{% form_theme form with ['ThraceFormBundle:Form:fields.html.twig'] %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th colspan="2">Categories <a target="_blank" href="{{ url("zgh_fe.vendor_categories.get") }}">Edit</a>
+                <a href="" class="pull-right cancel_about_edit ">
+                    Cancel
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                {% for category in app.user.getVendorInfo.categories %}
+                    {{ category.name }}
+                    {% if loop.index != app.user.getVendorInfo.categories|length %},{% endif %}
+                {% endfor %}
+            </td>
+        </tr>
+    </tbody>
+</table>
 {{ form_start(form, {"action":  url("zgh_fe.about.post_vendor_edit", {"id": app.user.getVendorInfo.getId } ) } ) }}
     <table class="table table-hover">
             <thead>
                 <tr>
                     <th colspan="2">Contact Information
-                        <a href="" class="pull-right cancel_about_edit ">
-                            Cancel
-                        </a>
+
                     </th>
                 </tr>
             </thead>
@@ -18,13 +36,13 @@
                         {{ form_errors(form.company_name) }}
                     </td>
                 </tr>
-                <tr>
-                    <td>{{ form_label(form.categories) }}</td>
-                    <td>
-                        {{ form_widget(form.categories, {"attr": {"class": ""} }) }}
-                        {{ form_errors(form.categories) }}
-                    </td>
-                </tr>
+                {#<tr>#}
+                    {#<td>{{ form_label(form.categories) }}</td>#}
+                    {#<td>#}
+                        {#{{ form_widget(form.categories, {"attr": {"class": ""} }) }}#}
+                        {#{{ form_errors(form.categories) }}#}
+                    {#</td>#}
+                {#</tr>#}
                 <tr>
                     <td>{{ form_label(form.mobile) }}</td>
                     <td>

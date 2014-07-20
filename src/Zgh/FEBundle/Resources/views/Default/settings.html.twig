@@ -140,6 +140,36 @@
     {{ parent() }}
     <script type="text/javascript">
         $(document).ready(function () {
+            $(".change_password_form").validate({
+                rules: {
+                    "fos_user_change_password_form[current_password]": {
+                        required: true
+                    },
+                    "fos_user_change_password_form[plainPassword][first]": {
+                        required: true,
+                        minlength: 6,
+                        pattern: /^\S*$/
+                    },
+                    "fos_user_change_password_form[plainPassword][second]": {
+                        required: true,
+                        equalTo: "[name='fos_user_change_password_form[plainPassword][first]']"
+                    }
+                },
+                messages: {
+                    "fos_user_change_password_form[current_password]": {
+                        required: "Password is required"
+                    },
+                    "fos_user_change_password_form[plainPassword][first]": {
+                        required: "Password is required",
+                        pattern: "Should not contain spaces"
+                    },
+                    "fos_user_change_password_form[plainPassword][second]": "Confirm password is required"
+                },
+                submitHandler: function(form){
+                    form.submit();
+                }
+            });
+
             $("body").on("click", ".privacyToggle", function (e) {
                 $(".privacyToggle").attr("disabled", "disabled");
                 var url = Routing.generate('zgh_fe.user_profile.privacy.set', { id: "{{ app.user.id }}", pv: $(e.target).val() }, true);

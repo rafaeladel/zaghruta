@@ -34,26 +34,24 @@ function singleUploadProduct() {
                 }
             });
 
-            $(".product_browse").closest("form").find("[type='submit']").on("click", function (e) {
-                $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
-                    instance.submitEvent.preventDefault();
-                    if (instance.isValid()) {
-                        if (myDropzone.getQueuedFiles().length > 0) {
-                            $(e.target).attr("disabled", "disabled");
-                            myDropzone.on("sending", function (file, xhr, formData) {
-                                var serialzedForm = $(e.target).closest("form").serializeArray();
-                                $(serialzedForm).each(function(i, v){
-                                    formData.append(v.name, v.value);
-                                });
+            var form = $(".product_browse").closest("form");
+            form.find("[type='submit']").on("click", function (e) {
+                e.preventDefault();
+                form.validate();
+                if(form.valid()) {
+                    if (myDropzone.getQueuedFiles().length > 0) {
+                        $(e.target).attr("disabled", "disabled");
+                        myDropzone.on("sending", function (file, xhr, formData) {
+                            var serialzedForm = $(e.target).closest("form").serializeArray();
+                            $(serialzedForm).each(function(i, v){
+                                formData.append(v.name, v.value);
                             });
-                            myDropzone.processQueue();
-                        } else {
-                            $("body").find(".btnBrowsePhoto").after("<div class='dropzone_custom_error'><p style='font-weight: bold;'>Image is required</p></div>");
-                        }
+                        });
+                        myDropzone.processQueue();
                     } else {
-                        $("#myform").parsley().unsubscribe("parsley:form:validate");
+                        $("body").find(".btnBrowsePhoto").after("<div class='dropzone_custom_error'><p style='font-weight: bold;'>Image is required</p></div>");
                     }
-                });
+                }
             });
 
             if (myDropzone.options.uploadMultiple) {
