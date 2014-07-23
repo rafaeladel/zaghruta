@@ -53,8 +53,8 @@
                         {% set rel_class = "" %}
                     {% endif %}
                     <span class="{{ about.status is not null ? "iconStatus img-circle "~rel_class : "" }}"></span>
+                    {{ about.status }}
                     {% if about.relationshipUser and about.relationshipAccepted %}
-                        {{ about.status }}
                         to <a href="{{ url("zgh_fe.user_profile.index", {"id": about.relationshipUser.id}) }}">{{ about.relationshipUser }}</a>
                     {% endif %}
                     {#{{ about.status }}#}
