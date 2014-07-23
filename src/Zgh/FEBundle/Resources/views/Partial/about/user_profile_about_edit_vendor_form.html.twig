@@ -1,0 +1,46 @@
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th colspan="2">Contact Information
+            {% if app.user and about.user.id == app.user.id %}
+                <a href="{{ url("zgh_fe.about.get_vendor_edit", {"id": about.id }) }}"
+                   class="pull-right about_edit">
+                    <span class="glyphicon glyphicon-edit top"></span>
+                </a>
+            {% endif %}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Company</td>
+        <td>{{ about.companyName }}</td>
+    </tr>
+
+    <tr>
+        <td>Mobile</td>
+        <td>{{ about.mobile }}</td>
+    </tr>
+
+    <tr>
+        <td>Website</td>
+        <td>{{ about.website|converturls }}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{ about.email }}</td>
+    </tr>
+    <tr>
+        <td>Facebook</td>
+        <td>{{ about.facebook|converturls }}</td>
+    </tr>
+    <tr>
+        <td>Twitter</td>
+        <td>{{ about.twitter|converturls }}</td>
+    </tr>
+    <tr>
+        <td>Info</td>
+        <td>{{ about.info }}</td>
+    </tr>
+    </tbody>
+</table>

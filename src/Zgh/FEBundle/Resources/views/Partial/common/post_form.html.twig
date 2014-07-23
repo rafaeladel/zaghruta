@@ -1,6 +1,6 @@
 <div class="row margin">
     <div class="postBox">
-        {{ form_start(post_form, {"action": url("zgh_fe.post.new")}) }}
+        {{ form_start(post_form, {"action": url("zgh_fe.post.new"), "attr":{"class":"post_form"} }  ) }}
         <div class="posts">
         {{ form_widget(post_form.content, {"attr": {"class":"form-control animated", "placeholder": "Post something.." }}) }}
         <div class="thumbnailUpload">

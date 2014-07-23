@@ -35,14 +35,14 @@
                         {% else %}
                             {% set rel_class = "icon-Fiance" %}
                         {% endif %}
-                    {% elseif about.status == "Best Man"%}
-                        {% set rel_class = "icon-man" %}
-                    {% elseif about.status == "Groomsman" %}
-                        {% set rel_class = "icon-men" %}
-                    {% elseif about.status == "Maid of honor" %}
-                        {% set rel_class = "icon-honor" %}
-                    {% elseif about.status == "Bridesmaid" %}
-                        {% set rel_class = "icon-men" %}
+                    {#{% elseif about.status == "Best Man"%}#}
+                        {#{% set rel_class = "icon-man" %}#}
+                    {#{% elseif about.status == "Groomsman" %}#}
+                        {#{% set rel_class = "icon-men" %}#}
+                    {#{% elseif about.status == "Maid of honor" %}#}
+                        {#{% set rel_class = "icon-honor" %}#}
+                    {#{% elseif about.status == "Bridesmaid" %}#}
+                        {#{% set rel_class = "icon-men" %}#}
                     {% elseif about.status == "Single" %}
                         {% if about.gender == 0 %}
                             {% set rel_class = "icon-man" %}
@@ -54,14 +54,8 @@
                     {% endif %}
                     <span class="{{ about.status is not null ? "iconStatus img-circle "~rel_class : "" }}"></span>
                     {% if about.relationshipUser and about.relationshipAccepted %}
-                        <a href="{{ url("zgh_fe.user_profile.index", {"id": about.relationshipUser.id}) }}">{{ about.relationshipUser }}</a>'s
-                    {% endif %}
-                    {% if about.status == "Married" %}
-                        {{ about.gender == 0 ? "Husband" : "Wife" }}
-                    {% elseif about.status == "Engaged" %}
-                        {{ about.gender == 0 ? "Fiance" : "Fiancee" }}
-                    {% else %}
                         {{ about.status }}
+                        to <a href="{{ url("zgh_fe.user_profile.index", {"id": about.relationshipUser.id}) }}">{{ about.relationshipUser }}</a>
                     {% endif %}
                     {#{{ about.status }}#}
                 </td>

@@ -22,7 +22,7 @@ class Post implements LikeableInterface, CommentableInterface
     protected $user;
 
     /**
-     * @var ArrayCollection::
+     * @var ArrayCollection
      */
     protected $comments;
 

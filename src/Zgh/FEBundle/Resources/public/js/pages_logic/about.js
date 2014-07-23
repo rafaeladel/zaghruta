@@ -32,13 +32,12 @@ $(document).ready(function(){
             type: "POST",
             url: $(form).attr("action"),
             data: $(form).serialize(),
-
             success: function(data){
                 if(data.status == 200){
-//                    console.log($(e.target).closest(".about_wrapper").attr("class"));
                     $(e.target).closest(".about_wrapper").load(UrlContainer.aboutPartial);
                     btn.removeAttr("disabled");
-                } else if(data.status == 500)
+                }
+                else if(data.status == 500)
                 {
                     $(e.target).closest(".about_wrapper").html(data.view);
                     btn.removeAttr("disabled");

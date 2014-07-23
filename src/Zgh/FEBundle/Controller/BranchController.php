@@ -50,7 +50,14 @@ class BranchController extends Controller
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush($user);
 
-        return new JsonResponse(["status" => 200]);
+        //returning a fresh form to avoid validation errors appearing after addition
+        return new JsonResponse([
+            "status" => 200,
+            "view" => $this->renderView("@ZghFE/Partial/branches/user_profile_branch_add.html.twig", [
+                    "user" => $user,
+                    "form" => $this->createForm(new BranchType(), new Branch())->createView()
+                ])
+        ]);
     }
 
     /**

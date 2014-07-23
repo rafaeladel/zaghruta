@@ -61,13 +61,14 @@ class InterestController extends Controller
         }
 
         //for vendor registration
+        $user->setFirstTime(false);
 
         $form->handleRequest($request);
-        $user->setFirstTime(false);
-//        var_dump($user->getFirstTime());
-//        die;
-        $this->getDoctrine()->getManager()->persist($user);
-        $this->getDoctrine()->getManager()->flush();
+
+        $this->get("fos_user.user_manager")->updateUser($user);
+//        $this->getDoctrine()->getManager()->persist($user);
+//        $this->getDoctrine()->getManager()->flush();
+
         return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId() )));
     }
 }

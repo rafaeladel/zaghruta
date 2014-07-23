@@ -1,22 +1,24 @@
 <table class="table table-hover">
     <thead>
-        <tr>
-            <th colspan="2">Categories <a target="_blank" href="{{ url("zgh_fe.vendor_categories.get") }}">Edit</a>
-                <a href="" class="pull-right cancel_about_edit ">
-                    Cancel
+    <tr>
+        <th colspan="2">Categories
+            {% if app.user and about.user.id == app.user.id %}
+                <a href="{{ url("zgh_fe.vendor_categories.get") }}" class="pull-right">
+                    <span class="glyphicon glyphicon-edit top"></span>
                 </a>
-            </th>
-        </tr>
+            {% endif %}
+        </th>
+    </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                {% for category in app.user.getVendorInfo.categories %}
-                    {{ category.name }}
-                    {% if loop.index != app.user.getVendorInfo.categories|length %},{% endif %}
-                {% endfor %}
-            </td>
-        </tr>
+    <tr>
+        <td>
+            {% for category in about.categories %}
+                {{ category.name }}
+                {% if loop.index != about.categories|length %},{% endif %}
+            {% endfor %}
+        </td>
+    </tr>
     </tbody>
 </table>
 {{ form_start(form, {"action":  url("zgh_fe.about.post_vendor_edit", {"id": app.user.getVendorInfo.getId } ) } ) }}
@@ -24,7 +26,9 @@
             <thead>
                 <tr>
                     <th colspan="2">Contact Information
-
+                        <a href="" class="pull-right cancel_about_edit ">
+                            Cancel
+                        </a>
                     </th>
                 </tr>
             </thead>

@@ -18,6 +18,7 @@ $(document).ready(function(){
                         $("#addBranch").modal("hide");
                         btn.removeAttr("disabled");
                         $(".content_wrapper").find("#branches_list").load(UrlContainer.branchesList);
+                        $(e.target).closest("#addBranch").find(".form_wrapper").html(data.view);
                     } else if(data.status == 500){
                         form.get(0).reset();
                         btn.removeAttr("disabled");

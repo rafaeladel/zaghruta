@@ -2,6 +2,24 @@ $(document).ready(function(){
 
     postRefresh();
 
+    $(".post_form").validate({
+        rules: {
+            "post[content]": {
+                required: function(){
+                    return $('[name="post[post_image]"]').val()  == 0;
+                }
+            }
+        },
+        messages: {
+            "post[content]": {
+                required: "Post content cannot be empty"
+            }
+        },
+        submitHandler: function(form){
+            form.submit();
+        }
+    });
+
     $("body").on("click", ".doLike", function(e){
         e.preventDefault();
         var btn = $(e.currentTarget);

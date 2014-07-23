@@ -69,13 +69,13 @@ class UserInfoType extends AbstractType
                 "Married" => "Married"
             ];
 
-            if($user_info->getGender() == 0) {
-                $relation_choices["Best Man"] = "Best Man";
-                $relation_choices["Groomsman"] = "Groomsman";
-            } elseif($user_info->getGender() == 1) {
-                $relation_choices["Maid of honor"] = "Maid of honor";
-                $relation_choices["Bridesmaid"] = "Bridesmaid";
-            }
+//            if($user_info->getGender() == 0) {
+//                $relation_choices["Best Man"] = "Best Man";
+//                $relation_choices["Groomsman"] = "Groomsman";
+//            } elseif($user_info->getGender() == 1) {
+//                $relation_choices["Maid of honor"] = "Maid of honor";
+//                $relation_choices["Bridesmaid"] = "Bridesmaid";
+//            }
 
             $form->add("status", "choice", [
                     "choices" => $relation_choices

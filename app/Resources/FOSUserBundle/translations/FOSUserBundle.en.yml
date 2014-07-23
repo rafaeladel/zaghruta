@@ -13,7 +13,7 @@ group:
 
 # Security
 "Bad credentials": Invalid email or password
-"User account is disabled.": You must activate your account trough the e-mail sent to you earlier.
+"User account is disabled.": You must activate your account through the e-mail sent to you earlier.
 security:
     login:
         username: "Username:"

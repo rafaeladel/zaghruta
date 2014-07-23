@@ -2,6 +2,7 @@
 namespace Zgh\FEBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Zgh\FEBundle\Entity\Branch;
@@ -19,6 +20,7 @@ use Zgh\FEBundle\Form\PostType;
 use Zgh\FEBundle\Form\ProductType;
 use Zgh\FEBundle\Form\SearchType;
 use Zgh\FEBundle\Form\UserInfoType;
+use Zgh\FEBundle\Form\VendorCategoryType;
 use Zgh\FEBundle\Form\VendorInfoType;
 use Zgh\FEBundle\Form\VendorIntroType;
 use Zgh\FEBundle\Form\WishlistType;
@@ -28,28 +30,18 @@ use Zgh\FEBundle\Form\UserIntroType\IntroUserType;
 
 class UserProfileController extends Controller
 {
-    public function indexAction($id)
+    public function indexAction(User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $post_form = $this->createForm(new PostType(), new Post());
-
-        if ($user == null) {
-            return $this->render("@ZghFE/Default/404.html.twig");
-        } elseif (!in_array("ROLE_FACEBOOK", $user->getRoles())) {
-            if ($user->getFirstTime() == true) {
-                return $this->forward("ZghFEBundle:UserProfile:getUserIntro", array("id" => $user->getId()));
-            }
-        }
-
         return $this->render('ZghFEBundle:Default:user_index.html.twig', array(
             "user" => $user,
             'post_form' => $post_form->createView()
         ));
     }
 
-    public function getUserIntroAction($id)
+    public function getUserIntroAction()
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
+        $user = $this->getUser();
         if (in_array("ROLE_CUSTOMER", $user->getRoles())) {
             return $this->getCustomerInfo();
         } elseif (in_array("ROLE_VENDOR", $user->getRoles())) {
@@ -68,24 +60,14 @@ class UserProfileController extends Controller
 
     private function getVendorInfo()
     {
-        return $this->redirect($this->generateUrl("zgh_fe.vendor_categories.get"));
-//        /**
-//         * @var User
-//         */
-//        $user = $this->getUser();
-//
-//        $defaultData = array("message" => "Default form data");
-//        $form = $this->createForm(new VendorIntroType(), $user->getVendorInfo());
-////        $form = $this->createFormBuilder($defaultData)
-////            ->add("company_name", "text", array("mapped" => false));
-//        return $this->render("@ZghFE/Default/vendor_intro.html.twig", array(
-//            "form" => $form->createView()
-//        ));
+        $user = $this->getUser();
+        $vendor_info = $user->getVendorInfo();
+        $form = $this->createForm(new VendorCategoryType(), $vendor_info);
+        return $this->render("@ZghFE/Default/interests.html.twig", array("form" => $form->createView()));
     }
 
-    public function postUserIntroAction(Request $request, $id)
+    public function postUserIntroAction(Request $request, User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         if (in_array("ROLE_CUSTOMER", $user->getRoles())) {
             return $this->postCustomerInfo($request, $user);
         } elseif (in_array("ROLE_VENDOR", $user->getRoles())) {
@@ -150,12 +132,11 @@ class UserProfileController extends Controller
         return $this->redirect($this->generateUrl("zgh_fe.wall.index"));
     }
 
-    public function getMainPartialAction($id)
+    public function getMainPartialAction(User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
         if (!$authorized) {
-            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
+            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
         }
 
         $post_form = $this->createForm(new PostType(), new Post());
@@ -165,9 +146,8 @@ class UserProfileController extends Controller
         ));
     }
 
-    public function getAboutPartialAction($id)
+    public function getAboutPartialAction(User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         if (in_array("ROLE_CUSTOMER", $user->getRoles())) {
             $about = $user->getUserInfo();
             return $this->render('@ZghFE/Partial/about/user_profile_about_customer.html.twig', array(
@@ -181,9 +161,8 @@ class UserProfileController extends Controller
         }
     }
 
-    public function getBranchPartialAction($id)
+    public function getBranchPartialAction(User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $form = $this->createForm(new BranchType(), new Branch());
         return $this->render("@ZghFE/Partial/branches/user_profile_branches.html.twig", [
             "user" => $user,
@@ -191,13 +170,12 @@ class UserProfileController extends Controller
         ]);
     }
 
-    public function getWishlistPartialAction($id)
+    public function getWishlistPartialAction(User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
 
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
         if (!$authorized) {
-            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
+            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
         }
 
         $form = $this->createForm(new WishlistType(), new Wishlist());
@@ -232,13 +210,11 @@ class UserProfileController extends Controller
         ));
     }
 
-    public function getPhotosPartialAction($id)
+    public function getPhotosPartialAction(User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
-
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
         if (!$authorized) {
-            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
+            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
         }
         $albums = $user->getAlbums();
         return $this->render("@ZghFE/Partial/photos/user_profile_photos.html.twig", array(
@@ -247,13 +223,11 @@ class UserProfileController extends Controller
         ));
     }
 
-    public function getAlbumsPartialAction($id)
+    public function getAlbumsPartialAction(User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
-
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
         if (!$authorized) {
-            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
+            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
         }
         $albums = $user->getAlbums();
         return $this->render("@ZghFE/Partial/photos/user_profile_albums.html.twig", array(
@@ -262,23 +236,19 @@ class UserProfileController extends Controller
         ));
     }
 
-    public function getExperiencesPartialsAction($id)
+    public function getExperiencesPartialsAction(User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
-
         $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
         if (!$authorized) {
-            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $id)));
+            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
         }
         return $this->render("@ZghFE/Partial/experiences/user_profile_experiences.html.twig", array(
             "user" => $user,
         ));
     }
 
-    public function getTipsPartialsAction($id)
+    public function getTipsPartialsAction(User $user)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
-
 //        $authorized = $this->get("zgh_fe.user_privacy.manager")->isVisitable($user);
 //        if(!$authorized)
 //        {

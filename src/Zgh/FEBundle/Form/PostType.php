@@ -12,7 +12,7 @@ class PostType extends AbstractType
     {
         $builder
             ->add("content", "textarea", [
-                    "required" => false
+                    "required" => true
                 ])
             ->add("post_image", "file", array(
                     "mapped" => false,

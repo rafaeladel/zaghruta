@@ -63,6 +63,7 @@ class AboutController extends Controller
             $target_user_info = $target_user instanceof User ? $target_user->getUserInfo() : null;
             if ($user_info->getStatus() == "Single") {
                 if ($target_user_info instanceof UserInfo ) {
+
                     //Setting the other side relationship info
                     $target_user_info->setStatus("Single");
                     $target_user_info->setRelationshipUser(null);
@@ -152,7 +153,7 @@ class AboutController extends Controller
         $vendor_info = $this->getDoctrine()->getRepository("ZghFEBundle:VendorInfo")->find($id);
         $form = $this->createForm(new VendorInfoType(), $vendor_info);
         return $this->render("@ZghFE/Partial/about/user_profile_about_edit_vendor.html.twig", array(
-            "info" => $vendor_info,
+            "about" => $vendor_info,
             "form" => $form->createView()
         ));
     }

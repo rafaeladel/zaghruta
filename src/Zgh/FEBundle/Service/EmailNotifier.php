@@ -2,6 +2,8 @@
 namespace Zgh\FEBundle\Service;
 
 use Symfony\Bridge\Twig\TwigEngine;
+use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
 use Zgh\FEBundle\Model\Event\NotifyCommentEvent;
 use Zgh\FEBundle\Model\Event\NotifyFollowEvent;
@@ -35,16 +37,20 @@ class EmailNotifier
 
     public function sendNotification($event)
     {
-        if ($event instanceof NotifyCommentEvent) {
-            $this->sendCommentNotification($event);
-        } else if ($event instanceof NotifyFollowEvent) {
-            $this->sendFollowNotification($event);
-        } else if ($event instanceof NotifyLikeEvent) {
-            $this->sendLikeNotification($event);
-        } else if ($event instanceof NotifyFollowRequestEvent) {
-            $this->sendFollowRequestNotification($event);
-        } else if ($event instanceof NotifyRelationshipRequestEvent) {
-            $this->sendRelationshipRequest($event);
+        try {
+            if ($event instanceof NotifyCommentEvent) {
+                $this->sendCommentNotification($event);
+            } else if ($event instanceof NotifyFollowEvent) {
+                $this->sendFollowNotification($event);
+            } else if ($event instanceof NotifyLikeEvent) {
+                $this->sendLikeNotification($event);
+            } else if ($event instanceof NotifyFollowRequestEvent) {
+                $this->sendFollowRequestNotification($event);
+            } else if ($event instanceof NotifyRelationshipRequestEvent) {
+                $this->sendRelationshipRequest($event);
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
         }
     }
 
@@ -103,13 +109,17 @@ class EmailNotifier
             ->setFrom("notifications@zaghruta.com")
             ->setTo($email)
             ->setBody(
-                $this->templating->render("@ZghFE/Default/notification_email.txt.twig",[
-                        "notification_type" => $subject,
-                        "notification_body" => $notification_body
-                    ]),
+                $this->templating->render("@ZghFE/Default/notification_email.txt.twig", [
+                    "notification_type" => $subject,
+                    "notification_body" => $notification_body
+                ]),
                 'text/html'
-            )
-        ;
-        $this->mailer->send($message);
+            );
+
+        try {
+            $this->mailer->send($message);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }

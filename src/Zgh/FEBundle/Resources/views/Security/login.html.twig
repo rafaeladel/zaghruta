@@ -44,7 +44,6 @@
                     FB.login(function (response) {
                         var login_response = response;
                         if(login_response.status == "connected") {
-                            {#{{ app.user.id }}#}
                             FB.ui({
                                 method: 'apprequests',
                                 message: "Take a look at Zaghruta."

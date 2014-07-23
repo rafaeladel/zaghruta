@@ -34,14 +34,14 @@ class NotificationSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            NotifyEvents::NOTIFY_LIKE                   => [["onNotifyLike", 10],               ["onEmailNotify", 0]],
-            NotifyEvents::NOTIFY_COMMENT                => [["onNotifyComment", 10],            ["onEmailNotify", 0]],
-            NotifyEvents::NOTIFY_COMMENT_OTHER          => [["onNotifyCommentOther", 10],       ["onEmailNotify", 0]],
-            NotifyEvents::NOTIFY_FOLLOW                 => [["onNotifyFollow", 10],             ["onEmailNotify", 0]],
-            NotifyEvents::NOTIFY_FOLLOW_REQUEST         => [["onNotifyFollowRequest", 10],      ["onEmailNotify", 0]],
-            NotifyEvents::NOTIFY_FOLLOW_REQUEST_ACCEPTED=> [["onNotifyFollowRequestAccepted", 10],["onEmailNotify", 0]],
-            NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST   => [["onNotifyRelationshipRequest", 10],["onEmailNotify", 0]],
-            NotifyEvents::NOTIFY_DELETE                 => ["onNotifyDelete", 10]
+            NotifyEvents::NOTIFY_LIKE => [["onNotifyLike", 10], ["onEmailNotify", 0]],
+            NotifyEvents::NOTIFY_COMMENT => [["onNotifyComment", 10], ["onEmailNotify", 0]],
+            NotifyEvents::NOTIFY_COMMENT_OTHER => [["onNotifyCommentOther", 10], ["onEmailNotify", 0]],
+            NotifyEvents::NOTIFY_FOLLOW => [["onNotifyFollow", 10], ["onEmailNotify", 0]],
+            NotifyEvents::NOTIFY_FOLLOW_REQUEST => [["onNotifyFollowRequest", 10], ["onEmailNotify", 0]],
+            NotifyEvents::NOTIFY_FOLLOW_REQUEST_ACCEPTED => [["onNotifyFollowRequestAccepted", 10], ["onEmailNotify", 0]],
+            NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST => [["onNotifyRelationshipRequest", 10], ["onEmailNotify", 0]],
+            NotifyEvents::NOTIFY_DELETE => ["onNotifyDelete", 10]
         ];
     }
 
@@ -115,10 +115,10 @@ class NotificationSubscriber implements EventSubscriberInterface
         $notification = $event->getNotification();
         $user = $event->getUserToNotify();
         $user->addNotification($notification);
+        $notification->setOtherEnd($event->getRequester());
         $this->em->persist($user);
         $this->em->flush();
     }
-
 
 
     public function onNotifyDelete(NotifyDeleteEvent $event)
@@ -140,7 +140,11 @@ class NotificationSubscriber implements EventSubscriberInterface
         $user = $event->getUserToNotify();
 
         if ($user->getEmailNotification()) {
-            $this->emailNotifier->sendNotification($event);
+            try {
+                $this->emailNotifier->sendNotification($event);
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
         }
     }
 }
