@@ -51,39 +51,16 @@ class PostController extends Controller
 
     public function postNewAction(Request $request)
     {
-        $photo = $request->files->get("post")["post_image"];
-        $content = $request->request->get("post")["content"];
-        $return_url = $request->request->get("return_url");
         $post = new Post();
 
-        if($content != null)
+        $form = $this->createForm(new PostType(), $post);
+        $form->handleRequest($request);
+        $return_url = $request->request->get("return_url");
+
+        if(!$form->isValid())
         {
-            $youtube_arr = array();
-            $vimeo_arr = array();
-            $embedded_arr = array();
-
-            if(preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i',$content, $youtube_arr))
-            {
-                $format = "<iframe width=\"482\" height=\"315\" src=\"//www.youtube.com/embed/%s\" frameborder=\"0\" allowfullscreen></iframe>";
-                $embedded_arr["youtube"] = sprintf($format, $youtube_arr[1]);
-            }
-
-            if(preg_match('/(?:https?:)?(?:\/\/)?(?:www\.)?vimeo.com\/(\d+)($|\/)/', $content, $vimeo_arr))
-            {
-                $format = "<iframe src=\"//player.vimeo.com/video/%s\" width=\"482\" height=\"315\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
-                $embedded_arr["vimeo"] = sprintf($format, $vimeo_arr[1]);
-            }
-
-
-            $post->setVideo(array_shift($embedded_arr));
-
-        }
-
-        $post->setContent($content);
-
-        if($photo != null)
-        {
-            $post->setImage((new PostImage())->setImageFile($photo));
+            $this->get("session")->getFlashBag()->set("val_error", $form->getErrors()->current()->getMessage());
+            return $this->redirect($return_url);
         }
 
         $post->setUser($this->getUser());

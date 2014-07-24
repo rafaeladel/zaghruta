@@ -50,18 +50,7 @@
     </div>
     <!--End header-post-->
 
-    <div class="content-post postContent">
-        {% if post.image %}
-            <a class="fancybox fancyboxArrow" href="{{ asset(post.image.getWebPath) }}"><img alt="" src="{{ asset(post.image.getThumbWebPath) }}" class="img-responsive margin-md"> </a>
-        {% elseif post.video %}
-            {{ post.video|raw }}
-        {% endif %}
-        <p>
-            {{ post.content|raw|nl2br|converturls }}
-        </p>
-
-
-    </div>
+    {{ getPostContent(post)|raw }}
 
     <div class="footer-post">
         {{ include(

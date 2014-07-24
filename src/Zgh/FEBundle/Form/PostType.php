@@ -4,6 +4,7 @@ namespace Zgh\FEBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Zgh\FEBundle\Transformer\PostTransformer;
 
 class PostType extends AbstractType
 {
@@ -12,10 +13,9 @@ class PostType extends AbstractType
     {
         $builder
             ->add("content", "textarea", [
-                    "required" => true
-                ])
-            ->add("post_image", "file", array(
-                    "mapped" => false,
+                "required" => false
+            ])
+            ->add("image_file", "file", array(
                     "required" => false,
                     "attr" => array(
                         "accept" => "image/*"

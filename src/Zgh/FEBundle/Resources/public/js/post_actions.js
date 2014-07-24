@@ -6,7 +6,7 @@ $(document).ready(function(){
         rules: {
             "post[content]": {
                 required: function(){
-                    return $('[name="post[post_image]"]').val()  == 0;
+                    return $('[name="post[image_file]"]').val()  == 0;
                 }
             }
         },

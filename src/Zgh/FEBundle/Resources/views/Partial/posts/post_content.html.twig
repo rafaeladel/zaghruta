@@ -1,0 +1,16 @@
+{% set post = data["post"] %}
+{% set content_type = data["type"] %}
+
+<div class="content-post postContent">
+    <p>
+        {{ post.content|raw|nl2br|converturls }}
+    </p>
+
+    {% if content_type == 2 %}
+        <a class="fancybox fancyboxArrow" href="{{ asset(post.getWebPath) }}"><img alt="" src="{{ asset(post.getThumbWebPath) }}" class="img-responsive margin-md"> </a>
+    {% elseif content_type == 1 %}
+        {{ data["video"]|raw }}
+    {% endif %}
+
+
+</div>

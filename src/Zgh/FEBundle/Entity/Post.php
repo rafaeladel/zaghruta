@@ -3,18 +3,27 @@ namespace Zgh\FEBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Zgh\FEBundle\Model\Partial\BasicInfo;
 use Zgh\FEBundle\Model\CommentableInterface;
 use Zgh\FEBundle\Model\LikeableInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Zgh\FEBundle\Model\Utilities\Image;
 
 /**
  * @ORM\Entity(repositoryClass="Zgh\FEBundle\Repository\PostRepository")
  * @ORM\Table(name="posts")
  * @ORM\HasLifecycleCallbacks
  */
-class Post implements LikeableInterface, CommentableInterface
+class Post extends Image implements LikeableInterface, CommentableInterface
 {
     use BasicInfo;
+
+    protected $cat_dir = "posts";
+    protected $thumb_dir = "thumb";
+
+    protected $thumb_h = 332;
+    protected $thumb_w = 561;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
@@ -37,14 +46,24 @@ class Post implements LikeableInterface, CommentableInterface
     protected $video;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $content;
 
     /**
-     * @ORM\OneToOne(targetEntity="Zgh\FEBundle\Entity\PostImage", cascade={"persist", "remove"}, mappedBy="post")
+     * @Assert\Callback
      */
-    protected $image;
+    public function validateContent(ExecutionContextInterface $context)
+    {
+        if(empty($this->content)){
+
+            if(empty($this->image_file))
+            {
+                $context->buildViolation("You have to select a photo or enter content of the post or both.")
+                        ->addViolation();
+            }
+        }
+    }
 
     /**
      * Set user
@@ -98,29 +117,6 @@ class Post implements LikeableInterface, CommentableInterface
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * Set image
-     *
-     * @param \Zgh\FEBundle\Entity\PostImage $image
-     * @return Post
-     */
-    public function setImage(\Zgh\FEBundle\Entity\PostImage $image = null)
-    {
-        $this->image = $image;
-        $image->setPost($this);
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \Zgh\FEBundle\Entity\PostImage 
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**
@@ -241,5 +237,10 @@ class Post implements LikeableInterface, CommentableInterface
     public function getComments()
     {
         return $this->comments;
+    }
+
+    public function hasImage()
+    {
+        return !empty($this->image_name);
     }
 }

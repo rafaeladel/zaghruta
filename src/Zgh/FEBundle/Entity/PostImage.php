@@ -14,11 +14,7 @@ class PostImage extends Image
 {
     use BasicInfo;
 
-    protected $cat_dir = "posts";
-    protected $thumb_dir = "thumb";
 
-    protected $thumb_h = 332;
-    protected $thumb_w = 561;
 
     /**
      * @ORM\OneToOne(targetEntity="Zgh\FEBundle\Entity\Post", inversedBy="image")

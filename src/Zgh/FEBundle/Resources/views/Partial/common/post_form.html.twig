@@ -1,8 +1,10 @@
 <div class="row margin">
     <div class="postBox">
         {{ form_start(post_form, {"action": url("zgh_fe.post.new"), "attr":{"class":"post_form"} }  ) }}
+        {{ form_errors(post_form) }}
         <div class="posts">
         {{ form_widget(post_form.content, {"attr": {"class":"form-control animated", "placeholder": "Post something.." }}) }}
+        {{ form_errors(post_form.content) }}
         <div class="thumbnailUpload">
             <button class="row reset_photo btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
             <img src="../EP.jpg"/>
@@ -13,12 +15,15 @@
         <input type="hidden" name="return_url" value="{{ return_url }}" />
 
         <div class="btnBrowse">
-           {{ form_widget(post_form.post_image, {"attr":{"class": "photo_btn"} }) }}
+           {{ form_widget(post_form.image_file, {"attr":{"class": "photo_btn"} }) }}
+           {{ form_errors(post_form.image_file) }}
         <a href="#"><span class=" icon-camera cam-post"></span></a>
         </div>
         {{ form_rest(post_form) }}
         {{ form_end(post_form) }}
-
+        {% for msg in app.session.flashbag.get("val_error") %}
+            <p style="color:red;margin: 5px;">{{ msg }}</p>
+        {% endfor %}
         <div class="clearfix"></div>
     </div>
 </div>
