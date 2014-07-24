@@ -2,8 +2,8 @@
     <div class="col-3 data-reacted thread" data-t_id="{{ thread.id }}">
         <div class="profile  sm-img-post">
             <a href="#" class="pull-left img-circle ">
-                {% if (thread.messages|first).sender.id == app.user.id %}
-                    {% set user =  (thread.messages|last).sender %}
+                {% if thread.createdBy.id == app.user.id %}
+                    {% set user =  thread.participants|first%}
                 {% else %}
                     {% set user = thread.createdBy %}
                 {% endif %}
