@@ -3,7 +3,7 @@ namespace Zgh\FEBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\Validator\ExecutionContextInterface;
 use Zgh\FEBundle\Model\Partial\BasicInfo;
 use Zgh\FEBundle\Model\CommentableInterface;
 use Zgh\FEBundle\Model\LikeableInterface;
