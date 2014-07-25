@@ -2,7 +2,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th colspan="2">Contact Information
+                <th colspan="2">About
                     {% if app.user and about.user.id == app.user.id %}
                         <a href="{{ url("zgh_fe.about.get_customer_edit", {"id": about.id }) }}" class="pull-right about_edit">
                             <span class="glyphicon glyphicon-edit top"></span>
@@ -21,7 +21,7 @@
                 <td>{{ about.gender == 0 ? "Male" : "Female" }}</td>
             </tr>
             <tr>
-                <td>Status</td>
+                <td>Relationship Status</td>
                 <td style="position: relative;">
                     {% if about.status == "Married" %}
                         {% if about.gender == 0 %}

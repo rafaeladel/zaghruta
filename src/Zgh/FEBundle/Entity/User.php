@@ -136,7 +136,7 @@ class User extends BaseUser implements ParticipantInterface
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
-     * @Assert\NotBlank(groups={"intro"})
+     * @Assert\NotBlank(groups={"intro"}, message="First Name is required")
      */
     protected $firstname;
 
@@ -144,7 +144,7 @@ class User extends BaseUser implements ParticipantInterface
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
-     * @Assert\NotBlank(groups={"intro"})
+     * @Assert\NotBlank(groups={"intro"}, message="Last Name is required")
      */
     protected $lastname;
 

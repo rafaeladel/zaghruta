@@ -111,7 +111,7 @@
         {% if app.user and user.id == app.user.id %}
             {% if app.user.showInterestNotification and "ROLE_CUSTOMER" in app.user.roles %}
                 <div class="alert alert-success">
-                    <p>You may need to add some interests to your profile. <a href="{{ url("zgh_fe.interest.get") }}">Click here</a></p>
+                    <p>Add interests to your profile, so we can recommend you vendors. <a href="{{ url("zgh_fe.interest.get") }}">Click here</a></p>
                 </div>
             {% endif %}
         {% endif %}

@@ -38,8 +38,8 @@
                             <div id="register_user" class="tab-pane active">
 
                                 {% block fos_user_content %}
-                                    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-                                    <a href="{{ url("zgh_fe.user_profile.index", {"id": user.id}) }}">Go to home</a>
+                                    <p>{{ 'registration.confirmed'|trans }}</p>
+                                    <a href="{{ url("zgh_fe.user_profile.index", {"id": user.id}) }}">Next Step</a>
                                 {% endblock fos_user_content %}
 
 

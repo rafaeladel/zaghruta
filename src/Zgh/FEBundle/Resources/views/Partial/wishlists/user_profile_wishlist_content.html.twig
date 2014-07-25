@@ -14,7 +14,8 @@
         </div>
     {% endif %}
     <div class="row">
-        {% for wishlist in wishlists %}
+        {% if wishlists|length > 0 %}
+            {% for wishlist in wishlists %}
             <div class="col-md-3 col-xs-6 wishList">
                 {% if wishlist.user.id == app.user.id %}
                     <button data-target="#deleteWishlist_{{ wishlist.id }}" data-toggle="modal" type="submit"
@@ -60,6 +61,10 @@
                 </div>
             </div>
         {% endfor %}
+        {% else %}
+
+            <p><a href="{{ url("zgh_fe.search.start_search", {"category": "all", "q": ""}) }}#searchVendors">Browse vendors</a> products and add items to your wishlist.</p>
+        {% endif %}
     </div>
     <div id="addNewListPopup" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
          class="modal fade in">

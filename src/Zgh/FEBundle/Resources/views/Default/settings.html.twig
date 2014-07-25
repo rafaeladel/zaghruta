@@ -24,14 +24,14 @@
                                         <input class="privacyToggle" type="radio" name="privacySetting"
                                                id="optionsRadios1"
                                                value="0" {{ not app.user.isPrivate ? "checked" : "" }}>
-                                        public
+                                        Public
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
                                         <input class="privacyToggle" type="radio" name="privacySetting"
                                                id="optionsRadios2" value="1" {{ app.user.isPrivate ? "checked" : "" }}>
-                                        private
+                                        Private
                                     </label>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                       action="{{ url("zgh_fe.settings.postBasicInfo", {"id": app.user.id}) }}"
                                       method="post" role="form">
                                     <div class="form-group formGroup">
-                                        <label class="col-sm-2 control-label" for="firstname">Firstname</label>
+                                        <label class="col-sm-2 control-label" for="firstname">First Name</label>
 
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" name="firstname"
@@ -91,7 +91,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group formGroup">
-                                        <label class="col-sm-2 control-label" for="lastname">Lastname</label>
+                                        <label class="col-sm-2 control-label" for="lastname">Last Name</label>
 
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" name="lastname"
@@ -107,7 +107,7 @@
                                 {% endif %}
                                 {% if not is_granted("ROLE_FACEBOOK") %}
                                     <br/>
-                                    <h4>Password</h4>
+                                    <h4>Change Password</h4>
 
                                     {{ render_esi(controller("ZghFEBundle:ChangePassword:changePassword")) }}
 

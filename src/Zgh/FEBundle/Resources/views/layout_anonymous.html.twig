@@ -36,7 +36,7 @@
     {{ parent() }}
     <script type="text/javascript">
         var UrlContainer = {
-            loader: "{{ asset("bundles/zghfe/img/page-preloader.GIF") }}",
+            loader: "{{ asset("bundles/zghfe/img/page-preloader.GIF") }}"
         };
     </script>
     {% javascripts
@@ -81,39 +81,6 @@
                 e.preventDefault();
                 window.location.href = window.location.href;
             });
-
-            $("body").on("click",".filtr",function(e){
-                var wrapperid=$(e.target).data("id");
-                if(wrapperid=="all"){
-                    $(".resultWrapper").show();
-                }else{
-                    $(".resultWrapper").hide();
-                    $(wrapperid).show();
-                }
-            });
-
-
-            $("body").on("keyup", ".search_text", function(e){
-                e.preventDefault();
-                var form = $(e.target).closest("form");
-                if(e.which == 13) {
-                    form.submit();
-                }
-            });
-
-            $("body").on("click", ".search_submit", function(e){
-                e.preventDefault();
-                var form = $(e.target).closest("form");
-                form.submit();
-            });
-
-            $("body").on("click", ".searchOption", function(e){
-                e.preventDefault();
-                var cat = $(e.target).data("cat");
-                $(e.target).closest(".cat_ddl_btn").find("button").text($(e.target).text());
-                $(e.target).closest("form").find("input[type='hidden']").val(cat);
-            });
-
 
 
         });

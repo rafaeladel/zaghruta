@@ -1,3 +1,4 @@
+{% if threads|length > 0 %}
 {% for thread in threads %}
     <div class="col-3 data-reacted thread" data-t_id="{{ thread.id }}">
         <div class="profile  sm-img-post">
@@ -26,3 +27,6 @@
     </div>
 
 {% endfor %}
+{% else %}
+    <p>Your inbox is empty</p>
+{% endif %}

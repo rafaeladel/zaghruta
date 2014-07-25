@@ -35,7 +35,7 @@
             </div>
 
             <div class="form-group formGroup row">
-                {{ form_label(form.image_file, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+                {{ form_label(form.image_file, "Photo", {"label_attr": {"class": "col-sm-3 control-label"} }) }}
 
                 <div class="col-sm-9">
                     <div class="col-md12">
@@ -53,7 +53,7 @@
             </div>
 
             <div class="form-group formGroup row">
-                {{ form_label(form.content, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+                {{ form_label(form.content, "Experience", {"label_attr": {"class": "col-sm-3 control-label"} }) }}
 
                 <div class="col-sm-9">
                     {{ form_widget(form.content, {"attr":{"class": "animated form-control", "placeholder": "Experience content"} }) }}

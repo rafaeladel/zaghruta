@@ -23,7 +23,7 @@ class UserInfo
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
-     * @Assert\NotBlank(groups={"intro", "Default"})
+     * @Assert\NotBlank(groups={"intro", "Default"}, message="Gender is required")
      */
     protected $gender;
 

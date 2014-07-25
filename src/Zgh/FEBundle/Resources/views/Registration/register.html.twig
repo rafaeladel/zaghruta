@@ -32,7 +32,7 @@
             <div class="signBox  col-md-6">
 
                 <ul class="nav nav-tabs nav-login" id="loginTabs">
-                    <li class="active"><a href="">Register {{ app.request.get("type")|capitalize }}</a></li>
+                    <li class="active"><a href="">Sign Up {{ app.request.get("type")|capitalize }}</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="register_user" class="tab-pane active">
@@ -81,7 +81,8 @@
                 },
                 messages: {
                     "fos_user_registration_form[email]": {
-                        required: "Email is required"
+                        required: "Email is required",
+                        email: "Wrong E-mail Format"
                     },
                     "fos_user_registration_form[plainPassword][first]": {
                         required: "Password is required",

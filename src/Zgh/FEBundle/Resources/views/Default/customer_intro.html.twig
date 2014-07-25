@@ -38,12 +38,12 @@
                             <div id="register_user" class="tab-pane active">
                                 {{ form_start(form, {"action": url("zgh_fe.user_profile.user_post_intro_edit", {"id": app.user.id}), "attr": {"novalidate": "novalidate"} }) }}
                                 <div class="form-group">
-                                    {{ form_label(form.name.firstname) }}
-                                    {{ form_widget(form.name.firstname, {"attr": {"class": "form-control", "placeholder": "First name"} }) }}
+                                    {{ form_label(form.name.firstname, "First Name") }}
+                                    {{ form_widget(form.name.firstname, {"attr": {"class": "form-control", "placeholder": "First Name"} }) }}
                                     <div class="validation" style="">{{ form_errors(form.name.firstname) }}</div>
                                 </div>
                                 <div class="form-group">
-                                    {{ form_label(form.name.lastname) }}
+                                    {{ form_label(form.name.lastname, "Last Name") }}
                                     {{ form_widget(form.name.lastname, {"attr": {"class": "form-control", "placeholder": "Last name"} }) }}
                                     <div class="validation" style="">{{ form_errors(form.name.lastname) }}</div>
                                 </div>

@@ -40,9 +40,9 @@ change_password:
 # Registration
 registration:
     check_email: An email has been sent to %email%. It contains an activation link you must click to activate your account.
-    confirmed: Congrats %username%, your account is now activated.
+    confirmed: Welcome to Zaghruta, your account is activated.
     back: Back to the originating page.
-    submit: Register
+    submit: Sign Up
     flash:
         user_created: The user has been created successfully
     email:
@@ -60,7 +60,7 @@ resetting:
     password_already_requested: The password for this user has already been requested within the last 24 hours.
     check_email: An email has been sent to %email%. It contains a link you must click to reset your password.
     request:
-        invalid_username: The username or email address "%username%" does not exist.
+        invalid_username: The email address "%username%" does not exist.
         username: "Email address:"
         submit: Reset password
     reset:

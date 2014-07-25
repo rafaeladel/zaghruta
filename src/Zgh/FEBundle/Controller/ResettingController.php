@@ -50,7 +50,7 @@ class ResettingController extends ContainerAware
 
         if (null === $user) {
 //            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine(), array('invalid_username' => $username));
-            return new JsonResponse(array("response" => 404, "message" => "No user with the given information"));
+            return new JsonResponse(array("response" => 404, "message" => "This e-mail doesn’t have account on Zaghruta."));
         }
 
         if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
@@ -85,10 +85,9 @@ class ResettingController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_request'));
         }
 
-//        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:checkEmail.html.'.$this->getEngine(), array(
-//            'email' => $email,
-//        ));
-        return new JsonResponse(array("response" => 200, "message" => "Please check your email"));
+        return new JsonResponse([
+            "response" => 200,
+            "message" => sprintf("We've sent an email to %s. Click the link in the email to reset your password.", $email)]);
     }
 
     /**
