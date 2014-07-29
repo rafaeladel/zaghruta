@@ -1,7 +1,7 @@
 {% for entry in result %}
     <div class="row media profile fr-suggest ">
         <div class="col-sm-4">
-            <a class="pull-left {{ "ROLE_VENDOR" in entry.roles ? "img-rounded" : "img-circle" }}" href="#">
+            <a class="pull-left {{ "ROLE_VENDOR" in entry.roles ? "img-rounded" : "img-circle" }}" href="{{ url("zgh_fe.user_profile.index", {"id": entry.id}) }}">
                 <img class="media-object "
                      src="{{ "ROLE_FACEBOOK" in entry.roles ? 'https://graph.facebook.com/'~entry.facebookId~'/picture?width=125&height=125' : asset(entry.profilePhoto.getThumbWebPath) }}"
                      alt="">

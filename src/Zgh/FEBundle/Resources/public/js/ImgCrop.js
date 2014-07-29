@@ -14,6 +14,7 @@ function ImgCrop(param)
     this.post_url = null;
     this.crop = param.crop;
     this.upload_btn = $("."+param.input_class+"").clone();
+    this.file_size = "file_size" in param ? param.file_size : null;
     //There is also autocrop option.. for creating crop box on init
 
     this.init = function()
@@ -29,12 +30,33 @@ function ImgCrop(param)
             if(input.files && input.files[0])
             {
                 var myImg = $(trigger).parentsUntil("."+_this.wrapper).find("."+_this.image_class).find("img");
+                var file_invalid = false;
+                var invalid_msg = [];
+                var size = input.files[0].size/1048576;
                 var type = input.files[0].type;
                 var allowed = ["image/png", "image/jpeg", "image/gif"];
 
+                if(_this.file_size != null)
+                {
+                    if(size > _this.file_size)
+                    {
+                        file_invalid = true;
+                        invalid_msg.push("File is too large ("+_this.file_size+" MB max).");
+                    }
+                }
+
                 if($.inArray(type, allowed) == -1)
                 {
-                    $(trigger).after("<div class='cover_error'>Only images are allowed (png, jpeg or gif)</div>");
+                    file_invalid = true;
+                    invalid_msg.push("Only images are allowed (png, jpeg or gif)");
+                }
+
+
+                if(file_invalid == true)
+                {
+                    $errors = invalid_msg.join("<br>");
+                    $(_this.form).find(".errors").show().html($errors);
+                    $(_this.form).find(".cover_thumb").hide();
                     $(trigger).replaceWith(_this.upload_btn);
                     myImg.imgAreaSelect({
                         disable: true,
@@ -46,9 +68,13 @@ function ImgCrop(param)
                 }
                 else
                 {
-                    $(trigger).siblings("div.cover_error").text("");
+                    myImg.imgAreaSelect({
+                        disable: false,
+                        hide: false
+                    });
+                    $(_this.form).find(".cover_thumb").show();
+                    $(_this.form).find(".errors").hide().html("");
                 }
-
 
                 var reader = new FileReader();
                 reader.readAsDataURL(input.files[0]);

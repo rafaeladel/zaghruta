@@ -70,6 +70,7 @@
     "bundles/zghfe/plugins/select2-3.4.6/select2.js"
     "bundles/thraceform/js/select2.js"
     "bundles/zghfe/js/pages_logic/search.js"
+    "bundles/zghfe/plugins/jQuery-File-Validator/js/file-validator.js"
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -85,15 +86,12 @@
                 }
             });
             $.validator.addMethod(
-                    "regex",
-                    function(value, element, regexp) {
-                        console.log(value);
-                        console.log(regexp);
-                        var re = new RegExp(regexp);
-                        console.log(re.test(value));
-                        return this.optional(element) || re.test(value);
+                    "file_size",
+                    function(value, element, size) {
+                        var element_size = element.files[0].size/1048576;
+                        return element_size < size;
                     },
-                    "Shouldn't contain spaces."
+                    "File is large."
             );
 
         });

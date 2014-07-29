@@ -122,7 +122,7 @@ class DoctrineListenerHandler implements EventSubscriber
         $entity = $args->getEntity();
         $this->em = $args->getEntityManager();
 
-        if($entity instanceof Tag)
+        if($entity instanceof Tag || $entity instanceof Category)
         {
             $slugifier = $this->container->get("zgh_fe.slugifier");
             $entity->setNameSlug($slugifier->slugify($entity->getName()));

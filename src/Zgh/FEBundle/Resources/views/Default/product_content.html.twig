@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 {% block parent_inner %}
-                {{ include("@ZghFE/Partial/products/product_content_widget.html.twig", {"product": product, "is_popup": is_popup }) }}
+                {{ include("@ZghFE/Partial/products/product_content_widget.html.twig", {"product": product, "toggles": toggles }) }}
                 {% endblock parent_inner %}
             </div>
         {% endblock leftContent %}

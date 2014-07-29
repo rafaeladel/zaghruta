@@ -24,7 +24,9 @@
         "liip/url-auto-converter-bundle" : "dev-master",
         "hwi/oauth-bundle": "0.4.*@dev",
         "thrace/form-bundle":"dev-master",
-        "friendsofsymfony/message-bundle": "dev-master"
+        "friendsofsymfony/message-bundle": "dev-master",
+        "doctrine/migrations": "dev-master",
+        "doctrine/doctrine-migrations-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

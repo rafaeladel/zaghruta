@@ -4,7 +4,7 @@
 <div class="row headerProduct">
     <div class="col-md-2 pull-right icons-G">
         <form class="pull-right" action="{{ url("zgh_fe.like.post", {"id": experience.id, "entity_type": experience.getObjectType }) }}" method="post">
-            <button type="submit" class="btn btn-danger likeBtn btn-circle {{ checkLike(app.user, experience) ? "glyphicon-heart-empty" : "" }}">
+            <button type="submit" class="btn tooltip btn-circle doLike {{ checkLike(app.user, experience) ? "btn-danger" : "likeBtn" }}">
                 <span class="glyphicon glyphicon-heart"></span>
             </button>
         </form>

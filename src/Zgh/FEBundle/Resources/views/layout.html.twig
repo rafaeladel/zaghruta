@@ -98,13 +98,7 @@
 
 
 
-            $("body").on("change", ".photo_btn", function(e){
-                e.preventDefault();
-                var wrapper = $(e.currentTarget).closest("form").find(".thumbnailUpload");
-                wrapper.show();
-                var imgWrapper = wrapper.find("img");
-                imgWrapper.attr("src", URL.createObjectURL(this.files[0]));
-            });
+
 
             $("body").on("click", ".reset_photo", function(e){
                 e.preventDefault();

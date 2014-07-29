@@ -2861,6 +2861,11 @@ font-size: 18px !important;
     margin-top: 8px;
 }
 
+.logout_anon {
+    display: inline-block !important;
+    margin-top: 8px;
+}
+
 .contentImg{
  height: 350px;
 overflow: hidden;

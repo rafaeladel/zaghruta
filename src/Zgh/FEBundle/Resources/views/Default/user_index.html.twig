@@ -5,86 +5,121 @@
 {% endblock stylesheets %}
 {% block content %}
     <div class="container">
-        <div class="row cover">
+    <div class="row cover">
         <div class="photoCover img-rounded"><img src="{{ asset(user.coverPhoto.getWebPath) }}"/></div>
         <div class="SVb"></div>
         <div class="media profilePic profile col-md-6 col-xs-10">
-          <div class="imgProfile pull-left">
-              {% if app.user and user.id == app.user.id %}
-                  <button data-toggle="modal" data-target="#pp_modal" type="button" class="btn btn-primary btn-circle ch-pr">
-                      <span class="icon-camera cam-post"></span>
-                      {#<input type="file" class="icon-camera cam-post"/>#}
-                  </button>
-                  <div class="modal fade" id="pp_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header modalHeader">
-                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                  <h4 class="modal-title" id="myModalLabel">Select profile photo</h4>
-                              </div>
-                              <form action="{{ url("zgh_fe.user_profile.picture.set", {"id": app.user.id}) }}" method="post" enctype="multipart/form-data">
+            <div class="imgProfile pull-left">
+                {% if app.user and user.id == app.user.id %}
+                    <button data-toggle="modal" data-target="#pp_modal" type="button"
+                            class="btn btn-primary btn-circle ch-pr">
+                        <span class="icon-camera cam-post"></span>
+                        {#<input type="file" class="icon-camera cam-post"/>#}
+                    </button>
+                    <div class="modal fade" id="pp_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header modalHeader">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Select profile photo</h4>
+                                </div>
+                                <form action="{{ url("zgh_fe.user_profile.picture.set", {"id": app.user.id}) }}"
+                                      method="post" enctype="multipart/form-data" class="picture_form">
 
-                                  <div class="modal-body">
-                                    <div class="btnBrowsePhoto margin-bottom">
-                                        <input class="btnBrowseMine photo_btn" accept="image/*" name="picture" type="file" title="Browse"/>
-                                        <button class="btnBrowseNew btn btn-primary btn-wide"><i class="icon-camera"></i> Browse</button>
+                                    <div class="modal-body">
+                                        <div class="btnBrowsePhoto margin-bottom">
+                                            <input class="btnBrowseMine photo_btn" accept="image/*" name="picture"
+                                                   type="file" title="Browse"/>
+                                            <button class="btnBrowseNew btn btn-primary btn-wide"><i
+                                                        class="icon-camera"></i> Browse
+                                            </button>
+                                        </div>
+                                        <div class="pp_errors alert alert-danger" style="display: none;">
+                                            {% for msg in app.session.flashBag.get("pp_error") %}
+                                                {{ msg }}
+                                            {% endfor %}
+                                        </div>
+                                        <div class="thumbnailUpload">
+                                            <button class="row reset_photo btn delete-post pull-right"><span
+                                                        class="glyphicon glyphicon-remove pull-right"></span></button>
+                                            <img src="{{ asset("bundles/zghfe/img/thumb.jpg") }}"/>
+                                        </div>
                                     </div>
-                                      <div class="thumbnailUpload">
-                                          <button class="row reset_photo btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
-                                          <img src="{{ asset("bundles/zghfe/img/thumb.jpg") }}"/>
-                                      </div>
-                                  </div>
-                                  <div class="modal-footer">
-                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn btn-primary">Save changes</button>
-                                  </div>
-                              </form>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
 
-                          </div>
-                      </div>
-                  </div>
-              {% endif %}
-            <a  class="pull-left fancyboxArrow fancybox {{ "ROLE_CUSTOMER" in user.roles ? "img-circle" : "img-rounded" }} " rel="profile"  href="#profile_pic_popup">
-                <img alt="" src="{{ "ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(user.profilePhoto.getThumbWebPath) }}" class="media-object" >
-            </a>
-              <div id="profile_pic_popup" style="display: none;">
-                  <img src="{{ "ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=500&height=500' : asset(user.profilePhoto.getWebPath) }}" alt="profile_photo" />
-              </div>
-          </div>
-            <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": user.id}) }}">{{ user.firstname }} {{ user.lastname }}</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <a class="pull-left fancyboxArrow fancybox {{ "ROLE_CUSTOMER" in user.roles ? "img-circle" : "img-rounded" }} "
+                   rel="profile" href="#profile_pic_popup">
+                    <img alt=""
+                         src="{{ "ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(user.profilePhoto.getThumbWebPath) }}"
+                         class="media-object">
+                </a>
+
+                <div id="profile_pic_popup" style="display: none;">
+                    <img src="{{ "ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=500&height=500' : asset(user.profilePhoto.getWebPath) }}"
+                         alt="profile_photo"/>
+                </div>
+            </div>
+            <h3>
+                <a href="{{ url("zgh_fe.user_profile.index", {"id": user.id}) }}">{{ user.firstname }} {{ user.lastname }}</a>
+            </h3>
 
             {{ renderFollow(user) }}
 
             {% if app.user and user.id != app.user.id %}
-                <button class="btn-Message  btn btn-primary "  data-toggle="modal"
+                <button class="btn-Message  btn btn-primary " data-toggle="modal"
                         data-target="#msgModal" type="button">
                     <span class="glyphicon glyphicon-envelope"></span>
                 </button>
                 {{ message_user_popup("msgModal", user)|raw }}
             {% endif %}
-            <a href="{{ url("zgh_fe.user_profile.connections_partial", {id: user.id}) }}" class="boy"> <span class="glyphicon glyphicon-user glyphicon-user-boy"></span> <span class="followerStats">{{ getApprovedFollowings(user)|length }}</span> </a>
+            <a href="{{ url("zgh_fe.user_profile.connections_partial", {id: user.id}) }}" class="boy"> <span
+                        class="glyphicon glyphicon-user glyphicon-user-boy"></span> <span
+                        class="followerStats">{{ getApprovedFollowings(user)|length }}</span> </a>
         </div>
-            {% if app.user and user.id == app.user.id %}
-                <button data-toggle="modal" data-target="#cp_modal" class="btn btn-default btn-wide  btn-cover" type="button">
-                    <span class="glyphicon glyphicon-pencil"></span> Change Cover
-                </button>
-            <div class="modal fade cover_wrapper" id="cp_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        {% if app.user and user.id == app.user.id %}
+            <button data-toggle="modal" data-target="#cp_modal" class="btn btn-default btn-wide  btn-cover"
+                    type="button">
+                <span class="glyphicon glyphicon-pencil"></span> Change Cover
+            </button>
+            <div class="modal fade cover_wrapper" id="cp_modal" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header modalHeader">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title" id="myModalLabel">Select cover photo</h4>
                         </div>
-                        <form action="{{ url("zgh_fe.user_profile.cover.set", {"id": app.user.id}) }}" method="post" class="cover_form" enctype="multipart/form-data">
+                        <form action="{{ url("zgh_fe.user_profile.cover.set", {"id": app.user.id}) }}" method="post"
+                              class="cover_form" enctype="multipart/form-data">
 
                             <div class="modal-body">
                                 <div class="btnBrowsePhoto  margin-bottom">
                                     <input name="cover" type="file" accept="image/*" class="cover_input btnBrowseMine"/>
-                                    <button class="btnBrowseNew btn btn-primary btn-wide"><i class="icon-camera"></i> Browse</button>
+                                    <button class="btnBrowseNew btn btn-primary btn-wide"><i class="icon-camera"></i>
+                                        Browse
+                                    </button>
+                                </div>
+                                <div class="errors alert alert-danger" style="display: none;">
+                                    {% for msg in app.session.flashBag.get("cp_error") %}
+                                        {{ msg }}
+                                    {% endfor %}
                                 </div>
 
-                                <div id="testtt" class="cover_thumb"  width="540px" height="400px"  style=" position: relative;">
-                                    <img src="{{ asset("bundles/zghfe/img/thumb.jpg") }}" width="100%" height="auto" alt="cover"/>
+                                <div id="testtt" class="cover_thumb" width="540px" height="400px"
+                                     style=" position: relative; display: none;">
+                                    <img src="{{ asset("bundles/zghfe/img/thumb.jpg") }}" width="100%" height="auto"
+                                         alt="cover"/>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -96,7 +131,7 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
+        {% endif %}
 
 
         <div style="display: none;" class="col-md-6 col-sm-6 warning">
@@ -106,63 +141,75 @@
         </div>
     </div>
 
-        <div class="divider"></div>
+    <div class="divider"></div>
 
-        {% if app.user and user.id == app.user.id %}
-            {% if app.user.showInterestNotification and "ROLE_CUSTOMER" in app.user.roles %}
-                <div class="alert alert-success">
-                    <p>Add interests to your profile, so we can recommend you vendors. <a href="{{ url("zgh_fe.interest.get") }}">Click here</a></p>
-                </div>
-            {% endif %}
+    {% if app.user and user.id == app.user.id %}
+        {% if app.user.showInterestNotification and "ROLE_CUSTOMER" in app.user.roles %}
+            <div class="alert alert-success">
+                <p>Add interests to your profile, so we can recommend you vendors. <a
+                            href="{{ url("zgh_fe.interest.get") }}">Click here</a></p>
+            </div>
         {% endif %}
+    {% endif %}
 
-        {% set current_route = app.request.attributes.get("_route") %}
-        {% set authorized = isVisitable(user) %}
-        <!--Menu -->
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="btn-group btn-group-md btn-group-justified">
-                    {% if "ROLE_CUSTOMER" in user.roles %}
-                        {% if authorized %}
-                            <a href="#" data-target_url="{{ url("zgh_fe.user_profile.main_partial", {'id': user.id}) }}" type="button"
-                               class="tab btn btn-primary {{ "index" in current_route or "main" in current_route or "post" in current_route ? "active" : "" }}">Posts</a>
-
-                            <a href="#" data-target_url="{{ url("zgh_fe.user_profile.wishlist_partial", {'id': user.id}) }}" type="button"
-                               class="tab btn btn-primary {{ "wishlist" in current_route ? "active" : "" }}">Wishlist</a>
-
-                            <a href="#" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {'id': user.id}) }}" type="button"
-                               class="tab btn btn-primary {{ "photos" in current_route or "albums" in current_route ? "active" : "" }}">Photos</a>
-
-                            <a href="#" data-target_url="{{ url("zgh_fe.user_profile.experiences_partial", {'id': user.id}) }}" type="button"
-                               class="tab btn btn-primary {{ "experience" in current_route ? "active" : "" }}">Experiences</a>
-                        {% endif %}
-                    {% elseif "ROLE_VENDOR" in user.roles %}
-                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.main_partial", {'id': user.id}) }}" type="button"
+    {% set current_route = app.request.attributes.get("_route") %}
+    {% set authorized = isVisitable(user) %}
+    <!--Menu -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="btn-group btn-group-md btn-group-justified">
+                {% if "ROLE_CUSTOMER" in user.roles %}
+                    {% if authorized %}
+                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.main_partial", {'id': user.id}) }}"
+                           type="button"
                            class="tab btn btn-primary {{ "index" in current_route or "main" in current_route or "post" in current_route ? "active" : "" }}">Posts</a>
 
-                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.branches_partial", {'id': user.id}) }}" type="button"
-                           class="tab btn btn-primary {{ "branch" in current_route ? "active" : "" }}">Branches</a>
+                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.wishlist_partial", {'id': user.id}) }}"
+                           type="button"
+                           class="tab btn btn-primary {{ "wishlist" in current_route ? "active" : "" }}">Wishlist</a>
 
-                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.products_partial", {'id': user.id}) }}" type="button"
-                           class="tab btn btn-primary {{ "product" in current_route ? "active" : "" }}">Products</a>
-
-                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {'id': user.id}) }}" type="button"
+                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {'id': user.id}) }}"
+                           type="button"
                            class="tab btn btn-primary {{ "photos" in current_route or "albums" in current_route ? "active" : "" }}">Photos</a>
 
-                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.tips_partial", {'id': user.id}) }}" type="button"
-                           class="tab btn btn-primary {{ "tip" in current_route ? "active" : "" }}">Tips</a>
+                        <a href="#"
+                           data-target_url="{{ url("zgh_fe.user_profile.experiences_partial", {'id': user.id}) }}"
+                           type="button"
+                           class="tab btn btn-primary {{ "experience" in current_route ? "active" : "" }}">Experiences</a>
                     {% endif %}
-                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.connections_partial", {'id': user.id}) }}" type="button"
-                           class="tab btn btn-primary {{ "connection" in current_route ? "active" : "" }}">Connections</a>
+                {% elseif "ROLE_VENDOR" in user.roles %}
+                    <a href="#" data-target_url="{{ url("zgh_fe.user_profile.main_partial", {'id': user.id}) }}"
+                       type="button"
+                       class="tab btn btn-primary {{ "index" in current_route or "main" in current_route or "post" in current_route ? "active" : "" }}">Posts</a>
 
-                </div>
+                    <a href="#" data-target_url="{{ url("zgh_fe.user_profile.branches_partial", {'id': user.id}) }}"
+                       type="button"
+                       class="tab btn btn-primary {{ "branch" in current_route ? "active" : "" }}">Branches</a>
+
+                    <a href="#" data-target_url="{{ url("zgh_fe.user_profile.products_partial", {'id': user.id}) }}"
+                       type="button"
+                       class="tab btn btn-primary {{ "product" in current_route ? "active" : "" }}">Products</a>
+
+                    <a href="#" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {'id': user.id}) }}"
+                       type="button"
+                       class="tab btn btn-primary {{ "photos" in current_route or "albums" in current_route ? "active" : "" }}">Photos</a>
+
+                    <a href="#" data-target_url="{{ url("zgh_fe.user_profile.tips_partial", {'id': user.id}) }}"
+                       type="button"
+                       class="tab btn btn-primary {{ "tip" in current_route ? "active" : "" }}">Tips</a>
+                {% endif %}
+                <a href="#" data-target_url="{{ url("zgh_fe.user_profile.connections_partial", {'id': user.id}) }}"
+                   type="button"
+                   class="tab btn btn-primary {{ "connection" in current_route ? "active" : "" }}">Connections</a>
 
             </div>
-        </div>
-        <!-- Menu End  -->
 
-        <div class="divider"></div>
-        <div class="row content_wrapper">
+        </div>
+    </div>
+    <!-- Menu End  -->
+
+    <div class="divider"></div>
+    <div class="row content_wrapper">
 
         {% block leftContent %}
 
@@ -197,7 +244,6 @@
                     {{ render_esi(controller("ZghFEBundle:UserProfile:getAboutPartial", {"id": user.id})) }}
 
 
-
                 </div>
 
                 <!--End of Posted -->
@@ -208,9 +254,9 @@
 
         {% endblock leftContent %}
 
-        </div>
+    </div>
 
-        {% block rightContent %}{% endblock rightContent %}
+    {% block rightContent %}{% endblock rightContent %}
 
     </div>
 {% endblock content %}
@@ -224,4 +270,5 @@
         UrlContainer.wishlistPartial = "{{ url("zgh_fe.wishlist_partial_content", {"id": user.id}) }}";
         UrlContainer.branchesList = "{{ url("zgh_fe.branches.list", {"id": user.id}) }}";
     </script>
+
 {% endblock javascripts %}

@@ -15,7 +15,7 @@ class Category
     use BasicInfo;
 
     /**
-     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent_category")
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent_category", cascade={"persist", "remove"})
      **/
     protected $sub_categories;
 
@@ -279,7 +279,7 @@ class Category
     public function addSubCategory(\Zgh\FEBundle\Entity\Category $subCategories)
     {
         $this->sub_categories[] = $subCategories;
-
+        $subCategories->setParentCategory($this);
         return $this;
     }
 

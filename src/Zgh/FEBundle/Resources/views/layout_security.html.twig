@@ -13,8 +13,8 @@
                 <div class="divider visible-sm"></div>
                 {{ getSearchWidget()|raw }}
                 {% if app.user %}
-                    <a class="btn btn-primary btn-wide login_anon" href="{{ url("fos_user_security_logout") }}">
-                        <span class="glyphicon  glyphicon-log-out"></span> Log Out
+                    <a class="btn btn-primary logout_anon tooltip" href="{{ url("fos_user_security_logout") }}" data-toggle="tooltip" data-placement="bottom" title="Log Out">
+                        <span class="glyphicon  glyphicon-log-out"></span>
                     </a>
                 {% endif %}
             </div>
@@ -184,6 +184,8 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
+
+        $("body").find('.tooltip').tooltip();
 
         $("body").on("keyup", ".search_text", function(e){
             e.preventDefault();

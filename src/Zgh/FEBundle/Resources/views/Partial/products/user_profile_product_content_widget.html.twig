@@ -1,13 +1,16 @@
-{% if app.request.xmlHttpRequest or is_popup == true%}
+{% if app.request.xmlHttpRequest or toggles["is_popup"] == true%}
     {% set layout = '@ZghFE/Default/inner_ajax_layout.html.twig' %}
-{% elseif is_popup == false %}
+{% elseif toggles["is_popup"] == false and toggles["is_inner_direct"] == false %}
+    {% set layout = '@ZghFE/Default/inner_ajax_layout.html.twig' %}
+{% elseif not app.request.xmlHttpRequest and toggles["is_popup"] == false and toggles["is_inner_direct"] == true %}
     {% set layout = '@ZghFE/Partial/products/product_content_widget.html.twig' %}
 {% endif %}
+
 {% extends layout %}
 {% block innerPartial %}
     <div class="row headerProduct">
         <div class="row margin-bottom">
-            {% if is_popup == false %}
+            {% if toggles["is_popup"] == false %}
                 {% set products = user.products %}
                 {% set next_id = nextId(products, product) %}
                 {% set prev_id = prevId(products, product) %}
@@ -100,3 +103,4 @@
         {{ include("@ZghFE/Partial/common/comments_section.html.twig", {"entity": product}) }}
     </div>
 {% endblock innerPartial %}
+

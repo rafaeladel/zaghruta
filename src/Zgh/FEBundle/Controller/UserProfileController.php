@@ -32,6 +32,10 @@ class UserProfileController extends Controller
 {
     public function indexAction(User $user)
     {
+        $current_user = $this->getUser();
+        if ($current_user->getFirstTime()) {
+            return $this->forward("ZghFEBundle:UserProfile:getUserIntro");
+        }
         $post_form = $this->createForm(new PostType(), new Post());
         return $this->render('ZghFEBundle:Default:user_index.html.twig', array(
             "user" => $user,
@@ -271,18 +275,26 @@ class UserProfileController extends Controller
     {
         $user = $this->get("security.context")->getToken()->getUser();
         $pic_file = $request->files->get("picture");
+        if($pic_file->getClientSize()/1048576 > 2) {
+            $this->get("session")->getFlashBag()->add("pp_error", "File is too large (2 MB max).");
+            return $this->redirect($request->headers->get("referer"));
+        }
         $pic = $user->getProfilePhoto();
         $pic->setImageFile($pic_file);
 
         $this->getDoctrine()->getManager()->persist($pic);
         $this->getDoctrine()->getManager()->flush();
-        return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
+        return $this->redirect($request->headers->get("referer"));
     }
 
     public function postCoverPictureAction(Request $request, $id)
     {
         $user = $this->get("security.context")->getToken()->getUser();
         $pic_file = $request->files->get("cover");
+        if($pic_file->getClientSize()/1048576 > 2) {
+            $this->get("session")->getFlashBag()->add("cp_error", "File is too large (2 MB max).");
+            return $this->redirect($request->headers->get("referer"));
+        }
 
         $temp_height = $request->query->get("temp_height");
         $temp_width = $request->query->get("temp_width");

@@ -23,7 +23,8 @@ class AppKernel extends Kernel
             new Liip\UrlAutoConverterBundle\LiipUrlAutoConverterBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Thrace\FormBundle\ThraceFormBundle(),
-            new FOS\MessageBundle\FOSMessageBundle()
+            new FOS\MessageBundle\FOSMessageBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
