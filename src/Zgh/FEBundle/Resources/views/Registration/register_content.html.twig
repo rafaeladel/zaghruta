@@ -1,7 +1,8 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <form action="{{ path('fos_user_registration_register', {"t": app.request.query.get("t")} ) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register register_form">
-
+    <input type="text" style="display:none">
+    <input type="password" style="display:none">
     {% if app.request.query.get("t") == "vendor" %}
         <div class="form-group">
             <input type="text" class="form-control" name="company_name" required="required" placeholder="Company name" />

@@ -40,7 +40,14 @@
                             {% endif %}
                             <h2 class="col-md-4">{{ tip.title }}</h2>
                             <div class="clearfix"></div>
-
+                            <p class="by col-md-12">Categories:
+                                {% for category in tip.categories %}
+                                    <span>{{ category.name }}</span>
+                                    {% if loop.index < tip.categories|length %}
+                                        <span>-</span>
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
                             <span class="col-md-12 date-time">{{ tip.createdAt|date() }}</span>
                             <p class="by col-md-12">By: <a href="{{ url("zgh_fe.user_profile.index", {"id": tip.user.id}) }}"> {{ tip.user.getFullname }}</a></p>
 

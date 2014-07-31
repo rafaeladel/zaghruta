@@ -71,10 +71,10 @@ class FollowManager
                 $follow_event = new NotifyFollowEvent($follow_obj);
                 $this->dispatcher->dispatch(NotifyEvents::NOTIFY_FOLLOW, $follow_event);
             }
-//            var_dump(1);
-//            die;
-
-            return true;
+            return new JsonResponse([
+                "msg" => $follow_obj->getIsApproved() ? 'Unfollow' : "Pending",
+                "follower_count" => $followers_count
+            ]);
         } else {
 
             $this->em->remove($follow_obj);
@@ -84,9 +84,10 @@ class FollowManager
 
             $this->em->flush();
             $followers_count = count($followee->getFollowees());
-//            var_dump(2);
-//            die;
-            return true;
+            return new JsonResponse([
+                "msg" => "Follow",
+                "follower_count" => $followers_count
+            ]);
         }
     }
 }

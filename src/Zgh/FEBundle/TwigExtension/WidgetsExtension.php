@@ -55,8 +55,8 @@ class WidgetsExtension extends \Twig_Extension
             new \Twig_SimpleFunction("getRecommendedPeople", [$this, "getRecommendedPeople"]),
             new \Twig_SimpleFunction("getRecommendedVendor", [$this, "getRecommendedVendor"]),
             new \Twig_SimpleFunction("getNewVendors", [$this, "getNewVendors"]),
-            new \Twig_SimpleFunction("getApprovedFollowings", [$this, "getApprovedFollowings"])
-
+            new \Twig_SimpleFunction("getApprovedFollowings", [$this, "getApprovedFollowings"]),
+            new \Twig_SimpleFunction("getCategoriesButtons", [$this, "getCategoriesButtons"])
         ];
     }
 
@@ -251,6 +251,14 @@ class WidgetsExtension extends \Twig_Extension
             "is_approved" => true
         ]);
         return $follow_obj;
+    }
+
+    public function getCategoriesButtons()
+    {
+        $categories = $this->em->getRepository("ZghFEBundle:Category")->findAll();
+        return $this->env->render("@ZghFE/Partial/common/categories_buttons.html.twig", [
+            "categories" => $categories
+        ]);
     }
 
     public function getName()

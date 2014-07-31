@@ -24,13 +24,19 @@ $(document).ready(function () {
 
     $("body").on("click", ".filtr", function (e) {
         var wrapperid = $(e.currentTarget).data("id");
+        var current_url = document.location;
         $(".filtr").removeClass("active-filtration");
         $(e.currentTarget).addClass("active-filtration");
         if (wrapperid == "all") {
             $(".resultWrapper").show();
+            if(window.location.hash)
+            {
+                window.location.hash = "";
+            }
         } else {
             $(".resultWrapper").hide();
             $(wrapperid).show();
+                window.location.hash = wrapperid;
         }
     });
 

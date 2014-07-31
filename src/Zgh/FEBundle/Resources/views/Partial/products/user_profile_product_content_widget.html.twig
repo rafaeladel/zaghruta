@@ -30,9 +30,10 @@
         <div class="col-md-3 pull-right icons-G">
 
             {% if app.user and "ROLE_CUSTOMER" in app.user.roles %}
-                <button class="btn btn-danger btn-circle pull-right addWishlist" type="button"
+                <button class="btn btn-danger btn-circle pull-right addWishlist tooltip" type="button"
                         data-target="#addwishlist"
-                        data-toggle="modal">
+                        data-toggle="modal"
+                        data-placement="left" title="Add to wishlist">
                     <span class="glyphicon glyphicon-plus"></span>
                 </button>
                 <div id="addwishlist" aria-hidden="true" aria-labelledby="myModalLabel"

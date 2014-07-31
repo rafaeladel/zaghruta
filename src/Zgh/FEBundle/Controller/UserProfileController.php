@@ -32,10 +32,10 @@ class UserProfileController extends Controller
 {
     public function indexAction(User $user)
     {
-        $current_user = $this->getUser();
-        if ($current_user->getFirstTime()) {
-            return $this->forward("ZghFEBundle:UserProfile:getUserIntro");
-        }
+//        $current_user = $this->getUser();
+//        if ($current_user->getFirstTime()) {
+//            return $this->forward("ZghFEBundle:UserProfile:getUserIntro");
+//        }
         $post_form = $this->createForm(new PostType(), new Post());
         return $this->render('ZghFEBundle:Default:user_index.html.twig', array(
             "user" => $user,
@@ -80,13 +80,12 @@ class UserProfileController extends Controller
         return false;
     }
 
-    private function postCustomerInfo($request,User $user)
+    private function postCustomerInfo($request, User $user)
     {
         $form = $this->createForm(new IntroUserType());
         $form->handleRequest($request);
 
-        if($form->isValid())
-        {
+        if ($form->isValid()) {
             $first_name = $form->get("name")->get("firstname")->getData();
             $last_name = $form->get("name")->get("lastname")->getData();
             $user->setFirstname($first_name);
@@ -95,8 +94,7 @@ class UserProfileController extends Controller
             $user_info = $user->getUserInfo();
             $birthday = $form->get("info")->get("birthday")->getData();
             $gender = $form->get("info")->get("gender")->getData();
-//            var_dump($user_info);
-//            die;
+
             $user_info->setBirthday($birthday);
             $user_info->setGender($gender);
 
@@ -111,29 +109,27 @@ class UserProfileController extends Controller
         }
 
         return $this->render("@ZghFE/Default/customer_intro.html.twig", [
-           "form" => $form->createView()
+            "form" => $form->createView()
         ]);
 
     }
 
     private function postVendorInfo($request, $user)
     {
-        $em = $this->getDoctrine()->getManager();
-        $vendor_info= $user->getVendorInfo();
-        $form = $this->createForm(new VendorIntroType(), $vendor_info);
-        $form->handleRequest($request);
-        if(!$form->isValid()) {
-            return $this->render("@ZghFE/Default/vendor_intro.html.twig", [
-                    "form" => $form->createView()
-                ]);
-        }
-
-        $user->setFirstname($vendor_info->getCompanyName());
-        $user->setFirstTime(false);
-        $em->persist($vendor_info);
-        $em->persist($user);
-        $em->flush();
-        return $this->redirect($this->generateUrl("zgh_fe.wall.index"));
+//        $user = $this->getUser();
+//
+//        $vendor_info = $user->getVendorInfo();
+//        $form = $this->createForm(new VendorCategoryType(), $vendor_info);
+//        $form->handleRequest($request);
+//
+//        //for vendor registration
+//        $user->setFirstTime(false);
+//
+//        $this->get("fos_user.user_manager")->updateUser($user);
+////        $this->getDoctrine()->getManager()->persist($user);
+////        $this->getDoctrine()->getManager()->flush();
+//
+//        return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
     }
 
     public function getMainPartialAction(User $user)
@@ -275,7 +271,7 @@ class UserProfileController extends Controller
     {
         $user = $this->get("security.context")->getToken()->getUser();
         $pic_file = $request->files->get("picture");
-        if($pic_file->getClientSize()/1048576 > 2) {
+        if ($pic_file->getClientSize() / 1048576 > 2) {
             $this->get("session")->getFlashBag()->add("pp_error", "File is too large (2 MB max).");
             return $this->redirect($request->headers->get("referer"));
         }
@@ -291,7 +287,7 @@ class UserProfileController extends Controller
     {
         $user = $this->get("security.context")->getToken()->getUser();
         $pic_file = $request->files->get("cover");
-        if($pic_file->getClientSize()/1048576 > 2) {
+        if ($pic_file->getClientSize() / 1048576 > 2) {
             $this->get("session")->getFlashBag()->add("cp_error", "File is too large (2 MB max).");
             return $this->redirect($request->headers->get("referer"));
         }

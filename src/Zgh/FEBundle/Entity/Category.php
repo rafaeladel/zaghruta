@@ -30,6 +30,11 @@ class Category
     protected $experiences;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Tip", mappedBy="categories")
+     */
+    protected $tips;
+
+    /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
      */
     protected $products;

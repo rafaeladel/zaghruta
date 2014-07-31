@@ -1,57 +1,72 @@
 {% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
+{% form_theme form with ['ThraceFormBundle:Form:fields.html.twig'] %}
 
 {% block leftContent %}
     <div class="row">
         <div class="col-xs-12 search-Results">
-            <a class="btn btn-primary btn-wide moveExpTip" href="{{ url("zgh_fe.user_profile.tips_partial", {"id": user.id}) }}">
+            <a class="btn btn-primary btn-wide moveExpTip"
+               href="{{ url("zgh_fe.user_profile.tips_partial", {"id": user.id}) }}">
                 <span class="glyphicon glyphicon-arrow-left"></span> Cancel
             </a>
 
         </div>
 
     </div>
-<div class="tip_add">
-    <div class="row">
-        <h2>Add Tip</h2>
-    </div>
-    {{ form_start(form, {"action": url("zgh_fe.tip.post_new", {"id": user.id} ), "attr":{"id": "myform"} }     ) }}
-            <div class="form-group formGroup row">
-                {{ form_label(form.title, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
-                <div class="col-sm-9">
-                    {{ form_widget(form.title, {"attr":{"class": "form-control", "placeholder": "Title"} }) }}
-                   {{ form_errors(form.title) }}
-                </div>
+    <div class="tip_add">
+        <div class="row">
+            <h2>Add Tip</h2>
+        </div>
+        {{ form_start(form, {"action": url("zgh_fe.tip.post_new", {"id": user.id} ), "attr":{"id": "myform"} }     ) }}
+        <div class="form-group formGroup row">
+            {{ form_label(form.title, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+            <div class="col-sm-9">
+                {{ form_widget(form.title, {"attr":{"class": "form-control", "placeholder": "Title"} }) }}
+                {{ form_errors(form.title) }}
             </div>
+        </div>
 
-            <div class="form-group formGroup row">
-                {{ form_label(form.image_file, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+        <div class="form-group formGroup row">
+            {{ form_label(form.categories, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
 
-                <div class="col-sm-9">
-                    <div class="col-md12">
-                      <div class="btnBrowsePhoto">
-                      {{ form_widget(form.image_file,  {"attr": {"class": "exp_tip_browse btnBrowseMine photo_btn"} } ) }}
-                      <button class="btnBrowseNew btn btn-primary btn-wide"><i class="icon-camera"></i> Browse</button>
-                      </div>
-                        
+            <div class="col-sm-9">
+                {{ form_widget(form.categories, {"attr":{"placeholder": "Categories" }}) }}
+                {{ form_errors(form.categories) }}
+            </div>
+        </div>
 
-                        {{ form_errors(form.image_file) }}
-                        <span class="error" style="color: red;"></span>
+        <div class="form-group formGroup row">
+            {{ form_label(form.image_file, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+
+            <div class="col-sm-9">
+                <div class="col-md12">
+                    <div class="btnBrowsePhoto">
+                        {{ form_widget(form.image_file,  {"attr": {"class": "exp_tip_browse btnBrowseMine photo_btn"} } ) }}
+                        <button class="btnBrowseNew btn btn-primary btn-wide"><i class="icon-camera"></i> Browse
+                        </button>
+                    </div>
+
+
+                    {{ form_errors(form.image_file) }}
+                    <span class="error" style="color: red;"></span>
+
                     <div class="photo_error"></div>
                     <div class="col-sm-4 col-md-4 dropzone-previews photo_preview clearfix row"></div>
-                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="form-group formGroup row">
-                {{ form_label(form.content, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+        <div class="form-group formGroup row">
+            {{ form_label(form.content, null, {"label_attr": {"class": "col-sm-3 control-label"} }) }}
 
-                <div class="col-sm-9">
-                    {{ form_widget(form.content, {"attr":{"class": "form-control animated", "placeholder": "Content"} }) }}
-                    {{ form_errors(form.content) }}
-                </div>
+            <div class="col-sm-9">
+                {{ form_widget(form.content, {"attr":{"class": "form-control animated", "placeholder": "Content"} }) }}
+                {{ form_errors(form.content) }}
             </div>
-            <button type="submit" class="btn pull-right btn-wide btn-primary exp_tip_submit margin-right pull-right" data-back_url="{{ url("zgh_fe.user_profile.tips_partial", {"id": user.id}) }}">save</button>
+        </div>
+        <button type="submit" class="btn pull-right btn-wide btn-primary exp_tip_submit margin-right pull-right"
+                data-back_url="{{ url("zgh_fe.user_profile.tips_partial", {"id": user.id}) }}">save
+        </button>
         {{ form_rest(form) }}
-    {{ form_end(form) }}
-</div>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}

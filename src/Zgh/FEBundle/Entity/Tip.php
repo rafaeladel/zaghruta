@@ -35,6 +35,14 @@ class Tip extends Image implements LikeableInterface, CommentableInterface
      */
     protected $title;
 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Zgh\FEBundle\Entity\Category", inversedBy="tips")
+     * @ORM\JoinTable(name="tip_category")
+     * @Assert\NotBlank()
+     */
+    protected $categories;
+
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
@@ -184,5 +192,45 @@ class Tip extends Image implements LikeableInterface, CommentableInterface
     public function getLikes()
     {
         return $this->likes;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add categories
+     *
+     * @param \Zgh\FEBundle\Entity\Category $categories
+     * @return Tip
+     */
+    public function addCategory(\Zgh\FEBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param \Zgh\FEBundle\Entity\Category $categories
+     */
+    public function removeCategory(\Zgh\FEBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

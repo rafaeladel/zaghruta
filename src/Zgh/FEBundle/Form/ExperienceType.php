@@ -27,16 +27,6 @@ class ExperienceType extends AbstractType
                 ))
                 ->addViewTransformer($cat_transformer)
         );
-//            ->add("categories", "thrace_select2_entity", array(
-//                    "class" => 'Zgh\FEBundle\Entity\Category',
-//                    "property" => "name",
-//                    'label' => 'Categories',
-//                    'empty_value' => 'Select category',
-//                    "multiple" => true,
-//                    "configs" => array(
-//                        "width" => '100%',
-//                    ),
-//                ))
         $builder->add("content", "textarea");
 
         if($options["type"] != "edit"){

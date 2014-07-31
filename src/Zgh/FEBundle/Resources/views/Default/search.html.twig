@@ -76,6 +76,12 @@
                             Experiences
                         </div>
                     {% endif %}
+                    {% if app.user %}
+                        <div class="tip-filtration filtr  pull-left margin-sm" data-id="#searchTip">
+                            <span class="icon-Res icon-Res-Exp img-circle"></span>
+                            Tip
+                        </div>
+                    {% endif %}
 
 
                 </div>
@@ -187,19 +193,18 @@
                     {% endif %}
                 </div>
             {% endif %}
-            {#{% if app.user %}#}
-            {#<div id="searchTip" class="row resultWrapper">#}
-            {#{% set tip_cat = getTipByCategory(catSlug, query) %}#}
-            {#<h2>Tips</h2>#}
-            {#<hr>#}
-            {#{% if tip_cat != null %}#}
-            {#{{ tip_cat|raw }}#}
-            {#{% else %}#}
-            {#<p>No results found</p>#}
-
-            {#{% endif %}#}
-            {#</div>#}
-            {#{% endif %}#}
+            {% if app.user %}
+                <div id="searchTip" class="row resultWrapper">
+                {% set tip_cat = getTipByCategory(catSlug, query) %}
+                <h2>Tips</h2>
+                <hr>
+                {% if tip_cat != null %}
+                    {{ tip_cat|raw }}
+                    {% else %}
+                    <p>No results found</p>
+                {% endif %}
+                </div>
+            {% endif %}
         {% endif %}
         {% endblock leftContent %}
 

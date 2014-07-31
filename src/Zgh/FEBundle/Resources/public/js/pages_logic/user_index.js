@@ -18,6 +18,7 @@ $(document).ready(function(){
         form.validate({
             rules:{
                 picture:{
+                    accept: "audio/*",
                     file_size: 2
                 }
             },
@@ -36,7 +37,7 @@ $(document).ready(function(){
             form.find(".pp_errors").html("").hide();
         } else {
             imgWrapper.attr("src", "#").hide();
-            form.find(".pp_errors").show().text("File is too large (2 MB max).");
+            form.find(".pp_errors").show().text("Invalid file, must be an image and size must be under (2 MB max).");
         }
 
     });

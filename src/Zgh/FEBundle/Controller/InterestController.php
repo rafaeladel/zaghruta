@@ -53,6 +53,12 @@ class InterestController extends Controller
     {
         $user = $this->getUser();
 
+        //for vendor registration
+        $user->setFirstTime(false);
+
+        $this->getDoctrine()->getManager()->persist($user);
+        $this->getDoctrine()->getManager()->flush();
+
         if(in_array("ROLE_CUSTOMER", $user->getRoles())) {
             $form = $this->createForm(new InterestType(), $user);
         } elseif(in_array("ROLE_VENDOR", $user->getRoles())) {
@@ -60,15 +66,10 @@ class InterestController extends Controller
             $form = $this->createForm(new VendorCategoryType(), $vendor_info);
         }
 
-        //for vendor registration
-        $user->setFirstTime(false);
-
         $form->handleRequest($request);
 
-        $this->get("fos_user.user_manager")->updateUser($user);
-//        $this->getDoctrine()->getManager()->persist($user);
-//        $this->getDoctrine()->getManager()->flush();
-
+        $this->getDoctrine()->getManager()->persist($user);
+        $this->getDoctrine()->getManager()->flush();
         return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId() )));
     }
 }

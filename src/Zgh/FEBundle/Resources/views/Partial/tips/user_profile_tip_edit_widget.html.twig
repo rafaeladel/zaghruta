@@ -1,4 +1,5 @@
 {% extends app.request.xmlHttpRequest ? '@ZghFE/Default/inner_ajax_layout.html.twig':'@ZghFE/Default/tip_content.html.twig' %}
+{% form_theme tip_form with ['ThraceFormBundle:Form:fields.html.twig'] %}
 
 {% block innerPartial %}
     {% form_theme tip_form with ['ThraceFormBundle:Form:fields.html.twig'] %}
@@ -9,6 +10,14 @@
         <div class="col-sm-9">
             {{ form_widget(tip_form.title, {"attr":{"class":"form-control", "placeholder": "Tip title "} }) }}
             {{ form_errors(tip_form.title) }}
+
+        </div>
+    </div>
+    <div class="form-group formGroup">
+        {{ form_label(tip_form.categories, '', {"label_attr": {"class": "col-sm-3 control-label"} }) }}
+        <div class="col-sm-9">
+            {{ form_widget(tip_form.categories, {"attr":{"class":"", "placeholder": "Tip category "} }) }}
+            {{ form_errors(tip_form.categories) }}
 
         </div>
     </div>

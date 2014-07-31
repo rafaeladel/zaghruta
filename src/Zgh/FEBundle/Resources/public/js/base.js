@@ -1,6 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function () {
     var notificationsUrl = Routing.generate("zgh_fe.notifications");
-    setInterval(function(){
+    setInterval(function () {
         $("body").find(".notificationsWidget").load(notificationsUrl);
     }, 10000);
 
@@ -10,6 +10,25 @@ $(document).ready(function(){
         window.location.href = window.location.href;
     });
 
+    $("body").on("click", ".btnFollowing", function (e) {
+        e.preventDefault();
+        var btn = $(e.currentTarget);
+        btn.attr("disabled", "disabled");
+        var followers_count = btn.closest(".profile").find(".followerStats");
+        var form = btn.closest("form");
+        var url = btn.data("url");
+        $.ajax({
+            type: "post",
+            url: form.attr("action"),
+            success: function (data) {
+                btn.find(".following_msg").text(data.msg);
+                if(data.msg != "Pending") {
+                    followers_count.text(data.follower_count);
+                }
+                btn.removeAttr("disabled");
+            }
+        })
+    });
 
 //    $(document).on("ajaxSend", function (e) {
 //        var target = $(e.target.activeElement);
