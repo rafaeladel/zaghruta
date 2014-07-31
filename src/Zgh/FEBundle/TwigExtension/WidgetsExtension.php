@@ -214,7 +214,7 @@ class WidgetsExtension extends \Twig_Extension
 
     public function getRecommendedPeople(User $user)
     {
-        $result = $this->rightSideManager->getRecommendedPeople($user);
+        $result = $this->rightSideManager->getRecommendedPeople($user, 3);
         $result_arr = [];
         foreach ($result as $entry) {
             $result_arr[] = $entry[0];
@@ -226,7 +226,7 @@ class WidgetsExtension extends \Twig_Extension
 
     public function getRecommendedVendor(User $user)
     {
-        $result = $this->rightSideManager->getRecommendedVendors($user);
+        $result = $this->rightSideManager->getRecommendedVendors($user, 3);
         $result_arr = [];
         foreach ($result as $entry) {
             $result_arr[] = $entry[0];
@@ -238,7 +238,7 @@ class WidgetsExtension extends \Twig_Extension
 
     public function getNewVendors(User $user)
     {
-        $result = $this->rightSideManager->getNewVendors($user);
+        $result = $this->rightSideManager->getNewVendors($user, 3);
         return $this->env->render("@ZghFE/Partial/right_side/rightSidePartial.html.twig", [
             "result" => $result
         ]);

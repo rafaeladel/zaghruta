@@ -16,7 +16,7 @@ class RightSideManager
         $this->em = $entityManagerInterface;
     }
 
-    public function getRecommendedPeople(User $user)
+    public function getRecommendedPeople(User $user, $limit = null)
     {
         $q = $this->em->createQuery("
                 select recUser, count(recUser.id) as recUserCount
@@ -33,14 +33,17 @@ class RightSideManager
                 group by recUser.id
                 order by recUserCount desc
             ");
-
+        if($limit)
+        {
+            $q->setMaxResults($limit);
+        }
         $q->setParameters([
                 "user" => $user
             ]);
         return $q->execute();
     }
 
-    public function getRecommendedVendors($user)
+    public function getRecommendedVendors($user, $limit = null)
     {
         $q = $this->em->createQuery(
             "
@@ -63,7 +66,10 @@ class RightSideManager
             "
         );
 //        and fr.id != :user
-
+        if($limit)
+        {
+            $q->setMaxResults($limit);
+        }
         $q->setParameters(
             [
                 "user" => $user
@@ -73,7 +79,7 @@ class RightSideManager
         return $q->execute();
     }
 
-    public function getNewVendors($user)
+    public function getNewVendors($user, $limit = null)
     {
         $q = $this->em->createQuery(
             "
@@ -85,6 +91,10 @@ class RightSideManager
                 order by v.created_at desc
             "
         );
+        if($limit)
+        {
+            $q->setMaxResults($limit);
+        }
         $q->setParameters(
             [
                 "user" => $user,
