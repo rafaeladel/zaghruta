@@ -1,4 +1,4 @@
-{% extends "@ZghFE/layout.html.twig" %}
+{% extends "ZghMsgBundle::layout.html.twig" %}
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets
@@ -7,6 +7,8 @@
         <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
     {% endstylesheets %}
 {% endblock stylesheets %}
+{% block title %}Messages | Zaghruta{% endblock title %}
+
 {% block content %}
 
     <div class="container">

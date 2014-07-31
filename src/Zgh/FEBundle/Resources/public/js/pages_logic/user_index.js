@@ -3,12 +3,14 @@ $(document).ready(function(){
 
     $("body").on("click", ".tab", function(e){
         e.preventDefault();
-        if(!$(e.target).is(".activated")){
+        var tab = $(e.currentTarget);
+        if(!tab.is(".activated")){
+            document.title = tab.text() + " | Zaghruta";
             $(".tab").removeClass("active");
-            $(e.target).addClass("active");
+            tab.addClass("active");
             $(".content_wrapper").html('<img style="margin: auto; display: block;" src="'+UrlContainer.loader+'" />');
-            $(".content_wrapper").load($(e.target).data("target_url"));
-            history.pushState(null, null, $(e.target).data("target_url"));
+            $(".content_wrapper").load(tab.data("target_url"));
+            history.pushState(null, null, tab.data("target_url"));
         }
     });
 

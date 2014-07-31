@@ -2,6 +2,14 @@
 {% block stylesheets %}
     {{ parent() }}
 {% endblock stylesheets %}
+{% block title %}
+    {% if is_granted("ROLE_CUSTOMER") %}
+        Interests
+    {% elseif is_granted("ROLE_VENDOR") %}
+        Categories
+    {% endif %}
+    | Zaghruta
+{% endblock title %}
 {% block content %}
 
     <div class="container interest">
