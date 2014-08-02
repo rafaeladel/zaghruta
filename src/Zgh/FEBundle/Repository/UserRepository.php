@@ -26,7 +26,7 @@ class UserRepository extends EntityRepository
         )
             ->setParameter("follower_id", $user);
 
-        $q->setMaxResults(3);
+        $q->setMaxResults(6);
         if($offset != null) {
             $q->setFirstResult($offset);
         }

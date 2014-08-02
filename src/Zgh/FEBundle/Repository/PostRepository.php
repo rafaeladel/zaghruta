@@ -26,7 +26,7 @@ class PostRepository extends EntityRepository
                 ->setParameter("id", $id);
         }
         $q->orderBy("p.created_at", "DESC");
-        $q->setMaxResults(3);
+        $q->setMaxResults(6);
         if($offset != null) {
             $q->setFirstResult($offset);
         }

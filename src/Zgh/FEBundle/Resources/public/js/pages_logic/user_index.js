@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    if($("body").find(".post").length == 0)
+    {
+        $("body").find(".load-more").remove();
+    }
 
     $("body").on("click", ".tab", function(e){
         e.preventDefault();
@@ -13,6 +17,7 @@ $(document).ready(function(){
             history.pushState(null, null, tab.data("target_url"));
         }
     });
+
 
     $("body").on("click", ".load-more", function(e){
         var btn = $(e.currentTarget);
