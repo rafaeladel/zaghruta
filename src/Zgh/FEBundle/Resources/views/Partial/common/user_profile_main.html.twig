@@ -16,6 +16,7 @@
 
         {{ render_esi(controller("ZghFEBundle:Post:getOwnList", {"id": user.id})) }}
         <!--End Post Box-->
+        <button class="btn btn-block load-more" data-url="{{ url("zgh_fe.post.list", {"id": user.id}) }}">Load More</button>
 
 
     </div>

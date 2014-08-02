@@ -17,21 +17,43 @@ use Zgh\FEBundle\Model\Event\NotifyDeleteEvent;
 
 class PostController extends Controller
 {
-    public function getOwnListAction($id)
+    public function getOwnListAction(Request $request, $id)
     {
-        $posts = $this->getDoctrine()->getRepository("ZghFEBundle:Post")->findPosts($id);
-        return $this->render("@ZghFE/Partial/posts/posts_partials.html.twig", array(
+        $offset = $request->query->get("f", null);
+        $posts = $this->getDoctrine()->getRepository("ZghFEBundle:Post")->findPosts($id, $offset);
+
+        //checking offset is not null to differentiate between tabbing ajax and load more ajax
+        if($request->isXmlHttpRequest() && $offset != null)
+        {
+            return new JsonResponse([
+               "view" => $this->renderView("@ZghFE/Partial/posts/posts_partials.html.twig", array(
+                       "posts" => $posts
+                   ))
+            ]);
+        } else {
+            return $this->render("@ZghFE/Partial/posts/posts_partials.html.twig", array(
                 "posts" => $posts
             ));
+        }
     }
 
-    public function getPublicListAction()
+    public function getPublicListAction(Request $request)
     {
+        $offset = $request->query->get("f", null);
         $user = $this->get("security.context")->getToken()->getUser();
-        $posts = $this->getDoctrine()->getRepository("ZghFEBundle:User")->getPosts($user);
-        return $this->render("@ZghFE/Partial/posts/posts_partials.html.twig", array(
+        $posts = $this->getDoctrine()->getRepository("ZghFEBundle:User")->getPosts($user, $offset);
+        if($request->isXmlHttpRequest() && $offset != null)
+        {
+            return new JsonResponse([
+                "view" => $this->renderView("@ZghFE/Partial/posts/posts_partials.html.twig", array(
+                        "posts" => $posts
+                    ))
+            ]);
+        } else {
+            return $this->render("@ZghFE/Partial/posts/posts_partials.html.twig", array(
                 "posts" => $posts
             ));
+        }
     }
 
     /**

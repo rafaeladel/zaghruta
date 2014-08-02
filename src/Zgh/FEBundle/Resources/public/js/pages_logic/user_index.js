@@ -14,6 +14,25 @@ $(document).ready(function(){
         }
     });
 
+    $("body").on("click", ".load-more", function(e){
+        var btn = $(e.currentTarget);
+        var url = btn.data("url")+"?f="+$(".post").length;
+        btn.attr("disabled", "disabled");
+        $.ajax({
+            type: "get",
+            url : url,
+            success: function(data)
+            {
+                $("body").find(".post").last().after(data.view);
+                if(data.view != "") {
+                    btn.removeAttr("disabled");
+                } else {
+                    btn.remove();
+                }
+            }
+        });
+    });
+
     $("body").on("change", ".photo_btn", function(e){
         e.preventDefault();
         var form = $(".picture_form");

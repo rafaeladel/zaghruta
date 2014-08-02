@@ -44,6 +44,7 @@
     <script type="text/javascript">
         var UrlContainer = {
             loader: "{{ asset("bundles/zghfe/img/page-preloader.GIF") }}",
+            {#loadPosts: "{{ url("zgh_fe.post.list", {"id": app.user.id}) }}",#}
             newPhoto: "{{ url("zgh_fe.photos.photo.new", {"id": app.user.id}) }}",
             newAlbum: "{{ url("zgh_fe.photos.album.new", {"id": app.user.id}) }}",
             photoPartial: "{{ url("zgh_fe.user_profile.photos_partial", {"id": app.user.id}) }}",

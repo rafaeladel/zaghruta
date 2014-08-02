@@ -16,7 +16,7 @@ class PostRepository extends EntityRepository
         return $q->getQuery()->getResult();
     }
 
-    public function findPosts($id)
+    public function findPosts($id, $offset = null)
     {
         $q = $this->createQueryBuilder("p");
         $q->select("p");
@@ -25,8 +25,11 @@ class PostRepository extends EntityRepository
             $q->where("p.user = :id")
                 ->setParameter("id", $id);
         }
-         $q->orderBy("p.created_at", "DESC")
-        ;
+        $q->orderBy("p.created_at", "DESC");
+        $q->setMaxResults(3);
+        if($offset != null) {
+            $q->setFirstResult($offset);
+        }
         return $q->getQuery()->getResult();
     }
 }

@@ -11,6 +11,7 @@
                 <div class="posts_wrapper">
                     {{ render_esi(controller("ZghFEBundle:Post:getPublicList")) }}
                 </div>
+                <button class="btn btn-block load-more" data-url="{{ url("zgh_fe.post.public_list") }}">Load More</button>
 
 
             </div>

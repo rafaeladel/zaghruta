@@ -11,7 +11,7 @@ use Zgh\FEBundle\Model\LikeableInterface;
 
 class UserRepository extends EntityRepository
 {
-    public function getPosts($user)
+    public function getPosts($user, $offset = null)
     {
         $q = $this->getEntityManager()->createQuery(
             "
@@ -26,6 +26,10 @@ class UserRepository extends EntityRepository
         )
             ->setParameter("follower_id", $user);
 
+        $q->setMaxResults(3);
+        if($offset != null) {
+            $q->setFirstResult($offset);
+        }
         return $q->getResult();
     }
 
