@@ -1,5 +1,0 @@
-{% for branch in branches %}
-    <div class="col-md-6 branch">
-        {{ include("@ZghFE/Partial/branches/user_profile_branch_inner_content.html.twig", {"user": user, "branch": branch }) }}
-    </div>
-{% endfor %}
