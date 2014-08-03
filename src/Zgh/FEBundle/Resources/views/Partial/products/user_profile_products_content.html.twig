@@ -21,7 +21,8 @@
 
                 <p class="description">
                     {{ product.description }}
-                </p>
+                </p> 
+                <a class="moveEditProduct btn_Edit_Product col-md-12" target="_blank"   href="{{ url("zgh_fe.products.get_edit", {"id": app.user.id, "product_id": product.id}) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
 
 
                 <div class="voting">

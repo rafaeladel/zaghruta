@@ -1,3 +1,108 @@
+
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot?rwfypr');
+    src:url('../fonts/icomoon.eot?#iefixrwfypr') format('embedded-opentype'),
+        url('../fonts/icomoon.woff?rwfypr') format('woff'),
+        url('../fonts/icomoon.ttf?rwfypr') format('truetype'),
+        url('../fonts/icomoon.svg?rwfypr#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dad:before {
+    content: "\e604";
+}
+.icon-fiance:before {
+    content: "\e60e";
+}
+.icon-Fiance:before {
+    content: "\e60f";
+}
+.icon-honor:before {
+    content: "\e610";
+}
+.icon-husband:before {
+    content: "\e611";
+}
+.icon-interests:before {
+    content: "\e612";
+}
+.icon-maids:before {
+    content: "\e613";
+}
+.icon-man:before {
+    content: "\e614";
+}
+.icon-men:before {
+    content: "\e615";
+}
+.icon-mom:before {
+    content: "\e616";
+}
+.icon-Sister:before {
+    content: "\e617";
+}
+.icon-Wife:before {
+    content: "\e618";
+}
+.icon-florists:before {
+    content: "\e619";
+}
+.icon-Health:before {
+    content: "\e600";
+}
+.icon-cakeCatering:before {
+    content: "\e601";
+}
+.icon-entertainment:before {
+    content: "\e602";
+}
+.icon-fashion:before {
+    content: "\e603";
+}
+.icon-furniture:before {
+    content: "\e605";
+}
+.icon-homeAppliances:before {
+    content: "\e606";
+}
+.icon-honeymoons:before {
+    content: "\e607";
+}
+.icon-hotelsVenues:before {
+    content: "\e608";
+}
+.icon-jewlery:before {
+    content: "\e609";
+}
+.icon-limousines:before {
+    content: "\e60a";
+}
+.icon-photography:before {
+    content: "\e60b";
+}
+.icon-realEstate:before {
+    content: "\e60c";
+}
+.icon-weddingPlanners:before {
+    content: "\e60d";
+}
+
 /*-----------General----------*/
 a, input, select {
     outline: none
@@ -915,9 +1020,10 @@ div.profile{
     margin-bottom: 15px;
 }
 
-.postBox a .cam-post.glyphicon-camera {
-    font-size: 25px;
+.postBox a .cam-post.glyphicon-camera, .postBox a .cam-post.icon-photography {
+    font-size: 30px;
     color: #8fd2c8;
+    list-style-type: none;
 }
 
 .postBox a {
@@ -1125,7 +1231,7 @@ footer a {
 .productContent{
     height: auto;
     overflow: hidden;
-    max-height:200px;
+    max-height:225px;
 }
 .productContent .description{
     height: 93px;
@@ -1133,6 +1239,16 @@ footer a {
 }
 .product-G, .header-post, .content-post, .footer-post, .footer-post .form-control, .img-post, .postBox .btn, .search-Results-lest, .popupPost .form-control,.formComments .form-control {
     margin-bottom: 15px;
+}
+.btn_Edit_Product{
+    margin-right: 20px;
+   display: inline-block;
+   margin-left: 0px;
+   padding-left: 0;
+}
+.contentNotFound{
+    font-size: 16px;
+    margin-left: 20px;
 }
 
 .product-G .thumbnail .caption a h4, .product-l p {
@@ -2375,14 +2491,19 @@ border-top: none;
   font-size: 14px !important;
 }
 .resizePhoto{
-    height: auto;
-    overflow: hidden;
-    max-height: 550px;
+   overflow: hidden;
+   width: 100%;
+   height: auto;
 }
 .resizePhoto img{
-    width: 100%;
-    height:auto;
+   width: auto;
+  height: auto;
+ margin: 0 auto;
 }
+.fancybox-inner{
+  min-width: 500px;
+  width: 100% !important;}
+
 .ZaghrutaTitle{
    margin-top: 10px;
    float: left;
@@ -2436,13 +2557,18 @@ border-top: none;
 }
 .btnBrowse a{
     border: medium none;
-    height: 27px;
+    height: 30px;
     left: 0;
     position: absolute;
     top: 0;
-    width: 27px;
+    width: 30px;
     z-index: 1;
+    
 }
+.btnBrowse a:hover{
+   text-decoration: none;
+}
+
 .photoTab{
     border-radius:4px 0 0 4px !important;
 }
@@ -2535,8 +2661,27 @@ margin-bottom: 15px !important;
     z-index: 10;
     border: none !important;
 }
+.branchCity{
+    background: transparent;
+    width: 84%;
+    padding: 5px;
+    font-size: 14px;
+    line-height: 1;
+    border: 1px solid #ccc;
+    height: 34px;
+    border-radius: 4px;
+    margin-left: -2px;
+}
 .editBranch ul{
     list-style-type:none ;
+}
+.editBranch .list-group label{
+  width: 15%;
+}
+
+.editBranch ul li> ul > li{
+    color: red;
+    margin:5px 0 0 -27px;
 }
 .editBranch ul .form-group{
     margin-bottom: 3px !important;
@@ -2548,6 +2693,8 @@ margin-bottom: 15px !important;
    /*border-bottom: none !important;*/
    /*border-left: none !important;*/
    box-shadow: none;
+   width: 84% !important;
+   display: inline !important;
 }
 .editBranch ul .form-group:first-child > .form-control{
     margin-top: 3px;
@@ -2761,11 +2908,18 @@ overflow: hidden;
     font-size: 14px;
 }
 .note-box .tooltip
-
-{display: inline-block}
+{
+    display: inline-block
+}
 .photoDate{
    margin-bottom: 0 !important;
    margin-top: 13px;
+   
+}
+.fancybox-inner .photodate{
+    line-height: 32px !important;
+    margin-bottom: 0 !important;
+
 }
 .banner{
     position: relative;
@@ -2880,72 +3034,7 @@ min-height: 100px !important;
  min-width: none !important;
 
 }
-@font-face {
-  font-family: 'icons';
-  src:url('../fonts/icons.eot?-pk8qpa');
-  src:url('../fonts/icons.eot?#iefix-pk8qpa') format('embedded-opentype'),
-    url('../fonts/icons.woff?-pk8qpa') format('woff'),
-    url('../fonts/icons.ttf?-pk8qpa') format('truetype'),
-    url('../fonts/icons.svg?-pk8qpa#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
 
-[class^="icon-entertainment-"], [class*=" icon-"] {
-  font-family: 'icons';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.icon-Health:before {
-  content: "\e600";
-}
-.icon-cakeCatering:before {
-  content: "\e601";
-}
-.icon-entertainment:before {
-  content: "\e602";
-}
-.icon-fashion:before {
-  content: "\e603";
-}
-.icon-florists:before {
-  content: "\e604";
-}
-.icon-furniture:before {
-  content: "\e605";
-}
-.icon-homeAppliances:before {
-  content: "\e606";
-}
-.icon-honeymoons:before {
-  content: "\e607";
-}
-.icon-hotelsVenues:before {
-  content: "\e608";
-}
-.icon-jewlery:before {
-  content: "\e609";
-}
-.icon-limousines:before {
-  content: "\e60a";
-}
-.icon-photography:before {
-  content: "\e60b";
-}
-.icon-realEstate:before {
-  content: "\e60c";
-}
-.icon-weddingPlanners:before {
-  content: "\e60d";
-}
 .dropzone_custom_error > p{
     color : red;
 }
@@ -2956,4 +3045,18 @@ min-height: 100px !important;
     top:0 !important;
     left:0 !important;
     opacity: 1 !important;
+}
+.formcategories ul{
+    margin:1px 0 0 255px ;
+    float: left;
+}
+.contactUS{
+    margin: 5px 18px 0 0;
+    font-size: 14px;   
+}
+.followingCont .effect a{
+    height: auto !important;
+}
+.modalContactUS .contactmail {
+    color: #58bcad;
 }

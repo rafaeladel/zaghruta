@@ -1,10 +1,9 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-        "This file is @generated automatically"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "18e4a4868028929062bb61988265080b",
+    "hash": "b7f17703fced00715a5a709ba51d1caa",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -66,7 +65,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "http://jmsyst.com",
+                    "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -141,7 +140,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -208,7 +207,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -284,7 +283,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -548,7 +547,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -602,7 +601,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -814,12 +813,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSMessageBundle.git",
-                "reference": "ea4dcc183193f1fa7c7d7393bbefd6e924cc4929"
+                "reference": "fc199a37d12b66b58eec0b870972ac5c4f4d8715"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSMessageBundle/zipball/ea4dcc183193f1fa7c7d7393bbefd6e924cc4929",
-                "reference": "ea4dcc183193f1fa7c7d7393bbefd6e924cc4929",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSMessageBundle/zipball/fc199a37d12b66b58eec0b870972ac5c4f4d8715",
+                "reference": "fc199a37d12b66b58eec0b870972ac5c4f4d8715",
                 "shasum": ""
             },
             "require": {
@@ -866,7 +865,7 @@
                 "messaging",
                 "symfony"
             ],
-            "time": "2014-07-14 20:46:36"
+            "time": "2014-08-02 12:09:00"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -875,12 +874,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "ef7ca325929ff102fff521653a2e3b88c7a40361"
+                "reference": "1fe261de17abde29d6d461b7a93873d48b0efce7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/ef7ca325929ff102fff521653a2e3b88c7a40361",
-                "reference": "ef7ca325929ff102fff521653a2e3b88c7a40361",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/1fe261de17abde29d6d461b7a93873d48b0efce7",
+                "reference": "1fe261de17abde29d6d461b7a93873d48b0efce7",
                 "shasum": ""
             },
             "require": {
@@ -921,13 +920,12 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Thibault Duplessis",
-                    "email": "thibault.duplessis@gmail.com",
-                    "homepage": "http://ornicar.github.com"
-                },
-                {
                     "name": "FriendsOfSymfony Community",
                     "homepage": "https://github.com/friendsofsymfony/FOSUserBundle/contributors"
+                },
+                {
+                    "name": "Thibault Duplessis",
+                    "email": "thibault.duplessis@gmail.com"
                 }
             ],
             "description": "Symfony FOSUserBundle",
@@ -935,7 +933,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2014-07-09 10:33:42"
+            "time": "2014-08-01 02:49:19"
         },
         {
             "name": "hwi/oauth-bundle",
@@ -944,12 +942,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "f8897695e75ec6d3d14cacccba0714b8ae55fe94"
+                "reference": "835ab5eb2f8bd783a11980e8cbab549ee01aa720"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/f8897695e75ec6d3d14cacccba0714b8ae55fe94",
-                "reference": "f8897695e75ec6d3d14cacccba0714b8ae55fe94",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/835ab5eb2f8bd783a11980e8cbab549ee01aa720",
+                "reference": "835ab5eb2f8bd783a11980e8cbab549ee01aa720",
                 "shasum": ""
             },
             "require": {
@@ -987,22 +985,20 @@
             ],
             "authors": [
                 {
-                    "name": "Geoffrey Bachelet",
-                    "email": "geoffrey.bachelet@gmail.com",
-                    "homepage": "https://github.com/ubermuda"
-                },
-                {
                     "name": "Contributors",
                     "homepage": "https://github.com/hwi/HWIOAuthBundle/contributors"
                 },
                 {
-                    "name": "Alexander",
-                    "email": "iam.asm89@gmail.com",
-                    "homepage": "http://asm89.github.io/"
-                },
-                {
                     "name": "Joseph Bielawski",
                     "email": "stloyd@gmail.com"
+                },
+                {
+                    "name": "Alexander",
+                    "email": "iam.asm89@gmail.com"
+                },
+                {
+                    "name": "Geoffrey Bachelet",
+                    "email": "geoffrey.bachelet@gmail.com"
                 }
             ],
             "description": "Support for authenticating users using both OAuth1.0a and OAuth2 in Symfony2.",
@@ -1050,7 +1046,7 @@
                 "yahoo",
                 "yandex"
             ],
-            "time": "2014-07-10 08:47:25"
+            "time": "2014-07-30 11:47:22"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1227,16 +1223,16 @@
         },
         {
             "name": "kriswallsmith/buzz",
-            "version": "v0.11",
+            "version": "v0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/Buzz.git",
-                "reference": "a0f207ac4939978b604be9bec5d5b19baecd8165"
+                "reference": "9d56d36a58c47e2f612f4b856ff9baa0e3375ff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/a0f207ac4939978b604be9bec5d5b19baecd8165",
-                "reference": "a0f207ac4939978b604be9bec5d5b19baecd8165",
+                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/9d56d36a58c47e2f612f4b856ff9baa0e3375ff6",
+                "reference": "9d56d36a58c47e2f612f4b856ff9baa0e3375ff6",
                 "shasum": ""
             },
             "require": {
@@ -1271,7 +1267,7 @@
                 "curl",
                 "http client"
             ],
-            "time": "2014-03-24 21:56:09"
+            "time": "2014-07-29 23:52:21"
         },
         {
             "name": "liip/url-auto-converter-bundle",
@@ -1280,12 +1276,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipUrlAutoConverterBundle.git",
-                "reference": "dd8b353af74d75d3f8e7cdbe2f3958b1b38b1265"
+                "reference": "0b86c255fb5e4f08d24f108f2c06110018d061db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipUrlAutoConverterBundle/zipball/dd8b353af74d75d3f8e7cdbe2f3958b1b38b1265",
-                "reference": "dd8b353af74d75d3f8e7cdbe2f3958b1b38b1265",
+                "url": "https://api.github.com/repos/liip/LiipUrlAutoConverterBundle/zipball/0b86c255fb5e4f08d24f108f2c06110018d061db",
+                "reference": "0b86c255fb5e4f08d24f108f2c06110018d061db",
                 "shasum": ""
             },
             "require": {
@@ -1323,7 +1319,7 @@
             "keywords": [
                 "url"
             ],
-            "time": "2014-05-13 11:28:23"
+            "time": "2014-07-30 07:37:14"
         },
         {
             "name": "monolog/monolog",
@@ -1705,21 +1701,20 @@
         },
         {
             "name": "symfony/icu",
-            "version": "v1.2.1",
+            "version": "v1.0.1",
             "target-dir": "Symfony/Component/Icu",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Icu.git",
-                "reference": "98e197da54df1f966dd5e8a4992135703569c987"
+                "reference": "fdba214b1e087c149843bde976263c53ac10c975"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Icu/zipball/98e197da54df1f966dd5e8a4992135703569c987",
-                "reference": "98e197da54df1f966dd5e8a4992135703569c987",
+                "url": "https://api.github.com/repos/symfony/Icu/zipball/fdba214b1e087c149843bde976263c53ac10c975",
+                "reference": "fdba214b1e087c149843bde976263c53ac10c975",
                 "shasum": ""
             },
             "require": {
-                "lib-icu": ">=4.4",
                 "php": ">=5.3.3",
                 "symfony/intl": "~2.3"
             },
@@ -1749,7 +1744,7 @@
                 "icu",
                 "intl"
             ],
-            "time": "2013-10-04 10:06:38"
+            "time": "2013-10-04 09:12:07"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -2182,7 +2177,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com",
                     "homepage": "http://www.willdurand.fr"
                 }
@@ -2207,7 +2202,6 @@
         "doctrine/migrations": 20,
         "doctrine/doctrine-migrations-bundle": 20
     },
-    "prefer-stable": false,
     "platform": {
         "php": ">=5.3.3"
     },
