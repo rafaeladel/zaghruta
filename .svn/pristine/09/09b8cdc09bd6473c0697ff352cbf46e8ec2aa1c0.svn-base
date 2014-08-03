@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="zgh_fe.wall.index" pattern="/">
+        <default key="_controller">ZghFEBundle:Wall:index</default>
+    </route>
+
+    <route id="zgh_fe.wall.recommended_people" pattern="/recommended_people">
+        <default key="_controller">ZghFEBundle:Wall:getRecommendedPeople</default>
+    </route>
+
+    <route id="zgh_fe.wall.recommended_vendors" pattern="/recommended_vendors">
+        <default key="_controller">ZghFEBundle:Wall:getRecommendedVendors</default>
+    </route>
+
+    <route id="zgh_fe.wall.new_vendors" pattern="/new_vendors">
+        <default key="_controller">ZghFEBundle:Wall:getNewVendors</default>
+    </route>
+
+
+
+</routes>

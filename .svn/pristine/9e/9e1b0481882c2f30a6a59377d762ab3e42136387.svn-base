@@ -1,0 +1,125 @@
+{% extends "@ZghFE/layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock stylesheets %}
+{% block content %}
+
+    <div class="container">
+        {% block leftContent %}
+            <div class="row">
+                <div class="col-md-9 tipExp">
+                    <div class="row banner margin">
+                        <div class="col-md-12">
+                            <img src="img/banner.jpg" class="img-responsive">
+                        </div>
+                    </div>
+
+                    <div class="row headerProduct">
+                        <div class="col-md-2 pull-right icons-G">
+                            <button data-toggle="modal" data-target="#sharePost" class="btn btn-danger btn-circle" type="button">
+                                <span class="glyphicon glyphicon-share"></span>
+                            </button>
+                            <button data-toggle="modal" data-target="#addNewListPopup" type="button" class="btn btn-danger btn-circle">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-circle">
+                                <span class="glyphicon glyphicon-heart"></span>
+                            </button>
+
+                        </div>
+                        <h2 class="col-md-4">Experiences Name</h2>
+                        <div class="clearfix"></div>
+                        <p class="by col-md-12">Category:<span> Furniture & Home</span></p>
+                        <span class="col-md-12 date-time">12 Sep 2013</span>
+                        <p class="by col-md-12">By: <span>Mohamed Boghdady</span></p>
+
+                    </div>
+                    <div class="row">
+                        <p class="col-md-12">
+                            This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+                            lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet
+                            nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor
+                            a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent  This is Photoshop's version
+                            of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
+                            nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit
+                            amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris
+                            vitae erat consequat auctor eu in elit. Class aptent  This is Photoshop's version of Lorem Ipsum. Proin gravida
+                            nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec
+                            sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.
+                            Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class
+                            aptent  This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+                            lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
+                            cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris
+                            vitae erat consequat auctor eu in elit. Class aptent  This is Photoshop's version of Lorem Ipsum. Proin gravida nibh
+                        </p>
+
+                    </div>
+                    <div class="col-md-12 pull-right">
+                        <a class="girl pull-right" href="#"> <span class="glyphicon glyphicon-comment"></span> 800 </a>
+                        <a class="girl pull-right iconHeart" href="#"> <span class="glyphicon glyphicon-heart"></span> 60 </a>
+
+                        <span class="glyphicon "></span>
+                    </div>
+                    <br class="clearfix"/>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="post margin">
+                                <button data-target="#deletePost" data-toggle="modal" type="button" class="row   btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
+                                <div class="header-post">
+
+                                    <div class="data-reacted col-xs-8 pull-left">
+                                        <div class="profile sm-img-post">
+                                            <a href="#" class="pull-left img-circle">
+                                                <img alt="" src="img/img-prf-comment2.jpg" class="img-responsive  media-object">
+                                            </a>
+
+                                            <h3><a href="">Ibrahem Ahmed</a></h3>
+                                            <span class="date-time">Saturday - 22 PM</span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!--End header-post-->
+
+                                <div class="content-post">
+                                    <p>
+                                        This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean
+                                        sollicitudin,
+                                        lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio
+                                        sit amet nibh vulputate cursus a sit amet mauris.
+                                        Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris
+                                        vitae erat consequat auctor eu in elit. Class aptent
+
+                                    </p>
+
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <!--End Footer-post-->
+
+                            </div>
+                            <div class="postBox">
+                                <textarea class="form-control" placeholder="Text input">  </textarea>
+                                <button class="btn btn-primary btn-sm btn-wide pull-right" type="button"> Post</button>
+                                <a href="#"><span class="glyphicon glyphicon-camera cam-post"></span> </a>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        {% endblock leftContent %}
+
+        {% block rightContent %}{% endblock rightContent %}
+
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock javascripts %}

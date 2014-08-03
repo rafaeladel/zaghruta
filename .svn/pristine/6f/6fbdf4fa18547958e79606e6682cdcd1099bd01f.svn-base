@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+    <!-- Meta information -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title-->
+    <title>{% block title %}Zaghruta your wedding planner guide{% endblock %}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset("bundles/zghfe/img/favicon.ico") }}" />
+    <script type="text/javascript" src="{{ asset("bundles/zghfe/js/modernizr.js") }}"></script>
+    <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+
+
+    {% block stylesheets %}
+        {% stylesheets
+        "bundles/zghfe/css/ie8.css"
+        "bundles/zghfe/css/bootstrap.css"
+        "bundles/zghfe/css/custom.css"
+        "bundles/zghfe/css/jquery.fancybox.css"
+        "bundles/zghfe/css/jquery.fancybox-buttons.css"
+        "bundles/zghfe/css/jquery.fancybox-thumbs.css"
+        "bundles/zghfe/plugins/select2-3.4.6/select2.css"
+        "bundles/zghfe/css/select2-bootstrap-css-master/select2-bootstrap.css"
+        filter="cssrewrite" %}
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css" media="screen">
+        {% endstylesheets %}
+    {% endblock stylesheets %}
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+</head>
+<body>
+
+{% block body %}
+    {% block header %}
+        <header class="fixed-header {% block innerHeader %}{% endblock %}">
+
+            <div class="container">
+                <div class="logo col-md-3 hidden-sm text-center-xs"><a href="{{ url("zgh_fe.wall.index") }}"><img
+                                src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
+                <div class=" col-md-5 visible-sm col-sm-push-4"><a href="#"><img
+                                src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
+                <div class="divider visible-sm"></div>
+                {{ getSearchWidget()|raw }}
+                <div class="notificationsWidget text-center-xs">
+                    {% if app.user %}
+                        {{ render_esi(controller("ZghFEBundle:Default:getShortcutsAndNotification")) }}
+                    {% else %}
+                        <a class="btn btn-primary btn-wide login_anon" href="{{ url("fos_user_security_login") }}">
+                            <span class="glyphicon  glyphicon-log-in"></span> Login
+                        </a>
+                    {% endif %}
+                </div>
+
+            </div>
+            <!-- Header To Xs -->
+
+        </header>
+    {% endblock header %}
+{% endblock %}
+{% block javascripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    {% javascripts
+    "bundles/zghfe/js/respond.js"
+    "bundles/zghfe/js/custom.js"
+    "bundles/zghfe/plugins/select2-3.4.6/select2.js"
+    "bundles/thraceform/js/select2.js"
+    "bundles/zghfe/js/pages_logic/search.js"
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+{% block misc %}{% endblock misc %}
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-51343140-1', 'zaghruta.com');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

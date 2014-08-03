@@ -1,0 +1,36 @@
+{% set comments = getComments(entity) %}
+<div class="row result margin-bottom">
+
+        <a class="girl pull-right"> <span class="glyphicon glyphicon-comment"></span> <span class="comments_count">{{ entity.comments|length }}</span> </a>
+        <a class="girl dataReactid openLikes pull-right iconHeart" data-entity_id="{{ entity.id }}" data-entity_type="{{ entity.getObjectType }}" data-toggle="modal" data-target="#like_{{ entity.id }}" href="#"> <span class="glyphicon glyphicon-heart"></span> <span class="likes_count">{{ entity.likes|length }}</span></a>
+        <div id="like_{{ entity.id }}" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modalHeader">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">People Who Like This</h4>
+                    </div>
+                    <div class="modal-body likes_wrapper" data-loader="{{ asset("bundles/zghfe/img/page-preloader.GIF") }}">
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <span class="glyphicon "></span>
+    </div>
+
+    <div class="comments_wrapper">
+    {{ include("@ZghFE/Partial/common/comments_list.html.twig", {"entity": entity, "comments": comments} ) }}
+    </div>
+    {% if app.user %}
+    <div class="row">
+        <form action="{{ url("zgh_fe.comment.new", {"id": entity.id, "entity_type": entity.getObjectType}) }}" class="formComments" method="post">
+            <textarea name="comment_content" placeholder="Post comment.." class="form-control animated" data-e_i="{{ entity.id }}" data-e_t="{{ entity.getObjectType }}" rows="1"></textarea>
+            <button class="btn btn-primary btn-wide btn-comment pull-right" disabled="disabled" type="submit">
+                Comment
+            </button>
+        </form>
+    </div>
+    {% endif %}
+    <div class="clearfix"></div>

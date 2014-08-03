@@ -1,0 +1,168 @@
+{% extends "@ZghFE/layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock stylesheets %}
+{% block content %}
+
+    <div class="container">
+        {% block leftContent %}
+            <div class="row">
+
+                <div id="accordion" class="col-md-12 privacy panel-group">
+                    {% if not is_granted("ROLE_VENDOR") %}
+                    <div class="profilePrivacy panel panel-default">
+                        <div class="panel-heading">
+                            <a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">
+                                <h4>Profile Privacy</h4>
+                            </a>
+                        </div>
+                        <!--End panel Heading-->
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="radio">
+                                    <label>
+                                        <input class="privacyToggle" type="radio" name="privacySetting"
+                                               id="optionsRadios1"
+                                               value="0" {{ not app.user.isPrivate ? "checked" : "" }}>
+                                        public
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input class="privacyToggle" type="radio" name="privacySetting"
+                                               id="optionsRadios2" value="1" {{ app.user.isPrivate ? "checked" : "" }}>
+                                        private
+                                    </label>
+                                </div>
+                            </div>
+                            <!--End panel Body-->
+                        </div>
+                        <!--End panel collapse-->
+                    </div>
+                    <!--End panel Default-->
+                    {% endif %}
+                    <div class="notification panel panel-default">
+                        <div class="panel-heading">
+                            <a href="#collapseTwo" data-toggle="collapse" data-parent="#accordion">
+                                <h4>Notifications</h4>
+                            </a>
+                        </div>
+                        <!--End panel heading -->
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="checkbox">
+                                    <form action="" method="post">
+                                        <label>
+                                            <input class="emailNotification" type="checkbox"
+                                                   value="" {{ app.user.emailNotification ? "checked" : "" }}>
+                                            Send To Email
+                                        </label>
+                                    </form>
+                                </div>
+
+                            </div>
+                            <!--Panel Body-->
+                        </div>
+                        <!--panel Collapse-->
+                    </div>
+                    <!--End panel Default-->
+
+                    <div class="notification panel panel-default">
+                        <div class="panel-heading">
+                            <a href="#collapseThree" data-toggle="collapse" data-parent="#accordion">
+                                <h4>Basic Info</h4>
+                            </a>
+                        </div>
+                        <!--End panel heading -->
+
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                {% if not is_granted("ROLE_VENDOR") %}
+                                <form class="form-horizontal"
+                                      action="{{ url("zgh_fe.settings.postBasicInfo", {"id": app.user.id}) }}"
+                                      method="post" role="form">
+                                    <div class="form-group formGroup">
+                                        <label class="col-sm-2 control-label" for="firstname">Firstname</label>
+
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" name="firstname"
+                                                   placeholder="Firstname" required="required"
+                                                   value="{{ user.firstname }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group formGroup">
+                                        <label class="col-sm-2 control-label" for="lastname">Lastname</label>
+
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" name="lastname"
+                                                   placeholder="Lastname" required="required"
+                                                   value="{{ user.lastname }}">
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-wide btn-primary pull-right" type="submit">Save</button>
+                                    {% for msg in app.session.flashBag.get("notice") %}
+                                        <span>{{ msg }}</span>
+                                    {% endfor %}
+                                </form>
+                                {% endif %}
+                                {% if not is_granted("ROLE_FACEBOOK") %}
+                                    <br/>
+                                    <h4>Password</h4>
+
+                                    {{ render_esi(controller("ZghFEBundle:ChangePassword:changePassword")) }}
+
+                                    {% for msg in app.session.flashBag.get("password_error") %}
+                                        <span style="color: red;">{{ msg }}</span>
+                                    {% endfor %}
+
+                                    {% for msg in app.session.flashBag.get("password_notice") %}
+                                        <span>{{ msg }}</span>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <!--Panel Body-->
+                        </div>
+                        <!--panel Collapse-->
+                    </div>
+                    <!--End Notification -->
+                </div>
+
+
+            </div><!--End row-->
+        {% endblock leftContent %}
+
+        {% block rightContent %}{% endblock rightContent %}
+
+    </div><!--End Container-->
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", ".privacyToggle", function (e) {
+                $(".privacyToggle").attr("disabled", "disabled");
+                var url = Routing.generate('zgh_fe.user_profile.privacy.set', { id: "{{ app.user.id }}", pv: $(e.target).val() }, true);
+                $.ajax({
+                    type: "get",
+                    url: url,
+                    success: function (data) {
+                        $(".privacyToggle").removeAttr("disabled");
+                    }
+                })
+            });
+
+            $("body").on("click", ".emailNotification", function (e) {
+                $(e.target).attr("disabled", "disabled");
+                var url = Routing.generate('zgh_fe.email_notification.set', { id: "{{ app.user.id }}" }, true);
+                $.ajax({
+                    type: "post",
+                    url: url,
+                    success: function (data) {
+                        $(e.target).removeAttr("disabled");
+                    }
+                })
+            });
+        });
+    </script>
+{% endblock javascripts %}

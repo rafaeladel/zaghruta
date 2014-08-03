@@ -1,0 +1,22 @@
+{{ form_start(form, {"action": post_url, "attr" : {"id": "myform", "class": "form-horizontal"} }) }}
+    <div class="modal-body">
+        <div class="form-group formGroup">
+            <label class="col-sm-3 control-label">Name</label>
+            {#{{ form_label(wishlist_form.name, null, {"attr": {"class": "col-sm-3 control-label"} }) }}#}
+            <div class="col-sm-9">
+                {{ form_widget(form.name, {"attr": {"class": "form-control", "placeholder": "Wishlist Name" } }) }}
+                {#<input type="text" placeholder="Product Name" class="form-control">#}
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        {% if product_partial is defined and product_partial == true %}
+            <a href="#" class="moveWishlist" data-url="{{ url("zgh_fe.products.get_wishlist_current_edit", {"id": app.user.id, "product_id": product.id}) }}">Cancel</a>
+            {#<a href="#" class="moveWishlist">Cancel</a>#}
+        {% endif %}
+        <button type="submit" class="btn btn-wide btn-primary {{ product_partial is defined and product_partial == true ? "newWishlistSubmit" : "wishlistSubmit" }}">Create</button>
+    </div>
+    {{ form_rest(form) }}
+{{ form_end(form) }}

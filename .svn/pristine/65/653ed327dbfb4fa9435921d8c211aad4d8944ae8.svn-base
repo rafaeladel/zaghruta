@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="zgh_fe.user_profile.index" pattern="/{id}">
+        <default key="_controller">ZghFEBundle:UserProfile:index</default>
+
+    </route>
+
+    <route id="zgh_fe.user_profile.user_intro_edit" pattern="/{id}/intro/edit">
+        <default key="_controller">ZghFEBundle:UserProfile:getUserIntro</default>
+
+    </route>
+
+    <route id="zgh_fe.user_profile.user_post_intro_edit" pattern="/{id}/intro/post_edit">
+        <default key="_controller">ZghFEBundle:UserProfile:postUserIntro</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.main_partial" pattern="/{id}/posts">
+        <default key="_controller">ZghFEBundle:UserProfile:getMainPartial</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.about_partial" pattern="/{id}/about">
+        <default key="_controller">ZghFEBundle:UserProfile:getAboutPartial</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.branches_partial" pattern="/{id}/branches">
+        <default key="_controller">ZghFEBundle:UserProfile:getBranchPartial</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.wishlist_partial" pattern="/{id}/wishlists">
+        <default key="_controller">ZghFEBundle:UserProfile:getWishlistPartial</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.products_partial" pattern="/{id}/products">
+        <default key="_controller">ZghFEBundle:UserProfile:getProductsPartial</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.photos_partial" pattern="/{id}/photos">
+        <default key="_controller">ZghFEBundle:UserProfile:getPhotosPartial</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.albums_partial" pattern="/{id}/albums">
+        <default key="_controller">ZghFEBundle:UserProfile:getAlbumsPartial</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.experiences_partial" pattern="/{id}/experiences">
+        <default key="_controller">ZghFEBundle:UserProfile:getExperiencesPartials</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.tips_partial" pattern="/{id}/tips">
+        <default key="_controller">ZghFEBundle:UserProfile:getTipsPartials</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.connections_partial" pattern="/{id}/connections">
+        <default key="_controller">ZghFEBundle:UserProfile:getConnectionsPartials</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.picture.set" pattern="/{id}/profile_pic" methods="post">
+        <default key="_controller">ZghFEBundle:UserProfile:postProfilePicture</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.cover.set" pattern="/{id}/cover_pic" methods="post">
+        <default key="_controller">ZghFEBundle:UserProfile:postCoverPicture</default>
+    </route>
+
+    <route id="zgh_fe.user_profile.privacy.set" pattern="/{id}/privacy/{pv}">
+        <default key="_controller">ZghFEBundle:UserProfile:postSetPrivacy</default>
+    </route>
+
+    <route id="zgh_fe.email_notification.set" pattern="/{id}/email_notifications">
+        <default key="_controller">ZghFEBundle:UserProfile:setEmailNotification</default>
+    </route>
+
+
+
+
+</routes>

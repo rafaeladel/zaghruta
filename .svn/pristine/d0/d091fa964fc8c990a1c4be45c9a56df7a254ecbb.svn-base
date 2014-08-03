@@ -1,0 +1,15 @@
+<div class="row" id="connections">
+
+    {% for user in users %}
+        <div class="media profile effect col-sm-4">
+            <a class="pull-left {{ "ROLE_VENDOR" in user.roles ? "img-rounded" : (user.userInfo.gender == 0 ? "profile-pic-boy img-circle" : "profile-pic-girl img-circle") }}" href="{{ url("zgh_fe.user_profile.index", {"id": user.id }) }}">
+                <img class="media-object" src="{{ "ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(user.profilePhoto.getThumbWebPath) }}" alt="">
+            </a>
+
+            <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": user.id }) }}">{{ user.getFullname }}</a></h3>
+            {{ renderFollow(user,  "ROLE_CUSTOMER" in user.roles ? (user.userInfo.gender == 0 ? "" : "btn-danger") : "" ) }}
+            <a href="{{ url("zgh_fe.user_profile.connections_partial", {"id": user.id}) }}" class="{{ "ROLE_CUSTOMER" in user.roles ? (user.userInfo.gender == 0 ? "boy" : "girl") : "" }}"> <span class="glyphicon glyphicon-user "></span> <span class="followerStats">{{ getApprovedFollowings(user)|length }}</span>  </a>
+
+        </div>
+    {% endfor %}
+</div>

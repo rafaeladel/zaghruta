@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+
+    <route id="zgh_fe.user.accept_follow" pattern="/follow/{id}/accept/{n_id}">
+        <default key="_controller">ZghFEBundle:Follow:acceptFollow</default>
+    </route>
+
+    <route id="zgh_fe.user.deny_follow" pattern="/follow/{id}/deny/{n_id}">
+        <default key="_controller">ZghFEBundle:Follow:denyFollow</default>
+    </route>
+
+    <route id="zgh_fe.user.set_follow" pattern="/follow/{er_id}/{ing_id}">
+        <default key="_controller">ZghFEBundle:Follow:setFollow</default>
+    </route>
+
+
+</routes>

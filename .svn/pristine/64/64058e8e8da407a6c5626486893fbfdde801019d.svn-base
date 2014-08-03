@@ -1,0 +1,72 @@
+{% extends app.user ? "@ZghFE/layout.html.twig" : "@ZghFE/layout_anonymous.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock stylesheets %}
+{% block content %}
+
+    <div class="container">
+        {% block leftContent %}
+            <div class="row tip">
+                <div class="col-md-9 tipExp">
+                    <div class="row banner margin">
+                        <div class="col-md-12 contentImg">
+                            <img src="{{ tip.getWebPath ? asset(tip.getWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="content_wrapper">
+                        {% block innerPartial %}
+                            <div class="row margin-bottom">
+                                {% set tips = user.tips %}
+                                {% set next_id = nextId(tips, tip) %}
+                                {% set prev_id = prevId(tips, tip) %}
+
+                                {% if prev_id != null %}
+                                    <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": prev_id }) }}" class="pull-left margin-left exp-Arrow">Previous</a>
+                                {% endif %}
+                                {% if next_id != null %}
+                                    <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": next_id }) }}" class="pull-right margin-right exp-Arrow">Next</a>
+                                {% endif %}
+                            </div>
+                        <div class="row headerProduct">
+                            {% if app.user %}
+                            <div class="col-md-2 pull-right icons-G">
+                                <form class="pull-right" action="{{ url("zgh_fe.like.post", {"id": tip.id, "entity_type": tip.getObjectType }) }}" method="post">
+                                    <button type="submit" class="btn btn-circle doLike {{ checkLike(app.user, tip) ? "btn-danger" : "likeBtn" }}">
+                                        <span class="glyphicon glyphicon-heart"></span>
+                                    </button>
+                                </form>
+                                <a class="moveEditExpTip btnEditTip pull-right" href="{{ url("zgh_fe.tips.get_edit", {"id": tip.user.id, "tip_id": tip.id}) }}"><i class="glyphicon glyphicon-edit"></i>Edit</a>
+                            </div>
+                            {% endif %}
+                            <h2 class="col-md-10">{{ tip.title }}</h2>
+                            <div class="clearfix"></div>
+
+                            <span class="col-md-12 date-time">{{ tip.createdAt|date() }}</span>
+                            <p class="by col-md-12">By: <a href="{{ url("zgh_fe.user_profile.index", {"id": tip.user.id}) }}"> {{ tip.user.getFullname }}</a></p>
+
+                        </div>
+                        <div class="row">
+                            <p class="col-md-12">
+                                {{ tip.content }}
+                            </p>
+
+                        </div>
+
+
+                        {{ include("@ZghFE/Partial/common/comments_section.html.twig", { 'entity': tip }) }}
+                            {% endblock innerPartial %}
+                    </div>
+                </div>
+
+            </div>
+        {% endblock leftContent %}
+
+        {% block rightContent %}{% endblock rightContent %}
+
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock javascripts %}

@@ -1,0 +1,39 @@
+<form action="{{ search_url }}" method="get">
+    <div class="col-md-6 col-sm-8 search-box">
+        <div class="mainSearch input-group">
+            <div class="input-group-btn cat_ddl_btn" style="display:none;">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Category <span
+                            class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    {#{% if not in_product %}#}
+                        <li><a href="#" class="searchOption {{ in_product ? "searchOptionProd" : "" }}" data-cat="all"><i class="icon-list-alt"></i>Everything</a></li>
+                        <li class="divider"></li>
+                    {#{% endif %}#}
+                    {% for category in categories if category.parentCategory|length == 0 %}
+                        <li {{ category.subCategories|length > 0 ? 'class="dropdown-submenu"' : '' }}>
+                            <a href="#" class="searchOption {{ in_product ? "searchOptionProd" : "" }}" data-cat="{{ category.nameSlug }}"><i class="iconMenu {{ category.cssClass }} pull-left"></i>{{ category.name }}</a>
+                            {% if category.subCategories|length > 0 %}
+                                <ul class="dropdown-menu">
+                                    {% for subCategory in category.subCategories %}
+                                        <li>
+                                            <a href="#" class="searchOption {{ in_product ? "searchOptionProd" : "" }}" data-cat="{{ subCategory.nameSlug }}"><i class="iconMenu {{ subCategory.cssClass }} pull-left"></i> {{ subCategory.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                    {% if not in_product %}
+                        <li class="divider"></li>
+                        <li><a href="#" class="searchOption" data-cat="people"><i class="iconMenu iconPeople pull-left"></i>People</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- /btn-group -->
+            <input type="hidden" name="category" class="category_data" value="all"/>
+            <input type="text" name="q" class="form-control custFc search_text {{ custome_class }}"
+                   value="{{ app.request.get("q") }}" placeholder="Search for your things">
+            <a href="#" class="search-addon input-group-addon custAncor  {{ in_product ? "doSearch" : "search_submit" }}"></a>
+        </div>
+    </div>
+</form>

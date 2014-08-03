@@ -1,0 +1,86 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    {% autoescape false %}
+    <title>{% block subject %}Zaghruta - {{ notification_type }}{% endblock subject %}</title>
+    {% endautoescape %}
+
+
+    <style>
+        .container, .header {
+            width: 450px;
+            margin: 0 auto;
+            padding: 0 10px 10px;
+        }
+
+        .content-one {
+            padding-top: 30px !important;
+        }
+    </style>
+</head>
+
+<body>
+{% block body_text %}{% endblock body_text %}
+{% block body_html %}
+    <center>
+        <table width="450" cellspacing="0" cellpadding="0" border="0" class="header">
+            <tbody>
+            <tr>
+                <td valign="top" align="center">
+                    <a href="#" alt="Zaghrota"><img src="http://37.48.73.85/zaghruta/web/email_icon/logo.png"/></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <table width="450" cellspacing="0" cellpadding="0" border="0" class="content-one container">
+            <tbody>
+            <tr>
+                <td style="font-size:27px; color:#61c5b6; font-family:Arial, Helvetica, sans-serif; padding-bottom:10px;"
+                    align="left">Welcome
+                </td>
+            </tr>
+            {% autoescape false %}
+            <tr>
+                <td style="font-size:14px; color:#6e6e6e; font-family:Arial, Helvetica, sans-serif; padding-bottom: 30px;"
+                    align="left">
+                    {{ notification_body }}
+                </td>
+            </tr>
+            {% endautoescape %}
+            <tr>
+                <td align="left"
+                    style="color:#6e6e6e; font-size:14px; padding-top:20px; font-family:Arial, Helvetica, sans-serif; line-height: 23px;">
+                    <strong>If you need anything</strong>, we can help and we want your your feedback – good and bad, we
+                    want it all :) Get in touch at
+                </td>
+            </tr>
+            <tr>
+                <td style="" align="left" style="padding-bottom:30px;">
+                    <a style="color:#e982a1; font-size:16px; font-family:Arial, Helvetica, sans-serif; text-decoration:none;"
+                       href="">feedback@zaghruta.com.</a>
+                </td>
+            </tr>
+            <tr>
+                <td style="color:#6e6e6e; font-family:Arial, Helvetica, sans-serif; font-size:12px; padding-top:20px; font-style:italic;"
+                    align="left">
+                    <strong style=" font-size:16px; font-style:normal">Have fun with zaghruta!</strong><br/>
+                    - zaghruta Team.
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding-top:20px; padding-bottom:20px;">
+                    <a href="#"><img src="http://37.48.73.85/zaghruta/web/email_icon/icon-facebook.png"/></a>
+                    <a href="#"><img src="http://37.48.73.85/zaghruta/web/email_icon/icon-twitter.png"/></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </center>
+{% endblock body_html %}
+</body>
+</html>

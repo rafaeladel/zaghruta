@@ -1,0 +1,55 @@
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
+
+{% block leftContent %}
+    <div id="c_branches">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                <th><h2 class="headBranche">Branches</h2>
+                    {% if app.user and user.id == app.user.id %}
+                    <button type="button" class="btn btn-primary btn-wide btn-sm pull-right" data-target="#addBranch"
+                            data-toggle="modal">
+                        <span class="glyphicon glyphicon-plus"></span> Add new branch
+                    </button>
+                    <div id="addBranch" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                         class="modal fade in">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header modalHeader">
+                                    <button type="button" class="close modalClose" data-dismiss="modal"
+                                            aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Add Branch</h4>
+                                </div>
+                                {{ form_start(form, {"action": url("zgh_fe.branches.new", {"id": user.id }), "attr" : {"id": "myform", "class": "form-horizontal"} }) }}
+                                <div class="form_wrapper">
+                                    {{ include("@ZghFE/Partial/branches/user_profile_branch_add.html.twig", {"user": user, "form": form}) }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-wide btn-primary branchSubmit">Create</button>
+                                </div>
+
+                                {{ form_rest(form) }}
+                                {{ form_end(form) }}
+                            </div>
+
+                            {#</form>#}
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+        {#</div>#}
+        {% endif %}
+        </th>
+        </tr>
+        </thead>
+        </table>
+    </div><!-- End col 12-->
+    <!-- GridView-->
+
+    <div id="branches_list">
+        {{ render_esi(controller("ZghFEBundle:Branch:getBranchesList", {"id": user.id})) }}
+    </div>
+    </div>
+{% endblock %}
+

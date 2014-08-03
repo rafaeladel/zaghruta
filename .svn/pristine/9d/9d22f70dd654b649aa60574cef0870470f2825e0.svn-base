@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="zgh_fe.products.add" pattern="/{id}/products/add" methods="GET">
+        <default key="_controller">ZghFEBundle:Product:getNew</default>
+    </route>
+
+    <route id="zgh_fe.products.new" pattern="/{id}/products/new" methods="POST">
+        <default key="_controller">ZghFEBundle:Product:postNew</default>
+    </route>
+
+
+    <route id="zgh_fe.products.search" pattern="/{id}/products/search" methods="get">
+        <default key="_controller">ZghFEBundle:Product:getSearch</default>
+    </route>
+
+    <route id="zgh_fe.products.get_parent_content_widget" pattern="/{id}/products/{product_id}/parent_content" methods="GET">
+        <default key="_controller">ZghFEBundle:Product:getProductParentContentWidget</default>
+    </route>
+
+    <route id="zgh_fe.products.get_content_widget" pattern="/{id}/products/{product_id}/content" methods="GET">
+        <default key="_controller">ZghFEBundle:Product:getProductContentWidget</default>
+    </route>
+
+    <route id="zgh_fe.products.get_edit" pattern="/{id}/products/{product_id}/edit" methods="GET">
+        <default key="_controller">ZghFEBundle:Product:getEdit</default>
+    </route>
+
+    <route id="zgh_fe.products.post_edit" pattern="/{id}/products/{product_id}/edit" methods="POST">
+        <default key="_controller">ZghFEBundle:Product:postEdit</default>
+    </route>
+
+    <route id="zgh_fe.products.delete" pattern="/{id}/products/{product_id}/delete">
+        <default key="_controller">ZghFEBundle:Product:postDelete</default>
+    </route>
+
+    <route id="zgh_fe.products.content" pattern="/{id}/products/{product_id}" methods="GET">
+        <default key="_controller">ZghFEBundle:Product:getProductContent</default>
+    </route>
+
+    <route id="zgh_fe.products.get_wishlist_current_edit" pattern="/{id}/products/{product_id}/wishlist/edit" methods="get">
+        <default key="_controller">ZghFEBundle:Product:getEditCurrentWishlist</default>
+    </route>
+
+    <route id="zgh_fe.products.add_to_wishlist" pattern="/{id}/products/{product_id}/wishlist" methods="POST">
+        <default key="_controller">ZghFEBundle:Product:postAddToWishlist</default>
+    </route>
+
+    <route id="zgh_fe.products.get_wishlist_new" pattern="/{id}/products/{product_id}/wishlist/new" methods="get">
+        <default key="_controller">ZghFEBundle:Product:getNewWishlist</default>
+    </route>
+
+    <route id="zgh_fe.products.post_wishlist_new" pattern="/{id}/products/{product_id}/wishlist/new" methods="post">
+        <default key="_controller">ZghFEBundle:Product:postNewWishlist</default>
+    </route>
+
+
+
+</routes>

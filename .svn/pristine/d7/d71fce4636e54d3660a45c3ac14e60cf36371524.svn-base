@@ -1,0 +1,42 @@
+<div class="col-md-9 product">
+    <div class="row banner  margin">
+        <div class="col-md-12  {{ not is_popup ? "contentImg" : "" }}">
+            <img class="img-responsive" src="{{ product.getWebPath ? asset(product.getWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}">
+            <div class="deteilsProduct">
+            {% if app.user and user.id == app.user.id %}
+                <a href="#" data-target="#deleteProduct_{{ product.id }}" data-toggle="modal" class="btn-delete pull-right"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+                <div id="deleteProduct_{{ product.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal btn-delete fade in">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modalHeader">
+                                <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Delete Post</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete this?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-wide modalClose btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                <form class="btnForm" action="{{ url("zgh_fe.products.delete", {"id": app.user.id, "product_id": product.id}) }}" method="post">
+                                    <button type="submit" class="btn btn-wide btn-primary">Delete</button>
+                                </form>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+            {% endif %}
+            <h2 class=col-md-4>{{ product.name }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row hidden-md hidden-lg">
+        <div class="col-sm-12 btnTitle  margin">
+            <button class="btn btn-primary btn-wide btn-block" type="button"> Decorama Co</button>
+        </div>
+    </div>
+    <div class="content_wrapper">
+        {% block innerPartial %}
+            {{ include("@ZghFE/Partial/products/user_profile_product_content_widget.html.twig", {"product": product, "is_popup": is_popup}) }}
+        {% endblock innerPartial %}
+    </div>
+</div>

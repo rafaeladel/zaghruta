@@ -1,0 +1,282 @@
+{% extends "@ZghFE/layout_security.html.twig" %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            // init the FB JS SDK
+            FB.init({
+                appId: '1403397396596528', // App ID from the app dashboard
+                channelUrl: '//zaghrota.local.com/channel.html', // Channel file for x-domain comms
+                status: true, // Check Facebook Login status
+                xfbml: true // Look for social plugins on the page
+            });
+        };
+
+        // Load the SDK asynchronously
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+
+        function fb_login() {
+            FB.getLoginStatus(function (response) {
+
+                if (response.status === 'connected') {
+                    FB.login(function (response) {
+                        if (response.authResponse) {
+                            document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                        } else {
+                            alert('Cancelled.');
+                        }
+                    }, {scope: ''});
+                } else {
+                    // not_authorized
+                    FB.login(function (response) {
+                        var login_response = response;
+                        if(login_response.status == "connected") {
+                            {#{{ app.user.id }}#}
+                            FB.ui({
+                                method: 'apprequests',
+                                message: "Take a look at Zaghruta."
+                            }, function(response) {
+                                if (login_response.authResponse) {
+                                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                                }
+                            });
+                        }
+                    }, {scope: 'email'});
+                }
+            });
+        }
+    </script>
+
+    {% block header %}
+        {{ parent() }}
+    {% endblock header %}
+    {% block descHeader %}
+        {{ parent() }}
+    {% endblock descHeader %}
+
+    {% block content %}
+        <div class="mainContent">
+            <div>
+                <div class="loginBG img-responsive visible-lg"></div>
+                <div class="iconGroup img-responsive visible-lg">
+                    <div style="position: relative">
+                        <a href="#" class="sprite-iconPlug"></a>
+                        <a href="#" class="sprite-iconChair"></a>
+                        <a href="#" class="sprite-iconCalendar"></a>
+                        <a href="#" class="sprite-iconHome"></a>
+                        <a href="#" class="sprite-iconGirl"></a>
+                        <a href="#" class="sprite-iconAccessories"></a>
+                        <a href="#" class="sprite-iconFashion"></a>
+                        <a href="#" class="sprite-iconPhotographers"></a>
+                        <a href="#" class="sprite-iconHotels"></a>
+                        <a href="#" class="sprite-iconBouquet"></a>
+                        <a href="#" class="sprite-iconCar"></a>
+                        <a href="#" class="sprite-iconHoneymoon"></a>
+                        <a href="#" class="sprite-iconCakes"></a>
+                        <a href="#" class="sprite-iconMusic"></a>
+                    </div>
+                </div>
+            </div>
+
+            {% block inner_content %}
+                <div class="BGlogin img-responsive visible-lg" style="display: none !important;"></div>
+                <section class="container">
+                    <div class="control-group">&nbsp;</div>
+                    <div class="row">
+                        <div class="signBox col-md-6">
+
+                            <ul class="nav nav-tabs nav-login" id="loginTabs">
+                                <li class="active"><a href="#User" data-route="zgh_fe.user.login_partial">Customer</a>
+                                </li>
+                                <li><a href="#Vendor" data-route="zgh_fe.vendor.login_partial">Vendor</a></li>
+                            </ul>
+                            <div class="tab-content">
+
+                                <div id="User" class="tab-pane active">
+                                    <div class="alert descriptionUser fade in">
+                                        <p>For data attributes, append the option name to Options can be passed via data
+                                            attributes or JavaScript.</p>
+                                    </div>
+                                    <div class="row push-botton">
+                                        <div class="col-lg-12">
+                                            <div class="col-md-6 col-sm-4 col-xs-8 btnFb">
+                                                <a href="#" onclick="fb_login();return false;" class="fbLogin"></a>
+                                                {#<a href="{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}">Facebook Connect Button (Dialog)</a>#}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <fieldset>
+                                        <legend class="text-center"> Or sign in with your username or email</legend>
+                                        {% if error %}
+                                            <div class=" alert alert-danger col-md-12">
+                                                {{ error|trans }}
+                                                <a class="close" data-dismiss="alert" href="#"
+                                                   aria-hidden="true">&times;</a>
+                                            </div>
+                                        {% endif %}
+
+                                        <form action="{{ path("fos_user_security_check") }}" method="post">
+                                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+                                            <div class="form-group">
+                                                <input type="text" id="username" name="_username" value=""
+                                                       required="required"
+                                                       class="form-control" placeholder="Email"/>
+                                                {#<div class="validation" style="">No suggestions</div>#}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="password" id="password" name="_password"
+                                                       required="required"
+                                                       class="form-control" placeholder="Password"/>
+                                                {#<div class="validation" style="">No suggestions</div>#}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                                                <label class="RememberMe text-center" for="remember_me">Remember
+                                                    Me</label>
+                                            </div>
+
+                                            <div class="row">
+                                                <a type="button" class=" pull-left pinkLink linkForgotPass"
+                                                   data-toggle="modal" data-target="#modalResetPass">Forgot your
+                                                    Password </a>
+
+                                                <input type="submit" id="_submit" name="_submit" value="Login"
+                                                       class="btn btn-danger btn-wide pull-right"/>
+                                                <a href="{{ url("fos_user_registration_register", {"t": "customer"}) }}"
+                                                   class="signUp pull-right">Sign Up</a>
+                                                {#<a href="#" class="pull-right">Sign Up</a>#}
+                                            </div>
+                                        </form>
+                                    </fieldset>
+                                </div>
+                                <div id="Vendor" class="tab-pane">
+                                    <div class="alert descriptionVandor fade in">
+                                        <p>
+                                            Options can be passed via data attributes or JavaScript. For data
+                                            attributes, append
+                                            the option name to
+                                        </p>
+                                    </div>
+
+                                    {% if error %}
+                                        <div class=" alert alert-danger col-md-12">
+                                            {{ error|trans }}
+                                            <a class="close" data-dismiss="alert" href="#"
+                                               aria-hidden="true">&times;</a>
+                                        </div>
+                                    {% endif %}
+                                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+                                        <div class="form-group">
+                                            <input type="text" id="username" name="_username" value=""
+                                                   required="required"
+                                                   class="form-control" placeholder="Email"/>
+                                            {#<div class="validation" style="">No suggestions</div>#}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="password" id="password" name="_password" required="required"
+                                                   class="form-control" placeholder="Password"/>
+                                            {#<div class="validation" style="">No suggestions</div>#}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                                            <label class="RememberMe text-center" for="remember_me">Remember Me</label>
+                                        </div>
+
+                                        <div class="row">
+                                            <a type="button" class=" pull-left pinkLink linkForgotPass"
+                                               data-toggle="modal" data-target="#modalResetPass">Forgot your
+                                                Password </a>
+
+                                            <input type="submit" id="_submit" name="_submit" value="Login"
+                                                   class="btn btn-danger btn-wide pull-right"/>
+                                            <a href="{{ url("fos_user_registration_register", {"t": "vendor"}) }}"
+                                               class="signUp pull-right">Sign Up</a>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </section>
+            {% endblock inner_content %}
+        </div>
+    {% endblock content %}
+    {% block modals %}
+        <!-- Modal -->
+        <div class="modal fade" id="modalResetPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modalHeader">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Reset your password</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ path('fos_user_resetting_send_email') }}" method="POST"
+                              class="fos_user_resetting_request">
+                            <div>
+                                <label for="username">{{ 'resetting.request.username'|trans }}</label>
+                                <input type="text" id="username" name="username" class="form-control" placeholder="">
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-primary reset_btn"
+                                       value="{{ 'resetting.request.submit'|trans }}"/>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                            <div class="reset_request_result"></div>
+                        </form>
+                    </div>
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    {% endblock modals %}
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+            $(".reset_btn").on("click", function (e) {
+                e.preventDefault();
+                $(e.target).attr("disabled", "disabled").val("Please wait");
+                var form = $(e.target).closest("form");
+                $.ajax({
+                    type: "POST",
+                    url: $(form).attr("action"),
+                    data: form.serialize(),
+                    success: function (data) {
+                        $(e.target).parent().siblings("div.reset_request_result").html("<p>" + data.message + "</p>");
+                        $(e.target).removeAttr("disabled").val("Reset Password");
+                    }
+                })
+            });
+        });
+    </script>
+{% endblock javascripts %}

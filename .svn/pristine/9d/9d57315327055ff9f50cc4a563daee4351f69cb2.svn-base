@@ -1,0 +1,74 @@
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
+
+{% block leftContent %}
+
+
+    <div id="vendConnec" style="display: block;">
+        <div class="row margin">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="btn-group btn-group-justified">
+                    <a href="javascript:connectionsTabs('followers');" class="btn btn-primary active"> Followers</a>
+                    <a href="javascript:connectionsTabs('following');" class="btn btn-primary"> Following</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="connections">
+
+            <div class="followerCont" style="display: block;">
+                {% for followee in user.followees if followee.isApproved == true %}
+                    {% set roles = followee.follower.roles %}
+                    {% set gender = "ROLE_VENDOR" in roles ? null : followee.follower.userInfo.gender %}
+
+                    <div class="media profile effect col-sm-4">
+                        <a class="pull-left {{ "ROLE_VENDOR" in roles ? "img-rounded" : (gender == 0 ? "profile-pic-boy img-circle" : "profile-pic-girl img-circle") }}"
+                           href="{{ url("zgh_fe.user_profile.index", {"id": followee.follower.id }) }}">
+                            <img class="media-object"
+                                 src="{{ "ROLE_FACEBOOK" in roles ? 'https://graph.facebook.com/'~followee.follower.facebookId~'/picture?width=125&height=125' : asset(followee.follower.profilePhoto.getThumbWebPath) }}"
+                                 alt="">
+                        </a>
+
+                        <h3>
+                            <a href="{{ url("zgh_fe.user_profile.index", {"id": followee.follower.id }) }}">{{ followee.follower.getFullname }}</a>
+                        </h3>
+                        {{ renderFollow(followee.follower,  "ROLE_CUSTOMER" in roles ? (gender == 0 ? "" : "btn-danger") : "" ) }}
+                        <a href="{{ url("zgh_fe.user_profile.connections_partial", {"id": followee.follower.id}) }}"
+                           class="{{ "ROLE_VENDOR" in roles ? "" : (gender == 0 ? "boy" : "girl") }}"> <span
+                                    class="glyphicon glyphicon-user"></span>
+                            <span class="followerStats">{{ getApprovedFollowings(followee.follower)|length }}</span> </a>
+
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="followingCont" style="display: none;">
+                {% for follower in user.followers if follower.isApproved == true %}
+                    {% set roles = follower.followee.roles %}
+                    {% set gender = "ROLE_VENDOR" in roles ? null : follower.followee.userInfo.gender %}
+
+                    <div class=" profile effect col-sm-4">
+                        <a class="pull-left {{ "ROLE_VENDOR" in roles ? "img-rounded" : (gender == 0 ? "profile-pic-boy img-circle" : "profile-pic-girl img-circle") }}"
+                           href="{{ url("zgh_fe.user_profile.index", {"id": follower.followee.id }) }}">
+                            <img class="media-object"
+                                 src="{{ "ROLE_FACEBOOK" in roles ? 'https://graph.facebook.com/'~follower.followee.facebookId~'/picture?width=125&height=125' : asset(follower.followee.profilePhoto.getThumbWebPath) }}"
+                                 alt="">
+                        </a>
+
+                        <h3>
+                            <a href="{{ url("zgh_fe.user_profile.index", {"id": follower.followee.id }) }}">{{ follower.followee.getFullname }}</a>
+                        </h3>
+                        {{ renderFollow(follower.followee,   "ROLE_CUSTOMER" in roles ? (gender == 0 ? "" : "btn-danger") : "" ) }}
+                        <a class="{{ "ROLE_VENDOR" in roles ? "" : (gender == 0 ? "boy" : "girl") }}"
+                           href="{{ url("zgh_fe.user_profile.connections_partial", {"id": follower.followee.id}) }}">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="followerStats">{{ getApprovedFollowings(follower.followee)|length }}</span> </a>
+
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock leftContent %}

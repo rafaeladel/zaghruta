@@ -1,0 +1,92 @@
+{% extends "@ZghFE/layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock stylesheets %}
+{% block content %}
+
+    <div class="container">
+        {% block leftContent %}
+            <div class="row experience">
+                <div class="col-md-9 tipExp">
+                    <div class="row banner margin">
+                        <div class="col-md-12 contentImg">
+                            <img src="{{ experience.getWebPath ? asset(experience.getWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}"
+                                 class="img-responsive">
+                        </div>
+                    </div>
+
+                    <div class="content_wrapper">
+                        {% block innerPartial %}
+                            <div class="row margin-bottom">
+                                {% set experiences = user.experiences %}
+                                {% set next_id = nextId(experiences, experience) %}
+                                {% set prev_id = prevId(experiences, experience) %}
+
+                                {% if prev_id != null %}
+                                    <a href="{{ url("zgh_fe.experience.content", {"id": user.id, "exp_id": prev_id }) }}"
+                                       class="pull-left margin-left exp-Arrow"><span class="glyphicon glyphicon-chevron-left"></span> Previous</a>
+                                {% endif %}
+                                {% if next_id != null %}
+                                    <a href="{{ url("zgh_fe.experience.content", {"id": user.id, "exp_id": next_id }) }}"
+                                       class="pull-right margin-right exp-Arrow">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                {% endif %}
+                            </div>
+                            <div class="row headerProduct">
+                                <div class="col-md-2 pull-right icons-G">
+                                    <form class="pull-right"
+                                          action="{{ url("zgh_fe.like.post", {"id": experience.id, "entity_type": experience.getObjectType }) }}"
+                                          method="post">
+                                        <button type="submit"
+                                                class="btn btn-circle doLike {{ checkLike(app.user, experience) ? "btn-danger" : "likeBtn" }}">
+                                            <span class="glyphicon glyphicon-heart"></span>
+                                        </button>
+                                    </form>
+
+                                    {% if app.user and experience.user.id == app.user.id %}
+                                        <a class="pull-right moveEditExpTip "
+                                           href="{{ url("zgh_fe.experiences.get_edit", {"id": experience.user.id, "exp_id": experience.id}) }}"><i
+                                                    class="glyphicon glyphicon-edit"></i> Edit</a>
+                                    {% endif %}
+                                </div>
+                                <h2 class="col-md-10">{{ experience.title }}</h2>
+
+                                <div class="clearfix"></div>
+                                <p class="by col-md-12">Categories:
+                                    {% for category in experience.categories %}
+                                        <span>{{ category.name }}</span>
+                                        {% if loop.index < experience.categories|length %}
+                                            <span>-</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </p>
+                                <span class="col-md-12 date-time">{{ experience.createdAt|date() }}</span>
+
+                                <p class="by col-md-12">By: <a
+                                            href="{{ url("zgh_fe.user_profile.index", {"id": experience.user.id}) }}"> {{ experience.user.getFullname }}</a>
+                                </p>
+
+                            </div>
+                            <div class="row">
+                                <p class="col-md-12">
+                                    {{ experience.content }}
+                                </p>
+
+                            </div>
+
+                            {{ include("@ZghFE/Partial/common/comments_section.html.twig", { 'entity': experience }) }}
+                        {% endblock innerPartial %}
+                    </div>
+                </div>
+
+            </div>
+        {% endblock leftContent %}
+
+        {% block rightContent %}{% endblock rightContent %}
+
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock javascripts %}

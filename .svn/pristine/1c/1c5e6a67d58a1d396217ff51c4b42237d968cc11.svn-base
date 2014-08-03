@@ -1,0 +1,33 @@
+{% extends app.request.xmlHttpRequest ? '@ZghFE/Default/ajax_layout.html.twig':'@ZghFE/Default/user_index.html.twig' %}
+{% block leftContent %}
+    <div id="c_products">
+        <div id="switcher" class="row GridView">
+            <div class="row margin search-Results">
+                {% if app.user and user.id == app.user.id %}
+                    <div class="col-sm-3">
+
+                        <a class="btn btn-primary btn-wide moveProduct"
+                           href="{{ url("zgh_fe.products.add", {"id": user.id}) }}">
+                            <span class="glyphicon glyphicon-plus"></span> Add your Product
+                        </a>
+                    </div>
+                {% endif %}
+                {#<form action="{{ url("zgh_fe.products.search", {"id": user.id}) }}" method="get">#}
+                {{ renderSearch(user, true)|raw }}
+                <div class="hidden-xs  pull-right  ">
+                    <div class="btn-group ">
+                        <a class="btn btn-primary active" href="javascript:SwitchView('grid');"><span
+                                    class="glyphicon glyphicon-th"></span></a>
+                        <a class="btn btn-primary" href="javascript:SwitchView('list');"><span
+                                    class="glyphicon glyphicon-th-list"></span></a>
+
+                    </div>
+                </div>
+            </div>
+            <div id="products_list" class="row">
+                {{ include("@ZghFE/Partial/products/user_profile_products_content.html.twig", {"products": products}) }}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

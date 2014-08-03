@@ -1,0 +1,89 @@
+<div class="row about_wrapper">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th colspan="2">Contact Information
+                    {% if app.user and about.user.id == app.user.id %}
+                        <a href="{{ url("zgh_fe.about.get_customer_edit", {"id": about.id }) }}" class="pull-right about_edit">
+                            <span class="glyphicon glyphicon-edit top"></span>
+                        </a>
+                    {% endif %}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Birthday</td>
+                <td>{{ about.birthday|date("M d, Y") }}</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{{ about.gender == 0 ? "Male" : "Female" }}</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td style="position: relative;">
+                    {% if about.status == "Married" %}
+                        {% if about.gender == 0 %}
+                            {% set rel_class = "icon-husband" %}
+                        {% else %}
+                            {% set rel_class = "icon-wife" %}
+                        {% endif %}
+                    {% elseif about.status == "Engaged" %}
+                        {% if about.gender == 0 %}
+                            {% set rel_class = "icon-fiance" %}
+                        {% else %}
+                            {% set rel_class = "icon-Fiance" %}
+                        {% endif %}
+                    {% elseif about.status == "Best Man"%}
+                        {% set rel_class = "icon-man" %}
+                    {% elseif about.status == "Groomsman" %}
+                        {% set rel_class = "icon-men" %}
+                    {% elseif about.status == "Maid of honor" %}
+                        {% set rel_class = "icon-honor" %}
+                    {% elseif about.status == "Bridesmaid" %}
+                        {% set rel_class = "icon-men" %}
+                    {% elseif about.status == "Single" %}
+                        {% if about.gender == 0 %}
+                            {% set rel_class = "icon-man" %}
+                        {% else %}
+                            {% set rel_class = "icon-Wife" %}
+                        {% endif %}
+                    {% else %}
+                        {% set rel_class = "" %}
+                    {% endif %}
+                    <span class="{{ about.status is not null ? "iconStatus img-circle "~rel_class : "" }}"></span>
+                    {% if about.relationshipUser and about.relationshipAccepted %}
+                        <a href="{{ url("zgh_fe.user_profile.index", {"id": about.relationshipUser.id}) }}">{{ about.relationshipUser }}</a>'s
+                    {% endif %}
+                    {% if about.status == "Married" %}
+                        {{ about.gender == 0 ? "Husband" : "Wife" }}
+                    {% elseif about.status == "Engaged" %}
+                        {{ about.gender == 0 ? "Fiance" : "Fiancee" }}
+                    {% else %}
+                        {{ about.status }}
+                    {% endif %}
+                    {#{{ about.status }}#}
+                </td>
+            </tr>
+
+            <tr>
+                <td>City</td>
+                <td>{{ about.city }}</td>
+            </tr>
+            <tr>
+                <td>Job</td>
+                <td>{{ about.job }}</td>
+            </tr>
+            <tr>
+                <td>Facebook</td>
+                <td>{{ about.facebook|converturls }}</td>
+            </tr>
+            <tr>
+                <td>Twitter</td>
+                <td>{{ about.twitter|converturls }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,153 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+    "bundles/zghfe/plugins/Imgareaselect/css/imgareaselect-default.css"
+    "bundles/zghfe/plugins/dropzone-3.9.0/downloads/css/dropzone.css"
+    filter="cssrewrite" %}
+    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" media="screen">
+
+    {% endstylesheets %}
+{% endblock %}
+{% block body %}
+    <div id="wrap">
+        {{ parent() }}
+
+        {% block content %}
+            {% block leftContent %}
+            {% endblock leftContent %}
+
+            {% block rightContent %}
+            {% endblock rightContent %}
+        {% endblock content %}
+    </div>
+
+    {% block footer %}
+        <footer>
+            <div class="container">
+                <p class="pull-right"><a href="#">
+                        <button type="button" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-chevron-up"></span>
+                        </button>
+                    </a></p>
+                    <a  class="pull-right contactUS"  data-toggle="modal" href="#ContactUS">Contact Us</a>
+                    <div  id="ContactUS" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                 class="modal fade in modalContactUS">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modalHeader">
+                            <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Contact Us</h4>
+                        </div>
+                        <div class="modal-body">
+                         <p class="">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </p>
+                          <hr/>
+                         <div class="add">
+                         <p><label>Phone :</label> 0106 081 081 3</p> 
+                         <p><label>Mail :</label> <a class="contactmail" href="mailto:info@zaghruta.com">info@zaghruta.com</a></p>
+                          </div>
+
+                        </div>
+                       
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+                </div>
+                     <p>Zaghruta &copy; 2013 Designed by <a href="#">thesevenlayers</a></p>
+            </div>
+        </footer>
+    {% endblock footer %}
+    {% block modals %}
+    {% endblock modals %}
+
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        var UrlContainer = {
+            loader: "{{ asset("bundles/zghfe/img/page-preloader.GIF") }}",
+            newPhoto: "{{ url("zgh_fe.photos.photo.new", {"id": app.user.id}) }}",
+            newAlbum: "{{ url("zgh_fe.photos.album.new", {"id": app.user.id}) }}",
+            photoPartial: "{{ url("zgh_fe.user_profile.photos_partial", {"id": app.user.id}) }}",
+            albumPartial: "{{ url("zgh_fe.user_profile.albums_partial", {"id": app.user.id}) }}",
+            wishlistPartial: "{{ url("zgh_fe.wishlist_partial_content", {"id": app.user.id}) }}",
+            branchesList: "{{ url("zgh_fe.branches.list", {"id": app.user.id}) }}"
+        };
+    </script>
+
+    {% javascripts
+    "bundles/zghfe/plugins/Parsley.js-2.0.0/dist/parsley.js"
+    "bundles/zghfe/js/pages_logic/partial/postRefresher.js"
+    "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
+    "bundles/zghfe/js/pages_logic/partial/singleUploadProduct.js"
+    "bundles/zghfe/js/pages_logic/partial/singleUploadExpTip.js"
+    "bundles/zghfe/js/pages_logic/user_index.js"
+    "bundles/zghfe/js/pages_logic/products.js"
+    "bundles/zghfe/js/pages_logic/experiences.js"
+    "bundles/zghfe/js/pages_logic/about.js"
+    "bundles/zghfe/js/pages_logic/wishlist.js"
+    "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
+    "bundles/zghfe/js/pages_logic/photos.js"
+    "bundles/zghfe/js/pages_logic/branches.js"
+    "bundles/zghfe/js/custom.js"
+    "bundles/zghfe/js/jquery.fancybox.pack.js"
+    "bundles/zghfe/js/jquery.fancybox-buttons.js"
+    "bundles/zghfe/js/jquery.fancybox-media.js"
+    "bundles/zghfe/js/jquery.fancybox-thumbs.js"
+    "bundles/zghfe/js/fancyCustom.js"
+    "bundles/zghfe/plugins/dropzone-3.9.0/downloads/dropzone.js"
+    "bundles/zghfe/js/uploader_save.js"
+    "bundles/zghfe/js/post_actions.js"
+    "bundles/zghfe/js/ImgCrop.js"
+    "bundles/zghfe/js/autosize.js"
+    "bundles/zghfe/plugins/Imgareaselect/scripts/jquery.imgareaselect.js"
+    "bundles/zghfe/js/base.js"
+
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+//            $("body").on("click", ".openExp", function(e){
+//                e.preventDefault();
+//                var url = $(e.currentTarget).attr("href");
+//                window.location.href = url;
+//                document.pushState(null, null, url);
+//            });
+
+
+
+            $("body").on("change", ".photo_btn", function(e){
+                e.preventDefault();
+                var wrapper = $(e.currentTarget).closest("form").find(".thumbnailUpload");
+                wrapper.show();
+                var imgWrapper = wrapper.find("img");
+                imgWrapper.attr("src", URL.createObjectURL(this.files[0]));
+            });
+
+            $("body").on("click", ".reset_photo", function(e){
+                e.preventDefault();
+                var wrapper = $(e.currentTarget).closest("form").find(".thumbnailUpload");
+                wrapper.hide();
+                var file_input = $(e.currentTarget).closest("form").find(".photo_btn");
+                file_input.wrap('<form>').closest('form').get(0).reset();
+                file_input.unwrap();
+            });
+
+
+            $(document).on("ajaxSuccess", function (e) {
+                postRefresh();
+                photoRefresh();
+                singleUploadProduct();
+                singleUploadExpTip();
+            });
+
+        });
+    </script>
+{% endblock javascripts %}
+{% block misc %}{% endblock %}
