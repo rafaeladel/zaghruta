@@ -87,15 +87,15 @@ $(window).resize(function () {
 $(".contentInterests ul").addClass("col-md-12");
 $(".contentInterests ul li").addClass("col-md-3");
 
-    $(document).ready(function () {
-             $(".iconGroup a").mouseenter(function(){
-            var secName = $(this).attr('class');
-            $('#' + secName + '').siblings().hide();
-            $('#' + secName + '').fadeIn(100);
-        });
-        $(".iconGroup a").mouseleave(function(){
-          $(".active").show();
-          $(".hide-show").hide();
-        });
-          });
+$(document).ready(function () {
+    $(".iconGroup a").mouseenter(function () {
+        var secName = $(this).attr('class');
+        $('#' + secName + '').siblings().hide();
+        $('#' + secName + '').fadeIn(100);
+    });
+    $(".iconGroup a").mouseleave(function () {
+        $(".active").show();
+        $(".hide-show").hide();
+    });
+});
 
