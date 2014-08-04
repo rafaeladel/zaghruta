@@ -46,7 +46,7 @@
                         if(login_response.status == "connected") {
                             FB.ui({
                                 method: 'apprequests',
-                                message: "sent you a request to try Zaghruta."
+                                message: "Take a look at Zaghruta."
                             }, function(response) {
                                 if (login_response.authResponse) {
                                     document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
