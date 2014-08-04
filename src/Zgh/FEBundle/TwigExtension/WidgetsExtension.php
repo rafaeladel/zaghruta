@@ -255,10 +255,8 @@ class WidgetsExtension extends \Twig_Extension
 
     public function getCategoriesButtons()
     {
-        $categories = $this->em->getRepository("ZghFEBundle:Category")->findAll();
-        return $this->env->render("@ZghFE/Partial/common/categories_buttons.html.twig", [
-            "categories" => $categories
-        ]);
+//        $categories = $this->em->getRepository("ZghFEBundle:Category")->findAll();
+        return $this->env->render("@ZghFE/Partial/common/categories_buttons.html.twig");
     }
 
     public function getName()

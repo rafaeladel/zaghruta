@@ -3,20 +3,20 @@
     <div class="iconGroup img-responsive visible-lg">
         <div style="position: relative">
             {#{% for category in categories %}#}
-                <a href="#" class="sprite-iconPlug"></a>
-                <a href="#" class="sprite-iconChair"></a>
-                <a href="#" class="sprite-iconCalendar"></a>
-                <a href="#" class="sprite-iconHome"></a>
-                <a href="#" class="sprite-iconGirl"></a>
-                <a href="#" class="sprite-iconAccessories"></a>
-                <a href="#" class="sprite-iconFashion"></a>
-                <a href="#" class="sprite-iconPhotographers"></a>
-                <a href="#" class="sprite-iconHotels"></a>
-                <a href="#" class="sprite-iconBouquet"></a>
-                <a href="#" class="sprite-iconCar"></a>
-                <a href="#" class="sprite-iconHoneymoon"></a>
-                <a href="#" class="sprite-iconCakes"></a>
-                <a href="#" class="sprite-iconMusic"></a>
+                {#<a href="#" class="sprite-{{ category.cssClass }}"></a>#}
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=interior-design" class="sprite-iconChair"></a>
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=wedding-planners" class="sprite-iconCalendar"></a>
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=home-appliances" class="sprite-iconHome"></a>
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=bridal-wear" class="sprite-iconGirl"></a>
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=jewlery" class="sprite-iconAccessories"></a>
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=fashion" class="sprite-iconFashion"></a>
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=photography" class="sprite-iconPhotographers"></a>
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=hotels-venues" class="sprite-iconHotels"></a>
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=florists" class="sprite-iconBouquet"></a>
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=limousines" class="sprite-iconCar"></a>
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=honeymoons" class="sprite-iconHoneymoon"></a>
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=cakes-catering" class="sprite-iconCakes"></a>
+                <a href="{{ url("zgh_fe.search.start_search") }}?category=entertainment" class="sprite-iconMusic"></a>
             {#{% endfor %}#}
         </div>
     </div>

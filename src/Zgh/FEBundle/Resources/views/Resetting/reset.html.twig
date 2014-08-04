@@ -3,27 +3,8 @@
 
 {% block content %}
     <div class="mainContent">
-        <div>
-            <div class="loginBG img-responsive visible-lg"></div>
-            <div class="iconGroup img-responsive visible-lg">
-                <div style="position: relative">
-                    <a href="#" class="sprite-iconPlug"></a>
-                    <a href="#" class="sprite-iconChair"></a>
-                    <a href="#" class="sprite-iconCalendar"></a>
-                    <a href="#" class="sprite-iconHome"></a>
-                    <a href="#" class="sprite-iconGirl"></a>
-                    <a href="#" class="sprite-iconAccessories"></a>
-                    <a href="#" class="sprite-iconFashion"></a>
-                    <a href="#" class="sprite-iconPhotographers"></a>
-                    <a href="#" class="sprite-iconHotels"></a>
-                    <a href="#" class="sprite-iconBouquet"></a>
-                    <a href="#" class="sprite-iconCar"></a>
-                    <a href="#" class="sprite-iconHoneymoon"></a>
-                    <a href="#" class="sprite-iconCakes"></a>
-                    <a href="#" class="sprite-iconMusic"></a>
-                </div>
-            </div>
-        </div>
+        {{ getCategoriesButtons()|raw }}
+
         {% block innerContent %}
             <div class="BGlogin img-responsive visible-lg" style="display: none !important;"></div>
             <section class="container">
