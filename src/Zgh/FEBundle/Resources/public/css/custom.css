@@ -2191,6 +2191,8 @@ footer a {
    font-size: 31px;
    line-height: 24px;
 }
+
+
 /*.iconHotels {
     background: url(../img/iconSpriteMenu.png) no-repeat -1px -1px;
 }
@@ -2366,6 +2368,11 @@ footer a {
     min-width: 175px;
 
 }
+
+.dropdown-menu.upper-menu {
+    min-width: 115px !important;
+}
+
 .btnBack {
     position: absolute;
     top:-25px;

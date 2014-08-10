@@ -14,6 +14,8 @@ group:
 # Security
 "Bad credentials": Invalid email or password
 "User account is disabled.": You must activate your account through the e-mail sent to you earlier.
+"Invalid CSRF token.": An error occured, please reload the page.
+
 security:
     login:
         username: "Username:"

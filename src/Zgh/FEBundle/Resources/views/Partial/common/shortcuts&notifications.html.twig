@@ -26,7 +26,7 @@
         <button type="button" class="btn btn-primary btn-circle  dropdown-toggle" data-toggle="dropdown">
             <span class="glyphicon glyphicon-cog"></span>
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu upper-menu">
                  <li><a href="{{ url(is_granted("ROLE_CUSTOMER") ? "zgh_fe.interest.get" : "zgh_fe.vendor_categories.get") }}"><span class="icon-interests"></span>{{ is_granted("ROLE_CUSTOMER") ? "Interests" : "Categories" }}</a></li>
                 <li><a href="{{ url("zgh_fe.settings.getSettings") }}" ><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
                 <li><a href="{{ url("fos_user_security_logout") }}"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>

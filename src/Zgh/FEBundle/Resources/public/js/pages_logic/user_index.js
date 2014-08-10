@@ -44,7 +44,7 @@ $(document).ready(function(){
         form.validate({
             rules:{
                 picture:{
-                    accept: "audio/*",
+                    accept: "image/*",
                     file_size: 2
                 }
             },

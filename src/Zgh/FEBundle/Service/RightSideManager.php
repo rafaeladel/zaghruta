@@ -19,20 +19,20 @@ class RightSideManager
     public function getRecommendedPeople(User $user, $limit = null)
     {
         $q = $this->em->createQuery("
-                select recUser, count(recUser.id) as recUserCount
-                from Zgh\FEBundle\Entity\User recUser
-                    left join recUser.followees recFollowUser
-                    with recFollowUser.follower in (
-                        select mutual.id
-                        from Zgh\FEBundle\Entity\FollowUsers currentFollowUser
-                        inner join currentFollowUser.followee mutual
-                        where currentFollowUser.follower = :user
-                    )
-                    where recUser.roles like '%ROLE_CUSTOMER%'
-                    and recUser.id != :user
-                group by recUser.id
-                order by recUserCount desc
-            ");
+            select recUser, count(recUser.id) as recUserCount
+            from Zgh\FEBundle\Entity\User recUser
+                left join recUser.followees recFollowUser
+                with recFollowUser.follower in (
+                    select mutual.id
+                    from Zgh\FEBundle\Entity\FollowUsers currentFollowUser
+                    inner join currentFollowUser.followee mutual
+                    where currentFollowUser.follower = :user
+                )
+                where recUser.roles like '%ROLE_CUSTOMER%'
+                and recUser.id != :user
+            group by recUser.id
+            order by recUserCount desc
+        ");
         if($limit)
         {
             $q->setMaxResults($limit);
