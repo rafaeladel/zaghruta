@@ -1,14 +1,15 @@
 $(document).ready(function () {
 
     var tab_hash = $(document.location).prop('hash');
-    var panel = $(tab_hash);
-    if (panel.length > 0) {
-        $(".resultWrapper").hide();
-        $(tab_hash).show();
-        var filtr_button = $(".filtr[data-id='" + tab_hash + "']");
-        $(".filtr").removeClass('active-filtration');
-        filtr_button.addClass("active-filtration");
-
+    if(tab_hash != "#_=_"){
+        var panel = $(tab_hash);
+        if (panel.length > 0) {
+            $(".resultWrapper").hide();
+            $(tab_hash).show();
+            var filtr_button = $(".filtr[data-id='" + tab_hash + "']");
+            $(".filtr").removeClass('active-filtration');
+            filtr_button.addClass("active-filtration");
+        }
     }
 
 
