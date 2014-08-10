@@ -51,11 +51,11 @@
 {% for product in wishlist.products %}
     <div class="product-G col-md-3 col-xs-6  col-sm-6">
         <div class="thumbnail clearfix">
-            <a rel="Product" data-fancybox-href="{{ url("zgh_fe.products.get_parent_content_widget", {"id": product.user.id, "product_id": product.id}) }}" href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}" class="textImageContainer fancybox  fancybox.ajax">
+            <a rel="Product" data-fancybox-href="{{ url("zgh_fe.products.get_parent_content_widget", {"id": product.user.id, "product_id": product.id}) }}" href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}" class="textImageContainer fancybox fancybox.ajax wishlist_img">
                 <div class="thumbOverlay img-responsive">
                     <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
                 </div>
-                <img class="img-responsive" src="{{ product.getWebPath() ? asset(product.getWebPath()) : asset("bundles/zghfe/img/thumb.jpg") }}">
+                <img class="img-responsive " src="{{ product.getWebPath() ? asset(product.getWebPath()) : asset("bundles/zghfe/img/thumb.jpg") }}">
             </a>
             <div class="productContent">
                 <a href="#"><h4>{{ product.name }}</h4></a>

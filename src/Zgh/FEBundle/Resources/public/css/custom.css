@@ -1099,16 +1099,16 @@ div.profile{
     color: #363636;
 }
 
-.Vendors-filtration, .products-filtration, .tips-filtration, .experince-filtration {
+.Vendors-filtration, .products-filtration, .tips-filtration, .experince-filtration, .tip-filtration {
     color: #363636;
     font-size: 14px;
-    margin-right: 10px;
+    margin-right: 7px;
     cursor: pointer;
     padding: 0 8px 0 4px;
     line-height: 23px
 }
 
-.Vendors-filtration:hover, .products-filtration:hover, .tips-filtration:hover, .experince-filtration:hover, .active-filtration {
+.Vendors-filtration:hover, .products-filtration:hover, .tips-filtration:hover, .experince-filtration:hover, .tip-filtration:hover, .active-filtration {
     background: #9dd8cf;
     border-radius: 20px;
     color: #fff;
@@ -1260,14 +1260,14 @@ footer a {
     margin: 0 0 5px;
 }
 .product-G .photoThumb{
-    height: 200px;
+    max-height: 200px;
     overflow: hidden;
     margin-right: 10px;
 }
 .product-G .photoThumb img {
     
-    height: 100%;
-    width: auto;
+    height:auto;
+    width: 100%;
 }
 
 .fr-suggest a, .fr-suggest a img {
@@ -3054,9 +3054,17 @@ min-height: 100px !important;
     margin: 5px 18px 0 0;
     font-size: 14px;   
 }
-.followingCont .effect a{
+.followingCont .effect .boy{
+    height: auto !important;
+}
+#connections .effect .boy{
     height: auto !important;
 }
 .modalContactUS .contactmail {
     color: #58bcad;
+}
+
+.wishlist_img img{
+    width: 100% !important;
+    display: block !important;
 }

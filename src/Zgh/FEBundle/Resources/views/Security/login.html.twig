@@ -34,7 +34,7 @@
                 if (response.status === 'connected') {
                     FB.login(function (response) {
                         if (response.authResponse) {
-                            document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                            document.location = "{{ url("zgh_fe.wall.index") }}";
                         } else {
                             alert('Cancelled.');
                         }
@@ -49,7 +49,7 @@
                                 message: "Take a look at Zaghruta."
                             }, function(response) {
                                 if (login_response.authResponse) {
-                                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                                        document.location = "{{ url("zgh_fe.wall.index") }}";
                                 }
                             });
                         }
