@@ -28,8 +28,14 @@ class RightSideManager
                     inner join currentFollowUser.followee mutual
                     where currentFollowUser.follower = :user
                 )
-                where recUser.roles like '%ROLE_CUSTOMER%'
-                and recUser.id != :user
+            where recUser not in (
+                select mutuall
+                from Zgh\FEBundle\Entity\FollowUsers curFollowUser
+                inner join curFollowUser.followee mutuall
+                where curFollowUser.follower = :user
+            )
+            and recUser.roles like '%ROLE_CUSTOMER%'
+            and recUser.id != :user
             group by recUser.id
             order by recUserCount desc
         ");
@@ -59,6 +65,13 @@ class RightSideManager
                   where u = :user
                 )
                 where v.id != :user
+                and v not in (
+                    select followed_users
+                    from Zgh\FEBundle\Entity\FollowUsers f_users
+                    inner join f_users.followee followed_users
+                    where f_users.follower = :user
+                )
+
                 and v.roles like '%ROLE_VENDOR%'
 
                 group by v.id
@@ -86,6 +99,12 @@ class RightSideManager
                 select v
                 from Zgh\FEBundle\Entity\User v
                 where v.id != :user
+                and v not in (
+                    select followed_users
+                    from Zgh\FEBundle\Entity\FollowUsers f_users
+                    inner join f_users.followee followed_users
+                    where f_users.follower = :user
+                )
                 and v.roles like '%ROLE_VENDOR%'
                 and v.created_at > :fresh
                 order by v.created_at desc

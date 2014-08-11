@@ -30,7 +30,6 @@
 
         function fb_login() {
             FB.getLoginStatus(function (response) {
-
                 if (response.status === 'connected') {
                     FB.login(function (response) {
                         if (response.authResponse) {

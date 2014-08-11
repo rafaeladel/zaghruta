@@ -3075,3 +3075,6 @@ min-height: 100px !important;
     width: 100% !important;
     display: block !important;
 }
+.notificationsWidget{
+    padding:0 !important;
+}

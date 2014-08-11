@@ -43,7 +43,7 @@
                                 src="{{ asset("bundles/zghfe/img/logo.png") }}"></a></div>
                 <div class="divider visible-sm"></div>
                 {{ getSearchWidget()|raw }}
-                <div class="notificationsWidget text-center-xs">
+                <div class="notificationsWidget col-md-2 text-center-xs">
                     {% if app.user %}
                         {{ render_esi(controller("ZghFEBundle:Default:getShortcutsAndNotification")) }}
                     {% else %}
