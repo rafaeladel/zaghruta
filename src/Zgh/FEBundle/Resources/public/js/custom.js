@@ -88,13 +88,14 @@ $(".contentInterests ul").addClass("col-md-12");
 $(".contentInterests ul li").addClass("col-md-3");
 
 $(document).ready(function () {
+    $("#intro_description").siblings().hide();
     $(".iconGroup a").mouseenter(function () {
         var secName = $(this).attr('class');
         $('#' + secName + '').siblings().hide();
         $('#' + secName + '').fadeIn(100);
     });
     $(".iconGroup a").mouseleave(function () {
-        $(".active").show();
+        $("#intro_description").show();
         $(".hide-show").hide();
     });
 });
