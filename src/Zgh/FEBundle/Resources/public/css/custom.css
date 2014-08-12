@@ -2358,6 +2358,9 @@ footer a {
     top: 50px;
     left: 50px;
 }
+.profilePic .imgProfile > a > img{
+    width: 100%;
+}
 
 .popover {
     border: none;

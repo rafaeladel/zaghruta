@@ -43,14 +43,14 @@
                     FB.login(function (response) {
                         var login_response = response;
                         if(login_response.status == "connected") {
-                            FB.ui({
-                                method: 'apprequests',
-                                message: "Take a look at Zaghruta."
-                            }, function(response) {
-                                if (login_response.authResponse) {
-                                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
-                                }
-                            });
+                        FB.ui({
+                            method: 'apprequests',
+                            message: "Take a look at Zaghruta."
+                        }, function(response) {
+                            if (login_response.authResponse) {
+                                document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                            }
+                        });
                         }
                     }, {scope: 'email user_birthday'});
                 }
