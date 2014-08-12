@@ -1,6 +1,7 @@
 <?php
 namespace Zgh\FEBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -13,6 +14,10 @@ class InterestType extends AbstractType
         $builder
             ->add("interests", "entity", array(
                     "class" => "ZghFEBundle:Category",
+                    "query_builder" => function(EntityRepository $r) {
+                            return $r->createQueryBuilder("c")
+                                        ->orderBy("c.name", "ASC");
+                        },
                     "property" => "name",
                     "multiple" => true,
                     "expanded" => true
