@@ -645,7 +645,7 @@ footer .container {
 }
 
 .textImageContainer {
-    height: auto;
+    height: 134px;
     position: relative;
     overflow: hidden;
     padding: 0;
@@ -2615,7 +2615,7 @@ border-top: none;
    bottom: 0;
    height: 42px;
    background: rgba(000, 000, 000, 0.5);
-   width: 95.6% !important;
+   width: 100% !important;
    padding: 12px;
 }
 .PopupPhotoContent .deteilsPhoto{
@@ -2885,7 +2885,10 @@ overflow: hidden;
 }
 
 .addWishlist{
-    margin-left: 10px;
+    margin-left: 85px;
+}
+.contentPopupWish .addWishlist{
+    margin-left: 43px !important;
 }
 .wishlistPopup input{
     margin-right: 5px;
@@ -3035,6 +3038,7 @@ font-size: 18px !important;
 overflow: hidden;
 background: #f6f6f6;
 min-height: 100px !important;
+padding: 0;
  
 }
 .contentImg img{
@@ -3043,6 +3047,12 @@ min-height: 100px !important;
  margin: 0 auto;
  min-width: none !important;
 
+}
+.popupWishlist{
+    padding:0 !important;
+}
+.popupWishlist  .deteilsProduct{
+    width:100% !important;
 }
 
 .dropzone_custom_error > p{
@@ -3080,4 +3090,7 @@ min-height: 100px !important;
 }
 .notificationsWidget{
     padding:0 !important;
+}
+.modal{
+    z-index: 10000 !important;
 }
