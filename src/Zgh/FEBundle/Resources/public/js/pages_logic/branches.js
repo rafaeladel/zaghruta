@@ -5,7 +5,16 @@ $(document).ready(function(){
 
         var btn = $(e.currentTarget);
         var form = btn.closest("form");
-        form.validate();
+        form.validate({
+            rules: {
+                "branch[address]": "required",
+                "branch[city]": "required"
+            },
+            messages: {
+                "branch[address]": "Address is required",
+                "branch[city]": "City is required"
+            }
+        });
         if(form.valid()) {
             btn.attr("disabled", "disabled");
             $.ajax({
