@@ -37,7 +37,24 @@ function singleUploadProduct() {
             var form = $(".product_browse").closest("form");
             form.find("[type='submit']").on("click", function (e) {
                 e.preventDefault();
-                form.validate();
+                form.validate({
+                    rules: {
+                        "product[name]": {
+                            required: true,
+                        },
+                        "product[price]": {
+                            number: true
+                        }
+                    },
+                    messages:{
+                        "product[name]": {
+                            required: "Product name is required"
+                        },
+                        "product[price]": {
+                            number: "Price must be a valid number"
+                        }
+                    }
+                });
                 if(form.valid()) {
                     if (myDropzone.getQueuedFiles().length > 0) {
                         $(e.target).attr("disabled", "disabled");
