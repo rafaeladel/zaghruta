@@ -32,10 +32,6 @@ class UserProfileController extends Controller
 {
     public function indexAction(Request $request, User $user)
     {
-//        $current_user = $this->getUser();
-//        if ($current_user->getFirstTime()) {
-//            return $this->forward("ZghFEBundle:UserProfile:getUserIntro");
-//        }
 
         $post_form = $this->createForm(new PostType(), new Post());
         return $this->render('ZghFEBundle:Default:user_index.html.twig', array(

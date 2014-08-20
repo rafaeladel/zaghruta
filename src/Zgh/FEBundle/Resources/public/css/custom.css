@@ -1080,9 +1080,8 @@ div.profile{
 }
 .iconStatus {
    vertical-align: middle;
-   position: absolute;
-   left: -27px;
-   top: 5px;
+   position: relative;
+   display: inline-block
 }
 
 
@@ -3093,4 +3092,12 @@ padding: 0;
 }
 .modal{
     z-index: 10000 !important;
+}
+.select2-drop{
+    z-index: 11000 !important;
+
+}
+.fancybox-nav{
+    display: block !important;
+    opacity: 1!important;
 }
