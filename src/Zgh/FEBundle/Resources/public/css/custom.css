@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: 'icomoon';
     src:url('../fonts/icomoon.eot?rwfypr');
@@ -3100,4 +3099,8 @@ padding: 0;
 .fancybox-nav{
     display: block !important;
     opacity: 1!important;
+}
+.fancybox-nav span{
+    visibility: visible !important;
+
 }
