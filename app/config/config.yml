@@ -35,7 +35,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ZghFEBundle, ZghMsgBundle ]
+    bundles:        [ ZghFEBundle, ZghMsgBundle, FOSMessageBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

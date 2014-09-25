@@ -19,7 +19,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "post",
-            url: url,
+            url: $(e.currentTarget).closest("form").attr("action"),
             data: $(e.currentTarget).closest("form").serialize(),
             success: function(data){
                 wrapper.load(url,function(){

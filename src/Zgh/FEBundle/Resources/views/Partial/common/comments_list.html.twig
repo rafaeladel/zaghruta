@@ -34,9 +34,13 @@
 
         <div class="content-post">
 
+            {#<p class="comment_content">#}
             <p>
-                {{ comment.content }}
+                {{ comment.content|nl2br|converturls }}
             </p>
+            {#<a href="#" class="comment_down">More</a>#}
+            {#<a href="#" class="comment_up">Less</a>#}
+            <br/>
             <span class="date-time comment_time">{{ comment.createdAt|date("D d Y - h:i A") }}</span>
 
             <div class="clearfix"></div>

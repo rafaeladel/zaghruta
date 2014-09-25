@@ -1,5 +1,14 @@
 {% extends 'ZghMsgBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+    "bundles/zghfe/plugins/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.css"
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+    {% endstylesheets %}
+{% endblock stylesheets %}
+
 {% block fos_message_content %}
     <div class="row">
         <div class="col-md-4 col-sm-5 hidden-xs sectionLeft">
@@ -42,7 +51,6 @@
                 <div class="listMessage">
                     {% if threads|length > 0 %}
                         {{ render_esi(controller("FOSMessageBundle:Message:thread", {"threadId": threads[0]})) }}
-                        {#{{ include("@ZghMsg/Message/thread.html.twig", {"thread": threads[0]}) }}#}
                     {% endif %}
                 </div>
             </div>
@@ -52,3 +60,26 @@
 {% block modals %}
     {{ message_user_popup("myModal")|raw }}
 {% endblock modals %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+    "bundles/zghfe/js/autosize.js"
+    "bundles/zghfe/plugins/select2-3.4.6/select2.js"
+    "bundles/thraceform/js/select2.js"
+    "bundles/zghfe/js/pages_logic/search.js"
+    "bundles/zghfe/plugins/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.concat.min.js"
+    "bundles/zghfe/js/base.js" %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script>
+        $(document).ready(function() {
+//            $(".sidebarMessage").mCustomScrollbar();
+//            $(".listMessage").mCustomScrollbar();
+        });
+
+    </script>
+
+{% endblock javascripts %}

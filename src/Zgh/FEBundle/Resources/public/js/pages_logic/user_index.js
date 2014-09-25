@@ -40,7 +40,7 @@ $(document).ready(function(){
 
     $("body").on("change", ".photo_btn", function(e){
         e.preventDefault();
-        var form = $(".picture_form");
+        var form = $(e.target).closest("form");
         form.validate({
             rules:{
                 picture:{
@@ -52,7 +52,6 @@ $(document).ready(function(){
                 form.submit();
             }
         });
-
         var wrapper = form.find(".thumbnailUpload");
         wrapper.show();
         var imgWrapper = wrapper.find("img");

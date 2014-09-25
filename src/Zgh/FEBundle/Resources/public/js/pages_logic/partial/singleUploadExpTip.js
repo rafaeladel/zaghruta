@@ -3,12 +3,13 @@ function singleUploadExpTip() {
         url: $(".exp_tip_browse").closest("form").attr("action"),
         parallelUploads: 1,
         maxFiles: 1,
-        maxFilesize: 2,
+        maxFilesize: 5,
         thumbnailWidth: 300,
         thumbnailHeight: 300,
         acceptedFiles: "image/*",
         autoProcessQueue: false,
         previewsContainer: ".photo_preview",
+        dictFileTooBig: "File is too big (max 5 MB)." ,
         previewTemplate: '<div class="dz-preview dz-file-preview">\
                                 <div class="dz-details">\
                                     <div class="dz-filename"><span data-dz-name></span></div>\

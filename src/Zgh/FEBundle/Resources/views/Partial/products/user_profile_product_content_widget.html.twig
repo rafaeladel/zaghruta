@@ -27,7 +27,18 @@
                 {% endif %}
             {% endif %}
         </div>
-        <div class="col-md-3 pull-right icons-G">
+
+
+        <p class="col-md-4">
+            <span>
+              {% for tag in product.tags %}
+                  {{ tag.name }}
+                  {% if loop.index < product.tags|length %} - {% endif %}
+              {% endfor %}
+            </span>
+        </p>
+
+        <div class="icons-G">
 
             {% if app.user and "ROLE_CUSTOMER" in app.user.roles %}
                 <button class="btn btn-danger btn-circle pull-right addWishlist tooltip" type="button"
@@ -81,24 +92,15 @@
         </div>
 
 
-        <p class="col-md-4">
-            <span>
-              {% for tag in product.tags %}
-                {{ tag.name }}
-                {% if loop.index < product.tags|length %} - {% endif %}
-              {% endfor %}
-            </span>
-        </p>
-
         <div class="clearfix"></div>
     </div>
     <div class="row contentProduct">
         <p class="col-md-12">
-            {{ product.description }}
+            {{ product.description|nl2br|converturls }}
         </p>
     </div>
     <div class="row">
-        <span class="col-md-4 price ">Price:<span> {{ product.price }} LE</span></span>
+        <span class="col-md-4 price ">Price:<span> {{ product.price }} EGP</span></span>
     </div>
     <div class="col-md-12">
         {{ include("@ZghFE/Partial/common/comments_section.html.twig", {"entity": product}) }}

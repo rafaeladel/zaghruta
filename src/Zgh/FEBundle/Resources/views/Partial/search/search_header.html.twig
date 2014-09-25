@@ -16,7 +16,7 @@
                         <ul class="dropdown-menu">
                             {% for subCategory in category.subCategories %}
                                 <li>
-                                    <a href="{{ url("zgh_fe.search.start_search", {"category": subCategory.nameSlug}) }}" class="" data-cat="{{ subCategory.id }}"><i class="iconMenu {{ subCategory.cssClass }} pull-left"></i> {{ subCategory.name }}</a>
+                                    <a href="{{ url("zgh_fe.search.start_search", {"category": subCategory.nameSlug}) }}" class="" data-cat="{{ subCategory.id }}">{{ subCategory.name }}</a>
                                 </li>
                             {% endfor %}
                         </ul>

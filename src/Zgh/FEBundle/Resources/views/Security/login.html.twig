@@ -270,12 +270,6 @@
                 }
             });
 
-            $(".iconGroup a").mouseenter(function () {
-                var secName = $(this).attr('class');
-                $('#' + secName + '').siblings().hide();
-                $('#' + secName + '').fadeIn(100);
-
-            });
             $(".reset_btn").on("click", function (e) {
                 e.preventDefault();
                 var form = $(e.target).closest("form");

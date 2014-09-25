@@ -17,13 +17,13 @@
                         {% if loop.index < product.tags|length %} - {% endif %}
                     {% endfor %}</h6>
                 <span class="date">{{ product.createdAt|date() }}</span>
-                <span class="price">Price:<span> {{ product.price }} LE</span></span>
+                <span class="price">Price:<span> {{ product.price }} EGP</span></span>
 
                 <p class="description">
-                    {{ product.description }}
+                    {{ product.description|nl2br }}
                 </p>
                 {% if app.user and app.user.id == product.user.id %}
-                <a class="moveEditProduct btn_Edit_Product col-md-12" target="_blank" href="{{ url("zgh_fe.products.get_edit", {"id": app.user.id, "product_id": product.id}) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                <a class="col-md-12" href="{{ url("zgh_fe.products.get_edit", {"id": app.user.id, "product_id": product.id}) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
                 {% endif %}
 
                 <div class="voting">

@@ -88,18 +88,18 @@ $(".contentInterests ul").addClass("col-md-12");
 $(".contentInterests ul li").addClass("col-md-3");
 
 $(document).ready(function () {
-    $("#intro_description").siblings().hide();
+    //$("#intro_description").siblings().hide();
 
-    $(".iconGroup a").mouseenter(function (e) {
-        var secName = $(e.currentTarget).attr('class');
+    $(".iconGroup a").mouseenter(function(){
+        var secName = $(this).attr('class');
         $('#' + secName + '').siblings().hide();
-        $('#' + secName + '').fadeIn(100, function(){
-            $("#intro_description").hide();
-        });
+        $('#' + secName + '').fadeIn(100);
     });
-    $(".iconGroup a").mouseleave(function () {
-        $("#intro_description").show();
+    $(".iconGroup a").mouseleave(function(){
+        $(".active").show();
         $(".hide-show").hide();
+        //$("#intro_description").show();
     });
+
 });
 

@@ -10,13 +10,13 @@ function photoRefresh(){
         targetUrl: UrlContainer.newPhoto,
         ajaxLoadUrl: UrlContainer.photoPartial,
         imageRequired: true,
+        numOfFiles: 5,
         additionalData: {
             "album_id": {
                 "required": true,
                 "message": "Please select an album"
             }
-        },
-        numOfFiles: 5
+        }
     });
     photo_uploader.init();
 
@@ -31,6 +31,7 @@ function photoRefresh(){
         targetUrl: UrlContainer.newAlbum,
         ajaxLoadUrl: UrlContainer.albumPartial,
         imageRequired: false,
+        numOfFiles: 10,
         additionalData: {
             "album_name": {
                 "required": true,
@@ -40,8 +41,7 @@ function photoRefresh(){
                 "required": true,
                 "message": "Please enter album info."
             }
-        },
-        numOfFiles: 5
+        }
     });
     album_uploader.init();
 }

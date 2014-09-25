@@ -16,7 +16,7 @@
                                 <ul class="dropdown-menu">
                                     {% for subCategory in category.subCategories %}
                                         <li>
-                                            <a href="#" class="searchOption {{ in_product ? "searchOptionProd" : "" }}" data-cat="{{ subCategory.nameSlug }}"><i class="iconMenu {{ subCategory.cssClass }} pull-left"></i> {{ subCategory.name }}</a>
+                                            <a href="#" class="searchOption {{ in_product ? "searchOptionProd" : "" }}" data-cat="{{ subCategory.nameSlug }}">{{ subCategory.name }}</a>
                                         </li>
                                     {% endfor %}
                                 </ul>

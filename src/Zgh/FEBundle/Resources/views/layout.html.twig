@@ -114,15 +114,19 @@
 
         $(document).ready(function () {
 
+            $("body").on("click", ".comment_down, .comment_up", function(e){
+                e.preventDefault();
+                $(".comment_content").toggleClass("show");
+                $(".comment_up").toggle();
+                $(".comment_down").toggle();
+            });
+
 //            $("body").on("click", ".openExp", function(e){
 //                e.preventDefault();
 //                var url = $(e.currentTarget).attr("href");
 //                window.location.href = url;
 //                document.pushState(null, null, url);
 //            });
-
-
-
 
 
             $("body").on("click", ".reset_photo", function(e){

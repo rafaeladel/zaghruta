@@ -2509,7 +2509,7 @@ border-top: none;
  margin: 0 auto;
 }
 .fancybox-inner{
-  min-width: 500px;
+  min-width: 740px;
   width: 100% !important;}
 
 .ZaghrutaTitle{
@@ -3104,3 +3104,27 @@ padding: 0;
     visibility: visible !important;
 
 }
+
+.comment_content {
+    height: 67px !important;
+    overflow: hidden !important;
+}
+
+.show {
+    height:  auto !important;
+    overflow: visible !important;
+}
+
+.comment_up {
+    display: none;
+}
+
+.contentPopupWish .icons-G{
+    width: 20%;
+    display: block;
+    float: right;
+}
+
+/*.listMessage {*/
+    /*max-height: 500px;*/
+/*}*/

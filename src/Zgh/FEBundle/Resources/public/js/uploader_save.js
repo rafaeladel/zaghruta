@@ -67,11 +67,12 @@ function Uploader(params)
                     }
                 });
                 myDropzone.on("addedfile", function (file) {
-                    if(this.files.length > _this.numOfFiles)
-                    {
-                        this.removeFile(file);
+                    if(this.files.length > _this.numOfFiles) {
+                        this.removeFile(file); 
+                    } else {
+                        $("#"+_this.modalID).find(".general_errors").hide();
                     }
-                    $("#"+_this.modalID).find("."+_this.saveButtonClass).removeAttr("disabled", "disabled");
+                    $("#"+_this.modalID).find("."+_this.saveButtonClass).removeAttr("disabled");
                 });
 
                 myDropzone.on("removedfile", function (file) {
@@ -87,7 +88,15 @@ function Uploader(params)
                     }
                 });
 
+
+                myDropzone.on("maxfilesexceeded", function(file, msg) {
+                    $("#"+_this.modalID).find(".general_errors").show().text("You cannot upload more than "+ _this.numOfFiles +" photos at a time.");
+                    
+                    $("#"+_this.modalID).find("."+_this.saveButtonClass).removeAttr("disabled");
+                });
+
                 myDropzone.on("error", function (file, msg) {
+                    // alert(msg);
                     $("#"+_this.modalID).find("."+_this.saveButtonClass).attr("disabled", "disabled");
                 });
 
@@ -95,7 +104,8 @@ function Uploader(params)
             url: _this.targetUrl,
             parallelUploads: _this.numOfFiles,
             maxFiles: _this.numOfFiles,
-            maxFilesize: 2,
+            maxFilesize: 5,
+            dictFileTooBig: "File is too big (max 5 MB)." ,
             thumbnailWidth: 300,
             thumbnailHeight: 300,
             acceptedFiles: "image/*",

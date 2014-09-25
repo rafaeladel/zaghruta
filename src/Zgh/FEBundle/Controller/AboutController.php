@@ -65,8 +65,9 @@ class AboutController extends Controller
                 if ($target_user_info instanceof UserInfo ) {
 
                     //Setting the other side relationship info
-                    $target_user_info->setStatus("Single");
-                    $target_user_info->setRelationshipUser(null);
+//                    $target_user_info->setStatus("Single");
+                    $target_user_info->setRelationshipUser
+                    (null);
                     $this->getDoctrine()->getManager()->persist($target_user_info);
 
                     $notification_ent = $this->getDoctrine()->getRepository("ZghFEBundle:Notification")->findOneBy(["other_end" => $user_info->getUser()]);

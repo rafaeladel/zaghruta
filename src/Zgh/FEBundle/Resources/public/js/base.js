@@ -39,6 +39,10 @@ $(document).ready(function () {
 
     $(document).on("ajaxSuccess", function (e) {
         ThraceForm.select2();
+        if($("body").find(".post").length == 0)
+        {
+            $("body").find(".load-more").remove();
+        }
     });
 
 });

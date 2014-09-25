@@ -3,23 +3,24 @@ function singleUploadProduct() {
         url: $(".product_browse").closest("form").attr("action"),
         parallelUploads: 1,
         maxFiles: 1,
-        maxFilesize: 2,
+        maxFilesize: 5,
         thumbnailWidth: 300,
         thumbnailHeight: 300,
         acceptedFiles: "image/*",
         autoProcessQueue: false,
         previewsContainer: ".photo_preview",
+        dictFileTooBig: "File is too big (max 5 MB)." ,
         previewTemplate: '<div class="dz-preview dz-file-preview">\
-                                <div class="dz-details">\
-                                    <div class="dz-filename"><span data-dz-name></span></div>\
-                                    <div class="dz-size" data-dz-size></div>\
-                                    <img data-dz-thumbnail />\
-                                </div>\
-                                <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>\
-                                <a href="#" data-dz-remove>Delete</a>\
-                                <div class="dz-error-message custom_dpz_error"><span data-dz-errormessage></span></div>\
+                            <div class="dz-details">\
+                                <div class="dz-filename"><span data-dz-name></span></div>\
+                                <div class="dz-size" data-dz-size></div>\
+                                <img data-dz-thumbnail />\
                             </div>\
-                            ',
+                            <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>\
+                            <a href="#" data-dz-remove>Delete</a>\
+                            <div class="dz-error-message custom_dpz_error"><span data-dz-errormessage></span></div>\
+                        </div>\
+                        ',
         init: function () {
             var myDropzone = this;
 

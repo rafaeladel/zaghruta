@@ -12,8 +12,9 @@
 
                 <div class="col-md-3 hidden-xs hidden-sm">
                     <div class="companyData">
+                        <a href="{{ url("zgh_fe.user_profile.index", {"id": product.user.id }) }}">
                         <img src="{{ asset(product.user.profilePhoto.getThumbWebPath()) }}">
-
+                        </a>
                         <h2 class="text-center"><a href="{{ url("zgh_fe.user_profile.index", {"id": product.user.id}) }}">{{ product.user.firstname }}</a></h2>
 
                         {{ renderFollow(product.user,"margin-bottom") }}
