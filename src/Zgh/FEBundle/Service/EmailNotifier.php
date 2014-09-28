@@ -128,7 +128,7 @@ class EmailNotifier
     {
         $message = \Swift_Message::newInstance()
             ->setSubject("Email change confirmation")
-            ->setFrom("notifications@zaghruta.com")
+            ->setFrom("change_email@zaghruta.com")
             ->setTo($user->getEmail())
             ->setBody(
                 $this->templating->render("@ZghFE/Default/email_change_confirmation.txt.twig", [

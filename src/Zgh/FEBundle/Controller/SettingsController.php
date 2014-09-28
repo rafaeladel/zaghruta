@@ -4,6 +4,7 @@ namespace Zgh\FEBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Form\VendorEmailType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -60,12 +61,16 @@ class SettingsController extends Controller
     }
 
     /**
-     * @ParamConverter("user", class="ZghFEBundle:User", options={"mapping": {"token": "new_email_token"} })
-     * @param User $user
+     * @param $token
+     * @internal param User $user
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function activateEmailAction(User $user)
+    public function activateEmailAction($token)
     {
+        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->findOneByNewEmailToken($token);
+        if(!$user) {
+            throw new NotFoundHttpException();
+        }
         $user->setEmail($user->getNewEmail());
         $user->setNewEmailToken(null);
         $this->getDoctrine()->getManager()->persist($user);
