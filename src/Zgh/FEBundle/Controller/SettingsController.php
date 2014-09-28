@@ -67,7 +67,9 @@ class SettingsController extends Controller
      */
     public function activateEmailAction($token)
     {
-        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->findOneByNewEmailToken($token);
+        $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->findOneBy([
+            "new_email_token" =>  $token
+        ]);
         if(!$user) {
             throw new NotFoundHttpException();
         }
