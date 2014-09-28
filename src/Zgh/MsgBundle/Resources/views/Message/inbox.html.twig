@@ -4,6 +4,7 @@
     {{ parent() }}
     {% stylesheets
     "bundles/zghfe/plugins/malihu-custom-scrollbar-plugin-master/jquery.mCustomScrollbar.css"
+    filter="cssrewrite"
     %}
     <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
     {% endstylesheets %}
@@ -76,8 +77,7 @@
 
     <script>
         $(document).ready(function() {
-//            $(".sidebarMessage").mCustomScrollbar();
-//            $(".listMessage").mCustomScrollbar();
+
         });
 
     </script>

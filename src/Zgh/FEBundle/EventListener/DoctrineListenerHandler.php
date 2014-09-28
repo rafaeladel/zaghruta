@@ -147,6 +147,7 @@ class DoctrineListenerHandler implements EventSubscriber
             if ($entity instanceof VendorInfo) {
                 $user = $this->em->getRepository("ZghFEBundle:User")->find($entity->getUser()->getId());
                 $user->setFirstname($entity->getCompanyName());
+                $user = $this->em->merge($user);
                 $this->persistAssoc($user);
             }
 

@@ -2,6 +2,14 @@
 {% block stylesheets %}
     {{ parent() }}
 {% endblock stylesheets %}
+
+{% block meta_tags %}
+    <meta property="og:title" content="Zaghruta - {{ user.fullname }} products - {{ product.name }}" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:description" content="{{ product.description }}" />
+    <meta property="og:image" content="{{ asset(product.getThumbWebPath()) }}" />
+{% endblock meta_tags %}
+
 {% block title %}{{ product.name }} | Zaghruta{% endblock title %}
 
 {% block content %}

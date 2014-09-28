@@ -12,4 +12,12 @@
         <default key="_controller">ZghFEBundle:Settings:postBasicInfo</default>
     </route>
 
+    <route id="zgh_fe.settings.postChangeEmail" pattern="/settings/changeEmail" methods="post">
+        <default key="_controller">ZghFEBundle:Settings:postChangeEmail</default>
+    </route>
+
+    <route id="zgh_fe.settings.activate_email" pattern="/settings/activate_email/{token}">
+        <default key="_controller">ZghFEBundle:Settings:activateEmail</default>
+    </route>
+
 </routes>

@@ -5,6 +5,7 @@ use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
+use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Model\Event\NotifyCommentEvent;
 use Zgh\FEBundle\Model\Event\NotifyFollowEvent;
 use Zgh\FEBundle\Model\Event\NotifyFollowRequestEvent;
@@ -112,6 +113,27 @@ class EmailNotifier
                 $this->templating->render("@ZghFE/Default/notification_email.txt.twig", [
                     "notification_type" => $subject,
                     "notification_body" => $notification_body
+                ]),
+                'text/html'
+            );
+
+        try {
+            $this->mailer->send($message);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public  function sendEmailChangeConfirmation(User $user, $conf_email)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject("Email change confirmation")
+            ->setFrom("notifications@zaghruta.com")
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->templating->render("@ZghFE/Default/email_change_confirmation.txt.twig", [
+                    "email_body" => sprintf("Please click on the link below to confirm that %s is your desired email.", $user->getNewEmail()),
+                    "conf_email" => $conf_email
                 ]),
                 'text/html'
             );

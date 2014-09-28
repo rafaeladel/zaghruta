@@ -3,6 +3,13 @@
     {{ parent() }}
 
 {% endblock stylesheets %}
+{% block meta_tags %}
+    {#{% if app.request.attributes.get() %}#}
+    <meta property="og:title" content="Zaghruta - {{ user.fullname }}" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:description" content="Zaghruta, It's all about weddings" />
+    <meta property="og:image" content="{{ asset(user.profilePhoto.getThumbWebPath()) }}" />
+{% endblock meta_tags %}
 {% block title %}{{ user.fullname }} | Zaghruta{% endblock title %}
 
 {% block content %}
