@@ -77,7 +77,7 @@ class SettingsController extends Controller
         $user->setNewEmailToken(null);
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush($user);
-        return new RedirectResponse($this->generateUrl("zgh_fe.user_profile.index"));
+        return new RedirectResponse($this->generateUrl("zgh_fe.user_profile.index", ["id" => $user->getId()]));
     }
 
 }
