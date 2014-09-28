@@ -74,10 +74,11 @@ class SettingsController extends Controller
             throw new NotFoundHttpException();
         }
         $user->setEmail($user->getNewEmail());
+        $user->setNewEmail(null);
         $user->setNewEmailToken(null);
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush($user);
-        return new RedirectResponse($this->generateUrl("zgh_fe.user_profile.index", ["id" => $user->getId()]));
+        return new RedirectResponse($this->generateUrl("zgh_fe.wall.index"));
     }
 
 }
