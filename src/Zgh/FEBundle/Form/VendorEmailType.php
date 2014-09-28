@@ -26,6 +26,7 @@ class VendorEmailType extends AbstractType
         $resolver->setDefaults(array(
             "data_class" => 'Zgh\FEBundle\Entity\User',
             "cascade_validation" => true,
+            "validation_groups" => ["change_email"]
         ));
     }
 
