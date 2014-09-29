@@ -71,7 +71,7 @@ $(document).ready(function () {
         },
         theme: "dark",
         mouseWheel:{
-            scrollAmount: auto
+            scrollAmount: "auto"
         }
 
     });

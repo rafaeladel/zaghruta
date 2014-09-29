@@ -25,7 +25,7 @@ function Uploader(params)
             init: function(){
                 var myDropzone = this;
                 this.on("success", function(file, data) {
-                    refresh_uploader(_this.modalID, _this.listBtnID, _this.listWrapperClass, _this.ajaxLoadUrl, _this.saveButtonClass);
+                    //refresh_uploader(_this.modalID, _this.listBtnID, _this.listWrapperClass, _this.ajaxLoadUrl, _this.saveButtonClass);
                 });
 
 //                $("body").off("click", "."+_this.saveButtonClass, false);
