@@ -2,6 +2,14 @@
 {% block stylesheets %}
     {{ parent() }}
 {% endblock stylesheets %}
+
+{% block meta_tags %}
+    <meta property="og:title" content="Zaghruta - {{ user.fullname }} tips - {{ tip.title }}" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:description" content="{{ tip.content }}" />
+    <meta property="og:image" content="{{ tip.getWebPath ? asset(tip.getWebPath) : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}" />
+{% endblock meta_tags %}
+
 {% block title %}{{ tip.title }} | Zaghruta{% endblock title %}
 
 {% block content %}

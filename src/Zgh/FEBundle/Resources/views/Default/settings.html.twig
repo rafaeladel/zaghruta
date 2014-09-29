@@ -103,9 +103,35 @@
                                     </div>
                                     <button class="btn btn-wide btn-primary pull-right" type="submit">Save</button>
                                     {% for msg in app.session.flashBag.get("notice") %}
-                                        <span>{{ msg }}</span>
+                                        <span class="alert alert-info">{{ msg }}</span>
                                     {% endfor %}
                                 </form>
+                                {% endif %}
+                                {% if is_granted("ROLE_VENDOR") %}
+                                    <h4>Change Email</h4>
+                                    <form action="{{ url("zgh_fe.settings.postChangeEmail") }}" method="post" class="form-horizontal">
+                                        <div class="form-group formGroup">
+                                            {{ form_label(email_form.new_email, "Email:", {"label_attr": {"class":"col-sm-2 control-label"} }) }}
+                                            <div class="col-sm-4">
+                                                {{ form_widget(email_form.new_email, {"attr": {"class": "form-control"} }) }}
+                                                {{ form_errors(email_form.new_email) }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group formGroup">
+                                            {{ form_label(email_form.current_password, "", {"label_attr": {"class":"col-sm-2 control-label"} }) }}
+                                            <div class="col-sm-4">
+                                                {{ form_widget(email_form.current_password, {"attr": {"class": "form-control", "placeholder": "Current Password"} }) }}
+                                                {{ form_errors(email_form.current_password) }}
+
+                                            </div>
+                                        </div>
+                                        {% for msg in app.session.flashBag.get("email_notice") %}
+                                            <span>{{ msg }}</span>
+                                        {% endfor %}
+                                        <button class="btn btn-wide btn-primary pull-right" type="submit">Change Email</button>
+
+                                        {{ form_rest(email_form) }}
+                                    {{ form_end(email_form) }}
                                 {% endif %}
                                 {% if not is_granted("ROLE_FACEBOOK") %}
                                     <br/>

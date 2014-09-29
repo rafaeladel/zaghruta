@@ -71,6 +71,9 @@ class RegistrationController extends ContainerAware
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
                 return $response;
+            } else {
+                var_dump($form->getErrors());
+                die;
             }
         }
 

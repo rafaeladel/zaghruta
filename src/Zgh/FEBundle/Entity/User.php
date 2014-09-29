@@ -23,6 +23,12 @@ class User extends BaseUser implements ParticipantInterface
     protected $id;
 
     /**
+     * @ORM\Column(name="new_email", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(groups={"change_email"}, message="New Email is required")
+     */
+    protected $new_email;
+
+    /**
      * @ORM\OneToMany(targetEntity="Post", mappedBy ="user")
      */
     protected $posts;
@@ -173,6 +179,11 @@ class User extends BaseUser implements ParticipantInterface
      * @ORM\Column(type="boolean")
      */
     protected $emailNotification;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $new_email_token;
 
     /**
      * @return string
@@ -1066,5 +1077,51 @@ class User extends BaseUser implements ParticipantInterface
     public function setEmailNotificationValue()
     {
         $this->setEmailNotification(true);
+    }
+
+    /**
+     * Set new_email
+     *
+     * @param string $newEmail
+     * @return User
+     */
+    public function setNewEmail($newEmail)
+    {
+        $this->new_email = $newEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get new_email
+     *
+     * @return string 
+     */
+    public function getNewEmail()
+    {
+        return $this->new_email;
+    }
+
+    /**
+     * Set new_email_token
+     *
+     * @param string $newEmailToken
+     * @return User
+     */
+    public function setNewEmailToken($newEmailToken)
+    {
+        $this->new_email_token = $newEmailToken;
+
+        return $this;
+    }
+
+    /**
+     * Get new_email_token
+     *
+     * @return string 
+     */
+    public function getNewEmailToken()
+    {
+        return $this->new_email_token;
     }
 }

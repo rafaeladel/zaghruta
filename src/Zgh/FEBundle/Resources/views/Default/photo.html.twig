@@ -2,6 +2,14 @@
 {% block stylesheets %}
     {{ parent() }}
 {% endblock stylesheets %}
+
+{% block meta_tags %}
+    <meta property="og:title" content="Zaghruta - {{ user.fullname }} photos - {{ photo.caption }}" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:description" content="{{ photo.description }}" />
+    <meta property="og:image" content="{{ asset(photo.getThumbWebPath()) }}" />
+{% endblock meta_tags %}
+
 {% block title %}Photo | Zaghruta{% endblock title %}
 
 {% block content %}

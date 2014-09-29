@@ -1366,6 +1366,10 @@ footer a {
     margin-left: 15px;
 }
 
+.sidebarMessage {
+    max-height: 400px;
+}
+
 .sidebarMessage .data-reacted .btnMessages {
     position: absolute;
     right: 10px;
@@ -3111,7 +3115,7 @@ padding: 0;
 }
 
 .comment_content {
-    height: 67px !important;
+    height: 78px !important;
     overflow: hidden !important;
 }
 
@@ -3124,12 +3128,20 @@ padding: 0;
     display: none;
 }
 
+.comment_up, .comment_down {
+    font-weight: bold;
+}
+
 .contentPopupWish .icons-G{
     width: 20%;
     display: block;
     float: right;
 }
 
-/*.listMessage {*/
-    /*max-height: 500px;*/
-/*}*/
+.messagesWrapper {
+    max-height: 380px !important;
+}
+
+.sidebarMessage  {
+    max-height: 450px;
+}

@@ -2,6 +2,14 @@
 {% block stylesheets %}
     {{ parent() }}
 {% endblock stylesheets %}
+
+{% block meta_tags %}
+    <meta property="og:title" content="Zaghruta - {{ user.fullname }} experiences - {{ experience.title }}" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:description" content="{{ experience.content }}" />
+    <meta property="og:image" content="{{ experience.getWebPath ? asset(experience.getWebPath) : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}" />
+{% endblock meta_tags %}
+
 {% block title %}{{ experience.title }} | Zaghruta{% endblock title %}
 
 {% block content %}

@@ -4,12 +4,11 @@
     <!-- Meta information -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block meta_tags %}{% endblock meta_tags %}
     <!-- Title-->
     <title>{% block title %}Zaghruta your wedding planner guide{% endblock %}</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset("bundles/zghfe/img/favicon.ico") }}" />
     <script type="text/javascript" src="{{ asset("bundles/zghfe/js/modernizr.js") }}"></script>
-    <script type='text/javascript' src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
 
 
     {% block stylesheets %}

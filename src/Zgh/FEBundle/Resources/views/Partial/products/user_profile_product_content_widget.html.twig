@@ -5,7 +5,12 @@
 {% elseif not app.request.xmlHttpRequest and toggles["is_popup"] == false and toggles["is_inner_direct"] == true %}
     {% set layout = '@ZghFE/Partial/products/product_content_widget.html.twig' %}
 {% endif %}
-
+{% block meta_tags %}
+    <meta property="og:title" content="Zaghruta - {{ user.fullname }}" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:description" content="Zaghruta, It's all about weddings" />
+    <meta property="og:image" content="{{ asset(user.profilePhoto.getThumbWebPath()) }}" />
+{% endblock meta_tags %}
 {% extends layout %}
 {% block innerPartial %}
     <div class="row headerProduct">
