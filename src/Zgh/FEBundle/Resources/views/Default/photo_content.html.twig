@@ -1,5 +1,5 @@
 <div class="row {{ not is_popup ? "" : "PopupPhotoContent" }}">
-    <div class="col-md-12 resizePhoto">
+    <div class="col-md-12 resizePhoto contentImg">
         <img src="{{ asset(photo.getWebPath) }}" class="img-responsive" width="720" rel="photo" alt="">
         <div class="deteilsPhoto">  
            {% if app.user and photo.user.id == app.user.id %}
