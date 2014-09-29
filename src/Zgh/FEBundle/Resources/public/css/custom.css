@@ -1190,13 +1190,22 @@ div.profile{
     padding: 0;
 }
 
-.thumbOverlay > span {
+.thumbOverlay > span , .thumbOverlay > a {
     color: #fff;
     font-size: 25px;
     position: absolute;
     top: 50%;
     left: 50%;
     margin: -13px 0 0 -13px;
+}
+.openProduct{
+    left:40% !important;
+}
+.editProduct{
+    left: 60% !important;
+}
+.editProduct span{
+    font-size: 20px;
 }
 
 .photoGallery:hover .thumbOverlay {
@@ -2513,7 +2522,7 @@ border-top: none;
  margin: 0 auto;
 }
 .fancybox-inner{
-  min-width: 740px;
+  min-width: 715px;
   width: 100% !important;}
 
 .ZaghrutaTitle{
@@ -2621,7 +2630,7 @@ border-top: none;
    padding: 12px;
 }
 .PopupPhotoContent .deteilsPhoto{
-    width: 96% !important;
+    width: 100% !important;
 }
 .deteilsProduct h2{
     margin: 0;
@@ -2752,10 +2761,6 @@ margin-bottom: 15px !important;
 .fancybox-inner .btnEditProduct{
     display: none;
 }
-/*.fancybox-inner .product .btn-delete {
-    margin-left: 52px !important;
-    margin-top: 5px !important;
-}*/
 .fancybox-inner .product h2, .fancybox-inner .product .contentProduct p,.fancybox-inner .product  .price, .headerProduct>p {
     color:#fff !important;
 }
@@ -2889,9 +2894,9 @@ overflow: hidden;
 .addWishlist{
     margin-left: 85px;
 }
-.contentPopupWish .addWishlist{
+/*.contentPopupWish .addWishlist{
     margin-left: 43px !important;
-}
+}*/
 .wishlistPopup input{
     margin-right: 5px;
 }
