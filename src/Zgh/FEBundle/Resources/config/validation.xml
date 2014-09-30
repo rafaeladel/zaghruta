@@ -10,6 +10,10 @@
             <option name="fields">email</option>
             <option name="message">This email already exists.</option>
         </constraint>
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">new_email</option>
+            <option name="message">This email already exists.</option>
+        </constraint>
         <property name="email">
             <constraint name="Email" />
         </property>
