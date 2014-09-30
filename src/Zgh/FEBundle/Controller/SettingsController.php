@@ -43,6 +43,11 @@ class SettingsController extends Controller
         $email_form->handleRequest($request);
         if($email_form->isValid())
         {
+            $email_unique = $this->getDoctrine()->getRepository("ZghFEBundle:User")->findOneBy(["email" => $user->getNewEmail()]);
+            if($email_unique){
+                $this->get("session")->getFlashBag()->add("email_notice", "Email {$user->getNewEmail()} already selected by some user.");
+                return new RedirectResponse($this->generateUrl("zgh_fe.settings.getSettings"));
+            }
             $token_generator = $this->get("fos_user.util.token_generator");
             $user->setNewEmailToken($token_generator->generateToken());
             $this->get("fos_user.user_manager")->updateUser($user);
