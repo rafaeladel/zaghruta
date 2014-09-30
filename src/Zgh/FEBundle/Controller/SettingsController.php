@@ -46,7 +46,7 @@ class SettingsController extends Controller
             $token_generator = $this->get("fos_user.util.token_generator");
             $user->setNewEmailToken($token_generator->generateToken());
             $this->get("fos_user.user_manager")->updateUser($user);
-            $conf_email = $this->generateUrl("zgh_fe.settings.activate_email", ["token" => $user->getNewEmailToken() ]);
+            $conf_email = $this->generateUrl("zgh_fe.settings.activate_email", ["token" => $user->getNewEmailToken() ], true);
             $this->get("zgh_fe.email_notifier")->sendEmailChangeConfirmation($user, $conf_email);
             $this->get("session")->getFlashBag()->add("email_notice", "Check your old email {$user->getEmail()} for email change confirmation.");
             return new RedirectResponse($this->generateUrl("zgh_fe.settings.getSettings"));
