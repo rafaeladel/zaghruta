@@ -23,7 +23,7 @@ class User extends BaseUser implements ParticipantInterface
     protected $id;
 
     /**
-     * @ORM\Column(name="new_email", type="string", length=255, nullable=true)
+     * @ORM\Column(name="new_email", type="string", length=255, nullable=true, unique=true)
      * @Assert\NotBlank(groups={"change_email"}, message="New Email is required")
      */
     protected $new_email;
