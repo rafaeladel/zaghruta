@@ -73,6 +73,42 @@ class ZghThreadManager extends ThreadManager
             ;
     }
 
+    public function findOneThreadByRecipient($sender, $recipient)
+    {
+        $thread = $this->repository->createQueryBuilder('t')
+            ->innerJoin('t.metadata', 'tm')
+            ->innerJoin('tm.participant', 'p')
+
+            ->andWhere("t.createdBy = :createdBy")
+            ->setParameter("createdBy", $sender)
+
+            // the participant is in the thread participants
+            ->andWhere('p.id = :user')
+            ->setParameter('user', $recipient)
+
+            // the thread does not contain spam or flood
+            ->andWhere('t.isSpam = :isSpam')
+            ->setParameter('isSpam', false, \PDO::PARAM_BOOL)
+
+            // the thread is not deleted by this participant
+            ->andWhere('tm.isDeleted = :isDeleted')
+            ->setParameter('isDeleted', false, \PDO::PARAM_BOOL)
+
+            // sort by date of last message
+            ->innerJoin('t.messages', 'm')
+            ->orderBy('m.createdAt', 'DESC')
+            ->getQuery()
+            ->setMaxResults(1)
+            ->getResult()
+        ;
+
+        if(count($thread)) {
+            return $thread[0];
+        } else {
+            return null;
+        }
+    }
+
     public function findUnreadThreadMessagesCount(ParticipantInterface $participant, ThreadInterface $thread)
     {
         $results = $this->getUnreadThreadMessagesCount($participant, $thread)

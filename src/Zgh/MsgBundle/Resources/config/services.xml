@@ -16,6 +16,20 @@
             <argument type="service" id="zgh_message.message_manager" />
         </service>
 
+        <service id="zgh_message.thread_form_handler" class="Zgh\MsgBundle\FormHandler\ZghNewThreadMessageFormHandler" scope="request" public="true">
+            <argument type="service" id="request" />
+            <argument type="service" id="fos_message.composer" />
+            <argument type="service" id="fos_message.sender" />
+            <argument type="service" id="fos_message.participant_provider" />
+        </service>
+
+        <service id="zgh_message.message_form_handler" class="Zgh\MsgBundle\FormHandler\ZghReplyMessageFormHandler" scope="request" public="true">
+            <argument type="service" id="request" />
+            <argument type="service" id="fos_message.composer" />
+            <argument type="service" id="fos_message.sender" />
+            <argument type="service" id="fos_message.participant_provider" />
+        </service>
+
         <service id="zgh_message.message_manager" class="Zgh\MsgBundle\Entity\ZghMessageManager" public="false">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%fos_message.message_class%</argument>

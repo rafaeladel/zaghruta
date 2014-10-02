@@ -3,6 +3,7 @@
 namespace Zgh\MsgBundle\Controller;
 
 use FOS\MessageBundle\Model\ThreadInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\DependencyInjection\ContainerAware;
@@ -16,15 +17,24 @@ class MessageController extends ContainerAware
      *
      * @return Response
      */
-    public function inboxAction()
+    public function inboxAction(Request $request)
     {
         $container = $this->container;
         $threads = $container->get("fos_message.provider")->getRelatedThreads();
         $new_form = $container->get('fos_message.new_thread_form.factory')->create();
-        $formHandler = $container->get('fos_message.new_thread_form.handler');
+        $formHandler = $container->get('zgh_message.thread_form_handler');
 
-        if ($message = $formHandler->process($new_form)) {
-            return new RedirectResponse($this->container->get("router")->generate("fos_message_inbox"));
+        if($request->getMethod() == "POST") {
+            $recipient = $request->request->all()["message"]["recipient"];
+            $sender = $container->get("security.context")->getToken()->getUser();
+            $thread = $container->get("fos_message.thread_manager")->findOneThreadByRecipient($sender, $recipient);
+            if ($thread) {
+                $new_form = $container->get('fos_message.reply_form.factory')->create($thread);
+                $formHandler = $container->get('zgh_message.message_form_handler');
+            }
+            if ($message = $formHandler->process($new_form)) {
+                return new RedirectResponse($this->container->get("router")->generate("fos_message_inbox"));
+            }
         }
 
         return $this->container->get('templating')->renderResponse('FOSMessageBundle:Message:inbox.html.twig', array(
@@ -76,7 +86,6 @@ class MessageController extends ContainerAware
                 'thread' => $thread
             ));
     }
-
 
     /**
      * Deletes a thread

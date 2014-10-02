@@ -66,7 +66,7 @@
                 <a class="pull-left fancyboxArrow fancybox {{ "ROLE_CUSTOMER" in user.roles ? "img-circle" : "img-rounded" }} "
                    rel="profile" href="#profile_pic_popup">
                     <img alt=""
-                         src="{{ "ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(user.profilePhoto.getThumbWebPath) }}"
+                         src="{{ user.profilePhoto ?  asset(user.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : "#") }}"
                          class="media-object">
                 </a>
 
