@@ -3,7 +3,7 @@
     {% for user in users %}
         <div class="media profile effect col-sm-4">
             <a class="pull-left {{ "ROLE_VENDOR" in user.roles ? "img-rounded" : (user.userInfo.gender == 0 ? "profile-pic-boy img-circle" : "profile-pic-girl img-circle") }}" href="{{ url("zgh_fe.user_profile.index", {"id": user.id }) }}">
-                <img class="media-object" src="{{ "ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset(user.profilePhoto.getThumbWebPath) }}" alt="">
+                <img class="media-object" src="{{ user.profilePhoto ?  asset(user.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : "#") }}" alt="">
             </a>
 
             <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": user.id }) }}">{{ user.getFullname }}</a></h3>

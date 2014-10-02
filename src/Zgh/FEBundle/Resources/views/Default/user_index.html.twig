@@ -71,8 +71,7 @@
                 </a>
 
                 <div id="profile_pic_popup" style="display: none;">
-                    <img src="{{ "ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=500&height=500' : asset(user.profilePhoto.getWebPath) }}"
-                         alt="profile_photo"/>
+                    <img src="{{ user.profilePhoto ?  asset(user.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=500&height=500' : "#") }}" alt="profile_photo"/>
                 </div>
             </div>
             <h3>
