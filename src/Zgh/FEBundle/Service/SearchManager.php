@@ -25,6 +25,7 @@ class SearchManager
                 left join u.tips t
                 left join u.experiences ex
                 where u.firstname like :crit
+                or u.lastname like :crit
                 or pr.name like :crit
                 or t.title like :crit
                 or ex.title like :crit
@@ -80,6 +81,7 @@ class SearchManager
                 select u
                 from Zgh\FEBundle\Entity\User u
                 where u.firstname like :crit
+                or u.lastname like :crit
                 and u.roles like '%ROLE_CUSTOMER%'
             "
         );
@@ -96,6 +98,7 @@ class SearchManager
                 select u
                 from Zgh\FEBundle\Entity\User u
                 where u.firstname like :crit
+                or u.lastname like :crit
                 and u.roles like '%ROLE_VENDOR%'
             "
         );

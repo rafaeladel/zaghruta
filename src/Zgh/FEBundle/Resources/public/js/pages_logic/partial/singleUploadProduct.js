@@ -41,7 +41,7 @@ function singleUploadProduct() {
                 form.validate({
                     rules: {
                         "product[name]": {
-                            required: true,
+                            required: true
                         },
                         "product[price]": {
                             number: true

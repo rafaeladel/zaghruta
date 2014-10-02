@@ -58,7 +58,7 @@
                 <img class="img-responsive " src="{{ product.getWebPath() ? asset(product.getWebPath()) : asset("bundles/zghfe/img/thumb.jpg") }}">
             </a>
             <div class="productContent">
-                <a href="#"><h4>{{ product.name }}</h4></a>
+                <a href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}"><h4>{{ product.name }}</h4></a>
                 <span class="date">{{ product.createdAt|date() }}</span>
                 <span class="price">Price:<span> {{ product.price }}$</span></span>
 

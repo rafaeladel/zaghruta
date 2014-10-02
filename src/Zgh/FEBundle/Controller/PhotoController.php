@@ -90,6 +90,8 @@ class PhotoController extends Controller
 
     public function postPhotoAlbumDeleteAction(Request $request, Album $album)
     {
+//        var_dump($album);
+//        die;
         $em = $this->getDoctrine()->getManager();
         $em->remove($album);
         $em->flush();

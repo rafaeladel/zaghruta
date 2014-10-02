@@ -9,6 +9,7 @@
         </div>
         <div class="col-sm-8">
             <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": entry.id}) }}">{{ entry.fullname }}</a></h3>
+            {#{% set gender_class = "ROLE_VENDOR" in entry.roles ? "" : (entry.userInfo.gender == 0 ? "profile-pic-boy img-circle" : "profile-pic-girl img-circle") %}#}
             {{ renderFollow(entry, "btn-sm") }}
             <a href="{{ url("zgh_fe.user_profile.connections_partial", {"id": entry.id}) }}" class=" {{ "ROLE_VENDOR" in entry.roles ? "" : (entry.userInfo.gender == 0 ? "boy" : "girl") }}"> <span
                         class="glyphicon glyphicon-user"></span> <span class="followerStats">{{ getApprovedFollowings(entry)|length }}</span></a>

@@ -153,7 +153,7 @@ function validate(data, form)
         var element = form.find("[name='"+index+"']");
         var required = name.required;
         if(required){
-            if(element.val().length == 0){
+            if(element.val().trim().length == 0){
                 var message = name.message;
                 element.after("<p style='color: red!important; font-size: 11px!important;' class='error'>"+message+"</p>");
                 is_valid = false;
