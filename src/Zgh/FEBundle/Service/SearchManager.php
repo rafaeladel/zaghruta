@@ -80,8 +80,8 @@ class SearchManager
             "
                 select u
                 from Zgh\FEBundle\Entity\User u
-                where u.firstname like :crit
-                or u.lastname like :crit
+                where (u.firstname like :crit
+                or u.lastname like :crit)
                 and u.roles like '%ROLE_CUSTOMER%'
             "
         );
@@ -97,8 +97,8 @@ class SearchManager
             "
                 select u
                 from Zgh\FEBundle\Entity\User u
-                where u.firstname like :crit
-                or u.lastname like :crit
+                where (u.firstname like :crit
+                or u.lastname like :crit)
                 and u.roles like '%ROLE_VENDOR%'
             "
         );
