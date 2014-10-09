@@ -5,6 +5,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Form\VendorEmailType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -70,7 +72,7 @@ class SettingsController extends Controller
      * @internal param User $user
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function activateEmailAction($token)
+    public function activateEmailAction(Request $request, $token)
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->findOneBy([
             "new_email_token" =>  $token
@@ -83,6 +85,17 @@ class SettingsController extends Controller
         $user->setNewEmailToken(null);
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush($user);
+        return $this->autoLoginUser($request, $user);
+    }
+
+    private function autoLoginUser(Request $request, User $user)
+    {
+        $firewall = $this->get("service_container")->getParameter("fos_user.firewall_name");
+        $token = new UsernamePasswordToken($user, $user->getPassword(), $firewall, $user->getRoles());
+        $this->get("security.context")->setToken($token);
+
+        $event = new InteractiveLoginEvent($request, $token);
+        $this->get("event_dispatcher")->dispatch("security.authentication", $event);
         return new RedirectResponse($this->generateUrl("zgh_fe.wall.index"));
     }
 
