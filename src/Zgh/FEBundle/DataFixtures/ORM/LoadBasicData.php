@@ -1,31 +1,20 @@
 <?php
+namespace Zgh\FEBundle\DataFixtures\ORM;
 
-namespace Application\Migrations;
-
-use Doctrine\DBAL\Migrations\AbstractMigration;
-use Doctrine\DBAL\Schema\Schema;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Doctrine\Common\DataFixtures\Doctrine;
+use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
 use Zgh\FEBundle\Entity\Category;
 
-/**
- * Auto-generated Migration: Please modify to your needs!
- */
-class Version20140726171030 extends AbstractMigration implements ContainerAwareInterface
+class LoadBasicData implements FixtureInterface
 {
+
     /**
-     * @var ContainerInterface
+     * Load data fixtures with the passed EntityManager
+     * @param ObjectManager $manager
      */
-    protected $container;
-
-    public function setContainer(ContainerInterface $container = null)
+    function load(ObjectManager $manager)
     {
-        $this->container = $container;
-    }
-
-    public function up(Schema $schema)
-    {
-        $em = $this->container->get("doctrine.orm.entity_manager");
         $categories_meta = [
             [
                 "name" => "Cakes & Catering",
@@ -38,7 +27,8 @@ class Version20140726171030 extends AbstractMigration implements ContainerAwareI
                         "name" => "Food & Catering",
                         "css_class" => "icon-cakeCatering",
                     ],
-                ]
+                ],
+                "is_hidden" => false
             ],
             [
                 "name" => "Photography",
@@ -52,7 +42,8 @@ class Version20140726171030 extends AbstractMigration implements ContainerAwareI
                         "name" => "Videography",
                         "css_class" => "icon-photography"
                     ]
-                ]
+                ],
+                "is_hidden" => false
             ],
             [
                 "name" => "Beauty & Health",
@@ -69,7 +60,8 @@ class Version20140726171030 extends AbstractMigration implements ContainerAwareI
                         "name" => "Beauty Centers",
                         "css_class" => "icon-Health",
                     ],
-                ]
+                ],
+                "is_hidden" => false
             ],
             [
                 "name" => "Fashion",
@@ -78,11 +70,13 @@ class Version20140726171030 extends AbstractMigration implements ContainerAwareI
                     [
                         "name" => "Bridal Wear",
                         "css_class" => "icon-fashion",
-                    ],                    [
+                    ],
+                    [
                         "name" => "Groom Wear",
                         "css_class" => "icon-fashion",
                     ]
-                ]
+                ],
+                "is_hidden" => false
             ],
             [
                 "name" => "Furniture",
@@ -100,8 +94,64 @@ class Version20140726171030 extends AbstractMigration implements ContainerAwareI
                         "name" => "Furniture",
                         "css_class" => "icon-furniture",
                     ]
-                ]
-            ]
+                ],
+                "is_hidden" => false
+            ],
+            [
+                "name" => "Hotels & Venues",
+                "css_class" => "icon-hotelsVenues",
+                "sub" => [],
+                "is_hidden" => false
+            ],
+            [
+                "name" => "Limousines",
+                "css_class" => "icon-limousines",
+                "sub" => [],
+                "is_hidden" => true
+            ],
+            [
+                "name" => "Home Appliances",
+                "css_class" => "icon-homeAppliances",
+                "sub" => [],
+                "is_hidden" => true
+            ],
+            [
+                "name" => "Entertainment",
+                "css_class" => "icon-entertainment",
+                "sub" => [],
+                "is_hidden" => false
+            ],
+            [
+                "name" => "Wedding Planners",
+                "css_class" => "icon-weddingPlanners",
+                "sub" => [],
+                "is_hidden" => false
+            ],
+            [
+                "name" => "Jewlery",
+                "css_class" => "icon-jewlery",
+                "sub" => [],
+                "is_hidden" => false
+            ],
+            [
+                "name" => "Honeymoons",
+                "css_class" => "icon-honeymoons",
+                "sub" => [],
+                "is_hidden" => false
+            ],
+            [
+                "name" => "Real Estate",
+                "css_class" => "icon-realEstate",
+                "sub" => [],
+                "is_hidden" => true
+            ],
+            [
+                "name" => "Florists",
+                "css_class" => "icon-florists",
+                "sub" => [],
+                "is_hidden" => false
+            ],
+
         ];
 
         foreach($categories_meta as $main_category)
@@ -109,6 +159,7 @@ class Version20140726171030 extends AbstractMigration implements ContainerAwareI
             $category = new Category();
             $category->setName($main_category["name"]);
             $category->setCssClass($main_category["css_class"]);
+            $category->setIsHidden($main_category["is_hidden"]);
 
             foreach($main_category["sub"] as $sub_category_meta)
             {
@@ -120,29 +171,11 @@ class Version20140726171030 extends AbstractMigration implements ContainerAwareI
                 $sub_category = new Category();
                 $sub_category->setName($sub_category_meta["name"]);
                 $sub_category->setCssClass($sub_category_meta["css_class"]);
+                $sub_category->setIsHidden($main_category["is_hidden"]);
                 $category->addSubCategory($sub_category);
             }
-            $em->persist($category);
+            $manager->persist($category);
         }
-        $em->flush();
-    }
-
-    public function down(Schema $schema)
-    {
-        $em = $this->container->get("doctrine.orm.entity_manager");
-        $categories = $em->getRepository("ZghFEBundle:Category")->findAll();
-        if($categories){
-            foreach($categories as $category) {
-                $category->setParentCategory(null);
-                $em->persist($category);
-            }
-            $em->flush();
-
-            foreach($categories as $category) {
-                $em->remove($category);
-            }
-            $em->flush();
-
-        }
+        $manager->flush();
     }
 }

@@ -8,7 +8,7 @@
             <li><a href="{{ url("zgh_fe.search.start_search", {"category": "all"}) }}"><i class="icon-list-alt"></i>Everything</a>
             </li>
             <li class="divider"></li>
-            {% for category in categories if category.parentCategory|length == 0 or category.id == category.parentCategory.id  %}
+            {% for category in categories if not category.isHidden and (category.parentCategory|length == 0 or category.id == category.parentCategory.id) %}
                 <li {{ category.subCategories|length > 0 ? 'class="dropdown-submenu"' : '' }}>
                     <a href="{{ url("zgh_fe.search.start_search", {"category": category.nameSlug}) }}" class="" data-cat="{{ category.id }}">
                         <i class="iconMenu {{ category.cssClass }} pull-left"></i>{{ category.name }}</a>
