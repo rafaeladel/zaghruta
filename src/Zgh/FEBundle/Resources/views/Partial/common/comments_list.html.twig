@@ -34,15 +34,16 @@
 
         <div class="content-post">
 
-            {#<p class="comment_content">#}
             <p class="{{ comment.content|length > 300 ? "comment_content" : "" }}">
                 {{ comment.content|nl2br|converturls }}
             </p>
-            {% if comment.content|length > 300 %}
-                <a href="#" class="comment_down">More</a>
-                <a href="#" class="comment_up">Less</a>
-            {% endif %}
             <br/>
+            {% if comment.content|length > 300 %}
+                <div class="content_togglers">
+                    <a href="#" class="comment_down">More</a>
+                    <a href="#" class="comment_up">Less</a>
+                </div>
+            {% endif %}
             <span class="date-time comment_time">{{ comment.createdAt|date("D d Y - h:i A") }}</span>
 
             <div class="clearfix"></div>

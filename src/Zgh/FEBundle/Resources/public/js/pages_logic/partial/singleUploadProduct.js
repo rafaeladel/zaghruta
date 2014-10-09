@@ -44,7 +44,8 @@ function singleUploadProduct() {
                             required: true
                         },
                         "product[price]": {
-                            number: true
+                            number: true,
+                            min: 1
                         }
                     },
                     messages:{
@@ -52,7 +53,8 @@ function singleUploadProduct() {
                             required: "Product name is required"
                         },
                         "product[price]": {
-                            number: "Price must be a valid number"
+                            number: "Price must be a valid number",
+                            min: "Price must be a positive number"
                         }
                     }
                 });

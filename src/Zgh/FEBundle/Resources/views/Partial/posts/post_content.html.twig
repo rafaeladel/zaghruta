@@ -2,10 +2,16 @@
 {% set content_type = data["type"] %}
 
 <div class="content-post postContent">
-    <p>
+    <p class="{{ post.content|length > 300 ? "post_content" : "" }}">
         {{ post.content|raw|nl2br|converturls }}
     </p>
-
+    {% if post.content|length > 300 %}
+        <br />
+        <div class="content_togglers">
+            <a href="#" class="post_down">More</a>
+            <a href="#" class="post_up">Less</a>
+        </div>
+    {% endif %}
     {% if content_type == 2 %}
         <a class="fancybox fancyboxArrow" href="{{ asset(post.getWebPath) }}"><img alt="" src="{{ asset(post.getThumbWebPath) }}" class="img-responsive margin-md"> </a>
     {% elseif content_type == 1 %}

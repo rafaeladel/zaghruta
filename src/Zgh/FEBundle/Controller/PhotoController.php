@@ -90,8 +90,6 @@ class PhotoController extends Controller
 
     public function postPhotoAlbumDeleteAction(Request $request, Album $album)
     {
-//        var_dump($album);
-//        die;
         $em = $this->getDoctrine()->getManager();
         $em->remove($album);
         $em->flush();
@@ -104,7 +102,7 @@ class PhotoController extends Controller
 //        var_dump($request->request->all());
 //        die;
         $em = $this->getDoctrine()->getManager();
-        $user = $this->get("security.context")->getToken()->getUser();
+        $user = $this->getUser();
         $album_id = $request->request->get("album_id");
         $caption = $request->request->get("caption");
 

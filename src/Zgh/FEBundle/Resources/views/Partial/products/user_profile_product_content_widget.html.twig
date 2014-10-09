@@ -103,6 +103,11 @@
         <p class="col-md-12">
             {{ product.description|nl2br|converturls }}
         </p>
+        {% if toggles["is_popup"] == true %}
+            <div class="row">
+                <p class="col-md-12"><a href="{{ url("zgh_fe.user_profile.index", {"id": product.user.id}) }}">{{ product.user.fullname }}</a></p>
+            </div>
+        {% endif %}
     </div>
     <div class="row">
         <span class="col-md-4 price ">Price:<span> {{ product.price }} EGP</span></span>

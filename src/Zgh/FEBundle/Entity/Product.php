@@ -8,6 +8,7 @@ use Zgh\FEBundle\Model\CommentableInterface;
 use Zgh\FEBundle\Model\LikeableInterface;
 use Zgh\FEBundle\Model\Partial\BasicInfo;
 use Zgh\FEBundle\Model\Utilities\Image;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -26,7 +27,8 @@ class Product extends Image implements LikeableInterface, CommentableInterface
 
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     protected $name;
 
@@ -42,6 +44,10 @@ class Product extends Image implements LikeableInterface, CommentableInterface
 
     /**
      * @ORM\Column(type="decimal", scale=2, nullable=true)
+     * @Assert\GreaterThan(
+     *      value= 0,
+     *      message="Price must be a positive number"
+     * )
      */
     protected $price;
 

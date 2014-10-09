@@ -16,7 +16,9 @@ class VendorEmailType extends AbstractType
                 'label' => 'form.current_password',
                 'translation_domain' => 'FOSUserBundle',
                 'mapped' => false,
-                'constraints' => new UserPassword()
+                'constraints' => new UserPassword([
+                    "groups" => ["change_email"]
+                ])
             ])
         ;
     }

@@ -53,7 +53,7 @@ class DoctrineListenerHandler implements EventSubscriber
             "prePersist",
             "postPersist",
             "onFlush",
-            "postRemove"
+            "preRemove"
         );
     }
 
@@ -170,7 +170,7 @@ class DoctrineListenerHandler implements EventSubscriber
         }
     }
 
-    public function postRemove(LifecycleEventArgs $args)
+    public function preRemove(LifecycleEventArgs $args)
     {
         $em = $args->getEntityManager();
         $entity = $args->getEntity();
@@ -184,7 +184,7 @@ class DoctrineListenerHandler implements EventSubscriber
             $em->flush();
         }
 
-        //Removing related comments
+//        Removing related comments
         if ($entity instanceof CommentableInterface) {
             $comments = $entity->getComments();
             foreach ($comments as $comment) {

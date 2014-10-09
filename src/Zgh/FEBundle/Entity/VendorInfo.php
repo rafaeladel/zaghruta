@@ -18,6 +18,7 @@ class VendorInfo
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(groups={"vendor_intro", "Default"})
+     * @Assert\Regex("//")
      */
     protected $company_name;
 

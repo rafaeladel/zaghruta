@@ -38,6 +38,7 @@ class UserRepository extends EntityRepository
         $q = $this->createQueryBuilder("u");
         $q->innerJoin("u.user_info", "u_i")
             ->where("u.id != ?1")
+            ->andWhere("u_i.relationship_user is NULL")
             ->andWhere(
                 $q->expr()->orX(
                     $q->expr()->eq("u_i.status", "?2"),
