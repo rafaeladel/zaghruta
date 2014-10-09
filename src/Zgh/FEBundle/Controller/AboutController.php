@@ -180,7 +180,7 @@ class AboutController extends Controller
             return new JsonResponse(array(
                 "status" => 500,
                 "view" => $this->renderView("@ZghFE/Partial/about/user_profile_about_edit_vendor.html.twig", array(
-                        "info" => $vendor_info,
+                        "about" => $vendor_info,
                         "form" => $form->createView()
                     ))
             ));

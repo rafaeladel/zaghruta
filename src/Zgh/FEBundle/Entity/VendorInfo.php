@@ -18,7 +18,11 @@ class VendorInfo
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(groups={"vendor_intro", "Default"})
-     * @Assert\Regex("//")
+     * @Assert\Regex(
+     *      groups={"vendor_intro", "Default"},
+     *      pattern= "/[a-zA-Z]+/",
+     *      message= "Should contain at least one alphabet character"
+     * )
      */
     protected $company_name;
 

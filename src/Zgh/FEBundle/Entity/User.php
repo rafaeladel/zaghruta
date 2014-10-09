@@ -143,6 +143,11 @@ class User extends BaseUser implements ParticipantInterface
      *
      * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      * @Assert\NotBlank(groups={"intro"}, message="First Name is required")
+     * @Assert\Regex(
+     *      groups={ "intro" },
+     *      pattern= "/[a-zA-Z]+/",
+     *      message= "Should contain at least one alphabet character"
+     * )
      */
     protected $firstname;
 
@@ -151,6 +156,11 @@ class User extends BaseUser implements ParticipantInterface
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
      * @Assert\NotBlank(groups={"intro"}, message="Last Name is required")
+     * @Assert\Regex(
+     *      groups={ "intro" },
+     *      pattern= "/[a-zA-Z]+/",
+     *      message= "Should contain at least one alphabet character"
+     * )
      */
     protected $lastname;
 
