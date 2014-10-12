@@ -13,7 +13,9 @@ class ProductType extends AbstractType
         $builder
             ->add("name", "text")
             ->add("description", "textarea", ["required" => false])
-            ->add("price", "integer", ["required" => false])
+            ->add("price", "text", [
+                "required" => false
+            ])
         ;
 
         if($options["type"] == "add"){

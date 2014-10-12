@@ -16,8 +16,10 @@ class InterestType extends AbstractType
                     "class" => "ZghFEBundle:Category",
                     "query_builder" => function(EntityRepository $r) {
                             return $r->createQueryBuilder("c")
+                                        ->where("c.is_hidden = :hidden")
+                                        ->setParameter("hidden", false)
                                         ->orderBy("c.name", "ASC");
-                        },
+                    },
                     "property" => "name",
                     "multiple" => true,
                     "expanded" => true

@@ -45,7 +45,7 @@ $(document).ready(function(){
             rules:{
                 picture:{
                     accept: "image/*",
-                    file_size: 2
+                    file_size: 5
                 }
             },
             submitHandler: function(form) {
@@ -76,7 +76,7 @@ $(document).ready(function(){
         input_class: "cover_input",
         crop: true,
         autocrop: true,
-        file_size: 2
+        file_size: 5
     });
     img_crop.init();
 

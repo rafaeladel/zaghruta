@@ -1,6 +1,7 @@
 <?php
 namespace Zgh\FEBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -14,6 +15,12 @@ class VendorCategoryType extends AbstractType
             ->add("categories", "entity", array(
                     "class" => "ZghFEBundle:Category",
                     "property" => "name",
+                    "query_builder" => function(EntityRepository $er) {
+                        return $er->createQueryBuilder("c")
+                                    ->where("c.is_hidden = :hidden")
+                                    ->setParameter("hidden", false)
+                                    ->orderBy("c.name", "ASC");
+                    },
                     "multiple" => true,
                     "expanded" => true
                 ))
