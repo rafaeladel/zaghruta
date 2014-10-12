@@ -43,10 +43,10 @@
             </span>
         </p>
 
-        <div class="icons-G">
+        <div class="icons-G {{ toggles["is_popup"] ? "" : "iconsG" }}">
 
             {% if app.user and "ROLE_CUSTOMER" in app.user.roles %}
-                <button class="btn btn-danger btn-circle pull-right addWishlist tooltip" type="button"
+                   <button class="btn btn-danger btn-circle pull-right addWishlist tooltip {{ toggles["is_popup"] ? "" : "" }}" type="button"
                         data-target="#addwishlist"
                         data-toggle="modal"
                         data-placement="top" title="Add to wishlist">
