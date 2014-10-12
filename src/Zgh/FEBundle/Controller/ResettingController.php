@@ -69,7 +69,7 @@ class ResettingController extends ContainerAware
         $this->container->get('fos_user.user_manager')->updateUser($user);
 
         return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_check_email',
-            array('email' => $this->getObfuscatedEmail($user))
+            array('email' => $user->getEmail())
         ));
     }
 

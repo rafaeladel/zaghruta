@@ -40,6 +40,10 @@ class UserInfo
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Regex(
+     *      pattern= "/[a-zA-Z]+/",
+     *      message= "Should contain at least one alphabet character"
+     * )
      */
     protected $job;
 

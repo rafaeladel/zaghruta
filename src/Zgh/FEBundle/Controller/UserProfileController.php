@@ -272,7 +272,7 @@ class UserProfileController extends Controller
             $this->get("session")->getFlashBag()->add("pp_error", "File is too large (2 MB max).");
             return $this->redirect($request->headers->get("referer"));
         }
-        $pic = $user->getProfilePhoto();
+        $pic = $user->getProfilePhoto() == null ? (new UserPP())->setUser($user) : $user->getProfilePhoto();
         $pic->setImageFile($pic_file);
 
         $this->getDoctrine()->getManager()->persist($pic);

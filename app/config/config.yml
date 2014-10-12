@@ -135,4 +135,7 @@ fos_message:
     provider: zgh_message.provider
     twig_extension: zgh_message.twig_extension
     new_thread_form:
-        type:               zgh_msg.new_thread_form.type    # See FormType\NewThreadMessageFormType
+        type:               zgh_msg.new_thread_form.type
+        handler:            zgh_message.thread_form_handler
+    reply_form:
+        handler:            zgh_message.message_form_handler

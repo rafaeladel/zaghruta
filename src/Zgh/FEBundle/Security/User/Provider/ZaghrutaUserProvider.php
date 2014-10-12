@@ -112,7 +112,7 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
             $pp = new UserPP();
             $cp = $initializer->initCoverPhoto();
 
-            $user->setProfilePhoto($pp);
+//            $user->setProfilePhoto($pp);
             $user->setCoverPhoto($cp);
 
             $this->userManager->updateUser($user);

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Zgh\FEBundle\Model\Partial\BasicInfo;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Zgh\FEBundle\Repository\CategoryRepository")
  * @ORM\Table(name="categories")
  * @ORM\HasLifecycleCallbacks
  */
@@ -15,7 +15,7 @@ class Category
 //    use BasicInfo;
 
     /**
-     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent_category")
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent_category", cascade={"persist", "remove"})
      **/
     protected $sub_categories;
 
@@ -30,9 +30,9 @@ class Category
     protected $experiences;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\ManyToMany(targetEntity="Tip", mappedBy="categories")
      */
-    protected $products;
+    protected $tips;
 
     /**
      * @ORM\ManyToMany(targetEntity="User", mappedBy="interests")
@@ -53,6 +53,11 @@ class Category
      * @ORM\Column(type="text")
      */
     protected $css_class;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_hidden;
 
     /**
      * @ORM\ManyToMany(targetEntity="VendorInfo", mappedBy="categories")
@@ -123,39 +128,6 @@ class Category
     public function getUsers()
     {
         return $this->users;
-    }
-
-    /**
-     * Add products
-     *
-     * @param \Zgh\FEBundle\Entity\Product $products
-     * @return Category
-     */
-    public function addProduct(\Zgh\FEBundle\Entity\Product $products)
-    {
-        $this->products[] = $products;
-
-        return $this;
-    }
-
-    /**
-     * Remove products
-     *
-     * @param \Zgh\FEBundle\Entity\Product $products
-     */
-    public function removeProduct(\Zgh\FEBundle\Entity\Product $products)
-    {
-        $this->products->removeElement($products);
-    }
-
-    /**
-     * Get products
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProducts()
-    {
-        return $this->products;
     }
 
     /**
@@ -279,7 +251,7 @@ class Category
     public function addSubCategory(\Zgh\FEBundle\Entity\Category $subCategories)
     {
         $this->sub_categories[] = $subCategories;
-
+        $subCategories->setParentCategory($this);
         return $this;
     }
 

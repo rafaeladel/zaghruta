@@ -114,11 +114,10 @@
 
         $(document).ready(function () {
 
-            $("body").on("click", ".comment_down, .comment_up", function(e){
+            $("body").on("click", ".comment_down, .comment_up, .post_up, .post_down", function(e){
                 e.preventDefault();
-                $(".comment_content").toggleClass("show");
-                $(".comment_up").toggle();
-                $(".comment_down").toggle();
+                $(e.target).closest(".content_togglers").siblings(".post_content, .comment_content").toggleClass("show");
+                $(e.target).closest(".content_togglers").find("a").toggle();
             });
 
 //            $("body").on("click", ".openExp", function(e){

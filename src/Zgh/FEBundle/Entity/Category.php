@@ -55,6 +55,11 @@ class Category
     protected $css_class;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_hidden;
+
+    /**
      * @ORM\ManyToMany(targetEntity="VendorInfo", mappedBy="categories")
      */
     protected $vendors;
@@ -291,5 +296,61 @@ class Category
     public function getParentCategory()
     {
         return $this->parent_category;
+    }
+
+    /**
+     * Set is_hidden
+     *
+     * @param boolean $isHidden
+     * @return Category
+     */
+    public function setIsHidden($isHidden)
+    {
+        $this->is_hidden = $isHidden;
+
+        return $this;
+    }
+
+    /**
+     * Get is_hidden
+     *
+     * @return boolean 
+     */
+    public function getIsHidden()
+    {
+        return $this->is_hidden;
+    }
+
+    /**
+     * Add tips
+     *
+     * @param \Zgh\FEBundle\Entity\Tip $tips
+     * @return Category
+     */
+    public function addTip(\Zgh\FEBundle\Entity\Tip $tips)
+    {
+        $this->tips[] = $tips;
+
+        return $this;
+    }
+
+    /**
+     * Remove tips
+     *
+     * @param \Zgh\FEBundle\Entity\Tip $tips
+     */
+    public function removeTip(\Zgh\FEBundle\Entity\Tip $tips)
+    {
+        $this->tips->removeElement($tips);
+    }
+
+    /**
+     * Get tips
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTips()
+    {
+        return $this->tips;
     }
 }

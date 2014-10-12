@@ -107,7 +107,7 @@
                                     {% endfor %}
                                 </form>
                                 {% endif %}
-                                {% if is_granted("ROLE_VENDOR") %}
+                                {#{% if is_granted("ROLE_VENDOR") %}#}
                                     <h4>Change Email</h4>
                                     <form action="{{ url("zgh_fe.settings.postChangeEmail") }}" method="post" class="form-horizontal">
                                         <div class="form-group formGroup">
@@ -132,7 +132,7 @@
 
                                         {{ form_rest(email_form) }}
                                     {{ form_end(email_form) }}
-                                {% endif %}
+                                {#{% endif %}#}
                                 {% if not is_granted("ROLE_FACEBOOK") %}
                                     <br/>
                                     <h4>Change Password</h4>

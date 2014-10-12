@@ -4,7 +4,7 @@
             {% for child in form %}
                 <div class="col-md-12 pull-left mainCategory">
                     {% set current = form.vars.choices[loop.index0].data %}
-                    {% if current.parentCategory|length == 0 or current.parentCategory.id == current.id %}
+                    {% if not current.isHidden and (current.parentCategory|length == 0 or current.parentCategory.id == current.id) %}
                         {% set subs = current.subCategories %}
                         <div class="headerInterests margin-bottom">
                             {{ form_widget(child, { "attr": {"class": "pull-left selecctall"} }) }}

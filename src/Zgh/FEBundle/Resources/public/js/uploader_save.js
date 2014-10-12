@@ -25,7 +25,9 @@ function Uploader(params)
             init: function(){
                 var myDropzone = this;
                 this.on("success", function(file, data) {
-                    refresh_uploader(_this.modalID, _this.listBtnID, _this.listWrapperClass, _this.ajaxLoadUrl, _this.saveButtonClass);
+                    if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+                        refresh_uploader(_this.modalID, _this.listBtnID, _this.listWrapperClass, _this.ajaxLoadUrl, _this.saveButtonClass);
+                    }
                 });
 
 //                $("body").off("click", "."+_this.saveButtonClass, false);
@@ -151,7 +153,7 @@ function validate(data, form)
         var element = form.find("[name='"+index+"']");
         var required = name.required;
         if(required){
-            if(element.val().length == 0){
+            if(element.val().trim().length == 0){
                 var message = name.message;
                 element.after("<p style='color: red!important; font-size: 11px!important;' class='error'>"+message+"</p>");
                 is_valid = false;

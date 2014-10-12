@@ -53,7 +53,7 @@ class DoctrineListenerHandler implements EventSubscriber
             "prePersist",
             "postPersist",
             "onFlush",
-            "postRemove"
+            "preRemove"
         );
     }
 
@@ -139,10 +139,13 @@ class DoctrineListenerHandler implements EventSubscriber
     {
         $this->em = $args->getEntityManager();
         $this->uow = $this->em->getUnitOfWork();
+        $insertions = $this->uow->getScheduledEntityInsertions();
         $updates = $this->uow->getScheduledEntityUpdates();
 
+        $changes = array_merge($insertions, $updates);
 
-        foreach ($updates as $entity) {
+
+        foreach ($changes as $entity) {
 
             if ($entity instanceof VendorInfo) {
                 $user = $this->em->getRepository("ZghFEBundle:User")->find($entity->getUser()->getId());
@@ -167,7 +170,7 @@ class DoctrineListenerHandler implements EventSubscriber
         }
     }
 
-    public function postRemove(LifecycleEventArgs $args)
+    public function preRemove(LifecycleEventArgs $args)
     {
         $em = $args->getEntityManager();
         $entity = $args->getEntity();
@@ -181,7 +184,7 @@ class DoctrineListenerHandler implements EventSubscriber
             $em->flush();
         }
 
-        //Removing related comments
+//        Removing related comments
         if ($entity instanceof CommentableInterface) {
             $comments = $entity->getComments();
             foreach ($comments as $comment) {

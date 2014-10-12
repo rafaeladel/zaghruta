@@ -2514,7 +2514,7 @@ border-top: none;
 }
 .popupPost .content-post p{
   color: #000 !important;
-  font-size: 14px !important;
+  font-size: 12px !important;
 }
 .resizePhoto{
    overflow: hidden;
@@ -3120,8 +3120,8 @@ padding: 0;
 
 }
 
-.comment_content {
-    height: 78px !important;
+.comment_content, .post_content {
+    height: 70px !important;
     overflow: hidden !important;
 }
 
@@ -3130,11 +3130,11 @@ padding: 0;
     overflow: visible !important;
 }
 
-.comment_up {
+.comment_up, .post_up {
     display: none;
 }
 
-.comment_up, .comment_down {
+.comment_up, .comment_down, .post_up, .post_down {
     font-weight: bold;
 }
 

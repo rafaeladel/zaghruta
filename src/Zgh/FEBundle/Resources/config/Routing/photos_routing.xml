@@ -37,7 +37,7 @@
         <default key="_controller">ZghFEBundle:Photo:postPhotoAlbumNew</default>
     </route>
 
-    <route id="zgh_fe.photos.album.delete" pattern="/c/{id}/pp/a/delete" methods="POST">
+    <route id="zgh_fe.photos.album.delete" pattern="/c/{id}/pp/a/delete">
         <default key="_controller">ZghFEBundle:Photo:postPhotoAlbumDelete</default>
     </route>
 

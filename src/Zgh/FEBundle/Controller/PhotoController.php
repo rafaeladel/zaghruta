@@ -102,7 +102,7 @@ class PhotoController extends Controller
 //        var_dump($request->request->all());
 //        die;
         $em = $this->getDoctrine()->getManager();
-        $user = $this->get("security.context")->getToken()->getUser();
+        $user = $this->getUser();
         $album_id = $request->request->get("album_id");
         $caption = $request->request->get("caption");
 

@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="Zgh\FEBundle\Repository\UserRepository")
  * @ORM\Table(name="fos_user")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\HasLifecycleCallbacks()
  */
 class User extends BaseUser implements ParticipantInterface
 {
@@ -23,7 +23,7 @@ class User extends BaseUser implements ParticipantInterface
     protected $id;
 
     /**
-     * @ORM\Column(name="new_email", type="string", length=255, nullable=true)
+     * @ORM\Column(name="new_email", type="string", length=255, nullable=true, unique=true)
      * @Assert\NotBlank(groups={"change_email"}, message="New Email is required")
      */
     protected $new_email;
@@ -143,6 +143,11 @@ class User extends BaseUser implements ParticipantInterface
      *
      * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      * @Assert\NotBlank(groups={"intro"}, message="First Name is required")
+     * @Assert\Regex(
+     *      groups={ "intro" },
+     *      pattern= "/[a-zA-Z]+/",
+     *      message= "Should contain at least one alphabet character"
+     * )
      */
     protected $firstname;
 
@@ -151,6 +156,11 @@ class User extends BaseUser implements ParticipantInterface
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
      * @Assert\NotBlank(groups={"intro"}, message="Last Name is required")
+     * @Assert\Regex(
+     *      groups={ "intro" },
+     *      pattern= "/[a-zA-Z]+/",
+     *      message= "Should contain at least one alphabet character"
+     * )
      */
     protected $lastname;
 

@@ -42,35 +42,16 @@ class NewThreadMessageFormType extends AbstractType
                     ]
                 ])
 
-//            ->add("recipient", "thrace_select2_ajax", [
-//                    "empty_value" => "Tag",
-//                    "multiple" => true,
-//                    "configs" => [
-//                        'width' => '100%',
-//                        'ajax' => [
-//                            'url' => $this->router->generate('zgh_fe.tags.serialized', array(), true),
-//                            'type' => 'GET',
-//                            'dataType' => 'json',
-//                            'data' => "function (term, page) {
-//                        return {
-//                            q: term, //search term
-//                            page_limit: 5, // page size
-//                            page: page, // page number
-//                        };
-//                    }",
-//                            'results' => "function (data, page) {
-//                        return {results: data};
-//                    }",
-//                        ],
-//                    ],
-//                ])
             ->add('body', 'textarea');
+
+
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'intention'  => 'message',
+            // intention is set to reply... just to pass csrf test
+            'intention'  => 'reply'
         ));
     }
 
