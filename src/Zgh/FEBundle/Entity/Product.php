@@ -44,7 +44,10 @@ class Product extends Image implements LikeableInterface, CommentableInterface
 
     /**
      * @ORM\Column(type="decimal", precision = 55, scale=2, nullable=true)
-     * @Assert\Type(type="integer")
+     * @Assert\Regex(
+     *      pattern= "/[0-9]+/",
+     *      message= "Price should be a valid number"
+     * )
      * @Assert\GreaterThan(
      *      value= 0,
      *      message="Price must be a positive number"
