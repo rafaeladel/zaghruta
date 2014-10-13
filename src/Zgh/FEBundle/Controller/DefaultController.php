@@ -5,6 +5,7 @@ namespace Zgh\FEBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+use Zgh\FEBundle\Entity\User;
 
 class DefaultController extends Controller
 {
@@ -45,6 +46,10 @@ class DefaultController extends Controller
 
     public function getShortcutsAndNotificationAction(Request $request)
     {
+        $user = $this->getUser();
+        if(!$user instanceof User) {
+            return false;
+        }
         return $this->render("@ZghFE/Partial/common/shortcuts&notifications.html.twig");
     }
 }

@@ -1,7 +1,18 @@
 $(document).ready(function () {
     var notificationsUrl = Routing.generate("zgh_fe.notifications");
+    var login_url = Routing.generate("fos_user_security_login");
     setInterval(function () {
-        $("body").find(".notificationsWidget").load(notificationsUrl);
+        $.ajax({
+            type: "get",
+            url: notificationsUrl,
+            success: function(data) {
+                if(data) {
+                    $("body").find(".notificationsWidget").html(data);
+                } else {
+                    window.location = login_url;
+                }
+            }
+        });
     }, 10000);
 
 
