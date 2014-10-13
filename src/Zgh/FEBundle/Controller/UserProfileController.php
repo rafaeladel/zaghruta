@@ -284,7 +284,7 @@ class UserProfileController extends Controller
     {
         $user = $this->get("security.context")->getToken()->getUser();
         $pic_file = $request->files->get("cover");
-        if ($pic_file->getClientSize() / 1048576 > 2) {
+        if ($pic_file->getClientSize() / 1048576 > 5) {
             $this->get("session")->getFlashBag()->add("cp_error", "File is too large (2 MB max).");
             return $this->redirect($request->headers->get("referer"));
         }

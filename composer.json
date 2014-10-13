@@ -27,7 +27,8 @@
         "friendsofsymfony/message-bundle": "dev-master",
         "doctrine/migrations": "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
-        "doctrine/doctrine-fixtures-bundle": "2.2.*"
+        "doctrine/doctrine-fixtures-bundle": "2.2.*",
+        "liip/imagine-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

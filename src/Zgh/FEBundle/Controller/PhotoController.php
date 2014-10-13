@@ -42,7 +42,8 @@ class PhotoController extends Controller
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
         $albums = $user->getAlbums();
         return $this->render("@ZghFE/Partial/photos/user_profile_photos_a_content.html.twig", array(
-                "albums" => $albums
+                "albums" => $albums,
+                "user" => $user
             ));
     }
 

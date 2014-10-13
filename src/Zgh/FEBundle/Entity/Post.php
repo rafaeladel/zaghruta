@@ -22,8 +22,8 @@ class Post extends Image implements LikeableInterface, CommentableInterface
     protected $cat_dir = "posts";
     protected $thumb_dir = "thumb";
 
-    protected $thumb_h = 332;
-    protected $thumb_w = 561;
+//    protected $thumb_h = 100;
+    protected $thumb_w = 600;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
