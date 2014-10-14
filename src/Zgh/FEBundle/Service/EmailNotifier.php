@@ -181,7 +181,7 @@ class EmailNotifier
         return $this->getTemplate("@ZghFE/Default/Emails/two_btn_email.txt.twig", $params);
     }
 
-    private function getTemplate($template)
+    private function getTemplate($template, $params)
     {
         return $this->templating->render($template, $params);
     }
