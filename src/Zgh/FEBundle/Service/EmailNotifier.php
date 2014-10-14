@@ -96,11 +96,11 @@ class EmailNotifier
         $acceptUrl = $this->router->generate("zgh_fe.user.accept_follow", [
             "id" => $notification->getActionId(),
             "n_id" => $notification->getId()
-        ]);
+        ], true);
         $denyUrl = $this->router->generate("zgh_fe.user.deny_follow", [
             "id" => $notification->getActionId(),
             "n_id" => $notification->getId()
-        ]);
+        ], true);
         $title = "{$notification->getContent()["user"]} wants to follow you.";
         $body = sprintf("<a href='%s'>{$notification->getContent()["user"]}</a> wants to follow you.", $url);
         $template = $this->getTwoBtnTemplate([
@@ -118,13 +118,13 @@ class EmailNotifier
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $notification->getContent()["requester_id"]], true);
         $acceptUrl = $this->router->generate("zgh_fe.about.accept_relationship", [
-            "id" => $notification->getUser()->getId(),
+            "id" => $notification->getUser()->getUserInfo()->getId(),
             "n_id" => $notification->getId()
-        ]);
+        ], true);
         $denyUrl = $this->router->generate("zgh_fe.about.deny_relationship", [
-            "id" => $notification->getUser()->getId(),
+            "id" => $notification->getUser()->getUserInfo()->getId(),
             "n_id" => $notification->getId()
-        ]);
+        ], true);
         $body = "{$notification->getContent()["user"]} wants to be {$notification->getContent()["status"]} to you.";
         $template = $this->getTwoBtnTemplate([
             "notification_title" => $body,
