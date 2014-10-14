@@ -25,11 +25,19 @@ class PostController extends Controller
         //checking offset is not null to differentiate between tabbing ajax and load more ajax
         if($request->isXmlHttpRequest() && $offset != null)
         {
-            return new JsonResponse([
-               "view" => $this->renderView("@ZghFE/Partial/posts/posts_partials.html.twig", array(
-                       "posts" => $posts
-                   ))
-            ]);
+            if(count($posts) != 0) {
+                return new JsonResponse([
+                    "success" => true,
+                    "view" => $this->renderView("@ZghFE/Partial/posts/posts_partials.html.twig", array(
+                        "posts" => $posts
+                    ))
+                ]);
+            } else {
+                return new JsonResponse([
+                    "success" => false,
+                    "view" => ""
+                ]);
+            }
         } else {
             return $this->render("@ZghFE/Partial/posts/posts_partials.html.twig", array(
                 "posts" => $posts
@@ -44,11 +52,19 @@ class PostController extends Controller
         $posts = $this->getDoctrine()->getRepository("ZghFEBundle:User")->getPosts($user, $offset);
         if($request->isXmlHttpRequest() && $offset != null)
         {
-            return new JsonResponse([
-                "view" => $this->renderView("@ZghFE/Partial/posts/posts_partials.html.twig", array(
+            if(count($posts) != 0) {
+                return new JsonResponse([
+                    "success" => true,
+                    "view" => $this->renderView("@ZghFE/Partial/posts/posts_partials.html.twig", array(
                         "posts" => $posts
                     ))
-            ]);
+                ]);
+            } else {
+                return new JsonResponse([
+                    "success" => false,
+                    "view" => ""
+                ]);
+            }
         } else {
             return $this->render("@ZghFE/Partial/posts/posts_partials.html.twig", array(
                 "posts" => $posts
