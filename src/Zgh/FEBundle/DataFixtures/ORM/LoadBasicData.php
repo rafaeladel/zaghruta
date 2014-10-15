@@ -23,7 +23,8 @@ class LoadBasicData implements FixtureInterface
                     [
                         "name" => "Cakes & Desserts",
                         "css_class" => "icon-cakeCatering",
-                    ],                    [
+                    ],                    
+                    [
                         "name" => "Food & Catering",
                         "css_class" => "icon-cakeCatering",
                     ],
@@ -33,16 +34,7 @@ class LoadBasicData implements FixtureInterface
             [
                 "name" => "Photography",
                 "css_class" => "icon-photography",
-                "sub" => [
-                    [
-                        "name" => "Photography",
-                        "css_class" => "icon-photography"
-                    ],
-                    [
-                        "name" => "Videography",
-                        "css_class" => "icon-photography"
-                    ]
-                ],
+                "sub" => [],
                 "is_hidden" => false
             ],
             [
@@ -91,7 +83,11 @@ class LoadBasicData implements FixtureInterface
                         "css_class" => "icon-furniture",
                     ],
                     [
-                        "name" => "Furniture",
+                        "name" => "Indoor Furniture",
+                        "css_class" => "icon-furniture",
+                    ],
+                    [
+                        "name" => "Outdoor Furniture",
                         "css_class" => "icon-furniture",
                     ]
                 ],

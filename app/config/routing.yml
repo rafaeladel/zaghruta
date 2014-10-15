@@ -43,3 +43,6 @@ fos_message:
 zgh_fe:
     resource: "@ZghFEBundle/Resources/config/routing.xml"
     prefix:   /
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

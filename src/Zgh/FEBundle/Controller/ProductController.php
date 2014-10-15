@@ -164,7 +164,10 @@ class ProductController extends Controller
         }
         $this->getDoctrine()->getManager()->persist($product);
         $this->getDoctrine()->getManager()->flush();
-        return new JsonResponse(["status" => 200]);
+        return new JsonResponse([
+            "status" => 200,
+            "product_name" => $product->getName()
+        ]);
     }
 
     /**

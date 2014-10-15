@@ -64,7 +64,10 @@
 
         $(document).ready(function () {
 
-
+            if($("body").find(".post").length == 0)
+            {
+                $("body").find(".load-more").remove();
+            }
 
             $("body").on("click", ".tab", function(e){
                 e.preventDefault();

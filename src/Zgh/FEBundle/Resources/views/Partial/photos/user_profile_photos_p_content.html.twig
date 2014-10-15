@@ -1,20 +1,28 @@
 <div class="photosCont">
-    {% for photo in photos %}
-        <div class="col-md-3 col-sm-4 col-xs-6 margin">
-            <div class="thumbnail photoGallery">
-                <a class="fancybox" href="{{ url("zgh_fe.photos.photo.content", {"id": user.id, "photo_id": photo.id } ) }}" data-fancybox-href="#photosPopup_{{ photo.id }}" rel="gallery">
-                    <div class="thumbOverlay">
-                        <span class="glyphicon glyphicon-eye-open"></span>
-                    </div>
-                    <img src="{{ asset(photo.getThumbWebPath) }}" class="img-responsive" alt="Responsive image" />
-                </a>
+    {% if photos|length > 0 %}
+        {% for photo in photos %}
+            <div class="col-md-3 col-sm-4 col-xs-6 margin">
+                <div class="thumbnail photoGallery">
+                    <a class="fancybox" href="{{ url("zgh_fe.photos.photo.content", {"id": user.id, "photo_id": photo.id } ) }}" data-fancybox-href="#photosPopup_{{ photo.id }}" rel="gallery">
+                        <div class="thumbOverlay">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </div>
+                        <img src="{{ asset(photo.getThumbWebPath) }}" class="img-responsive" alt="Responsive image" />
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <div id="photosPopup_{{ photo.id }}" style="display:none">
-            <div class="overlayContent photo">
-                {{ include("@ZghFE/Default/photo_content.html.twig", {"user":user, "photo": photo, "is_popup": true}) }}
+            <div id="photosPopup_{{ photo.id }}" style="display:none">
+                <div class="overlayContent photo">
+                    {{ include("@ZghFE/Default/photo_content.html.twig", {"user":user, "photo": photo, "is_popup": true}) }}
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    {% else %}
+        {% if app.user and app.user.id == user.id %}
+            <p>You haven’t added any photos yet.</p>
+        {% else %}
+            <p>{{ user.fullname }} doesn’t have any photos.</p>
+        {% endif %}
+    {% endif %}
 </div>

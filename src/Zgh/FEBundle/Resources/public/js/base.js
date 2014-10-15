@@ -1,7 +1,19 @@
 $(document).ready(function () {
     var notificationsUrl = Routing.generate("zgh_fe.notifications");
+    var login_url = Routing.generate("fos_user_security_login");
     setInterval(function () {
-        $("body").find(".notificationsWidget").load(notificationsUrl);
+        $.ajax({
+            type: "get",
+            url: notificationsUrl,
+            success: function(data) {
+                console.log(data);
+                if(data.logged_in) {
+                    $("body").find(".notificationsWidget").html(data.view);
+                } else {
+                    window.location = login_url;
+                }
+            }
+        });
     }, 10000);
 
 
@@ -39,7 +51,7 @@ $(document).ready(function () {
 
     $(document).on("ajaxSuccess", function (e) {
         ThraceForm.select2();
-        if($("body").find(".post").length == 0)
+        if($("body .post").length == 0)
         {
             $("body").find(".load-more").remove();
         }

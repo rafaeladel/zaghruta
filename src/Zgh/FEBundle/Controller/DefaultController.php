@@ -3,8 +3,10 @@
 namespace Zgh\FEBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+use Zgh\FEBundle\Entity\User;
 
 class DefaultController extends Controller
 {
@@ -23,9 +25,9 @@ class DefaultController extends Controller
             ? $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate')
             : null;
         return $this->render("@ZghFE/Partial/security/userLoginPartial.html.twig", array(
-                "last_username" => $lastUsername,
-                "csrf_token" => $csrfToken
-            ));
+            "last_username" => $lastUsername,
+            "csrf_token" => $csrfToken
+        ));
     }
 
     public function getVendorLoginPartialAction(Request $request)
@@ -38,13 +40,25 @@ class DefaultController extends Controller
             ? $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate')
             : null;
         return $this->render("@ZghFE/Partial/security/vendorLoginPartial.html.twig", array(
-                "last_username" => $lastUsername,
-                "csrf_token" => $csrfToken
-            ));
+            "last_username" => $lastUsername,
+            "csrf_token" => $csrfToken
+        ));
     }
 
     public function getShortcutsAndNotificationAction(Request $request)
     {
-        return $this->render("@ZghFE/Partial/common/shortcuts&notifications.html.twig");
+        $user = $this->getUser();
+        $logged_in = true;
+        if (!$user instanceof User) {
+            $logged_in = false;
+        }
+        if ($request->isXmlHttpRequest()) {
+            return new JsonResponse([
+                "logged_in" => $logged_in,
+                "view" => $this->renderView("@ZghFE/Partial/common/shortcuts&notifications.html.twig")
+            ]);
+        } else {
+            return $this->render("@ZghFE/Partial/common/shortcuts&notifications.html.twig");
+        }
     }
 }

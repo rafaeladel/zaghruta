@@ -10,7 +10,7 @@ function photoRefresh(){
         targetUrl: UrlContainer.newPhoto,
         ajaxLoadUrl: UrlContainer.photoPartial,
         imageRequired: true,
-        numOfFiles: 5,
+        numOfFiles: 10,
         additionalData: {
             "album_id": {
                 "required": true,

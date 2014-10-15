@@ -21,38 +21,51 @@ $(document).ready(function () {
         var form = $(e.target).closest("form");
         var btn = $(e.target);
         var wrapper = $("body").find(".content_wrapper");
-        btn.attr("disabled", "disabled");
-        console.log("in");
-//        $("#myform").parsley().subscribe("parsley:form:validate", function (instance) {
-//            console.log("out");
-//            instance.submitEvent.preventDefault();
-//            if (instance.isValid()) {
-                $.ajax({
-                    type: "post",
-                    url: form.attr("action"),
-                    data: form.serialize(),
-                    success: function (data) {
-                        if (data.status == 200) {
-                            btn.removeAttr("disabled");
-                            wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
-                            var back_url = $(e.target).data("back_url");
-                            $("body").find(".content_wrapper").load(back_url);
-                        } else if (data.status == 500) {
-                            btn.removeAttr("disabled");
-                            wrapper.html(data.view);
+        form.validate({
+            rules: {
+                "product[name]": {
+                    required: true
+                },
+                "product[price]": {
+                    number: true,
+                    min: 1
+                }
+            },
+            messages:{
+                "product[name]": {
+                    required: "Product name is required"
+                },
+                "product[price]": {
+                    number: "Price must be a valid number",
+                    min: "Price must be a positive number"
+                }
+            }
+        });
+        if(form.valid()) {
+            btn.attr("disabled", "disabled");
+            $.ajax({
+                type: "post",
+                url: form.attr("action"),
+                data: form.serialize(),
+                success: function (data) {
+                    if (data.status == 200) {
+                        btn.removeAttr("disabled");
+                        wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+                        var back_url = $(e.target).data("back_url");
+                        $("body").find(".content_wrapper").load(back_url);
+                        $("body").find(".product_name").text(data.product_name);
+                    } else if (data.status == 500) {
+                        btn.removeAttr("disabled");
+                        wrapper.html(data.view);
 
-                        }
                     }
-                });
-//            } else {
-//                btn.removeAttr("disabled");
-//
-//            }
-//        });
+                }
+            });
+        }
     });
 
 
-    $("body").on("click", ".moveWishlist", function(e){
+    $("body").on("click", ".moveWishlist", function (e) {
         e.preventDefault();
         var url = $(e.target).data("url");
         var wrapper = $(e.target).closest(".form_wrapper");
@@ -60,18 +73,18 @@ $(document).ready(function () {
         wrapper.load(url);
     });
 
-    $("body").on("click", ".newWishlistSubmit", function(e){
+    $("body").on("click", ".newWishlistSubmit", function (e) {
         e.preventDefault();
         var form = $(e.target).closest("form");
         var back_url = $(e.target).closest("form").find(".moveWishlist").data("url");
         var wrapper = $(e.target).closest(".form_wrapper");
         form.validate();
-        if(form.valid()) {
+        if (form.valid()) {
             $.ajax({
                 type: "post",
                 url: form.attr("action"),
                 data: form.serialize(),
-                success: function(data){
+                success: function (data) {
                     wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
                     wrapper.load(back_url);
                 }
@@ -80,18 +93,20 @@ $(document).ready(function () {
 
     });
 
-    $("body").on("click", ".addToWishlistSubmit", function(e){
+    $("body").on("click", ".addToWishlistSubmit", function (e) {
         e.preventDefault();
         var form = $(e.target).closest("form");
+
         $.ajax({
             type: "post",
             url: form.attr("action"),
             data: form.serialize(),
-            success: function(data){
+            success: function (data) {
                 $(e.target).removeAttr("disabled").text("Save");
                 $(e.target).closest("div.modal").modal("hide");
             }
         });
+
     });
 
     singleUploadProduct();

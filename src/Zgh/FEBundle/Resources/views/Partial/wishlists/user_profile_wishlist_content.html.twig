@@ -62,8 +62,11 @@
             </div>
         {% endfor %}
         {% else %}
-
-            <p><a href="{{ url("zgh_fe.search.start_search", {"category": "all", "q": ""}) }}#searchVendors">Browse vendors</a> products and add items to your wishlist.</p>
+            {% if user.id == app.user.id %}
+                <p><a href="{{ url("zgh_fe.search.start_search", {"category": "all", "q": ""}) }}#searchVendors">Browse vendors</a> products and add items to your wishlist.</p>
+            {% else %}
+                <p>{{ user.fullname }} doesn’t have any wishlists.</p>
+            {% endif %}
         {% endif %}
     </div>
     <div id="addNewListPopup" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"

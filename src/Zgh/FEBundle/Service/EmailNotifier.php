@@ -60,8 +60,10 @@ class EmailNotifier
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $notification->getContent()["obj_id"]], true);
+        $title = "Someone has commented on your post.";
         $body = "{$notification->getContent()["user"]} has commented on your post - {$url}";
-        $this->send("Someone commented on your post", $user->getEmail(), $body);
+        $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body ]);
+        $this->send($title, $user->getEmail(), $template);
     }
 
     protected function sendLikeNotification(NotifyLikeEvent $event)
@@ -69,8 +71,10 @@ class EmailNotifier
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $notification->getContent()["obj_id"]], true);
+        $title = "Someone liked your post";
         $body = "{$notification->getContent()["user"]} has liked your post - {$url}";
-        $this->send("Someone liked your post", $user->getEmail(), $body);
+        $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body ]);
+        $this->send($title, $user->getEmail(), $template);
     }
 
     protected function sendFollowNotification(NotifyFollowEvent $event)
@@ -80,7 +84,8 @@ class EmailNotifier
         $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $notification->getContent()["follower_id"]], true);
         $title = "{$notification->getContent()["user"]} has followed you.";
         $body = sprintf("<a href='%s'>{$notification->getContent()["user"]}</a> has followed you.", $url);
-        $this->send($title, $user->getEmail(), $body);
+        $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body ]);
+        $this->send($title, $user->getEmail(), $template);
     }
 
     protected function sendFollowRequestNotification(NotifyFollowRequestEvent $event)
@@ -88,9 +93,23 @@ class EmailNotifier
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $notification->getContent()["follower_id"]], true);
+        $acceptUrl = $this->router->generate("zgh_fe.user.accept_follow", [
+            "id" => $notification->getActionId(),
+            "n_id" => $notification->getId()
+        ], true);
+        $denyUrl = $this->router->generate("zgh_fe.user.deny_follow", [
+            "id" => $notification->getActionId(),
+            "n_id" => $notification->getId()
+        ], true);
         $title = "{$notification->getContent()["user"]} wants to follow you.";
         $body = sprintf("<a href='%s'>{$notification->getContent()["user"]}</a> wants to follow you.", $url);
-        $this->send($title, $user->getEmail(), $body);
+        $template = $this->getTwoBtnTemplate([
+            "notification_title" => $title,
+            "notification_body" => $body,
+            "accept_url" => $acceptUrl,
+            "deny_url" => $denyUrl
+        ]);
+        $this->send($title, $user->getEmail(), $template);
     }
 
     protected function sendRelationshipRequest(NotifyRelationshipRequestEvent $event)
@@ -98,24 +117,31 @@ class EmailNotifier
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $notification->getContent()["requester_id"]], true);
-        $hisOrHer = $notification->getContent()["requester_gender"] == 0 ? "his" : "her";
-        $body = "{$notification->getContent()["user"]} wants to add you in {$hisOrHer} relationship information.";
-        $this->send("Someone wants to add you in {$hisOrHer} relationship information", $user->getEmail(), $body);
+        $acceptUrl = $this->router->generate("zgh_fe.about.accept_relationship", [
+            "id" => $notification->getUser()->getUserInfo()->getId(),
+            "n_id" => $notification->getId()
+        ], true);
+        $denyUrl = $this->router->generate("zgh_fe.about.deny_relationship", [
+            "id" => $notification->getUser()->getUserInfo()->getId(),
+            "n_id" => $notification->getId()
+        ], true);
+        $body = "{$notification->getContent()["user"]} wants to be {$notification->getContent()["status"]} to you.";
+        $template = $this->getTwoBtnTemplate([
+            "notification_title" => $body,
+            "notification_body" => $body,
+            "accept_url" => $acceptUrl,
+            "deny_url" => $denyUrl
+        ]);
+        $this->send($body , $user->getEmail(), $template);
     }
 
-    protected function send($subject, $email, $notification_body)
+    protected function send($notification_title, $email, $template)
     {
         $message = \Swift_Message::newInstance()
-            ->setSubject($subject)
+            ->setSubject($notification_title)
             ->setFrom("notifications@zaghruta.com")
             ->setTo($email)
-            ->setBody(
-                $this->templating->render("@ZghFE/Default/notification_email.txt.twig", [
-                    "notification_type" => $subject,
-                    "notification_body" => $notification_body
-                ]),
-                'text/html'
-            );
+            ->setBody($template, 'text/html');
 
         try {
             $this->mailer->send($message);
@@ -124,14 +150,14 @@ class EmailNotifier
         }
     }
 
-    public  function sendEmailChangeConfirmation(User $user, $conf_email)
+    public function sendEmailChangeConfirmation(User $user, $conf_email)
     {
         $message = \Swift_Message::newInstance()
             ->setSubject("Email change confirmation")
             ->setFrom("change_email@zaghruta.com")
             ->setTo($user->getNewEmail())
             ->setBody(
-                $this->templating->render("@ZghFE/Default/email_change_confirmation.txt.twig", [
+                $this->templating->render("@ZghFE/Default/Emails/email_change_confirmation.txt.twig", [
                     "email_body" => sprintf("Please click on the link below to confirm that %s is your desired email.", $user->getNewEmail()),
                     "conf_email" => $conf_email
                 ]),
@@ -143,5 +169,20 @@ class EmailNotifier
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+    }
+
+    private function getSingleBtnTemplate(array $params = [])
+    {
+        return $this->getTemplate("@ZghFE/Default/Emails/single_btn_email.txt.twig", $params);
+    }
+
+    private function getTwoBtnTemplate(array $params = [])
+    {
+        return $this->getTemplate("@ZghFE/Default/Emails/two_btn_email.txt.twig", $params);
+    }
+
+    private function getTemplate($template, $params)
+    {
+        return $this->templating->render($template, $params);
     }
 }

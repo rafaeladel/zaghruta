@@ -1,3 +1,4 @@
+{% if products | length > 0 %}
 {% for product in products %}
     <div class="product-G col-md-3 col-xs-6  col-sm-6">
         <div class="thumbnail clearfix">
@@ -7,7 +8,7 @@
                     <div class="thumbOverlay">
                         <a rel="Product" data-fancybox-href="{{ url("zgh_fe.products.get_parent_content_widget", {"id": product.user.id, "product_id": product.id}) }}" href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}" class="{{ app.user and product.user.id == app.user.id ? "openProduct" : "" }}  fancybox  fancybox.ajax"><span class="glyphicon glyphicon-eye-open"></span></a>
                          {% if app.user and app.user.id == product.user.id %}
-                          <a class="editProduct" href="{{ url("zgh_fe.products.get_edit", {"id": app.user.id, "product_id": product.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                          <a class="editProduct" target="_blank" href="{{ url("zgh_fe.products.get_edit", {"id": app.user.id, "product_id": product.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
                         {% endif %}
                     </div>
                 </div>
@@ -41,3 +42,10 @@
     </div>
 
 {% endfor %}
+{% else %}
+    {% if app.user and app.user.id == user.id %}
+        <p>The best way to promote your business is to show your customers your products. Add some products now.</p>
+    {% else %}
+        <p>{{ user.fullname }} hasn’t added any products yet.</p>
+    {% endif %}
+{% endif %}

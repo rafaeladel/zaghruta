@@ -1,54 +1,50 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
-    if($("body").find(".post").length == 0)
-    {
+    if ($("body").find(".post").length == 0) {
         $("body").find(".load-more").remove();
     }
 
-    $("body").on("click", ".tab", function(e){
+    $("body").on("click", ".tab", function (e) {
         e.preventDefault();
         var tab = $(e.currentTarget);
-        if(!tab.is(".activated")){
+        if (!tab.is(".activated")) {
             document.title = tab.text() + " | Zaghruta";
             $(".tab").removeClass("active");
             tab.addClass("active");
-            $(".content_wrapper").html('<img style="margin: auto; display: block;" src="'+UrlContainer.loader+'" />');
+            $(".content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
             $(".content_wrapper").load(tab.data("target_url"));
             history.pushState(null, null, tab.data("target_url"));
         }
     });
 
 
-    $("body").on("click", ".load-more", function(e){
+    $("body").on("click", ".load-more", function (e) {
         var btn = $(e.currentTarget);
-        var url = btn.data("url")+"?f="+$(".post").length;
+        var url = btn.data("url") + "?f=" + $(".post").length;
         btn.attr("disabled", "disabled");
         $.ajax({
             type: "get",
-            url : url,
-            success: function(data)
-            {
-                $("body").find(".post").last().after(data.view);
-                if(data.view != "") {
-                    btn.removeAttr("disabled");
-                } else {
-                    btn.remove();
+            url: url,
+            success: function (data) {
+                if (data.success) {
+                    $("body").find(".post").last().after(data.view);
                 }
+                btn.removeAttr("disabled");
             }
         });
     });
 
-    $("body").on("change", ".photo_btn", function(e){
+    $("body").on("change", ".photo_btn", function (e) {
         e.preventDefault();
         var form = $(e.target).closest("form");
         form.validate({
-            rules:{
-                picture:{
+            rules: {
+                picture: {
                     accept: "image/*",
-                    file_size: 2
+                    file_size: 5
                 }
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
                 form.submit();
             }
         });
@@ -56,7 +52,7 @@ $(document).ready(function(){
         wrapper.show();
         var imgWrapper = wrapper.find("img");
 
-        if(form.valid()){
+        if (form.valid()) {
             imgWrapper.show();
             imgWrapper.attr("src", URL.createObjectURL(this.files[0]));
             form.find(".pp_errors").html("").hide();
@@ -68,20 +64,20 @@ $(document).ready(function(){
     });
 
     var img_crop = new ImgCrop({
-        height : 130,
-        width : 535,
-        image_class : "cover_thumb",
-        wrapper : "cover_wrapper",
-        form_class : "cover_form",
+        height: 130,
+        width: 535,
+        image_class: "cover_thumb",
+        wrapper: "cover_wrapper",
+        form_class: "cover_form",
         input_class: "cover_input",
         crop: true,
         autocrop: true,
-        file_size: 2
+        file_size: 5
     });
     img_crop.init();
 
     $(".fancyboxArrow").fancybox({
-        'showNavArrows'     : 'true'
+        'showNavArrows': 'true'
     });
 
 });

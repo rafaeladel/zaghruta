@@ -1,4 +1,5 @@
-{% for tip in tips %}
+{% if tips|length > 0 %}
+    {% for tip in tips %}
     <div class="col-md-4 col-xs-6 tip">
 
         <div class="thumbnail">
@@ -48,3 +49,10 @@
         </div>
     </div>
 {% endfor %}
+{% else %}
+    {% if app.user and user.id == app.user.id  %}
+        <p>Give your customer the best value by adding Tips to help them.</p>
+    {% else %}
+        <p>{{ user.fullname }} hasn’t shared any tips yet.</p>
+    {% endif %}
+{% endif %}

@@ -124,7 +124,7 @@ hwi_oauth:
                 display:         popup
 
 fos_js_routing:
-    routes_to_expose: [ zgh_fe.user.login_partial, zgh_fe.vendor.login_partial, zgh_fe.user_profile.privacy.set, zgh_fe.like.list, zgh_fe.comment.list, fos_message_thread_view, zgh_fe.notifications, zgh_message_inbox_content, fos_message_list_view, zgh_fe.email_notification.set ]
+    routes_to_expose: [ zgh_fe.user.login_partial, zgh_fe.vendor.login_partial, zgh_fe.user_profile.privacy.set, zgh_fe.like.list, zgh_fe.comment.list, fos_message_thread_view, zgh_fe.notifications, zgh_message_inbox_content, fos_message_list_view, zgh_fe.email_notification.set, fos_user_security_login ]
 
 fos_message:
     db_driver: orm
@@ -139,3 +139,12 @@ fos_message:
         handler:            zgh_message.thread_form_handler
     reply_form:
         handler:            zgh_message.message_form_handler
+
+liip_imagine:
+    filter_sets:
+        my_thumb:
+            filters:
+                thumbnail: { size: [561, 700], mode: inset }
+        my_widen:
+            filters:
+                relative_resize: { widen: 561 }
