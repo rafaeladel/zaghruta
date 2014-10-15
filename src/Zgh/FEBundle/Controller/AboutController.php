@@ -58,21 +58,23 @@ class AboutController extends Controller
 
 
         if ($user_info->getStatus() != null) {
-
-            $target_user = $old_user_info->getRelationshipUser() instanceof User ? $user_info->getRelationshipUser() : null;
+//            var_dump($user_info->getStatus());
+//            die;
+            $target_user = $old_user_info->getRelationshipUser() instanceof User ? $old_user_info->getRelationshipUser() : null;
             $target_user_info = $target_user instanceof User ? $target_user->getUserInfo() : null;
             if ($user_info->getStatus() == "Single") {
                 if ($target_user_info instanceof UserInfo ) {
-
-                    //Setting the other side relationship info
+//                    var_dump(221);
+//                    die;
+//                    Setting the other side relationship info
 //                    $target_user_info->setStatus("Single");
                     $target_user_info->setRelationshipUser(null);
-                    $this->getDoctrine()->getManager()->persist($target_user_info);
+                    $target_user->setUserInfo($target_user_info);
+                    $this->getDoctrine()->getManager()->persist($target_user);
 
                     $notification_ent = $this->getDoctrine()->getRepository("ZghFEBundle:Notification")->findOneBy(["other_end" => $user_info->getUser()]);
                     if($notification_ent) {
                         $this->getDoctrine()->getManager()->remove($notification_ent);
-
                     }
                 }
                 $user_info->setRelationshipUser(null);
@@ -87,7 +89,6 @@ class AboutController extends Controller
                         $rel_event
                     );
                 }
-
             }
 
         }
