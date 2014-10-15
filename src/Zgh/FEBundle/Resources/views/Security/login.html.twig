@@ -108,29 +108,29 @@
                                             </div>
                                         {% endif %}
 
-                                        <form class="login_form" action="{{ path("fos_user_security_check") }}" method="post">
+                                        <form class="login_form_customer" action="{{ path("fos_user_security_check") }}" method="POST">
                                             <input type="text" style="display:none">
                                             <input type="password" style="display:none">
 
                                             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
 
                                             <div class="form-group">
-                                                <input type="text" id="username" name="_username" value=""
+                                                <input type="text" id="username_customer" name="_username" value=""
                                                        required="required"
                                                        class="form-control" placeholder="Email"/>
                                                 {#<div class="validation" style="">No suggestions</div>#}
                                             </div>
 
                                             <div class="form-group">
-                                                <input type="password" id="password" name="_password"
+                                                <input type="password" id="password_customer" name="_password"
                                                        required="required"
                                                        class="form-control" placeholder="Password"/>
                                                 {#<div class="validation" style="">No suggestions</div>#}
                                             </div>
 
                                             <div class="form-group">
-                                                <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-                                                <label class="RememberMe text-center" for="remember_me">Remember
+                                                <input type="checkbox" id="remember_me_customer" name="_remember_me" value="on"/>
+                                                <label class="RememberMe text-center" for="remember_me_customer">Remember
                                                     Me</label>
                                             </div>
 
@@ -139,7 +139,7 @@
                                                    data-toggle="modal" data-target="#modalResetPass">Forgot your
                                                     Password? </a>
 
-                                                <input type="submit" id="_submit" name="_submit" value="Log In"
+                                                <input type="submit" id="submit_customer" name="submit_customer" value="Log In"
                                                        class="btn btn-danger btn-wide pull-right"/>
                                                 <a href="{{ url("fos_user_registration_register", {"t": "customer"}) }}"
                                                    class="signUp pull-right">Sign Up</a>
@@ -161,28 +161,28 @@
                                                aria-hidden="true">&times;</a>
                                         </div>
                                     {% endif %}
-                                    <form class="login_form" action="{{ path("fos_user_security_check") }}" method="post">
+                                    <form class="login_form_vendor" action="{{ path("fos_user_security_check") }}" method="POST">
                                         <input type="text" style="display:none">
                                         <input type="password" style="display:none">
 
                                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
 
                                         <div class="form-group">
-                                            <input type="text" id="username" name="_username" value=""
+                                            <input type="text" id="username_vendor" name="_username" value=""
                                                    required="required"
                                                    class="form-control" placeholder="Email"/>
                                             {#<div class="validation" style="">No suggestions</div>#}
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" id="password" name="_password" required="required"
+                                            <input type="password" id="password_vendor" name="_password" required="required"
                                                    class="form-control" placeholder="Password"/>
                                             {#<div class="validation" style="">No suggestions</div>#}
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-                                            <label class="RememberMe text-center" for="remember_me">Remember Me</label>
+                                            <input type="checkbox" id="remember_me_vendor" name="_remember_me" value="on"/>
+                                            <label class="RememberMe text-center" for="remember_me_vendor">Remember Me</label>
                                         </div>
 
                                         <div class="row">
@@ -190,7 +190,7 @@
                                                data-toggle="modal" data-target="#modalResetPass">Forgot your
                                                 Password </a>
 
-                                            <input type="submit" id="_submit" name="_submit" value="Log In"
+                                            <input type="submit" id="submit_vendor" name="submit_vendor" value="Log In"
                                                    class="btn btn-danger btn-wide pull-right"/>
                                             <a href="{{ url("fos_user_registration_register", {"t": "vendor"}) }}"
                                                class="signUp pull-right">Sign Up</a>
@@ -247,7 +247,27 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            $(".login_form").validate({
+            $(".login_form_customer").validate({
+                rules: {
+                    _username: {
+                        required: true,
+                        email: true
+                    },
+                    _password: "required"
+                },
+                messages: {
+                    _username: {
+                        required: "Email is required",
+                        email: "Wrong E-mail Format"
+                    },
+                    _password: "Password is required"
+                },
+                submitHandler: function(form){
+                    form.submit();
+                }
+            });
+
+            $(".login_form_vendor").validate({
                 rules: {
                     _username: {
                         required: true,
