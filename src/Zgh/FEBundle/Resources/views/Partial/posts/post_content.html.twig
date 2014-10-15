@@ -16,9 +16,9 @@
         <a class="fancybox fancyboxArrow" href="#{{ post.id }}"><img alt="" src="{{ post.getWebPath | imagine_filter("my_thumb") }}" class="img-responsive margin-md"></a>
 
         <div id="{{ post.id }}" style="display: none;">
-            <div class="col-md-9 product">
+            <div class="product postFancy">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="">
                         <img alt="" src="{{ asset(post.getWebPath) }}" class="img-responsive margin-md">
                     </div>
                 </div>
