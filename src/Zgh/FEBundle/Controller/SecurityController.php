@@ -28,9 +28,6 @@ class SecurityController extends ContainerAware
         if ($error) {
             // TODO: this is a potential security risk (see http://trac.symfony-project.org/ticket/9523)
             $error = $error->getMessage();
-
-            var_dump($request->request->all());
-            die;
         }
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContextInterface::LAST_USERNAME);
