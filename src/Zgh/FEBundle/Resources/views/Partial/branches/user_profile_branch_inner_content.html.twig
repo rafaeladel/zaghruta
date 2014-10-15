@@ -1,13 +1,13 @@
     <div class="panel panel-default">
         <div class="panel-heading"><h5>{{ branch.address }}
                 {% if user.id == app.user.id %}
-                <a class="branch_edit" href="{{ url("zgh_fe.branches.get_edit", {"id": user.id, "branch_id": branch.id }) }}"> <span title=""
+
+                    <button data-target="#deleteBranch_{{ branch.id }}" data-toggle="modal" data-original-title="Delete" data-placement="top"  type="submit" class="row  tooltip  btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
+                                   <a class="branch_edit pull-right" href="{{ url("zgh_fe.branches.get_edit", {"id": user.id, "branch_id": branch.id }) }}"> <span title=""
                                                                                                      data-placement="top"
                                                                                                      data-toggle="tooltip"
                                                                                                      class="glyphicon glyphicon-edit tooltip pull-right top"
                                                                                                      data-original-title="Edit"></span></a>
-
-                    <button data-target="#deleteBranch_{{ branch.id }}" data-toggle="modal" data-original-title="Delete" data-placement="top"  type="submit" class="row  tooltip  btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
                     <div id="deleteBranch_{{ branch.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
                         <div class="modal-dialog">
                             <div class="modal-content">

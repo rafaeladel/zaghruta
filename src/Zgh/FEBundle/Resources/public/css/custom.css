@@ -402,9 +402,21 @@ a.boy {
 }
 
 .postComment {
-    background: #F8F8F8;
     padding: 20px 20px;
     position: relative;
+}
+.containerImg{
+   height: auto;
+   display: block;
+   background: none !important;
+   overflow: hidden;
+}
+.containerImg img{
+    width: auto;
+   margin: 0 auto;
+   height: 100%;
+   float: none;
+   display: block;
 }
 
 .postComment p {
@@ -709,6 +721,12 @@ footer .container {
 }
 .product-G .thumbnail h6{
     color:#000000;
+    
+}
+.productContent h4{
+    height: auto;
+    max-height: 33px; 
+    overflow: hidden;
 }
 
 .GridView .product-G .thumbnail .thumbOverlay ul li {
@@ -724,6 +742,11 @@ footer .container {
 .GridView .product-G .thumbnail .caption {
     background: none;
     padding: 0;
+}
+.experience .thumbnail .caption h4{
+    height: auto;
+    max-height: 32px;
+    overflow: hidden;
 }
 
 .GridView .product-G .thumbnail .caption a {
@@ -1240,9 +1263,9 @@ footer a {
     position: relative;
 }
 .productContent{
-    height: auto;
+   
     overflow: hidden;
-    max-height:225px;
+    height:225px;
 }
 .productContent .description{
     height: 93px;
@@ -1399,6 +1422,9 @@ footer a {
     background: #f5f5f5;
     margin-top: 20px;
     position: relative;
+    word-break:break-all;   
+}
+p, h1, h2, h3, h4, h5, h6, a, div, td {
     word-break:break-all;   
 }
 
@@ -2659,6 +2685,7 @@ margin-bottom: 15px !important;
     display: block;
     height: 176px !important;
 }
+
 .albumCont .thumbnail a img{
     height: 100%;
     width: auto;
@@ -2696,7 +2723,10 @@ margin-bottom: 15px !important;
     border: 1px solid #ccc;
     height: 34px;
     border-radius: 4px;
-    margin-left: -2px;
+    margin-left: 0px;
+}
+.address label{
+  margin-right: 4px;
 }
 .editBranch ul{
     list-style-type:none ;
@@ -2753,9 +2783,14 @@ margin-bottom: 15px !important;
     color: #58bcad;
 }
 .branch_edit{
-    position: absolute;
-    right: 63px;
-    top: 8px;
+    margin-right: 16px;
+}
+.mail label{
+  margin-right: 4px;
+}
+.branch_edit span{
+    position: relative;
+    top: -3px;
 }
 .fancybox-inner .product{
     width: 100%;
@@ -2863,7 +2898,10 @@ overflow: hidden;
 
 .wishList a img{
     width: auto !important;
-  height: 100% !important;
+    height: 100% !important;
+    margin: 0 auto;
+    float: none;
+    display: block;
 
 }
 
@@ -3150,4 +3188,14 @@ padding: 0;
 
 .sidebarMessage  {
     max-height: 450px;
+}
+.test #wrap .fancybox-inner img{
+    display: none;
+
+}
+.branch_edit .tooltip.fed{
+    left: 20px;
+}
+.animated{
+    min-height: 60px\0/IE9;
 }
