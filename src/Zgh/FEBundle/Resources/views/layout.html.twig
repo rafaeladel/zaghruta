@@ -119,14 +119,12 @@
                 $(e.target).closest(".content_togglers").siblings(".post_content, .comment_content").toggleClass("show");
                 $(e.target).closest(".content_togglers").find("a").toggle();
             });
-
-//            $("body").on("click", ".openExp", function(e){
-//                e.preventDefault();
-//                var url = $(e.currentTarget).attr("href");
-//                window.location.href = url;
-//                document.pushState(null, null, url);
+//
+//            $("body").on("click", ".newPost", function(e) {
+//                var form = $(e.target).closest("form");
+//                form.submit();
+//                $(e.target).attr("disabled", "disabled");
 //            });
-
 
             $("body").on("click", ".reset_photo", function(e){
                 e.preventDefault();

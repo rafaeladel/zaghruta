@@ -16,6 +16,7 @@ $(document).ready(function(){
             }
         },
         submitHandler: function(form){
+            $(form).find(".newPost").attr("disabled", "disabled");
             form.submit();
         }
     });
