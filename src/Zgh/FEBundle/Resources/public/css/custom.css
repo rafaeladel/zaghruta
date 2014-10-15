@@ -23,6 +23,8 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+
 .icon-dad:before {
     content: "\e604";
 }
@@ -1001,7 +1003,7 @@ div.profile{
     background: none;
     position: absolute;
     top: 0px;
-    right: 5px;
+    right: 18px;
 }
 
 .post:hover > .delete-post, .postComment:hover > .delete-post {
@@ -1022,14 +1024,15 @@ div.profile{
 .data-reacted {
      margin-bottom: 10px;
     padding-left: 0;
-    width: 100%;
+    width: 75%;
 }
 
 .data-reacted .profile h3 {
     font-size: 16px;
 }
-
-
+.postFancy .fancybox-inner img{
+    margin: 0 auto;
+}
 .img-post {
     padding: 0;
 }
@@ -1261,6 +1264,14 @@ footer a {
 }
 .header-post{
     position: relative;
+}
+.header-post .icons-G{
+    position: relative !important;
+    width: 100px;
+}
+.header-post .icons-G .btnForm{
+    margin-left: 10px;
+    width: 38px
 }
 .productContent{
    
