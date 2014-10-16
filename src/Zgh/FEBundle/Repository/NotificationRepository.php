@@ -15,4 +15,20 @@ class NotificationRepository extends EntityRepository
                     ")->setParameter("user", $user);
         return $q->execute();
     }
+
+    public function getRelationshipNotification($requester, $receiver)
+    {
+        $q = $this->getEntityManager()->createQuery("
+                        select n from Zgh\FEBundle\Entity\Notification n
+                            where n.user = :req
+                            and n.other_end = :rec
+                            and n.content like :type
+                    ");
+        $q->setParameters([
+            "req" => $receiver,
+            "rec" => $requester,
+            "type" => "%notify.relationship.request%"
+        ]);
+        return $q->execute();
+    }
 }
