@@ -3079,6 +3079,7 @@ overflow: hidden;
 }
 .about_wrapper .table tr td{
     vertical-align: middle;
+    line-height: 2 !important;
 }
 .about_wrapper .table tr:nth-child(3) td .select2-container{
     margin-bottom: 5px;
