@@ -6,9 +6,9 @@
         {{ post.content|raw|nl2br|converturls }}
     </p>
     {% if post.content|length > 300 %}
-        <br />
+        
         <div class="content_togglers">
-            <a href="#" class="post_down">More</a>
+            <a href="#" class="post_down">More...</a>
             <a href="#" class="post_up">Less</a>
         </div>
     {% endif %}

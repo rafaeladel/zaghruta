@@ -406,6 +406,10 @@ a.boy {
 .postComment {
     padding: 20px 20px;
     position: relative;
+    border-bottom: 1px solid #ccc;
+}
+.postComment:last-child{
+    border-bottom: none;
 }
 .containerImg{
    height: auto;
@@ -462,7 +466,8 @@ a.boy {
     margin-top: 0px;
 }
 .linkForgotPass {
-    line-height: 34px
+    line-height: 34px;
+    cursor:pointer;
 }
 /*------------------------------*/
 footer {
@@ -584,15 +589,28 @@ footer .container {
 }
 
 .fbLogin {
-    background: url(../img/socialLogin.png) no-repeat left top;
+    background: #3b5998;
     width: 165px;
     height: 30px;
     display: block;
     margin: 0 auto;
+    color: #fff;
+    text-align: right;
+    line-height: 29px;
+    padding-right: 10px;
+}
+.fb{
+    background: url(../img/fb.png) no-repeat 0 0;
+    width: 36px;
+    height: 30px;
+    display: inline-block;
+    float: left;
+    border-right: 1px solid #546ea5;    
 }
 
 .fbLogin:hover {
-    background-position: left -36px;
+    color: #fff;
+    text-decoration: none;
 }
 
 .twLogin {
@@ -630,11 +648,20 @@ footer .container {
     padding-bottom: 10px;
     border-bottom: 7px solid #61c5b6;
     position: relative;
-    z-index: 2;
+    z-index: 3;
+}
+.modalBranch ul{
+    padding: 0;
+}
+
+.modalBranch ul li{
+  list-style-type:none;
+  color: red;
 }
 
 .loginSwitch .container p {
     color: #fff;
+    min-height: 36px;
 }
 
 .nav-profile {
@@ -714,12 +741,16 @@ footer .container {
     margin: -15px 0 0 -22px;
     padding: 0;
 }
+.product-G .thumbOverlay{
+    cursor: none !important;
+}
 
 .GridView .product-G .thumbnail {
     border: none;
     background: none;
     position: relative;
     padding: 0;
+    cursor: none;   
 }
 .product-G .thumbnail h6{
     color:#000000;
@@ -847,6 +878,7 @@ div.profile{
 
 .profile-pic-boy {
     border: 5px solid #8fd2c8;
+    margin-bottom: 5px;
 }
 
 .UesrOrvendor {
@@ -1030,8 +1062,8 @@ div.profile{
 .data-reacted .profile h3 {
     font-size: 16px;
 }
-.postFancy .fancybox-inner img{
-    margin: 0 auto;
+.postFancy  img{
+    margin: 0 auto !important;
 }
 .img-post {
     padding: 0;
@@ -1363,7 +1395,7 @@ footer a {
     transition: all .5s ease;
 }
 
-.sidebarMessage .data-reacted:hover, .data-reacted:hover .btnRemove {
+.sidebarMessage .data-reacted:hover, .data-reacted:hover .btnRemove, .hoverthread {
     background: #f5f5f5;
     display: block;
 }
@@ -1435,7 +1467,7 @@ footer a {
     position: relative;
     word-break:break-all;   
 }
-p, h1, h2, h3, h4, h5, h6, a, div, td {
+.contentProduct p{
     word-break:break-all;   
 }
 
@@ -1534,8 +1566,8 @@ p, h1, h2, h3, h4, h5, h6, a, div, td {
 .headerProduct .moveEditExpTip{
    margin: 5px 10px 0 0;
 }
-.btnEditTip{
-
+.headerProduct .btnForm{
+  width: 40px;
 }
 
 /*------------------------------------*/
@@ -2221,6 +2253,22 @@ p, h1, h2, h3, h4, h5, h6, a, div, td {
 .dropdown-menu > li > a {
     padding: 3px 13px !important;
 }
+.upper-menu{
+    top: 132%;
+}
+.upper-menu:after{
+   content: ' ';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 10px solid transparent;
+    border-bottom-color: #61c5b6;
+    top: -19px;
+    left: 4px;
+    border-width: 10px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+}
 
 .iconMenu {
     width: 24px;
@@ -2407,9 +2455,11 @@ p, h1, h2, h3, h4, h5, h6, a, div, td {
 
 .profilePic{
     margin-bottom: 10px;
-    position: absolute;
-    top: 50px;
-    left: 50px;
+   position: absolute;
+   top: 50%;
+   left: 50px;
+   margin-top: -57px;
+
 }
 .profilePic .imgProfile > a > img{
     width: 100%;
@@ -2477,8 +2527,10 @@ p, h1, h2, h3, h4, h5, h6, a, div, td {
     width: auto;
 }
 .signUp{
-    margin-right: 10px;
-    margin-top: 5px;
+    margin-right: 17px;
+    margin-top: 8px;
+    font-size: 13px;
+
 }
 .btnForm {
     display: inline;
@@ -2549,9 +2601,12 @@ border-top: none;
 .resultComment, .resultLike{
    margin: 15px 10px 0 0;
 }
-.popupPost .content-post p{
+.popupPost .content-post p {
   color: #000 !important;
   font-size: 12px !important;
+}
+.fancybox-inner .content-post p{
+    color: #fff !important;
 }
 .resizePhoto{
    overflow: hidden;
@@ -2947,11 +3002,12 @@ overflow: hidden;
 
 .addWishlist{
 /*    margin-left: 85px;
-*/    right: 36px;
+*/    right: 48px;
 }
 /*.contentPopupWish .addWishlist{
     margin-left: 43px !important;
 }*/
+
 .wishlistPopup input{
     margin-right: 5px;
 }
@@ -3044,8 +3100,20 @@ overflow: hidden;
     font-size: 30px;
 }
 .icon-interests{
-   margin-left: 7px;
-font-size: 18px !important;
+   margin-left: 0;
+   font-size: 18px !important;
+   margin-right: -3px;
+   margin-top: 2px;
+   float: left;
+
+}
+.iconSetting{
+    float: left;
+    margin-right: -6px;
+}
+.iconLogout{
+    float: left;
+   margin-right: -4px;
 }
 
 .notification_date {
@@ -3172,6 +3240,7 @@ padding: 0;
 .comment_content, .post_content {
     height: 70px !important;
     overflow: hidden !important;
+
 }
 
 .show {
@@ -3196,6 +3265,9 @@ padding: 0;
 .messagesWrapper {
     max-height: 380px !important;
 }
+.messagesWrapper .msgUser .profile h5 {
+  font-weight: bold;
+}
 
 .sidebarMessage  {
     max-height: 450px;
@@ -3209,4 +3281,47 @@ padding: 0;
 }
 .animated{
     min-height: 60px\0/IE9;
+}
+.relation{
+/*    width: 90px;
+*/    display: block;
+    height: 41px;
+    line-height: 25px;
+}
+
+.about_wrapper tbody tr td:last-child{
+    width: 240px;
+}
+
+.birthdadyEd{
+    width: 70px;
+    display: block;
+}
+.content_togglers{
+    text-align: right;
+    font-weight: normal;
+}
+.content_togglers:hover{
+    text-decoration: underline;
+}
+.profilePrivacy .radio label{
+  line-height: 23px;
+}
+.notification .checkbox{
+      line-height: 20px;
+}
+.listMessage{
+    margin-top: 30px;
+}
+@-moz-document url-prefix() { 
+  .signBox legend {
+     margin-left: 106px;
+     margin-top: 11px;
+  }
+}
+.modalBranch .select2-container .select2-choice{
+  overflow: inherit !important;
+}
+.allFriends .profile .boy {
+ height: auto !important;
 }

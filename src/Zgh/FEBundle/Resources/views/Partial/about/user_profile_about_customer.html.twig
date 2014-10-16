@@ -13,16 +13,16 @@
         </thead>
         <tbody>
             <tr>
-                <td>Birthday</td>
-                <td>{{ about.birthday|date("M d, Y") }}</td>
+                <td class="birthdady">Birthday</td>
+                <td class="birthdadyDate">{{ about.birthday|date("M d, Y") }}</td>
             </tr>
             <tr>
-                <td>Gender</td>
-                <td>{{ about.gender == 0 ? "Male" : "Female" }}</td>
+                <td class="gender">Gender</td>
+                <td class="aboutGender">{{ about.gender == 0 ? "Male" : "Female" }}</td>
             </tr>
             <tr>
-                <td>Relationship</td>
-                <td style="position: relative;">
+                <td class="relation">Relationship</td>
+                <td class="relationStatus" style="position: relative;">
                     {% if about.status == "Married" %}
                         {% if about.gender == 0 %}
                             {% set rel_class = "icon-husband" %}
@@ -62,20 +62,20 @@
             </tr>
 
             <tr>
-                <td>City</td>
-                <td>{{ about.city }}</td>
+                <td class="city">City</td>
+                <td class="aboutCity">{{ about.city }}</td>
             </tr>
             <tr>
-                <td>Job</td>
-                <td>{{ about.job }}</td>
+                <td class="jop">Job</td>
+                <td class="aboutJob">{{ about.job }}</td>
             </tr>
             <tr>
-                <td>Facebook</td>
-                <td>{{ about.facebook|converturls }}</td>
+                <td class="facebook">Facebook</td>
+                <td class="aboutFacebook">{{ about.facebook|converturls }}</td>
             </tr>
             <tr>
-                <td>Twitter</td>
-                <td>{{ about.twitter|converturls }}</td>
+                <td class="twitter">Twitter</td>
+                <td class="aboutTwitter">{{ about.twitter|converturls }}</td>
             </tr>
         </tbody>
     </table>
