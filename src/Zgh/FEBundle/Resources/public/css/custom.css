@@ -3314,15 +3314,22 @@ padding: 0;
 .listMessage{
     margin-top: 30px;
 }
-@-moz-document url-prefix() { 
-  .signBox legend {
-     margin-left: 106px;
-     margin-top: 11px;
-  }
-}
 .modalBranch .select2-container .select2-choice{
   overflow: inherit !important;
 }
 .allFriends .profile .boy {
  height: auto !important;
 }
+.logoRetina img{
+width: 201px;
+height: 44px;
+}
+
+@-moz-document url-prefix() { 
+  .signBox legend {
+     margin-left: 106px;
+     margin-top: 11px;
+  }
+}
+
+

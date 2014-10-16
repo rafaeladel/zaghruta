@@ -108,6 +108,27 @@ $(document).ready(function () {
 
    });
 
+   //jquer media query retina  
+
+   // Checking for Retina Devices
+    // function isRetina() {
+    // var query = '(-webkit-min-device-pixel-ratio: 2),\
+    // (min--moz-device-pixel-ratio: 2),\
+    // (-o-min-device-pixel-ratio: 2),\
+    // (min-device-pixel-ratio: 2),\
+    // (min-resolution: 192dpi),\
+    // (min-resolution: 2dppx)';
+
+    // if (window.devicePixelRatio > 1.5 || (window.matchMedia && window.matchMedia(query).matches)) {
+    // return true;
+    // }
+    // return false;
+    // }
+
+    // if (isRetina) {
+    //     $('.logoRetina img').attr('src','/zaghruta/web/bundles/zghfe/img/logox2.png');
+    // }
+
 });
 
 
