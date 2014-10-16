@@ -67,6 +67,9 @@ function singleUploadProduct() {
                                 formData.append(v.name, v.value);
                             });
                         });
+
+                        $(".pp_modal").hide();
+                        $(".btn-cover").hide();
                         myDropzone.processQueue();
                     } else {
                         $("body").find(".btnBrowsePhoto").after("<div class='dropzone_custom_error'><p style='font-weight: bold;'>Image is required</p></div>");
@@ -106,6 +109,9 @@ function singleUploadProduct() {
     });
 
     function refreshWrapper(data) {
+
+        $(".pp_modal").show();
+        $(".btn-cover").show();
         var submit_btn = $(".product_browse").closest("form").find("[type='submit']");
         submit_btn.removeAttr("disabled");
         if (data.status == 200) {

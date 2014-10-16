@@ -98,8 +98,9 @@ class MessageController extends ContainerAware
     {
         $container = $this->container;
         $thread = $container->get("fos_message.provider")->getThread($threadId);
-        $container->get('fos_message.deleter')->markAsDeleted($thread);
-        $container->get('fos_message.thread_manager')->saveThread($thread);
+        $manager = $container->get("doctrine.orm.entity_manager");
+        $manager->remove($thread);
+        $manager->flush();
 
         return new RedirectResponse($this->container->get('router')->generate('fos_message_inbox'));
     }

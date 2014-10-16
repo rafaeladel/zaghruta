@@ -103,6 +103,9 @@
         <p class="col-md-12">
             {{ product.description|nl2br|converturls }}
         </p>
+        <p  class="col-md-12">
+            {{ product.createdAt|date("d M Y - h:i A") }}
+        </p>
         {% if toggles["is_popup"] == true %}
             <div class="row">
                 <p class="col-md-12"><a href="{{ url("zgh_fe.user_profile.index", {"id": product.user.id}) }}">{{ product.user.fullname }}</a></p>

@@ -84,7 +84,7 @@ $(document).ready(function(){
     $("body").on("click", ".btn-comment", function(e){
         e.preventDefault();
         var form = $(e.target).closest("form");
-        var content = $(form).find('[name="comment_content"]').val();
+        var content = $(form).find('[name="comment_content"]').val().replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + "<br/>" + '$2');
         if(content.length == 0){
             return;
         }

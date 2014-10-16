@@ -89,7 +89,7 @@ class CommentManager
             "deleteUrl" => $this->router->generate("zgh_fe.comment.delete", array("id" => $comment->getId())),
             "author" => $comment->getUser()->getFullName(),
             "author_url" => $this->router->generate("zgh_fe.user_profile.index", ["id" => $user->getId()]),
-            "time" => $comment->getCreatedAt()->format("D d Y - h:i A"),
+            "time" => $comment->getCreatedAt()->format("d M Y - h:i A"),
             "comments_count" => count($entity->getComments()),
             "author_pp" => in_array("ROLE_FACEBOOK", $user->getRoles()) ?
                     'https://graph.facebook.com/' . $user->getFacebookId() . '/picture' :

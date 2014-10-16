@@ -3,6 +3,8 @@ $(document).ready(function () {
 
     $("body").on("click", ".thread", function (e) {
         e.preventDefault();
+        $(".thread").removeClass("hoverthread");
+        $(e.currentTarget).addClass("hoverthread");
         var thread_id = $(e.currentTarget).data("t_id");
         var url = Routing.generate('fos_message_thread_view', {threadId: thread_id}, true);
         var wrapper = $(e.currentTarget).closest(".container").find(".listMessage");

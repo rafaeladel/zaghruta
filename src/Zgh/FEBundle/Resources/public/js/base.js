@@ -6,7 +6,6 @@ $(document).ready(function () {
             type: "get",
             url: notificationsUrl,
             success: function(data) {
-                console.log(data);
                 if(data.logged_in) {
                     $("body").find(".notificationsWidget").html(data.view);
                 } else {
