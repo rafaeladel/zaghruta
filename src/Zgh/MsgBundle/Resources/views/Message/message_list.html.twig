@@ -11,7 +11,7 @@
         <div class="pull-right time">{{ message.createdAt|date() }}</div>
         <p class="img-rounded">
             <span></span>
-            {{ message.body }}
+            {{ message.body|nl2br|converturls }}
         </p>
 
     </div>

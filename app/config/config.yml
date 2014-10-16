@@ -81,7 +81,7 @@ fos_user:
             from_email:
                 address:        registration@zaghruta.com
                 sender_name:    Registration confirmation
-            enabled: true
+            enabled: false
         form:
             type: zgh_fe_registration_form_type
             validation_groups: ["customRegistration", "Default"]
@@ -148,3 +148,4 @@ liip_imagine:
         my_widen:
             filters:
                 relative_resize: { widen: 561 }
+

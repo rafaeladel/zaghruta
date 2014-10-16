@@ -24,6 +24,8 @@ function singleUploadExpTip() {
         init: function () {
             var myDropzone = this;
 
+            $(".pp_modal").hide();
+            $(".btn-cover").hide();
             //setting dropzone name for post request
             myDropzone.options.paramName = $(myDropzone.element).attr("name");
 
@@ -95,6 +97,8 @@ function singleUploadExpTip() {
 
     function refreshWrapper(data) {
         document.location = data.url;
+        $(".pp_modal").show();
+        $(".btn-cover").show();
 //        var submit_btn = $(".exp_tip_browse").closest("form").find("[type='submit']");
 //        submit_btn.removeAttr("disabled");
 //        if (data.status == 200) {

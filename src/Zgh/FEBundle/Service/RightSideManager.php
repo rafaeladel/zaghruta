@@ -34,6 +34,8 @@ class RightSideManager
                 inner join curFollowUser.followee mutuall
                 where curFollowUser.follower = :user
             )
+            and recUser.enabled = true
+            and recUser.first_time = false
             and recUser.roles like '%ROLE_CUSTOMER%'
             and recUser.id != :user
             group by recUser.id
@@ -71,7 +73,8 @@ class RightSideManager
                     inner join f_users.followee followed_users
                     where f_users.follower = :user
                 )
-
+                and v.enabled = true
+                and v.first_time = false
                 and v.roles like '%ROLE_VENDOR%'
 
                 group by v.id
@@ -105,6 +108,8 @@ class RightSideManager
                     inner join f_users.followee followed_users
                     where f_users.follower = :user
                 )
+                and v.enabled = true
+                and v.first_time = false
                 and v.roles like '%ROLE_VENDOR%'
                 and v.created_at > :fresh
                 order by v.created_at desc
