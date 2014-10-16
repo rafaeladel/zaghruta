@@ -100,6 +100,13 @@ $(document).ready(function () {
         $(".hide-show").hide();
         //$("#intro_description").show();
     });
+   $(".modalClose").click(function(){
+        $(".select2-drop").hide();
+   });
+   $("#myModal").click(function() {
+        $(".select2-drop").hide();
+
+   });
 
 });
 

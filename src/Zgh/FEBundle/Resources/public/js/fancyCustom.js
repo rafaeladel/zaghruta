@@ -12,8 +12,9 @@ $('.fancyboxBg').fancybox({
         overlay: {
             css: {
                 'background': 'rgba(256, 256, 256, 0.7)'
+            },
+            locked: false
 
-            }
         }
     },
     padding: 20,
@@ -28,7 +29,13 @@ $(".fancybox")
         },
         padding: 0,
         maxWidth: 720,
-        scrolling: false
+        scrolling: false,
+        helpers: {
+            overlay: {
+            locked: false
+    }
+  }
+
 
     });
 
