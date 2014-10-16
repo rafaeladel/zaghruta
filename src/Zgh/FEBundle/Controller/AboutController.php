@@ -66,12 +66,18 @@ class AboutController extends Controller
                         $target_user_info->setRelationshipUser(null);
                     $this->getDoctrine()->getManager()->persist($target_user_info);
 
-                    $notification_ent = $this->getDoctrine()->getRepository("ZghFEBundle:Notification")->findOneBy(["other_end" => $user_info->getUser()]);
-                    if($notification_ent) {
-                        $this->getDoctrine()->getManager()->remove($notification_ent);
-                    }
+//                    $notification_ent = $this->getDoctrine()->getRepository("ZghFEBundle:Notification")->findOneBy(["other_end" => $user_info->getUser()]);
+//
+//
+//                    if($notification_ent) {
+//                        $this->getDoctrine()->getManager()->remove($notification_ent);
+//                    }
                 }
                 $user_info->setRelationshipUser(null);
+
+//                $notification_ent = $this->getDoctrine()->getRepository("ZghFEBundle:Notification")->getRelationshipNotification($user_info->getUser(), $target_user);
+//                var_dump($notification_ent);
+//                die;
             } else {
                 if(!$user_info->getRelationshipUser() instanceof User) {
                     $user_info->setRelationshipAccepted(true);
@@ -84,6 +90,7 @@ class AboutController extends Controller
                     );
                 }
             }
+
 
         }
 
