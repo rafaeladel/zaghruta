@@ -186,13 +186,16 @@ class SearchManager
                 select e
                 from Zgh\FEBundle\Entity\Experience e
                 inner join e.categories c
-                where c.name_slug = :cat
+                inner join e.user u
+                where u.is_private = :priv
+                and c.name_slug = :cat
                 and e.title like :crit
             ");
 
         $q->setParameters([
                 "cat" => $cat_slug,
-                "crit" => "%" .  strtolower($query) . "%"
+                "crit" => "%" .  strtolower($query) . "%",
+                "priv" => false
             ]);
 
         return $q->execute();
