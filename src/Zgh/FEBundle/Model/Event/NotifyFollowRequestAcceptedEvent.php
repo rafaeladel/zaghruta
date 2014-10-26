@@ -21,6 +21,8 @@ class NotifyFollowRequestAcceptedEvent extends Event
 
     protected $action_id;
 
+    protected $type;
+
     /**
      * @var Notification
      */
@@ -30,9 +32,9 @@ class NotifyFollowRequestAcceptedEvent extends Event
     {
         $follower = $follow_obj->getFollower();
         $followee = $follow_obj->getFollowee();
+        $this->type = NotifyEvents::NOTIFY_FOLLOW_REQUEST_ACCEPTED;
 
         $this->content = [
-            "type" => NotifyEvents::NOTIFY_FOLLOW_REQUEST_ACCEPTED,
             "user" => $followee->getFullName(),
             "followee_id" => $followee->getId(),
         ];
@@ -44,7 +46,7 @@ class NotifyFollowRequestAcceptedEvent extends Event
     public function getNotification()
     {
         $manager = new NotificationManager();
-        $notification = $manager->create($this->user, $this->content, $this->action_id);
+        $notification = $manager->create($this->user, $this->content, $this->action_id, $this->type);
         return $notification;
     }
 
@@ -56,5 +58,10 @@ class NotifyFollowRequestAcceptedEvent extends Event
     public function getFollowee()
     {
         return $this->followee;
+    }
+
+    public function getType()
+    {
+        return $this->type;
     }
 }

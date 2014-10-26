@@ -25,6 +25,8 @@ class NotifyCommentEvent extends Event
 
     protected $action_id;
 
+    protected $type;
+
     /**
      * @var Notification
      */
@@ -33,9 +35,8 @@ class NotifyCommentEvent extends Event
     public function __construct(User $user, Comment $comment)
     {
         $obj = $comment->getObject();
-
+        $this->type = NotifyEvents::NOTIFY_COMMENT;
         $this->content = [
-            "type" => NotifyEvents::NOTIFY_COMMENT,
             "user" => $user->getFullName(),
             "obj_id" => $obj->getId(),
             "obj_type" => $comment->getObjectType()
@@ -49,7 +50,7 @@ class NotifyCommentEvent extends Event
     public function getNotification()
     {
         $manager = new NotificationManager();
-        $notification = $manager->create($this->user, $this->content, $this->action_id);
+        $notification = $manager->create($this->user, $this->content, $this->action_id, $this->type);
         return $notification;
     }
 
@@ -61,5 +62,10 @@ class NotifyCommentEvent extends Event
     public function getCommentObject()
     {
         return $this->commentObj;
+    }
+
+    public function getType()
+    {
+        return $this->type;
     }
 }

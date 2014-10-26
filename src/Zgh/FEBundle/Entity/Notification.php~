@@ -42,6 +42,11 @@ class Notification
     protected $action_id;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $type;
+
+    /**
      * @ORM\OneToOne(targetEntity="Like", mappedBy="notification")
      */
     protected $like;
@@ -202,4 +207,27 @@ class Notification
         return $this->comment;
     }
 
+
+    /**
+     * Set other_end
+     *
+     * @param \Zgh\FEBundle\Entity\User $otherEnd
+     * @return Notification
+     */
+    public function setOtherEnd(\Zgh\FEBundle\Entity\User $otherEnd = null)
+    {
+        $this->other_end = $otherEnd;
+
+        return $this;
+    }
+
+    /**
+     * Get other_end
+     *
+     * @return \Zgh\FEBundle\Entity\User 
+     */
+    public function getOtherEnd()
+    {
+        return $this->other_end;
+    }
 }

@@ -42,6 +42,11 @@ class Notification
     protected $action_id;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $type;
+
+    /**
      * @ORM\OneToOne(targetEntity="Like", mappedBy="notification")
      */
     protected $like;
@@ -224,5 +229,28 @@ class Notification
     public function getOtherEnd()
     {
         return $this->other_end;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Notification
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

@@ -22,10 +22,13 @@
                         <h1>Add Your Categories</h1>
                     {% endif %}
                 </div>
+
                 <!----------------End  srh-Res-Heading -------------->
             </div>
             <div class="row">
-
+                <div class="intro_error">
+                    <p style="color: red;">{{ app.session.flashbag.has("error") ? app.session.flashbag.get("error")|first : "" }}</p>
+                </div>
             </div>
             <div class="row">
                 {{ form_start(form,  {"action": url("zgh_fe.interest.post") }) }}

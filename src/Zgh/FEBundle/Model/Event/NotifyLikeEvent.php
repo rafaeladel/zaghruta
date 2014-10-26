@@ -25,6 +25,8 @@ class NotifyLikeEvent extends Event
 
     protected $action_id;
 
+    protected $type;
+
     /**
      * @var Notification
      */
@@ -33,9 +35,9 @@ class NotifyLikeEvent extends Event
     public function __construct(User $user, Like $like)
     {
         $obj = $like->getObject();
+        $this->type = NotifyEvents::NOTIFY_LIKE;
 
         $this->content = [
-            "type" => NotifyEvents::NOTIFY_LIKE,
             "user" => $user->getFullName(),
             "obj_id" => $obj->getId(),
             "obj_type" => $like->getObjectType()
@@ -49,7 +51,7 @@ class NotifyLikeEvent extends Event
     public function getNotification()
     {
         $manager = new NotificationManager();
-        $notification = $manager->create($this->user, $this->content, $this->action_id);
+        $notification = $manager->create($this->user, $this->content, $this->action_id, $this->type);
         return $notification;
     }
 
@@ -61,5 +63,10 @@ class NotifyLikeEvent extends Event
     public function getLikeObject()
     {
         return $this->likeObj;
+    }
+
+    public function getType()
+    {
+        return $this->type;
     }
 }

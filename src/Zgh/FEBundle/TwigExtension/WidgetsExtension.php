@@ -167,9 +167,9 @@ class WidgetsExtension extends \Twig_Extension
         return $this->env->render("@ZghFE/Partial/tips/user_profile_tip_content.html.twig", ["tips" => $tips]);
     }
 
-    public function getExperiencesSearchResult($crit)
+    public function getExperiencesSearchResult($crit, $user)
     {
-        $experiences = $this->searchManager->getExperiencesResults($crit);
+        $experiences = $this->searchManager->getExperiencesResults($crit, $user);
         if (count($experiences) == 0) {
             return null;
         }
@@ -194,9 +194,9 @@ class WidgetsExtension extends \Twig_Extension
         return $this->env->render("@ZghFE/Partial/search/search_partial_users.html.twig", ["users" => $vendor]);
     }
 
-    public function getExperienceByCategory($cat_slug, $crit)
+    public function getExperienceByCategory($cat_slug, $crit, $user)
     {
-        $experiences = $this->searchManager->getExperiencesByCategory($cat_slug, $crit);
+        $experiences = $this->searchManager->getExperiencesByCategory($cat_slug, $crit, $user);
         if (count($experiences) == 0) {
             return null;
         }

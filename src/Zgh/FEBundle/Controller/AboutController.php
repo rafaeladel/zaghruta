@@ -5,6 +5,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -42,6 +44,8 @@ class AboutController extends Controller
      */
     public function postCustomerEditAction(Request $request, $id)
     {
+
+
         $user_info = $this->getDoctrine()->getRepository("ZghFEBundle:UserInfo")->find($id);
         $old_user_info = $this->getDoctrine()->getRepository("ZghFEBundle:UserInfo")->find($id);
         $form = $this->createForm(new UserInfoType(), $user_info);
@@ -66,18 +70,12 @@ class AboutController extends Controller
                         $target_user_info->setRelationshipUser(null);
                     $this->getDoctrine()->getManager()->persist($target_user_info);
 
-//                    $notification_ent = $this->getDoctrine()->getRepository("ZghFEBundle:Notification")->findOneBy(["other_end" => $user_info->getUser()]);
-//
-//
-//                    if($notification_ent) {
-//                        $this->getDoctrine()->getManager()->remove($notification_ent);
-//                    }
+                    $notification_ent = $this->getDoctrine()->getRepository("ZghFEBundle:Notification")->findOneBy(["other_end" => $user_info->getUser(), "type" => NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST ]);
+                    if($notification_ent) {
+                        $this->getDoctrine()->getManager()->remove($notification_ent);
+                    }
                 }
                 $user_info->setRelationshipUser(null);
-
-//                $notification_ent = $this->getDoctrine()->getRepository("ZghFEBundle:Notification")->getRelationshipNotification($user_info->getUser(), $target_user);
-//                var_dump($notification_ent);
-//                die;
             } else {
                 if(!$user_info->getRelationshipUser() instanceof User) {
                     $user_info->setRelationshipAccepted(true);

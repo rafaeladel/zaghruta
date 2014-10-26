@@ -132,7 +132,7 @@
 
                     <!--ENd Search Product-->
                     <div id="searchExperience" class="row resultWrapper">
-                        {% set experiences = getExperiencesSearchResult(query) %}
+                        {% set experiences = getExperiencesSearchResult(query, app.user) %}
                         <h2>Experiences</h2>
                         <hr>
                         {% if experiences != null %}
@@ -174,7 +174,7 @@
                     {% endif %}
                 </div>
                 <div id="searchExperience" class="row resultWrapper">
-                    {% set exp_cat = getExperienceByCategory(catSlug, query) %}
+                    {% set exp_cat = getExperienceByCategory(catSlug, query, app.user) %}
                     <h2>Experiences</h2>
                     <hr>
                     {% if exp_cat != null %}
