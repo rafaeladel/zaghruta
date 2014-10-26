@@ -7,185 +7,174 @@
 {% block content %}
 
     <div class="container">
-    {% block leftContent %}
-    <div class="row">
-        <div class="row search-Results">
-            <div class="srh-Res-Heading col-md-4 pull-left">
+        {% block leftContent %}
+        <div class="row">
+            <div class="row search-Results">
+                <div class="srh-Res-Heading col-md-4 pull-left">
 
-                {% if cat_obj == "all" or cat_obj == "people" %}
-<!--                     <span class="icon-Res icon-Res-Head img-circle"></span>
- -->                    <h1>Results for <span>{{ query }}</span></h1>
-                {% else %}
-                    <span class="icon-Res icon-Res-Head img-circle"></span>
-                    <h1>{{ cat_obj.name }}</h1>
-                {% endif %}
-            </div>
-            <!----------------End  srh-Res-Heading -------------->
-
-
-            {% if catSlug == "all" %}
-                <div class="filtration col-md-8 pull-right margin-sm">
-                    <div class="Vendors-filtration filtr pull-left margin-sm active-filtration" data-id="all">
-                        <span class="icon-Res icon-Res-people  img-circle"></span>
-                        All
-                    </div>
-
-                    <div class="Vendors-filtration filtr  pull-left margin-sm" data-id="#searchPeople">
-                        <span class="icon-Res icon-Res-people  img-circle"></span>
-                        people
-                    </div>
-
-                    <div class="Vendors-filtration filtr  pull-left margin-sm" data-id="#searchVendors">
-                        <span class="icon-Res icon-Res-vendors img-circle"></span>
-                        Vendors
-                    </div>
-                    <div class="products-filtration filtr  pull-left margin-sm" data-id="#searchProduct">
-                        <span class="icon-Res icon-Res-products img-circle"></span>
-                        Products
-                    </div>
-                    <div class="tips-filtration filtr  pull-left margin-sm" data-id="#searchTips">
-                        <span class="icon-Res icon-Res-tips img-circle active-filtration"></span>
-                        Tips
-                    </div>
-                    {% if app.user %}
-                        <div class="experince-filtration filtr  pull-left margin-sm" data-id="#searchExperience">
-                            <span class="icon-Res icon-Res-Exp img-circle"></span>
-                            Experiences
-                        </div>
+                    {% if cat_obj == "all" or cat_obj == "people" %}
+                        <!--                     <span class="icon-Res icon-Res-Head img-circle"></span>
+                         -->                    <h1>Results for <span>{{ query }}</span></h1>
+                    {% else %}
+                        <span class="icon-Res icon-Res-Head img-circle"></span>
+                        <h1>{{ cat_obj.name }}</h1>
                     {% endif %}
-
-
                 </div>
-            {% elseif catSlug != "people" %}
-                <div class="filtration col-md-8 pull-right margin-sm">
-                    <div class="Vendors-filtration filtr pull-left margin-sm" data-id="all">
-                        <span class="icon-Res icon-Res-people  img-circle"></span>
-                        All
-                    </div>
+                <!----------------End  srh-Res-Heading -------------->
 
-                    <div class="Vendors-filtration filtr  pull-left margin-sm" data-id="#searchVendors">
-                        <span class="icon-Res icon-Res-vendors img-circle"></span>
-                        Vendors
-                    </div>
-                    <div class="products-filtration filtr  pull-left margin-sm" data-id="#searchProduct">
-                        <span class="icon-Res icon-Res-products img-circle"></span>
-                        Products
-                    </div>
 
-                    {% if app.user %}
+                {% if catSlug == "all" %}
+                    <div class="filtration col-md-8 pull-right margin-sm">
+                        <div class="Vendors-filtration filtr pull-left margin-sm active-filtration" data-id="all">
+                            <span class="icon-Res icon-Res-people  img-circle"></span>
+                            All
+                        </div>
+
+                        <div class="Vendors-filtration filtr  pull-left margin-sm" data-id="#searchPeople">
+                            <span class="icon-Res icon-Res-people  img-circle"></span>
+                            people
+                        </div>
+
+                        <div class="Vendors-filtration filtr  pull-left margin-sm" data-id="#searchVendors">
+                            <span class="icon-Res icon-Res-vendors img-circle"></span>
+                            Vendors
+                        </div>
+                        <div class="products-filtration filtr  pull-left margin-sm" data-id="#searchProduct">
+                            <span class="icon-Res icon-Res-products img-circle"></span>
+                            Products
+                        </div>
+                        <div class="tips-filtration filtr  pull-left margin-sm" data-id="#searchTips">
+                            <span class="icon-Res icon-Res-tips img-circle active-filtration"></span>
+                            Tips
+                        </div>
                         <div class="experince-filtration filtr  pull-left margin-sm" data-id="#searchExperience">
                             <span class="icon-Res icon-Res-Exp img-circle"></span>
                             Experiences
                         </div>
-                    {% endif %}
-                    {% if app.user %}
+
+
+                    </div>
+                {% elseif catSlug != "people" %}
+                    <div class="filtration col-md-8 pull-right margin-sm">
+                        <div class="Vendors-filtration filtr pull-left margin-sm" data-id="all">
+                            <span class="icon-Res icon-Res-people  img-circle"></span>
+                            All
+                        </div>
+
+                        <div class="Vendors-filtration filtr  pull-left margin-sm" data-id="#searchVendors">
+                            <span class="icon-Res icon-Res-vendors img-circle"></span>
+                            Vendors
+                        </div>
+                        <div class="products-filtration filtr  pull-left margin-sm" data-id="#searchProduct">
+                            <span class="icon-Res icon-Res-products img-circle"></span>
+                            Products
+                        </div>
+
+                        <div class="experince-filtration filtr  pull-left margin-sm" data-id="#searchExperience">
+                            <span class="icon-Res icon-Res-Exp img-circle"></span>
+                            Experiences
+                        </div>
                         <div class="tip-filtration filtr  pull-left margin-sm" data-id="#searchTip">
                             <span class="icon-Res icon-Res-Exp img-circle"></span>
                             Tip
                         </div>
-                    {% endif %}
-
-
-                </div>
-            {% endif %}
-
-        </div>
-        <!----------------End  Search Results -------------->
-
-        {% if catSlug == "all" %}
-            <div id="searchProduct" class="row resultWrapper">
-                {% set products =  getProductsSearchResult(query) %}
-                <h2>Product</h2>
-                <hr>
-                {% if products != null %}
-                    {{ products|raw }}
-                {% else %}
-                    <p>No results found</p>
+                    </div>
                 {% endif %}
-            </div>
-            <!--ENd Search Product-->
-            <div id="searchPeople" class="row resultWrapper">
-                {% set people = getPeopleSearchResult(query) %}
-                <h2>People</h2>
-                <hr>
-                {% if people != null %}
-                    {{ people|raw }}
-                {% else %}
-                    <p>No results found</p>
-                {% endif %}
-            </div>
-            <!--ENd Search People-->
-            <div id="searchVendors" class="row resultWrapper">
-                {% set vendors = getVendorSearchResult(query) %}
-                <h2>Vendors</h2>
-                <hr>
-                {% if vendors != null %}
-                    {{ vendors|raw }}
-                {% else %}
-                    <p>No results found</p>
-                {% endif %}
-            </div>
-            <!--ENd Search Vendors-->
-            <div id="searchTips" class="row resultWrapper">
-                {% set tips = getTipsSearchResult(query) %}
-                <h2>Tips</h2>
-                <hr>
-                {% if tips != null %}
-                    {{ tips|raw }}
-                {% else %}
-                    <p>No results found</p>
 
-                {% endif %}
             </div>
+            <!----------------End  Search Results -------------->
 
-            {% if app.user %}
-                <!--ENd Search Product-->
-                <div id="searchExperience" class="row resultWrapper">
-                    {% set experiences = getExperiencesSearchResult(query) %}
-                    <h2>Experiences</h2>
+            {% if catSlug == "all" %}
+                <div id="searchProduct" class="row resultWrapper">
+                    {% set products =  getProductsSearchResult(query) %}
+                    <h2>Product</h2>
                     <hr>
-                    {% if experiences != null %}
-                        {{ experiences|raw }}
+                    {% if products != null %}
+                        {{ products|raw }}
                     {% else %}
                         <p>No results found</p>
                     {% endif %}
                 </div>
-            {% endif %}
-        {% elseif(catSlug == "people") %}
-            <div id="searchPeople" class="row resultWrapper">
-                {% set people = getPeopleSearchResult(query) %}
-                <h2>People</h2>
-                <hr>
-                {% if people != null %}
-                    {{ people|raw }}
-                {% else %}
-                    <p>No results found</p>
-                {% endif %}
-            </div>
-        {% else %}
-            <div id="searchVendors" class="row resultWrapper">
-                {% set vendor_cat = getVendorByCategory(catSlug, query) %}
-                <h2>Vendors</h2>
-                <hr>
-                {% if vendor_cat != null %}
-                    {{ vendor_cat|raw }}
-                {% else %}
-                    <p>No results found</p>
-                {% endif %}
-            </div>
-            <div id="searchProduct" class="row resultWrapper">
-                {% set product_cat = getProductsByCategory(catSlug, query) %}
-                <h2>Product</h2>
-                <hr>
-                {% if product_cat != null %}
-                    {{ product_cat|raw }}
-                {% else %}
-                    <p>No results found</p>
-                {% endif %}
-            </div>
-            {% if app.user %}
+                <!--ENd Search Product-->
+                <div id="searchPeople" class="row resultWrapper">
+                    {% set people = getPeopleSearchResult(query) %}
+                    <h2>People</h2>
+                    <hr>
+                    {% if people != null %}
+                        {{ people|raw }}
+                    {% else %}
+                        <p>No results found</p>
+                    {% endif %}
+                </div>
+                <!--ENd Search People-->
+                <div id="searchVendors" class="row resultWrapper">
+                    {% set vendors = getVendorSearchResult(query) %}
+                    <h2>Vendors</h2>
+                    <hr>
+                    {% if vendors != null %}
+                        {{ vendors|raw }}
+                    {% else %}
+                        <p>No results found</p>
+                    {% endif %}
+                </div>
+                <!--ENd Search Vendors-->
+                <div id="searchTips" class="row resultWrapper">
+                    {% set tips = getTipsSearchResult(query) %}
+                    <h2>Tips</h2>
+                    <hr>
+                    {% if tips != null %}
+                        {{ tips|raw }}
+                    {% else %}
+                        <p>No results found</p>
+
+                    {% endif %}
+                </div>
+
+                    <!--ENd Search Product-->
+                    <div id="searchExperience" class="row resultWrapper">
+                        {% set experiences = getExperiencesSearchResult(query, app.user) %}
+                        <h2>Experiences</h2>
+                        <hr>
+                        {% if experiences != null %}
+                            {{ experiences|raw }}
+                        {% else %}
+                            <p>No results found</p>
+                        {% endif %}
+                    </div>
+            {% elseif(catSlug == "people") %}
+                <div id="searchPeople" class="row resultWrapper">
+                    {% set people = getPeopleSearchResult(query) %}
+                    <h2>People</h2>
+                    <hr>
+                    {% if people != null %}
+                        {{ people|raw }}
+                    {% else %}
+                        <p>No results found</p>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div id="searchVendors" class="row resultWrapper">
+                    {% set vendor_cat = getVendorByCategory(catSlug, query) %}
+                    <h2>Vendors</h2>
+                    <hr>
+                    {% if vendor_cat != null %}
+                        {{ vendor_cat|raw }}
+                    {% else %}
+                        <p>No results found</p>
+                    {% endif %}
+                </div>
+                <div id="searchProduct" class="row resultWrapper">
+                    {% set product_cat = getProductsByCategory(catSlug, query) %}
+                    <h2>Product</h2>
+                    <hr>
+                    {% if product_cat != null %}
+                        {{ product_cat|raw }}
+                    {% else %}
+                        <p>No results found</p>
+                    {% endif %}
+                </div>
                 <div id="searchExperience" class="row resultWrapper">
-                    {% set exp_cat = getExperienceByCategory(catSlug, query) %}
+                    {% set exp_cat = getExperienceByCategory(catSlug, query, app.user) %}
                     <h2>Experiences</h2>
                     <hr>
                     {% if exp_cat != null %}
@@ -194,25 +183,22 @@
                         <p>No results found</p>
                     {% endif %}
                 </div>
-            {% endif %}
-            {% if app.user %}
                 <div id="searchTip" class="row resultWrapper">
-                {% set tip_cat = getTipByCategory(catSlug, query) %}
-                <h2>Tips</h2>
-                <hr>
-                {% if tip_cat != null %}
-                    {{ tip_cat|raw }}
+                    {% set tip_cat = getTipByCategory(catSlug, query) %}
+                    <h2>Tips</h2>
+                    <hr>
+                    {% if tip_cat != null %}
+                        {{ tip_cat|raw }}
                     {% else %}
-                    <p>No results found</p>
-                {% endif %}
+                        <p>No results found</p>
+                    {% endif %}
                 </div>
             {% endif %}
-        {% endif %}
-        {% endblock leftContent %}
+            {% endblock leftContent %}
 
-        {% block rightContent %}{% endblock rightContent %}
+            {% block rightContent %}{% endblock rightContent %}
 
-    </div>
+        </div>
     </div>
 {% endblock content %}
 

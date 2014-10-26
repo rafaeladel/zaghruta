@@ -25,6 +25,8 @@ class NotifyCommentOtherEvent extends Event
 
     protected $action_id;
 
+    protected $title;
+
     /**
      * @var Notification
      */
@@ -41,9 +43,9 @@ class NotifyCommentOtherEvent extends Event
         } elseif(in_array("ROLE_VENDOR", $owner->getRoles())) {
             $gender = "their";
         }
+        $this->type = NotifyEvents::NOTIFY_COMMENT_OTHER;
 
         $this->content = [
-            "type" => NotifyEvents::NOTIFY_COMMENT_OTHER,
             "user" => $owner->getFullName(),
             "user_id" => $owner->getId(),
             "user_gender" => $gender,
@@ -59,7 +61,7 @@ class NotifyCommentOtherEvent extends Event
     public function getNotification()
     {
         $manager = new NotificationManager();
-        $notification = $manager->create($this->user, $this->content, $this->action_id);
+        $notification = $manager->create($this->user, $this->content, $this->action_id, $this->type);
         return $notification;
     }
 
@@ -71,5 +73,10 @@ class NotifyCommentOtherEvent extends Event
     public function getCommentObject()
     {
         return $this->commentObj;
+    }
+
+    public function getType()
+    {
+        return $this->type;
     }
 }

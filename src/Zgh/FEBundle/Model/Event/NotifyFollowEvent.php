@@ -21,6 +21,8 @@ class NotifyFollowEvent extends Event
 
     protected $action_id;
 
+    protected $type;
+
     /**
      * @var Notification
      */
@@ -29,9 +31,9 @@ class NotifyFollowEvent extends Event
     public function __construct(FollowUsers $follow)
     {
         $follower = $follow->getFollower();
+        $this->type = NotifyEvents::NOTIFY_FOLLOW;
 
         $this->content = [
-            "type" => NotifyEvents::NOTIFY_FOLLOW,
             "user" => $follow->getFollower()->getFullName(),
             "follower_id" => $follower->getId(),
         ];
@@ -44,7 +46,7 @@ class NotifyFollowEvent extends Event
     public function getNotification()
     {
         $manager = new NotificationManager();
-        $notification = $manager->create($this->user, $this->content, $this->action_id);
+        $notification = $manager->create($this->user, $this->content, $this->action_id, $this->type);
         return $notification;
     }
 
@@ -56,5 +58,10 @@ class NotifyFollowEvent extends Event
     public function getFollower()
     {
         return $this->follower;
+    }
+
+    public function getType()
+    {
+        return $this->type;
     }
 }

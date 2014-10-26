@@ -120,7 +120,6 @@ class NotificationSubscriber implements EventSubscriberInterface
         $this->em->flush();
     }
 
-
     public function onNotifyDelete(NotifyDeleteEvent $event)
     {
         $notification = $this->em->getRepository("ZghFEBundle:Notification")->findOneBy(

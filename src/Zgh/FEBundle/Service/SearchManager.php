@@ -2,6 +2,9 @@
 namespace Zgh\FEBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\Query\Expr\Join;
 
 class SearchManager
 {
@@ -62,17 +65,49 @@ class SearchManager
         return $q->execute();
     }
 
-    public function getExperiencesResults($query)
+    public function getExperiencesResults($query, $user = null)
     {
-        $q = $this->em->createQuery(
-            "
-                select ex
-                from Zgh\FEBundle\Entity\Experience ex
-                where ex.title like :crit
-            "
-        );
-        $q->setParameter("crit", "%" .  strtolower($query) . "%");
-        return $q->execute();
+        /** @var $q QueryBuilder */
+        $q = $this->em->createQueryBuilder();
+        /** @var $sq QueryBuilder */
+        $sq = $this->em->createQueryBuilder();
+
+        $orQuery = $q->expr()->orX($q->expr()->eq("u.is_private", ":priv"));
+        if($user != null) {
+            $sq = $sq->select("followee.id")
+                        ->from("Zgh\FEBundle\Entity\User", "u")
+                        ->innerJoin("u.followers", "uf")
+                        ->innerJoin("uf.followee", "followee")
+                        ->where("u.id = :user")
+                        ->groupBy("followee.id")
+                        ->setParameter("user", $user);
+            $orQuery->add($q->expr()->eq("u.id", ":user"));
+
+            $ids = [];
+            $result = $sq->getQuery()->getScalarResult();
+            foreach($result as $item) {
+                $ids[] = $item["id"];
+            }
+            if(count($ids) > 0) {
+                $orQuery->add($q->expr()->in("u.id", $ids));
+            }
+        }
+
+        $q->select("e")
+            ->from("Zgh\FEBundle\Entity\Experience", "e")
+            ->innerJoin("e.user", "u", Join::WITH, $orQuery)
+            ->where("e.title LIKE :title");
+
+        $q->setParameters([
+            "priv" => false,
+            "title" => "%" .  strtolower($query) . "%"
+        ]);
+
+        if($user != null) {
+            $q->setParameter("user", $user);
+        }
+
+        return $q->getQuery()->execute();
     }
 
     public function getPeopleResults($query)
@@ -180,22 +215,52 @@ class SearchManager
         return $q->execute();
     }
 
-    public function getExperiencesByCategory($cat_slug, $query)
+    public function getExperiencesByCategory($cat_slug, $query, $user = null)
     {
-        $q = $this->em->createQuery("
-                select e
-                from Zgh\FEBundle\Entity\Experience e
-                inner join e.categories c
-                where c.name_slug = :cat
-                and e.title like :crit
-            ");
+        /** @var $q QueryBuilder */
+        $q = $this->em->createQueryBuilder();
+        /** @var $sq QueryBuilder */
+        $sq = $this->em->createQueryBuilder();
+
+        $orQuery = $q->expr()->orX($q->expr()->eq("u.is_private", ":priv"));
+        if($user != null) {
+            $sq = $sq->select("followee.id")
+                ->from("Zgh\FEBundle\Entity\User", "u")
+                ->innerJoin("u.followers", "uf")
+                ->innerJoin("uf.followee", "followee")
+                ->where("u.id = :user")
+                ->groupBy("followee.id")
+                ->setParameter("user", $user);
+            $orQuery->add($q->expr()->eq("u.id", ":user"));
+
+            $ids = [];
+            $result = $sq->getQuery()->getScalarResult();
+            foreach($result as $item) {
+                $ids[] = $item["id"];
+            }
+            if(count($ids) > 0) {
+                $orQuery->add($q->expr()->in("u.id", $ids));
+            }
+        }
+
+        $q->select("e")
+            ->from("Zgh\FEBundle\Entity\Experience", "e")
+            ->innerJoin("e.categories", "c")
+            ->innerJoin("e.user", "u", Join::WITH, $orQuery)
+            ->where("e.title LIKE :title")
+            ->andWhere("c.name_slug = :cat");
 
         $q->setParameters([
-                "cat" => $cat_slug,
-                "crit" => "%" .  strtolower($query) . "%"
-            ]);
+            "priv" => false,
+            "title" => "%" .  strtolower($query) . "%",
+            "cat" => $cat_slug
+        ]);
 
-        return $q->execute();
+        if($user != null) {
+            $q->setParameter("user", $user);
+        }
+
+        return $q->getQuery()->execute();
     }
 
     public function getTipsByCategory($cat_slug, $query)
