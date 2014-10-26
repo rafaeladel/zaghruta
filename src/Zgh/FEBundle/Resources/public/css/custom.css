@@ -662,6 +662,7 @@ footer .container {
 .loginSwitch .container p {
     color: #fff;
     min-height: 36px;
+    width: 89%;
 }
 
 .nav-profile {
@@ -1192,8 +1193,8 @@ div.profile{
 }
 
 .effect a {
-    width: 125px;
-    height: 125px;
+    width: 115px;
+    height: 115px;
     overflow: hidden;
 }
 
@@ -1861,7 +1862,7 @@ footer a {
     right: 88px;
 }
 
-.sprite-iconHome {
+/*.sprite-iconHome {
     background: url(../img/iconSprite.png) no-repeat;
     background-position: 0 -1102px;
     width: 63px;
@@ -1869,7 +1870,7 @@ footer a {
     position: absolute;
     top: 199px;
     right: 20px;
-}
+}*/
 
 .sprite-iconGirl {
     background: url(../img/iconSprite.png) no-repeat;
@@ -1897,8 +1898,8 @@ footer a {
     width: 73px;
     height: 73px;
     position: absolute;
-    top: 13px;
-    right: 251px;
+    top: 153px;
+    right: 441px;
 }
 
 .sprite-iconPhotographers {
@@ -1927,11 +1928,11 @@ footer a {
     width: 73px;
     height: 73px;
     position: absolute;
-    top: 59px;
+    top: 139px;
     right: 339px;
 }
 
-.sprite-iconCar {
+/*.sprite-iconCar {
     background: url(../img/iconSprite.png) no-repeat;
     background-position: 0 -607px;
     width: 62px;
@@ -1939,7 +1940,7 @@ footer a {
     position: absolute;
     top: 153px;
     right: 343px;
-}
+}*/
 
 .sprite-iconHoneymoon {
     background: url(../img/iconSprite.png) no-repeat;
@@ -1967,8 +1968,8 @@ footer a {
     width: 73px;
     height: 73px;
     position: absolute;
-    top: 335px;
-    left: 0px;
+    top: 270px;
+    left: 100px;
 }
 
 .sprite-iconAccessories:hover {
@@ -3333,3 +3334,9 @@ height: 44px;
 }
 
 
+div#connections .profile {
+float: none;
+display: inline-block;
+width: 33%;
+margin: 5px 0;
+}
