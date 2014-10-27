@@ -93,7 +93,7 @@
 
         <service id="zgh_fe.notification_manager" class="%zgh_fe.notification_manager.class%">
             <!--<argument type="service" id="security.context"/>-->
-            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <!--<argument type="service" id="doctrine.orm.entity_manager"/>-->
         </service>
 
         <service id="zgh_fe.user_privacy.manager" class="%zgh_fe.user_privacy.manager.class%">
