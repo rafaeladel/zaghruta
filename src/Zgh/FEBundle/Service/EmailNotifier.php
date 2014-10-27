@@ -139,7 +139,7 @@ class EmailNotifier
     {
         $message = \Swift_Message::newInstance()
             ->setSubject($notification_title)
-            ->setFrom("notifications@zaghruta.com")
+            ->setFrom("noreply@zaghruta.com")
             ->setTo($email)
             ->setBody($template, 'text/html');
 
@@ -154,7 +154,7 @@ class EmailNotifier
     {
         $message = \Swift_Message::newInstance()
             ->setSubject("Email change confirmation")
-            ->setFrom("change_email@zaghruta.com")
+            ->setFrom("noreply@zaghruta.com")
             ->setTo($user->getNewEmail())
             ->setBody(
                 $this->templating->render("@ZghFE/Default/Emails/email_change_confirmation.txt.twig", [
