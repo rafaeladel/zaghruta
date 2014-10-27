@@ -125,11 +125,11 @@ class EmailNotifier
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $this->notification->getContent()["requester_id"]], true);
         $acceptUrl = $this->router->generate("zgh_fe.about.accept_relationship", [
-            "id" => $this->notification->getUser()->getUserInfo()->getId(),
+            "id" => $event->getRequester()->getUserInfo()->getId(),
             "n_id" => $this->notification->getId()
         ], true);
         $denyUrl = $this->router->generate("zgh_fe.about.deny_relationship", [
-            "id" => $this->notification->getUser()->getUserInfo()->getId(),
+            "id" => $event->getRequester()->getUserInfo()->getId(),
             "n_id" => $this->notification->getId()
         ], true);
         $body = "{$this->notification->getContent()["user"]} wants to be {$this->notification->getContent()["status"]} to you.";
