@@ -5,6 +5,7 @@ use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
+use Zgh\FEBundle\Entity\Notification;
 use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Model\Event\NotifyCommentEvent;
 use Zgh\FEBundle\Model\Event\NotifyFollowEvent;
@@ -29,6 +30,11 @@ class EmailNotifier
      */
     protected $templating;
 
+    /**
+     * @var Notification
+     */
+    protected $notification;
+
     public function __construct(\Swift_Mailer $mailer, RouterInterface $routerInterface, TwigEngine $engine)
     {
         $this->mailer = $mailer;
@@ -36,8 +42,9 @@ class EmailNotifier
         $this->templating = $engine;
     }
 
-    public function sendNotification($event)
+    public function sendNotification($event, Notification $notification)
     {
+        $this->notification = $notification;
         try {
             if ($event instanceof NotifyCommentEvent) {
                 $this->sendCommentNotification($event);
@@ -59,9 +66,9 @@ class EmailNotifier
     {
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
-        $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $notification->getContent()["obj_id"]], true);
+        $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $this->notification->getContent()["obj_id"]], true);
         $title = "Someone has commented on your post.";
-        $body = "{$notification->getContent()["user"]} has commented on your post - {$url}";
+        $body = "{$this->notification->getContent()["user"]} has commented on your post - {$url}";
         $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body ]);
         $this->send($title, $user->getEmail(), $template);
     }
@@ -70,9 +77,9 @@ class EmailNotifier
     {
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
-        $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $notification->getContent()["obj_id"]], true);
+        $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $this->notification->getContent()["obj_id"]], true);
         $title = "Someone liked your post";
-        $body = "{$notification->getContent()["user"]} has liked your post - {$url}";
+        $body = "{$this->notification->getContent()["user"]} has liked your post - {$url}";
         $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body ]);
         $this->send($title, $user->getEmail(), $template);
     }
@@ -81,9 +88,9 @@ class EmailNotifier
     {
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
-        $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $notification->getContent()["follower_id"]], true);
-        $title = "{$notification->getContent()["user"]} has followed you.";
-        $body = sprintf("<a href='%s'>{$notification->getContent()["user"]}</a> has followed you.", $url);
+        $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $this->notification->getContent()["follower_id"]], true);
+        $title = "{$this->notification->getContent()["user"]} has followed you.";
+        $body = sprintf("<a href='%s'>{$this->notification->getContent()["user"]}</a> has followed you.", $url);
         $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body ]);
         $this->send($title, $user->getEmail(), $template);
     }
@@ -92,17 +99,17 @@ class EmailNotifier
     {
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
-        $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $notification->getContent()["follower_id"]], true);
+        $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $this->notification->getContent()["follower_id"]], true);
         $acceptUrl = $this->router->generate("zgh_fe.user.accept_follow", [
-            "id" => $notification->getActionId(),
-            "n_id" => $notification->getId()
+            "id" => $this->notification->getActionId(),
+            "n_id" => $this->notification->getId()
         ], true);
         $denyUrl = $this->router->generate("zgh_fe.user.deny_follow", [
-            "id" => $notification->getActionId(),
-            "n_id" => $notification->getId()
+            "id" => $this->notification->getActionId(),
+            "n_id" => $this->notification->getId()
         ], true);
-        $title = "{$notification->getContent()["user"]} wants to follow you.";
-        $body = sprintf("<a href='%s'>{$notification->getContent()["user"]}</a> wants to follow you.", $url);
+        $title = "{$this->notification->getContent()["user"]} wants to follow you.";
+        $body = sprintf("<a href='%s'>{$this->notification->getContent()["user"]}</a> wants to follow you.", $url);
         $template = $this->getTwoBtnTemplate([
             "notification_title" => $title,
             "notification_body" => $body,
@@ -116,16 +123,16 @@ class EmailNotifier
     {
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
-        $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $notification->getContent()["requester_id"]], true);
+        $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $this->notification->getContent()["requester_id"]], true);
         $acceptUrl = $this->router->generate("zgh_fe.about.accept_relationship", [
-            "id" => $notification->getUser()->getUserInfo()->getId(),
-            "n_id" => $notification->getId()
+            "id" => $this->notification->getUser()->getUserInfo()->getId(),
+            "n_id" => $this->notification->getId()
         ], true);
         $denyUrl = $this->router->generate("zgh_fe.about.deny_relationship", [
-            "id" => $notification->getUser()->getUserInfo()->getId(),
-            "n_id" => $notification->getId()
+            "id" => $this->notification->getUser()->getUserInfo()->getId(),
+            "n_id" => $this->notification->getId()
         ], true);
-        $body = "{$notification->getContent()["user"]} wants to be {$notification->getContent()["status"]} to you.";
+        $body = "{$this->notification->getContent()["user"]} wants to be {$this->notification->getContent()["status"]} to you.";
         $template = $this->getTwoBtnTemplate([
             "notification_title" => $body,
             "notification_body" => $body,
