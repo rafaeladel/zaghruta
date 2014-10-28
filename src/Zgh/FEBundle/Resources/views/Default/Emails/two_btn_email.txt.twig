@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     {% autoescape false %}
-    <title>{% block subject %}Zaghruta - {{ notification_type }}{% endblock subject %}</title>
+    <title>{% block subject %}Zaghruta - {{ notification_title }}{% endblock subject %}</title>
     {% endautoescape %}
 
 
@@ -46,36 +46,23 @@
             </tr>
             {% autoescape false %}
             <tr>
-                <td style="font-size:14px; color:#6e6e6e; font-family:Arial, Helvetica, sans-serif; padding-bottom: 30px;"
+                <td colspan="2" style=" font-size:14px; color:#6e6e6e; font-family:Arial, Helvetica, sans-serif; padding-bottom: 30px;"
                     align="left">
                     {{ notification_body }}
-                    <a style="background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px" href="{{ accept_url }}">Accept</a>
-                    <a style="background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px" href="{{ deny_url }}">Deny</a>
                 </td>
             </tr>
+                <tr>
+                    <td style="width:50%;" align="right"><a style="margin-right:10px; background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px" href="{{ accept_url }}">Accept</a></td>
+                    <td style="width:50%"  align="left"><a style="background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px; margin-right: 80px;" href="{{ deny_url }}">Deny</a></td>
+                </tr>
             {% endautoescape %}
             <tr>
-                <td align="left"
-                    style="color:#6e6e6e; font-size:14px; padding-top:20px; font-family:Arial, Helvetica, sans-serif; line-height: 23px;">
-                    <strong>If you need anything</strong>, we can help and we want your your feedback – good and bad, we
-                    want it all :) Get in touch at
+                <td style="color:#6e6e6e; font-family:Arial, Helvetica, sans-serif; font-size:12px; padding-top:20px; font-style:italic;" align="left">
+                    If you need help, contact us at <a href="mailto:feedback@zaghruta.com">feedback@zaghruta.com</a>
                 </td>
             </tr>
             <tr>
-                <td style="" align="left" style="padding-bottom:30px;">
-                    <a style="color:#e982a1; font-size:16px; font-family:Arial, Helvetica, sans-serif; text-decoration:none;"
-                       href="">feedback@zaghruta.com.</a>
-                </td>
-            </tr>
-            <tr>
-                <td style="color:#6e6e6e; font-family:Arial, Helvetica, sans-serif; font-size:12px; padding-top:20px; font-style:italic;"
-                    align="left">
-                    <strong style=" font-size:16px; font-style:normal">Have fun with zaghruta!</strong><br/>
-                    - zaghruta Team.
-                </td>
-            </tr>
-            <tr>
-                <td align="center" style="padding-top:20px; padding-bottom:20px;">
+                <td colspan="2" align="center" style="padding-top:20px; padding-bottom:20px;">
                     <a href="#"><img src="http://37.48.73.85/zaghruta/web/email_icon/icon-facebook.png"/></a>
                 </td>
             </tr>

@@ -20,6 +20,8 @@ class NotificationSubscriber implements EventSubscriberInterface
 {
     protected $em;
 
+    protected $persisted_notification;
+
     /**
      * @var EmailNotifier
      */
@@ -54,7 +56,7 @@ class NotificationSubscriber implements EventSubscriberInterface
         $notification->setOtherEnd($event->getLikeObject()->getUser());
         $this->em->persist($user);
         $this->em->flush();
-
+        $this->persisted_notification = $notification;
     }
 
     public function onNotifyComment(NotifyCommentEvent $event)
@@ -66,6 +68,8 @@ class NotificationSubscriber implements EventSubscriberInterface
         $notification->setOtherEnd($event->getCommentObject()->getUser());
         $this->em->persist($user);
         $this->em->flush();
+        $this->persisted_notification = $notification;
+
     }
 
     public function onNotifyCommentOther(NotifyCommentOtherEvent $event)
@@ -77,6 +81,8 @@ class NotificationSubscriber implements EventSubscriberInterface
         $notification->setOtherEnd($event->getCommentObject()->getUser());
         $this->em->persist($user);
         $this->em->flush();
+        $this->persisted_notification = $notification;
+
     }
 
     public function onNotifyFollow(NotifyFollowEvent $event)
@@ -87,6 +93,8 @@ class NotificationSubscriber implements EventSubscriberInterface
         $user->addNotification($notification);
         $this->em->persist($user);
         $this->em->flush();
+        $this->persisted_notification = $notification;
+
     }
 
     public function onNotifyFollowRequest(NotifyFollowRequestEvent $event)
@@ -97,6 +105,8 @@ class NotificationSubscriber implements EventSubscriberInterface
         $notification->setOtherEnd($event->getFollower());
         $this->em->persist($user);
         $this->em->flush();
+        $this->persisted_notification = $notification;
+
     }
 
 
@@ -108,6 +118,8 @@ class NotificationSubscriber implements EventSubscriberInterface
         $notification->setOtherEnd($event->getFollowee());
         $this->em->persist($user);
         $this->em->flush();
+        $this->persisted_notification = $notification;
+
     }
 
     public function onNotifyRelationshipRequest(NotifyRelationshipRequestEvent $event)
@@ -118,6 +130,8 @@ class NotificationSubscriber implements EventSubscriberInterface
         $notification->setOtherEnd($event->getRequester());
         $this->em->persist($user);
         $this->em->flush();
+        $this->persisted_notification = $notification;
+
     }
 
     public function onNotifyDelete(NotifyDeleteEvent $event)
@@ -131,6 +145,7 @@ class NotificationSubscriber implements EventSubscriberInterface
         if ($notification != null) {
             $this->em->remove($notification);
             $this->em->flush();
+
         }
     }
 
@@ -140,7 +155,7 @@ class NotificationSubscriber implements EventSubscriberInterface
 
         if ($user->getEmailNotification()) {
             try {
-                $this->emailNotifier->sendNotification($event);
+                $this->emailNotifier->sendNotification($event, $this->persisted_notification);
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
