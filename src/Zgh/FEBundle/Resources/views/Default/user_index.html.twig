@@ -17,7 +17,7 @@
     <div class="row cover">
         <div class="photoCover img-rounded"><img src="{{ asset(user.coverPhoto.getWebPath) }}"/></div>
         <div class="SVb"></div>
-        <div class="media profilePic profile col-md-6 col-xs-10">
+        <div class="media  profilePic profile col-md-6 col-xs-12">
           <div class="imgProfile pull-left">
               {% if app.user and user.id == app.user.id %}
                   <button data-toggle="modal" data-placement="top" title="Change Profile Picture" data-target="#pp_modal" type="button" class="btn btn-primary top btn-circle ch-pr pp_modal">
@@ -160,7 +160,7 @@
     <!--Menu -->
     <div class="row">
         <div class="col-xs-12">
-            <div class="btn-group btn-group-md btn-group-justified">
+            <div class="btn-group btn-group-md btn-group-justified navGroup">
                 {% if "ROLE_CUSTOMER" in user.roles %}
                     {% if authorized %}
                         <a href="#" data-target_url="{{ url("zgh_fe.user_profile.main_partial", {'id': user.id}) }}"

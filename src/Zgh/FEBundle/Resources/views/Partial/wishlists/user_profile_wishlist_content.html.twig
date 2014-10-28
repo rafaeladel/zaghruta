@@ -16,7 +16,7 @@
     <div class="row">
         {% if wishlists|length > 0 %}
             {% for wishlist in wishlists %}
-            <div class="col-md-3 col-xs-6 wishList">
+            <div class="col-md-3 col-xs-6 wishList col-xxs-12">
                 {% if wishlist.user.id == app.user.id %}
                     <button data-target="#deleteWishlist_{{ wishlist.id }}" data-toggle="modal" type="submit"
                             class="row   btn delete-post pull-right"><span

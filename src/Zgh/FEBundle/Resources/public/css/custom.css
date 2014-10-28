@@ -64,8 +64,16 @@
 .icon-florists:before {
     content: "\e619";
 }
-.icon-Health:before {
-    content: "\e600";
+.icon-Health{
+    /*content: "\e600";*/
+    background: url(../img/iconBeauty.png) no-repeat 0 0 !important;
+    width: 24px !important;
+    height: 20px !important;
+}
+.headerInterests .icon-Health{
+   background: #9dd8cf url(../img/iconBeauty.png) no-repeat 2px 2px !important;
+   width: 24px !important;
+    height: 24px !important;
 }
 .icon-cakeCatering:before {
     content: "\e601";
@@ -2216,7 +2224,7 @@ footer a {
      border-color: #8FD2C8 !important;
 }
 .privacy h4 {
-    display: block;
+    display: inline-block;
   }
 
 .profilePrivacy {
@@ -2251,6 +2259,9 @@ footer a {
 }
 
 /*----------------------------*/
+.dropdown-menu{
+    z-index: 1100;
+}
 .dropdown-menu > li > a {
     padding: 3px 13px !important;
 }
@@ -3339,4 +3350,97 @@ float: none;
 display: inline-block;
 width: 33%;
 margin: 5px 0;
+}
+@media (max-width: 320px){
+    .navGroup a{
+        display: table-row !important;
+    }
+    .albumCont .thumbnail a{
+        overflow: hidden;
+    }
+    .albumCont .thumbnail a img, .imgResponsive{
+       width: 100%;
+       height: auto !important; 
+    }
+    #addNewAlbum{
+        float: right !important;
+        margin-left: -40px;
+        min-width: 118px !important;
+        font-size: 12px;
+    }
+    #addNewPhoto, .back_btn, .btnDelete{
+        min-width: 118px !important;
+        font-size: 12px;
+    }
+    .back_btn{
+        margin-right: 25px;
+    }
+    #btnPhots , #btnAlbums{
+         font-size: 12px;
+    }
+
+    .btn-group{
+        margin-top: 10px;
+    }
+    .col-xxs-12{
+        width: 100% !important;
+    }
+    .wishList a{
+        width: auto !important;
+    }
+    .photoCover > img{
+        height: 100%;
+    }
+    .btnSetting{
+        margin-top: 0 !important;
+    }
+    .fancybox-inner{
+       min-width: 100% !important;
+    }
+    .contentImg{
+        height: auto !important;
+    }
+    .contentImg img{
+        width: auto !important;
+        height: auto !important;
+    }
+   body{
+    overflow-x: hidden;
+   }
+   .filtration{
+    margin-top: 10px;
+    float: left !important;
+   }
+   .filtr{
+    float: none !important;
+   }
+   .branch{
+    height: auto !important;
+   }
+   .mainSearch{
+    margin-top: 10px;
+   }
+   .textImageContainer{
+    height: auto;
+   }
+   .btnPhoto{
+    margin-top: 0 !important;
+    float: left !important;
+   }
+
+}
+@media (max-width: 568px){
+    .albumCont .thumbnail a{
+        overflow: hidden;
+    }
+    .albumCont .thumbnail a img{
+       width: 100%;
+       height: auto !important; 
+    }
+    .wishList a{
+        width: auto !important;
+    }
+    .fancybox-inner{
+        width: 100%;
+    }
 }

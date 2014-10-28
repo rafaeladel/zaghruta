@@ -1,7 +1,7 @@
 <div class="albumCont">
     {% if albums|length > 0 %}
         {% for album in albums %}
-        <div class="col-md-3 col-xs-6">
+        <div class="col-md-3  col-sm-6 col-xs-12">
             <div class="thumbnail">
                 <a href="#" data-url="{{ url("zgh_fe.photos_partial_albums_photos_content", {"id": album.user.id, "album_id": album.id }) }}" class="load_images">
                     <img alt="Responsive image" class="img-responsive"
