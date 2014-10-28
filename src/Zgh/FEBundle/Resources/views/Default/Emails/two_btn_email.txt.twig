@@ -49,10 +49,12 @@
                 <td style="font-size:14px; color:#6e6e6e; font-family:Arial, Helvetica, sans-serif; padding-bottom: 30px;"
                     align="left">
                     {{ notification_body }}
-                    <a style="background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px" href="{{ accept_url }}">Accept</a>
-                    <a style="background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px" href="{{ deny_url }}">Deny</a>
                 </td>
             </tr>
+                <tr>
+                    <td><a style="background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px" href="{{ accept_url }}">Accept</a></td>
+                    <td><a style="background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px" href="{{ deny_url }}">Deny</a></td>
+                </tr>
             {% endautoescape %}
             <tr>
                 <td align="left"
