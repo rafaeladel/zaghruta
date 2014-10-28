@@ -44,8 +44,6 @@ class AboutController extends Controller
      */
     public function postCustomerEditAction(Request $request, $id)
     {
-
-
         $user_info = $this->getDoctrine()->getRepository("ZghFEBundle:UserInfo")->find($id);
         $old_user_info = $this->getDoctrine()->getRepository("ZghFEBundle:UserInfo")->find($id);
         $form = $this->createForm(new UserInfoType(), $user_info);
@@ -70,14 +68,14 @@ class AboutController extends Controller
                         $target_user_info->setRelationshipUser(null);
                     $this->getDoctrine()->getManager()->persist($target_user_info);
 
-                    $notification_ent = $this->getDoctrine()->getRepository("ZghFEBundle:Notification")->findOneBy(["other_end" => $user_info->getUser(), "type" => NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST ]);
-                    if($notification_ent) {
-                        $this->getDoctrine()->getManager()->remove($notification_ent);
-                    }
+                }
+                $notification_ent = $this->getDoctrine()->getRepository("ZghFEBundle:Notification")->findOneBy(["action_id" => $user_info->getId(), "type" => NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST ]);
+                if($notification_ent) {
+                       $this->getDoctrine()->getManager()->remove($notification_ent);
                 }
                 $user_info->setRelationshipUser(null);
             } else {
-                if(!$user_info->getRelationshipUser() instanceof User) {
+                if (!$user_info->getRelationshipUser() instanceof User) {
                     $user_info->setRelationshipAccepted(true);
                 } else {
                     $user_info->setRelationshipAccepted(false);
@@ -88,8 +86,6 @@ class AboutController extends Controller
                     );
                 }
             }
-
-
         }
 
         $this->getDoctrine()->getManager()->persist($user_info);
