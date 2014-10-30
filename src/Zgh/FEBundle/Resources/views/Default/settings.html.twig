@@ -103,7 +103,11 @@
                                     </div>
                                     <button class="btn btn-wide btn-primary pull-right" type="submit">Save</button>
                                     {% for msg in app.session.flashBag.get("notice") %}
-                                        <span class="alert alert-info">{{ msg }}</span>
+                                        <div class="alert alert-info alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span>
+                                                <span class="sr-only">Close</span></button>
+                                            {{ msg }}
+                                        </div>
                                     {% endfor %}
                                 </form>
                                 {% endif %}

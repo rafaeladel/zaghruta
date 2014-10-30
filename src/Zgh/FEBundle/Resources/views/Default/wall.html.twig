@@ -8,9 +8,8 @@
             <div id="wall" class="col-md-8 col-sm-7 col-xs-12">
                 {{ include("@ZghFE/Partial/common/post_form.html.twig", {"return_url": app.request.getRequestURI() }) }}
 
-                <div class="posts_wrapper">
-                    {{ render_esi(controller("ZghFEBundle:Post:getPublicList")) }}
-                </div>
+
+                {{ render_esi(controller("ZghFEBundle:Post:getPublicList")) }}
                 <button class="btn btn-block load-more" data-url="{{ url("zgh_fe.post.public_list") }}">Load More</button>
 
 

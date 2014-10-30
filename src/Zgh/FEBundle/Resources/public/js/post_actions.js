@@ -2,24 +2,6 @@ $(document).ready(function(){
 
     postRefresh();
 
-    $(".post_form").validate({
-        rules: {
-            "post[content]": {
-                required: function(){
-                    return $('[name="post[image_file]"]').val()  == 0;
-                }
-            }
-        },
-        messages: {
-            "post[content]": {
-                required: "Post content cannot be empty"
-            }
-        },
-        submitHandler: function(form){
-            $(form).find(".newPost").attr("disabled", "disabled");
-            form.submit();
-        }
-    });
 
     $("body").on("click", ".doLike", function(e){
         e.preventDefault();

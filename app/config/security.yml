@@ -47,4 +47,5 @@ security:
         - { path: ^/[0-9]+, role: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/send_activation, role: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: /activate_email/, role: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: /follow/\w*/(accept|deny)/\w*, role: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/, role: [ ROLE_CUSTOMER, ROLE_VENDOR ]}

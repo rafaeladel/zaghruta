@@ -18,116 +18,155 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for notification in notifications %}
-                            {% if notification.type == 'notify.like' %}
-                                <tr>
-                                    <td class="tableImg" >
-                                        <a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}">
-                                            <img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" />
-                                        </a>
-                                    </td>
-                                    <td>{{ notification.content.user }} Liked your
-                                        {% if notification.content.obj_type == 0 %}
-                                            <a href="{{ url("zgh_fe.post.display", {"id": notification.user.id, "post_id": notification.content.obj_id }) }}"> post</a>
-                                        {% elseif notification.content.obj_type == 1 %}
-                                            <a href="{{ url("zgh_fe.photos.photo.content", {"id": notification.user.id, "photo_id": notification.content.obj_id}) }}"> photo</a>
-                                        {% elseif notification.content.obj_type == 2 %}
-                                            <a href="{{ url("zgh_fe.experience.content", {"id": notification.user.id, "exp_id": notification.content.obj_id}) }}"> experience</a>
-                                        {% elseif notification.content.obj_type == 3 %}
-                                            <a href="{{ url("zgh_fe.tip.content", {"id": notification.user.id, "tip_id": notification.content.obj_id}) }}"> tip</a>
-                                        {% elseif notification.content.obj_type == 4 %}
-                                            <a href="{{ url("zgh_fe.products.content", {"id": notification.user.id, "product_id": notification.content.obj_id}) }}"> product</a>
-                                        {% endif %}
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
-                                    </td>
-                                    <td><span class="glyphicon glyphicon-thumbs-up pull-right"></span></td>
-                                </tr>
-                            {% elseif notification.type == 'notify.comment' %}
-                                <tr>
-                                    <td class="tableImg" ><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
-                                    <td>{{ notification.content.user }} Commented on your
-                                        {% if notification.content.obj_type == 0 %}
-                                            <a href="{{ url("zgh_fe.post.display", {"id": notification.user.id, "post_id": notification.content.obj_id }) }}"> post</a>
-                                        {% elseif notification.content.obj_type == 1 %}
-                                            <a href="{{ url("zgh_fe.photos.photo.content", {"id": notification.user.id, "photo_id": notification.content.obj_id}) }}"> photo</a>
-                                        {% elseif notification.content.obj_type == 2 %}
-                                            <a href="{{ url("zgh_fe.experience.content", {"id": notification.user.id, "exp_id": notification.content.obj_id}) }}"> experience</a>
-                                        {% elseif notification.content.obj_type == 3 %}
-                                            <a href="{{ url("zgh_fe.tip.content", {"id": notification.user.id, "tip_id": notification.content.obj_id}) }}"> tip</a>
-                                        {% elseif notification.content.obj_type == 4 %}
-                                            <a href="{{ url("zgh_fe.products.content", {"id": notification.user.id, "product_id": notification.content.obj_id}) }}"> product</a>
-                                        {% endif %}
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
+                        {% if notifications|length == 0 %}
+                            <p>No new notifications.</p>
+                        {% else %}
+                            {% for notification in notifications %}
+                                {% if notification.type == 'notify.like' %}
+                                    <tr>
+                                        <td class="tableImg">
+                                            <a class="imgNotification"
+                                               href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}">
+                                                <img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/>
+                                            </a>
+                                        </td>
+                                        <td>{{ notification.content.user }} Liked your
+                                            {% if notification.content.obj_type == 0 %}
+                                                <a href="{{ url("zgh_fe.post.display", {"id": notification.user.id, "post_id": notification.content.obj_id }) }}">
+                                                    post</a>
+                                            {% elseif notification.content.obj_type == 1 %}
+                                                <a href="{{ url("zgh_fe.photos.photo.content", {"id": notification.user.id, "photo_id": notification.content.obj_id}) }}">
+                                                    photo</a>
+                                            {% elseif notification.content.obj_type == 2 %}
+                                                <a href="{{ url("zgh_fe.experience.content", {"id": notification.user.id, "exp_id": notification.content.obj_id}) }}">
+                                                    experience</a>
+                                            {% elseif notification.content.obj_type == 3 %}
+                                                <a href="{{ url("zgh_fe.tip.content", {"id": notification.user.id, "tip_id": notification.content.obj_id}) }}">
+                                                    tip</a>
+                                            {% elseif notification.content.obj_type == 4 %}
+                                                <a href="{{ url("zgh_fe.products.content", {"id": notification.user.id, "product_id": notification.content.obj_id}) }}">
+                                                    product</a>
+                                            {% endif %}
+                                            <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
+                                        </td>
+                                        <td><span class="glyphicon glyphicon-thumbs-up pull-right"></span></td>
+                                    </tr>
+                                {% elseif notification.type == 'notify.comment' %}
+                                    <tr>
+                                        <td class="tableImg"><a class="imgNotification"
+                                                                href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img
+                                                        src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
+                                        </td>
+                                        <td>{{ notification.content.user }} Commented on your
+                                            {% if notification.content.obj_type == 0 %}
+                                                <a href="{{ url("zgh_fe.post.display", {"id": notification.user.id, "post_id": notification.content.obj_id }) }}">
+                                                    post</a>
+                                            {% elseif notification.content.obj_type == 1 %}
+                                                <a href="{{ url("zgh_fe.photos.photo.content", {"id": notification.user.id, "photo_id": notification.content.obj_id}) }}">
+                                                    photo</a>
+                                            {% elseif notification.content.obj_type == 2 %}
+                                                <a href="{{ url("zgh_fe.experience.content", {"id": notification.user.id, "exp_id": notification.content.obj_id}) }}">
+                                                    experience</a>
+                                            {% elseif notification.content.obj_type == 3 %}
+                                                <a href="{{ url("zgh_fe.tip.content", {"id": notification.user.id, "tip_id": notification.content.obj_id}) }}">
+                                                    tip</a>
+                                            {% elseif notification.content.obj_type == 4 %}
+                                                <a href="{{ url("zgh_fe.products.content", {"id": notification.user.id, "product_id": notification.content.obj_id}) }}">
+                                                    product</a>
+                                            {% endif %}
+                                            <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
 
-                                    </td>
-                                    <td><span class="glyphicon glyphicon-comment pull-right"></span></td>
-                                </tr>
-                            {% elseif notification.type == 'notify.comment_other' %}
-                                <tr>
-                                    <td class="tableImg" ><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
-                                    <td>{{ notification.content.user }} Commented on {{ notification.content.user_gender }}
-                                        {% if notification.content.obj_type == 0 %}
-                                            <a href="{{ url("zgh_fe.post.display", {"id": notification.content.user_id, "post_id": notification.content.obj_id }) }}"> post</a>
-                                        {% elseif notification.content.obj_type == 1 %}
-                                            <a href="{{ url("zgh_fe.photos.photo.content", {"id": notification.content.user_id, "photo_id": notification.content.obj_id}) }}"> photo</a>
-                                        {% elseif notification.content.obj_type == 2 %}
-                                            <a href="{{ url("zgh_fe.experience.content", {"id": notification.content.user_id, "exp_id": notification.content.obj_id}) }}"> experience</a>
-                                        {% elseif notification.content.obj_type == 3 %}
-                                            <a href="{{ url("zgh_fe.tip.content", {"id": notification.content.user_id, "tip_id": notification.content.obj_id}) }}"> tip</a>
-                                        {% elseif notification.content.obj_type == 4 %}
-                                            <a href="{{ url("zgh_fe.products.content", {"id": notification.content.user_id, "product_id": notification.content.obj_id}) }}"> product</a>
-                                        {% endif %}
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
+                                        </td>
+                                        <td><span class="glyphicon glyphicon-comment pull-right"></span></td>
+                                    </tr>
+                                {% elseif notification.type == 'notify.comment_other' %}
+                                    <tr>
+                                        <td class="tableImg"><a class="imgNotification"
+                                                                href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img
+                                                        src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
+                                        </td>
+                                        <td>{{ notification.content.user }} Commented
+                                            on {{ notification.content.user_gender }}
+                                            {% if notification.content.obj_type == 0 %}
+                                                <a href="{{ url("zgh_fe.post.display", {"id": notification.content.user_id, "post_id": notification.content.obj_id }) }}">
+                                                    post</a>
+                                            {% elseif notification.content.obj_type == 1 %}
+                                                <a href="{{ url("zgh_fe.photos.photo.content", {"id": notification.content.user_id, "photo_id": notification.content.obj_id}) }}">
+                                                    photo</a>
+                                            {% elseif notification.content.obj_type == 2 %}
+                                                <a href="{{ url("zgh_fe.experience.content", {"id": notification.content.user_id, "exp_id": notification.content.obj_id}) }}">
+                                                    experience</a>
+                                            {% elseif notification.content.obj_type == 3 %}
+                                                <a href="{{ url("zgh_fe.tip.content", {"id": notification.content.user_id, "tip_id": notification.content.obj_id}) }}">
+                                                    tip</a>
+                                            {% elseif notification.content.obj_type == 4 %}
+                                                <a href="{{ url("zgh_fe.products.content", {"id": notification.content.user_id, "product_id": notification.content.obj_id}) }}">
+                                                    product</a>
+                                            {% endif %}
+                                            <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
 
-                                    </td>
-                                    <td><span class="glyphicon glyphicon-comment pull-right"></span></td>
-                                </tr>
-                            {% elseif notification.type == 'notify.follow' %}
-                                <tr>
-                                    <td class="tableImg"><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
-                                    <td>
-                                        <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a>Started following you
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
-                                    </td>
-                                    <td><span class="glyphicon glyphicon-user pull-right"></span></td>
-                                </tr>
-                            {% elseif notification.type == 'notify.follow_request' %}
-                                <tr>
-                                    <td class="tableImg" ><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
-                                    <td>
-                                        <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a>
-                                        Wants to follow you. <a
-                                                href="{{ url("zgh_fe.user.accept_follow", {"id": notification.actionId, "n_id": notification.id }) }}">Yes</a>
-                                        <a href="{{ url("zgh_fe.user.deny_follow", {"id": notification.actionId, "n_id": notification.id }) }}">No</a>
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
-                                    </td>
-                                    <td><span class="glyphicon glyphicon-user pull-right"></span></td>
-                                </tr>
-                            {% elseif notification.type == "notify.follow_request_accepted" %}
-                                <tr>
-                                    <td class="tableImg"><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.followee_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
-                                    <td>
-                                        <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.followee_id }) }}"> {{ notification.content.user }} </a>
-                                        has accepted your follow request
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
-                                    </td>
-                                    <td><span class="glyphicon glyphicon-user pull-right"></span></td>
-                                </tr>
-                            {% elseif notification.type == 'notify.relationship.request' %}
-                                <tr>
-                                    <td class="tableImg"><a class="imgNotification" href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.requester_id}) }}"><img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}" /></a> </td>
-                                    <td>
-                                        <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.requester_id }) }}"> {{ notification.content.user }} </a>
-                                        says you two are {{ notification.content.status|lower }}
-                                        <a href="{{ url("zgh_fe.about.accept_relationship", {"id": notification.actionId, "n_id": notification.id }) }}">Yes</a>
-                                        <a href="{{ url("zgh_fe.about.deny_relationship", {"id": notification.actionId, "n_id": notification.id }) }}">No</a>
-                                        <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
-                                    </td>
-                                    <td><span class="glyphicon glyphicon-user pull-right"></span></td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-
+                                        </td>
+                                        <td><span class="glyphicon glyphicon-comment pull-right"></span></td>
+                                    </tr>
+                                {% elseif notification.type == 'notify.follow' %}
+                                    <tr>
+                                        <td class="tableImg"><a class="imgNotification"
+                                                                href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id}) }}"><img
+                                                        src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a>Started
+                                            following you
+                                            <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
+                                        </td>
+                                        <td><span class="glyphicon glyphicon-user pull-right"></span></td>
+                                    </tr>
+                                {% elseif notification.type == 'notify.follow_request' %}
+                                    <tr>
+                                        <td class="tableImg"><a class="imgNotification"
+                                                                href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id}) }}"><img
+                                                        src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a>
+                                            Wants to follow you. <a
+                                                    href="{{ url("zgh_fe.user.accept_follow", {"id": notification.actionId, "n_id": notification.id }) }}">Yes</a>
+                                            <a href="{{ url("zgh_fe.user.deny_follow", {"id": notification.actionId, "n_id": notification.id }) }}">No</a>
+                                            <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
+                                        </td>
+                                        <td><span class="glyphicon glyphicon-user pull-right"></span></td>
+                                    </tr>
+                                {% elseif notification.type == "notify.follow_request_accepted" %}
+                                    <tr>
+                                        <td class="tableImg"><a class="imgNotification"
+                                                                href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.followee_id}) }}"><img
+                                                        src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.followee_id }) }}"> {{ notification.content.user }} </a>
+                                            has accepted your follow request
+                                            <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
+                                        </td>
+                                        <td><span class="glyphicon glyphicon-user pull-right"></span></td>
+                                    </tr>
+                                {% elseif notification.type == 'notify.relationship.request' %}
+                                    <tr>
+                                        <td class="tableImg"><a class="imgNotification"
+                                                                href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.requester_id}) }}"><img
+                                                        src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.requester_id }) }}"> {{ notification.content.user }} </a>
+                                            says you two are {{ notification.content.status|lower }}
+                                            <a href="{{ url("zgh_fe.about.accept_relationship", {"id": notification.actionId, "n_id": notification.id }) }}">Yes</a>
+                                            <a href="{{ url("zgh_fe.about.deny_relationship", {"id": notification.actionId, "n_id": notification.id }) }}">No</a>
+                                            <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
+                                        </td>
+                                        <td><span class="glyphicon glyphicon-user pull-right"></span></td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                         </tbody>
                     </table>
                 </div>

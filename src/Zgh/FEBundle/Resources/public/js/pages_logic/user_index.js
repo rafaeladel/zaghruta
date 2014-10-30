@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    if ($("body").find(".post").length == 0) {
+    if ($("body").find(".post").length == 0 || $("body").find(".post").length < 7 ) {
         $("body").find(".load-more").remove();
     }
 
@@ -28,6 +28,8 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.success) {
                     $("body").find(".post").last().after(data.view);
+                } else {
+                    btn.remove();
                 }
                 btn.removeAttr("disabled");
             }

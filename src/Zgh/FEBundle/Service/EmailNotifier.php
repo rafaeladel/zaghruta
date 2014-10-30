@@ -67,7 +67,7 @@ class EmailNotifier
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $this->notification->getContent()["obj_id"]], true);
-        $title = "Someone has commented on your post.";
+        $title = "{$this->notification->getContent()["user"]} has commented on your post.";
         $body = "{$this->notification->getContent()["user"]} has commented on your post - {$url}";
         $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body ]);
         $this->send($title, $user->getEmail(), $template);
@@ -78,7 +78,7 @@ class EmailNotifier
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
         $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $this->notification->getContent()["obj_id"]], true);
-        $title = "Someone liked your post";
+        $title = "{$this->notification->getContent()["user"]} has liked your post";
         $body = "{$this->notification->getContent()["user"]} has liked your post - {$url}";
         $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body ]);
         $this->send($title, $user->getEmail(), $template);
