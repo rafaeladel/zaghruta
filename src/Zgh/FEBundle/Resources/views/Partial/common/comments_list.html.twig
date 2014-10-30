@@ -25,7 +25,7 @@
         <div class="data-reacted  pull-left">
             <div class="profile sm-img-post">
                 <a href="#" class="pull-left img-circle">
-                    <img alt="" src="{{ "ROLE_FACEBOOK" in comment.user.roles ? 'https://graph.facebook.com/'~comment.user.facebookId~'/picture' : asset(comment.user.profilePhoto.getThumbWebPath) }}" class="img-responsive comment_author_pp  media-object">
+                    <img alt="" src="{{ comment.user.profilePhoto ?  asset(comment.user.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in comment.user.roles ? 'https://graph.facebook.com/'~comment.user.facebookId~'/picture?width=125&height=125' : "#") }}" class="img-responsive comment_author_pp  media-object">
                 </a>
             </div>
             <a class="ZaghrutaTitle" href="{{ url("zgh_fe.user_profile.index", {"id": comment.user.id } ) }}"><strong class="comment_author">{{ comment.user.fullname }}</strong></a>

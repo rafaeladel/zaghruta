@@ -78,12 +78,20 @@ class ZghThreadManager extends ThreadManager
         $thread = $this->repository->createQueryBuilder('t')
             ->innerJoin('t.metadata', 'tm')
             ->innerJoin('tm.participant', 'p')
+//
+//            ->andWhere("t.createdBy = :createdBy")
+//            ->setParameter("createdBy", $sender)
+//
+//            // the participant is in the thread participants
+//            ->andWhere('p.id = :user')
+//            ->setParameter('user', $recipient)
 
-            ->andWhere("t.createdBy = :createdBy")
+
+            ->andWhere("t.createdBy = :createdBy or p.id = :createdBy")
             ->setParameter("createdBy", $sender)
 
             // the participant is in the thread participants
-            ->andWhere('p.id = :user')
+            ->andWhere('p.id = :user or t.createdBy = :user')
             ->setParameter('user', $recipient)
 
             // the thread does not contain spam or flood

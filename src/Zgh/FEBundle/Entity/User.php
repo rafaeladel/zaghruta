@@ -591,7 +591,9 @@ class User extends BaseUser implements ParticipantInterface
      */
     public function setFirstTimeValue()
     {
-        $this->setFirstTime(true);
+        if($this->first_time == null) {
+            $this->setFirstTime(true);
+        }
     }
 
     /**

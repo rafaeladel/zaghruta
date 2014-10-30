@@ -81,7 +81,7 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
             $setter_id = $setter . 'Id';
             $setter_token = $setter . 'AccessToken';
 
-            //create new user
+            /** @var \Zgh\FEBundle\Entity\User $user */
             $user = $this->userManager->createUser();
             $user->$setter_id($username);
             $user->$setter_token($response->getAccessToken());
