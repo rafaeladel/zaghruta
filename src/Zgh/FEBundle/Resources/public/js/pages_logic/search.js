@@ -79,13 +79,15 @@ $(document).ready(function () {
         if ($.inArray(e.which, prevent_keys) != -1) {
             return false;
         }
-        startSearch(term);
+        console.log(term);
+        startSearch(e.target);
     });
 
     function startSearch(target) {
         var form = $(target).closest("form");
         var url = form.attr("action");
         var result_wrapper = $(target).closest("#c_products").find("#products_list");
+        console.log(result_wrapper.length);
         result_wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
         $.ajax({
             type: "get",
