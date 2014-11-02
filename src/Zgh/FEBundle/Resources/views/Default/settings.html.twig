@@ -14,39 +14,39 @@
 
                 <div id="accordion" class="col-md-12 privacy panel-group">
                     {% if not is_granted("ROLE_VENDOR") %}
-                    <div class="profilePrivacy panel panel-default">
-                        <div class="panel-heading">
-                            <a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">
-                                <h4>Profile Privacy</h4>
-                            </a>
-                        </div>
-                        <!--End panel Heading-->
-                        <div id="collapseOne" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <div class="radio">
-                                    <label>
-                                        <input class="privacyToggle" type="radio" name="privacySetting"
-                                               id="optionsRadios1"
-                                               data-url="{{ url("zgh_fe.user_profile.privacy.set", {"id": app.user.id, "pv": 0}) }}"
-                                               value="0" {{ not app.user.isPrivate ? "checked" : "" }}>
-                                        Public
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input class="privacyToggle" type="radio" name="privacySetting"
-                                               id="optionsRadios2"
-                                               data-url="{{ url("zgh_fe.user_profile.privacy.set", {"id": app.user.id, "pv": 1}) }}"
-                                               value="1" {{ app.user.isPrivate ? "checked" : "" }}>
-                                        Private
-                                    </label>
-                                </div>
+                        <div class="profilePrivacy panel panel-default">
+                            <div class="panel-heading">
+                                <a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">
+                                    <h4>Profile Privacy</h4>
+                                </a>
                             </div>
-                            <!--End panel Body-->
+                            <!--End panel Heading-->
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="radio">
+                                        <label>
+                                            <input class="privacyToggle" type="radio" name="privacySetting"
+                                                   id="optionsRadios1"
+                                                   data-url="{{ url("zgh_fe.user_profile.privacy.set", {"id": app.user.id, "pv": 0}) }}"
+                                                   value="0" {{ not app.user.isPrivate ? "checked" : "" }}>
+                                            Public
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input class="privacyToggle" type="radio" name="privacySetting"
+                                                   id="optionsRadios2"
+                                                   data-url="{{ url("zgh_fe.user_profile.privacy.set", {"id": app.user.id, "pv": 1}) }}"
+                                                   value="1" {{ app.user.isPrivate ? "checked" : "" }}>
+                                            Private
+                                        </label>
+                                    </div>
+                                </div>
+                                <!--End panel Body-->
+                            </div>
+                            <!--End panel collapse-->
                         </div>
-                        <!--End panel collapse-->
-                    </div>
-                    <!--End panel Default-->
+                        <!--End panel Default-->
                     {% endif %}
                     <div class="notification panel panel-default ">
                         <div class="panel-heading">
@@ -61,8 +61,8 @@
                                     <form action="" method="post">
                                         <label>
                                             <input class="emailNotification" type="checkbox"
-                                                    value="" {{ app.user.emailNotification ? "checked" : "" }}
-                                                    data-url="{{ url("zgh_fe.email_notification.set", {"id": app.user.id}) }}"
+                                                   value="" {{ app.user.emailNotification ? "checked" : "" }}
+                                                   data-url="{{ url("zgh_fe.email_notification.set", {"id": app.user.id}) }}"
                                                     >
                                             Send To Email
                                         </label>
@@ -84,36 +84,36 @@
                         </div>
                         <!--End panel heading -->
 
-                        <div  id="collapseThree" class="panel-collapse collapse in">
+                        <div id="collapseThree" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 {% if not is_granted("ROLE_VENDOR") %}
-                                <form class="form-horizontal change_info_form"
-                                      action="{{ url("zgh_fe.settings.postBasicInfo", {"id": app.user.id}) }}"
-                                      method="post" role="form">
-                                    <div class="form-group formGroup">
-                                        <label class="col-sm-2 control-label" for="firstname">First Name</label>
+                                    <form class="form-horizontal change_info_form"
+                                          action="{{ url("zgh_fe.settings.postBasicInfo", {"id": app.user.id}) }}"
+                                          method="post" role="form">
+                                        <div class="form-group formGroup">
+                                            <label class="col-sm-2 control-label" for="firstname">First Name</label>
 
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="firstname"
-                                                   placeholder="First Name" required="required"
-                                                   value="{{ user.firstname }}">
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" name="firstname"
+                                                       placeholder="First Name" required="required"
+                                                       value="{{ user.firstname }}">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group formGroup">
-                                        <label class="col-sm-2 control-label" for="lastname">Last Name</label>
+                                        <div class="form-group formGroup">
+                                            <label class="col-sm-2 control-label" for="lastname">Last Name</label>
 
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="lastname"
-                                                   placeholder="Last Name" required="required"
-                                                   value="{{ user.lastname }}">
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" name="lastname"
+                                                       placeholder="Last Name" required="required"
+                                                       value="{{ user.lastname }}">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <button class="btn btn-wide btn-primary pull-right" type="submit">Save</button>
-                                    {{ helper.msg_wrapper() }}
+                                        <button class="btn btn-wide btn-primary pull-right" type="submit">Save</button>
+                                        {{ helper.msg_wrapper() }}
 
-                                </form>
+                                    </form>
                                 {% endif %}
-                                
+
                             </div>
                             <!--Panel Body-->
                         </div>
@@ -127,44 +127,48 @@
                         </div>
                         <!--End panel heading -->
 
-                        <div  id="collapseFour" class="panel-collapse collapse in">
+                        <div id="collapseFour" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 {#{% if is_granted("ROLE_VENDOR") %}#}
-                                    <h4>Change Email</h4>
-                                    <form action="{{ url("zgh_fe.settings.postChangeEmail") }}" method="post" class="change_email_form form-horizontal">
-                                        <input type="email" style="display:none">
-                                        <input type="password" style="display:none">
-                                        <div class="form-group formGroup">
-                                            {{ form_label(email_form.new_email, "Email:", {"label_attr": {"class":"col-sm-2 control-label"} }) }}
-                                            <div class="col-sm-4 changeEmail">
-                                                {{ form_widget(email_form.new_email, {"attr": {"class": "form-control", "value": user.email} }) }}
-                                                {{ form_errors(email_form.new_email) }}
-                                            </div>
+                                <h4>Change Email</h4>
+
+                                <form action="{{ url("zgh_fe.settings.postChangeEmail") }}" method="post"
+                                      class="change_email_form form-horizontal">
+                                    <input type="email" style="display:none">
+                                    <input type="password" style="display:none">
+
+                                    <div class="form-group formGroup">
+                                        {{ form_label(email_form.new_email, "Email:", {"label_attr": {"class":"col-sm-2 control-label"} }) }}
+                                        <div class="col-sm-4 changeEmail">
+                                            {{ form_widget(email_form.new_email, {"attr": {"class": "form-control", "value": user.email} }) }}
+                                            {{ form_errors(email_form.new_email) }}
                                         </div>
-                                        <div class="form-group formGroup">
-                                            {{ form_label(email_form.current_password, "", {"label_attr": {"class":"col-sm-2 control-label"} }) }}
-                                            <div class="col-sm-4">
-                                                {{ form_widget(email_form.current_password, {"attr": {"class": "form-control", "placeholder": "Current Password"} }) }}
-                                                {{ form_errors(email_form.current_password) }}
-
-                                            </div>
-                                        </div>
-                                        {{ helper.msg_wrapper() }}
-                                        <button class="btn btn-wide btn-primary pull-right" type="submit">Change Email</button>
-
-                                        {{ form_rest(email_form) }}
-                                    {{ form_end(email_form) }}
-                                {#{% endif %}#}
-                                {% if not is_granted("ROLE_FACEBOOK") %}
-                                    <br/>
-                                    <div class="change_password_wrapper">
-                                    <h4>Change Password</h4>
-
-                                    {{ render_esi(controller("ZghFEBundle:ChangePassword:changePassword")) }}
-
-                                    {{ helper.msg_wrapper() }}
                                     </div>
-                                {% endif %}
+                                    <div class="form-group formGroup">
+                                        {{ form_label(email_form.current_password, "", {"label_attr": {"class":"col-sm-2 control-label"} }) }}
+                                        <div class="col-sm-4">
+                                            {{ form_widget(email_form.current_password, {"attr": {"class": "form-control", "placeholder": "Current Password"} }) }}
+                                            {{ form_errors(email_form.current_password) }}
+
+                                        </div>
+                                    </div>
+                                    {{ helper.msg_wrapper() }}
+                                    <button class="btn btn-wide btn-primary pull-right" type="submit">Change Email
+                                    </button>
+
+                                    {{ form_rest(email_form) }}
+                                    {{ form_end(email_form) }}
+                                    {#{% endif %}#}
+                                    {% if not is_granted("ROLE_FACEBOOK") %}
+                                        <br/>
+                                        <div class="change_password_wrapper">
+                                            <h4>Change Password</h4>
+
+                                            {{ render_esi(controller("ZghFEBundle:ChangePassword:changePassword")) }}
+
+                                            {{ helper.msg_wrapper() }}
+                                        </div>
+                                    {% endif %}
                             </div>
                             <!--Panel Body-->
                         </div>
@@ -185,16 +189,17 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts
-        "bundles/zghfe/js/pages_logic/settings.js"
-    %}
-        <script src="{{ asset_url }}"></script>
+    "bundles/zghfe/js/pages_logic/settings.js" %}
+    <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock javascripts %}
 {% macro msg_wrapper() %}
-    <div class="result_wrapper alert_wrapper">
-        <span class="alert alert-success alerEamil alertMsg"></span>
-    </div>
-    <div class="error_wrapper alert_wrapper">
-        <span class="alert alert-danger alerEamil alertMsg"></span>
+    <div class="msg_wrapper">
+        <div class="result_wrapper alert_wrapper">
+            <span class="alert alert-success alerEamil alertMsg"></span>
+        </div>
+        <div class="error_wrapper alert_wrapper">
+            <span class="alert alert-danger alerEamil alertMsg"></span>
+        </div>
     </div>
 {% endmacro %}

@@ -32,6 +32,7 @@ $(document).ready(function () {
                 url: url,
                 data: $(form).serialize(),
                 success: function(data) {
+                    $(form).closest(".change_password_wrapper").find("div").hide();
                     if(data.success) {
                         $(form).closest(".change_password_wrapper").find(".result_wrapper").show().find("span").text(data.message);
                     } else {
@@ -63,6 +64,7 @@ $(document).ready(function () {
                url: url,
                data: $(form).serialize(),
                success: function(data) {
+                   $(form).closest(".msg_wrapper").find("div").hide();
                    if(data.success) {
                        $(form).find(".result_wrapper").show().find("span").text(data.message);
                    } else {
@@ -93,6 +95,7 @@ $(document).ready(function () {
                url: url,
                data: $(form).serialize(),
                success: function(data) {
+                   $(form).closest(".msg_wrapper").find("div").hide();
                    if(data.success) {
                        $(form).find(".result_wrapper").show().find("span").text(data.message);
                    } else {
