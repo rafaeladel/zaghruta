@@ -3402,6 +3402,7 @@ margin: 5px 0;
     }
     .fancybox-inner{
        min-width: 100% !important;
+       height: 100%;
     }
     .contentImg{
         height: auto !important;
