@@ -3464,6 +3464,7 @@ height: 120px !important;
     }
     .fancybox-inner{
        min-width: 100% !important;
+       height: 100%;
     }
     .contentImg{
         height: auto !important;
