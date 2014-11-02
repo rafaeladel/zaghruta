@@ -3354,7 +3354,11 @@ margin: 5px 0;
 
 .result_wrapper, .error_wrapper {
     display: none;
+    height: 30px;
+    padding: 0;
+    margin-top: 30px;
 }
+
 
 
 @media (max-width: 320px){
