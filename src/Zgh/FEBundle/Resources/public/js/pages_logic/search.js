@@ -76,10 +76,9 @@ $(document).ready(function () {
         var term = $.trim($(e.currentTarget).val());
         term = term.length == 0 ? "" : term;
         var prevent_keys = [27, 16, 20, 17, 18, 91, 39, 37, 38, 40, 16, 36, 35, 33, 34];
-        if ($.inArray(e.which, prevent_keys) != -1) {
+        if (term == "" || $.inArray(e.which, prevent_keys) != -1) {
             return false;
         }
-        console.log(term);
         startSearch(e.target);
     });
 
@@ -87,7 +86,6 @@ $(document).ready(function () {
         var form = $(target).closest("form");
         var url = form.attr("action");
         var result_wrapper = $(target).closest("#c_products").find("#products_list");
-        console.log(result_wrapper.length);
         result_wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
         $.ajax({
             type: "get",

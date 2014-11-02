@@ -25,6 +25,7 @@
                                     <label>
                                         <input class="privacyToggle" type="radio" name="privacySetting"
                                                id="optionsRadios1"
+                                               data-url="{{ url("zgh_fe.user_profile.privacy.set", {"id": app.user.id, "pv": 0}) }}"
                                                value="0" {{ not app.user.isPrivate ? "checked" : "" }}>
                                         Public
                                     </label>
@@ -32,7 +33,9 @@
                                 <div class="radio">
                                     <label>
                                         <input class="privacyToggle" type="radio" name="privacySetting"
-                                               id="optionsRadios2" value="1" {{ app.user.isPrivate ? "checked" : "" }}>
+                                               id="optionsRadios2"
+                                               data-url="{{ url("zgh_fe.user_profile.privacy.set", {"id": app.user.id, "pv": 1}) }}"
+                                               value="1" {{ app.user.isPrivate ? "checked" : "" }}>
                                         Private
                                     </label>
                                 </div>
@@ -56,7 +59,9 @@
                                     <form action="" method="post">
                                         <label>
                                             <input class="emailNotification" type="checkbox"
-                                                   value="" {{ app.user.emailNotification ? "checked" : "" }}>
+                                                    value="" {{ app.user.emailNotification ? "checked" : "" }}
+                                                    data-url="{{ url("zgh_fe.email_notification.set", {"id": app.user.id}) }}"
+                                                    >
                                             Send To Email
                                         </label>
                                     </form>
@@ -82,7 +87,7 @@
                                 {% if not is_granted("ROLE_VENDOR") %}
                                 <form class="form-horizontal"
                                       action="{{ url("zgh_fe.settings.postBasicInfo", {"id": app.user.id}) }}"
-                                      method="post" role="form">
+                                      method="post" role="form" class="change_info_form">
                                     <div class="form-group formGroup">
                                         <label class="col-sm-2 control-label" for="firstname">First Name</label>
 
@@ -103,15 +108,11 @@
                                     </div>
                                     <button class="btn btn-wide btn-primary pull-right" type="submit">Save</button>
                                     {% for msg in app.session.flashBag.get("notice") %}
-<<<<<<< HEAD
-                                        <span class="alert alert-success alertMsg">{{ msg }}</span>
-=======
                                         <div class="alert alert-info alert-dismissible" role="alert">
                                             <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span>
                                                 <span class="sr-only">Close</span></button>
                                             {{ msg }}
                                         </div>
->>>>>>> bdd1dbf2e6a0b82e2311b6e6038f3d348f792a71
                                     {% endfor %}
                                 </form>
                                 {% endif %}
@@ -133,18 +134,13 @@
                             <div class="panel-body">
                                 {#{% if is_granted("ROLE_VENDOR") %}#}
                                     <h4>Change Email</h4>
-                                    <form action="{{ url("zgh_fe.settings.postChangeEmail") }}" method="post" class="form-horizontal">
+                                    <form action="{{ url("zgh_fe.settings.postChangeEmail") }}" class="change_email_form" method="post" class="form-horizontal">
                                         <input type="email" style="display:none">
                                         <input type="password" style="display:none">
                                         <div class="form-group formGroup">
                                             {{ form_label(email_form.new_email, "Email:", {"label_attr": {"class":"col-sm-2 control-label"} }) }}
-<<<<<<< HEAD
                                             <div class="col-sm-4 changeEmail">
-                                                {{ form_widget(email_form.new_email, {"attr": {"class": "form-control", "placeholder": "New Email"} }) }}
-=======
-                                            <div class="col-sm-4">
                                                 {{ form_widget(email_form.new_email, {"attr": {"class": "form-control", "value": user.email} }) }}
->>>>>>> bdd1dbf2e6a0b82e2311b6e6038f3d348f792a71
                                                 {{ form_errors(email_form.new_email) }}
                                             </div>
                                         </div>
@@ -156,15 +152,12 @@
 
                                             </div>
                                         </div>
-                                        {% for msg in app.session.flashBag.get("email_notice") %}
-                                            <span class="alert alert-success alerEamil alertMsg">{{ msg }}</span>
-                                        {% endfor %}
-                                        {% for msg in app.session.flashBag.get("email_error") %}
-                                            <span class="alert alert-error alerEamil alertMsg">{{ msg }}</span>
-                                        {% endfor %}
-                                        {% for msg in app.session.flashBag.get("email_error") %}
-                                            <span>{{ msg }}</span>
-                                        {% endfor %}
+                                        <div class="result_wrapper">
+                                            <span class="alert alert-success alerEamil alertMsg"></span>
+                                        </div>
+                                        <div class="error_wrapper">
+                                            <span class="alert alert-error alerEamil alertMsg"></span>
+                                        </div>
                                         <button class="btn btn-wide btn-primary pull-right" type="submit">Change Email</button>
 
                                         {{ form_rest(email_form) }}
@@ -176,16 +169,9 @@
 
                                     {{ render_esi(controller("ZghFEBundle:ChangePassword:changePassword")) }}
 
-<<<<<<< HEAD
                                     {% for msg in app.session.flashBag.get("password_error") %}
-                                        <span>{{ msg }}</span>
+                                        <span style="color: red;">{{ msg }}</span>
                                     {% endfor %}
-=======
-                                        {% for msg in app.session.flashBag.get("password_error") %}
-                                            <span style="color: red;">{{ msg }}</span>
-                                        {% endfor %}
->>>>>>> bdd1dbf2e6a0b82e2311b6e6038f3d348f792a71
-
                                     {% for msg in app.session.flashBag.get("password_notice") %}
                                         <span class="alert alert-success alertMsg">{{ msg }}</span>
                                     {% endfor %}
@@ -209,63 +195,9 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".change_password_form").validate({
-                rules: {
-                    "fos_user_change_password_form[current_password]": {
-                        required: true
-                    },
-                    "fos_user_change_password_form[plainPassword][first]": {
-                        required: true,
-                        minlength: 6,
-                        pattern: /^\S*$/
-                    },
-                    "fos_user_change_password_form[plainPassword][second]": {
-                        required: true,
-                        equalTo: "[name='fos_user_change_password_form[plainPassword][first]']"
-                    }
-                },
-                messages: {
-                    "fos_user_change_password_form[current_password]": {
-                        required: "Password is required"
-                    },
-                    "fos_user_change_password_form[plainPassword][first]": {
-                        required: "Password is required",
-                        pattern: "Should not contain spaces"
-                    },
-                    "fos_user_change_password_form[plainPassword][second]": "Confirm password is required"
-                },
-                submitHandler: function(form){
-                    form.submit();
-                }
-
-            });
-
-            $("body").on("click", ".privacyToggle", function (e) {
-                $(".privacyToggle").attr("disabled", "disabled");
-                var url = Routing.generate('zgh_fe.user_profile.privacy.set', { id: "{{ app.user.id }}", pv: $(e.target).val() }, true);
-                $.ajax({
-                    type: "get",
-                    url: url,
-                    success: function (data) {
-                        $(".privacyToggle").removeAttr("disabled");
-                    }
-                })
-            });
-
-            $("body").on("click", ".emailNotification", function (e) {
-                $(e.target).attr("disabled", "disabled");
-                var url = Routing.generate('zgh_fe.email_notification.set', { id: "{{ app.user.id }}" }, true);
-                $.ajax({
-                    type: "post",
-                    url: url,
-                    success: function (data) {
-                        $(e.target).removeAttr("disabled");
-                    }
-                })
-            });
-        });
-
-    </script>
+    {% javascripts
+        "bundles/zghfe/js/pages_logic/settings.js"
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock javascripts %}

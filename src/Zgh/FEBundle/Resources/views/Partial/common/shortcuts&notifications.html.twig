@@ -29,24 +29,15 @@
             <span class="glyphicon glyphicon-cog"></span>
         </button>
         <ul class="dropdown-menu upper-menu">
-<<<<<<< HEAD
-                 <li>
-=======
             <li>
->>>>>>> bdd1dbf2e6a0b82e2311b6e6038f3d348f792a71
                 <a href="{{ url(is_granted("ROLE_CUSTOMER") ? "zgh_fe.interest.get" : "zgh_fe.vendor_categories.get") }}">
                     <span class="icon-interests {{ is_granted("ROLE_CUSTOMER") ? "" : "category_class" }}"></span>{{ is_granted("ROLE_CUSTOMER") ? "Interests" : "Categories" }}
                 </a>
             </li>
-<<<<<<< HEAD
-                <li><a href="{{ url("zgh_fe.settings.getSettings") }}" ><span class="iconSetting glyphicon glyphicon-cog"></span> Settings</a></li>
-                <li><a href="{{ url("fos_user_security_logout") }}"><span class="iconLogout glyphicon glyphicon-log-out"></span> Log Out</a></li>
-=======
             <li><a href="{{ url("zgh_fe.settings.getSettings") }}"><span
                             class="iconSetting glyphicon glyphicon-cog"></span> Settings</a></li>
             <li><a href="{{ url("fos_user_security_logout") }}"><span
                             class="iconLogout glyphicon glyphicon-log-out"></span> Log Out</a></li>
->>>>>>> bdd1dbf2e6a0b82e2311b6e6038f3d348f792a71
         </ul>
     </div>
 
