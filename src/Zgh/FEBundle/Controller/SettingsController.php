@@ -2,6 +2,7 @@
 namespace Zgh\FEBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -52,15 +53,21 @@ class SettingsController extends Controller
                     $msg = "You've already registered with this email.";
                 }
                 $this->get("session")->getFlashBag()->add("email_error", $msg);
-                return new RedirectResponse($this->generateUrl("zgh_fe.settings.getSettings"));
+                return new JsonResponse([
+                    "success" => false,
+                    "message" => $msg
+                ]);
             }
             $token_generator = $this->get("fos_user.util.token_generator");
             $user->setNewEmailToken($token_generator->generateToken());
             $this->get("fos_user.user_manager")->updateUser($user);
             $conf_email = $this->generateUrl("zgh_fe.settings.activate_email", ["token" => $user->getNewEmailToken() ], true);
             $this->get("zgh_fe.email_notifier")->sendEmailChangeConfirmation($user, $conf_email);
-            $this->get("session")->getFlashBag()->add("email_notice", "Check your email {$user->getNewEmail()} for email change confirmation.");
-            return new RedirectResponse($this->generateUrl("zgh_fe.settings.getSettings"));
+            $msg = "Check your email {$user->getNewEmail()} for email change confirmation.";
+            return new JsonResponse([
+                "success" => true,
+                "message" => $msg
+            ]);
         }
         else
         {
