@@ -25,7 +25,22 @@ $(document).ready(function () {
             "fos_user_change_password_form[plainPassword][second]": "Confirm password is required"
         },
         submitHandler: function(form){
-           form.submit();
+            var url = $(form).attr("action");
+            $(form).find("[type='submit']").attr("disabled", "disabled");
+            $.ajax({
+                type: "post",
+                url: url,
+                data: $(form).serialize(),
+                success: function(data) {
+                    if(data.success) {
+                        $(form).closest(".change_password_wrapper").find(".result_wrapper").show().find("span").text(data.message);
+                    } else {
+                        $(form).closest(".change_password_wrapper").find(".error_wrapper").show().find("span").text(data.message);
+                    }
+                    $(form).find("[type='submit']").removeAttr("disabled");
+                    console.log(data);
+                }
+            });
         }
 
     });

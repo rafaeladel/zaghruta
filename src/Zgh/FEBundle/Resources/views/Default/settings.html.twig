@@ -157,16 +157,13 @@
                                 {#{% endif %}#}
                                 {% if not is_granted("ROLE_FACEBOOK") %}
                                     <br/>
+                                    <div class="change_password_wrapper">
                                     <h4>Change Password</h4>
 
                                     {{ render_esi(controller("ZghFEBundle:ChangePassword:changePassword")) }}
 
-                                    {% for msg in app.session.flashBag.get("password_error") %}
-                                        <span style="color: red;">{{ msg }}</span>
-                                    {% endfor %}
-                                    {% for msg in app.session.flashBag.get("password_notice") %}
-                                        <span class="alert alert-success alertMsg">{{ msg }}</span>
-                                    {% endfor %}
+                                    {{ helper.msg_wrapper() }}
+                                    </div>
                                 {% endif %}
                             </div>
                             <!--Panel Body-->
