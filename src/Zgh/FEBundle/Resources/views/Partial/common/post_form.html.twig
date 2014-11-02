@@ -21,9 +21,11 @@
         </div>
         {{ form_rest(post_form) }}
         {{ form_end(post_form) }}
-        {% for msg in app.session.flashbag.get("val_error") %}
-            <p style="color:red;margin: 5px;">{{ msg }}</p>
-        {% endfor %}
+            <div class="form_errors">
+            {% for msg in app.session.flashbag.get("val_error") %}
+                <p style="color:red;margin: 5px;">{{ msg }}</p>
+            {% endfor %}
+        </div>
         <div class="clearfix"></div>
     </div>
 </div>

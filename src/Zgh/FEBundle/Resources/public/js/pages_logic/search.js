@@ -75,19 +75,19 @@ $(document).ready(function () {
         e.preventDefault();
         var term = $.trim($(e.currentTarget).val());
         term = term.length == 0 ? "" : term;
-        if (term == "" || term.length > 2) {
-            var prevent_keys = [27, 16, 20, 17, 18, 91, 39, 37, 38, 40, 16, 36, 35, 33, 34];
-            if ($.inArray(e.which, prevent_keys) != -1) {
-                return false;
-            }
-            startSearch(e.target);
+        var prevent_keys = [27, 16, 20, 17, 18, 91, 39, 37, 38, 40, 16, 36, 35, 33, 34];
+        if ($.inArray(e.which, prevent_keys) != -1) {
+            return false;
         }
+        console.log(term);
+        startSearch(e.target);
     });
 
     function startSearch(target) {
         var form = $(target).closest("form");
         var url = form.attr("action");
         var result_wrapper = $(target).closest("#c_products").find("#products_list");
+        console.log(result_wrapper.length);
         result_wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
         $.ajax({
             type: "get",

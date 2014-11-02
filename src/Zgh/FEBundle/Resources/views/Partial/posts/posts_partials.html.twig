@@ -1,6 +1,4 @@
-{% if posts|length == 0 %}
-    <p>There's no posts, yet!</p>
-{% else %}
+<div class="posts_wrapper">
     {% for post in posts %}
         <div class="post margin">
             {% if app.user and post.user.id == app.user.id %}
@@ -20,12 +18,13 @@
                                 <p>Are you sure you want to delete this?</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-wide modalClose btn-default" data-dismiss="modal"
+                                <button type="button" class="btn btn-wide modalClose btn-default"
+                                        data-dismiss="modal"
                                         aria-hidden="true">Cancel
                                 </button>
                                 <form class="btnForm" action="{{ url("zgh_fe.post.delete", {"id": post.id}) }}"
                                       method="post">
-                                    <button type="submit" class="btn btn-wide btn-primary">Delete</button>
+                                    <button type="submit" class="btn btn-wide btn-primary post-delete-btn">Delete</button>
                                 </form>
                             </div>
                         </div>
@@ -40,7 +39,7 @@
                         <a href="{{ url("zgh_fe.user_profile.index", {"id": post.user.id } ) }}"
                            class="pull-left img-circle">
                             <img alt=""
-                                 src="{{ "ROLE_FACEBOOK" in post.user.roles ? 'https://graph.facebook.com/'~post.user.facebookId~'/picture' : asset(post.user.profilePhoto.getThumbWebPath) }}"
+                                 src="{{ post.user.profilePhoto ?  asset(post.user.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in post.user.roles ? 'https://graph.facebook.com/'~post.user.facebookId~'/picture?width=125&height=125' : "#") }}"
                                  width="639" class="img-responsive  media-object">
                         </a>
 
@@ -81,4 +80,4 @@
         </div>
 
     {% endfor %}
-{% endif %}
+</div>

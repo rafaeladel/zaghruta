@@ -2,24 +2,6 @@ $(document).ready(function(){
 
     postRefresh();
 
-    $(".post_form").validate({
-        rules: {
-            "post[content]": {
-                required: function(){
-                    return $('[name="post[image_file]"]').val()  == 0;
-                }
-            }
-        },
-        messages: {
-            "post[content]": {
-                required: "Post content cannot be empty"
-            }
-        },
-        submitHandler: function(form){
-            $(form).find(".newPost").attr("disabled", "disabled");
-            form.submit();
-        }
-    });
 
     $("body").on("click", ".doLike", function(e){
         e.preventDefault();
@@ -153,6 +135,22 @@ $(document).ready(function(){
         });
         $(e.target).closest("div.modal").modal("hide").on("hidden.bs.modal", function(){
             $(e.target).closest(".postComment").remove();
+        });
+
+    });
+
+    $("body").on("click", ".post-delete-btn", function(e){
+        e.preventDefault();
+        var form = $(e.target).closest("form");
+        $.ajax({
+            type: "POST",
+            url: $(form).attr("action"),
+            data: $(form).serialize()
+        });
+        $(e.target).closest("div.modal").modal("hide").on("hidden.bs.modal", function(){
+            $(e.target).closest(".post").fadeOut(300, function(){
+                $(e.target).closest(".post").remove();
+            });
         });
 
     });

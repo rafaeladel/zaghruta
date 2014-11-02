@@ -103,7 +103,15 @@
                                     </div>
                                     <button class="btn btn-wide btn-primary pull-right" type="submit">Save</button>
                                     {% for msg in app.session.flashBag.get("notice") %}
+<<<<<<< HEAD
                                         <span class="alert alert-success alertMsg">{{ msg }}</span>
+=======
+                                        <div class="alert alert-info alert-dismissible" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span>
+                                                <span class="sr-only">Close</span></button>
+                                            {{ msg }}
+                                        </div>
+>>>>>>> bdd1dbf2e6a0b82e2311b6e6038f3d348f792a71
                                     {% endfor %}
                                 </form>
                                 {% endif %}
@@ -126,10 +134,17 @@
                                 {#{% if is_granted("ROLE_VENDOR") %}#}
                                     <h4>Change Email</h4>
                                     <form action="{{ url("zgh_fe.settings.postChangeEmail") }}" method="post" class="form-horizontal">
+                                        <input type="email" style="display:none">
+                                        <input type="password" style="display:none">
                                         <div class="form-group formGroup">
                                             {{ form_label(email_form.new_email, "Email:", {"label_attr": {"class":"col-sm-2 control-label"} }) }}
+<<<<<<< HEAD
                                             <div class="col-sm-4 changeEmail">
                                                 {{ form_widget(email_form.new_email, {"attr": {"class": "form-control", "placeholder": "New Email"} }) }}
+=======
+                                            <div class="col-sm-4">
+                                                {{ form_widget(email_form.new_email, {"attr": {"class": "form-control", "value": user.email} }) }}
+>>>>>>> bdd1dbf2e6a0b82e2311b6e6038f3d348f792a71
                                                 {{ form_errors(email_form.new_email) }}
                                             </div>
                                         </div>
@@ -147,6 +162,9 @@
                                         {% for msg in app.session.flashBag.get("email_error") %}
                                             <span class="alert alert-error alerEamil alertMsg">{{ msg }}</span>
                                         {% endfor %}
+                                        {% for msg in app.session.flashBag.get("email_error") %}
+                                            <span>{{ msg }}</span>
+                                        {% endfor %}
                                         <button class="btn btn-wide btn-primary pull-right" type="submit">Change Email</button>
 
                                         {{ form_rest(email_form) }}
@@ -158,9 +176,15 @@
 
                                     {{ render_esi(controller("ZghFEBundle:ChangePassword:changePassword")) }}
 
+<<<<<<< HEAD
                                     {% for msg in app.session.flashBag.get("password_error") %}
                                         <span>{{ msg }}</span>
                                     {% endfor %}
+=======
+                                        {% for msg in app.session.flashBag.get("password_error") %}
+                                            <span style="color: red;">{{ msg }}</span>
+                                        {% endfor %}
+>>>>>>> bdd1dbf2e6a0b82e2311b6e6038f3d348f792a71
 
                                     {% for msg in app.session.flashBag.get("password_notice") %}
                                         <span class="alert alert-success alertMsg">{{ msg }}</span>

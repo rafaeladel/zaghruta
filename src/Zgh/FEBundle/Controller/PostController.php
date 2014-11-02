@@ -93,12 +93,13 @@ class PostController extends Controller
 
         $form = $this->createForm(new PostType(), $post);
         $form->handleRequest($request);
-        $return_url = $request->request->get("return_url");
 
         if(!$form->isValid())
         {
-            $this->get("session")->getFlashBag()->set("val_error", $form->getErrors()->current()->getMessage());
-            return $this->redirect($return_url);
+            return new JsonResponse([
+                "success" => false,
+                "errors" => $form->getErrorsAsString()
+            ]);
         }
 
         $post->setUser($this->getUser());
@@ -106,7 +107,13 @@ class PostController extends Controller
 
         $this->getDoctrine()->getManager()->persist($post);
         $this->getDoctrine()->getManager()->flush();
-        return $this->redirect($return_url);
+
+        return new JsonResponse([
+            "success" => true,
+            "view" => $this->renderView("@ZghFE/Partial/posts/post_ajax.html.twig", [
+                "post" => $post
+            ])
+        ]);
     }
 
 

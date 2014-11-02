@@ -1,5 +1,6 @@
 <div class="col-md-12 col-sm-12  note-box">
-    <a href="{{ url("fos_message_inbox") }}" type="button" class="btn btn-primary btn-circle counter tooltip" data-placement="bottom"
+    <a href="{{ url("fos_message_inbox") }}" type="button" class="btn btn-primary btn-circle counter tooltip"
+       data-placement="bottom"
        data-toggle="tooltip" data-original-title="Inbox">
         <span class="glyphicon glyphicon-envelope"></span>
         {% if fos_message_nb_unread() != 0 %}
@@ -7,19 +8,20 @@
         {% endif %}
     </a>
 
-    <a href="{{ url("zgh_fe.notification.get_list") }}" type="button" class="btn btn-primary btn-circle counter tooltip" data-placement="bottom"
+    <a href="{{ url("zgh_fe.notification.get_list") }}" type="button" class="btn btn-primary btn-circle counter tooltip"
+       data-placement="bottom"
        data-toggle="tooltip" data-original-title="Notifications">
         <span class="glyphicon glyphicon-globe"></span>
         {% if notifications_count() > 0 %}
             <span class="notCounter img-circle text-center">{{ notifications_count() }}</span>
         {% endif %}
     </a>
-    <a href="{{ url("zgh_fe.user_profile.index", {"id": app.user.id }) }}" class="btn  btn-circle counter tooltip" data-placement="bottom"
+    <a href="{{ url("zgh_fe.user_profile.index", {"id": app.user.id }) }}" class="btn  btn-circle counter tooltip"
+       data-placement="bottom"
        data-toggle="tooltip" data-original-title="Profile">
         <img src="{{ app.user.profilePhoto ?  asset(app.user.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in app.user.roles ? 'https://graph.facebook.com/'~app.user.facebookId~'/picture?width=125&height=125' : "#") }}"
              alt="" width="25" height="25" style="border-radius:50%;">
     </a>
-
 
 
     <div class="btn-group btnSetting">
@@ -27,13 +29,24 @@
             <span class="glyphicon glyphicon-cog"></span>
         </button>
         <ul class="dropdown-menu upper-menu">
+<<<<<<< HEAD
                  <li>
+=======
+            <li>
+>>>>>>> bdd1dbf2e6a0b82e2311b6e6038f3d348f792a71
                 <a href="{{ url(is_granted("ROLE_CUSTOMER") ? "zgh_fe.interest.get" : "zgh_fe.vendor_categories.get") }}">
                     <span class="icon-interests {{ is_granted("ROLE_CUSTOMER") ? "" : "category_class" }}"></span>{{ is_granted("ROLE_CUSTOMER") ? "Interests" : "Categories" }}
                 </a>
             </li>
+<<<<<<< HEAD
                 <li><a href="{{ url("zgh_fe.settings.getSettings") }}" ><span class="iconSetting glyphicon glyphicon-cog"></span> Settings</a></li>
                 <li><a href="{{ url("fos_user_security_logout") }}"><span class="iconLogout glyphicon glyphicon-log-out"></span> Log Out</a></li>
+=======
+            <li><a href="{{ url("zgh_fe.settings.getSettings") }}"><span
+                            class="iconSetting glyphicon glyphicon-cog"></span> Settings</a></li>
+            <li><a href="{{ url("fos_user_security_logout") }}"><span
+                            class="iconLogout glyphicon glyphicon-log-out"></span> Log Out</a></li>
+>>>>>>> bdd1dbf2e6a0b82e2311b6e6038f3d348f792a71
         </ul>
     </div>
 

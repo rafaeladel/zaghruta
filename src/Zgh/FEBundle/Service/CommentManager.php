@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Templating\Helper\CoreAssetsHelper;
 use Zgh\FEBundle\Entity\Comment;
+use Zgh\FEBundle\Entity\User;
 use Zgh\FEBundle\Model\CommentableInterface;
 use Zgh\FEBundle\Model\Event\NotifyCommentEvent;
 use Zgh\FEBundle\Model\Event\NotifyCommentOtherEvent;
@@ -60,6 +61,7 @@ class CommentManager
             return new RedirectResponse($this->router->generate(("zgh_fe.wall.index")));
         }
 
+        /** @var User $user */
         $user = $this->security_context->getToken()->getUser();
         $comment = new Comment();
         $comment->setUser($user);
@@ -82,6 +84,16 @@ class CommentManager
             }
         }
 
+        $author_img = null;
+        if($user->getProfilePhoto()) {
+            $author_img = $this->assets->getUrl($user->getProfilePhoto()->getThumbWebPath());
+        } else {
+            if(in_array("ROLE_FACEBOOK", $user->getRoles())) {
+                $author_img = 'https://graph.facebook.com/' . $user->getFacebookId() . '/picture';
+            } else {
+                $author_img = "#";
+            }
+        }
 
         $this->em->flush();
 
@@ -91,9 +103,7 @@ class CommentManager
             "author_url" => $this->router->generate("zgh_fe.user_profile.index", ["id" => $user->getId()]),
             "time" => $comment->getCreatedAt()->format("d M Y - h:i A"),
             "comments_count" => count($entity->getComments()),
-            "author_pp" => in_array("ROLE_FACEBOOK", $user->getRoles()) ?
-                    'https://graph.facebook.com/' . $user->getFacebookId() . '/picture' :
-                    $this->assets->getUrl($user->getProfilePhoto()->getThumbWebPath())
+            "author_pp" => $author_img
         ));
     }
 

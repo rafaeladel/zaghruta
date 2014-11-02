@@ -1,6 +1,7 @@
 <?php
 namespace Zgh\FEBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -17,6 +18,11 @@ class ExperienceType extends AbstractType
         $builder->add(
             $builder->create("categories", "thrace_select2_entity", array(
                     "class" => 'Zgh\FEBundle\Entity\Category',
+                    "query_builder" => function(EntityRepository $r) {
+                        return $r->createQueryBuilder("c")
+                            ->where("c.parent_category is NULL")
+                            ->andWhere("c.is_hidden = false");
+                    },
                     "property" => "name",
                     'label' => 'Categories',
                     'empty_value' => 'Select category',

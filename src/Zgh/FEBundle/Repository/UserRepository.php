@@ -20,6 +20,7 @@ class UserRepository extends EntityRepository
                                   select fo from Zgh\FEBundle\Entity\FollowUsers f
                                     left join f.followee fo
                                     where f.follower = :follower_id
+                                    and f.is_approved = true
                               ) or p.user = :follower_id
                             order by p.created_at desc
                           "
