@@ -67,7 +67,9 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
-    #host:      "%mailer_host%"
+    host:      "%mailer_host%"
+    port:      "%mailer_port%"
+    encryption: "%mailer_enc%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
@@ -79,7 +81,7 @@ fos_user:
     registration:
         confirmation:
             from_email:
-                address:        registration@zaghruta.com
+                address:        noreply@zaghruta.com
                 sender_name:    Registration confirmation
             enabled: false
         form:
@@ -91,7 +93,7 @@ fos_user:
     resetting:
         email:
             from_email:
-                address:        zaghruta_password_resetting@zaghruta.com
+                address:        noreply@zaghruta.com
                 sender_name:    Password resetting
     service:
         mailer: fos_user.mailer.twig_swift
