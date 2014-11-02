@@ -51,7 +51,7 @@ class SettingsController extends Controller
                 if($email_exists->getId() == $user->getId()) {
                     $msg = "You've already registered with this email.";
                 }
-                $this->get("session")->getFlashBag()->add("email_notice", $msg);
+                $this->get("session")->getFlashBag()->add("email_error", $msg);
                 return new RedirectResponse($this->generateUrl("zgh_fe.settings.getSettings"));
             }
             $token_generator = $this->get("fos_user.util.token_generator");

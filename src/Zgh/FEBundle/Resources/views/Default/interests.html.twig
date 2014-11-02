@@ -37,7 +37,10 @@
                     {% elseif is_granted("ROLE_VENDOR") %}
                         {{ form_widget(form.categories, {"attr": {"class": "contentInterests" } }) }}
                     {% endif %}
-                    <input class="btn btn-primary btn-wide pull-right" type="submit" value="Save"/>
+                    <div class="intro_error">
+                        <p style="color: red;"></p>
+                    </div>
+                    <input class="btn btn-primary btn-wide pull-right save_interests" type="submit" value="Save"/>
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
             </div>
@@ -53,14 +56,39 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.selecctall').click(function (e) {
-                if (e.target.checked) {
-                    $(e.target).closest(".mainCategory").find(".checkbox1").each(function () {
-                        this.checked = true;
-                    });
+                $(e.target).closest(".mainCategory").find(".checkbox1").each(function () {
+                    this.checked = e.target.checked;
+                });
+            });
+
+            $(".checkbox1").click(function(e) {
+                var parentChk = $(e.target).closest(".mainCategory").find(".selecctall");
+                var min_checked = null;
+                if(e.target.checked) {
+                    min_checked = 1;
                 } else {
-                    $(e.target).closest(".mainCategory").find(".checkbox1").each(function () {
-                        this.checked = false;
-                    });
+                    min_checked = 0;
+                }
+                if($(e.target).closest(".mainCategory").find(".checkbox1:checked").length <= min_checked) {
+                    parentChk.get(0).checked = e.target.checked;
+                }
+            });
+
+            $("body").on("click", ".save_interests", function(e) {
+                e.preventDefault();
+                var btn = $(e.target);
+                var form = btn.closest("form");
+                if(window.location.href.indexOf("categories") > -1) {
+                    var checked = $(":checked").length;
+                    if (checked == 0) {
+                        var msg  = "You must choose at least one category.";
+                        $(".intro_error p").text(msg);
+                        btn.siblings(".intro_error").find("p").text(msg);
+                    } else {
+                        form.submit();
+                    }
+                } else {
+                    form.submit();
                 }
             });
         });

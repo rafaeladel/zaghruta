@@ -114,10 +114,12 @@
                                 {#{% if is_granted("ROLE_VENDOR") %}#}
                                     <h4>Change Email</h4>
                                     <form action="{{ url("zgh_fe.settings.postChangeEmail") }}" method="post" class="form-horizontal">
+                                        <input type="email" style="display:none">
+                                        <input type="password" style="display:none">
                                         <div class="form-group formGroup">
                                             {{ form_label(email_form.new_email, "Email:", {"label_attr": {"class":"col-sm-2 control-label"} }) }}
                                             <div class="col-sm-4">
-                                                {{ form_widget(email_form.new_email, {"attr": {"class": "form-control"} }) }}
+                                                {{ form_widget(email_form.new_email, {"attr": {"class": "form-control", "value": user.email} }) }}
                                                 {{ form_errors(email_form.new_email) }}
                                             </div>
                                         </div>
@@ -132,6 +134,9 @@
                                         {% for msg in app.session.flashBag.get("email_notice") %}
                                             <span>{{ msg }}</span>
                                         {% endfor %}
+                                        {% for msg in app.session.flashBag.get("email_error") %}
+                                            <span>{{ msg }}</span>
+                                        {% endfor %}
                                         <button class="btn btn-wide btn-primary pull-right" type="submit">Change Email</button>
 
                                         {{ form_rest(email_form) }}
@@ -143,9 +148,9 @@
 
                                     {{ render_esi(controller("ZghFEBundle:ChangePassword:changePassword")) }}
 
-                                    {% for msg in app.session.flashBag.get("password_error") %}
-                                        <span style="color: red;">{{ msg }}</span>
-                                    {% endfor %}
+                                        {% for msg in app.session.flashBag.get("password_error") %}
+                                            <span style="color: red;">{{ msg }}</span>
+                                        {% endfor %}
 
                                     {% for msg in app.session.flashBag.get("password_notice") %}
                                         <span>{{ msg }}</span>

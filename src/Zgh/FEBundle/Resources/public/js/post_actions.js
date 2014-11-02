@@ -139,6 +139,22 @@ $(document).ready(function(){
 
     });
 
+    $("body").on("click", ".post-delete-btn", function(e){
+        e.preventDefault();
+        var form = $(e.target).closest("form");
+        $.ajax({
+            type: "POST",
+            url: $(form).attr("action"),
+            data: $(form).serialize()
+        });
+        $(e.target).closest("div.modal").modal("hide").on("hidden.bs.modal", function(){
+            $(e.target).closest(".post").fadeOut(300, function(){
+                $(e.target).closest(".post").remove();
+            });
+        });
+
+    });
+
     $("body").on("focus", "*[name='comment_content']", function(e){
         var id = $(e.target).data("e_i");
         var entity_type = $(e.target).data("e_t");
