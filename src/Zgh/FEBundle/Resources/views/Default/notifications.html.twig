@@ -97,8 +97,8 @@
                                     <td>
                                         <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a>
                                         Wants to follow you. <a
-                                                href="{{ url("zgh_fe.user.accept_follow", {"id": notification.actionId, "n_id": notification.id }) }}">Yes</a>
-                                        <a href="{{ url("zgh_fe.user.deny_follow", {"id": notification.actionId, "n_id": notification.id }) }}">No</a>
+                                                href="{{ url("zgh_fe.user.accept_follow", {"id": notification.actionId, "n_id": notification.id }) }}">Accept</a>
+                                        <a href="{{ url("zgh_fe.user.deny_follow", {"id": notification.actionId, "n_id": notification.id }) }}">Deny</a>
                                         <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
                                     </td>
                                     <td><span class="glyphicon glyphicon-user pull-right"></span></td>
@@ -119,8 +119,8 @@
                                     <td>
                                         <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.requester_id }) }}"> {{ notification.content.user }} </a>
                                         says you two are {{ notification.content.status|lower }}
-                                        <a href="{{ url("zgh_fe.about.accept_relationship", {"id": notification.actionId, "n_id": notification.id }) }}">Yes</a>
-                                        <a href="{{ url("zgh_fe.about.deny_relationship", {"id": notification.actionId, "n_id": notification.id }) }}">No</a>
+                                        <a class="notfAction" href="{{ url("zgh_fe.about.accept_relationship", {"id": notification.actionId, "n_id": notification.id }) }}">Accept</a>
+                                        <a class="notfAction" href="{{ url("zgh_fe.about.deny_relationship", {"id": notification.actionId, "n_id": notification.id }) }}">Deny</a>
                                         <span class="notification_date">at {{ notification.createdAt|date("D d Y - h:i A") }}</span>
                                     </td>
                                     <td><span class="glyphicon glyphicon-user pull-right"></span></td>

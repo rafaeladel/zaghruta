@@ -13,7 +13,7 @@ $('.fancyboxBg').fancybox({
             css: {
                 'background': 'rgba(256, 256, 256, 0.7)'
             },
-            locked: false
+             locked: false
 
         }
     },
