@@ -10,14 +10,14 @@
         {% block leftContent %}
         <div class="row">
             <div class="row search-Results">
-                <div class="srh-Res-Heading col-md-4 col-xxs-12 pull-left">
+                <div class="srh-Res-Heading  col-md-4 col-xxs-12 pull-left">
 
                     {% if cat_obj == "all" or cat_obj == "people" %}
                         <!--                     <span class="icon-Res icon-Res-Head img-circle"></span>
                          -->                    <h1>Results for <span>{{ query }}</span></h1>
                     {% else %}
-                        <span class="icon-Res icon-Res-Head img-circle"></span>
-                        <h1>{{ cat_obj.name }}</h1>
+<!--                         <span class="icon-Res icon-Res-Head img-circle"></span>
+ -->                        <h1>{{ cat_obj.name }}</h1>
                     {% endif %}
                 </div>
                 <!----------------End  srh-Res-Heading -------------->
@@ -32,7 +32,7 @@
 
                         <div class="Vendors-filtration filtr  pull-left margin-sm" data-id="#searchPeople">
                             <span class="icon-Res icon-Res-people  img-circle"></span>
-                            people
+                            People
                         </div>
 
                         <div class="Vendors-filtration filtr  pull-left margin-sm" data-id="#searchVendors">
@@ -43,14 +43,15 @@
                             <span class="icon-Res icon-Res-products img-circle"></span>
                             Products
                         </div>
-                        <div class="tips-filtration filtr  pull-left margin-sm" data-id="#searchTips">
-                            <span class="icon-Res icon-Res-tips img-circle active-filtration"></span>
-                            Tips
-                        </div>
                         <div class="experince-filtration filtr  pull-left margin-sm" data-id="#searchExperience">
                             <span class="icon-Res icon-Res-Exp img-circle"></span>
                             Experiences
                         </div>
+                        <div class="tips-filtration filtr  pull-left margin-sm" data-id="#searchTips">
+                            <span class="icon-Res icon-Res-tips img-circle active-filtration"></span>
+                            Tips
+                        </div>
+                        
 
 
                     </div>
@@ -76,7 +77,7 @@
                         </div>
                         <div class="tip-filtration filtr  pull-left margin-sm" data-id="#searchTip">
                             <span class="icon-Res icon-Res-Exp img-circle"></span>
-                            Tip
+                            Tips
                         </div>
                     </div>
                 {% endif %}
@@ -87,7 +88,7 @@
             {% if catSlug == "all" %}
                 <div id="searchProduct" class="row resultWrapper">
                     {% set products =  getProductsSearchResult(query) %}
-                    <h2>Product</h2>
+                    <h2>Products</h2>
                     <hr>
                     {% if products != null %}
                         {{ products|raw }}

@@ -40,8 +40,8 @@
             <br/>
             {% if comment.content|length > 300 %}
                 <div class="content_togglers">
-                    <a href="#" class="comment_down">More</a>
-                    <a href="#" class="comment_up">Less</a>
+                    <a href="#" class="comment_down">See More</a>
+                    <a href="#" class="comment_up">See Less</a>
                 </div>
             {% endif %}
             <span class="date-time comment_time">{{ comment.createdAt|date("d M Y - h:i A") }}</span>

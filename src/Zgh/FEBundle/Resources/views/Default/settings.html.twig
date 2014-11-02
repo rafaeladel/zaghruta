@@ -93,7 +93,7 @@
 
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" name="firstname"
-                                                   placeholder="Firstname" required="required"
+                                                   placeholder="First Name" required="required"
                                                    value="{{ user.firstname }}">
                                         </div>
                                     </div>
@@ -102,7 +102,7 @@
 
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" name="lastname"
-                                                   placeholder="Lastname" required="required"
+                                                   placeholder="Last Name" required="required"
                                                    value="{{ user.lastname }}">
                                         </div>
                                     </div>
@@ -116,6 +116,22 @@
                                     {% endfor %}
                                 </form>
                                 {% endif %}
+                                
+                            </div>
+                            <!--Panel Body-->
+                        </div>
+                        <!--panel Collapse-->
+                    </div>
+                    <div class="notification panel panel-default">
+                        <div class="panel-heading">
+                            <a href="#collapseFour" data-toggle="collapse" data-parent="#accordion">
+                                <h4>Security</h4>
+                            </a>
+                        </div>
+                        <!--End panel heading -->
+
+                        <div  id="collapseFour" class="panel-collapse collapse in">
+                            <div class="panel-body">
                                 {#{% if is_granted("ROLE_VENDOR") %}#}
                                     <h4>Change Email</h4>
                                     <form action="{{ url("zgh_fe.settings.postChangeEmail") }}" class="change_email_form" method="post" class="form-horizontal">
@@ -123,7 +139,7 @@
                                         <input type="password" style="display:none">
                                         <div class="form-group formGroup">
                                             {{ form_label(email_form.new_email, "Email:", {"label_attr": {"class":"col-sm-2 control-label"} }) }}
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-4 changeEmail">
                                                 {{ form_widget(email_form.new_email, {"attr": {"class": "form-control", "value": user.email} }) }}
                                                 {{ form_errors(email_form.new_email) }}
                                             </div>
@@ -137,10 +153,10 @@
                                             </div>
                                         </div>
                                         <div class="result_wrapper">
-                                            <span></span>
+                                            <span class="alert alert-success alerEamil alertMsg"></span>
                                         </div>
                                         <div class="error_wrapper">
-                                            <span></span>
+                                            <span class="alert alert-error alerEamil alertMsg"></span>
                                         </div>
                                         <button class="btn btn-wide btn-primary pull-right" type="submit">Change Email</button>
 
@@ -153,12 +169,11 @@
 
                                     {{ render_esi(controller("ZghFEBundle:ChangePassword:changePassword")) }}
 
-                                        {% for msg in app.session.flashBag.get("password_error") %}
-                                            <span style="color: red;">{{ msg }}</span>
-                                        {% endfor %}
-
+                                    {% for msg in app.session.flashBag.get("password_error") %}
+                                        <span style="color: red;">{{ msg }}</span>
+                                    {% endfor %}
                                     {% for msg in app.session.flashBag.get("password_notice") %}
-                                        <span>{{ msg }}</span>
+                                        <span class="alert alert-success alertMsg">{{ msg }}</span>
                                     {% endfor %}
                                 {% endif %}
                             </div>

@@ -25,7 +25,7 @@
     <table class="table table-hover">
             <thead>
                 <tr>
-                    <th colspan="2">Contact Information
+                    <th colspan="2">About
                         <a href="" class="pull-right cancel_about_edit ">
                             Cancel
                         </a>
@@ -48,7 +48,7 @@
                     {#</td>#}
                 {#</tr>#}
                 <tr>
-                    <td>{{ form_label(form.mobile) }}</td>
+                    <td><strong>Phone Number</strong></td>
                     <td>
                         {{ form_widget(form.mobile, {"attr": {"class": "form-control"} }) }}
                         {{ form_errors(form.mobile) }}
