@@ -49,9 +49,9 @@ $(document).ready(function () {
                data: $(form).serialize(),
                success: function(data) {
                    if(data.success) {
-                       $(form).find(".result_wrapper").find("span").text(data.message);
+                       $(form).find(".result_wrapper").show().find("span").text(data.message);
                    } else {
-                       $(form).find(".error_wrapper").find("span").text(data.message);
+                       $(form).find(".error_wrapper").show().find("span").text(data.message);
                    }
                    $(form).find("[type='submit']").removeAttr("disabled");
                }

@@ -4,6 +4,8 @@
 {% endblock stylesheets %}
 {% block title %}Settings | Zaghruta{% endblock title %}
 
+{% import _self as helper %}
+
 {% block content %}
 
     <div class="container">
@@ -107,13 +109,8 @@
                                         </div>
                                     </div>
                                     <button class="btn btn-wide btn-primary pull-right" type="submit">Save</button>
-                                    {% for msg in app.session.flashBag.get("notice") %}
-                                        <div class="alert alert-info alert-dismissible" role="alert">
-                                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span>
-                                                <span class="sr-only">Close</span></button>
-                                            {{ msg }}
-                                        </div>
-                                    {% endfor %}
+                                    {{ helper.msg_wrapper() }}
+
                                 </form>
                                 {% endif %}
                                 
@@ -152,12 +149,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="result_wrapper">
-                                            <span class="alert alert-success alerEamil alertMsg"></span>
-                                        </div>
-                                        <div class="error_wrapper">
-                                            <span class="alert alert-error alerEamil alertMsg"></span>
-                                        </div>
+                                        {{ helper.msg_wrapper() }}
                                         <button class="btn btn-wide btn-primary pull-right" type="submit">Change Email</button>
 
                                         {{ form_rest(email_form) }}
@@ -201,3 +193,11 @@
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock javascripts %}
+{% macro msg_wrapper() %}
+    <div class="result_wrapper">
+        <span class="alert alert-success alerEamil alertMsg"></span>
+    </div>
+    <div class="error_wrapper">
+        <span class="alert alert-danger alerEamil alertMsg"></span>
+    </div>
+{% endmacro %}

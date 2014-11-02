@@ -401,9 +401,6 @@ a.boy {
 .cover:hover .btn-cover, .cover .profile a:hover .ch-pr, #fancybox {
     opacity: 1;
 }
-.notfAction{
-    text-decoration: underline !important;
-}
 
 .fixed-header {
     background: url(../img/header-img.png) repeat-x;
@@ -418,15 +415,7 @@ a.boy {
     padding: 20px 20px;
     position: relative;
     border-bottom: 1px solid #ccc;
-    display: none;
-    background: #fafafa;
-
 }
-.postComment:last-of-type, .postComment:nth-last-of-type(2)
-{
-    display: block;
-} 
-
 .postComment:last-child{
     border-bottom: none;
 }
@@ -460,7 +449,6 @@ a.boy {
 }
 #vendPosts .content-post, #wall .postContent{
     width: 100% !important;
-    word-wrap: break-word;
 }
 .postContent iframe{
     width: 100% !important;
@@ -868,12 +856,9 @@ footer .container {
     color: #111;
     margin: 10px 0 10px 0 !important;
 }
-.profile .boy , .girl{
+.profile .boy{
     margin-top: 10px;
     float:left;
-}
-.profile .girl{
-    height: auto !important;
 }
 
 .profile h3 a {
@@ -2632,13 +2617,8 @@ border-top: none;
   color: #000 !important;
   font-size: 12px !important;
 }
-.fancybox-inner .postComment{
-    background: none !important;
-}
-.fancybox-inner .content-post p, .fancybox-inner .date-time{
+.fancybox-inner .content-post p{
     color: #fff !important;
-    
-
 }
 .resizePhoto{
    overflow: hidden;
@@ -2738,7 +2718,6 @@ border-top: none;
 }
 .photoContent .popupPost{
     margin-top: 15px;
-    padding-bottom: 20px;
 }
 .photoContent .result {
     position: absolute;
@@ -3058,7 +3037,7 @@ overflow: hidden;
 .interest form div{
     float: left;
     width: 100%;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     height: auto;
 }
 .interest ul li{
@@ -3115,13 +3094,7 @@ overflow: hidden;
     line-height: 2 !important;
 }
 .about_wrapper .table tr:nth-child(3) td .select2-container{
-    margin-bottom: 5px
-}
-.about_wrapper .table-hover tr td ul{
-    list-style-type: none;
-}
-.about_wrapper .table-hover tr td ul li{
-    color: red;
+    margin-bottom: 5px;
 }
 .about_wrapper .table tr:last-child:hover td{
  background: none !important;
@@ -3129,10 +3102,6 @@ overflow: hidden;
 .exp-Arrow:hover{
     text-decoration: none;
 }
-.iconComment{
-    cursor: pointer;
-}
-
 .margin-top{
    margin-top: 10px;
 }
@@ -3149,9 +3118,7 @@ overflow: hidden;
    margin-right: -3px;
    margin-top: 2px;
    float: left;
-}
-.category_class{
-    margin-right: 5px;
+
 }
 .iconSetting{
     float: left;
@@ -3182,10 +3149,6 @@ overflow: hidden;
 .mainCategory{
     margin-bottom: 15px;
  }
- .mainCategory:last-child{
-    margin-bottom: 20px;
-    border-bottom: none;
- }
  .headerInterests{
     padding: 15px 0;
     border-bottom: 1px solid #c2c2c2;
@@ -3199,10 +3162,6 @@ overflow: hidden;
  }
  .headerInterests h2 .icon-Res{
     line-height: 22px;
- }
- .subCategory{
-    margin-bottom: 0 !important;
-    margin-top: 15px;
  }
  .subCategory label{
     margin-bottom: 10px;
@@ -3266,7 +3225,6 @@ padding: 0;
 }
 .modalContactUS .contactmail {
     color: #58bcad;
-    font-size: 14px;
 }
 
 .wishlist_img img{
@@ -3336,8 +3294,6 @@ padding: 0;
 }
 .animated{
     min-height: 60px\0/IE9;
-/*    max-height: 200px !important;
-    overflow-y: scroll !important;*/
 }
 .relation{
 /*    width: 90px;
@@ -3390,35 +3346,17 @@ height: 44px;
 
 
 div#connections .profile {
-/*float: none;
-*/display: inline-block;
+float: none;
+display: inline-block;
 width: 33%;
 margin: 5px 0;
-height: 120px !important; 
 }
-.nextStep{
-    font-size: 14px;
-    padding: 5px 10px;
-    border: 1px solid;
+
+.result_wrapper, .error_wrapper {
+    display: none;
 }
-.alertMsg{
-    float: left;
-    margin-left: 14px;
-    width: 50%;
-    margin-top: 10px;
-    display: inline-block;
-}
-.notification ul{
-    padding: 0;
-    margin-top: 5px;
-}
-.notification ul li{
-  list-style-type:none;
-  color: red; 
-}
-.alerEamil{
-    float: none !important;
-}
+
+
 @media (max-width: 320px){
     .navGroup a{
         display: table-row !important;
