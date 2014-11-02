@@ -87,9 +87,9 @@
                         <div  id="collapseThree" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 {% if not is_granted("ROLE_VENDOR") %}
-                                <form class="form-horizontal"
+                                <form class="form-horizontal change_info_form"
                                       action="{{ url("zgh_fe.settings.postBasicInfo", {"id": app.user.id}) }}"
-                                      method="post" role="form" class="change_info_form">
+                                      method="post" role="form">
                                     <div class="form-group formGroup">
                                         <label class="col-sm-2 control-label" for="firstname">First Name</label>
 
@@ -131,7 +131,7 @@
                             <div class="panel-body">
                                 {#{% if is_granted("ROLE_VENDOR") %}#}
                                     <h4>Change Email</h4>
-                                    <form action="{{ url("zgh_fe.settings.postChangeEmail") }}" class="change_email_form" method="post" class="form-horizontal">
+                                    <form action="{{ url("zgh_fe.settings.postChangeEmail") }}" method="post" class="change_email_form form-horizontal">
                                         <input type="email" style="display:none">
                                         <input type="password" style="display:none">
                                         <div class="form-group formGroup">

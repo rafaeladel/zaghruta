@@ -33,10 +33,9 @@ class SettingsController extends Controller
         $user->setLastname($l_name);
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush();
-        $this->get("session")->getFlashBag()->add("notice", "Saved!");
-        return $this->redirect($this->generateUrl("zgh_fe.settings.getSettings", array(
-                    "id" => $user->getId()
-                )));
+        return new JsonResponse([
+            "message" => "Saved!"
+        ]);
     }
 
     public function postChangeEmailAction(Request $request)

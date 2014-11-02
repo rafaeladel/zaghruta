@@ -30,6 +30,36 @@ $(document).ready(function () {
 
     });
 
+
+    $(".change_info_form").validate({
+       rules: {
+            "firstname": {
+                required: true
+            },
+           "lastname": {
+               required: true
+           }
+       },
+       submitHandler: function (form) {
+           var url = $(form).attr("action");
+           $(form).find("[type='submit']").attr("disabled", "disabled");
+           $.ajax({
+               type: "post",
+               url: url,
+               data: $(form).serialize(),
+               success: function(data) {
+                   if(data.success) {
+                       $(form).find(".result_wrapper").show().find("span").text(data.message);
+                   } else {
+                       $(form).find(".error_wrapper").show().find("span").text(data.message);
+                   }
+                   $(form).find("[type='submit']").removeAttr("disabled");
+               }
+           });
+       }
+    });
+
+
     $(".change_email_form").validate({
        rules: {
             "vendor_email_type[new_email]": {
