@@ -17,6 +17,7 @@ use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -55,10 +56,13 @@ class ChangePasswordController extends ContainerAware
         $form = $formFactory->createForm();
         $form->setData($user);
 
+
         if ($request->isMethod('POST')) {
+
             $form->bind($request);
 
             if ($form->isValid()) {
+
                 /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
                 $userManager = $this->container->get('fos_user.user_manager');
 
@@ -69,22 +73,37 @@ class ChangePasswordController extends ContainerAware
 
                 if (null === $response = $event->getResponse()) {
                     $url = $this->container->get('router')->generate('zgh_fe.wall.index');
-                    $this->container->get("session")->getFlashBag()->add("password_notice", "Password changed!");
-                    $response =  new RedirectResponse($this->container->get("router")->generate("zgh_fe.settings.getSettings", array(
-                            "id" => $user->getId(),
-                        )
-                    ));
+                    if($request->isXmlHttpRequest()) {
+                        $response = new JsonResponse([
+                            "success" => true,
+                            "message" => "Password Changed!"
+                        ]);
+                    } else {
+                        $this->container->get("session")->getFlashBag()->add("password_notice", "Password changed!");
+                        $response = new RedirectResponse($this->container->get("router")->generate("zgh_fe.settings.getSettings", array(
+                                "id" => $user->getId(),
+                            )
+                        ));
+                    }
                 }
 
                 $dispatcher->dispatch(FOSUserEvents::CHANGE_PASSWORD_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
                 return $response;
-            } else {
-                $this->container->get("session")->getFlashBag()->add("password_error", "Error while changing password. Please make sure the current password is correct. And password verification matches.");
-                return new RedirectResponse($this->container->get("router")->generate("zgh_fe.settings.getSettings", array(
-                        "id" => $user->getId(),
-                    )
-                ));
+            }
+            else {
+                if($request->isXmlHttpRequest()) {
+                    return new JsonResponse([
+                        "success" => false,
+                        "message" => "Error while changing password. Please make sure the current password is correct. And password verification matches."
+                    ]);
+                } else {
+                    $this->container->get("session")->getFlashBag()->add("password_error", "Error while changing password. Please make sure the current password is correct. And password verification matches.");
+                    return new RedirectResponse($this->container->get("router")->generate("zgh_fe.settings.getSettings", array(
+                            "id" => $user->getId(),
+                        )
+                    ));
+                }
             }
         }
 

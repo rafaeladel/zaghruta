@@ -70,10 +70,14 @@ class SettingsController extends Controller
         }
         else
         {
-            return $this->render("@ZghFE/Default/settings.html.twig", array(
-                "user" => $user,
-                "email_form" => $email_form->createView()
-            ));
+            return new JsonResponse([
+                "success" => true,
+                "message" => "Invalid current password."
+            ]);
+//            return $this->render("@ZghFE/Default/settings.html.twig", array(
+//                "user" => $user,
+//                "email_form" => $email_form->createView()
+//            ));
         }
     }
 
