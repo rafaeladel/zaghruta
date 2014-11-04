@@ -415,10 +415,18 @@ a.boy {
     padding: 20px 20px;
     position: relative;
     border-bottom: 1px solid #ccc;
+    display: none;
+}
+.postComment:last-of-type{
+   display: block !important;
+}
+.postComment:nth-last-of-type(2){
+    display: block;
 }
 .postComment:last-child{
     border-bottom: none;
 }
+
 .containerImg{
    height: auto;
    display: block;
