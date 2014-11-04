@@ -9,7 +9,7 @@
         <div class="row banner  margin">
             <div class="col-md-12  contentImg {{ toggles["is_popup"] ? "popupWishlist" : "" }}">
                     <img class="img-responsive"
-                     src="{{ product.getWebPath ? asset(product.getWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}">
+                     src="{{ product.getWebPath ? product.getWebPath | imagine_filter("my_photos") : asset("bundles/zghfe/img/avatar_wide.jpg") }}">
 
                 <div class="deteilsProduct">
                     {% if app.user and user.id == app.user.id %}

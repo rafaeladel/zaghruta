@@ -145,9 +145,15 @@ fos_message:
 liip_imagine:
     filter_sets:
         my_thumb:
+            quality: 100
             filters:
                 thumbnail: { size: [561, 700], mode: inset }
         my_widen:
+            quality: 100
             filters:
                 relative_resize: { widen: 561 }
+        my_photos:
+            quality: 100
+            filters:
+                relative_resize: { heighten: 350 }
 

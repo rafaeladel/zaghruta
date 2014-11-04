@@ -7,7 +7,7 @@
     <meta property="og:title" content="Zaghruta - {{ user.fullname }} tips - {{ tip.title }}" />
     <meta property="og:type" content="profile" />
     <meta property="og:description" content="{{ tip.content }}" />
-    <meta property="og:image" content="{{ tip.getWebPath ? asset(tip.getWebPath) : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}" />
+    <meta property="og:image" content="{{ tip.getWebPath ? tip.getWebPath | imagine_filter("my_photos") : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}" />
 {% endblock meta_tags %}
 
 {% block title %}{{ tip.title }} | Zaghruta{% endblock title %}
@@ -20,7 +20,7 @@
                 <div class="col-md-9 tipExp">
                     <div class="row banner margin">
                         <div class="col-md-12 contentImg">
-                            <img src="{{ tip.getWebPath ? asset(tip.getWebPath) : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}" class="img-responsive">
+                            <img src="{{ tip.getWebPath ? tip.getWebPath | imagine_filter("my_photos") : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}" class="img-responsive">
                         </div>
                     </div>
                     <div class="content_wrapper">

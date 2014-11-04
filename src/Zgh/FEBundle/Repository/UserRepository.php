@@ -27,10 +27,13 @@ class UserRepository extends EntityRepository
             $ids[] = $item["id"];
         }
         $q = $this->getEntityManager()->createQueryBuilder();
+        $orQuery = $q->expr()->orX()->add($q->expr()->eq("p.user", ":follower_id"));
+        if(count($ids) > 0) {
+            $orQuery->add($q->expr()->in("p.user", $ids));
+        }
         $q->select("p")
             ->from("Zgh\FEBundle\Entity\Post", "p")
-            ->where($q->expr()->in("p.user", $ids))
-            ->orWhere("p.user = :follower_id")
+            ->where($orQuery)
             ->setParameter("follower_id", $user);
 
 

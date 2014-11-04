@@ -26,7 +26,7 @@
                         </div>
                     {% endif %}
                     <a class="openExp" href="{{ url("zgh_fe.experience.content", {"id": experience.user.id, "exp_id": experience.id }) }}" target="_blank"><img alt="Responsive image" class="img-responsive"
-                     src="{{ experience.getThumbWebPath ? asset(experience.getThumbWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}"></a>
+                     src="{{ experience.getThumbWebPath ? experience.getWebPath | imagine_filter("my_photos") : asset("bundles/zghfe/img/avatar_wide.jpg") }}"></a>
 
                     <div class="caption">
                         <h4>{{ experience.title }}</h4>

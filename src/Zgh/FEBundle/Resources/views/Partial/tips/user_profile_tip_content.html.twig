@@ -39,7 +39,7 @@
             <a href="{{ url("zgh_fe.tip.content", {"id": tip.user.id, "tip_id": tip.id }) }}" target="_blank"><img
                         alt="Responsive image"
                         class="img-responsive"
-                        src="{{ tip.getThumbWebPath ? asset(tip.getThumbWebPath) : asset("bundles/zghfe/img/avatar_wide.jpg") }}"></a>
+                        src="{{ tip.getThumbWebPath ? tip.getWebPath | imagine_filter("my_photos") : asset("bundles/zghfe/img/avatar_wide.jpg") }}"></a>
 
             <div class="caption">
                 <h4>{{ tip.title }}</h4>
