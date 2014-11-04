@@ -1,4 +1,4 @@
-<div class="post margin">
+<div class="post margin"  data-post_id="{{ post.id }}">
     {% if post.user.id == app.user.id %}
         <button data-target="#deletePost_{{ post.id }}" data-toggle="modal" type="submit"
                 class="row   btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span>

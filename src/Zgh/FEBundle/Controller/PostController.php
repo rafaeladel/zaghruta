@@ -20,7 +20,8 @@ class PostController extends Controller
     public function getOwnListAction(Request $request, $id)
     {
         $offset = $request->query->get("f", null);
-        $posts = $this->getDoctrine()->getRepository("ZghFEBundle:Post")->findPosts($id, $offset);
+        $id_holder = $request->query->get("idh", null);
+        $posts = $this->getDoctrine()->getRepository("ZghFEBundle:Post")->findPosts($id, $offset, $id_holder);
 
         //checking offset is not null to differentiate between tabbing ajax and load more ajax
         if($request->isXmlHttpRequest() && $offset != null)
@@ -48,8 +49,9 @@ class PostController extends Controller
     public function getPublicListAction(Request $request)
     {
         $offset = $request->query->get("f", null);
+        $id_holder = $request->query->get("idh", null);
         $user = $this->get("security.context")->getToken()->getUser();
-        $posts = $this->getDoctrine()->getRepository("ZghFEBundle:User")->getPosts($user, $offset);
+        $posts = $this->getDoctrine()->getRepository("ZghFEBundle:User")->getPosts($user, $offset, $id_holder);
         if($request->isXmlHttpRequest() && $offset != null)
         {
             if(count($posts) != 0) {

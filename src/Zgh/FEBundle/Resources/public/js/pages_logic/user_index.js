@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    if ($("body").find(".post").length == 0 || $("body").find(".post").length < 7 ) {
+    if ($("body").find(".post").length < 6 ) {
         $("body").find(".load-more").remove();
     }
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     $("body").on("click", ".load-more", function (e) {
         var btn = $(e.currentTarget);
-        var url = btn.data("url") + "?f=" + $(".post").length;
+        var url = btn.data("url") + "?f=" + $(".post").length + "&idh=" + $(".post").first().data("post_id");
         btn.attr("disabled", "disabled");
         $.ajax({
             type: "get",

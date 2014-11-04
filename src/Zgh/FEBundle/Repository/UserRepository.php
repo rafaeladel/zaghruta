@@ -11,27 +11,57 @@ use Zgh\FEBundle\Model\LikeableInterface;
 
 class UserRepository extends EntityRepository
 {
-    public function getPosts($user, $offset = null)
+    public function getPosts($user, $offset = null, $id_holder = null)
     {
-        $q = $this->getEntityManager()->createQuery(
-            "
-                            select p from Zgh\FEBundle\Entity\Post p
-                                where p.user in (
-                                  select fo from Zgh\FEBundle\Entity\FollowUsers f
-                                    left join f.followee fo
-                                    where f.follower = :follower_id
-                                    and f.is_approved = true
-                              ) or p.user = :follower_id
-                            order by p.created_at desc
-                          "
-        )
+        $sq = $this->getEntityManager()->createQueryBuilder()
+                ->select("fo.id")
+                ->from("Zgh\FEBundle\Entity\FollowUsers", "f")
+                ->leftJoin("f.followee", "fo")
+                ->where("f.follower = :follower_id")
+                ->andWhere("f.is_approved = true")
+                ->setParameter("follower_id" , $user);
+
+        $ids = [];
+        $result = $sq->getQuery()->getScalarResult();
+        foreach($result as $item) {
+            $ids[] = $item["id"];
+        }
+        $q = $this->getEntityManager()->createQueryBuilder();
+        $q->select("p")
+            ->from("Zgh\FEBundle\Entity\Post", "p")
+            ->where($q->expr()->in("p.user", $ids))
+            ->orWhere("p.user = :follower_id")
             ->setParameter("follower_id", $user);
+
+
+//
+//        $q = $this->getEntityManager()->createQuery(
+//            "
+//                            select p from Zgh\FEBundle\Entity\Post p
+//                                where p.user in (
+//                                  select fo from Zgh\FEBundle\Entity\FollowUsers f
+//                                    left join f.followee fo
+//                                    where f.follower = :follower_id
+//                                    and f.is_approved = true
+//                              ) or p.user = :follower_id
+//                            order by p.created_at desc
+//                          "
+//        )
+//            ->setParameter("follower_id", $user);
+
+        if($id_holder != null) {
+            $q->andWhere("p.id < :idh")
+                ->setParameter("idh", $id_holder+1);
+        }
 
         $q->setMaxResults(6);
         if($offset != null) {
             $q->setFirstResult($offset);
         }
-        return $q->getResult();
+
+
+
+        return $q->getQuery()->getResult();
     }
 
     public function getUsersForRelationship($user)
