@@ -34,6 +34,7 @@ class UserRepository extends EntityRepository
         $q->select("p")
             ->from("Zgh\FEBundle\Entity\Post", "p")
             ->where($orQuery)
+            ->orderBy("p.created_at", "DESC")
             ->setParameter("follower_id", $user);
 
 

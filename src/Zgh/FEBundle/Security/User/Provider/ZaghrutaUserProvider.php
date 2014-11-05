@@ -116,6 +116,11 @@ class ZaghrutaUserProvider extends FOSUBUserProvider
             $user->setCoverPhoto($cp);
 
             $this->userManager->updateUser($user);
+
+            //Dirty fix :(
+            $user->setFirstTime(false);
+            $this->userManager->updateUser($user);
+
             return $user;
         }
 
