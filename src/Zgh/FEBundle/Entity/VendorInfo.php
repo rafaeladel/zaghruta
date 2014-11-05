@@ -33,7 +33,7 @@ class VendorInfo
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Assert\Type(type="digit", message="Mobile must be a digit")
+     * @Assert\Type(type="digit", message="Only Numbers Allowed")
      */
     protected $mobile;
 

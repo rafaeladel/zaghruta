@@ -46,10 +46,17 @@ class BranchType extends AbstractType
                     ],
                     "configs" => [
                         "width" => "100%"
-                    ]
+                    ],
+                    "required" => false
                 ])
-            ->add("phone", "number", ["required" => false])
-            ->add("mobile", "number", ["required" => false])
+            ->add("phone", "number", [
+                "required" => false,
+                "invalid_message" => "Only Numbers Allowed"
+            ])
+            ->add("mobile", "number", [
+                "required" => false,
+                "invalid_message" => "Only Numbers Allowed"
+            ])
             ->add("email", "email", ["required" => false])
         ;
     }

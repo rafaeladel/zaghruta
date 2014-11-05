@@ -22,8 +22,7 @@ class Branch
     protected $address;
 
     /**
-     * @ORM\Column(type="text")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $city;
 

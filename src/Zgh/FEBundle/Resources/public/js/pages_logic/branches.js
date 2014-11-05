@@ -7,12 +7,10 @@ $(document).ready(function(){
         var form = btn.closest("form");
         form.validate({
             rules: {
-                "branch[address]": "required",
-                "branch[city]": "required"
+                "branch[address]": "required"
             },
             messages: {
-                "branch[address]": "Address is required",
-                "branch[city]": "City is required"
+                "branch[address]": "Address is required"
             }
         });
         if(form.valid()) {
