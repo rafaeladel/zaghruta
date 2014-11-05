@@ -76,4 +76,30 @@ $(document).ready(function(){
             $("body").find('.tooltip').tooltip();
         });
     });
+
+    $("body").on("click", ".branch_delete", function(e) {
+        e.preventDefault();
+        var btn = $(e.target);
+        btn.attr("disabled", "disabled").text("Deleting..");
+        var modal = btn.closest(".modal");
+        var form = $(e.target).closest("form");
+        var url = $(form).attr("action");
+        var sel_branch = $(e.target).closest(".branch");
+        var branches_wrapper = $(e.target).closest("#branches_list");
+        $.ajax({
+            type: "POST",
+            url: url,
+            success: function (data) {
+                if(data.success) {
+                    modal.modal('hide');
+                    modal.on('hidden.bs.modal', function (e) {
+                        branches_wrapper.html(data.view);
+                    });
+                } else {
+
+                }
+            }
+        });
+
+    });
 });

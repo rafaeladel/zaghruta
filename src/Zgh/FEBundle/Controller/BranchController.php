@@ -125,8 +125,14 @@ class BranchController extends Controller
     public function postDeleteBranchAction(User $user, Branch $branch)
     {
         $this->get("zgh_fe.delete_manager")->delete($branch);
-        return $this->redirect($this->generateUrl("zgh_fe.user_profile.branches_partial", [
-            "id" => $user->getId()
-        ]));
+        $branches = $user->getBranches();
+        $view = $this->renderView("@ZghFE/Partial/branches/user_profile_branches_content.html.twig", [
+            "user" => $user,
+            "branches" => $branches
+        ]);
+        return new JsonResponse([
+            "success" => true,
+            "view" => $view
+        ]);
     }
 }
