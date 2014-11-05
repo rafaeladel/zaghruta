@@ -3,7 +3,7 @@
         {{ form_start(post_form, {"action": url("zgh_fe.post.new"), "attr":{"class":"post_form"} }  ) }}
         {{ form_errors(post_form) }}
         <div class="posts">
-        {{ form_widget(post_form.content, {"attr": {"class":"form-control animated", "placeholder": "Post something.." }}) }}
+        {{ form_widget(post_form.content, {"attr": {"class":"form-control animated", "placeholder": "Post something.." }, "id": "post_form" }) }}
         {{ form_errors(post_form.content) }}
         <div class="thumbnailUpload">
             <button class="row reset_photo btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>

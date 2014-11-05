@@ -20,7 +20,7 @@
                 <div class="col-md-9 tipExp">
                     <div class="row banner margin">
                         <div class="col-md-12 contentImg">
-                            <img src="{{ experience.getWebPath ? asset(experience.getWebPath) : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}"
+                            <img src="{{ experience.getWebPath ? experience.getWebPath | imagine_filter("my_photos") : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}"
                                  class="img-responsive">
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 <div class="posts_wrapper">
     {% for post in posts %}
-        <div class="post margin">
+        <div class="post margin" data-post_id="{{ post.id }}">
             {% if app.user and post.user.id == app.user.id %}
                 <button data-target="#deletePost_{{ post.id }}" data-toggle="modal" type="submit"
                         class="row  btn delete-post pull-right"><span

@@ -15,14 +15,9 @@ use Zgh\FEBundle\Model\Utilities\Image;
  * @ORM\Table(name="posts")
  * @ORM\HasLifecycleCallbacks
  */
-class Post extends Image implements LikeableInterface, CommentableInterface
+class Post 
 {
-    /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+//    use BasicInfo;
 
     protected $cat_dir = "posts";
     protected $thumb_dir = "thumb";
@@ -30,21 +25,16 @@ class Post extends Image implements LikeableInterface, CommentableInterface
 //    protected $thumb_h = 100;
     protected $thumb_w = 600;
 
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $created_at;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    protected $updated_at;
-
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
      */
     protected $user;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $order_holder;
 
     /**
      * @var ArrayCollection
@@ -258,56 +248,5 @@ class Post extends Image implements LikeableInterface, CommentableInterface
     public function hasImage()
     {
         return !empty($this->image_name);
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setId()
-    {
-        $this->id = uniqid();
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-        $this->setCreatedAt(new \DateTime());
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedAtValue()
-    {
-        $this->setUpdatedAt(new \DateTime());
-    }
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function setCreatedAt($created_at)
-    {
-        $this->created_at = $created_at;
-        return $this;
-    }
-
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    public function setUpdatedAt($updated_at)
-    {
-        $this->updated_at = $updated_at;
-        return $this;
-    }
-
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
     }
 }

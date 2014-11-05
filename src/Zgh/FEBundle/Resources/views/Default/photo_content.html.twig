@@ -1,6 +1,6 @@
 <div class="row {{ not is_popup ? "" : "PopupPhotoContent" }}">
     <div class="col-md-12 resizePhoto contentImg">
-        <img src="{{ asset(photo.getWebPath) }}" class="img-responsive" width="720" rel="photo" alt="">
+        <img src="{{ photo.getWebPath | imagine_filter("my_photos") }}" class="img-responsive" width="720" rel="photo" alt="">
         <div class="deteilsPhoto">  
            {% if app.user and photo.user.id == app.user.id %}
                 <a href="#" data-target="#deletePhoto_{{ photo.id }}" data-toggle="modal" class="btn-delete pull-right"><i class="glyphicon glyphicon-trash"></i> Delete</a>
