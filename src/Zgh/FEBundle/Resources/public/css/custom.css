@@ -412,17 +412,13 @@ a.boy {
 }
 
 .postComment {
-    padding: 20px 20px;
+    padding: 0 20px;
     position: relative;
     border-bottom: 1px solid #ccc;
     display: none;
 }
-.postComment:last-of-type{
-   display: block !important;
-}
-.postComment:nth-last-of-type(2){
-    display: block;
-}
+
+
 .postComment:last-child{
     border-bottom: none;
 }
@@ -454,6 +450,7 @@ a.boy {
     height: auto;
     overflow: hidden;
     width: 100%;
+    margin-bottom: 10px;
 }
 #vendPosts .content-post, #wall .postContent{
     width: 100% !important;
@@ -3365,6 +3362,17 @@ margin: 5px 0;
     height: 30px;
     padding: 0;
     margin-top: 30px;
+}
+.nextStep{
+    font-size: 15px;
+}
+.category_class{
+    margin-right: 5px;
+}
+.table-hover ul{
+    list-style-type: none;
+    color: red;
+    padding: 0;
 }
 
 
