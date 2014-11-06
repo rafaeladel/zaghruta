@@ -3,35 +3,33 @@ function postRefresh()
     // select the target node
     var target = $("body").find('.comments_wrapper');
 
-     //function observeDOM () {
-     //   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
-     //       eventListenerSupported = window.addEventListener;
-     //
-     //   return function(obj, callback) {
-     //       if(MutationObserver) {
+     function observeDOM () {
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
+            eventListenerSupported = window.addEventListener;
+
+        return function(obj, callback) {
+            if(MutationObserver) {
                 var observer = new MutationObserver(function (mutations) {
                     mutations.forEach(function (mutation) {
-                        //callback(mutation);
-                        var comments_count = $(mutation.target).find(".postComment").length;
-                        $(mutation.target).closest(".post, .photo, .experience, .tip, .product").find(".comments_count").text(comments_count);
+                        callback(mutation);
                     });
                 });
                 var config = { attributes: true, childList: true, characterData: true };
                 $(target).each(function(i, v){
-                    observer.observe(target.get(0), config);
+                    observer.observe(obj, config);
                 });
 
-            //} else if(eventListenerSupported) {
-            //    obj.addEventListener('DOMNodeInserted', callback, false);
-            //    obj.addEventListener('DOMNodeRemoved', callback, false);
-            //}
-        //}
-    //}
+            } else if(eventListenerSupported) {
+                obj.addEventListener('DOMNodeInserted', callback, false);
+                obj.addEventListener('DOMNodeRemoved', callback, false);
+            }
+        }
+    }
 
-    //observeDOM()(target.get(0), function(mutation){
-    //    var comments_count = $(mutation.target).find(".postComment").length;
-    //    $(mutation.target).closest(".post, .photo, .experience, .tip, .product").find(".comments_count").text(comments_count);
-    //});
+    observeDOM()(target.get(0), function(mutation){
+        var comments_count = $(mutation.target).find(".postComment").length;
+        $(mutation.target).closest(".post, .photo, .experience, .tip, .product").find(".comments_count").text(comments_count);
+    });
 
     $("body").find(".post_form").validate({
         rules: {
