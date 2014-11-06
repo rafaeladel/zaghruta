@@ -1,21 +1,21 @@
 
 // Hide & Show Psts Comments (START)
-$(window).load(function() {
-    var commentsNumber  =  $(".postComment").length;; 
-    if(commentsNumber>2){
-       // $(".postComment:last-of-type").show();
-       // $(".postComment:last-of-type").prev().show();
-   }
-
-   $("body .post .iconComment").on("click", function(e) {
-        var comIcon = $(event.currentTarget).parent();
-        comIcon.parent().find(".postComment").fadeIn();
-   });
-   $("body .popupPost .iconComment").on("click", function(e) {
-        var comIcon = $(event.currentTarget).parent();
-        comIcon.parent().find(".postComment").fadeIn();
-   }); 
-});
+//$(window).load(function() {
+//    var commentsNumber  =  $(".postComment").length;;
+//    if(commentsNumber>2){
+//       // $(".postComment:last-of-type").show();
+//       // $(".postComment:last-of-type").prev().show();
+//   }
+//
+//   $("body .post .iconComment").on("click", function(e) {
+//        var comIcon = $(event.currentTarget).parent();
+//        comIcon.parent().find(".postComment").fadeIn();
+//   });
+//   $("body .popupPost .iconComment").on("click", function(e) {
+//        var comIcon = $(event.currentTarget).parent();
+//        comIcon.parent().find(".postComment").fadeIn();
+//   });
+//});
 // Hide & Show Psts Comments (END)
 
 

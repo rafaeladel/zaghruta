@@ -1,4 +1,4 @@
-@font-face {
+    @font-face {
     font-family: 'icomoon';
     src:url('../fonts/icomoon.eot?rwfypr');
     src:url('../fonts/icomoon.eot?#iefixrwfypr') format('embedded-opentype'),
@@ -415,7 +415,6 @@ a.boy {
     padding: 0 20px;
     position: relative;
     border-bottom: 1px solid #ccc;
-    display: none;
 }
 
 
@@ -3456,6 +3455,11 @@ margin: 5px 0;
    }
 
 }
+
+.comments_wrapper {
+    display: none;
+}
+
 @media (max-width: 568px){
     .albumCont .thumbnail a{
         overflow: hidden;

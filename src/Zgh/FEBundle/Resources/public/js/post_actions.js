@@ -106,7 +106,7 @@ $(document).ready(function(){
                             <div class="clearfix"></div>\
                             </div>\
                             </div>';
-        $(e.target).closest(".row").siblings(".comments_wrapper").append(comment_markup);
+        $(e.target).closest(".row").siblings(".comments_wrapper").show().append(comment_markup);
         $.ajax({
             type: "POST",
             url: $(form).attr("action"),
@@ -123,6 +123,12 @@ $(document).ready(function(){
         $(form).find('[name="comment_content"]').val("");
         $(form).find('[name="comment_content"]').trigger('autosize.resize');
 
+    });
+
+    $("body").on("click", ".iconComment", function (e) {
+        e.preventDefault();
+        var wrapper = $(e.target).closest(".footer-post").find(".comments_wrapper");
+        wrapper.slideToggle();
     });
 
     $("body").on("click", ".comment-delete", function(e){

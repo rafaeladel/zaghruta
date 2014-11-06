@@ -1,7 +1,7 @@
 {% set comments = getComments(entity) %}
 <div class="row result margin-bottom">
 
-        <a class="girl iconComment pull-right"> <span class="glyphicon  glyphicon-comment"></span> <span class="comments_count">{{ entity.comments|length }}</span> </a>
+        <a href="#" class="girl iconComment pull-right"> <span class="glyphicon  glyphicon-comment"></span> <span class="comments_count">{{ entity.comments|length }}</span> </a>
         <a class="girl dataReactid openLikes pull-right iconHeart" data-entity_id="{{ entity.id }}" data-entity_type="{{ entity.getObjectType }}" data-toggle="modal" data-target="#like_{{ entity.id }}" href="#"> <span class="glyphicon glyphicon-heart"></span> <span class="likes_count">{{ entity.likes|length }}</span></a>
         <div id="like_{{ entity.id }}" class="modal fade">
             <div class="modal-dialog">
