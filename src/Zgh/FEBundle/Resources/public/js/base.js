@@ -50,10 +50,10 @@ $(document).ready(function () {
 
     $(document).on("ajaxSuccess", function (e) {
         ThraceForm.select2();
-        if($("body .post").length == 0)
-        {
+        if ($("body").find(".post").length < 6 ) {
             $("body").find(".load-more").remove();
         }
+
     });
 
 });

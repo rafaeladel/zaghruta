@@ -39,10 +39,10 @@ class ExperienceController extends Controller
      */
     public function getSingleContentAction(User $user, Experience $experience)
     {
-        return $this->render("@ZghFE/Partial/experiences/user_profile_single_experience_content.html.twig",[
-                "user" => $user,
-                "experience" => $experience
-            ]);
+        return $this->render("@ZghFE/Partial/experiences/user_profile_single_experience_content.html.twig", [
+            "user" => $user,
+            "experience" => $experience
+        ]);
     }
 
     /**
@@ -52,16 +52,15 @@ class ExperienceController extends Controller
      */
     public function getEditAction(User $user, Experience $experience)
     {
-        if($experience->getUser()->getId() != $this->getUser()->getId())
-        {
+        if ($experience->getUser()->getId() != $this->getUser()->getId()) {
             throw new AccessDeniedException;
         }
         $experience_form = $this->createForm(new ExperienceType(), $experience, ["type" => "edit"]);
         return $this->render("@ZghFE/Partial/experiences/user_profile_experience_edit_widget.html.twig", [
-                "user" => $user,
-                "experience" => $experience,
-                "experience_form" => $experience_form->createView()
-            ]);
+            "user" => $user,
+            "experience" => $experience,
+            "experience_form" => $experience_form->createView()
+        ]);
     }
 
     /**
@@ -72,15 +71,14 @@ class ExperienceController extends Controller
     {
         $experience_form = $this->createForm(new ExperienceType(), $experience, ["type" => "edit"]);
         $experience_form->handleRequest($request);
-        if(!$experience_form->isValid())
-        {
+        if (!$experience_form->isValid()) {
             return new JsonResponse([
                 "status" => 500,
                 "view" => $this->renderView("@ZghFE/Partial/experiences/user_profile_experience_edit_widget.html.twig", [
-                            "user" => $user,
-                            "experience" => $experience,
-                            "experience_form" => $experience_form->createView()
-                        ]),
+                    "user" => $user,
+                    "experience" => $experience,
+                    "experience_form" => $experience_form->createView()
+                ]),
                 "errors" => $experience_form->getErrorsAsString()
             ]);
         }
@@ -96,8 +94,8 @@ class ExperienceController extends Controller
     public function deleteAction(User $user, Experience $experience)
     {
         $this->get("zgh_fe.delete_manager")->delete($experience);
-        return $this->redirect($this->generateUrl("zgh_fe.user_profile.experiences_partial",[
-                "id" => $user->getId()
+        return $this->redirect($this->generateUrl("zgh_fe.user_profile.experiences_partial", [
+            "id" => $user->getId()
         ]));
     }
 
@@ -112,15 +110,14 @@ class ExperienceController extends Controller
         $curr_user = $this->get("security.context")->getToken()->getUser();
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->find($id);
 
-        if($curr_user->getId() != $user->getId())
-        {
-            return $this->redirect($this->generateUrl("zgh_fe.user_profile.experiences_partial",array("id" => $user->getId())));
+        if ($curr_user->getId() != $user->getId()) {
+            return $this->redirect($this->generateUrl("zgh_fe.user_profile.experiences_partial", array("id" => $user->getId())));
         }
         $form = $this->createForm(new ExperienceType(), new Experience());
         return $this->render("@ZghFE/Partial/experiences/user_profile_experience_add.html.twig", array(
-                "user" => $user,
-                "form" => $form->createView()
-            ));
+            "user" => $user,
+            "form" => $form->createView()
+        ));
 
     }
 
@@ -132,8 +129,6 @@ class ExperienceController extends Controller
      */
     public function postNewAction(Request $request, $id)
     {
-//        var_dump($request->request->all());
-//        die;
         $em = $this->getDoctrine()->getManager();
 
         $user = $em->getRepository("ZghFEBundle:User")->find($id);
@@ -143,15 +138,14 @@ class ExperienceController extends Controller
         $form->handleRequest($request);
         $user->addExperience($experience);
 
-        if(!$form->isValid())
-        {
+        if (!$form->isValid()) {
             return new JsonResponse(
                 array(
                     "status" => 500,
                     "view" => $this->renderView("@ZghFE/Partial/experiences/user_profile_experience_add.html.twig", array(
-                                "user" => $user,
-                                "form" => $form->createView()
-                            )),
+                        "user" => $user,
+                        "form" => $form->createView()
+                    )),
                     "errors" => $form->getErrorsAsString()
                 )
             );
@@ -161,9 +155,9 @@ class ExperienceController extends Controller
         $em->flush();
         return new JsonResponse([
             "status" => 200,
-            "url" => $this->generateUrl("zgh_fe.experience.content", [
-                        "id" => $user->getId(),
-                        "exp_id" => $experience->getId()
-                    ])
-        ]);    }
+            "url" => $this->generateUrl("zgh_fe.experience.list", [
+                "id" => $user->getId()
+            ])
+        ]);
+    }
 }

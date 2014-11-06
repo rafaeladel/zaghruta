@@ -96,26 +96,26 @@ function singleUploadExpTip() {
     });
 
     function refreshWrapper(data) {
-        document.location = data.url;
-        $(".pp_modal").show();
-        $(".btn-cover").show();
-//        var submit_btn = $(".exp_tip_browse").closest("form").find("[type='submit']");
-//        submit_btn.removeAttr("disabled");
-//        if (data.status == 200) {
-//            var back_url = submit_btn.data("back_url");
-//            $("body").find(".content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
-//            $("body").find(".content_wrapper").load(back_url, function () {
-//                history.pushState(null, null, back_url);
-//            });
-//        }
-//        else if (data.status == 500) {
-//            $("body").find(".content_wrapper").html(data.view);
-//
-//            //re-initializing dropzone plugin, because ajaxSuccess event is not triggered here
-//            singleUploadExpTip();
-//
-//            ThraceForm.select2();
-//        }
+        //document.location = data.url;
+        //$(".pp_modal").show();
+        //$(".btn-cover").show();
+        var submit_btn = $(".exp_tip_browse").closest("form").find("[type='submit']");
+        submit_btn.removeAttr("disabled");
+        if (data.status == 200) {
+            var back_url = submit_btn.data("back_url");
+            $("body").find(".content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+            $("body").find(".content_wrapper").load(data.url, function () {
+                history.pushState(null, null, data.url);
+            });
+        }
+        else if (data.status == 500) {
+            $("body").find(".content_wrapper").html(data.view);
+
+            //re-initializing dropzone plugin, because ajaxSuccess event is not triggered here
+            singleUploadExpTip();
+
+            ThraceForm.select2();
+        }
     }
 
 }
