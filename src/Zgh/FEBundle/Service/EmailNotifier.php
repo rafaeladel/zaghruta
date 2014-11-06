@@ -69,7 +69,7 @@ class EmailNotifier
         $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $this->notification->getContent()["obj_id"]], true);
         $title = "{$this->notification->getContent()["user"]} has commented on your post.";
         $body = "{$this->notification->getContent()["user"]} has commented on your post - {$url}";
-        $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body ]);
+        $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body, "user" => $user ]);
         $this->send($title, $user->getEmail(), $template);
     }
 
@@ -80,7 +80,7 @@ class EmailNotifier
         $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $this->notification->getContent()["obj_id"]], true);
         $title = "{$this->notification->getContent()["user"]} has liked your post";
         $body = "{$this->notification->getContent()["user"]} has liked your post - {$url}";
-        $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body ]);
+        $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body, "user" => $user ]);
         $this->send($title, $user->getEmail(), $template);
     }
 
@@ -91,7 +91,7 @@ class EmailNotifier
         $url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $this->notification->getContent()["follower_id"]], true);
         $title = "{$this->notification->getContent()["user"]} has followed you.";
         $body = sprintf("<a href='%s'>{$this->notification->getContent()["user"]}</a> has followed you.", $url);
-        $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body ]);
+        $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body, "user" => $user ]);
         $this->send($title, $user->getEmail(), $template);
     }
 
@@ -114,7 +114,8 @@ class EmailNotifier
             "notification_title" => $title,
             "notification_body" => $body,
             "accept_url" => $acceptUrl,
-            "deny_url" => $denyUrl
+            "deny_url" => $denyUrl,
+            "user" => $user
         ]);
         $this->send($title, $user->getEmail(), $template);
     }
@@ -137,7 +138,8 @@ class EmailNotifier
             "notification_title" => $body,
             "notification_body" => $body,
             "accept_url" => $acceptUrl,
-            "deny_url" => $denyUrl
+            "deny_url" => $denyUrl,
+            "user" => $user
         ]);
         $this->send($body , $user->getEmail(), $template);
     }
@@ -165,8 +167,9 @@ class EmailNotifier
             ->setTo($user->getNewEmail())
             ->setBody(
                 $this->templating->render("@ZghFE/Default/Emails/email_change_confirmation.txt.twig", [
-                    "email_body" => sprintf("Please click on the link below to confirm that %s is your desired email.", $user->getNewEmail()),
-                    "conf_email" => $conf_email
+                    "email_body" => sprintf("You have requested to change your Email, please click on the button below to confirm your new Email."),
+                    "conf_email" => $conf_email,
+                    "user" => $user
                 ]),
                 'text/html'
             );
