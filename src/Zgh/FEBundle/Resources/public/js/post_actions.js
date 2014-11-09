@@ -127,7 +127,7 @@ $(document).ready(function(){
 
     $("body").on("click", ".iconComment", function (e) {
         e.preventDefault();
-        var wrapper = $(e.target).closest(".footer-post").find(".comments_wrapper");
+        var wrapper = $(e.target).closest(".result").siblings(".comments_wrapper");
         wrapper.slideToggle();
     });
 

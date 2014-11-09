@@ -41,4 +41,16 @@
         <default key="_controller">ZghFEBundle:Photo:postPhotoAlbumDelete</default>
     </route>
 
+    <route id="zgh_fe.photos.caption.index" pattern="/c/pp/p/{id}/caption">
+        <default key="_controller">ZghFEBundle:Photo:getPhotoCaptionIndex</default>
+    </route>
+
+    <route id="zgh_fe.photos.caption.get_edit" pattern="/c/pp/p/{id}/caption/edit" methods="get">
+        <default key="_controller">ZghFEBundle:Photo:getPhotoCaptionEdit</default>
+    </route>
+
+    <route id="zgh_fe.photos.caption.post_edit" pattern="/c/pp/p/{id}/caption/edit" methods="post">
+        <default key="_controller">ZghFEBundle:Photo:postPhotoCaptionEdit</default>
+    </route>
+
 </routes>

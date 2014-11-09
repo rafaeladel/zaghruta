@@ -22,7 +22,7 @@
                         {{ tag.name }}
                         {% if loop.index < product.tags|length %} - {% endif %}
                     {% endfor %}</h6>
-                <span class="date">{{ product.createdAt|date() }}</span>
+                <span class="date">{{ product.createdAt|date("d M Y - h:i A") }}</span>
                 {% if product.price %}
                     <span class="price">Price:<span> {{ product.price }} EGP</span></span>
                 {% endif %}

@@ -1,0 +1,10 @@
+    <div class="row PhotoCaption">
+        <div class="col-md-12">
+            <form action="{{ url("zgh_fe.photos.caption.post_edit", {"id": photo.id}) }}" method="post">
+                {{ form_widget(form.caption) }}
+                {{ form_errors(form.caption) }}
+                <a href="#" data-url="{{ url("zgh_fe.photos.caption.index", {"id": photo.id}) }}" class="save_caption">save</a>
+                {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>

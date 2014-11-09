@@ -1,0 +1,9 @@
+<div class="row PhotoCaption">
+    <div class="col-md-12">
+        {% if photo.caption %}
+            <span>{{ photo.caption|converturls }}</span> - <a href="#"  data-url="{{ url("zgh_fe.photos.caption.get_edit", {"id": photo.id }) }}"  class="edit_caption" data-url="">edit</a>
+        {% else %}
+            <a href="#" class="edit_caption" data-url="{{ url("zgh_fe.photos.caption.get_edit", {"id": photo.id }) }}">Add caption</a>
+        {% endif %}
+    </div>
+</div>
