@@ -15,18 +15,21 @@ function postRefresh()
                     });
                 });
                 var config = { attributes: true, childList: true, characterData: true };
-                $(target).each(function(i, v){
-                    observer.observe(obj, config);
+                $(obj).each(function(i, v){
+                    observer.observe(v, config);
                 });
 
             } else if(eventListenerSupported) {
-                obj.addEventListener('DOMNodeInserted', callback, false);
-                obj.addEventListener('DOMNodeRemoved', callback, false);
+                $(obj).each(function(i, v){
+                    v.addEventListener('DOMNodeInserted', callback, false);
+                    v.addEventListener('DOMNodeRemoved', callback, false);
+                });
+
             }
         }
     }
 
-    observeDOM()(target.get(0), function(mutation){
+    observeDOM()(target, function(mutation){
         var comments_count = $(mutation.target).find(".postComment").length;
         $(mutation.target).closest(".post, .photo, .experience, .tip, .product").find(".comments_count").text(comments_count);
     });
