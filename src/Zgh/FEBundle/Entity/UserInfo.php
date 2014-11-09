@@ -41,7 +41,7 @@ class UserInfo
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Assert\Regex(
-     *      pattern= "/[a-zA-Z]+/",
+     *      pattern= "/\pL+/u",
      *      message= "Should contain at least one alphabet character"
      * )
      */

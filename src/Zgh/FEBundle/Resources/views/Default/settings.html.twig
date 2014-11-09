@@ -75,6 +75,7 @@
                         <!--panel Collapse-->
                     </div>
                     <!--End panel Default-->
+                    {% if not is_granted("ROLE_VENDOR") %}
 
                     <div class="notification panel panel-default">
                         <div class="panel-heading">
@@ -86,7 +87,6 @@
 
                         <div id="collapseThree" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                {% if not is_granted("ROLE_VENDOR") %}
                                     <form class="form-horizontal change_info_form"
                                           action="{{ url("zgh_fe.settings.postBasicInfo", {"id": app.user.id}) }}"
                                           method="post" role="form">
@@ -112,13 +112,14 @@
                                         {{ helper.msg_wrapper() }}
 
                                     </form>
-                                {% endif %}
 
                             </div>
                             <!--Panel Body-->
                         </div>
                         <!--panel Collapse-->
                     </div>
+                    {% endif %}
+
                     {% if not is_granted("ROLE_FACEBOOK") %}
                         <div class="notification panel panel-default">
                         <div class="panel-heading">

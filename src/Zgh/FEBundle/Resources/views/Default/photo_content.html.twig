@@ -24,7 +24,7 @@
                     </div><!-- /.modal-dialog -->
                 </div>
             {% endif %}
-            <a class="pull-left nameAlbum" href="{{ url("zgh_fe.user_profile.albums_partial", {"id": photo.user.id}) }}"> <h4>{{ photo.album.name }}</h4></a>
+            <a class="pull-left nameAlbum" href="{{ url("zgh_fe.photos_partial_albums_photos_content", {"id": photo.user.id, "album_id": photo.album.id }) }}"> <h4>{{ photo.album.name }}</h4></a>
         </div>
     </div>
 </div>

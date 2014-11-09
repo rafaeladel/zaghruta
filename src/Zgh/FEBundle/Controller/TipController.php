@@ -159,10 +159,9 @@ class TipController extends Controller
         $em->flush();
         return new JsonResponse([
             "status" => 200,
-            "url" => $this->generateUrl("zgh_fe.tip.content", [
-                        "id" => $user->getId(),
-                        "tip_id" => $tip->getId()
-                    ])
+            "url" => $this->generateUrl("zgh_fe.tip.list", [
+                "id" => $user->getId()
+            ])
         ]);
     }
 }

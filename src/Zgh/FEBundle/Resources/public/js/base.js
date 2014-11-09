@@ -13,7 +13,7 @@ $(document).ready(function () {
                 }
             }
         });
-    }, 100000);
+    }, 10000);
 
 
     $(window).on("popstate", function (e) {

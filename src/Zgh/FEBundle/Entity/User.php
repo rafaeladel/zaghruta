@@ -145,7 +145,7 @@ class User extends BaseUser implements ParticipantInterface
      * @Assert\NotBlank(groups={"intro"}, message="First Name is required")
      * @Assert\Regex(
      *      groups={ "intro" },
-     *      pattern= "/[a-zA-Z]+/",
+     *      pattern= "/\pL+/u",
      *      message= "Should contain at least one alphabet character"
      * )
      */
@@ -158,7 +158,7 @@ class User extends BaseUser implements ParticipantInterface
      * @Assert\NotBlank(groups={"intro"}, message="Last Name is required")
      * @Assert\Regex(
      *      groups={ "intro" },
-     *      pattern= "/[a-zA-Z]+/",
+     *      pattern= "/\pL+/u",
      *      message= "Should contain at least one alphabet character"
      * )
      */

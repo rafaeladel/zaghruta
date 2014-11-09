@@ -50,7 +50,7 @@
                     },
                     "company_name": {
                         required: true,
-                        pattern: /[a-zA-Z]+/
+                        pattern: /([\u0620-\u064A]|[a-zA-Z])+/
                     },
                     "fos_user_registration_form[plainPassword][first]": {
                         required: true,

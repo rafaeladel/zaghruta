@@ -20,7 +20,7 @@ class VendorInfo
      * @Assert\NotBlank(groups={"vendor_intro", "Default"})
      * @Assert\Regex(
      *      groups={"vendor_intro", "Default"},
-     *      pattern= "/[a-zA-Z]+/",
+     *      pattern= "/\pL+/u",
      *      message= "Should contain at least one alphabet character"
      * )
      */

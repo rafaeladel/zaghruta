@@ -112,9 +112,11 @@
             </div>
         {% endif %}
     </div>
-    <div class="row">
-        <span class="col-md-4 price ">Price:<span> {{ product.price }} EGP</span></span>
-    </div>
+    {% if product.price %}
+        <div class="row">
+            <span class="col-md-4 price ">Price:<span> {{ product.price }} EGP</span></span>
+        </div>
+    {% endif %}
     <div class="col-md-12">
         {{ include("@ZghFE/Partial/common/comments_section.html.twig", {"entity": product}) }}
     </div>
