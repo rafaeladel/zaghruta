@@ -127,7 +127,8 @@ class PhotoController extends Controller
         $em->remove($photo);
         $em->flush();
 //        return $this->redirect($this->generateUrl("zgh_fe.photos_partial_albums_photos_content", array('id'=> $photo->getUser()->getId(), "album_id" => $photo->getAlbum()->getId() )));
-        return $this->redirect($this->generateUrl("zgh_fe.user_profile.photos_partial", array('id' => $photo->getUser()->getId())));
+//        return $this->redirect($this->generateUrl("zgh_fe.user_profile.photos_partial", array('id' => $photo->getUser()->getId())));
+        return $this->redirect($request->headers->get("referer"));
     }
 
     public function getPhotoCaptionIndexAction(Request $request, Photo $photo)

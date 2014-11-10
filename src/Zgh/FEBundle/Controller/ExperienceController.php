@@ -155,7 +155,7 @@ class ExperienceController extends Controller
         $em->flush();
         return new JsonResponse([
             "status" => 200,
-            "url" => $this->generateUrl("zgh_fe.experience.list", [
+            "url" => $this->generateUrl("zgh_fe.user_profile.experiences_partial", [
                 "id" => $user->getId()
             ])
         ]);
