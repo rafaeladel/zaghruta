@@ -4,6 +4,7 @@
                 {{ form_widget(form.caption) }}
                 {{ form_errors(form.caption) }}
                 <a href="#" data-url="{{ url("zgh_fe.photos.caption.index", {"id": photo.id}) }}" class="save_caption">save</a>
+                <a href="#" data-url="{{ url("zgh_fe.photos.caption.index", {"id": photo.id}) }}" class="cancel_caption">cancel</a>
                 {{ form_rest(form) }}
             {{ form_end(form) }}
         </div>

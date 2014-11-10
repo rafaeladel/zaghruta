@@ -25,17 +25,20 @@ $(document).ready(function(){
         history.pushState(null, null, $(e.currentTarget).data("target_url"));
     });
 
-    $("body").on("click", ".edit_caption", function(e) {
+    $("body").on("click", ".edit_caption, .cancel_caption", function(e) {
         e.preventDefault();
         var btn = $(e.target);
         var url = btn.data("url");
-        $.ajax({
-            type: "get",
-            url: url,
-            success: function (data) {
-                btn.closest(".caption_wrapper").html(data.view);
-            }
-        });
+        if(!btn.hasClass("disabled")) {
+            btn.addClass("disabled").css({"color": "gray", "cursor": "default"});
+            $.ajax({
+                type: "get",
+                url: url,
+                success: function (data) {
+                    btn.closest(".caption_wrapper").html(data.view);
+                }
+            });
+        }
     });
 
 
@@ -44,14 +47,17 @@ $(document).ready(function(){
         var btn = $(e.target);
         var form  = $(e.target).closest("form");
         var url = form.attr("action");
-        $.ajax({
-            type: "post",
-            url: url,
-            data: form.serialize(),
-            success: function (data) {
-                btn.closest(".caption_wrapper").html(data.view);
-            }
-        });
+        if(!btn.hasClass("disabled")) {
+            btn.addClass("disabled").css({"color": "gray", "cursor": "default"});
+            $.ajax({
+                type: "post",
+                url: url,
+                data: form.serialize(),
+                success: function (data) {
+                    btn.closest(".caption_wrapper").html(data.view);
+                }
+            });
+        }
     });
 
     photoRefresh();
