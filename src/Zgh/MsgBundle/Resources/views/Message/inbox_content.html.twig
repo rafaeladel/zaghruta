@@ -11,7 +11,7 @@
                 <img alt="" src="{{ user.profilePhoto ?  asset(user.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : "#") }}" class="media-object img-responsive">
             </a>
             <h4><a href="">{{ user.fullname }}</a></h4>
-            <span class="date-time">{{ (thread.messages|last).createdAt|date() }}</span>
+            <span class="date-time">{{ (thread.messages|last).createdAt|date("d M Y - h:i A") }}</span>
             {% if zgh_nb_thread_unread_message(thread) != 0 %}
                 <button class="btn btn-danger btn-circle btnMessages msgNotifications pull-right"
                         type="button">

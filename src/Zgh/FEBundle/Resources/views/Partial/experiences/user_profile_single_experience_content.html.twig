@@ -15,7 +15,7 @@
     <h2 class="col-md-4">{{ experience.title }}</h2>
     <div class="clearfix"></div>
 
-    <span class="col-md-12 date-time">{{ experience.createdAt|date() }}</span>
+    <span class="col-md-12 date-time">{{ experience.createdAt|date("d M Y - h:i A") }}</span>
     <p class="by col-md-12">By: <span>{{ experience.user.getFullname }}</span></p>
 
 </div>

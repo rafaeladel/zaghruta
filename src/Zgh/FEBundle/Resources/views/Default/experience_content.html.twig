@@ -69,7 +69,7 @@
                                         {% endif %}
                                     {% endfor %}
                                 </p>
-                                <span class="col-md-12 date-time">{{ experience.createdAt|date() }}</span>
+                                <span class="col-md-12 date-time">{{ experience.createdAt|date("d M Y - h:i A") }}</span>
 
                                 <p class="by col-md-12">By: <a
                                             href="{{ url("zgh_fe.user_profile.index", {"id": experience.user.id}) }}"> {{ experience.user.getFullname }}</a>

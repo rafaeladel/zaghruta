@@ -8,7 +8,7 @@
             <h5><a href="{{ url("zgh_fe.user_profile.index", {"id": message.sender.id }) }}">{{ message.sender.fullname }}</a></h5>
         </div>
         <div class="clearfix"></div>
-        <div class="pull-right time">{{ message.createdAt|date() }}</div>
+        <div class="pull-right time">{{ message.createdAt|date("d M Y - h:i A") }}</div>
         <p class="img-rounded">
             <span></span>
             {{ message.body|nl2br|converturls }}
