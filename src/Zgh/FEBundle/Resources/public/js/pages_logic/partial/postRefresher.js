@@ -3,36 +3,42 @@ function postRefresh()
     // select the target node
     var target = $("body").find('.comments_wrapper');
 
-     function observeDOM () {
-        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
-            eventListenerSupported = window.addEventListener;
-
-        return function(obj, callback) {
-            if(MutationObserver) {
-                var observer = new MutationObserver(function (mutations) {
-                    mutations.forEach(function (mutation) {
-                        callback(mutation);
-                    });
-                });
-                var config = { attributes: true, childList: true, characterData: true };
-                $(obj).each(function(i, v){
-                    observer.observe(v, config);
-                });
-
-            } else if(eventListenerSupported) {
-                $(obj).each(function(i, v){
-                    v.addEventListener('DOMNodeInserted', callback, false);
-                    v.addEventListener('DOMNodeRemoved', callback, false);
-                });
-
-            }
-        }
-    }
-
-    observeDOM()(target, function(mutation){
+    target.observe("childlist subtree", function(mutation) {
         var comments_count = $(mutation.target).find(".postComment").length;
         $(mutation.target).closest(".post, .photo, .experience, .tip, .product").find(".comments_count").text(comments_count);
     });
+
+    // function observeDOM () {
+    //    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
+    //        eventListenerSupported = window.addEventListener;
+    //
+    //    return function(obj, callback) {
+    //    //    if(MutationObserver) {
+    //    //        var observer = new MutationObserver(function (mutations) {
+    //    //            mutations.forEach(function (mutation) {
+    //    //                callback(mutation);
+    //    //            });
+    //    //        });
+    //    //        var config = { attributes: true, childList: true, characterData: true };
+    //    //        $(obj).each(function(i, v){
+    //    //            observer.observe(v, config);
+    //    //        });
+    //
+    //        //} else if(eventListenerSupported) {
+    //            $(obj).each(function(i, v){
+    //                $(v).on('DOMNodeInserted', callback);
+    //                $(v).on('DOMNodeRemoved', callback);
+    //            });
+    //
+    //        //}
+    //    }
+    //}
+    //
+    //observeDOM()(target, function(mutation){
+    //    var comments_count = $(mutation.target).find(".postComment").length;
+    //    console.log(comments_count);
+    //    $(mutation.target).closest(".post, .photo, .experience, .tip, .product").find(".comments_count").text(comments_count);
+    //});
 
     $("body").find(".post_form").validate({
         rules: {
