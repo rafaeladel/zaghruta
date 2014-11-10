@@ -76,7 +76,7 @@ $(document).ready(function () {
         var term = $.trim($(e.currentTarget).val());
         term = term.length == 0 ? "" : term;
         var prevent_keys = [27, 16, 20, 17, 18, 91, 39, 37, 38, 40, 16, 36, 35, 33, 34];
-        if (term == "" || $.inArray(e.which, prevent_keys) != -1) {
+        if ($.inArray(e.which, prevent_keys) != -1) {
             return false;
         }
         startSearch(e.target);

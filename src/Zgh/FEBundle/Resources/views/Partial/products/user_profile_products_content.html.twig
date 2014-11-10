@@ -16,7 +16,7 @@
             </div>
 
             <div class="productContent">
-                <a href="#"><h4>{{ product.name }}</h4></a>
+                <a href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}"><h4>{{ product.name }}</h4></a>
                 <p><a href="{{ url("zgh_fe.user_profile.index", {"id": product.user.id}) }}">{{ product.user.fullname }}</a></p>
                 <h6>{% for tag in product.tags %}
                         {{ tag.name }}
@@ -45,7 +45,9 @@
 
 {% endfor %}
 {% else %}
-    {% if app.user and app.user.id == user.id %}
+    {% if search is defined and search == true %}
+        <p>No results found.</p>
+    {% elseif app.user and app.user.id == user.id %}
         <p>The best way to promote your business is to show your customers your products. Add some products now.</p>
     {% else %}
         <p>{{ user.fullname }} hasn’t added any products yet.</p>
