@@ -79,8 +79,10 @@ class SearchManager
                         ->innerJoin("u.followers", "uf")
                         ->innerJoin("uf.followee", "followee")
                         ->where("u.id = :user")
+                        ->andWhere("uf.is_approved = :approved")
                         ->groupBy("followee.id")
-                        ->setParameter("user", $user);
+                        ->setParameter("user", $user)
+                        ->setParameter("approved", true);
             $orQuery->add($q->expr()->eq("u.id", ":user"));
 
             $ids = [];
