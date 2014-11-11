@@ -755,7 +755,7 @@ footer .container {
     padding: 0;
 }
 .product-G .thumbOverlay{
-    cursor: none !important;
+    cursor: default;
 }
 
 .GridView .product-G .thumbnail {
@@ -1353,6 +1353,7 @@ footer a {
     max-height: 200px;
     overflow: hidden;
     margin-right: 10px;
+    background: #ccc;
 }
 .product-G .photoThumb img {
     
@@ -3153,8 +3154,11 @@ overflow: hidden;
 .mainCategory{
     margin-bottom: 15px;
  }
+ .mainCategory .subCategory{
+    margin-bottom: 0;
+ }
  .headerInterests{
-    padding: 15px 0;
+    /*padding: 15px 0;*/
     border-bottom: 1px solid #c2c2c2;
     margin-bottom: 15px;
 }
