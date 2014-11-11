@@ -83,10 +83,12 @@
                 }
             });
 
-            $(window).on("popstate", function (e) {
-                e.preventDefault();
-                window.location.href = window.location.href;
-            });
+            setTimeout(function () {
+                $(window).on("popstate", function (e) {
+                    e.preventDefault();
+                    window.location.href = window.location.href;
+                });
+            }, 500);
 
 
         });
