@@ -15,11 +15,13 @@ $(document).ready(function () {
         });
     }, 10000);
 
+    setTimeout(function () {
+        $(window).on("popstate", function (e) {
+            e.preventDefault();
+            window.location.href = window.location.href;
+        });
+    }, 500);
 
-    $(window).on("popstate", function (e) {
-        e.preventDefault();
-        window.location.href = window.location.href;
-    });
 
     $("body").on("click", ".btnFollowing", function (e) {
         e.preventDefault();
