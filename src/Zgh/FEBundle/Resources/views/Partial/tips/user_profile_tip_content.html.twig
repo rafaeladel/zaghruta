@@ -36,7 +36,7 @@
                         <!-- /.modal-dialog -->
                     </div>
                 {% endif %}
-            <a href="{{ url("zgh_fe.tip.content", {"id": tip.user.id, "tip_id": tip.id }) }}" target="_blank"><img
+            <a class="imgtipEpx" href="{{ url("zgh_fe.tip.content", {"id": tip.user.id, "tip_id": tip.id }) }}" target="_blank"><img
                         alt="Responsive image"
                         class="img-responsive"
                         src="{{ tip.getThumbWebPath ? tip.getWebPath | imagine_filter("my_list_thumb") : asset("bundles/zghfe/img/avatar_wide.jpg") }}"></a>

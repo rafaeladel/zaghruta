@@ -673,7 +673,8 @@ footer .container {
 
 .loginSwitch .container p {
     color: #fff;
-    min-height: 36px;
+    min-height: 50px;
+    max-height: 50px;
     width: 89%;
 }
 
@@ -1136,7 +1137,10 @@ div.profile{
 .titleAlbums,.titlePhotos{
     padding-left: 15px;
     color:#72c6ba;
-
+}
+.albumDescription{
+    margin: 0 auto 15px;
+    float: none;
 }
 .icon-Res{
     float: left;
@@ -2132,6 +2136,11 @@ footer a {
 .tipExp .caption h6 {
     color: #111;
     font-size: 16px;
+}
+.imgtipEpx{
+    height: 155px;
+    overflow: hidden;
+    display: block;
 }
 
 .by {

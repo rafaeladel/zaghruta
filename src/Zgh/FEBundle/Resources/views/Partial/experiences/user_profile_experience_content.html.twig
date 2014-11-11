@@ -25,7 +25,7 @@
                             </div><!-- /.modal-dialog -->
                         </div>
                     {% endif %}
-                    <a class="openExp" href="{{ url("zgh_fe.experience.content", {"id": experience.user.id, "exp_id": experience.id }) }}" target="_blank"><img alt="Responsive image" class="img-responsive"
+                    <a class="openExp imgtipEpx" href="{{ url("zgh_fe.experience.content", {"id": experience.user.id, "exp_id": experience.id }) }}" target="_blank"><img alt="Responsive image" class="img-responsive"
                      src="{{ experience.getThumbWebPath ? experience.getWebPath | imagine_filter("my_list_thumb") : asset("bundles/zghfe/img/avatar_wide.jpg") }}"></a>
 
                     <div class="caption">
