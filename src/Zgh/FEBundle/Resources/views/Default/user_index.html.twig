@@ -163,45 +163,45 @@
             <div class="btn-group btn-group-md btn-group-justified navGroup">
                 {% if "ROLE_CUSTOMER" in user.roles %}
                     {% if authorized %}
-                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.main_partial", {'id': user.id}) }}"
+                        <a href="#" data-id="posts_btn" data-target_url="{{ url("zgh_fe.user_profile.main_partial", {'id': user.id}) }}"
                            type="button"
                            class="tab btn btn-primary {{ "index" in current_route or "main" in current_route or "post" in current_route ? "active" : "" }}">Posts</a>
 
-                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.wishlist_partial", {'id': user.id}) }}"
+                        <a href="#" data-id="wishlist_btn" data-target_url="{{ url("zgh_fe.user_profile.wishlist_partial", {'id': user.id}) }}"
                            type="button"
                            class="tab btn btn-primary {{ "wishlist" in current_route ? "active" : "" }}">Wishlist</a>
 
-                        <a href="#" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {'id': user.id}) }}"
+                        <a href="#" data-id="photos_btn" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {'id': user.id}) }}"
                            type="button"
                            class="tab btn btn-primary {{ "photos" in current_route or "albums" in current_route ? "active" : "" }}">Photos</a>
 
-                        <a href="#"
+                        <a href="#" data-id="experience_btn"
                            data-target_url="{{ url("zgh_fe.user_profile.experiences_partial", {'id': user.id}) }}"
                            type="button"
                            class="tab btn btn-primary {{ "experience" in current_route ? "active" : "" }}">Experiences</a>
                     {% endif %}
                 {% elseif "ROLE_VENDOR" in user.roles %}
-                    <a href="#" data-target_url="{{ url("zgh_fe.user_profile.main_partial", {'id': user.id}) }}"
+                    <a href="#" data-id="posts_btn" data-target_url="{{ url("zgh_fe.user_profile.main_partial", {'id': user.id}) }}"
                        type="button"
                        class="tab btn btn-primary {{ "index" in current_route or "main" in current_route or "post" in current_route ? "active" : "" }}">Posts</a>
 
-                    <a href="#" data-target_url="{{ url("zgh_fe.user_profile.branches_partial", {'id': user.id}) }}"
+                    <a href="#" data-id="branches_btn" data-target_url="{{ url("zgh_fe.user_profile.branches_partial", {'id': user.id}) }}"
                        type="button"
                        class="tab btn btn-primary {{ "branch" in current_route ? "active" : "" }}">Branches</a>
 
-                    <a href="#" data-target_url="{{ url("zgh_fe.user_profile.products_partial", {'id': user.id}) }}"
+                    <a href="#" data-id="products_btn" data-target_url="{{ url("zgh_fe.user_profile.products_partial", {'id': user.id}) }}"
                        type="button"
                        class="tab btn btn-primary {{ "product" in current_route ? "active" : "" }}">Products</a>
 
-                    <a href="#" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {'id': user.id}) }}"
+                    <a href="#" data-id="photos_btn" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {'id': user.id}) }}"
                        type="button"
                        class="tab btn btn-primary {{ "photos" in current_route or "albums" in current_route ? "active" : "" }}">Photos</a>
 
-                    <a href="#" data-target_url="{{ url("zgh_fe.user_profile.tips_partial", {'id': user.id}) }}"
+                    <a href="#" data-id="tips_btn" data-target_url="{{ url("zgh_fe.user_profile.tips_partial", {'id': user.id}) }}"
                        type="button"
                        class="tab btn btn-primary {{ "tip" in current_route ? "active" : "" }}">Tips</a>
                 {% endif %}
-                <a href="#" data-target_url="{{ url("zgh_fe.user_profile.connections_partial", {'id': user.id}) }}"
+                <a href="#" data-id="connections_btn" data-target_url="{{ url("zgh_fe.user_profile.connections_partial", {'id': user.id}) }}"
                    type="button"
                    class="tab btn btn-primary {{ "connection" in current_route ? "active" : "" }}">Connections</a>
 

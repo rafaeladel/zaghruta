@@ -18,7 +18,18 @@ $(document).ready(function () {
     setTimeout(function () {
         $(window).on("popstate", function (e) {
             e.preventDefault();
-            window.location.href = window.location.href;
+            var targetUrl = e.originalEvent.state == null ? null : e.originalEvent.state.targetUrl,
+                targetId = e.originalEvent.state == null ? null : e.originalEvent.state.targetId;
+            if(targetId && targetUrl) {
+                var tab = $("body").find("a[data-id='"+targetId+"']");
+                document.title = tab.text() + " | Zaghruta";
+                $(".tab").removeClass("active");
+                tab.addClass("active");
+                $("body").find(".content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+                $("body").find(".content_wrapper").load(targetUrl);
+            } else {
+                window.location.href = window.location.href;
+            }
         });
     }, 500);
 

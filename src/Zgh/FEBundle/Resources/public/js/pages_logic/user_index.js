@@ -13,7 +13,11 @@ $(document).ready(function () {
             tab.addClass("active");
             $(".content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
             $(".content_wrapper").load(tab.data("target_url"));
-            history.pushState(null, null, tab.data("target_url"));
+            var stateObj = {
+                targetUrl : tab.data("target_url"),
+                targetId: tab.data("id")
+            };
+            history.pushState(stateObj, null, tab.data("target_url"));
         }
     });
 
