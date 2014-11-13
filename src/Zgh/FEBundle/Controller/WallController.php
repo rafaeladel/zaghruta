@@ -20,6 +20,8 @@ class WallController extends Controller
                 return $this->forward("ZghFEBundle:UserProfile:getUserIntro", array("id" => $user->getId()));
             }
         }
+        $this->get("session")->getFlashBag()->add("notice_email_change", "Your Email was successfully Changed");
+
         return $this->render("@ZghFE/Default/wall.html.twig", array(
                 "user" => $user,
                 "post_form" => $post_form->createView()
