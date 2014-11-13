@@ -77,9 +77,10 @@
             branchesList: "{{ url("zgh_fe.branches.list", {"id": app.user.id}) }}"
         };
     </script>
+    <script src="{{ asset("bundles/zghfe/plugins/webcomponentsjs/src/WeakMap/WeakMap.js") }}"></script>
+    <script src="{{ asset("bundles/zghfe/plugins/webcomponentsjs/src/MutationObserver/MutationObserver.js") }}"></script>
 
     {% javascripts
-    "bundles/zghfe/js/jquery-observe.js"
     "bundles/zghfe/js/pages_logic/partial/postRefresher.js"
     "bundles/zghfe/js/pages_logic/partial/photosRefresher.js"
     "bundles/zghfe/js/pages_logic/partial/singleUploadProduct.js"

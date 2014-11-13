@@ -110,6 +110,7 @@ class SettingsController extends Controller
 
         $event = new InteractiveLoginEvent($request, $token);
         $this->get("event_dispatcher")->dispatch("security.authentication", $event);
+        $this->get("session")->getFlashBag()->add("notice_email_change", "Your Email was successfully Changed");
         return new RedirectResponse($this->generateUrl("zgh_fe.wall.index"));
     }
 

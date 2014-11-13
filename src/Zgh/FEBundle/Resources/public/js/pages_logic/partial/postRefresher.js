@@ -3,27 +3,44 @@ function postRefresh()
     // select the target node
     var target = $("body").find('.comments_wrapper');
 
-    target.observe("childlist subtree", function(mutation) {
-        var comments_count = $(mutation.target).find(".postComment").length;
-        $(mutation.target).closest(".post, .photo, .experience, .tip, .product").find(".comments_count").text(comments_count);
+// create an observer instance
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            var comments_count = $(mutation.target).find(".postComment").length;
+            $(mutation.target).closest(".post, .photo, .experience, .tip, .product").find(".comments_count").text(comments_count);
+        });
     });
 
-    // function observeDOM () {
+// configuration of the observer:
+    var config = { attributes: true, childList: true, characterData: true };
+
+// pass in the target node, as well as the observer options
+    $.each(target, function(i, v) {
+        observer.observe(v, config);
+    });
+
+
+    //target.observe("childlist subtree", function(mutation) {
+    //    var comments_count = $(mutation.target).find(".postComment").length;
+    //    $(mutation.target).closest(".post, .photo, .experience, .tip, .product").find(".comments_count").text(comments_count);
+    //});
+
+    //function observeDOM () {
     //    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
     //        eventListenerSupported = window.addEventListener;
     //
     //    return function(obj, callback) {
-    //    //    if(MutationObserver) {
-    //    //        var observer = new MutationObserver(function (mutations) {
-    //    //            mutations.forEach(function (mutation) {
-    //    //                callback(mutation);
-    //    //            });
-    //    //        });
-    //    //        var config = { attributes: true, childList: true, characterData: true };
-    //    //        $(obj).each(function(i, v){
-    //    //            observer.observe(v, config);
-    //    //        });
-    //
+        //    if(MutationObserver) {
+        //        var observer = new MutationObserver(function (mutations) {
+        //            mutations.forEach(function (mutation) {
+        //                callback(mutation);
+        //            });
+        //        });
+        //        var config = { attributes: true, childList: true, characterData: true };
+        //        $(obj).each(function(i, v){
+        //            observer.observe(v, config);
+        //        });
+
     //        //} else if(eventListenerSupported) {
     //            $(obj).each(function(i, v){
     //                $(v).on('DOMNodeInserted', callback);
@@ -33,7 +50,7 @@ function postRefresh()
     //        //}
     //    }
     //}
-    //
+
     //observeDOM()(target, function(mutation){
     //    var comments_count = $(mutation.target).find(".postComment").length;
     //    console.log(comments_count);
