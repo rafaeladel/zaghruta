@@ -56,7 +56,7 @@
 
         </div>
         <h2 class="text-center titlePhotos">{{ album.name }}</h2>
-        <div class="col-md-9 albumDescription text-center clearfix"><p>You can put only an image without a link here. Of course if you don't have too much content This dark overlay is optional too. It's easy and flexible. Just imagine your content here<p/></div>
+        <div class="col-md-9 albumDescription text-center clearfix"><p>{{ album.info }}<p/></div>
 
         <div class="row photosWrapper" id="photos">
             {{ include("@ZghFE/Partial/photos/user_profile_photos_p_content.html.twig", {"photos" : album.photos }) }}
