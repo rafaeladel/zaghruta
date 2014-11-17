@@ -16,7 +16,7 @@
             <a href="#" class="moveWishlist" data-url="{{ url("zgh_fe.products.get_wishlist_current_edit", {"id": app.user.id, "product_id": product.id}) }}">Cancel</a>
             {#<a href="#" class="moveWishlist">Cancel</a>#}
         {% endif %}
-        <button type="submit" class="btn btn-wide btn-primary {{ product_partial is defined and product_partial == true ? "newWishlistSubmit" : "wishlistSubmit" }}">Create</button>
+        <button type="submit" class="btn btn-wide btn-primary {{ product_partial is defined and product_partial == true ? "newWishlistSubmit" : "wishlistSubmit" }}" data-url="{{ url("zgh_fe.wishlist.list", {"id": app.user.id}) }}">Create</button>
     </div>
     {{ form_rest(form) }}
 {{ form_end(form) }}

@@ -14,7 +14,11 @@ $(document).ready(function () {
                     btn.removeAttr("disabled");
                     form.get(0).reset();
                     $("#addNewListPopup").modal("hide");
-                    $("#wishlists_list").load(UrlContainer.wishlistPartial);
+                    $('#addNewListPopup').on('hidden.bs.modal', function () {
+                        $("body").find(".wishlists_content_list").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+                        $("body").find(".wishlists_content_list").load(btn.data("url"));
+
+                    });
                 }
             });
         }

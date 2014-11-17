@@ -11,6 +11,7 @@ class TagRepository extends EntityRepository
                 ->select("t")
                 ->where("t.name LIKE :name")
                 ->setParameter("name", "%".$criteria."%")
+                ->orderBy("t.name", "ASC")
                 ->getQuery();
         return $q->getResult();
     }

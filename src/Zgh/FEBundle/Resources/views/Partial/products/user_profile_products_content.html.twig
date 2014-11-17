@@ -1,49 +1,60 @@
 {% if products | length > 0 %}
-{% for product in products %}
-    <div class="product-G col-md-3 col-xs-6 col-xxs-12 col-sm-6">
-        <div class="thumbnail clearfix">
+    {% for product in products %}
+        <div class="product-G col-md-3 col-xs-6 col-xxs-12 col-sm-6">
+            <div class="thumbnail clearfix">
 
-            <div class="textImageContainer photoThumb">
-                <div class="thumbOverlay img-responsive">
-                    <div class="thumbOverlay">
-                        <a rel="Product" data-fancybox-href="{{ url("zgh_fe.products.get_parent_content_widget", {"id": product.user.id, "product_id": product.id}) }}" href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}" class="{{ app.user and product.user.id == app.user.id ? "openProduct" : "" }}  fancybox  fancybox.ajax"><span class="glyphicon glyphicon-eye-open"></span></a>
-                         {% if app.user and app.user.id == product.user.id %}
-                          <a class="editProduct" target="_blank" href="{{ url("zgh_fe.products.get_edit", {"id": app.user.id, "product_id": product.id}) }}"><span class="glyphicon glyphicon-edit"></span></a>
-                        {% endif %}
+                <div class="textImageContainer photoThumb">
+                    <div class="thumbOverlay img-responsive">
+                        <div class="thumbOverlay">
+                            <a rel="Product"
+                               data-fancybox-href="{{ url("zgh_fe.products.get_parent_content_widget", {"id": product.user.id, "product_id": product.id}) }}"
+                               href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}"
+                               class="{{ app.user and product.user.id == app.user.id ? "openProduct" : "" }}  fancybox  fancybox.ajax"><span
+                                        class="glyphicon glyphicon-eye-open"></span></a>
+                            {% if app.user and app.user.id == product.user.id %}
+                                <a class="editProduct" target="_blank"
+                                   href="{{ url("zgh_fe.products.get_edit", {"id": app.user.id, "product_id": product.id}) }}"><span
+                                            class="glyphicon glyphicon-edit"></span></a>
+                            {% endif %}
+                        </div>
                     </div>
+                    <img class="img-responsive"
+                         src="{{ product.getWebPath() ? asset(product.getWebPath()) : asset("bundles/zghfe/img/avatar_Product.jpg") }}">
                 </div>
-                <img class="img-responsive" src="{{ product.getWebPath() ? asset(product.getWebPath()) : asset("bundles/zghfe/img/avatar_Product.jpg") }}">
-            </div>
 
-            <div class="productContent">
-                <a href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}"><h4>{{ product.name }}</h4></a>
-                <p><a href="{{ url("zgh_fe.user_profile.index", {"id": product.user.id}) }}">{{ product.user.fullname }}</a></p>
-                <h6>{% for tag in product.tags %}
-                        {{ tag.name }}
-                        {% if loop.index < product.tags|length %} - {% endif %}
-                    {% endfor %}</h6>
-                <span class="date">{{ product.createdAt|date("d M Y - h:i A") }}</span>
-                {% if product.price %}
-                    <span class="price">Price:<span> {{ product.price }} EGP</span></span>
-                {% endif %}
+                <div class="productContent">
+                    <a href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}">
+                        <h4>{{ product.name|length > 12 ? product.name|slice(0, 12) ~ "..." : product.name }}</h4></a>
 
-                <p class="description">
-                    {{ product.description|nl2br }}
-                </p>
+                    <p>
+                        <a href="{{ url("zgh_fe.user_profile.index", {"id": product.user.id}) }}">{{ product.user.fullname }}</a>
+                    </p>
+                    <h6>{% for tag in product.tags %}
+                            {{ tag.name }}
+                            {% if loop.index < product.tags|length %} - {% endif %}
+                        {% endfor %}</h6>
+                    <span class="date">{{ product.createdAt|date("d M Y - h:i A") }}</span>
+                    {% if product.price %}
+                        <span class="price">Price:<span> {{ product.price }} EGP</span></span>
+                    {% endif %}
 
-                <div class="voting">
-                    <p>Decorama egypt</p>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <p class="description">
+                        {{ product.description|nl2br }}
+                    </p>
+
+                    <div class="voting">
+                        <p>Decorama egypt</p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-{% endfor %}
+    {% endfor %}
 {% else %}
     {% if search is defined and search == true %}
         <p>No results found.</p>

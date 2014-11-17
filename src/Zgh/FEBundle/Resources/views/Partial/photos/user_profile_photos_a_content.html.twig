@@ -9,7 +9,7 @@
                 </a>
 
                     <div class="caption">
-                        <h4>{{ album.name }} <span class="badge pull-right">{{ album.photos|length }}</span></h4>
+                        <h4>{{ album.name|length > 12 ? album.name|slice(0, 12) ~ "..." : album.name }}<span class="badge pull-right">{{ album.photos|length }}</span></h4>
 
                         <p class="date">{{ album.createdAt|date("d M Y - h:i A") }}</p>
                     </div>

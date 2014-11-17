@@ -66,7 +66,7 @@
                 <a class="pull-left fancyboxArrow fancybox {{ "ROLE_CUSTOMER" in user.roles ? "img-circle" : "img-rounded" }} "
                    rel="profile" href="#profile_pic_popup">
                     <img alt=""
-                         src="{{ user.profilePhoto ?  asset(user.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : "#") }}"
+                         src="{{ user.profilePhoto ?  user.profilePhoto.getWebPath | imagine_filter("pp_thumb") : ("ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : "#") }}"
                          class="media-object">
                 </a>
 
@@ -169,7 +169,7 @@
 
                         <a href="#" data-id="wishlist_btn" data-target_url="{{ url("zgh_fe.user_profile.wishlist_partial", {'id': user.id}) }}"
                            type="button"
-                           class="tab btn btn-primary {{ "wishlist" in current_route ? "active" : "" }}">Wishlist</a>
+                           class="tab btn btn-primary {{ "wishlist" in current_route ? "active" : "" }}">Wishlists</a>
 
                         <a href="#" data-id="photos_btn" data-target_url="{{ url("zgh_fe.user_profile.photos_partial", {'id': user.id}) }}"
                            type="button"

@@ -62,7 +62,7 @@
                                                     class="glyphicon glyphicon-edit"></i> Edit</a>
                                     {% endif %}
                                 </div>
-                                <h2 class="col-md-10">{{ experience.title }}</h2>
+                                <h2 class="col-md-10">{{ experience.title|length > 50 ? experience.title|slice(0, 50) ~ "..." : experience.title }}</h2>
 
                                 <div class="clearfix"></div>
                                 <p class="by col-md-12">Categories:

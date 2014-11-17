@@ -34,14 +34,14 @@
         </div>
 
 
-        <p class="col-md-4">
-            <span>
-              {% for tag in product.tags %}
-                  {{ tag.name }}
-                  {% if loop.index < product.tags|length %} - {% endif %}
-              {% endfor %}
-            </span>
-        </p>
+        {#<p class="col-md-4">#}
+            {#<span>#}
+              {#{% for tag in product.tags %}#}
+                  {#{{ tag.name }}#}
+                  {#{% if loop.index < product.tags|length %} - {% endif %}#}
+              {#{% endfor %}#}
+            {#</span>#}
+        {#</p>#}
 
         <div class="icons-G {{ toggles["is_popup"] ? "" : "iconsG" }}">
 

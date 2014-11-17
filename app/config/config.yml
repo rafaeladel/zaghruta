@@ -156,10 +156,11 @@ liip_imagine:
             quality: 100
             filters:
                 relative_resize: { heighten: 350 }
-#                thumbnail: { size: [200, 200], mode: outbound }
-
         my_list_thumb:
             quality: 100
             filters:
                 thumbnail: { size: [279, 155], mode: outbound }
-
+        pp_thumb:
+            quality: 100
+            filters:
+                thumbnail: { size: [125, 125], mode: outbound }

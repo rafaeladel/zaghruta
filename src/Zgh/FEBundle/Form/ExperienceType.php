@@ -21,7 +21,8 @@ class ExperienceType extends AbstractType
                     "query_builder" => function(EntityRepository $r) {
                         return $r->createQueryBuilder("c")
                             ->where("c.parent_category is NULL")
-                            ->andWhere("c.is_hidden = false");
+                            ->andWhere("c.is_hidden = false")
+                            ->orderBy("c.name", "ASC");
                     },
                     "property" => "name",
                     'label' => 'Categories',

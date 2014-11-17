@@ -12,6 +12,10 @@
         <default key="_controller">ZghFEBundle:Wishlist:getWishlistPartialContent</default>
     </route>
 
+    <route id="zgh_fe.wishlist.list" pattern="/{id}/wishlists/list">
+        <default key="_controller">ZghFEBundle:Wishlist:getWishlistList</default>
+    </route>
+
     <route id="zgh_fe.wishlist.delete" pattern="/{id}/wishlist/{wishlist_id}/delete">
         <default key="_controller">ZghFEBundle:Wishlist:delete</default>
     </route>

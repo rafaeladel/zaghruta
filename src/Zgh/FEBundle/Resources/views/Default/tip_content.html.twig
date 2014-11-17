@@ -50,7 +50,7 @@
                                 {% endif %}
                             </div>
                             {% endif %}
-                            <h2 class="col-md-10">{{ tip.title }}</h2>
+                            <h2 class="col-md-10">{{ tip.title|length > 50 ? tip.title|slice(0, 50) ~ "..." : tip.title }}</h2>
                             <div class="clearfix"></div>
                             <p class="by col-md-12">Categories:
                                 {% for category in tip.categories %}

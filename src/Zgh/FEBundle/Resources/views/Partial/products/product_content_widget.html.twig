@@ -43,7 +43,7 @@
                             <!-- /.modal-dialog -->
                         </div>
                     {% endif %}
-                    <h2 class="col-md-9 product_name">{{ product.name }}</h2>
+                    <h2 class="col-md-9 product_name">{{ product.name|length > 50 ? product.name|slice(0, 50) ~ "..." : product.name }}</h2>
                 </div>
             </div>
         </div>

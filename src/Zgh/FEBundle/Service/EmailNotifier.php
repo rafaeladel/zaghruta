@@ -66,9 +66,31 @@ class EmailNotifier
     {
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
-        $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $this->notification->getContent()["obj_id"]], true);
-        $title = "{$this->notification->getContent()["user"]} has commented on your post.";
-        $body = "{$this->notification->getContent()["user"]} has commented on your post - {$url}";
+        switch($notification->getContent()["obj_type"]){
+            case(0):
+                $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $this->notification->getContent()["obj_id"]], true);
+                $entity_name = "post";
+                break;
+            case(1):
+                $url = $this->router->generate("zgh_fe.photos.photo.content", ["id" => $user->getId(), "photo_id", $this->notification->getContent()["obj_id"]], true);
+                $entity_name = "photo";
+                break;
+            case(2):
+                $url = $this->router->generate("zgh_fe.experience.content", ["id" => $user->getId(), "exp_id" => $this->notification->getContent()["obj_id"]], true);
+                $entity_name = "experience";
+                break;
+            case(3):
+                $url = $this->router->generate("zgh_fe.tip.content", ["id" => $user->getId(), "tip_id" => $this->notification->getContent()["obj_id"]], true);
+                $entity_name = "tip";
+                break;
+            case(4):
+                $url = $this->router->generate("zgh_fe.products.content", ["id" => $user->getId(), "product_id" => $this->notification->getContent()["obj_id"]], true);
+                $entity_name = "product";
+                break;
+        }
+
+        $title = "{$this->notification->getContent()["user"]} has commented on your {$entity_name}.";
+        $body = "{$this->notification->getContent()["user"]} has commented on your {$entity_name} - {$url}";
         $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body, "user" => $user ]);
         $this->send($title, $user->getEmail(), $template);
     }
@@ -77,9 +99,31 @@ class EmailNotifier
     {
         $user = $event->getUserToNotify();
         $notification = $event->getNotification();
-        $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $this->notification->getContent()["obj_id"]], true);
-        $title = "{$this->notification->getContent()["user"]} has liked your post";
-        $body = "{$this->notification->getContent()["user"]} has liked your post - {$url}";
+        switch($notification->getContent()["obj_type"]){
+            case(0):
+                $url = $this->router->generate("zgh_fe.post.display", ["id" => $user->getId(), "post_id" => $this->notification->getContent()["obj_id"]], true);
+                $entity_name = "post";
+                break;
+            case(1):
+                $url = $this->router->generate("zgh_fe.photos.photo.content", ["id" => $user->getId(), "photo_id", $this->notification->getContent()["obj_id"]], true);
+                $entity_name = "photo";
+                break;
+            case(2):
+                $url = $this->router->generate("zgh_fe.experience.content", ["id" => $user->getId(), "exp_id" => $this->notification->getContent()["obj_id"]], true);
+                $entity_name = "experience";
+                break;
+            case(3):
+                $url = $this->router->generate("zgh_fe.tip.content", ["id" => $user->getId(), "tip_id" => $this->notification->getContent()["obj_id"]], true);
+                $entity_name = "tip";
+                break;
+            case(4):
+                $url = $this->router->generate("zgh_fe.products.content", ["id" => $user->getId(), "product_id" => $this->notification->getContent()["obj_id"]], true);
+                $entity_name = "product";
+                break;
+        }
+
+        $title = "{$this->notification->getContent()["user"]} has liked your {$entity_name}";
+        $body = "{$this->notification->getContent()["user"]} has liked your {$entity_name} - {$url}";
         $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body, "user" => $user ]);
         $this->send($title, $user->getEmail(), $template);
     }

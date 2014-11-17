@@ -12,7 +12,7 @@
            href="{{ url("zgh_fe.experiences.get_edit", {"id": experience.user.id, "exp_id": experience.id}) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
 
     </div>
-    <h2 class="col-md-4">{{ experience.title }}</h2>
+    <h2 class="col-md-4">{{ experience.title|length > 65 ? experience.title|slice(0, 65) ~ "..." : experience.title }}</h2>
     <div class="clearfix"></div>
 
     <span class="col-md-12 date-time">{{ experience.createdAt|date("d M Y - h:i A") }}</span>

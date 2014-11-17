@@ -22,7 +22,10 @@ $(document).ready(function () {
                 required: "Password is required",
                 pattern: "Should not contain spaces"
             },
-            "fos_user_change_password_form[plainPassword][second]": "Confirm password is required"
+            "fos_user_change_password_form[plainPassword][second]": {
+                required: "Confirm password is required",
+                equalTo: "The password and confirm password don't match"
+            }
         },
         submitHandler: function(form){
             var url = $(form).attr("action");
@@ -95,7 +98,7 @@ $(document).ready(function () {
                url: url,
                data: $(form).serialize(),
                success: function(data) {
-                   $(form).closest(".msg_wrapper").find("div").hide();
+                   $(form).find(".msg_wrapper div").hide();
                    if(data.success) {
                        $(form).find(".result_wrapper").show().find("span").text(data.message);
                    } else {

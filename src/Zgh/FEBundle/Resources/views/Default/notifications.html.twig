@@ -19,7 +19,11 @@
                         </thead>
                         <tbody>
                         {% if notifications|length == 0 %}
-                            <p>No new notifications.</p>
+                            <tr>
+                                <td>
+                                    <p>No new notifications.</p>
+                                </td>
+                            </tr>
                         {% else %}
                             {% for notification in notifications %}
                                 {% if notification.type == 'notify.like' %}
@@ -30,7 +34,7 @@
                                                 <img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/>
                                             </a>
                                         </td>
-                                        <td>{{ notification.content.user }} Liked your
+                                        <td><a href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id }) }}">{{ notification.content.user }}</a> Liked your
                                             {% if notification.content.obj_type == 0 %}
                                                 <a href="{{ url("zgh_fe.post.display", {"id": notification.user.id, "post_id": notification.content.obj_id }) }}">
                                                     post</a>
@@ -57,7 +61,7 @@
                                                                 href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img
                                                         src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
                                         </td>
-                                        <td>{{ notification.content.user }} Commented on your
+                                        <td><a href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id }) }}">{{ notification.content.user }}</a> Commented on your
                                             {% if notification.content.obj_type == 0 %}
                                                 <a href="{{ url("zgh_fe.post.display", {"id": notification.user.id, "post_id": notification.content.obj_id }) }}">
                                                     post</a>
@@ -84,7 +88,7 @@
                                                                 href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img
                                                         src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
                                         </td>
-                                        <td>{{ notification.content.user }} Commented
+                                        <td><a href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id }) }}">{{ notification.content.user }}</a> Commented
                                             on {{ notification.content.user_gender }}
                                             {% if notification.content.obj_type == 0 %}
                                                 <a href="{{ url("zgh_fe.post.display", {"id": notification.content.user_id, "post_id": notification.content.obj_id }) }}">

@@ -25,6 +25,13 @@ class WishlistController extends Controller
             ));
     }
 
+    public function getWishlistListAction(User $user) {
+        return $this->render("@ZghFE/Partial/wishlists/user_profile_wishlist_list.html.twig", array(
+            "user" => $user,
+            "wishlists" => $user->getWishlists()
+        ));
+    }
+
     /**
      * @ParamConverter("wishlist", class="ZghFEBundle:Wishlist", options={"id" = "wishlist_id"})
      */

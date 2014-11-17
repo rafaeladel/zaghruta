@@ -47,9 +47,9 @@ class SettingsController extends Controller
         {
             $email_exists = $this->getDoctrine()->getRepository("ZghFEBundle:User")->findOneBy(["email" => $user->getNewEmail()]);
             if($email_exists){
-                $msg = "Email {$user->getNewEmail()} already selected by some user.";
+                $msg = "This Email is already registered by another user.";
                 if($email_exists->getId() == $user->getId()) {
-                    $msg = "You've already registered with this email.";
+                    $msg = "You are already registered with this Email.";
                 }
                 $this->get("session")->getFlashBag()->add("email_error", $msg);
                 return new JsonResponse([
@@ -71,13 +71,9 @@ class SettingsController extends Controller
         else
         {
             return new JsonResponse([
-                "success" => true,
-                "message" => "Invalid current password."
+                "success" => false,
+                "message" => "Invalid password."
             ]);
-//            return $this->render("@ZghFE/Default/settings.html.twig", array(
-//                "user" => $user,
-//                "email_form" => $email_form->createView()
-//            ));
         }
     }
 
