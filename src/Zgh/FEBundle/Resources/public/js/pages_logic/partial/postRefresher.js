@@ -4,7 +4,7 @@ function postRefresh()
     var target = $("body").find('.comments_wrapper');
 
 // create an observer instance
-    var observer = new MutationObserver(function(mutations) {
+    var observer = new JsMutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             var comments_count = $(mutation.target).find(".postComment").length;
             $(mutation.target).closest(".post, .photo, .experience, .tip, .product").find(".comments_count").text(comments_count);

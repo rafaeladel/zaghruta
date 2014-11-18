@@ -6,6 +6,7 @@
 
 
     <parameters>
+        <parameter key="security.exception_listener.class">Zgh\FEBundle\Security\Firewall\ExceptionListener</parameter>
         <parameter key="zgh_fe.registration.form.type.class">Zgh\FEBundle\Form\RegistrationType</parameter>
         <parameter key="zgh_fe.login_handler_success.class">Zgh\FEBundle\EventListener\LoginSuccessHandler</parameter>
         <parameter key="zgh_fe.login_handler_failure.class">Zgh\FEBundle\EventListener\LoginFailureHandler</parameter>

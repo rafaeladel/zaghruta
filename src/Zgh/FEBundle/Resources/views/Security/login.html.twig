@@ -2,7 +2,6 @@
     {% trans_default_domain 'FOSUserBundle' %}
 {% block title %}Log In | Zaghruta{% endblock title %}
 {% block body %}
-
     <div id="fb-root"></div>
     <script>
         window.fbAsyncInit = function () {
@@ -34,6 +33,8 @@
                     FB.login(function (response) {
                         if (response.authResponse) {
                             document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                            {#document.location = "{{ url("zgh_fe.wall.index") }}";#}
+                            {#console.log("{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}");#}
                         } else {
                             alert('Cancelled.');
                         }
@@ -48,7 +49,10 @@
                             message: "Take a look at Zaghruta."
                         }, function(response) {
                             if (login_response.authResponse) {
-                                document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                                {#document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";#}
+                                {#document.location = "{{ url("zgh_fe.wall.index") }}";#}
+                                console.log("{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}");
+
                             }
                         });
                         }

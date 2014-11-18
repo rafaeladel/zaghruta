@@ -21,7 +21,6 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
-                default_target_path: /user
                 success_handler: zgh_fe.login_handler_success
             logout:       true
             anonymous:    true
@@ -37,13 +36,12 @@ security:
                 failure_path:      /login
                 oauth_user_provider:
                     service: zgh_user_provider
-                default_target_path: /
 
     access_control:
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY}
-        - { path: ^/search, role: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/search, role: ROLE_CUSTOMER }
         - { path: ^/[0-9]+, role: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/send_activation, role: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: /activate_email/, role: IS_AUTHENTICATED_ANONYMOUSLY}
