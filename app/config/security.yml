@@ -41,7 +41,7 @@ security:
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY}
-        - { path: ^/search, role: ROLE_CUSTOMER }
+        - { path: ^/search, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/[0-9]+, role: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/send_activation, role: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: /activate_email/, role: IS_AUTHENTICATED_ANONYMOUSLY}
