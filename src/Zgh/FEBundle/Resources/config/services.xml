@@ -46,6 +46,7 @@
 
         <service id="zgh_fe.login_handler_success" class="%zgh_fe.login_handler_success.class%">
             <argument type="service" id="router"/>
+            <argument type="service" id="session"/>
         </service>
 
         <service id="zgh_fe.login_handler_failure" class="%zgh_fe.login_handler_failure.class%">
