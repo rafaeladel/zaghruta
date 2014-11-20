@@ -83,7 +83,7 @@ fos_user:
             from_email:
                 address:        noreply@zaghruta.com
                 sender_name:    Registration confirmation
-            enabled: false
+            enabled: true
         form:
             type: zgh_fe_registration_form_type
             validation_groups: ["customRegistration", "Default"]

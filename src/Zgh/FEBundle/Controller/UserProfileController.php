@@ -32,7 +32,6 @@ class UserProfileController extends Controller
 {
     public function indexAction(Request $request, User $user)
     {
-
         $post_form = $this->createForm(new PostType(), new Post());
         return $this->render('ZghFEBundle:Default:user_index.html.twig', array(
             "user" => $user,
