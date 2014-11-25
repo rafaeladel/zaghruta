@@ -23,7 +23,8 @@
                             <!--End panel Heading-->
                             <div id="collapseOne" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                    <div class="radio">
+                                    <div class="radio radio-privacy">
+                                        <p>Any logged in user can view your profile</p>
                                         <label>
                                             <input class="privacyToggle" type="radio" name="privacySetting"
                                                    id="optionsRadios1"
@@ -31,8 +32,10 @@
                                                    value="0" {{ not app.user.isPrivate ? "checked" : "" }}>
                                             Public
                                         </label>
+
                                     </div>
-                                    <div class="radio">
+                                    <div class="radio radio-privacy">
+                                        <P>No one can view your profile except your followers</P>
                                         <label>
                                             <input class="privacyToggle" type="radio" name="privacySetting"
                                                    id="optionsRadios2"

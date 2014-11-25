@@ -421,6 +421,10 @@ a.boy {
 .postComment:last-child{
     border-bottom: none;
 }
+.tipExp .postComment:first-child{
+     border-top: 1px solid #ccc;
+     padding-top: 5px;
+}
 
 .containerImg{
    height: auto;
@@ -450,6 +454,9 @@ a.boy {
     overflow: hidden;
     width: 100%;
     margin-bottom: 10px;
+}
+.content-post.postContent p{
+    word-wrap: break-word;
 }
 #vendPosts .content-post, #wall .postContent{
     width: 100% !important;
@@ -764,7 +771,7 @@ footer .container {
     background: none;
     position: relative;
     padding: 0;
-    cursor: none;   
+      
 }
 .product-G .thumbnail h6{
     color:#000000;
@@ -789,6 +796,26 @@ footer .container {
 .GridView .product-G .thumbnail .caption {
     background: none;
     padding: 0;
+}
+.captionInput input{
+   background: none;
+    color: #fff;
+    border: 1px solid #fff;
+    width: 100%;
+    height: 34px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+.edit_caption{
+  margin-left: 10px;
+}
+.captionInput a, .edit_caption{
+    font-size: 14px;
+    text-decoration: underline;;
+}
+.captionInput a:first-of-type{
+    margin-right: 10px;
 }
 .experience .thumbnail .caption h4{
     height: auto;
@@ -861,10 +888,12 @@ footer .container {
     color: #111;
     margin: 10px 0 10px 0 !important;
 }
-.profile .boy{
+.profile .boy, .profile .girl{
     margin-top: 10px;
     float:left;
+    height: 0 !important;
 }
+
 
 .profile h3 a {
     text-decoration: none;
@@ -892,8 +921,8 @@ div.profile{
 
 .profile-pic-boy {
     border: 5px solid #8fd2c8;
-    margin-bottom: 5px;
-}
+/*    margin-bottom: 5px;
+*/}
 
 .UesrOrvendor {
     width: 384px;
@@ -1154,7 +1183,7 @@ div.profile{
     background: #9dd8cf;
     text-align: center;
     color: #fff;
-    line-height: 24px;
+    line-height: 24px !important;
 }
 .iconStatus {
    vertical-align: middle;
@@ -2629,7 +2658,8 @@ border-top: none;
 }
 .popupPost .content-post p {
   color: #000 !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
+
 }
 .fancybox-inner .content-post p{
     color: #fff !important;
@@ -2747,10 +2777,17 @@ border-top: none;
 .deteilsPhoto, .deteilsProduct{
    position: absolute;
    bottom: 0;
-   height: 42px;
+   min-height: 42px;
+   max-height: 55px;
+   overflow: hidden;
    background: rgba(000, 000, 000, 0.5);
    width: 100% !important;
    padding: 12px;
+}
+.deteilsPhoto, .deteilsProduct .nameAlbum, .deteilsProduct .product_name{
+    width: 90%;
+    height: 36px;
+     overflow: hidden;
 }
 .PopupPhotoContent .deteilsPhoto{
     width: 100% !important;
@@ -3268,7 +3305,7 @@ padding: 0;
 }
 
 .comment_content, .post_content {
-    height: 70px !important;
+    height: 78px !important;
     overflow: hidden !important;
 
 }
@@ -3348,6 +3385,7 @@ padding: 0;
 }
 .allFriends .profile .boy {
  height: auto !important;
+
 }
 .logoRetina img{
 width: 201px;
@@ -3487,4 +3525,115 @@ margin: 5px 0;
     .fancybox-inner{
         width: 100%;
     }
+}
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot?rwfypr');
+    src:url('../fonts/icomoon.eot?#iefixrwfypr') format('embedded-opentype'),
+        url('../fonts/icomoon.woff?rwfypr') format('woff'),
+        url('../fonts/icomoon.ttf?rwfypr') format('truetype'),
+        url('../fonts/icomoon.svg?rwfypr#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dad:before {
+    content: "\e604";
+}
+.icon-fiance:before {
+    content: "\e60e";
+}
+.icon-Fiance:before {
+    content: "\e60f";
+}
+.icon-honor:before {
+    content: "\e610";
+}
+.icon-husband:before {
+    content: "\e611";
+}
+.icon-interests:before {
+    content: "\e612";
+}
+.icon-maids:before {
+    content: "\e613";
+}
+.icon-man:before {
+    content: "\e614";
+}
+.icon-men:before {
+    content: "\e615";
+}
+.icon-mom:before {
+    content: "\e616";
+}
+.icon-Sister:before {
+    content: "\e617";
+}
+.icon-Wife:before {
+    content: "\e618";
+}
+.icon-florists:before {
+    content: "\e619";
+}
+.icon-Health:before {
+    content: "\e600";
+}
+.icon-cakeCatering:before {
+    content: "\e601";
+}
+.icon-entertainment:before {
+    content: "\e602";
+}
+.icon-fashion:before {
+    content: "\e603";
+}
+.icon-furniture:before {
+    content: "\e605";
+}
+.icon-homeAppliances:before {
+    content: "\e606";
+}
+.icon-honeymoons:before {
+    content: "\e607";
+}
+.icon-hotelsVenues:before {
+    content: "\e608";
+}
+.icon-jewlery:before {
+    content: "\e609";
+}
+.icon-limousines:before {
+    content: "\e60a";
+}
+.icon-photography:before {
+    content: "\e60b";
+}
+.icon-realEstate:before {
+    content: "\e60c";
+}
+.icon-weddingPlanners:before {
+    content: "\e60d";
+}
+.radio-privacy{
+    border-bottom:1px solid #ccc; 
+    padding-bottom:20px;
+}
+.radio-privacy p{
+    font-weight: bold;
+    margin-left: -20px;
 }

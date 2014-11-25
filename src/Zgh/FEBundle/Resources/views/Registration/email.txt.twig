@@ -21,6 +21,9 @@
         .content-one {
             padding-top: 30px !important;
         }
+        .link a{
+           color: #61c5b6 !important;
+        }
     </style>
 </head>
 
@@ -61,10 +64,10 @@
         {% endautoescape %}
         <tr>
             <td align="left"
-                style="color:#6e6e6e; font-size:14px; padding-top:20px; font-family:Arial, Helvetica, sans-serif; line-height: 23px;">
+                style="color:#6e6e6e; font-size:14px; padding-top:5px; font-family:Arial, Helvetica, sans-serif; line-height: 23px;">
                 <strong>Button not working?</strong> Try pasting this link into your browser:
 
-                {{ confirmationUrl }}
+                <div class="link">{{ confirmationUrl }}<div>
             </td>
         </tr>
         <tr>
