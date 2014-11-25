@@ -24,7 +24,7 @@
                         <a class="pull-left {{ "ROLE_VENDOR" in roles ? "img-rounded" : (gender == 0 ? "profile-pic-boy img-circle" : "profile-pic-girl img-circle") }}"
                            href="{{ url("zgh_fe.user_profile.index", {"id": followee.follower.id }) }}">
                             <img class="media-object"
-                                 src="{{ "ROLE_FACEBOOK" in roles ? 'https://graph.facebook.com/'~followee.follower.facebookId~'/picture?width=125&height=125' : asset(followee.follower.profilePhoto.getThumbWebPath) }}"
+                                 src="{{ followee.follower.profilePhoto ?  followee.follower.profilePhoto.getWebPath | imagine_filter("pp_thumb") : ("ROLE_FACEBOOK" in followee.follower.roles ? 'https://graph.facebook.com/'~followee.follower.facebookId~'/picture?width=125&height=125' : "#") }}"
                                  alt="">
                         </a>
 
@@ -49,7 +49,7 @@
                         <a class="pull-left {{ "ROLE_VENDOR" in roles ? "img-rounded" : (gender == 0 ? "profile-pic-boy img-circle" : "profile-pic-girl img-circle") }}"
                            href="{{ url("zgh_fe.user_profile.index", {"id": follower.followee.id }) }}">
                             <img class="media-object"
-                                 src="{{ "ROLE_FACEBOOK" in roles ? 'https://graph.facebook.com/'~follower.followee.facebookId~'/picture?width=125&height=125' : asset(follower.followee.profilePhoto.getThumbWebPath) }}"
+                                 src="{{ "ROLE_FACEBOOK" in roes ? 'https://graph.facebook.com/'~follower.followee.facebookId~'/picture?width=125&height=125' : asset(follower.followee.profilePhoto.getThumbWebPath) }}"
                                  alt="">
                         </a>
 
