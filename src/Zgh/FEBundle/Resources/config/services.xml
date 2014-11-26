@@ -56,6 +56,7 @@
             <tag name="kernel.event_subscriber"/>
             <argument type="service" id="fos_user.user_manager"/>
             <argument type="service" id="kernel"/>
+            <argument type="service" id="router"/>
         </service>
 
         <service id="zgh_fe.notification_subscriber" class="%zgh_fe.notification_subscriber.class%">

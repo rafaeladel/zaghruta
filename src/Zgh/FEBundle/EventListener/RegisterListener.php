@@ -11,8 +11,10 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Routing\RouterInterface;
 use Zgh\FEBundle\Entity\UserCP;
 use Zgh\FEBundle\Entity\UserInfo;
 use Zgh\FEBundle\Entity\UserPP;
@@ -23,17 +25,20 @@ class RegisterListener implements EventSubscriberInterface
 {
     protected $manager;
     protected $kernel;
-    public function __construct(UserManagerInterface $managerInterface, Kernel $kernel)
+    protected $router;
+
+    public function __construct(UserManagerInterface $managerInterface, Kernel $kernel, RouterInterface $routerInterface)
     {
         $this->manager = $managerInterface;
         $this->kernel = $kernel;
+        $this->router = $routerInterface;
     }
 
     public static function getSubscribedEvents()
     {
         return(array(
            FOSUserEvents::REGISTRATION_INITIALIZE => "onRegistrationInitialize",
-           FOSUserEvents::REGISTRATION_COMPLETED => "onRegistrationCompleted"
+           FOSUserEvents::REGISTRATION_CONFIRMED => "onRegistrationConfirmed"
         ));
     }
 
@@ -50,7 +55,7 @@ class RegisterListener implements EventSubscriberInterface
         }
     }
 
-    public function onRegistrationCompleted(FilterUserResponseEvent $event)
+    public function onRegistrationConfirmed(FilterUserResponseEvent $event)
     {
         $user = $event->getUser();
         $roles = $user->getRoles();
@@ -80,6 +85,8 @@ class RegisterListener implements EventSubscriberInterface
         $user->setCoverPhoto($cp);
 
         $this->manager->updateUser($user);
+
+        return new RedirectResponse($this->router->generate("zgh_fe.user_profile.index", ["user" => $user->getId()]));
     }
 
 

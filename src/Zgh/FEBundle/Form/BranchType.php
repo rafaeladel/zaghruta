@@ -49,11 +49,11 @@ class BranchType extends AbstractType
                     ],
                     "required" => false
                 ])
-            ->add("phone", "number", [
+            ->add("phone", "text", [
                 "required" => false,
                 "invalid_message" => "Only Numbers Allowed"
             ])
-            ->add("mobile", "number", [
+            ->add("mobile", "text", [
                 "required" => false,
                 "invalid_message" => "Only Numbers Allowed"
             ])

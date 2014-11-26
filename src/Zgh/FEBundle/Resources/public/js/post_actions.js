@@ -10,17 +10,20 @@ $(document).ready(function(){
         var form = btn.closest("form");
         var count_wrapper = btn.closest(".post, .photo, .experience, .tip, .product").find(".likes_count");
         var old_count = count_wrapper.text();
-        if(btn.find("span").hasClass("liked")){
-//            count_wrapper.text(--old_count);
-//            btn.attr('title', "Like")
-//                .tooltip('fixTitle')
-//                .tooltip('show');
+        if(btn.hasClass("btn-danger")){
+            count_wrapper.text(--old_count);
+            btn.attr('title', "Like")
+                .tooltip('fixTitle')
+                .tooltip('show');
+            btn.removeClass("btn-danger").addClass("likeBtn");
         } else {
-//            count_wrapper.text(++old_count);
-//            btn.attr('title', "Unlike")
-//                .tooltip('fixTitle')
-//                .tooltip('show');
+            count_wrapper.text(++old_count);
+            btn.attr('title', "Unlike")
+                .tooltip('fixTitle')
+                .tooltip('show');
+            btn.addClass("btn-danger").removeClass("likeBtn");
         }
+        btn.removeAttr("disabled");
         $.ajax({
             type: "POST",
             url: $(form).attr("action"),
@@ -31,13 +34,11 @@ $(document).ready(function(){
                     btn.attr('title', "Like")
                         .tooltip('fixTitle')
                         .tooltip('show');
-                    btn.removeAttr("disabled");
                 } else {
                     btn.addClass("btn-danger").removeClass("likeBtn");
                     btn.attr('title', "Unlike")
                         .tooltip('fixTitle')
                         .tooltip('show');
-                    btn.removeAttr("disabled");
                 }
             }
         });
@@ -117,7 +118,8 @@ $(document).ready(function(){
                     .find(".comment_author_pp").attr("src",data.author_pp).end()
                     .find(".comment_author").parent().attr("href", data.author_url).end().end()
                     .find(".comment_time").text(data.time);
-                $(e.target).attr("disabled", "disabled");
+                    $(e.target).attr("disabled", "disabled").siblings("*[name='comment_content']").focus();
+
             }
         });
         $(form).find('[name="comment_content"]').val("");
