@@ -21,6 +21,9 @@
         .content-one {
             padding-top: 30px !important;
         }
+        a{
+            font-family: arial;
+        }
     </style>
 </head>
 
@@ -28,7 +31,11 @@
 {% block body_text %}{% endblock body_text %}
 {% block body_html %}
     <center>
-        <table width="450" cellspacing="0" cellpadding="0" border="0" class="header">
+        <table width="550" style="border:1px solid #ccc; padding-top:20px;" >
+            <tbody>
+                <tr>
+                    <td>
+                         <table width="450" cellspacing="0" cellpadding="0" border="0" class="header">
             <tbody>
             <tr>
                 <td valign="top" align="center">
@@ -37,10 +44,14 @@
             </tr>
             </tbody>
         </table>
-        <table width="450" cellspacing="0" cellpadding="0" border="0" class="content-one container">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                         <table width="450" cellspacing="0" cellpadding="0" border="0" class="content-one container">
             <tbody>
             <tr>
-                <td style="font-size:27px; color:#61c5b6; font-family:Arial, Helvetica, sans-serif; padding-bottom:10px;"
+                <td style="font-size:22px; color:#61c5b6; font-family:Arial, Helvetica, sans-serif; padding-bottom:10px;"
                     align="left">Hi {{ user.fullname }},
                 </td>
             </tr>
@@ -51,9 +62,9 @@
                     {{ notification_body }}
                 </td>
             </tr>
-                <tr>
-                    <td style="width:50%;" align="right"><a style="margin-right:10px; background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px" href="{{ accept_url }}">Accept</a></td>
-                    <td style="width:50%"  align="left"><a style="background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px; margin-right: 80px;" href="{{ deny_url }}">Deny</a></td>
+                <tr style="height: 59px;">
+                    <td style="width:50%;" align="right"><a style="margin-right:10px; background:#61c5b6; width:357px; height:30px; border-radius:10px; color:#fff; padding:20px 30px; text-decoration:none" href="{{ accept_url }}">Accept</a></td>
+                    <td style="width:50%"  align="left"><a style="background:#61c5b6; width:357px; height:30px; border-radius:10px; color:#fff; padding:20px 30px; margin-right: 80px; text-decoration:none" href="{{ deny_url }}">Deny</a></td>
                 </tr>
             {% endautoescape %}
             <tr>
@@ -64,9 +75,12 @@
             <tr>
                 <td colspan="2" align="center" style="padding-top:20px; padding-bottom:20px;">
                     <a href="https://www.facebook.com/zaghruta"><img src="http://zaghruta.com/beta/zaghruta/web/email_icon/icon-facebook.png"/></a>
-                    <a href="https://twitter.com/Zaghruta"><img src="http://zaghruta.com/beta/zaghruta/web/email_icon/icon-twitter.png"/></a>
                 </td>
             </tr>
+            </tbody>
+        </table>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </center>
