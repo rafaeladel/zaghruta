@@ -1,14 +1,19 @@
 <ul class="ProfileList">
-    {% for like in likes %}
-        <li>
-            <a class="pull-left" href="{{ url("zgh_fe.user_profile.index",{"id": like.user.id}) }}">
-                <div class="imgProfileList">
-                    <img alt="" src="{{ "ROLE_FACEBOOK" in like.user.roles ? 'https://graph.facebook.com/'~like.user.facebookId~'/picture?width=125&height=125' : asset(like.user.profilePhoto.getThumbWebPath) }}"/>
-                </div>
+    {% if likes|length > 0 %}
+        {% for like in likes %}
+            <li>
+                <a class="pull-left" href="{{ url("zgh_fe.user_profile.index",{"id": like.user.id}) }}">
+                    <div class="imgProfileList">
+                        <img alt=""
+                             src="{{ "ROLE_FACEBOOK" in like.user.roles ? 'https://graph.facebook.com/'~like.user.facebookId~'/picture?width=125&height=125' : asset(like.user.profilePhoto.getThumbWebPath) }}"/>
+                    </div>
 
-                <span>{{ like.user.fullname }}</span>
-            </a>
-            {{ renderFollow(like.user, "pull-right") }}
-        </li>
-    {% endfor %}
+                    <span>{{ like.user.fullname }}</span>
+                </a>
+                {{ renderFollow(like.user, "pull-right") }}
+            </li>
+        {% endfor %}
+    {% else %}
+        No one has liked this post yet
+    {% endif %}
 </ul>
