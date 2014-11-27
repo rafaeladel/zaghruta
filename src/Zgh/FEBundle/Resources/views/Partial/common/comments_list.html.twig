@@ -34,11 +34,11 @@
 
         <div class="content-post">
 
-            <p class="{{ getNewlineCount(comment.content) > 4 ? "comment_content" : "" }}">
+            <p class="{{ getNewlineCount(comment.content) > 4 or comment.content|length > 300 ? "comment_content" : "" }}">
                 {{ comment.content|nl2br|converturls }}
             </p>
             <br/>
-            {% if getNewlineCount(comment.content) > 4 %}
+            {% if getNewlineCount(comment.content) > 4 or comment.content|length > 300 %}
                 <div class="content_togglers">
                     <a href="#" class="comment_down">See More</a>
                     <a href="#" class="comment_up">See Less</a>
