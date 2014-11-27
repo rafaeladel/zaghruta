@@ -59,6 +59,7 @@ $(document).ready(function () {
         var followers_count = btn.closest(".profile").find(".followerStats");
         var form = btn.closest("form");
         var url = btn.data("url");
+        var state = btn.hasClass("followDone") ? "followed" : "not_followed";
         $.ajax({
             type: "post",
             url: form.attr("action"),

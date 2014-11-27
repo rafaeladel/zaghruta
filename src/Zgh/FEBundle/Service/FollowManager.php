@@ -29,7 +29,7 @@ class FollowManager
         SecurityContextInterface $context,
         FollowCheckExtension $follow_check,
         RouterInterface $router,
-        EventDispatcherInterface $dispatcherInterface
+        AsyncEventDispatcher $dispatcherInterface
     )
     {
         $this->em = $entityManagerInterface;
@@ -66,10 +66,10 @@ class FollowManager
 
             if ($followee->getIsPrivate()) {
                 $notification_event = new NotifyFollowRequestEvent($follow_obj);
-                $this->dispatcher->dispatch(NotifyEvents::NOTIFY_FOLLOW_REQUEST, $notification_event);
+                $this->dispatcher->addAsyncEvent(NotifyEvents::NOTIFY_FOLLOW_REQUEST, $notification_event);
             } else {
                 $follow_event = new NotifyFollowEvent($follow_obj);
-                $this->dispatcher->dispatch(NotifyEvents::NOTIFY_FOLLOW, $follow_event);
+                $this->dispatcher->addAsyncEvent(NotifyEvents::NOTIFY_FOLLOW, $follow_event);
             }
             return new JsonResponse([
                 "msg" => $follow_obj->getIsApproved() ? 'Unfollow' : "Pending",
@@ -80,7 +80,7 @@ class FollowManager
             $this->em->remove($follow_obj);
             $followee = $follow_obj->getFollowee();
             $notification_delete_event = new NotifyDeleteEvent($followee, $follow_obj->getId());
-            $this->dispatcher->dispatch(NotifyEvents::NOTIFY_DELETE, $notification_delete_event);
+            $this->dispatcher->addAsyncEvent(NotifyEvents::NOTIFY_DELETE, $notification_delete_event);
 
             $this->em->flush();
             $followers_count = count($followee->getFollowees());
