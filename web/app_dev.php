@@ -28,13 +28,5 @@ $kernel = new AppKernel('dev', true);
 $kernel->loadClassCache();
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
-
-// --- START EDITS ---
-$size = strlen($response->getContent());
-$response->headers->set('Content-Length', $size);
-$response->headers->set('Connection', 'close');
-// ---- END EDITS ----
-
-
 $response->send();
 $kernel->terminate($request, $response);

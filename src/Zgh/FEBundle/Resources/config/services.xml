@@ -122,7 +122,7 @@
             <argument type="service" id="security.context"/>
             <argument type="service" id="zgh_fe.twig.follow_check"/>
             <argument type="service" id="router"/>
-            <argument type="service" id="async_events.dispatcher"/>
+            <argument type="service" id="event_dispatcher"/>
         </service>
 
         <service id="zgh_user_provider" class="%zgh_user_provider.class%">
