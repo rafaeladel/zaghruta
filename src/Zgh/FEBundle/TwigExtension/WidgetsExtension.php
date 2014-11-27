@@ -56,7 +56,8 @@ class WidgetsExtension extends \Twig_Extension
             new \Twig_SimpleFunction("getRecommendedVendor", [$this, "getRecommendedVendor"]),
             new \Twig_SimpleFunction("getNewVendors", [$this, "getNewVendors"]),
             new \Twig_SimpleFunction("getApprovedFollowings", [$this, "getApprovedFollowings"]),
-            new \Twig_SimpleFunction("getCategoriesButtons", [$this, "getCategoriesButtons"])
+            new \Twig_SimpleFunction("getCategoriesButtons", [$this, "getCategoriesButtons"]),
+            new \Twig_SimpleFunction("getNewlineCount", [$this, "getNewlineCount"])
         ];
     }
 
@@ -257,6 +258,11 @@ class WidgetsExtension extends \Twig_Extension
     {
 //        $categories = $this->em->getRepository("ZghFEBundle:Category")->findAll();
         return $this->env->render("@ZghFE/Partial/common/categories_buttons.html.twig");
+    }
+
+    public function getNewlineCount($text)
+    {
+        return substr_count( $text, "\n" );
     }
 
     public function getName()
