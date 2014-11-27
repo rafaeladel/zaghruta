@@ -86,4 +86,15 @@ $(document).ready(function () {
         'showNavArrows': 'true'
     });
 
+
+    $("body").on("click", ".reset_photo", function(e){
+        e.preventDefault();
+        var wrapper = $(e.currentTarget).closest("form").find(".thumbnailUpload");
+        wrapper.hide();
+        var file_input = $(e.currentTarget).closest("form").find(".photo_btn");
+        file_input.wrap('<form>').closest('form').get(0).reset();
+        file_input.unwrap();
+    });
+
+
 });

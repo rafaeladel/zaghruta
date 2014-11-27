@@ -86,7 +86,6 @@ class RegisterListener implements EventSubscriberInterface
 
         $this->manager->updateUser($user);
 
-        return new RedirectResponse($this->router->generate("zgh_fe.user_profile.index", ["id" => $user->getId()]));
     }
 
 

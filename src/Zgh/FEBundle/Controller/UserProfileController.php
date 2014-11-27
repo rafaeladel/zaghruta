@@ -101,7 +101,7 @@ class UserProfileController extends Controller
             $em->persist($user);
             $em->persist($user_info);
             $em->flush();
-            return $this->redirect($this->generateUrl("zgh_fe.wall.index"));
+            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", ["id" => $user->getId()]));
         }
 
         return $this->render("@ZghFE/Default/customer_intro.html.twig", [

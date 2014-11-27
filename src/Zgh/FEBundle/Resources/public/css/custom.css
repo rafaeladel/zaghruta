@@ -3633,7 +3633,11 @@ margin: 5px 0;
     border-bottom:1px solid #ccc; 
     padding-bottom:20px;
 }
-.radio-privacy p{
+.radio-privacy p {
     font-weight: bold;
     margin-left: -20px;
+}
+
+.moveWishlist {
+    margin-right: 13px;
 }

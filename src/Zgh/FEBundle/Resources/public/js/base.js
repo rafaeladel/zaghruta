@@ -15,6 +15,24 @@ $(document).ready(function () {
         });
     }, 10000);
 
+    $.validator.setDefaults({
+        debug: true,
+        wrapper: "ul",
+        errorElement: "li",
+        errorPlacement: function(label, element) {
+            label.addClass('errors-list-wrapper');
+            label.insertAfter(element);
+        }
+    });
+    $.validator.addMethod(
+        "file_size",
+        function(value, element, size) {
+            var element_size = element.files[0].size/5000000;
+            return element_size < size;
+        },
+        "File is large."
+    );
+
     setTimeout(function () {
         $(window).on("popstate", function (e) {
             e.preventDefault();
@@ -54,19 +72,24 @@ $(document).ready(function () {
         })
     });
 
-//    $(document).on("ajaxSend", function (e) {
-//        var target = $(e.target.activeElement);
-//        if (target.is("input[type='submit']") || target.is("button[type='submit']")) {
-//            target.attr("disabled", "disabled");
-//        }
-//    });
+
+
+    $("body").on("click", ".comment_down, .comment_up, .post_up, .post_down", function(e){
+        e.preventDefault();
+        $(e.target).closest(".content_togglers").siblings(".post_content, .comment_content").toggleClass("show");
+        $(e.target).closest(".content_togglers").find("a").toggle();
+    });
 
     $(document).on("ajaxSuccess", function (e) {
         ThraceForm.select2();
         if ($("body").find(".post").length < 6 ) {
             $("body").find(".load-more").remove();
         }
-
+        postRefresh();
+        photoRefresh();
+        singleUploadProduct();
+        singleUploadExpTip();
+        $(".animated").trigger('autosize.resize');
     });
 
 });

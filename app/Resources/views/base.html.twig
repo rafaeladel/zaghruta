@@ -72,28 +72,6 @@
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $.validator.setDefaults({
-                debug: true,
-                wrapper: "ul",
-                errorElement: "li",
-                errorPlacement: function(label, element) {
-                    label.addClass('errors-list-wrapper');
-                    label.insertAfter(element);
-                }
-            });
-            $.validator.addMethod(
-                    "file_size",
-                    function(value, element, size) {
-                        var element_size = element.files[0].size/5000000;
-                        return element_size < size;
-                    },
-                    "File is large."
-            );
-
-        });
-    </script>
 {% endblock %}
 {% block misc %}{% endblock misc %}
 <script>

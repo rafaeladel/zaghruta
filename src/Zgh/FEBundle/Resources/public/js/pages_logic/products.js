@@ -73,6 +73,14 @@ $(document).ready(function () {
         wrapper.load(url);
     });
 
+    $("body").on("click", ".addWishlist", function(e) {
+        e.preventDefault();
+        var url = $(e.currentTarget).data("url");
+        var wrapper = $(e.currentTarget).siblings("div#addwishlist").find(".form_wrapper");
+        wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+        wrapper.load(url);
+    });
+
     $("body").on("click", ".newWishlistSubmit", function (e) {
         e.preventDefault();
         var form = $(e.target).closest("form");
@@ -96,7 +104,10 @@ $(document).ready(function () {
     $("body").on("click", ".addToWishlistSubmit", function (e) {
         e.preventDefault();
         var form = $(e.target).closest("form");
-
+        if(form.find(":checked").length == 0) {
+            form.find(".wishlist_error").text("Please select at least one wishlist");
+            return;
+        }
         $.ajax({
             type: "post",
             url: form.attr("action"),

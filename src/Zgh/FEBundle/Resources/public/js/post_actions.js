@@ -170,4 +170,6 @@ $(document).ready(function(){
         $(e.target).closest("form").parent().siblings(".comments_wrapper").load(url);
     });
 
+
+
 });
