@@ -3560,3 +3560,6 @@ div#connections .profile .girl, div#connections .profile .boy{
 .moveWishlist {
     margin-right: 13px;
 }
+.fancybox-title .child{
+  display: none !important;
+}
