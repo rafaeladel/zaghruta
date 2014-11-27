@@ -448,8 +448,11 @@ a.boy {
     width: 100%;
     overflow: hidden;
     height: auto;
+    word-wrap: break-word;
 }
-
+td{
+     word-wrap: break-word;
+}
 .postComment .content-post {
     display: block;
     height: auto;
@@ -893,7 +896,7 @@ footer .container {
 .profile .boy, .profile .girl{
     margin-top: 10px;
     float:left;
-    height: 0 !important;
+    height: auto!important;
 }
 
 
@@ -2264,6 +2267,9 @@ footer a {
     background: none !important;
       padding: 1px 15px !important;
 }
+.panel-heading a{
+    display: block;
+}
 
 .panel-default{
      border-color: #8FD2C8 !important;
@@ -3312,7 +3318,7 @@ padding: 0;
 }
 
 .comment_content, .post_content {
-    height: 78px !important;
+    height: 73px !important;
     overflow: hidden !important;
 
 }
@@ -3412,6 +3418,9 @@ float: none;
 display: inline-block;
 width: 33%;
 margin: 5px 0;
+}
+div#connections .profile .girl, div#connections .profile .boy{
+    height: 0;
 }
 
 .result_wrapper, .error_wrapper {
@@ -3542,7 +3551,12 @@ margin: 5px 0;
     font-weight: bold;
     margin-left: -20px;
 }
-
+.tableContent{
+    text-transform: inherit;
+}
+ .btnSetting{
+         position: relative !important;
+    }
 .moveWishlist {
     margin-right: 13px;
 }
