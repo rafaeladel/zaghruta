@@ -28,9 +28,11 @@
 .icon-dad:before {
     content: "\e604";
 }
+/*-----*/
 .icon-fiance:before {
     content: "\e60e";
 }
+/*-----*/
 .icon-Fiance:before {
     content: "\e60f";
 }
@@ -1389,9 +1391,9 @@ footer a {
     background: #ccc;
 }
 .product-G .photoThumb img {
-    
-    height:auto;
-    width: 100%;
+   height: 100%;
+    width: auto;
+    margin: 0 auto;
 }
 
 .fr-suggest a, .fr-suggest a img {
@@ -3024,6 +3026,11 @@ height: 148px;
 display: block;
 overflow: hidden;
 }
+.wishListName{
+    height: 23px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
 
 .wishList a img{
     width: auto !important;
@@ -3526,109 +3533,7 @@ margin: 5px 0;
         width: 100%;
     }
 }
-@font-face {
-    font-family: 'icomoon';
-    src:url('../fonts/icomoon.eot?rwfypr');
-    src:url('../fonts/icomoon.eot?#iefixrwfypr') format('embedded-opentype'),
-        url('../fonts/icomoon.woff?rwfypr') format('woff'),
-        url('../fonts/icomoon.ttf?rwfypr') format('truetype'),
-        url('../fonts/icomoon.svg?rwfypr#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 
-[class^="icon-"], [class*=" icon-"] {
-    font-family: 'icomoon';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-dad:before {
-    content: "\e604";
-}
-.icon-fiance:before {
-    content: "\e60e";
-}
-.icon-Fiance:before {
-    content: "\e60f";
-}
-.icon-honor:before {
-    content: "\e610";
-}
-.icon-husband:before {
-    content: "\e611";
-}
-.icon-interests:before {
-    content: "\e612";
-}
-.icon-maids:before {
-    content: "\e613";
-}
-.icon-man:before {
-    content: "\e614";
-}
-.icon-men:before {
-    content: "\e615";
-}
-.icon-mom:before {
-    content: "\e616";
-}
-.icon-Sister:before {
-    content: "\e617";
-}
-.icon-Wife:before {
-    content: "\e618";
-}
-.icon-florists:before {
-    content: "\e619";
-}
-.icon-Health:before {
-    content: "\e600";
-}
-.icon-cakeCatering:before {
-    content: "\e601";
-}
-.icon-entertainment:before {
-    content: "\e602";
-}
-.icon-fashion:before {
-    content: "\e603";
-}
-.icon-furniture:before {
-    content: "\e605";
-}
-.icon-homeAppliances:before {
-    content: "\e606";
-}
-.icon-honeymoons:before {
-    content: "\e607";
-}
-.icon-hotelsVenues:before {
-    content: "\e608";
-}
-.icon-jewlery:before {
-    content: "\e609";
-}
-.icon-limousines:before {
-    content: "\e60a";
-}
-.icon-photography:before {
-    content: "\e60b";
-}
-.icon-realEstate:before {
-    content: "\e60c";
-}
-.icon-weddingPlanners:before {
-    content: "\e60d";
-}
 .radio-privacy{
     border-bottom:1px solid #ccc; 
     padding-bottom:20px;
