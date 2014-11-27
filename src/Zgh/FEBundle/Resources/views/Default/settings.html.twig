@@ -143,7 +143,7 @@
                                     <input type="password" style="display:none">
 
                                     <div class="form-group formGroup">
-                                        {{ form_label(email_form.new_email, "Email:", {"label_attr": {"class":"col-sm-2 control-label"} }) }}
+                                        {{ form_label(email_form.new_email, "Email", {"label_attr": {"class":"col-sm-2 control-label"} }) }}
                                         <div class="col-sm-4 changeEmail">
                                             {{ form_widget(email_form.new_email, {"attr": {"class": "form-control", "value": user.email} }) }}
                                             {{ form_errors(email_form.new_email) }}
