@@ -1,5 +1,5 @@
 {% form_theme form "@ZghFE/Form/product_wishlist_checkboxes.html.twig" %}
-{{ form_start(form, {"action": post_url, "attr": {"class": "form-horizontal"}  }) }}
+{{ form_start(form, {"action": post_url, "attr": {"class": "form-horizontal addWishlistForm"}  }) }}
 <div class="modal-body">
     <div class="form-group formGroup">
         {#<label class="col-sm-3 control-label">Select Wishlist</label>#}
@@ -13,10 +13,13 @@
 
 </div>
 <div class="modal-footer">
+    <div class="wishlist_error" style="color: red;"></div>
     <a href="#" class="moveWishlist"
        data-url="{{ url("zgh_fe.products.get_wishlist_new", {"id": app.user.id, "product_id": product.id, "product_partial": true}) }}">Add
         to new wishlist</a>
-    <button type="submit" class="btn btn-wide btn-primary addToWishlistSubmit">Save</button>
+    <button type="button" class="btn btn-wide btn-primary cancelWishlistSubmit" data-dismiss="modal"
+            aria-hidden="true">Cancel</button>
+    <button type="submit" class="btn btn-wide btn-primary addToWishlistSubmit" disabled="disabled">Save</button>
 </div>
 {{ form_rest(form) }}
 {{ form_end(form) }}

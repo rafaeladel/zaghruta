@@ -111,44 +111,5 @@
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
-
-
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-
-            $("body").on("click", ".comment_down, .comment_up, .post_up, .post_down", function(e){
-                e.preventDefault();
-                $(e.target).closest(".content_togglers").siblings(".post_content, .comment_content").toggleClass("show");
-                $(e.target).closest(".content_togglers").find("a").toggle();
-            });
-
-//            $("body").on("click", ".newPost", function(e) {
-//                var form = $(e.target).closest("form");
-//                form.submit();
-//                $(e.target).attr("disabled", "disabled");
-//            });
-
-            $("body").on("click", ".reset_photo", function(e){
-                e.preventDefault();
-                var wrapper = $(e.currentTarget).closest("form").find(".thumbnailUpload");
-                wrapper.hide();
-                var file_input = $(e.currentTarget).closest("form").find(".photo_btn");
-                file_input.wrap('<form>').closest('form').get(0).reset();
-                file_input.unwrap();
-            });
-
-
-            $(document).on("ajaxSuccess", function (e) {
-                postRefresh();
-                photoRefresh();
-                singleUploadProduct();
-                singleUploadExpTip();
-                $(".animated").trigger('autosize.resize');
-
-            });
-
-        });
-    </script>
 {% endblock javascripts %}
 {% block misc %}{% endblock %}

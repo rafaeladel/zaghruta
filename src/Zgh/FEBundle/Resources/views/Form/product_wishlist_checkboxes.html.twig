@@ -2,9 +2,24 @@
     <div {{ block('widget_container_attributes') }}>
         {%- for child in form %}
             <div class="col-md-4 wishListName">
-                {{- form_widget(child) -}}
+                {{- form_widget(child, {"attr": {"class": "wishlist_checkbox"} }) -}}
                 {{- form_label(child) -}}
             </div>
         {% endfor -%}
     </div>
 {% endblock choice_widget_expanded %}
+
+{% block form_label -%}
+    {% if label is not sameas(false) -%}
+        {% if not compound -%}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {%- endif %}
+        {% if required -%}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {%- endif %}
+        {% if label is empty -%}
+            {% set label = name|humanize %}
+        {%- endif -%}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain)|length > 11 ? label|trans({}, translation_domain)[:11]~"..." : label|trans({}, translation_domain) }}</label>
+    {%- endif %}
+{%- endblock form_label %}

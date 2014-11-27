@@ -1,4 +1,4 @@
-{% for comment in comments %}
+    {% for comment in comments %}
     <div class="row postComment margin-sm ">
         {% if app.user and (comment.user.id == app.user.id or entity.user.id == app.user.id) %}
             <button data-target="#deleteComment_{{ comment.id }}" data-toggle="modal" type="submit" class="row btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
@@ -34,11 +34,11 @@
 
         <div class="content-post">
 
-            <p class="{{ comment.content|length > 300 ? "comment_content" : "" }}">
+            <p class="{{ getNewlineCount(comment.content) > 4 or comment.content|length > 300 ? "comment_content" : "" }}">
                 {{ comment.content|nl2br|converturls }}
             </p>
             <br/>
-            {% if comment.content|length > 300 %}
+            {% if getNewlineCount(comment.content) > 4 or comment.content|length > 300 %}
                 <div class="content_togglers">
                     <a href="#" class="comment_down">See More</a>
                     <a href="#" class="comment_up">See Less</a>

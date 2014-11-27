@@ -28,7 +28,7 @@
                             <span class="glyphicon glyphicon-chevron-up"></span>
                         </button>
                     </a></p>
-                <p>Zaghruta &copy; 2013 Designed by <a href="#">thesevenlayers</a></p>
+                <p>Zaghruta &copy; {{ "now"|date("Y") }}</p>
             </div>
         </footer>
     {% endblock footer %}
@@ -51,7 +51,7 @@
     "bundles/thraceform/js/select2.js"
     "bundles/zghmsg/js/messages.js"
     "bundles/zghfe/js/pages_logic/search.js"
-    "bundles/zghfe/js/base.js" %}
+    %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script>

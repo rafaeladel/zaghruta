@@ -49,7 +49,8 @@
                    <button class="btn btn-danger btn-circle pull-right addWishlist tooltip {{ toggles["is_popup"] ? "" : "" }}" type="button"
                         data-target="#addwishlist"
                         data-toggle="modal"
-                        data-placement="top" title="Add to wishlist">
+                        data-placement="top" title="Add to wishlist"
+                        data-url="{{ url("zgh_fe.products.get_wishlist_current_edit", {"id": app.user.id, "product_id": product.id}) }}">
                     <span class="glyphicon glyphicon-plus"></span>
                 </button>
                 <div id="addwishlist" aria-hidden="true" aria-labelledby="myModalLabel"
@@ -64,7 +65,7 @@
                                 <h4 class="modal-title" id="myModalLabel">Add to Wishlist</h4>
                             </div>
                             <div class="form_wrapper">
-                                {{ include("@ZghFE/Partial/products/wishlist_edit_widget.html.twig", {"form" : addWishlistForm, "post_url": url("zgh_fe.products.add_to_wishlist", {"id": product.user.id, "product_id": product.id }) }) }}
+                                {#{{ include("@ZghFE/Partial/products/wishlist_edit_widget.html.twig", {"form" : addWishlistForm, "post_url": url("zgh_fe.products.add_to_wishlist", {"id": product.user.id, "product_id": product.id }) }) }}#}
                             </div>
                         </div>
                         <!-- /.modal-content -->

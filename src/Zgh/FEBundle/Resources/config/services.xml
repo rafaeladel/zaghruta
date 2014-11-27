@@ -36,9 +36,21 @@
         <parameter key="zgh_fe.email_notifier.class">Zgh\FEBundle\Service\EmailNotifier</parameter>
         <parameter key="zgh_fe.slugifier.class">Zgh\FEBundle\Service\Slugifier</parameter>
         <parameter key="zgh_fe.paginator.class">Zgh\FEBundle\Service\Paginator</parameter>
+        <parameter key="async_events.dispatcher.class">Zgh\FEBundle\Service\AsyncEventDispatcher</parameter>
+        <parameter key="async_events.listener.class">Zgh\FEBundle\EventListener\AsyncEventListener</parameter>
     </parameters>
 
     <services>
+        <service id="async_events.dispatcher" class="%async_events.dispatcher.class%">
+            <argument type="service" id="event_dispatcher" />
+        </service>
+
+        <service id="async_events.listener" class="%async_events.listener.class%">
+            <argument type="service" id="async_events.dispatcher" />
+            <tag name="kernel.event_listener" event="kernel.terminate"/>
+        </service>
+
+
         <service id="zgh_fe.registration.form.type" class="%zgh_fe.registration.form.type.class%">
             <tag name="form.type" alias="zgh_fe_registration_form_type"/>
             <argument>%fos_user.model.user.class%</argument>

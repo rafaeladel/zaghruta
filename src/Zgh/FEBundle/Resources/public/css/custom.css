@@ -3547,7 +3547,7 @@ div#connections .profile .girl, div#connections .profile .boy{
     border-bottom:1px solid #ccc; 
     padding-bottom:20px;
 }
-.radio-privacy p{
+.radio-privacy p {
     font-weight: bold;
     margin-left: -20px;
 }
@@ -3557,3 +3557,6 @@ div#connections .profile .girl, div#connections .profile .boy{
  .btnSetting{
          position: relative !important;
     }
+.moveWishlist {
+    margin-right: 13px;
+}

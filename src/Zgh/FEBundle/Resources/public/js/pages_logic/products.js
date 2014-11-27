@@ -73,6 +73,14 @@ $(document).ready(function () {
         wrapper.load(url);
     });
 
+    $("body").on("click", ".addWishlist", function(e) {
+        e.preventDefault();
+        var url = $(e.currentTarget).data("url");
+        var wrapper = $(e.currentTarget).siblings("div#addwishlist").find(".form_wrapper");
+        wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+        wrapper.load(url);
+    });
+
     $("body").on("click", ".newWishlistSubmit", function (e) {
         e.preventDefault();
         var form = $(e.target).closest("form");
@@ -106,7 +114,11 @@ $(document).ready(function () {
                 $(e.target).closest("div.modal").modal("hide");
             }
         });
+    });
 
+    $("body").on("change", "input[type='checkbox'].wishlist_checkbox", function (e) {
+        var form = $(e.target).closest("form");
+        form.find(".addToWishlistSubmit").removeAttr("disabled");
     });
 
     singleUploadProduct();

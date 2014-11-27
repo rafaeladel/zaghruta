@@ -24,7 +24,7 @@ class VendorIntroType extends AbstractType
                     "multiple" => true,
                     "configs" => array(
                         "width" => '100%',
-                    ),
+                    )
                 ])
         ;
     }
