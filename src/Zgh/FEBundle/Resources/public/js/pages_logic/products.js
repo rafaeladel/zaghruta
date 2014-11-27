@@ -104,10 +104,7 @@ $(document).ready(function () {
     $("body").on("click", ".addToWishlistSubmit", function (e) {
         e.preventDefault();
         var form = $(e.target).closest("form");
-        if(form.find(":checked").length == 0) {
-            form.find(".wishlist_error").text("Please select at least one wishlist");
-            return;
-        }
+
         $.ajax({
             type: "post",
             url: form.attr("action"),
@@ -117,7 +114,11 @@ $(document).ready(function () {
                 $(e.target).closest("div.modal").modal("hide");
             }
         });
+    });
 
+    $("body").on("change", "input[type='checkbox'].wishlist_checkbox", function (e) {
+        var form = $(e.target).closest("form");
+        form.find(".addToWishlistSubmit").removeAttr("disabled");
     });
 
     singleUploadProduct();
