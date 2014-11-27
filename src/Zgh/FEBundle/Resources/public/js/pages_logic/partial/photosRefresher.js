@@ -36,10 +36,6 @@ function photoRefresh(){
             "album_name": {
                 "required": true,
                 "message": "Please enter album name."
-            },
-            "album_info": {
-                "required": true,
-                "message": "Please enter album info."
             }
         }
     });
