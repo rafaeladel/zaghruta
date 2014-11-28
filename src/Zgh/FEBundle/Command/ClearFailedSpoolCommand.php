@@ -31,19 +31,24 @@ class ClearFailedSpoolCommand extends ContainerAwareCommand
             $tmpFilename = $failedFile.'.finalretry';
             rename($failedFile, $tmpFilename);
 
+            $date_time = (new \DateTime("now"))->format("d m Y H:i:s");
+
             /** @var $message \Swift_Message */
             $message = unserialize(file_get_contents($tmpFilename));
             $output->writeln(sprintf(
-                'Retrying <info>%s</info> to <info>%s</info>',
+                '%s | Retrying <info>%s</info> to <info>%s</info>',
                 $message->getSubject(),
-                implode(', ', array_keys($message->getTo()))
+                implode(', ', array_keys($message->getTo())),
+                $date_time
             ));
+
+
 
             try {
                 $transport->send($message);
                 $output->writeln('Sent!');
             } catch (\Swift_TransportException $e) {
-                $output->writeln('<error>Send failed - deleting spooled message</error>');
+                $output->writeln(sprintf('<error>%s | Send failed - deleting spooled message</error>', $date_time));
             }
 
             // delete the file, either because it sent, or because it failed
