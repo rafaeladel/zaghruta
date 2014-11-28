@@ -49,10 +49,7 @@
                             message: "Take a look at Zaghruta."
                         }, function(response) {
                             if (login_response.authResponse) {
-                                {#document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";#}
-                                {#document.location = "{{ url("zgh_fe.wall.index") }}";#}
-                                console.log("{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}");
-
+                                document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
                             }
                         });
                         }
