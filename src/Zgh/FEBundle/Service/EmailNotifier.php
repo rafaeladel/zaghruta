@@ -90,7 +90,7 @@ class EmailNotifier
         }
 
         $title = "{$this->notification->getContent()["user"]} has commented on your {$entity_name}.";
-        $body = "{$this->notification->getContent()["user"]} has commented on your {$entity_name} - {$url}";
+        $body = "{$this->notification->getContent()["user"]} has commented on your {$entity_name} - <a href='{$url}'>{$url}</a>";
         $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body, "user" => $user ]);
         $this->send($title, $user->getEmail(), $template);
     }
@@ -123,7 +123,7 @@ class EmailNotifier
         }
 
         $title = "{$this->notification->getContent()["user"]} has liked your {$entity_name}";
-        $body = "{$this->notification->getContent()["user"]} has liked your {$entity_name} - {$url}";
+        $body = "{$this->notification->getContent()["user"]} has liked your {$entity_name} - <a href='{$url}'>{$url}</a>";
         $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body, "user" => $user ]);
         $this->send($title, $user->getEmail(), $template);
     }
