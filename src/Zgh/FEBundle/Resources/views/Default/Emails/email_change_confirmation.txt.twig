@@ -13,9 +13,12 @@
 
     <style>
         .container, .header {
-            width: 450px;
-            margin: 0 auto;
+           margin: 0 auto;
             padding: 0 10px 10px;
+        }
+        a{
+            display: inline-block;
+            font-family: arial;
         }
 
         .content-one {
@@ -28,24 +31,24 @@
 {% block body_text %}{% endblock body_text %}
 {% block body_html %}
     <center>
-        <table width="550" style="border:1px solid #ccc">
+        <table width="550" style="border:2px solid #ccc; padding:50px;">
           <tbody>
             <tr>
                 <td>
-                  <table width="450" cellspacing="0" cellpadding="0" border="0" class="header">
-                    <tbody>
-                    <tr>
-                        <td valign="top" align="center">
-                            <a href="#" alt="Zaghrota"><img src="//zaghruta.com/beta/zaghruta/web/email_icon/logo.png"/></a>
-                        </td>
-                    </tr>
-                    </tbody>
+                  <table cellspacing="0" cellpadding="0" border="0" class="header">
+                        <tbody>
+                        <tr>
+                            <td valign="top" align="center">
+                                <a href="#" alt="Zaghrota"><img src="//zaghruta.com/beta/zaghruta/web/email_icon/logo.png"/></a>
+                            </td>
+                         </tr>
+                         </tbody>
                   </table>
-              </td>
+                </td>
               </tr>
               <tr>
                 <td>
-                  <table width="450" cellspacing="0" cellpadding="0" border="0" class="content-one container">
+                  <table cellspacing="0" cellpadding="0" border="0" class="content-one container">
                     <tbody>
                     <tr>
                         <td style="font-size:27px; color:#61c5b6; font-family:Arial, Helvetica, sans-serif; padding-bottom:10px;"
@@ -60,20 +63,15 @@
                         <td style="font-size:18px; color:#61c5b6; font-family:Arial, Helvetica, sans-serif; padding-bottom:30px; padding-top:10px;"
                             align="left">
 
-                            <a style="background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px"
+                            <a style="background:#61c5b6; width:357px; height:20px; line-height:20px; text-align:center; border-radius:10px; color:#fff; padding:20px 30px"
                                href="{{ conf_email }}">Click here to change your email</a>
                         </td>
                     </tr>
                     {% endautoescape %}
-                    <tr>
-                        <td align="left"
-                            style="color:#6e6e6e; font-size:14px; padding-top:20px; font-family:Arial, Helvetica, sans-serif; line-height: 23px;">
-                            <strong>If you need anything</strong>, we can help and we want your your feedback – good and bad, we
-                            want it all :) Get in touch at
-                        </td>
-                    </tr>
+
                     <tr>
                         <td style="" align="left" style="padding-bottom:30px;">
+                             f you need help, contact us at
                             <a style="color:#e982a1; font-size:16px; font-family:Arial, Helvetica, sans-serif; text-decoration:none;"
                                href="">feedback@zaghruta.com.</a>
                         </td>

@@ -13,7 +13,7 @@
 
     <style>
         .container, .header {
-            width: 450px;
+
             margin: 0 auto;
             padding: 0 10px 10px;
         }
@@ -28,63 +28,75 @@
 {% block body_text %}{% endblock body_text %}
 {% block body_html %}
     <center>
-        <table width="450" cellspacing="0" cellpadding="0" border="0" class="header">
+        <table width="550" cellspacing="0" cellpadding="0" style="border:2px solid #ccc; padding:50px;">
             <tbody>
-            <tr>
-                <td valign="top" align="center">
-                    <a href="https://www.zaghruta.com"><img  alt="Zaghrota" src="http://zaghruta.com/beta/zaghruta/web/email_icon/logo.png"/></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <table width="450" cellspacing="0" cellpadding="0" border="0" class="content-one container">
-            <tbody>
-            <tr>
-                <td style="font-size:27px; color:#61c5b6; font-family:Arial, Helvetica, sans-serif; padding-bottom:10px;"
-                    align="left">Hi {{ user.fullname }},
-                </td>
-            </tr>
-            {% autoescape false %}
-            <tr>
-                <td style="font-size:14px; color:#6e6e6e; font-family:Arial, Helvetica, sans-serif; padding-bottom: 30px;"
-                    align="left">
-                    Ready for the new password?
-                </td>
-            </tr>
-            <tr>
-                <td style="font-size:18px; color:#61c5b6; font-family:Arial, Helvetica, sans-serif; padding-bottom:30px; padding-top:10px;"
-                    align="left">
-                    <a style="background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px"
-                       href="{{ confirmationUrl }}">Click here to reset your password</a>
-                </td>
-            </tr>
-            {% endautoescape %}
-            <tr>
-                <td align="left"
-                    style="color:#6e6e6e; font-size:14px; padding-top:20px; font-family:Arial, Helvetica, sans-serif; line-height: 23px;">
-                    <strong>Button not working?</strong> Try pasting this link into your browser:
+                <tr>
+                    <td style="margin-bottom:15px;">
+                         <table cellspacing="0" cellpadding="0" border="0" >
+                            <tbody>
+                            <tr>
+                                <td valign="middel" align="center">
+                                    <a href="https://www.zaghruta.com" style="display:block; margin-bottom:15px;"><img  alt="Zaghrota" src="http://zaghruta.com/beta/zaghruta/web/email_icon/logo.png"/></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table  cellspacing="0" cellpadding="0" border="0" >
+                            <tbody>
+                            <tr>
+                                <td style="font-size:27px; color:#61c5b6; font-family:Arial, Helvetica, sans-serif; padding-bottom:10px;"
+                                    align="left">Hi {{ user.fullname }},
+                                </td>
+                            </tr>
+                            {% autoescape false %}
+                            <tr>
+                                <td style="font-size:14px; color:#6e6e6e; font-family:Arial, Helvetica, sans-serif; padding-bottom: 30px;"
+                                    align="left">
+                                    Ready for the new password?
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:18px; color:#61c5b6; font-family:Arial, Helvetica, sans-serif; padding-bottom:30px; padding-top:10px;"
+                                    align="left">
+                                    <a style="background:#61c5b6; width:357px; height:20px; display:block; text-align:center; border-radius:10px; color:#fff; padding:15px 30px"
+                                       href="{{ confirmationUrl }}">Click here to reset your password</a>
+                                </td>
+                            </tr>
+                            {% endautoescape %}
+                            <tr>
+                                <td align="left"
+                                    style="color:#6e6e6e; font-size:14px; padding-top:20px; font-family:Arial, Helvetica, sans-serif; line-height: 23px;">
+                                    <strong>Button not working?</strong> Try pasting this link into your browser:
 
-                    {{ confirmationUrl }}
-                </td>
-            </tr>
-            <tr>
-                <td align="left"
-                    style="color:#6e6e6e; font-size:14px; padding-top:20px; font-family:Arial, Helvetica, sans-serif; line-height: 23px;">
-                    If you need help, contact us at
-                </td>
-            </tr>
-            <tr>
-                <td style="" align="left" style="padding-bottom:30px;">
-                    <a style="color:#e982a1; font-size:16px; font-family:Arial, Helvetica, sans-serif; text-decoration:none;"
-                       href="mailto:feedback@zaghruta.com">feedback@zaghruta.com.</a>
-                </td>
-            </tr>
-            <tr>
-                <td align="center" style="padding-top:20px; padding-bottom:20px;">
-                    <a href="https://www.facebook.com/zaghruta"><img alt="facbook" src="http://zaghruta.com/beta/zaghruta/web/email_icon/icon-facebook.png"/></a>
-                    <a href="https://twitter.com/Zaghruta"><img alt="twitter" src="http://zaghruta.com/beta/zaghruta/web/email_icon/icon-twitter.png"/></a>
-                </td>
-            </tr>
+                                    {{ confirmationUrl }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left"
+                                    style="color:#6e6e6e; font-size:14px; padding-top:20px; font-family:Arial, Helvetica, sans-serif; line-height: 23px;">
+                                    If you need help, contact us at
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="" align="left" style="padding-bottom:30px;">
+                                    <a style="color:#e982a1; font-size:16px; font-family:Arial, Helvetica, sans-serif; text-decoration:none;"
+                                       href="mailto:feedback@zaghruta.com">feedback@zaghruta.com.</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="padding-top:20px; padding-bottom:20px;">
+                                    <a href="https://www.facebook.com/zaghruta"><img alt="facbook" src="http://zaghruta.com/beta/zaghruta/web/email_icon/icon-facebook.png"/></a>
+                                    <a href="https://twitter.com/Zaghruta"><img alt="twitter" src="http://zaghruta.com/beta/zaghruta/web/email_icon/icon-twitter.png"/></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </center>

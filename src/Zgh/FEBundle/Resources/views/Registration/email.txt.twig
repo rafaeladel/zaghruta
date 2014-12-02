@@ -13,7 +13,6 @@
 
     <style>
         .container, .header {
-            width: 450px;
             margin: 0 auto;
             padding: 0 10px 10px;
         }
@@ -31,16 +30,24 @@
 {% block body_text %}{% endblock body_text %}
 {% block body_html %}
 <center>
-    <table width="450" cellspacing="0" cellpadding="0" border="0" class="header">
+    <table width="550" cellspacing="0" cellpadding="0" style="border:2px solid #ccc; padding:50px;" border="0" class="header">
         <tbody>
-        <tr>
-            <td valign="top" align="center">
-                <a href="https://www.zaghruta.com" alt="Zaghrota"><img src="http://zaghruta.com/beta/zaghruta/web/email_icon/logo.png"/></a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <table width="450" cellspacing="0" cellpadding="0" border="0" class="content-one container">
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" style="margin-bottom: 15px;" >
+                        <tbody>
+                        <tr>
+                            <td valign="middle" align="center">
+                                <a href="https://www.zaghruta.com" alt="Zaghrota"><img src="http://zaghruta.com/beta/zaghruta/web/email_icon/logo.png"/></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table  cellspacing="0" cellpadding="0" border="0">
         <tbody>
         <tr>
             <td style="font-size:27px; color:#61c5b6; font-family:Arial, Helvetica, sans-serif; padding-bottom:10px;"
@@ -57,7 +64,7 @@
         <tr>
             <td style="font-size:18px; color:#61c5b6; font-family:Arial, Helvetica, sans-serif; padding-bottom:30px; padding-top:10px;"
                 align="left">
-                <a style="background:#61c5b6; width:357px; height:40px; border-radius:10px; color:#fff; padding:20px 30px"
+                <a style="background:#61c5b6; width:357px; display:block; text-align:center; height:20px; border-radius:10px; color:#fff; padding:15px 30px"
                    href="{{ confirmationUrl }}">Confrim Your Email</a>
             </td>
         </tr>
@@ -95,6 +102,10 @@
                 <a href="https://twitter.com/Zaghruta"><img src="http://zaghruta.com/beta/zaghruta/web/email_icon/icon-twitter.png"/></a>
             </td>
         </tr>
+        </tbody>
+    </table>
+                </td>
+            </tr>
         </tbody>
     </table>
 </center>
