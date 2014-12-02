@@ -29,7 +29,7 @@ monolog:
             handler: swift
         swift:
             type:       swift_mailer
-            from_email: errors@zaghruta.com
+            from_email: noreply@zaghruta.com
             to_email:   rafael@thesevenlayers.net
             subject:    An Error Occurred!
             level:      debug
