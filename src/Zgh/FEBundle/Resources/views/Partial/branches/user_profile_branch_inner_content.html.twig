@@ -1,6 +1,6 @@
     <div class="panel panel-default">
-        <div class="panel-heading"><h5>{{ branch.address }}
-                {% if user.id == app.user.id %}
+        <div class="panel-heading"><h5>{{ branch.address }}</h5>
+            {% if user.id == app.user.id %}
 
                     <button data-target="#deleteBranch_{{ branch.id }}" data-toggle="modal" data-original-title="Delete" data-placement="top"  type="submit" class="row  tooltip  btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
                                    <a class="branch_edit pull-right" href="{{ url("zgh_fe.branches.get_edit", {"id": user.id, "branch_id": branch.id }) }}"> <span title=""
@@ -28,7 +28,7 @@
                         </div><!-- /.modal-dialog -->
                     </div>
                 {% endif %}
-            </h5></div>
+        </div>
 
 
         <ul class="list-group">

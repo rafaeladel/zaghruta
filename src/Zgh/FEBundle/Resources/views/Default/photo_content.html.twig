@@ -40,7 +40,7 @@
         </div>
     </div>
 </div>
-<div class="row photoContent">
+<div class="row photoContent {{ not is_popup ? "photo-content" : "" }}">
     {% if is_popup == false %}
         <div class="row margin-bottom margin-top">
             {% set photos = photo.user.photos %}
