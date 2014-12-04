@@ -29,12 +29,6 @@
                             <span class="icon-Res icon-Res-people  img-circle"></span>
                             All
                         </div>
-
-                        <div class="Vendors-filtration filtr  pull-left margin-sm" data-id="#searchPeople">
-                            <span class="icon-Res icon-Res-people  img-circle"></span>
-                            People
-                        </div>
-
                         <div class="Vendors-filtration filtr  pull-left margin-sm" data-id="#searchVendors">
                             <span class="icon-Res icon-Res-vendors img-circle"></span>
                             Vendors
@@ -43,6 +37,11 @@
                             <span class="icon-Res icon-Res-products img-circle"></span>
                             Products
                         </div>
+
+                        <div class="Vendors-filtration filtr  pull-left margin-sm" data-id="#searchPeople">
+                            <span class="icon-Res icon-Res-people  img-circle"></span>
+                            People
+                        </div> 
                         <div class="experince-filtration filtr  pull-left margin-sm" data-id="#searchTips">
                             <span class="icon-Res icon-Res-Exp img-circle"></span>
                              Tips
@@ -86,6 +85,17 @@
             <!----------------End  Search Results -------------->
 
             {% if catSlug == "all" %}
+                <div id="searchVendors" class="row resultWrapper">
+                    {% set vendors = getVendorSearchResult(query) %}
+                    <h2>Vendors</h2>
+                    <hr>
+                    {% if vendors != null %}
+                        {{ vendors|raw }}
+                    {% else %}
+                        <p>No results found</p>
+                    {% endif %}
+                </div>
+                <!--ENd Search Vendors-->
                 <div id="searchProduct" class="row resultWrapper">
                     {% set products =  getProductsSearchResult(query) %}
                     <h2>Products</h2>
@@ -108,17 +118,6 @@
                     {% endif %}
                 </div>
                 <!--ENd Search People-->
-                <div id="searchVendors" class="row resultWrapper">
-                    {% set vendors = getVendorSearchResult(query) %}
-                    <h2>Vendors</h2>
-                    <hr>
-                    {% if vendors != null %}
-                        {{ vendors|raw }}
-                    {% else %}
-                        <p>No results found</p>
-                    {% endif %}
-                </div>
-                <!--ENd Search Vendors-->
                 <div id="searchTips" class="row resultWrapper">
                     {% set tips = getTipsSearchResult(query) %}
                     <h2>Tips</h2>

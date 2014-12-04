@@ -2,7 +2,7 @@
 
 {% block innerPartial %}
 <div class="row headerProduct">
-    <div class="col-md-2 pull-right icons-G">
+    <div class="col-md-3 pull-right icons-G">
         <form class="pull-right" action="{{ url("zgh_fe.like.post", {"id": experience.id, "entity_type": experience.getObjectType }) }}" method="post">
             <button type="submit" class="btn tooltip btn-circle doLike {{ checkLike(app.user, experience) ? "btn-danger" : "likeBtn" }}">
                 <span class="glyphicon glyphicon-heart"></span>
@@ -10,6 +10,28 @@
         </form>
         <a class="pull-right moveEditExpTip "
            href="{{ url("zgh_fe.experiences.get_edit", {"id": experience.user.id, "exp_id": experience.id}) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+           {% if app.user and experience.user.id == app.user.id %}
+                <a href="#deleteExperince_{{ experience.id }}" data-toggle="modal" class="pull-right movedeleteExp"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+                        <div id="deleteExperince_{{ experience.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header modalHeader">
+                                        <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="myModalLabel">Delete Post</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete this?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-wide modalClose btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                        <form class="btnForm" action="{{ url("zgh_fe.experience.delete", {"id": experience.user.id, "exp_id":experience.id}) }}" method="post">
+                                            <button type="submit" class="btn btn-wide btn-primary">Delete</button>
+                                        </form>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                    {% endif %}
 
     </div>
     <h2 class="col-md-4">{{ experience.title|length > 65 ? experience.title|slice(0, 65) ~ "..." : experience.title }}</h2>

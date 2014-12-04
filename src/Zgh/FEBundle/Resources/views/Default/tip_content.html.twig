@@ -39,7 +39,7 @@
                             </div>
                         <div class="row headerProduct">
                             {% if app.user %}
-                            <div class="col-md-2 pull-right icons-G">
+                            <div class="col-md-3 pull-right icons-G">
                                 <form class="pull-right" action="{{ url("zgh_fe.like.post", {"id": tip.id, "entity_type": tip.getObjectType }) }}" method="post">
                                     <button type="submit" class="btn btn-circle doLike {{ checkLike(app.user, tip) ? "btn-danger" : "likeBtn" }}">
                                         <span class="glyphicon glyphicon-heart"></span>
@@ -48,9 +48,39 @@
                                 {% if app.user.id == tip.user.id %}
                                 <a class="moveEditExpTip btnEditTip pull-right" href="{{ url("zgh_fe.tips.get_edit", {"id": tip.user.id, "tip_id": tip.id}) }}"><i class="glyphicon glyphicon-edit"></i>Edit</a>
                                 {% endif %}
+                                            {% if app.user and tip.user.id == app.user.id %}
+                                <a href="#deleteTip_{{ tip.id }}" data-toggle="modal" class="pull-right movedeleteExp"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+                                <div id="deleteTip_{{ tip.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
+                                     tabindex="-1" class="modal fade in">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header modalHeader">
+                                                <button type="button" class="close modalClose" data-dismiss="modal"
+                                                        aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title" id="myModalLabel">Delete Tip</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete this?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-wide modalClose btn-default"
+                                                        data-dismiss="modal" aria-hidden="true">Cancel
+                                                </button>
+                                                <form class="btnForm"
+                                                      action="{{ url("zgh_fe.tip.delete", {"id": tip.user.id, "tip_id": tip.id}) }}"
+                                                      method="post">
+                                                    <button type="submit" class="btn btn-wide btn-primary">Delete</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                            {% endif %}
                             </div>
                             {% endif %}
-                            <h2 class="col-md-10">{{ tip.title|length > 50 ? tip.title|slice(0, 50) ~ "..." : tip.title }}</h2>
+                            <h2 class="col-md-9">{{ tip.title|length > 50 ? tip.title|slice(0, 50) ~ "..." : tip.title }}</h2>
                             <div class="clearfix"></div>
                             <p class="by col-md-12">Categories:
                                 {% for category in tip.categories %}

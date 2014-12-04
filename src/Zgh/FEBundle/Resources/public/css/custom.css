@@ -1632,7 +1632,7 @@ footer a {
 .Product .post {
     margin: 30px 0 20px 0
 }
-.headerProduct .moveEditExpTip{
+.headerProduct .moveEditExpTip , .movedeleteExp{
    margin: 5px 10px 0 0;
 }
 .headerProduct .btnForm{
@@ -3601,3 +3601,22 @@ div#connections .profile .girl, div#connections .profile .boy{
 .fancybox-title .child{
   display: none !important;
 }
+.icon-bride{
+        background: url(../img/brideIcon.png) no-repeat 10px 10px;
+        padding-left: 40px !important;
+}
+.active .icon-bride{
+    background: url(../img/bride.png) no-repeat 10px 10px !important;
+     padding-left: 40px !important;
+}
+.icon-vendor{
+        background: url(../img/vendor.png) no-repeat 10px 6px;
+        padding-left: 40px !important;
+}
+.active .icon-vendor{
+    background: url(../img/vendorIcon.png) no-repeat 10px 6px !important;
+     padding-left: 40px !important;
+}
+
+
+   
