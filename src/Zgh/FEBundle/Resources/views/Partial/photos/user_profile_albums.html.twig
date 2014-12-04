@@ -26,9 +26,9 @@
         </div>
     </div>
     <h2 class="text-left titleAlbums">All Albums</h2>
-    {% for msg in app.session.flashBag.get("notice") %}
-        <span>{{ msg }}</span>
-    {% endfor %}
+    {#{% for msg in app.session.flashBag.get("notice") %}#}
+        {#<span>{{ msg }}</span>#}
+    {#{% endfor %}#}
     <div class="row photosWrapper" id="photos">
         {{ render_esi(controller("ZghFEBundle:Photo:getPhotoAlbumsPartialContent", {"id" : user.id} )) }}
     </div>

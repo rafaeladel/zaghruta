@@ -28,6 +28,31 @@
                             <span class="glyphicon glyphicon-chevron-up"></span>
                         </button>
                     </a></p>
+                <a  class="pull-right contactUS"  data-toggle="modal" href="#ContactUS">Contact Us</a>
+                <a  class="pull-right contactUS" href="{{ url("zgh_fe.user_profile.index", {"id": 1}) }}">About</a>
+                <div  id="ContactUS" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                      class="modal fade in modalContactUS">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modalHeader">
+                                <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Contact Us</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="">For inquiries, contact us at:</p>
+                                <a target="_top" class="contactmail" href="mailto:info@zaghruta.com">info@zaghruta.com</a>
+                                <p class="margin-top">For support or feedback, contact us at:</p>
+                                <a target="_top" class="contactmail" href="mailto:info@zaghruta.com">support@zaghruta.com</a>
+
+
+
+                            </div>
+
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                </div>
+
                 <p>Zaghruta &copy; {{ "now"|date("Y") }}</p>
             </div>
         </footer>

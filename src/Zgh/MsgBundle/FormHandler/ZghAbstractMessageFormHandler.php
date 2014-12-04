@@ -2,6 +2,7 @@
 
 namespace Zgh\MsgBundle\FormHandler;
 
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\MessageBundle\Composer\ComposerInterface;
@@ -21,13 +22,15 @@ abstract class ZghAbstractMessageFormHandler
     protected $composer;
     protected $sender;
     protected $participantProvider;
+    protected $dispatcher;
 
-    public function __construct(Request $request, ComposerInterface $composer, SenderInterface $sender, ParticipantProviderInterface $participantProvider)
+    public function __construct(Request $request, ComposerInterface $composer, SenderInterface $sender, ParticipantProviderInterface $participantProvider, EventDispatcherInterface $dispatcher)
     {
         $this->request = $request;
         $this->composer = $composer;
         $this->sender = $sender;
         $this->participantProvider = $participantProvider;
+        $this->dispatcher = $dispatcher;
     }
 
     /**

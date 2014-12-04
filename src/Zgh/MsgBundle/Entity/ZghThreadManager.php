@@ -99,8 +99,8 @@ class ZghThreadManager extends ThreadManager
             ->setParameter('isSpam', false, \PDO::PARAM_BOOL)
 
             // the thread is not deleted by this participant
-            ->andWhere('tm.isDeleted = :isDeleted')
-            ->setParameter('isDeleted', false, \PDO::PARAM_BOOL)
+//            ->andWhere('tm.isDeleted = :isDeleted')
+//            ->setParameter('isDeleted', false, \PDO::PARAM_BOOL)
 
             // sort by date of last message
             ->innerJoin('t.messages', 'm')

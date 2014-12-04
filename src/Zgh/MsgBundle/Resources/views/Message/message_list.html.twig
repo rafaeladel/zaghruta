@@ -1,4 +1,4 @@
-{% for message in thread.messages %}
+{% for message in messages %}
     <div class="msg msgUser">
         <div class="profile  sm-img-post">
             <a href="{{ url("zgh_fe.user_profile.index", {"id": message.sender.id }) }}" class="pull-left img-circle ">

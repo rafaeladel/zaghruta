@@ -29,7 +29,7 @@
                      src="{{ experience.getThumbWebPath ? experience.getWebPath | imagine_filter("my_list_thumb") : asset("bundles/zghfe/img/avatar_wide.jpg") }}"></a>
 
                     <div class="caption">
-                        <h4>{{ experience.title|length > 12 ? experience.title|slice(0, 12) ~ "..." : experience.title }}</h4>
+                        <h4>{{ experience.title|length > 21 ? experience.title|slice(0, 21) ~ "..." : experience.title }}</h4>
 
                         <p>{{ experience.content|nl2br|converturls }}</p>
                     </div>

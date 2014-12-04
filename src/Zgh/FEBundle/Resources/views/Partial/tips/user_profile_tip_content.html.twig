@@ -42,7 +42,7 @@
                         src="{{ tip.getThumbWebPath ? tip.getWebPath | imagine_filter("my_list_thumb") : asset("bundles/zghfe/img/avatar_wide.jpg") }}"></a>
 
             <div class="caption">
-                <h4>{{ tip.title|length > 12 ? tip.title|slice(0, 12) ~ "..." : tip.title }}</h4>
+                <h4>{{ tip.title|length > 21 ? tip.title|slice(0, 21) ~ "..." : tip.title }}</h4>
 
                 <p>{{ tip.content }}</p>
             </div>

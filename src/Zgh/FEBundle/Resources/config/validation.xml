@@ -27,6 +27,7 @@
                     <value>customRegistration</value>
                     <value>customProfile</value>
                     <value>ResetPassword</value>
+                    <value>customResetting</value>
                     <value>ChangePassword</value>
                 </option>
             </constraint>
@@ -37,6 +38,7 @@
                     <value>customRegistration</value>
                     <value>customProfile</value>
                     <value>ResetPassword</value>
+                    <value>customResetting</value>
                     <value>ChangePassword</value>
                 </option>
             </constraint>
@@ -47,6 +49,7 @@
                     <value>customRegistration</value>
                     <value>customProfile</value>
                     <value>ResetPassword</value>
+                    <value>customResetting</value>
                     <value>ChangePassword</value>
                 </option>
             </constraint>

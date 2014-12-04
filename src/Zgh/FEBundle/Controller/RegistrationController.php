@@ -108,7 +108,8 @@ class RegistrationController extends ContainerAware
         $user = $userManager->findUserByConfirmationToken($token);
 
         if (null === $user) {
-            throw new NotFoundHttpException(sprintf('The user with confirmation token "%s" does not exist', $token));
+            return new RedirectResponse($this->container->get("router")->generate("zgh_fe.wall.index"));
+//            throw new NotFoundHttpException(sprintf('The user with confirmation token "%s" does not exist', $token));
         }
 
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */

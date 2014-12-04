@@ -97,6 +97,8 @@ fos_user:
             from_email:
                 address:        noreply@zaghruta.com
                 sender_name:    Password resetting
+        form:
+            validation_groups: ["customResetting", "Default"]
     service:
         mailer: fos_user.mailer.twig_swift
 

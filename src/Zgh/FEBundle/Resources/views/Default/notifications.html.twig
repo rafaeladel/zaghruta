@@ -31,7 +31,7 @@
                                         <td class="tableImg">
                                             <a class="imgNotification"
                                                href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}">
-                                                <img src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/>
+                                                <img src="{{ notification.otherEnd.profilePhoto.getThumbWebPath ? asset(notification.otherEnd.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset("bundles/zghfe/img/init/init_pp.jpg") ) }}"/>
                                             </a>
                                         </td>
                                         <td class="tableContent"><a href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id }) }}">{{ notification.content.user }}</a> Liked your
@@ -59,7 +59,7 @@
                                     <tr>
                                         <td class="tableImg"><a class="imgNotification"
                                                                 href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img
-                                                        src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
+                                                        src="{{ notification.otherEnd.profilePhoto.getThumbWebPath ? asset(notification.otherEnd.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset("bundles/zghfe/img/init/init_pp.jpg") ) }}"/></a>
                                         </td>
                                         <td class="tableContent"><a href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id }) }}">{{ notification.content.user }}</a> Commented on your
                                             {% if notification.content.obj_type == 0 %}
@@ -86,7 +86,7 @@
                                     <tr>
                                         <td class="tableImg"><a class="imgNotification"
                                                                 href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id}) }}"><img
-                                                        src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
+                                                        src="{{ notification.otherEnd.profilePhoto.getThumbWebPath ? asset(notification.otherEnd.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset("bundles/zghfe/img/init/init_pp.jpg") ) }}"/></a>
                                         </td>
                                         <td class="tableContent"><a href="{{ url("zgh_fe.user_profile.index", {"id": notification.otherEnd.id }) }}">{{ notification.content.user }}</a> Commented
                                             on {{ notification.content.user_gender }}
@@ -115,7 +115,7 @@
                                     <tr>
                                         <td class="tableImg"><a class="imgNotification"
                                                                 href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id}) }}"><img
-                                                        src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
+                                                        src="{{ notification.otherEnd.profilePhoto.getThumbWebPath ? asset(notification.otherEnd.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset("bundles/zghfe/img/init/init_pp.jpg") ) }}"/></a>
                                         </td>
                                         <td class="tableContent">
                                             <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a>Started
@@ -128,7 +128,7 @@
                                     <tr>
                                         <td class="tableImg"><a class="imgNotification"
                                                                 href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id}) }}"><img
-                                                        src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
+                                                        src="{{ notification.otherEnd.profilePhoto.getThumbWebPath ? asset(notification.otherEnd.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset("bundles/zghfe/img/init/init_pp.jpg") ) }}"/></a>
                                         </td>
                                         <td class="tableContent">
                                             <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.follower_id }) }}"> {{ notification.content.user }} </a>
@@ -143,7 +143,7 @@
                                     <tr>
                                         <td class="tableImg"><a class="imgNotification"
                                                                 href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.followee_id}) }}"><img
-                                                        src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
+                                                        src="{{ notification.otherEnd.profilePhoto.getThumbWebPath ? asset(notification.otherEnd.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset("bundles/zghfe/img/init/init_pp.jpg") ) }}"/></a>
                                         </td>
                                         <td class="tableContent">
                                             <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.followee_id }) }}"> {{ notification.content.user }} </a>
@@ -156,7 +156,7 @@
                                     <tr>
                                         <td class="tableImg"><a class="imgNotification"
                                                                 href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.requester_id}) }}"><img
-                                                        src="{{ "ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset(notification.otherEnd.profilePhoto.getThumbWebPath) }}"/></a>
+                                                        src="{{ notification.otherEnd.profilePhoto.getThumbWebPath ? asset(notification.otherEnd.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in notification.otherEnd.roles ? 'https://graph.facebook.com/'~notification.otherEnd.facebookId~'/picture?width=125&height=125' : asset("bundles/zghfe/img/init/init_pp.jpg") ) }}"/></a>
                                         </td>
                                         <td class="tableContent">
                                             <a href="{{ url("zgh_fe.user_profile.index", {"id": notification.content.requester_id }) }}"> {{ notification.content.user }} </a>

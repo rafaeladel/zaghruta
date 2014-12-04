@@ -35,7 +35,7 @@ class WallController extends Controller
             $result_arr[] = $entry[0];
         }
         return $this->render("@ZghFE/Partial/right_side/list_friends.html.twig", [
-                "title" => "Recommended people",
+                "title" => "People you may know",
                 "users" => $result_arr
             ]);
     }
@@ -48,7 +48,7 @@ class WallController extends Controller
             $result_arr[] = $entry[0];
         }
         return $this->render("@ZghFE/Partial/right_side/list_friends.html.twig", [
-                "title" => "Recommended vendors",
+                "title" => "Popular vendors",
                 "users" => $result_arr
             ]);
     }

@@ -11,4 +11,5 @@ class NotifyEvents
     const NOTIFY_FOLLOW_REQUEST_ACCEPTED = "notify.follow_request_accepted";
     const NOTIFY_DELETE = "notify.delete";
     const NOTIFY_RELATIONSHIP_REQUEST = "notify.relationship.request";
+    const NOTIFY_MESSAGE = "notify.message";
 }

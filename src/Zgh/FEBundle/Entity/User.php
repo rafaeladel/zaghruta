@@ -25,6 +25,7 @@ class User extends BaseUser implements ParticipantInterface
     /**
      * @ORM\Column(name="new_email", type="string", length=255, nullable=true, unique=true)
      * @Assert\NotBlank(groups={"change_email"}, message="New Email is required")
+     * @Assert\Email(groups={"change_email", "default"})
      */
     protected $new_email;
 
@@ -194,6 +195,11 @@ class User extends BaseUser implements ParticipantInterface
      * @ORM\Column(type="text", nullable=true)
      */
     protected $new_email_token;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Zgh\MsgBundle\Entity\DeletedMessage", mappedBy="user")
+     */
+    protected $delete_table;
 
     /**
      * @return string
@@ -1135,5 +1141,38 @@ class User extends BaseUser implements ParticipantInterface
     public function getNewEmailToken()
     {
         return $this->new_email_token;
+    }
+
+    /**
+     * Add delete_table
+     *
+     * @param \Zgh\MsgBundle\Entity\DeletedMessage $deleteTable
+     * @return User
+     */
+    public function addDeleteTable(\Zgh\MsgBundle\Entity\DeletedMessage $deleteTable)
+    {
+        $this->delete_table[] = $deleteTable;
+
+        return $this;
+    }
+
+    /**
+     * Remove delete_table
+     *
+     * @param \Zgh\MsgBundle\Entity\DeletedMessage $deleteTable
+     */
+    public function removeDeleteTable(\Zgh\MsgBundle\Entity\DeletedMessage $deleteTable)
+    {
+        $this->delete_table->removeElement($deleteTable);
+    }
+
+    /**
+     * Get delete_table
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDeleteTable()
+    {
+        return $this->delete_table;
     }
 }

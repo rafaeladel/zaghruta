@@ -45,4 +45,51 @@ class Message extends BaseMessage
      * @var MessageMetadata
      */
     protected $metadata;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Zgh\MsgBundle\Entity\DeletedMessage", mappedBy="message")
+     */
+    protected $delete_table;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->delete_table = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add delete_table
+     *
+     * @param \Zgh\MsgBundle\Entity\DeletedMessage $deleteTable
+     * @return Message
+     */
+    public function addDeleteTable(\Zgh\MsgBundle\Entity\DeletedMessage $deleteTable)
+    {
+        $this->delete_table[] = $deleteTable;
+
+        return $this;
+    }
+
+    /**
+     * Remove delete_table
+     *
+     * @param \Zgh\MsgBundle\Entity\DeletedMessage $deleteTable
+     */
+    public function removeDeleteTable(\Zgh\MsgBundle\Entity\DeletedMessage $deleteTable)
+    {
+        $this->delete_table->removeElement($deleteTable);
+    }
+
+    /**
+     * Get delete_table
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDeleteTable()
+    {
+        return $this->delete_table;
+    }
 }

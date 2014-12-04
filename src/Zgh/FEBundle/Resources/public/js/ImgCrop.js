@@ -64,6 +64,7 @@ function ImgCrop(param)
                     });
                     myImg.css("cursor", "default");
                     $(myImg).attr("src", "http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image");
+                    $(_this.form).find("button[type='submit']").attr("disabled", "disabled");
                     return;
                 }
                 else
@@ -74,6 +75,7 @@ function ImgCrop(param)
                     });
                     $(_this.form).find(".cover_thumb").show();
                     $(_this.form).find(".errors").hide().html("");
+                    $(_this.form).find("button[type='submit']").removeAttr("disabled");
                 }
 
                 var reader = new FileReader();

@@ -4,10 +4,11 @@
 {% endblock stylesheets %}
 
 {% block meta_tags %}
-    <meta property="og:title" content="Zaghruta - {{ user.fullname }} tips - {{ tip.title }}" />
-    <meta property="og:type" content="profile" />
-    <meta property="og:description" content="{{ tip.content }}" />
-    <meta property="og:image" content="{{ tip.getWebPath ? tip.getWebPath | imagine_filter("my_photos") : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}" />
+    <meta property="og:title" content="Zaghruta - {{ user.fullname }} tips - {{ tip.title }}"/>
+    <meta property="og:type" content="profile"/>
+    <meta property="og:description" content="{{ tip.content }}"/>
+    <meta property="og:image"
+          content="{{ tip.getWebPath ? tip.getWebPath | imagine_filter("my_photos") : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}"/>
 {% endblock meta_tags %}
 
 {% block title %}{{ tip.title }} | Zaghruta{% endblock title %}
@@ -20,7 +21,8 @@
                 <div class="col-md-9 tipExp">
                     <div class="row banner margin">
                         <div class="col-md-12 contentImg">
-                            <img src="{{ tip.getWebPath ? tip.getWebPath | imagine_filter("my_photos") : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}" class="img-responsive">
+                            <img src="{{ tip.getWebPath ? tip.getWebPath | imagine_filter("my_photos") : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}"
+                                 class="img-responsive">
                         </div>
                     </div>
                     <div class="content_wrapper">
@@ -35,45 +37,58 @@
                                 {% endif %}
                                 {% if next_id != null %}
                                     <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": next_id }) }}" class="pull-right margin-right exp-Arrow">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+
                                 {% endif %}
                             </div>
-                        <div class="row headerProduct">
-                            {% if app.user %}
-                            <div class="col-md-2 pull-right icons-G">
-                                <form class="pull-right" action="{{ url("zgh_fe.like.post", {"id": tip.id, "entity_type": tip.getObjectType }) }}" method="post">
-                                    <button type="submit" class="btn btn-circle doLike {{ checkLike(app.user, tip) ? "btn-danger" : "likeBtn" }}">
-                                        <span class="glyphicon glyphicon-heart"></span>
-                                    </button>
-                                </form>
-                                {% if app.user.id == tip.user.id %}
-                                <a class="moveEditExpTip btnEditTip pull-right" href="{{ url("zgh_fe.tips.get_edit", {"id": tip.user.id, "tip_id": tip.id}) }}"><i class="glyphicon glyphicon-edit"></i>Edit</a>
-                                {% endif %}
-                            </div>
-                            {% endif %}
-                            <h2 class="col-md-10">{{ tip.title|length > 50 ? tip.title|slice(0, 50) ~ "..." : tip.title }}</h2>
-                            <div class="clearfix"></div>
-                            <p class="by col-md-12">Categories:
-                                {% for category in tip.categories %}
-                                    <span>{{ category.name }}</span>
-                                    {% if loop.index < tip.categories|length %}
-                                        <span>-</span>
+                            <div class="exptip_content_wrapper">
+
+                                <div class="row headerProduct">
+                                    {% if app.user %}
+                                        <div class="col-md-2 pull-right icons-G">
+                                            <form class="pull-right"
+                                                  action="{{ url("zgh_fe.like.post", {"id": tip.id, "entity_type": tip.getObjectType }) }}"
+                                                  method="post">
+                                                <button type="submit"
+                                                        class="btn btn-circle doLike {{ checkLike(app.user, tip) ? "btn-danger" : "likeBtn" }}">
+                                                    <span class="glyphicon glyphicon-heart"></span>
+                                                </button>
+                                            </form>
+                                            {% if app.user.id == tip.user.id %}
+                                                <a class="moveEditExpTip btnEditTip pull-right"
+                                                   href="{{ url("zgh_fe.tips.get_edit", {"id": tip.user.id, "tip_id": tip.id}) }}"><i
+                                                            class="glyphicon glyphicon-edit"></i>Edit</a>
+                                            {% endif %}
+                                        </div>
                                     {% endif %}
-                                {% endfor %}
-                            </p>
-                            <span class="col-md-12 date-time">{{ tip.createdAt|date("d M Y - h:i A") }}</span>
-                            <p class="by col-md-12">By: <a href="{{ url("zgh_fe.user_profile.index", {"id": tip.user.id}) }}"> {{ tip.user.getFullname }}</a></p>
+                                    <h2 class="col-md-10">{{ tip.title|length > 50 ? tip.title|slice(0, 50) ~ "..." : tip.title }}</h2>
 
-                        </div>
-                        <div class="row">
-                            <p class="col-md-12">
-                                {{ tip.content|nl2br|converturls }}
-                            </p>
+                                    <div class="clearfix"></div>
+                                    <p class="by col-md-12">Categories:
+                                        {% for category in tip.categories %}
+                                            <span>{{ category.name }}</span>
+                                            {% if loop.index < tip.categories|length %}
+                                                <span>-</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </p>
+                                    <span class="col-md-12 date-time">{{ tip.createdAt|date("d M Y - h:i A") }}</span>
 
-                        </div>
+                                    <p class="by col-md-12">By: <a
+                                                href="{{ url("zgh_fe.user_profile.index", {"id": tip.user.id}) }}"> {{ tip.user.getFullname }}</a>
+                                    </p>
+
+                                </div>
+                                <div class="row">
+                                    <p class="col-md-12">
+                                        {{ tip.content|nl2br|converturls }}
+                                    </p>
+
+                                </div>
 
 
-                        {{ include("@ZghFE/Partial/common/comments_section.html.twig", { 'entity': tip }) }}
-                            {% endblock innerPartial %}
+                                {{ include("@ZghFE/Partial/common/comments_section.html.twig", { 'entity': tip }) }}
+                            </div>
+                        {% endblock innerPartial %}
                     </div>
                 </div>
 

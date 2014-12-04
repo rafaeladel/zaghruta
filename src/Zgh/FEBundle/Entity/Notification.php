@@ -19,6 +19,8 @@ class Notification
     const TYPE_FOLLOW = 2;
     const TYPE_FOLLOW_REQUEST = 3;
     const TYPE_RELATIONSHIP_REQUEST = 4;
+    const TYPE_MESSAGE = 5;
+
 
 
     /**

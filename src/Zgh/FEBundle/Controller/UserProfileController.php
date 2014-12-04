@@ -282,7 +282,11 @@ class UserProfileController extends Controller
     public function postCoverPictureAction(Request $request, $id)
     {
         $user = $this->get("security.context")->getToken()->getUser();
-        $pic_file = $request->files->get("cover");
+        $pic_file = $request->files->get("cover", null);
+        if(!$pic_file) {
+            $this->get("session")->getFlashBag()->add("cp_error", "No cover is selected.");
+            return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
+        }
         if ($pic_file->getClientSize() / 1048576 > 5) {
             $this->get("session")->getFlashBag()->add("cp_error", "File is too large (2 MB max).");
             return $this->redirect($request->headers->get("referer"));

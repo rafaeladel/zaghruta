@@ -24,7 +24,7 @@
 
                 <div class="productContent">
                     <a href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}">
-                        <h4>{{ product.name|length > 12 ? product.name|slice(0, 12) ~ "..." : product.name }}</h4></a>
+                        <h4>{{ product.name|length > 21 ? product.name|slice(0, 21) ~ "..." : product.name }}</h4></a>
 
                     <p>
                         <a href="{{ url("zgh_fe.user_profile.index", {"id": product.user.id}) }}">{{ product.user.fullname }}</a>
