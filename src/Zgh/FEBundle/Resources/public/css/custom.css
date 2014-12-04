@@ -689,6 +689,17 @@ footer .container {
     max-height: 50px;
     width: 89%;
 }
+.loginSwitch .intro_description{
+    text-align: center;
+}
+.loginSwitch .intro_description p{
+    font-size: 20px;
+    line-height: 116px;
+    display: inline-block;
+    vertical-align: middle;
+    min-height: 96px;
+    max-height: 50px;
+}
 
 .nav-profile {
     background: #8fd2c8;
@@ -823,7 +834,7 @@ footer .container {
 }
 .captionInput a, .edit_caption{
     font-size: 14px;
-    text-decoration: underline;;
+    text-decoration: none;
 }
 .captionInput a:first-of-type{
     margin-right: 10px;
@@ -3027,6 +3038,9 @@ margin-bottom: 15px !important;
 .select2-container{
     height: 27px;
 }
+.error{
+    color: red;
+}
 .btnBrowsePhoto{
     width:auto;
     height:34px;
@@ -3342,7 +3356,7 @@ padding: 0;
 }
 
 .comment_content, .post_content {
-    height: 73px !important;
+    height: 70px !important;
     overflow: hidden !important;
 
 }
@@ -3438,7 +3452,7 @@ height: 44px;
 
 
 div#connections .profile {
-float: none;
+float: left;
 display: inline-block;
 width: 33%;
 margin: 5px 0;

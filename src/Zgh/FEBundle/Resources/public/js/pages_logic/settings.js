@@ -19,7 +19,7 @@ $(document).ready(function () {
                 required: "Password is required"
             },
             "fos_user_change_password_form[plainPassword][first]": {
-                required: "Password is required",
+                required: "New Password is required",
                 pattern: "Should not contain spaces"
             },
             "fos_user_change_password_form[plainPassword][second]": {

@@ -31,10 +31,10 @@
                                 {% set prev_id = prevId(tips, tip) %}
 
                                 {% if prev_id != null %}
-                                    <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": prev_id }) }}" class="pull-left margin-left exp-Arrow">Previous</a>
+                                    <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": prev_id }) }}" class="pull-left margin-left exp-Arrow"><span class="glyphicon glyphicon-chevron-left"></span> Previous</a>
                                 {% endif %}
                                 {% if next_id != null %}
-                                    <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": next_id }) }}" class="pull-right margin-right exp-Arrow">Next</a>
+                                    <a href="{{ url("zgh_fe.tip.content", {"id": user.id, "tip_id": next_id }) }}" class="pull-right margin-right exp-Arrow">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
                                 {% endif %}
                             </div>
                         <div class="row headerProduct">
