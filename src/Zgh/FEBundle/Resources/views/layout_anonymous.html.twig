@@ -108,6 +108,12 @@
                 }
             });
 
+            $("body").on("click", ".comment_down, .comment_up, .post_up, .post_down", function(e){
+                e.preventDefault();
+                $(e.target).closest(".content_togglers").siblings(".post_content, .comment_content").toggleClass("show");
+                $(e.target).closest(".content_togglers").find("a").toggle();
+            });
+
             setTimeout(function () {
                 $(window).on("popstate", function (e) {
                     e.preventDefault();

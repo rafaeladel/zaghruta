@@ -17,3 +17,4 @@
 /.svn/
 mailresult
 mail_error
+/app/spool

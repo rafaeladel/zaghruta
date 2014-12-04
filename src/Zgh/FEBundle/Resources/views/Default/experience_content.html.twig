@@ -4,10 +4,11 @@
 {% endblock stylesheets %}
 
 {% block meta_tags %}
-    <meta property="og:title" content="Zaghruta - {{ user.fullname }} experiences - {{ experience.title }}" />
-    <meta property="og:type" content="profile" />
-    <meta property="og:description" content="{{ experience.content }}" />
-    <meta property="og:image" content="{{ experience.getWebPath ? asset(experience.getWebPath) : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}" />
+    <meta property="og:title" content="Zaghruta - {{ user.fullname }} experiences - {{ experience.title }}"/>
+    <meta property="og:type" content="profile"/>
+    <meta property="og:description" content="{{ experience.content }}"/>
+    <meta property="og:image"
+          content="{{ experience.getWebPath ? asset(experience.getWebPath) : asset("bundles/zghfe/img/exp_tip_wide.jpg") }}"/>
 {% endblock meta_tags %}
 
 {% block title %}{{ experience.title }} | Zaghruta{% endblock title %}
@@ -43,6 +44,7 @@
                                 {% endif %}
                             </div>
                             {% endif %}
+                              <div class="exptip_content_wrapper">
                             <div class="row headerProduct">
                                 <div class="col-md-3 pull-right icons-G">
                                     {% if app.user %}
@@ -54,13 +56,13 @@
                                             <span class="glyphicon glyphicon-heart"></span>
                                         </button>
                                     </form>
-                                    {% endif %}
 
-                                    {% if app.user and experience.user.id == app.user.id %}
-                                        <a class="pull-right moveEditExpTip "
-                                           href="{{ url("zgh_fe.experiences.get_edit", {"id": experience.user.id, "exp_id": experience.id}) }}"><i
-                                                    class="glyphicon glyphicon-edit"></i> Edit</a>
                                     {% endif %}
+                                    {% if app.user and experience.user.id == app.user.id %}
+                                            <a class="pull-right moveEditExpTip "
+                                               href="{{ url("zgh_fe.experiences.get_edit", {"id": experience.user.id, "exp_id": experience.id}) }}"><i
+                                                        class="glyphicon glyphicon-edit"></i> Edit</a>
+                                        {% endif %}
                                     {% if app.user and experience.user.id == app.user.id %}
                                         <a href="#deleteExperince_{{ experience.id }}" data-toggle="modal" class="pull-right movedeleteExp"><i class="glyphicon glyphicon-trash"></i> Delete</a>
                                                 <div id="deleteExperince_{{ experience.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
@@ -93,23 +95,25 @@
                                         {% if loop.index < experience.categories|length %}
                                             <span>-</span>
                                         {% endif %}
-                                    {% endfor %}
-                                </p>
-                                <span class="col-md-12 date-time">{{ experience.createdAt|date("d M Y - h:i A") }}</span>
+                                    
+                                        {% endfor %}
+                                    </p>
+                                    <span class="col-md-12 date-time">{{ experience.createdAt|date("d M Y - h:i A") }}</span>
 
-                                <p class="by col-md-12">By: <a
-                                            href="{{ url("zgh_fe.user_profile.index", {"id": experience.user.id}) }}"> {{ experience.user.getFullname }}</a>
-                                </p>
+                                    <p class="by col-md-12">By: <a
+                                                href="{{ url("zgh_fe.user_profile.index", {"id": experience.user.id}) }}"> {{ experience.user.getFullname }}</a>
+                                    </p>
 
+                                </div>
+                                <div class="row">
+                                    <p class="col-md-12">
+                                        {{ experience.content|nl2br|converturls }}
+                                    </p>
+
+                                </div>
+
+                                {{ include("@ZghFE/Partial/common/comments_section.html.twig", { 'entity': experience }) }}
                             </div>
-                            <div class="row">
-                                <p class="col-md-12">
-                                    {{ experience.content|nl2br|converturls }}
-                                </p>
-
-                            </div>
-
-                            {{ include("@ZghFE/Partial/common/comments_section.html.twig", { 'entity': experience }) }}
                         {% endblock innerPartial %}
                     </div>
                 </div>

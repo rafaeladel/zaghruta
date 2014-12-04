@@ -10,7 +10,7 @@
                     <label class="col-sm-3 control-label">Select Album</label>
 
                     <div class="col-sm-9">
-                        <select class="form-control" name="album_id">
+                        <select class="form-control" name="album_id" {{ inside_album is defined and inside_album == true ? "disabled": "" }}>
                             {% for album_loop in albums %}
                                 {% if app.request.get('_route') == "zgh_fe.photos_partial_albums_photos_content" %}
                                     <option value="{{ album.id }}" {{ album_loop.id == album.id ? "selected" : "" }}>{{ album_loop.name }}</option>
