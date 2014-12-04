@@ -1,41 +1,53 @@
-    <div class="panel panel-default">
-        <div class="panel-heading"><h5>{{ branch.address }}</h5>
-            {% if user.id == app.user.id %}
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>{{ branch.address }}</h5>
+        {% if user.id == app.user.id %}
 
-                    <button data-target="#deleteBranch_{{ branch.id }}" data-toggle="modal" data-original-title="Delete" data-placement="top"  type="submit" class="row  tooltip  btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
-                                   <a class="branch_edit pull-right" href="{{ url("zgh_fe.branches.get_edit", {"id": user.id, "branch_id": branch.id }) }}"> <span title=""
-                                                                                                     data-placement="top"
-                                                                                                     data-toggle="tooltip"
-                                                                                                     class="glyphicon glyphicon-edit tooltip pull-right top"
-                                                                                                     data-original-title="Edit"></span></a>
-                    <div id="deleteBranch_{{ branch.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade in">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header modalHeader">
-                                    <button type="button" class="close modalClose" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">Delete Post</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Are you sure you want to delete this?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-wide modalClose btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                                    <form class="btnForm" action="{{ url("zgh_fe.branches.delete", {"id": branch.user.id, "branch_id": branch.id}) }}" method="post">
-                                        <button type="submit" class="btn btn-wide btn-primary branch_delete">Delete</button>
-                                    </form>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
+        <button data-target="#deleteBranch_{{ branch.id }}" data-toggle="modal" data-original-title="Delete"
+                data-placement="top" type="submit" class="row  tooltip  btn delete-post pull-right"><span
+                    class="glyphicon glyphicon-remove pull-right"></span></button>
+        <a class="branch_edit pull-right"
+           href="{{ url("zgh_fe.branches.get_edit", {"id": user.id, "branch_id": branch.id }) }}"> <span
+                    title=""
+                    data-placement="top"
+                    data-toggle="tooltip"
+                    class="glyphicon glyphicon-edit tooltip pull-right top"
+                    data-original-title="Edit"></span></a>
+
+        <div id="deleteBranch_{{ branch.id }}" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
+             tabindex="-1" class="modal fade in">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modalHeader">
+                        <button type="button" class="close modalClose" data-dismiss="modal"
+                                aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Delete Post</h4>
                     </div>
-                {% endif %}
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-wide modalClose btn-default" data-dismiss="modal"
+                                aria-hidden="true">Cancel
+                        </button>
+                        <form class="btnForm"
+                              action="{{ url("zgh_fe.branches.delete", {"id": branch.user.id, "branch_id": branch.id}) }}"
+                              method="post">
+                            <button type="submit" class="btn btn-wide btn-primary branch_delete">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            {% endif %}
         </div>
 
 
         <ul class="list-group">
-            <li class="list-group-item">City: {{ branch.city}}</li>
+            <li class="list-group-item">City: {{ branch.city }}</li>
             <li class="list-group-item">Phone: {{ branch.phone }}</li>
             <li class="list-group-item">Mob: {{ branch.mobile }}</li>
             <li class="list-group-item">Email: {{ branch.email }}</li>
         </ul>
 
     </div>
+</div>

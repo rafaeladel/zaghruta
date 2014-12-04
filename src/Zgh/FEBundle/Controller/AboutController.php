@@ -138,7 +138,7 @@ class AboutController extends Controller
         }
         $reciever = $this->getUser();
         $userInfo->setRelationshipUser(null);
-        $userInfo->setStatus(null);
+        $userInfo->setStatus("Single");
         $this->getDoctrine()->getManager()->persist($userInfo);
         $this->getDoctrine()->getManager()->remove($notification);
         $this->getDoctrine()->getManager()->flush();

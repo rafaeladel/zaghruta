@@ -27,22 +27,22 @@ $(document).ready(function () {
                 equalTo: "The password and confirm password don't match"
             }
         },
-        submitHandler: function(form){
+        submitHandler: function (form) {
             var url = $(form).attr("action");
             $(form).find("[type='submit']").attr("disabled", "disabled");
             $.ajax({
                 type: "post",
                 url: url,
                 data: $(form).serialize(),
-                success: function(data) {
+                success: function (data) {
                     $(form).closest(".change_password_wrapper").find(".msg_wrapper").find("div").hide();
-                    if(data.success) {
+                    if (data.success) {
                         $(form).closest(".change_password_wrapper").find(".result_wrapper").show().find("span").text(data.message);
+                        form.reset();
                     } else {
                         $(form).closest(".change_password_wrapper").find(".error_wrapper").show().find("span").text(data.message);
                     }
                     $(form).find("[type='submit']").removeAttr("disabled");
-                    console.log(data);
                 }
             });
         }
@@ -51,66 +51,71 @@ $(document).ready(function () {
 
 
     $(".change_info_form").validate({
-       rules: {
+        rules: {
             "firstname": {
-                required: true
+                required: true,
+                pattern: /[a-zA-Z]+/
             },
-           "lastname": {
-               required: true
-           }
-       },
-       submitHandler: function (form) {
-           var url = $(form).attr("action");
-           $(form).find("[type='submit']").attr("disabled", "disabled");
-           $.ajax({
-               type: "post",
-               url: url,
-               data: $(form).serialize(),
-               success: function(data) {
-                   $(form).closest(".msg_wrapper").find("div").hide();
-                   if(data.success) {
-                       $(form).find(".result_wrapper").show().find("span").text(data.message);
-                   } else {
-                       $(form).find(".error_wrapper").show().find("span").text(data.message);
-                   }
-                   $(form).find("[type='submit']").removeAttr("disabled");
-               }
-           });
-       }
+            "lastname": {
+                required: true,
+                pattern: /[a-zA-Z]+/
+            }
+        },
+        submitHandler: function (form) {
+            var url = $(form).attr("action");
+            $(form).find("[type='submit']").attr("disabled", "disabled");
+            $.ajax({
+                type: "post",
+                url: url,
+                data: $(form).serialize(),
+                success: function (data) {
+                    $(form).closest(".msg_wrapper").find("div").hide();
+                    if (data.success) {
+                        $(form).find(".result_wrapper").show().find("span").text(data.message);
+                    } else {
+                        $(form).find(".error_wrapper").show().find("span").text(data.message);
+                    }
+                    $(form).find("[type='submit']").removeAttr("disabled");
+                }
+            });
+        }
     });
 
 
     $(".change_email_form").validate({
-       rules: {
+        rules: {
             "vendor_email_type[new_email]": {
                 required: true,
-                email: true
+                pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             },
-           "vendor_email_type[current_password]": {
-               required: true
-           }
-       },
-       submitHandler: function (form) {
-           var url = $(form).attr("action");
-           $(form).find("[type='submit']").attr("disabled", "disabled");
-           $.ajax({
-               type: "post",
-               url: url,
-               data: $(form).serialize(),
-               success: function(data) {
-                   $(form).find(".msg_wrapper div").hide();
-                   if(data.success) {
-                       $(form).find(".result_wrapper").show().find("span").text(data.message);
-                   } else {
-                       $(form).find(".error_wrapper").show().find("span").text(data.message);
-                   }
-                   $(form).find("[type='submit']").removeAttr("disabled");
-               }
-           });
-       }
+            "vendor_email_type[current_password]": {
+                required: true
+            }
+        },
+        messages: {
+            "vendor_email_type[new_email]": {
+                pattern: "Invalid email"
+            }
+        },
+        submitHandler: function (form) {
+            var url = $(form).attr("action");
+            $(form).find("[type='submit']").attr("disabled", "disabled");
+            $.ajax({
+                type: "post",
+                url: url,
+                data: $(form).serialize(),
+                success: function (data) {
+                    $(form).find(".msg_wrapper div").hide();
+                    if (data.success) {
+                        $(form).find(".result_wrapper").show().find("span").text(data.message);
+                    } else {
+                        $(form).find(".error_wrapper").show().find("span").text(data.message);
+                    }
+                    $(form).find("[type='submit']").removeAttr("disabled");
+                }
+            });
+        }
     });
-
-
 
 
     $("body").on("click", ".privacyToggle", function (e) {

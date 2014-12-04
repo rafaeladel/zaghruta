@@ -34,6 +34,7 @@ class SettingsController extends Controller
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush();
         return new JsonResponse([
+            "success" => true,
             "message" => "Saved!"
         ]);
     }
@@ -43,12 +44,11 @@ class SettingsController extends Controller
         $user = $this->getUser();
         $email_form = $this->createForm(new VendorEmailType(), $user);
         $email_form->handleRequest($request);
-        if($email_form->isValid())
-        {
+        if ($email_form->isValid()) {
             $email_exists = $this->getDoctrine()->getRepository("ZghFEBundle:User")->findOneBy(["email" => $user->getNewEmail()]);
-            if($email_exists){
+            if ($email_exists) {
                 $msg = "This Email is already registered by another user.";
-                if($email_exists->getId() == $user->getId()) {
+                if ($email_exists->getId() == $user->getId()) {
                     $msg = "You are already registered with this Email.";
                 }
                 $this->get("session")->getFlashBag()->add("email_error", $msg);
@@ -60,16 +60,14 @@ class SettingsController extends Controller
             $token_generator = $this->get("fos_user.util.token_generator");
             $user->setNewEmailToken($token_generator->generateToken());
             $this->get("fos_user.user_manager")->updateUser($user);
-            $conf_email = $this->generateUrl("zgh_fe.settings.activate_email", ["token" => $user->getNewEmailToken() ], true);
+            $conf_email = $this->generateUrl("zgh_fe.settings.activate_email", ["token" => $user->getNewEmailToken()], true);
             $this->get("zgh_fe.email_notifier")->sendEmailChangeConfirmation($user, $conf_email);
             $msg = "Check your email {$user->getNewEmail()} for email change confirmation.";
             return new JsonResponse([
                 "success" => true,
                 "message" => $msg
             ]);
-        }
-        else
-        {
+        } else {
             return new JsonResponse([
                 "success" => false,
                 "message" => "Invalid password."
@@ -85,9 +83,9 @@ class SettingsController extends Controller
     public function activateEmailAction(Request $request, $token)
     {
         $user = $this->getDoctrine()->getRepository("ZghFEBundle:User")->findOneBy([
-            "new_email_token" =>  $token
+            "new_email_token" => $token
         ]);
-        if(!$user) {
+        if (!$user) {
             throw new NotFoundHttpException();
         }
         $user->setEmail($user->getNewEmail());
@@ -95,19 +93,6 @@ class SettingsController extends Controller
         $user->setNewEmailToken(null);
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush($user);
-        return $this->autoLoginUser($request, $user);
-    }
-
-    private function autoLoginUser(Request $request, User $user)
-    {
-        $firewall = $this->get("service_container")->getParameter("fos_user.firewall_name");
-        $token = new UsernamePasswordToken($user, $user->getPassword(), $firewall, $user->getRoles());
-        $this->get("security.context")->setToken($token);
-
-        $event = new InteractiveLoginEvent($request, $token);
-        $this->get("event_dispatcher")->dispatch("security.authentication", $event);
-        $this->get("session")->getFlashBag()->add("notice_email_change", "Your Email was successfully Changed");
         return new RedirectResponse($this->generateUrl("zgh_fe.wall.index"));
     }
-
 }

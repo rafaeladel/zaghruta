@@ -13,6 +13,7 @@ use Zgh\FEBundle\Model\Event\NotifyFollowEvent;
 use Zgh\FEBundle\Model\Event\NotifyFollowRequestAcceptedEvent;
 use Zgh\FEBundle\Model\Event\NotifyFollowRequestEvent;
 use Zgh\FEBundle\Model\Event\NotifyLikeEvent;
+use Zgh\FEBundle\Model\Event\NotifyMessageEvent;
 use Zgh\FEBundle\Model\Event\NotifyRelationshipRequestEvent;
 use Zgh\FEBundle\Service\EmailNotifier;
 
@@ -43,6 +44,7 @@ class NotificationSubscriber implements EventSubscriberInterface
             NotifyEvents::NOTIFY_FOLLOW_REQUEST => [["onNotifyFollowRequest", 10], ["onEmailNotify", 0]],
             NotifyEvents::NOTIFY_FOLLOW_REQUEST_ACCEPTED => [["onNotifyFollowRequestAccepted", 10], ["onEmailNotify", 0]],
             NotifyEvents::NOTIFY_RELATIONSHIP_REQUEST => [["onNotifyRelationshipRequest", 10], ["onEmailNotify", 0]],
+            NotifyEvents::NOTIFY_MESSAGE => ["onMsgEmail", 10],
             NotifyEvents::NOTIFY_DELETE => ["onNotifyDelete", 10]
         ];
     }
@@ -146,6 +148,19 @@ class NotificationSubscriber implements EventSubscriberInterface
             $this->em->remove($notification);
             $this->em->flush();
 
+        }
+    }
+
+    public function onMsgEmail(NotifyMessageEvent $event)
+    {
+        $user = $event->getUserToNotify();
+        $notification = $event->getNotification();
+        if ($user->getEmailNotification()) {
+            try {
+                $this->emailNotifier->sendNotification($event, $notification);
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
         }
     }
 

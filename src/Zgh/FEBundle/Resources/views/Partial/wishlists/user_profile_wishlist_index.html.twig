@@ -66,7 +66,7 @@
                     </a>
 
                     <div class="productContent">
-                        <a href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}">
+                        <a target="_blank" href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}">
                             <h4>{{ product.name }}</h4></a>
                         <span class="date">{{ product.createdAt|date("d M Y - h:i A") }}</span>
                         {% if product.price %}

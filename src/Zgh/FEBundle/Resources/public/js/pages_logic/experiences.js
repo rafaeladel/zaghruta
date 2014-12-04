@@ -10,8 +10,8 @@ $(document).ready(function(){
     $("body").on("click", ".moveEditExpTip", function (e) {
         e.preventDefault();
         var url = $(e.currentTarget).attr("href");
-        $(".content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
-        $("body").find(".content_wrapper").load(url, function () {
+        $(".exptip_content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
+        $("body").find(".exptip_content_wrapper").load(url, function () {
             history.pushState(null, null, url);
             ThraceForm.select2();
         });
@@ -29,12 +29,14 @@ $(document).ready(function(){
                 url: form.attr("action"),
                 data: form.serialize(),
                 success: function (data) {
-                    var wrapper = $("body").find(".content_wrapper");
+                    var wrapper = $("body").find(".exptip_content_wrapper");
                     if (data.status == 200) {
                         btn.removeAttr("disabled");
                         var back_url = btn.data("back_url");
                         wrapper.html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
-                        wrapper.load(back_url);
+                        wrapper.load(back_url, function() {
+                            history.pushState(null, null, back_url);
+                        });
                     } else if (data.status == 500) {
                         btn.removeAttr("disabled");
                         wrapper.html(data.view);

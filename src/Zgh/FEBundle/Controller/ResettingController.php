@@ -54,8 +54,7 @@ class ResettingController extends ContainerAware
         }
 
         if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-//            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:passwordAlreadyRequested.html.'.$this->getEngine());
-            return new JsonResponse(array("response" => 500, "message" => "Password already requested."));
+            return new JsonResponse(array("response" => 500, "message" => "Password reset already requested."));
         }
 
         if (null === $user->getConfirmationToken()) {

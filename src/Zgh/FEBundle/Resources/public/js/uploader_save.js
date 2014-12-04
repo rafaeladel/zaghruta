@@ -26,7 +26,7 @@ function Uploader(params)
                 var myDropzone = this;
                 this.on("success", function(file, data) {
                     if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
-                        refresh_uploader(_this.modalID, _this.listBtnID, _this.listWrapperClass, _this.ajaxLoadUrl, _this.saveButtonClass);
+                        refresh_uploader(data, _this.modalID, _this.listBtnID, _this.listWrapperClass, _this.ajaxLoadUrl, _this.saveButtonClass);
                     }
                 });
 
@@ -60,7 +60,7 @@ function Uploader(params)
                                 processData: false,
                                 contentType: false,
                                 success: function(data){
-                                    refresh_uploader(_this.modalID, _this.listBtnID, _this.listWrapperClass, _this.ajaxLoadUrl);
+                                    refresh_uploader(data, _this.modalID, _this.listBtnID, _this.listWrapperClass, _this.ajaxLoadUrl, _this.saveButtonClass);
                                 }
                             });
                         } else {
@@ -130,24 +130,29 @@ function Uploader(params)
     }
 }
 
-function refresh_uploader(wrapper, list_btn_id, list_wrapper_class, ajax_url, saveBtnClass)
+function refresh_uploader(response, wrapper, list_btn_id, list_wrapper_class, ajax_url, saveBtnClass)
 {
-    var w = $("#"+wrapper);
-    var saveBtn = $("."+saveBtnClass);
-    w.modal("hide");
-    saveBtn.removeAttr("disabled");
-    $("."+list_wrapper_class).find(".photosWrapper").html('<img style="margin: auto; display: block;" src='+UrlContainer.loader+' />');
-    $("."+list_wrapper_class).load(ajax_url, null, function(){
-        $("#"+list_btn_id).parent().find("a").each(function(){
-            $(this).removeClass("active");
+    var w = $("#" + wrapper);
+    if(response.success == false) {
+        w.find(".error").text(response.message);
+    } else {
+        w.modal("hide");
+        $("." + list_wrapper_class).find(".photosWrapper").html('<img style="margin: auto; display: block;" src=' + UrlContainer.loader + ' />');
+        $("." + list_wrapper_class).load(ajax_url, null, function () {
+            $("#" + list_btn_id).parent().find("a").each(function () {
+                $(this).removeClass("active");
+            });
+            $("#" + list_btn_id).addClass("active");
         });
-        $("#"+list_btn_id).addClass("active");
-    });
+    }
+    var saveBtn = $("." + saveBtnClass);
+    saveBtn.removeAttr("disabled");
+
 }
 
 function validate(data, form)
 {
-    form.find(".error").remove();
+    form.find(".error").empty();
     var is_valid = true;
     $.each(data, function(index, name){
         var element = form.find("[name='"+index+"']");

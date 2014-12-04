@@ -11,6 +11,7 @@ use Zgh\FEBundle\Model\Event\NotifyCommentEvent;
 use Zgh\FEBundle\Model\Event\NotifyFollowEvent;
 use Zgh\FEBundle\Model\Event\NotifyFollowRequestEvent;
 use Zgh\FEBundle\Model\Event\NotifyLikeEvent;
+use Zgh\FEBundle\Model\Event\NotifyMessageEvent;
 use Zgh\FEBundle\Model\Event\NotifyRelationshipRequestEvent;
 
 class EmailNotifier
@@ -56,6 +57,8 @@ class EmailNotifier
                 $this->sendFollowRequestNotification($event);
             } else if ($event instanceof NotifyRelationshipRequestEvent) {
                 $this->sendRelationshipRequest($event);
+            } else if ($event instanceof NotifyMessageEvent) {
+                $this->sendMessage($event);
             }
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -139,6 +142,18 @@ class EmailNotifier
         $this->send($title, $user->getEmail(), $template);
     }
 
+
+    protected function sendMessage(NotifyMessageEvent $event)
+    {
+        $user = $event->getUserToNotify();
+        $notification = $event->getNotification();
+        $user_url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $this->notification->getOtherEnd()->getId()], true);
+        $title = "{$this->notification->getOtherEnd()->getFullName()} has sent you a message";
+        $body = sprintf("<a href='%s'>{$user_url}</a> has sent you a message.", $user_url);
+        $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body, "user" => $user ]);
+        $this->send($title, $user->getEmail(), $template);
+    }
+
     protected function sendFollowRequestNotification(NotifyFollowRequestEvent $event)
     {
         $user = $event->getUserToNotify();
@@ -187,6 +202,7 @@ class EmailNotifier
         ]);
         $this->send($body , $user->getEmail(), $template);
     }
+
 
     protected function send($notification_title, $email, $template)
     {

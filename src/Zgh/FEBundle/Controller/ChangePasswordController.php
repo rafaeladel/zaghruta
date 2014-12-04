@@ -95,7 +95,7 @@ class ChangePasswordController extends ContainerAware
                 if($request->isXmlHttpRequest()) {
                     return new JsonResponse([
                         "success" => false,
-                        "message" => "Error while changing password. Please make sure the current password is correct. And password verification matches."
+                        "message" => "Current password is incorrect."
                     ]);
                 } else {
                     $this->container->get("session")->getFlashBag()->add("password_error", "Error while changing password. Please make sure the current password is correct. And password verification matches.");

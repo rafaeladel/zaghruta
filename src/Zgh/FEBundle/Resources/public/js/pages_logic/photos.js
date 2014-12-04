@@ -25,8 +25,16 @@ $(document).ready(function(){
         history.pushState(null, null, $(e.currentTarget).data("target_url"));
     });
 
+    $("body").on("keydown", ".captionInput input[type='text']", function (e) {
+        if(e.which == 13) {
+            e.preventDefault();
+            $("body").find(".save_caption").click();
+        }
+    });
+
     $("body").on("click", ".edit_caption, .cancel_caption", function(e) {
         e.preventDefault();
+
         var btn = $(e.target);
         var url = btn.data("url");
         if(!btn.hasClass("disabled")) {

@@ -66,6 +66,7 @@ class PhotoController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->get("security.context")->getToken()->getUser();
         $album_name = $request->request->get("album_name");
+        $album_id = $request->request->get("album_id");
         $album_info = $request->request->get("album_info");
         $image_caption = $request->request->get("caption");
         $album = $em->getRepository("ZghFEBundle:User")->hasAlbum($user, $album_name);
@@ -74,6 +75,11 @@ class PhotoController extends Controller
             $album->setName($album_name);
             $album->setInfo($album_info);
             $user->addAlbum($album);
+        } else {
+            return new JsonResponse([
+                "success" => false,
+                "message" => "Album already exists."
+            ]);
         }
 
 
@@ -86,7 +92,7 @@ class PhotoController extends Controller
 
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush();
-        return new JsonResponse(array("status" => 200));
+        return new JsonResponse(array("success" => true));
     }
 
     public function postPhotoAlbumDeleteAction(Request $request, Album $album)

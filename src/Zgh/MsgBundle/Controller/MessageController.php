@@ -29,6 +29,8 @@ class MessageController extends ContainerAware
             $sender = $container->get("security.context")->getToken()->getUser();
             $thread = $container->get("fos_message.thread_manager")->findOneThreadByRecipient($sender, $recipient);
             if ($thread) {
+                $this->container->get('fos_message.deleter')->markAsUndeleted($thread);
+                $this->container->get('fos_message.thread_manager')->saveThread($thread);
                 $new_form = $container->get('fos_message.reply_form.factory')->create($thread);
                 $formHandler = $container->get('zgh_message.message_form_handler');
             }
@@ -63,27 +65,39 @@ class MessageController extends ContainerAware
     public function threadAction($threadId)
     {
         $container = $this->container;
+        $user = $container->get("security.context")->getToken()->getUser();
+        $msgManager = $container->get("fos_message.message_manager");
         $thread = $container->get("fos_message.provider")->getThread($threadId);
         $reply_form = $container->get('fos_message.reply_form.factory')->create($thread);
         $formHandler = $container->get('fos_message.reply_form.handler');
-
+        
         if ($message = $formHandler->process($reply_form)) {
             return new RedirectResponse($this->container->get("router")->generate("fos_message_inbox"));
         }
 
-        //todo!
+        $messages = $msgManager->getThreadMessages($user, $thread);
+//        var_dump($messages);
+//        die;
+
         return $this->container->get('templating')->renderResponse('@ZghMsg/Message/thread.html.twig', array(
                 'reply_form' => $reply_form->createView(),
-                'thread' => $thread
+                'thread' => $thread,
+                'messages' => $messages
             ));
     }
 
     public function messageListAction($threadId)
     {
         $container = $this->container;
+        $user = $container->get("security.context")->getToken()->getUser();
+
         $thread = $container->get("fos_message.provider")->getThread($threadId);
+        $msgManager = $container->get("fos_message.message_manager");
+
+        $messages = $msgManager->getThreadMessages($user, $thread);
         return $this->container->get('templating')->renderResponse('@ZghMsg/Message/message_list.html.twig', array(
-                'thread' => $thread
+                'thread' => $thread,
+                "messages" => $messages
             ));
     }
 
@@ -98,9 +112,11 @@ class MessageController extends ContainerAware
     {
         $container = $this->container;
         $thread = $container->get("fos_message.provider")->getThread($threadId);
-        $manager = $container->get("doctrine.orm.entity_manager");
-        $manager->remove($thread);
-        $manager->flush();
+//        $manager = $container->get("doctrine.orm.entity_manager");
+//        $manager->remove($thread);
+//        $manager->flush();
+        $this->container->get('fos_message.deleter')->markAsDeleted($thread);
+        $this->container->get('fos_message.thread_manager')->saveThread($thread);
 
         return new RedirectResponse($this->container->get('router')->generate('fos_message_inbox'));
     }

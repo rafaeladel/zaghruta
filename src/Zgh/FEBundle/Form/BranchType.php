@@ -44,6 +44,7 @@ class BranchType extends AbstractType
                         "6th of October" => "6th of October",
                         "Tanta" => "Tanta"
                     ],
+                    "data" => "Cairo",
                     "configs" => [
                         "width" => "100%"
                     ],
