@@ -3557,6 +3557,9 @@ div#connections .profile .girl, div#connections .profile .boy{
         margin-top: 10px !important;
         float: right !important;
     }
+    div#connections .profile{
+        width: 100% !important;
+    }
 }
 @media (max-width: 568px){
     .albumCont .thumbnail a{
