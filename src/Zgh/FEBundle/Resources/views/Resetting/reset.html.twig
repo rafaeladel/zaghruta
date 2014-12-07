@@ -31,3 +31,37 @@
         {% endblock innerContent %}
     </div>
 {% endblock content %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".fos_user_resetting_reset").validate({
+                rules: {
+                    "fos_user_resetting_form[plainPassword][first]": {
+                        required: true,
+                        minlength: 6,
+                        pattern: /^\S*$/
+                    },
+                    "fos_user_resetting_form[plainPassword][second]": {
+                        required: true,
+                        equalTo: "[name='fos_user_registration_form[plainPassword][first]']"
+                    }
+                },
+                messages: {
+                    "fos_user_resetting_form[plainPassword][first]": {
+                        required: "Password is required",
+                        pattern: "Should not contain spaces"
+                    },
+                    "fos_user_resetting_form[plainPassword][second]":{
+                        required: "Confirm password is required",
+                        equalTo: "Password confirmation doesn't match"
+                    }
+                },
+                submitHandler: function(form){
+                    form.submit();
+                }
+            });
+        });
+    </script>
+{% endblock javascripts  %}

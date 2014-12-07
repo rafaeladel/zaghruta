@@ -5,6 +5,7 @@ namespace Zgh\MsgBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\MessageBundle\Entity\Message as BaseMessage;
+use FOS\MessageBundle\Model\Thread;
 use Zgh\MsgBundle\Entity\MessageMetadata;
 use FOS\MessageBundle\Model\ParticipantInterface;
 use FOS\MessageBundle\Model\ThreadInterface;
@@ -47,9 +48,14 @@ class Message extends BaseMessage
     protected $metadata;
 
     /**
-     * @ORM\OneToMany(targetEntity="Zgh\MsgBundle\Entity\DeletedMessage", mappedBy="message")
+     * @ORM\OneToMany(targetEntity="Zgh\MsgBundle\Entity\DeletedMessage", mappedBy="message", cascade={"all"})
      */
     protected $delete_table;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $is_already_deleted;
 
     /**
      * Constructor
@@ -91,5 +97,28 @@ class Message extends BaseMessage
     public function getDeleteTable()
     {
         return $this->delete_table;
+    }
+
+    /**
+     * Set is_already_deleted
+     *
+     * @param boolean $isAlreadyDeleted
+     * @return Message
+     */
+    public function setIsAlreadyDeleted($isAlreadyDeleted)
+    {
+        $this->is_already_deleted = $isAlreadyDeleted;
+
+        return $this;
+    }
+
+    /**
+     * Get is_already_deleted
+     *
+     * @return boolean 
+     */
+    public function getIsAlreadyDeleted()
+    {
+        return $this->is_already_deleted;
     }
 }

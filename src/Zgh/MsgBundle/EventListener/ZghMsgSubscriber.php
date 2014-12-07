@@ -41,10 +41,17 @@ class ZghMsgSubscriber implements EventSubscriberInterface
         $currentUser = $this->context->getToken()->getUser();
         foreach($messages as $message)
         {
-            $deleteRecord = new DeletedMessage();
-            $deleteRecord->setMessage($message);
-            $deleteRecord->setUser($currentUser);
-            $this->em->persist($deleteRecord);
+            if($message->getIsAlreadyDeleted()) {
+                $this->em->remove($message);
+            } else {
+                $deleteRecord = new DeletedMessage();
+                $deleteRecord->setMessage($message);
+                $deleteRecord->setUser($currentUser);
+                $this->em->persist($deleteRecord);
+
+                $message->setIsAlreadyDeleted(true);
+                $this->em->persist($message);
+            }
         }
         $this->em->flush();
     }
