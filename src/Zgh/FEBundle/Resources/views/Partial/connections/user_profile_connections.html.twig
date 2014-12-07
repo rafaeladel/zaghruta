@@ -15,7 +15,7 @@
 
         <div class="row" id="connections">
 
-            <div class="followerCont" style="display: block;">
+            <div class="followerCont clearfix" style="display: block;">
                 {% if user.followees|length > 0 %}
                     {% for followee in user.followees if followee.isApproved == true %}
                         {% set roles = followee.follower.roles %}

@@ -1,6 +1,6 @@
 {% if wishlists|length > 0 %}
     {% for wishlist in wishlists %}
-        <div class="col-md-3 col-xs-6 wishList col-xxs-12">
+        <div class="col-md-3 col-xs-12 wishList col-xxs-12">
             {% if wishlist.user.id == app.user.id %}
                 <button data-target="#deleteWishlist_{{ wishlist.id }}" data-toggle="modal" type="submit"
                         class="row   btn delete-post pull-right"><span
@@ -40,7 +40,8 @@
                             class="" alt="Responsive image"></a>
 
                 <div class="caption">
-                    <h5>{{ wishlist.name|length > 21 ? wishlist.name|slice(0, 21) ~ "..." : wishlist.name }}<span class="badge pull-right">{{ wishlist.products|length }}</span></h5>
+                    <h5>{{ wishlist.name|length > 21 ? wishlist.name|slice(0, 21) ~ "..." : wishlist.name }}</h5>
+                    <span class="badge pull-right">{{ wishlist.products|length }}</span>
                 </div>
             </div>
         </div>

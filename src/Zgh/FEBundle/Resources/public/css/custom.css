@@ -570,9 +570,13 @@ footer .container {
 .form-group .select2-container{
     height: auto;
 }
+.about_wrapper .table .select2-container{
+    width: 100% !important;
+}
 .form-group .select2-container .select2-choices{
     height: 34px !important;
 }
+
 .select2-container-multi .select2-choices .select2-search-choice{
     margin: 6px 0 3px 7px !important;
 }
@@ -699,6 +703,7 @@ footer .container {
     vertical-align: middle;
     min-height: 96px;
     max-height: 50px;
+    overflow: hidden;
 }
 
 .nav-profile {
@@ -3069,11 +3074,24 @@ width: 200px;
 height: 148px;
 display: block;
 overflow: hidden;
+background: #ccc;
 }
 .wishListName{
     height: 23px;
     overflow: hidden;
     margin-bottom: 15px;
+}
+.wishlists_content_list .wishList .thumbnail .caption h5{
+    width: 81%;
+    margin-right: 0;
+    display: inline-block;
+    overflow: hidden;
+    height: 13px;
+}
+.wishlists_content_list .wishList .thumbnail .caption .badge{
+    display: inline-block;
+    float: right !important;
+    margin-top: 10px;
 }
 
 .wishList a img{
@@ -3478,10 +3496,137 @@ div#connections .profile .girl, div#connections .profile .boy{
     color: red;
     padding: 0;
 }
+.comments_wrapper {
+    display: none;
+}
+@media (max-width: 768px){
+    .note-box{
+        margin-top: 60px;
+    }
+    .DMY .Day{
+        margin-right: 9px;
+    }
+    .DMY .Month{
+        margin-right: 5px;
+    }
+    div#connections .profile{
+        width: 43%;
+    }
+}
 
+@media (max-width: 640px){
+    .albumCont .thumbnail a{
+        overflow: hidden;
+    }
+    .navGroup a{
+        display: table-row !important;
+    }
+    .albumCont .thumbnail a img{
+       width: 100%;
+       height: auto !important; 
+    }
+    .wishList a{
+        width: auto !important;
+    }
+    .fancybox-inner{
+        width: 100%;
+    }
+    div#connections .profile {
+    width: 50%;
+    padding-right: 0;
+    padding-left: 0;
+    }
+    #addNewAlbum{
+        float: right !important;
+        margin-left: -40px;
+        min-width: 118px !important;
+        font-size: 12px;
+    }
+    #addNewPhoto, .back_btn, .btnDelete{
+        min-width: 118px !important;
+        font-size: 12px;
+    }
+    .back_btn{
+        margin-right: 25px;
+    }
+    #btnPhots , #btnAlbums{
+         font-size: 12px;
+    }
 
+    .btn-group{
+        margin-top: 10px !important;
+        float: right !important;
+    }
+}
+@media (max-width: 568px){
+    .albumCont .thumbnail a{
+        overflow: hidden;
+    }
+    .navGroup a{
+        display: table-row !important;
+    }
+    .albumCont .thumbnail a img{
+       width: 100%;
+       height: auto !important; 
+    }
+    .wishList a{
+        width: auto !important;
+    }
+    .fancybox-inner{
+        width: 100%;
+    }
+    div#connections .profile {
+    width: 50%;
+    padding-right: 0;
+    padding-left: 0;
+    }
+    .btn-group{
+        margin-top: 0px;
+        float: none !important;
+    }
 
+}
+
+.radio-privacy{
+    border-bottom:1px solid #ccc; 
+    padding-bottom:20px;
+}
+.radio-privacy p {
+    font-weight: bold;
+    margin-left: -20px;
+}
+.tableContent{
+    text-transform: inherit;
+}
+ .btnSetting{
+         position: relative !important;
+    }
+.moveWishlist {
+    margin-right: 13px;
+}
+.fancybox-title .child{
+  display: none !important;
+}
+.icon-bride{
+        background: url(../img/brideIcon.png) no-repeat 10px 10px;
+        padding-left: 40px !important;
+}
+.active .icon-bride{
+    background: url(../img/bride.png) no-repeat 10px 10px !important;
+     padding-left: 40px !important;
+}
+.icon-vendor{
+        background: url(../img/vendor.png) no-repeat 10px 6px;
+        padding-left: 40px !important;
+}
+.active .icon-vendor{
+    background: url(../img/vendorIcon.png) no-repeat 10px 6px !important;
+     padding-left: 40px !important;
+}
 @media (max-width: 320px){
+    .nav-login{
+        padding: 20px 30px 0;
+    }
     .navGroup a{
         display: table-row !important;
     }
@@ -3555,68 +3700,24 @@ div#connections .profile .girl, div#connections .profile .boy{
     height: auto;
    }
    .btnPhoto{
-    margin-top: 0 !important;
+    margin-top: 10px !important;
     float: left !important;
+   }
+   .product-G .photoThumb img{
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+   }
+   .contactUS{
+    margin-top: 0 !important;
+   }
+   div#connections .profile{
+    width: 100%;
+    padding-right: 0 !important;
    }
 
 }
 
-.comments_wrapper {
-    display: none;
-}
-
-@media (max-width: 568px){
-    .albumCont .thumbnail a{
-        overflow: hidden;
-    }
-    .albumCont .thumbnail a img{
-       width: 100%;
-       height: auto !important; 
-    }
-    .wishList a{
-        width: auto !important;
-    }
-    .fancybox-inner{
-        width: 100%;
-    }
-}
-
-.radio-privacy{
-    border-bottom:1px solid #ccc; 
-    padding-bottom:20px;
-}
-.radio-privacy p {
-    font-weight: bold;
-    margin-left: -20px;
-}
-.tableContent{
-    text-transform: inherit;
-}
- .btnSetting{
-         position: relative !important;
-    }
-.moveWishlist {
-    margin-right: 13px;
-}
-.fancybox-title .child{
-  display: none !important;
-}
-.icon-bride{
-        background: url(../img/brideIcon.png) no-repeat 10px 10px;
-        padding-left: 40px !important;
-}
-.active .icon-bride{
-    background: url(../img/bride.png) no-repeat 10px 10px !important;
-     padding-left: 40px !important;
-}
-.icon-vendor{
-        background: url(../img/vendor.png) no-repeat 10px 6px;
-        padding-left: 40px !important;
-}
-.active .icon-vendor{
-    background: url(../img/vendorIcon.png) no-repeat 10px 6px !important;
-     padding-left: 40px !important;
-}
 
 
    

@@ -1,7 +1,7 @@
 {% if experiences is defined %}
     {% if experiences|length > 0 %}
         {% for experience in experiences %}
-            <div class="col-md-4 col-xs-6 col-xxs-12 experience">
+            <div class="col-md-4 col-xs-12 col-xxs-12 experience">
                 <div class="thumbnail">
                     {% if app.user and experience.user.id == app.user.id %}
                         <button data-target="#deleteExperince_{{ experience.id }}" data-toggle="modal"  type="submit" class="row   btn delete-post pull-right"><span class="glyphicon glyphicon-remove pull-right"></span></button>
