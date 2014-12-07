@@ -10,40 +10,17 @@ class ZghMessageManager extends MessageManager
 {
     public function getThreadMessages(ParticipantInterface $participant, ThreadInterface $thread)
     {
-//        $idsQuery = $this->repository->createQueryBuilder("idm")
-//                ->select("idm.id")->getQuery()->getScalarResult();
-//        $m_ids = array_map(function($v) { return $v["id"]; }, $idsQuery);
-
-//        $subQuery = $this->em->getRepository("ZghMsgBundle:DeletedMessage")->createQueryBuilder("dm")->select("dm")->getQuery()->getResult();
-
-//        $subQuery = $subQuery->select("dm")->getQuery()->getResult();
-//            ->where($subQuery->expr()->in("dm.message", ":message"))
-//            ->setParameter("message", $m_ids)
-//            ->getQuery()
-//            ->getResult();
-
         $builder = $this->repository->createQueryBuilder('m');
-
-        $builder
+        $result = $builder
             ->select("m")
-            ->innerJoin("m.thread", "t")
-            ->where("t.id = :t_id");
-
-//        if(count($subQuery) > 0 ){
-//            $ru_ids = array_map(function($record) { return $record->getUser()->getId(); }, $subQuery);
-//            $rm_ids = array_map(function($record) { return $record->getMessage()->getId(); }, $subQuery);
-//
-//            $builder->andWhere($builder->expr()->andX(
-//                $builder->expr()->notIn(":user_id", $ru_ids),
-//                $builder->expr()->notIn("m.id", $rm_ids)
-//
-//            ))
-//            ->setParameter("user_id", $participant->getId());
-//        }
-
-        $result = $builder->setParameter("t_id", $thread)
+            ->leftJoin("m.delete_table", "dm")
+            ->where("dm.user is NULL OR dm.user != :user_id")
+            ->andWhere("m.thread = :t_id")
+            ->setParameter("user_id", $participant->getId())
+            ->setParameter("t_id", $thread)
             ->getQuery()
             ->getResult();
+
         return $result;
     }
 

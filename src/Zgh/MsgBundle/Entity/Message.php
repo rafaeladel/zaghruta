@@ -47,9 +47,14 @@ class Message extends BaseMessage
     protected $metadata;
 
     /**
-     * @ORM\OneToMany(targetEntity="Zgh\MsgBundle\Entity\DeletedMessage", mappedBy="message")
+     * @ORM\OneToMany(targetEntity="Zgh\MsgBundle\Entity\DeletedMessage", mappedBy="message", cascade={"all"})
      */
     protected $delete_table;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $is_already_deleted;
 
     /**
      * Constructor
@@ -91,5 +96,28 @@ class Message extends BaseMessage
     public function getDeleteTable()
     {
         return $this->delete_table;
+    }
+
+    /**
+     * Set is_already_deleted
+     *
+     * @param boolean $isAlreadyDeleted
+     * @return Message
+     */
+    public function setIsAlreadyDeleted($isAlreadyDeleted)
+    {
+        $this->is_already_deleted = $isAlreadyDeleted;
+
+        return $this;
+    }
+
+    /**
+     * Get is_already_deleted
+     *
+     * @return boolean 
+     */
+    public function getIsAlreadyDeleted()
+    {
+        return $this->is_already_deleted;
     }
 }

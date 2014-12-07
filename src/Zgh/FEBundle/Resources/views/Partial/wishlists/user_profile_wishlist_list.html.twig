@@ -40,7 +40,8 @@
                             class="" alt="Responsive image"></a>
 
                 <div class="caption">
-                    <h5>{{ wishlist.name|length > 21 ? wishlist.name|slice(0, 21) ~ "..." : wishlist.name }}</h5>
+
+                    <h5>{{ wishlist.name|length > 16 ? wishlist.name|slice(0, 16) ~ "..." : wishlist.name }}</h5>
                     <span class="badge pull-right">{{ wishlist.products|length }}</span>
                 </div>
             </div>
