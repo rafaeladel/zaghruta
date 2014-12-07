@@ -1,7 +1,7 @@
 <div class="photosCont">
     {% if photos|length > 0 %}
         {% for photo in photos %}
-            <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12 margin">
+            <div class="col-md-3 col-sm-4 col-xs-12 col-xxs-12 margin">
                 <div class="thumbnail photoGallery">
                     <a class="fancybox" href="{{ url("zgh_fe.photos.photo.content", {"id": user.id, "photo_id": photo.id } ) }}" data-fancybox-href="#photosPopup_{{ photo.id }}" rel="gallery">
                         <div class="thumbOverlay">

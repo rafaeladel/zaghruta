@@ -3561,6 +3561,7 @@ div#connections .profile .girl, div#connections .profile .boy{
         width: 100% !important;
     }
 }
+
 @media (max-width: 568px){
     .albumCont .thumbnail a{
         overflow: hidden;
@@ -3625,6 +3626,32 @@ div#connections .profile .girl, div#connections .profile .boy{
 .active .icon-vendor{
     background: url(../img/vendorIcon.png) no-repeat 10px 6px !important;
      padding-left: 40px !important;
+}
+@media (max-width: 360px){
+    .Vendors-filtration, .products-filtration, .tips-filtration, .experince-filtration, .tip-filtration{
+        width: 100%;
+    }
+    .fancybox-inner{
+       min-width: 95% !important;
+       height: 100%;
+    }
+    .contentImg{
+        height: auto !important;
+    }
+    .contentImg img{
+        width: auto !important;
+        height: auto !important;
+    }
+    .photosCont .photoGallery a{
+       display: block;
+    }
+    .photosCont .photoGallery a img{
+        width: 100%;
+    }
+    .btnSetting{
+        margin-top: 0 !important;
+    }
+    
 }
 @media (max-width: 320px){
     .nav-login{
