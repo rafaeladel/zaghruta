@@ -108,6 +108,7 @@ function Uploader(params)
             maxFiles: _this.numOfFiles,
             maxFilesize: 5,
             dictFileTooBig: "File is too big (max 5 MB)." ,
+            dictResponseError: "Error occurred during upload, please try again",
             thumbnailWidth: 300,
             thumbnailHeight: 300,
             acceptedFiles: "image/*",

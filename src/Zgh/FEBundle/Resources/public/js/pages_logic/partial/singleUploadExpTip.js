@@ -7,6 +7,7 @@ function singleUploadExpTip() {
         thumbnailWidth: 300,
         thumbnailHeight: 300,
         acceptedFiles: "image/*",
+        dictResponseError: "Error occurred during upload, please try again",
         autoProcessQueue: false,
         previewsContainer: ".photo_preview",
         dictFileTooBig: "File is too big (max 5 MB)." ,
