@@ -10,9 +10,13 @@ class BranchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add("address", "text")
+            ->add("address", "text", [
+                "attr" => [
+                    "maxlength" => 150
+                ]
+            ])
             ->add("city", "thrace_select2_choice", [
-                    "empty_value" => "City",
+                    "empty_value" => "Select city",
                     "choices" => [
                         "Alexandria" => "Alexandria",
                         "Aswan" => "Aswan",

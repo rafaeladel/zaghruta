@@ -93,6 +93,7 @@ class SettingsController extends Controller
         $user->setNewEmailToken(null);
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush($user);
+        $this->get("session")->getFlashBag()->add("notice_email_change", "Your Email was successfully Changed");
         return new RedirectResponse($this->generateUrl("zgh_fe.wall.index"));
     }
 }

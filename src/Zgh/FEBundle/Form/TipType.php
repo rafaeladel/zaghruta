@@ -14,7 +14,11 @@ class TipType extends AbstractType
         $cat_transformer = new MultiCategoryTransformer();
 
         $builder
-            ->add("title", "text")
+            ->add("title", "text", [
+                "attr" => [
+                    "maxlength" => 65
+                ]
+            ])
             ->add("content", "textarea");
 
         $builder->add(

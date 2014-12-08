@@ -10,8 +10,16 @@ class IntroNameType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add("firstname", "text")
-            ->add("lastname", "text")
+            ->add("firstname", "text", [
+                "attr" => [
+                    "maxlength" => 65
+                ]
+            ])
+            ->add("lastname", "text", [
+                "attr" => [
+                    "maxlength" => 65
+                ]
+            ])
         ;
     }
 

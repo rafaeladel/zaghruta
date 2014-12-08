@@ -149,7 +149,7 @@ class EmailNotifier
         $notification = $event->getNotification();
         $user_url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $this->notification->getOtherEnd()->getId()], true);
         $title = "{$this->notification->getOtherEnd()->getFullName()} has sent you a message";
-        $body = sprintf("<a href='%s'>{$user_url}</a> has sent you a message.", $user_url);
+        $body = sprintf("<a href='%s'>{$this->notification->getOtherEnd()->getFullName()}</a> has sent you a message.", $user_url);
         $template = $this->getSingleBtnTemplate([ "notification_title" => $title, "notification_body" => $body, "user" => $user ]);
         $this->send($title, $user->getEmail(), $template);
     }

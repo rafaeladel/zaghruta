@@ -14,7 +14,11 @@ class ExperienceType extends AbstractType
     {
         $cat_transformer = new MultiCategoryTransformer();
         $builder
-            ->add("title", "text");
+            ->add("title", "text", [
+                "attr" => [
+                    "maxlength" => 65
+                ]
+            ]);
         $builder->add(
             $builder->create("categories", "thrace_select2_entity", array(
                     "class" => 'Zgh\FEBundle\Entity\Category',

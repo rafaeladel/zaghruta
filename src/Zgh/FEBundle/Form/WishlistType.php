@@ -11,7 +11,11 @@ class WishlistType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $option)
     {
         $builder
-            ->add("name", "text")
+            ->add("name", "text", [
+                "attr" => [
+                    "maxlength" => 65
+                ]
+            ])
         ;
     }
 

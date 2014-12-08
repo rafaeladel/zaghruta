@@ -18,9 +18,6 @@ class Branch
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
-     * @Assert\Length(
-     *      max=150
-     * )
      */
     protected $address;
 

@@ -20,7 +20,7 @@ class UserInfoType extends AbstractType
                 ])
             ->add("gender", "choice", array("choices" => array("0" => "Male", "1" => "Female")))
             ->add("city", "thrace_select2_choice", [
-                "empty_value" => "City",
+                "empty_value" => "Select city",
                     "choices" => [
                         "Alexandria" => "Alexandria",
                         "Aswan" => "Aswan",
@@ -53,7 +53,11 @@ class UserInfoType extends AbstractType
                         "Tanta" => "Tanta"
                     ]
                 ])
-            ->add("job", "text")
+            ->add("job", "text",[
+                "attr" => [
+                    "maxlength" => 65
+                ]
+            ])
             ->add("facebook", "url")
             ->add("twitter", "url")
         ;
