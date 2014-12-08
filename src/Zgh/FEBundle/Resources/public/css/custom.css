@@ -66,17 +66,6 @@
 .icon-florists:before {
     content: "\e619";
 }
-.icon-Health{
-    /*content: "\e600";*/
-    background: url(../img/iconBeauty.png) no-repeat 0 0 !important;
-    width: 24px !important;
-    height: 20px !important;
-}
-.headerInterests .icon-Health{
-   background: #9dd8cf url(../img/iconBeauty.png) no-repeat 2px 2px !important;
-   width: 24px !important;
-    height: 24px !important;
-}
 .icon-cakeCatering:before {
     content: "\e601";
 }
@@ -113,7 +102,17 @@
 .icon-weddingPlanners:before {
     content: "\e60d";
 }
-
+.icon-Health{
+    /*content: "\e600";*/
+    background: url(../img/iconBeauty.png) no-repeat 0 0 !important;
+    width: 24px !important;
+    height: 20px !important;
+}
+.headerInterests .icon-Health{
+   background: #9dd8cf url(../img/iconBeauty.png) no-repeat 2px 2px !important;
+   width: 24px !important;
+    height: 24px !important;
+}
 /*-----------General----------*/
 a, input, select {
     outline: none
@@ -2310,6 +2309,10 @@ footer a {
     word-wrap: break-word;
     width: 90%;
 }
+.privacy .panel-heading {
+    overflow: hidden!important;
+
+}
 .privacy h4 {
     display: inline-block;
   }
@@ -2744,7 +2747,7 @@ border-top: none;
     float: left;
 }
 .DMY .Day{
-    margin-right: 10px;
+    margin-right: 7px;
     width: 26%;
 }
 .DMY .Month{
@@ -2822,8 +2825,7 @@ border-top: none;
 .deteilsPhoto, .deteilsProduct{
    position: absolute;
    bottom: 0;
-   min-height: 42px;
-   max-height: 55px;
+   height: 36px;
    overflow: hidden;
    background: rgba(000, 000, 000, 0.5);
    width: 100% !important;
@@ -2886,6 +2888,7 @@ margin-bottom: 15px !important;
     height: 20px;
     z-index: 10;
     border: none !important;
+    overflow: hidden;
 }
 .branchCity{
     background: transparent;

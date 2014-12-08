@@ -149,6 +149,8 @@ $(document).ready(function () {
     // if (isRetina) {
     //     $('.logoRetina img').attr('src','/zaghruta/web/bundles/zghfe/img/logox2.png');
     // }
+    
+    // Get all the elements with class inputMaxLength and add maxlength attribute to them
 
 });
 

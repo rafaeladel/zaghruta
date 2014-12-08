@@ -34,7 +34,7 @@
                     <!-- /.modal-dialog -->
                 </div>
             {% endif %}
-            <a class="pull-left nameAlbum"
+            <a class="pull-left nameAlbum tooltip" data-placement="right" data-toggle="tooltip" title="{{ photo.album.name }}"
                href="{{ url("zgh_fe.photos_partial_albums_photos_content", {"id": photo.user.id, "album_id": photo.album.id }) }}">
                 <h4>{{ photo.album.name }}</h4></a>
         </div>
