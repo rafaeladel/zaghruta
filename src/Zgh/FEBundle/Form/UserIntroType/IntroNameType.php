@@ -12,12 +12,12 @@ class IntroNameType extends AbstractType
         $builder
             ->add("firstname", "text", [
                 "attr" => [
-                    "maxlength" => 65
+                    "maxlength" => 20
                 ]
             ])
             ->add("lastname", "text", [
                 "attr" => [
-                    "maxlength" => 65
+                    "maxlength" => 20
                 ]
             ])
         ;

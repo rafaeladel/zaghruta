@@ -15,7 +15,11 @@ class VendorInfoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $option)
     {
         $builder
-            ->add("company_name", "text")
+            ->add("company_name", "text", [
+                "attr" => [
+                    "maxlength" => 40
+                ]
+            ])
             ->remove("categories")
             ->add("mobile", "text", ["required" => false])
             ->add("website", "url", ["required" => false])

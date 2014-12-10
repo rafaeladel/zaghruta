@@ -29,10 +29,10 @@
                     <p>
                         <a href="{{ url("zgh_fe.user_profile.index", {"id": product.user.id}) }}">{{ product.user.fullname }}</a>
                     </p>
-                    <h6>{% for tag in product.tags %}
-                            {{ tag.name }}
-                            {% if loop.index < product.tags|length %} - {% endif %}
-                        {% endfor %}</h6>
+                    {#<h6>{% for tag in product.tags %}#}
+                            {#{{ tag.name }}#}
+                            {#{% if loop.index < product.tags|length %} - {% endif %}#}
+                        {#{% endfor %}</h6>#}
                     <span class="date">{{ product.createdAt|date("d M Y - h:i A") }}</span>
                     {% if product.price %}
                         <span class="price">Price:<span> {{ product.price }} EGP</span></span>

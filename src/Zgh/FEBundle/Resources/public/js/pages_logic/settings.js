@@ -61,6 +61,14 @@ $(document).ready(function () {
                 pattern: /[a-zA-Z]+/
             }
         },
+        messages: {
+            firstname: {
+                pattern: "First Name can't contain numbers only"
+            },
+            lastname: {
+                pattern: "Last Name can't contain numbers only"
+            }
+        },
         submitHandler: function (form) {
             var url = $(form).attr("action");
             $(form).find("[type='submit']").attr("disabled", "disabled");
