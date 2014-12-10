@@ -18,7 +18,10 @@ class ProductType extends AbstractType
             ])
             ->add("description", "textarea", ["required" => false])
             ->add("price", "text", [
-                "required" => false
+                "required" => false,
+                "attr" => [
+                    "maxlength" => 10
+                ]
             ])
         ;
 
