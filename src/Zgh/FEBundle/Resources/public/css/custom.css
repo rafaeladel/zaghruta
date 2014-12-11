@@ -232,17 +232,31 @@ border-radius: 0 !important;
     margin: 0 auto -60px;
     padding: 0 0 60px;
 }
-
+.captionPhotos .albumName{
+    margin-bottom:5px; 
+}
+.captionPhotos .albumName h4{
+    padding: 0;
+    margin:0;
+    word-wrap: break-word;
+}
 .date {
     color: #000;
     display: block;
     font-size: 12px;
     margin-bottom: 5px;
 }
-
+.thumbnail .captionPhotos{
+     padding: 5px 0;
+     height: 64px;
+     overflow: hidden;
+}
 .date-time {
     color: #636363;
     font-size: 10px;
+}
+.likes_wrapper{
+    color: #000;
 }
 
 .glyphicon.glyphicon-user.glyphicon-user-boy {
@@ -839,6 +853,9 @@ footer .container {
 .captionInput a, .edit_caption{
     font-size: 14px;
     text-decoration: none;
+}
+.PhotoCaption span{
+    word-wrap:break-word;
 }
 .captionInput a:first-of-type{
     margin-right: 10px;
@@ -1612,6 +1629,8 @@ footer a {
 
 .headerProduct h2 {
     margin-top: 0;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 .headerProduct .icons-G {
@@ -1624,6 +1643,7 @@ footer a {
     margin-top: 5px !important;
     display: inline-block;
 }
+
 .headerProduct .btn-delete{margin-top: 5px;}
 .btn-delete:hover{
     text-decoration: none;
@@ -2833,8 +2853,6 @@ border-top: none;
 }
 .deteilsPhoto, .deteilsProduct .nameAlbum, .deteilsProduct .product_name{
     width: 90%;
-    height: 36px;
-     overflow: hidden;
 }
 .PopupPhotoContent .deteilsPhoto{
     width: 100% !important;
@@ -3502,6 +3520,12 @@ div#connections .profile .girl, div#connections .profile .boy{
 .comments_wrapper {
     display: none;
 }
+.dropdown-tags > li > a{
+    max-width: 250px;
+    overflow: hidden;
+}
+
+
 @media (max-width: 768px){
     .note-box{
         margin-top: 60px;
@@ -3591,6 +3615,13 @@ div#connections .profile .girl, div#connections .profile .boy{
         margin-top: 0px;
         float: none !important;
     }
+    .open  .dropdown-menu{
+        right: 0;
+        left: inherit;
+    }
+    #profile_pic_popup{
+        width:auto !important;
+    }
 
 }
 
@@ -3653,6 +3684,13 @@ div#connections .profile .girl, div#connections .profile .boy{
     }
     .btnSetting{
         margin-top: 0 !important;
+    }
+    .open .dropdown-menu{
+        right: 0;
+        left: inherit;
+    }
+    #profile_pic_popup{
+        width:auto !important;
     }
     
 }
@@ -3748,8 +3786,16 @@ div#connections .profile .girl, div#connections .profile .boy{
     width: 100%;
     padding-right: 0 !important;
    }
+   .open .dropdown-menu{
+        right: 0 !important;
+        left: inherit;
+    }
+    #profile_pic_popup{
+        width:auto !important;
+    }
 
 }
+
 
 
 

@@ -4,12 +4,12 @@
             <div class="input-group-btn cat_ddl_btn" style="display:none;">
                 <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Tags <span
                             class="caret"></span></button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu dropdown-tags">
                         <li><a href="#" class="searchOption searchOptionProd" data-cat="all"><i class="icon-list-alt"></i>Everything</a></li>
                         <li class="divider"></li>
                     {% for tag in tags %}
                         <li>
-                            <a href="#" class="searchOption searchOptionProd" data-cat="{{ tag.nameSlug }}"><i class="iconMenu pull-left"></i>{{ tag.name }}</a>
+                            <a href="#" class="searchOption searchOptionProd" data-cat="{{ tag.nameSlug }}"></i>{{ tag.name }}</a>
                         </li>
                     {% endfor %}
                 </ul>

@@ -151,7 +151,6 @@ $(document).ready(function () {
     // }
     
     // Get all the elements with class inputMaxLength and add maxlength attribute to them
-
 });
 
 

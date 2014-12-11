@@ -8,10 +8,15 @@
                                   src="{{ album.photos|length > 0 ? asset(album.photos.first.getThumbWebPath) : asset("bundles/zghfe/img/thumb.jpg") }}">
                 </a>
 
-                    <div class="caption">
-                        <h4>{{ album.name|length > 21 ? album.name|slice(0, 21) ~ "..." : album.name }}<span class="badge pull-right">{{ album.photos|length }}</span></h4>
+                    <div class="caption captionPhotos">
+                     <div class="col-md-12 albumName">
+                      <div class="row">
+                        <h4 class="col-md-10">{{ album.name|length > 21 ? album.name|slice(0, 21) ~ "..." : album.name }}</h4>
+                        <span class="badge pull-right">{{ album.photos|length }}</span>
+                      </div>
+                    </div>
 
-                        <p class="date">{{ album.createdAt|date("d M Y - h:i A") }}</p>
+                        <p class="date col-md-12">{{ album.createdAt|date("d M Y - h:i A") }}</p>
                     </div>
             </div>
         </div>
