@@ -3761,8 +3761,21 @@ div#connections .profile .girl, div#connections .profile .boy{
         line-height: inherit;
         margin-top: 15px;
     }
-
-    
+  .photoCover > img{
+        height: 100% !important;
+        width: auto !important;
+    }
+    .fancybox-wrap{
+        width: 280px !important;
+    }
+    .photoContent .result{
+        position: relative;
+        top: 0 !important;
+        right: 0 !important;
+    }
+     .deteilsPhoto, .deteilsProduct{
+        height: auto !important;
+    }
 }
 @media (max-width: 320px){
     .nav-login{
@@ -3873,6 +3886,17 @@ div#connections .profile .girl, div#connections .profile .boy{
         max-height: inherit;
         line-height: inherit;
         margin-top: 15px;
+    }
+    .photoCover > img{
+        height: 100% !important;
+        width: auto !important;
+    }
+    .fancybox-wrap{
+        width: 260px !important;
+        left: 32px;
+    }
+    .deteilsPhoto, .deteilsProduct{
+        height: auto !important;
     }
 
 }
