@@ -20,7 +20,7 @@
                                 <img class="media-object" src="{{ user.profilePhoto.getThumbWebPath ? asset(user.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : asset("bundles/zghfe/img/init/init_pp.jpg") ) }}" alt="">
                             </a>
 
-                            <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": user.id}) }}">{{ user.fullname }}</a></h3>
+                            <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": user.id}) }}"><span class="fullName">{{ user.fullname }}</span></a></h3>
                             {{ renderFollow(user, "ROLE_CUSTOMER" in user.roles ? (user.userInfo.gender == 0 ? "" : "btn-danger") : "") }}
 
                             <a class="{{ "ROLE_VENDOR" in user.roles ? "" : (user.userInfo.gender == 0 ? "boy" : "girl") }}" href="#"> <span class="glyphicon glyphicon-user "></span> <span class="followerStats">{{ getApprovedFollowings(user)|length }}</span></a>

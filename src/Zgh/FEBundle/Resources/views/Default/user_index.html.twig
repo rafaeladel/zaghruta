@@ -75,7 +75,7 @@
                 </div>
             </div>
             <h3>
-                <a href="{{ url("zgh_fe.user_profile.index", {"id": user.id}) }}">{{ user.firstname }} {{ user.lastname }}</a>
+                <a href="{{ url("zgh_fe.user_profile.index", {"id": user.id}) }}"><span class="fullName">{{ user.firstname }} {{ user.lastname }}</span></a>
             </h3>
 
             {{ renderFollow(user) }}

@@ -27,6 +27,7 @@ use Zgh\FEBundle\Form\WishlistType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Zgh\FEBundle\Form\UserIntroType\IntroUserType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UserProfileController extends Controller
 {
@@ -283,7 +284,7 @@ class UserProfileController extends Controller
     {
         $user = $this->get("security.context")->getToken()->getUser();
         $pic_file = $request->files->get("cover", null);
-        if(!$pic_file) {
+        if(!$pic_file instanceof UploadedFile) {
             $this->get("session")->getFlashBag()->add("cp_error", "No cover is selected.");
             return $this->redirect($this->generateUrl("zgh_fe.user_profile.index", array("id" => $user->getId())));
         }

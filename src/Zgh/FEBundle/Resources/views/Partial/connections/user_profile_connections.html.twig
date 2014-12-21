@@ -30,7 +30,7 @@
                             </a>
 
                             <h3>
-                                <a href="{{ url("zgh_fe.user_profile.index", {"id": followee.follower.id }) }}">{{ followee.follower.getFullname }}</a>
+                                <a href="{{ url("zgh_fe.user_profile.index", {"id": followee.follower.id }) }}"><span class="fullName">{{ followee.follower.getFullname }}</spn></a>
                             </h3>
                             {{ renderFollow(followee.follower,  "ROLE_CUSTOMER" in roles ? (gender == 0 ? "" : "btn-danger") : "" ) }}
                             <a href="{{ url("zgh_fe.user_profile.connections_partial", {"id": followee.follower.id}) }}"

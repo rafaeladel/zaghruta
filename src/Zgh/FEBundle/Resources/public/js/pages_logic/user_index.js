@@ -70,7 +70,7 @@ $(document).ready(function () {
     });
 
     var img_crop = new ImgCrop({
-        height: 250,
+        height: 280,
         width: 535,
         image_class: "cover_thumb",
         wrapper: "cover_wrapper",
