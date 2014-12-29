@@ -34,6 +34,7 @@ $(document).ready(function () {
     );
 
     setTimeout(function () {
+
         $(window).on("popstate", function (e) {
             e.preventDefault();
             var targetUrl = e.originalEvent.state == null ? null : e.originalEvent.state.targetUrl,
