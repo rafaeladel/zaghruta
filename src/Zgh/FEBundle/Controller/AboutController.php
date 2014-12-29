@@ -21,6 +21,7 @@ use Zgh\FEBundle\Model\Event\NotifyRelationshipRequestEvent;
 
 class AboutController extends Controller
 {
+
     /**
      * @Security("has_role('ROLE_CUSTOMER')")
      * @param $id

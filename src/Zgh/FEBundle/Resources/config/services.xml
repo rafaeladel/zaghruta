@@ -170,6 +170,7 @@
         <service id="zgh_fe.tag" class="%zgh_fe.tag.class%">
             <argument type="service" id="router" />
             <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="security.context" />
             <tag name="form.type" alias="tag_input"/>
         </service>
 

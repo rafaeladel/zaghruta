@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Zgh\FEBundle\Model\Partial\BasicInfo;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Zgh\FEBundle\Repository\TagRepository")
  * @ORM\Table(name="tags")
  * @ORM\HasLifecycleCallbacks
  */
@@ -20,9 +20,20 @@ class Tag
     protected $name;
 
     /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    protected $name_slug;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Product")
      */
     protected $products;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Zgh\FEBundle\Entity\User", inversedBy="tags")
+     */
+    protected $users;
+
     /**
      * Constructor
      */
@@ -62,5 +73,51 @@ class Tag
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Tag
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name_slug
+     *
+     * @param string $nameSlug
+     * @return Category
+     */
+    public function setNameSlug($nameSlug)
+    {
+        $this->name_slug = $nameSlug;
+
+        return $this;
+    }
+
+    /**
+     * Get name_slug
+     *
+     * @return string
+     */
+    public function getNameSlug()
+    {
+        return $this->name_slug;
     }
 }

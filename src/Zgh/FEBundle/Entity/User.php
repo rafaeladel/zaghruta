@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="fos_user")
  * @ORM\HasLifecycleCallbacks()
  */
-class User extends BaseUser implements ParticipantInterface
+class User extends  BaseUser implements ParticipantInterface
 {
     /**
      * @ORM\Id
@@ -31,6 +31,7 @@ class User extends BaseUser implements ParticipantInterface
 
     /**
      * @ORM\OneToMany(targetEntity="Post", mappedBy ="user")
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $posts;
 
@@ -41,11 +42,13 @@ class User extends BaseUser implements ParticipantInterface
 
     /**
      * @ORM\OneToMany(targetEntity="Album", mappedBy ="user", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $albums;
 
     /**
      * @ORM\OneToMany(targetEntity="Photo", mappedBy ="user", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $photos;
 
@@ -72,26 +75,31 @@ class User extends BaseUser implements ParticipantInterface
 
     /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy ="user", cascade={"persist","remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $products;
 
     /**
      * @ORM\OneToMany(targetEntity="Wishlist", mappedBy ="user", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $wishlists;
 
     /**
      * @ORM\OneToMany(targetEntity="Experience", mappedBy ="user", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $experiences;
 
     /**
      * @ORM\OneToMany(targetEntity="Tip", mappedBy ="user", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $tips;
 
     /**
      * @ORM\OneToMany(targetEntity="Branch", mappedBy ="user", cascade={"persist","remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $branches;
 
@@ -107,6 +115,7 @@ class User extends BaseUser implements ParticipantInterface
 
     /**
      * @ORM\OneToMany(targetEntity="Notification", mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $notifications;
 
@@ -121,8 +130,10 @@ class User extends BaseUser implements ParticipantInterface
     protected $followees;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Interest")
+     * @ORM\ManyToMany(targetEntity="Zgh\FEBundle\Entity\Tag", mappedBy="users")
+     *
      */
+    protected $tags;
 
     /**
      * @ORM\OneToOne(targetEntity="Zgh\FEBundle\Entity\UserPP", cascade={"persist", "remove"}, mappedBy="user")
@@ -1174,5 +1185,38 @@ class User extends BaseUser implements ParticipantInterface
     public function getDeleteTable()
     {
         return $this->delete_table;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \Zgh\FEBundle\Entity\Tag $tags
+     * @return User
+     */
+    public function addTag(\Zgh\FEBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Zgh\FEBundle\Entity\Tag $tags
+     */
+    public function removeTag(\Zgh\FEBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

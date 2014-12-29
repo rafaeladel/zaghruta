@@ -37,6 +37,10 @@
         <default key="_controller">ZghFEBundle:Photo:postPhotoAlbumNew</default>
     </route>
 
+    <route id="zgh_fe.photos.album.check_unique" pattern="/c/{id}/pp/a/check_unique" methods="GET">
+        <default key="_controller">ZghFEBundle:Photo:checkAlbumUnique</default>
+    </route>
+
     <route id="zgh_fe.photos.album.delete" pattern="/c/{id}/pp/a/delete">
         <default key="_controller">ZghFEBundle:Photo:postPhotoAlbumDelete</default>
     </route>

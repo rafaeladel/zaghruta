@@ -7,22 +7,25 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 use Zgh\FEBundle\Transformer\TagsTransformer;
 
 class TagInputType extends AbstractType
 {
     private $em;
     private $router;
+    private $context;
 
-    public function __construct(RouterInterface $routerInterface, EntityManagerInterface $entityManagerInterface)
+    public function __construct(RouterInterface $routerInterface, EntityManagerInterface $entityManagerInterface, SecurityContextInterface $contextInterface)
     {
         $this->em = $entityManagerInterface;
         $this->router = $routerInterface;
+        $this->context = $contextInterface;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $transformer = new TagsTransformer($this->em);
+        $transformer = new TagsTransformer($this->em, $this->context);
         $builder->addModelTransformer($transformer);
     }
 
@@ -33,6 +36,7 @@ class TagInputType extends AbstractType
             "multiple" => true,
             "configs" => [
                 'width' => '100%',
+                "maximumInputLength" => "30",
                 'ajax' => [
                     'url' => $this->router->generate('zgh_fe.tags.serialized', array(), true),
                     'type' => 'GET',
