@@ -6,7 +6,7 @@
                 <img class="media-object" src="{{ user.profilePhoto ?  asset(user.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in user.roles ? 'https://graph.facebook.com/'~user.facebookId~'/picture?width=125&height=125' : "#") }}" alt="">
             </a>
 
-            <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": user.id }) }}">{{ user.getFullname }}</a></h3>
+            <h3><a href="{{ url("zgh_fe.user_profile.index", {"id": user.id }) }}"><span class="fullName">{{ user.getFullname }}</span></a></h3>
             {{ renderFollow(user,  "ROLE_CUSTOMER" in user.roles ? (user.userInfo.gender == 0 ? "" : "btn-danger") : "" ) }}
             <a href="{{ url("zgh_fe.user_profile.connections_partial", {"id": user.id}) }}" class="{{ "ROLE_CUSTOMER" in user.roles ? (user.userInfo.gender == 0 ? "boy" : "girl") : "" }}"> <span class="glyphicon glyphicon-user "></span> <span class="followerStats">{{ getApprovedFollowings(user)|length }}</span>  </a>
 

@@ -94,17 +94,6 @@
                                         <span>-</span>
                                     {% endif %}
                                 {% endfor %}
-                                    <h2 class="col-md-10">{{ tip.title|length > 65 ? tip.title|slice(0, 65) ~ "..." : tip.title }}</h2>
-
-                                    <div class="clearfix"></div>
-                                    <p class="by col-md-12">Categories:
-                                        {% for category in tip.categories %}
-                                            <span>{{ category.name }}</span>
-                                            {% if loop.index < tip.categories|length %}
-                                                <span>-</span>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </p>
                                     <span class="col-md-12 date-time">{{ tip.createdAt|date("d M Y - h:i A") }}</span>
 
                                     <p class="by col-md-12">By: <a

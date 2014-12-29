@@ -310,15 +310,12 @@ a.boy {
 }
 
 .cover {
-    /*background: url(../img/bg-login.jpg) no-repeat left top;*/
-    /*background-size: cover;*/
     border-radius: 6px 6px 6px 6px;
     position: relative;
-/*    padding: 20px;
-*/    height: 230px;
+  height: 280px;
 }
 .photoCover{
-     height: 230px;
+     height: 280px;
     left: 0;
     overflow: hidden;
     position: absolute;
@@ -620,7 +617,14 @@ footer .container {
     background: #fefefe url(../img/header-img.png) repeat left center;
     padding: 20px 40px 0;
 }
-
+.nav-login li{
+    width: 50%;
+    text-align: center;
+}
+.nav-login li a{
+   font-weight: bold;
+   font-size: 14px;
+}
 .demo-row {
     margin: 20px 0;
 }
@@ -702,21 +706,31 @@ footer .container {
 
 .loginSwitch .container p {
     color: #fff;
-    min-height: 50px;
+    min-height: 18px;
     max-height: 50px;
-    width: 89%;
+    width: 100%;
+    margin-bottom: 5px;
 }
 .loginSwitch .intro_description{
     text-align: center;
 }
 .loginSwitch .intro_description p{
     font-size: 20px;
-    line-height: 116px;
+    line-height: 81px;
     display: inline-block;
     vertical-align: middle;
-    min-height: 96px;
-    max-height: 50px;
+    min-height: 60px;
+    max-height: 64px;
     overflow: hidden;
+    margin-bottom: 0;
+}
+.loginSwitch .container h3{
+    margin-top: 15px;
+}
+@-moz-document url-prefix() { 
+  .loginSwitch .container h3{
+    margin-top: 14px;
+ }
 }
 
 .nav-profile {
@@ -936,7 +950,12 @@ footer .container {
     float:left;
     height: auto!important;
 }
-
+.fullName{
+    max-height: 34px;
+    overflow: hidden;
+    display: inline-block;
+    width: 139px;
+}
 
 .profile h3 a {
     text-decoration: none;
@@ -2323,7 +2342,7 @@ footer a {
 }
 .panel-default > .panel-heading{
     max-height: 60px;
-    overflow: scroll;
+    overflow: hidden;
 }
 .panel-default h5{
     word-wrap: break-word;
@@ -2650,8 +2669,8 @@ footer a {
 }
 .signUp{
     margin-right: 17px;
-    margin-top: 8px;
-    font-size: 13px;
+    margin-top: 4px;
+    font-size: 16px;
 
 }
 .btnForm {
@@ -2839,9 +2858,17 @@ border-top: none;
 .PopupPhotoContent{
     position: relative;
 }
+.nameAlbum, .product_name{
+    width: 90%;
+    word-wrap: break-word;
+    height: 18px;
+    overflow: hidden;
+}
 .nameAlbum h4{
    margin: 0 !important;
 }
+
+
 .deteilsPhoto, .deteilsProduct{
    position: absolute;
    bottom: 0;
@@ -3138,6 +3165,7 @@ background: #ccc;
     height: 70px;
     overflow: hidden;
     color: #ffffff;
+    word-break: break-all;
 }
 .tip_add h2, .exp_add h2{
     margin-bottom: 45px;
@@ -3148,7 +3176,9 @@ background: #ccc;
    color:#fff;
 
 }
-
+.exptip_content_wrapper p{
+    word-break: break-all;
+}
 .container .headerProduct .by, .container .product .headerProduct p{
     color: #000 !important;
 }
@@ -3167,6 +3197,11 @@ background: #ccc;
 .wishlistPopup label{
     color:#000 !important;
     margin-right:5px;
+    width: 78%;
+    height: 20px;
+    overflow: hidden;
+    margin-bottom: 0;
+    vertical-align: middle;
 }
 
 #myform label{
@@ -3239,6 +3274,12 @@ background: #ccc;
 }
 .about_wrapper .table tr:last-child:hover td{
  background: none !important;
+}
+.aboutJob{
+    max-width: 270px !important;
+    max-height: 60px;
+    overflow: hidden;
+    display: block;
 }
 .exp-Arrow:hover{
     text-decoration: none;
@@ -3542,6 +3583,15 @@ div#connections .profile .girl, div#connections .profile .boy{
 }
 
 @media (max-width: 640px){
+     .loginSwitch .intro_description p{
+        font-weight: normal !important;
+        font-size: 14px;
+        max-height: inherit;
+        line-height: inherit;
+        margin-top: 15px;
+        min-height: 27px;
+    }
+
     .albumCont .thumbnail a{
         overflow: hidden;
     }
@@ -3590,6 +3640,15 @@ div#connections .profile .girl, div#connections .profile .boy{
 }
 
 @media (max-width: 568px){
+     .loginSwitch .intro_description p{
+        font-weight: normal !important;
+        font-size: 14px;
+        max-height: inherit;
+        line-height: inherit;
+        margin-top: 15px;
+         min-height: 30px;
+    }
+
     .albumCont .thumbnail a{
         overflow: hidden;
     }
@@ -3646,22 +3705,25 @@ div#connections .profile .girl, div#connections .profile .boy{
   display: none !important;
 }
 .icon-bride{
-        background: url(../img/brideIcon.png) no-repeat 10px 10px;
+        background: url(../img/brideIcon.png) no-repeat 15% 14px;
         padding-left: 40px !important;
 }
 .active .icon-bride{
-    background: url(../img/bride.png) no-repeat 10px 10px !important;
+    background: url(../img/bride.png) no-repeat 15% 14px!important;
      padding-left: 40px !important;
 }
 .icon-vendor{
-        background: url(../img/vendor.png) no-repeat 10px 6px;
+        background: url(../img/vendor.png) no-repeat 25% 12px;
         padding-left: 40px !important;
 }
 .active .icon-vendor{
-    background: url(../img/vendorIcon.png) no-repeat 10px 6px !important;
+    background: url(../img/vendorIcon.png) no-repeat 25% 12px !important;
      padding-left: 40px !important;
 }
 @media (max-width: 360px){
+    .nav-login{
+       padding: 20px 25px 0;
+    }
     .Vendors-filtration, .products-filtration, .tips-filtration, .experince-filtration, .tip-filtration{
         width: 100%;
     }
@@ -3692,7 +3754,28 @@ div#connections .profile .girl, div#connections .profile .boy{
     #profile_pic_popup{
         width:auto !important;
     }
-    
+     .loginSwitch .intro_description p{
+        font-weight: normal !important;
+        font-size: 14px;
+        max-height: inherit;
+        line-height: inherit;
+        margin-top: 15px;
+    }
+  .photoCover > img{
+        height: 100% !important;
+        width: auto !important;
+    }
+    .fancybox-wrap{
+        width: 280px !important;
+    }
+    .photoContent .result{
+        position: relative;
+        top: 0 !important;
+        right: 0 !important;
+    }
+     .deteilsPhoto, .deteilsProduct{
+        height: auto !important;
+    }
 }
 @media (max-width: 320px){
     .nav-login{
@@ -3792,6 +3875,28 @@ div#connections .profile .girl, div#connections .profile .boy{
     }
     #profile_pic_popup{
         width:auto !important;
+    }
+    .icon-bride, .active .icon-bride, .active .icon-vendor,  .icon-vendor{
+        background: none !important;
+        padding-left:0 !important;
+    }
+    .loginSwitch .intro_description p{
+        font-weight: normal !important;
+        font-size: 14px;
+        max-height: inherit;
+        line-height: inherit;
+        margin-top: 15px;
+    }
+    .photoCover > img{
+        height: 100% !important;
+        width: auto !important;
+    }
+    .fancybox-wrap{
+        width: 260px !important;
+        left: 32px;
+    }
+    .deteilsPhoto, .deteilsProduct{
+        height: auto !important;
     }
 
 }
