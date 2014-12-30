@@ -41,11 +41,13 @@
                                                         class="icon-camera"></i> Browse
                                             </button>
                                         </div>
-                                        <div class="pp_errors alert alert-danger" style="display: none;">
+                                        {% if app.session.flashBag.has("pp_error") %}
+                                        <div class="errors pp_errors alert alert-danger">
                                             {% for msg in app.session.flashBag.get("pp_error") %}
                                                 {{ msg }}
                                             {% endfor %}
                                         </div>
+                                        {% endif %}
                                         <div class="thumbnailUpload">
                                             <button class="row reset_photo btn delete-post pull-right"><span
                                                         class="glyphicon glyphicon-remove pull-right"></span></button>

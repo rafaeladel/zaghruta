@@ -42,7 +42,11 @@
                         </div>
                     {% endfor %}
                 {% else %}
-                    <p>No one has followed you yet.</p>
+                    {% if app.user and user.id == app.user.id %}
+                        <p>No one has followed you yet.</p>
+                    {% else %}
+                        <p>No one has followed {{ user.fullname }} yet.</p>
+                    {% endif %}
                 {% endif %}
             </div>
             <div class="followingCont" style="display: none;">
@@ -72,7 +76,11 @@
                         </div>
                     {% endfor %}
                 {% else %}
-                    <p>You haven't followed anyone yet.</p>
+                    {% if app.user and user.id == app.user.id %}
+                        <p>You haven't followed anyone yet.</p>
+                    {% else %}
+                        <p>{{ user.fullname }} haven't followed anyone yet.</p>
+                    {% endif %}
                 {% endif %}
             </div>
 

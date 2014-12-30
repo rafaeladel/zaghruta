@@ -29,6 +29,7 @@ function ImgCrop(param)
         {
             if(input.files && input.files[0])
             {
+                //Validations
                 var myImg = $(trigger).parentsUntil("."+_this.wrapper).find("."+_this.image_class).find("img");
                 var file_invalid = false;
                 var invalid_msg = [];
@@ -67,16 +68,6 @@ function ImgCrop(param)
                     $(_this.form).find("button[type='submit']").attr("disabled", "disabled");
                     return;
                 }
-                else
-                {
-                    myImg.imgAreaSelect({
-                        disable: false,
-                        hide: false
-                    });
-                    $(_this.form).find(".cover_thumb").show();
-                    $(_this.form).find(".errors").hide().html("");
-                    $(_this.form).find("button[type='submit']").removeAttr("disabled");
-                }
 
                 var reader = new FileReader();
                 reader.readAsDataURL(input.files[0]);
@@ -106,12 +97,10 @@ function ImgCrop(param)
 //                    console.log(hasCrop)
 //                    if(!hasCrop) return;
 
-
                     if(!_this.crop)
                     {
                         return;
                     }
-                    myImg.css("cursor", "crosshair");
 
                     var cropper = $(trigger).parentsUntil("."+_this.wrapper).find("."+_this.image_class).find("img").imgAreaSelect({
                         minHeight: _this.height,
@@ -122,7 +111,6 @@ function ImgCrop(param)
                         parent: "#testtt",
                         instance: true,
                         onSelectEnd: function(img, selection){
-
                             height = selection.height;
                             width = selection.width;
                             x = selection.x1;
@@ -136,6 +124,11 @@ function ImgCrop(param)
                         },
                         onInit: function(img, selection)
                         {
+                            myImg.css("cursor", "crosshair");
+                            $(_this.form).find(".cover_thumb").show();
+                            $(_this.form).find(".errors").hide().html("");
+                            $(_this.form).find("button[type='submit']").removeAttr("disabled");
+
                             if("autocrop" in param)
                             {
                                 if(param.autocrop == true)

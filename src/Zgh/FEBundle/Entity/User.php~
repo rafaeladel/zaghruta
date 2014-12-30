@@ -11,9 +11,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="Zgh\FEBundle\Repository\UserRepository")
  * @ORM\Table(name="fos_user")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\HasLifecycleCallbacks()
  */
-class User extends BaseUser implements ParticipantInterface
+class User
 {
     /**
      * @ORM\Id
@@ -23,13 +23,15 @@ class User extends BaseUser implements ParticipantInterface
     protected $id;
 
     /**
-     * @ORM\Column(name="new_email", type="string", length=255, nullable=true)
-     * @Assert\NotBlank(message="New Email is required")
+     * @ORM\Column(name="new_email", type="string", length=255, nullable=true, unique=true)
+     * @Assert\NotBlank(groups={"change_email"}, message="New Email is required")
+     * @Assert\Email(groups={"change_email", "default"})
      */
     protected $new_email;
 
     /**
      * @ORM\OneToMany(targetEntity="Post", mappedBy ="user")
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $posts;
 
@@ -40,11 +42,13 @@ class User extends BaseUser implements ParticipantInterface
 
     /**
      * @ORM\OneToMany(targetEntity="Album", mappedBy ="user", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $albums;
 
     /**
      * @ORM\OneToMany(targetEntity="Photo", mappedBy ="user", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $photos;
 
@@ -71,26 +75,31 @@ class User extends BaseUser implements ParticipantInterface
 
     /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy ="user", cascade={"persist","remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $products;
 
     /**
      * @ORM\OneToMany(targetEntity="Wishlist", mappedBy ="user", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $wishlists;
 
     /**
      * @ORM\OneToMany(targetEntity="Experience", mappedBy ="user", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $experiences;
 
     /**
      * @ORM\OneToMany(targetEntity="Tip", mappedBy ="user", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $tips;
 
     /**
      * @ORM\OneToMany(targetEntity="Branch", mappedBy ="user", cascade={"persist","remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $branches;
 
@@ -106,6 +115,7 @@ class User extends BaseUser implements ParticipantInterface
 
     /**
      * @ORM\OneToMany(targetEntity="Notification", mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"created_at" = "DESC"})
      */
     protected $notifications;
 
@@ -120,8 +130,10 @@ class User extends BaseUser implements ParticipantInterface
     protected $followees;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Interest")
+     * @ORM\ManyToMany(targetEntity="Zgh\FEBundle\Entity\Tag", mappedBy="users")
+     *
      */
+    protected $tags;
 
     /**
      * @ORM\OneToOne(targetEntity="Zgh\FEBundle\Entity\UserPP", cascade={"persist", "remove"}, mappedBy="user")
@@ -143,6 +155,11 @@ class User extends BaseUser implements ParticipantInterface
      *
      * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      * @Assert\NotBlank(groups={"intro"}, message="First Name is required")
+     * @Assert\Regex(
+     *      groups={ "intro" },
+     *      pattern= "/\pL+/u",
+     *      message= "Should contain at least one alphabet character"
+     * )
      */
     protected $firstname;
 
@@ -151,6 +168,11 @@ class User extends BaseUser implements ParticipantInterface
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
      * @Assert\NotBlank(groups={"intro"}, message="Last Name is required")
+     * @Assert\Regex(
+     *      groups={ "intro" },
+     *      pattern= "/\pL+/u",
+     *      message= "Should contain at least one alphabet character"
+     * )
      */
     protected $lastname;
 
@@ -184,6 +206,11 @@ class User extends BaseUser implements ParticipantInterface
      * @ORM\Column(type="text", nullable=true)
      */
     protected $new_email_token;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Zgh\MsgBundle\Entity\DeletedMessage", mappedBy="user")
+     */
+    protected $delete_table;
 
     /**
      * @return string
@@ -581,7 +608,9 @@ class User extends BaseUser implements ParticipantInterface
      */
     public function setFirstTimeValue()
     {
-        $this->setFirstTime(true);
+        if($this->first_time == null) {
+            $this->setFirstTime(true);
+        }
     }
 
     /**
@@ -1100,5 +1129,61 @@ class User extends BaseUser implements ParticipantInterface
     public function getNewEmail()
     {
         return $this->new_email;
+    }
+
+    /**
+     * Set new_email_token
+     *
+     * @param string $newEmailToken
+     * @return User
+     */
+    public function setNewEmailToken($newEmailToken)
+    {
+        $this->new_email_token = $newEmailToken;
+
+        return $this;
+    }
+
+    /**
+     * Get new_email_token
+     *
+     * @return string 
+     */
+    public function getNewEmailToken()
+    {
+        return $this->new_email_token;
+    }
+
+    /**
+     * Add delete_table
+     *
+     * @param \Zgh\MsgBundle\Entity\DeletedMessage $deleteTable
+     * @return User
+     */
+    public function addDeleteTable(\Zgh\MsgBundle\Entity\DeletedMessage $deleteTable)
+    {
+        $this->delete_table[] = $deleteTable;
+
+        return $this;
+    }
+
+    /**
+     * Remove delete_table
+     *
+     * @param \Zgh\MsgBundle\Entity\DeletedMessage $deleteTable
+     */
+    public function removeDeleteTable(\Zgh\MsgBundle\Entity\DeletedMessage $deleteTable)
+    {
+        $this->delete_table->removeElement($deleteTable);
+    }
+
+    /**
+     * Get delete_table
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDeleteTable()
+    {
+        return $this->delete_table;
     }
 }

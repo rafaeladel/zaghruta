@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Zgh\FEBundle\Model\Partial\BasicInfo;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Zgh\FEBundle\Repository\AlbumRepository")
  * @ORM\Table(name="albums")
  * @ORM\HasLifecycleCallbacks
  */

@@ -78,7 +78,7 @@ $(document).ready(function () {
         input_class: "cover_input",
         crop: true,
         autocrop: true,
-        file_size: 5
+        file_size: 1
     });
     img_crop.init();
 

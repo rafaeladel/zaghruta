@@ -11,7 +11,7 @@
                     <label class="col-sm-3 control-label">Album Name</label>
 
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="album_name" maxlength="65" placeholder="Album Name"/>
+                        <input type="text" class="form-control" name="album_name" maxlength="65" placeholder="Album Name" data-isunique="{{ url("zgh_fe.photos.album.check_unique", {"id": app.user.id }) }}"/>
 
                         <div class="error" style="color:red;"></div>
                     </div>

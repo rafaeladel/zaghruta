@@ -133,7 +133,6 @@ class Image
         $this->image_file->move($this->getUploadDir(), $this->image_name);
 
 
-
         if(isset($this->crop_coordinates))
         {
             list($original_width, $original_height, $img_type) = getimagesize($this->getAbsolutePath());

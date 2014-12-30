@@ -10,8 +10,9 @@ class TagController extends Controller
     public function getSerializedAction(Request $request)
     {
         $tags_arr = [];
+        $user = $this->getUser();
         $criteria = $request->query->get("q");
-        $tags = $this->getDoctrine()->getRepository("ZghFEBundle:Tag")->findSearchResult($criteria);
+        $tags = $this->getDoctrine()->getRepository("ZghFEBundle:Tag")->findSearchResult($criteria, $user);
         foreach ($tags as $tag) {
             $tag_entry = [];
             $tag_entry['id'] = $tag->getName();

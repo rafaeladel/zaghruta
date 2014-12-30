@@ -451,7 +451,7 @@ $.imgAreaSelect = function (img, options) {
 
     function imgLoad() {
         imgLoaded = true;
-
+        console.log(options);
         setOptions(options = $.extend({
             classPrefix: 'imgareaselect',
             movable: true,

@@ -5,6 +5,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -61,6 +62,21 @@ class PhotoController extends Controller
         ));
     }
 
+    public function checkAlbumUniqueAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get("security.context")->getToken()->getUser();
+        $album_name = $request->query->get("album_name");
+        $album = $em->getRepository("ZghFEBundle:User")->hasAlbum($user, $album_name);
+        $already_exists = false;
+        if($album) {
+           $already_exists = true;
+        }
+        return new JsonResponse([
+            "already_exists" => $already_exists
+        ]);
+    }
+
     public function postPhotoAlbumNewAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -75,11 +91,6 @@ class PhotoController extends Controller
             $album->setName($album_name);
             $album->setInfo($album_info);
             $user->addAlbum($album);
-        } else {
-            return new JsonResponse([
-                "success" => false,
-                "message" => "Album already exists."
-            ]);
         }
 
 
@@ -129,12 +140,26 @@ class PhotoController extends Controller
 
     public function postPhotoPhotoDeleteAction(Request $request, Photo $photo)
     {
+        $user = $this->getUser();
+        $album = $photo->getAlbum();
         $em = $this->getDoctrine()->getManager();
         $em->remove($photo);
         $em->flush();
-//        return $this->redirect($this->generateUrl("zgh_fe.photos_partial_albums_photos_content", array('id'=> $photo->getUser()->getId(), "album_id" => $photo->getAlbum()->getId() )));
-//        return $this->redirect($this->generateUrl("zgh_fe.user_profile.photos_partial", array('id' => $photo->getUser()->getId())));
-        return $this->redirect($request->headers->get("referer"));
+        $referer = $request->headers->get("referer");
+        $needles = ["zaghruta/web/app_dev.php/", "app_dev.php/"];
+        $ref_route = $this->get("router")->match(str_replace($needles, "", parse_url($referer ,PHP_URL_PATH)))["_route"];
+        $redirect_url = null;
+        switch($ref_route){
+            case "zgh_fe.photos_partial_albums_photos_content":
+                $redirect_url = $this->generateUrl($ref_route, ["id" => $user->getId(), "album_id" => $album->getId()]);
+                break;
+            case "zgh_fe.photos.photo.content":
+                $redirect_url = $this->generateUrl("zgh_fe.photos_partial_albums_photos_content", ["id" => $user->getId(), "album_id" => $album->getId()]);
+                break;
+            default:
+                $redirect_url = $this->generateUrl($ref_route, ["id" => $user->getId()]);
+        }
+        return new RedirectResponse($redirect_url);
     }
 
     public function getPhotoCaptionIndexAction(Request $request, Photo $photo)

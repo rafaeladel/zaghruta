@@ -5,15 +5,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 use Zgh\FEBundle\Entity\Tag;
 
 class TagsTransformer implements  DataTransformerInterface
 {
     private $em;
+    private $context;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, SecurityContextInterface $contextInterface)
     {
         $this->em = $em;
+        $this->context = $contextInterface;
     }
 
     //From DB to View
@@ -44,6 +47,7 @@ class TagsTransformer implements  DataTransformerInterface
             {
                 $entity = new Tag();
                 $entity->setName($tag);
+                $entity->addUser($this->context->getToken()->getUser());
             }
             $entity_arr[] = $entity;
         }

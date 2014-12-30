@@ -46,6 +46,7 @@ class SearchManager
                 select pr
                 from Zgh\FEBundle\Entity\Product pr
                 where pr.name like :crit
+                order by pr.created_at DESC
             "
         );
         $q->setParameter("crit", "%" .  strtolower($query) . "%");
@@ -59,6 +60,7 @@ class SearchManager
                 select t
                 from Zgh\FEBundle\Entity\Tip t
                 where t.title like :crit
+                order by t.created_at DESC
             "
         );
         $q->setParameter("crit", "%" .  strtolower($query) . "%");
@@ -98,7 +100,8 @@ class SearchManager
         $q->select("e")
             ->from("Zgh\FEBundle\Entity\Experience", "e")
             ->innerJoin("e.user", "u", Join::WITH, $orQuery)
-            ->where("e.title LIKE :title");
+            ->where("e.title LIKE :title")
+            ->orderBy("e.created_at", "DESC");
 
         $q->setParameters([
             "priv" => false,
@@ -122,6 +125,7 @@ class SearchManager
                 or u.lastname like :crit
                 or concat(u.firstname, ' ', u.lastname) like :crit)
                 and u.roles like '%ROLE_CUSTOMER%'
+                order by u.created_at DESC
             "
         );
         $q->setParameter("crit", "%" .  strtolower($query) . "%");
@@ -140,6 +144,7 @@ class SearchManager
                 or u.lastname like :crit
                 or concat(u.firstname, ' ', u.lastname) like :crit)
                 and u.roles like '%ROLE_VENDOR%'
+                order by u.created_at DESC
             "
         );
         $q->setParameter("crit", "%" .  strtolower($query) . "%");
@@ -156,6 +161,7 @@ class SearchManager
                 inner join v_i.categories c
                 where c.name_slug = :cat
                 and pr.name like :crit
+                order by pr.created_at DESC
             ");
         $q->setParameters([
                 "cat" => $cat_slug,
@@ -186,8 +192,8 @@ class SearchManager
         $q = $this->em->createQuery("
                 select t
                 from Zgh\FEBundle\Entity\Tag t
-                inner join t.products pr
-                where pr.user = :user
+                inner join t.users u
+                where u.id= :user
                 order by t.name desc
             ");
         $q->setParameters([
@@ -207,6 +213,7 @@ class SearchManager
                 where c.name_slug = :cat
                 and v.firstname like :crit
                 and v.roles like '%ROLE_VENDOR%'
+                order by v.created_at DESC
             ");
 
         $q->setParameters([
@@ -252,7 +259,8 @@ class SearchManager
             ->innerJoin("e.categories", "c")
             ->innerJoin("e.user", "u", Join::WITH, $orQuery)
             ->where("e.title LIKE :title")
-            ->andWhere("c.name_slug = :cat");
+            ->andWhere("c.name_slug = :cat")
+            ->orderBy("e.created_at", "DESC");
 
         $q->setParameters([
             "priv" => false,
@@ -275,6 +283,7 @@ class SearchManager
                 inner join t.categories c
                 where c.name_slug = :cat
                 and t.title like :crit
+                order by t.created_at DESC
             ");
 
         $q->setParameters([
@@ -295,7 +304,7 @@ class SearchManager
         $query .= " where pr.user = :user
                     and pr.name like :crit";
 
-        $query .= $tag_slug == "all" ? "" : " and t.name_slug = :tag" ;
+        $query .= $tag_slug == "all" ? "" : " and t.name_slug = :tag order by pr.created_at DESC" ;
 
         $q = $this->em->createQuery($query);
 

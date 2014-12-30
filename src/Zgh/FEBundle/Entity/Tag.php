@@ -28,6 +28,12 @@ class Tag
      * @ORM\ManyToMany(targetEntity="Product")
      */
     protected $products;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Zgh\FEBundle\Entity\User", inversedBy="tags")
+     */
+    protected $users;
+
     /**
      * Constructor
      */
@@ -113,5 +119,38 @@ class Tag
     public function getNameSlug()
     {
         return $this->name_slug;
+    }
+
+    /**
+     * Add users
+     *
+     * @param \Zgh\FEBundle\Entity\User $users
+     * @return Tag
+     */
+    public function addUser(\Zgh\FEBundle\Entity\User $users)
+    {
+        $this->users[] = $users;
+        $users->addTag($this);
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \Zgh\FEBundle\Entity\User $users
+     */
+    public function removeUser(\Zgh\FEBundle\Entity\User $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }
