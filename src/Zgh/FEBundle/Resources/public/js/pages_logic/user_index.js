@@ -61,6 +61,15 @@ $(document).ready(function () {
                     file_size: 5
                 }
             },
+            messages: {
+                picture: {
+                    file_size: "File is too large (5 MB max)"
+                }
+            },
+            errorPlacement: function(label, element) {
+                label.addClass('arrow');
+                label.insertAfter($(element).closest(".btnBrowsePhoto"));
+            },
             submitHandler: function (form) {
                 form.submit();
             }
