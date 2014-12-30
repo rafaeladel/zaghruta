@@ -3177,8 +3177,8 @@ background: #ccc;
 
 }
 .exptip_content_wrapper p{
-    word-break: break-all;
-}
+/*    word-break: break-all;
+*/}
 .container .headerProduct .by, .container .product .headerProduct p{
     color: #000 !important;
 }
@@ -3565,6 +3565,9 @@ div#connections .profile .girl, div#connections .profile .boy{
     max-width: 250px;
     overflow: hidden;
 }
+.td-left{
+    min-width: 109px;
+}
 
 
 @media (max-width: 768px){
@@ -3648,6 +3651,10 @@ div#connections .profile .girl, div#connections .profile .boy{
         margin-top: 15px;
          min-height: 30px;
     }
+    .notificationsWidget{
+        float: left;
+        margin-left: 20%;
+    }
 
     .albumCont .thumbnail a{
         overflow: hidden;
@@ -3681,6 +3688,9 @@ div#connections .profile .girl, div#connections .profile .boy{
     #profile_pic_popup{
         width:auto !important;
     }
+    .mainSearch .dropdown-menu{
+    left: 0px !important;
+   }
 
 }
 
@@ -3721,6 +3731,10 @@ div#connections .profile .girl, div#connections .profile .boy{
      padding-left: 40px !important;
 }
 @media (max-width: 360px){
+    .notificationsWidget{
+        float: left;
+        margin-left: 20%;
+    }
     .nav-login{
        padding: 20px 25px 0;
     }
@@ -3765,6 +3779,9 @@ div#connections .profile .girl, div#connections .profile .boy{
         height: 100% !important;
         width: auto !important;
     }
+    .cover .profilePic{
+        left:0 !important;
+    }
     .fancybox-wrap{
         width: 280px !important;
     }
@@ -3776,6 +3793,9 @@ div#connections .profile .girl, div#connections .profile .boy{
      .deteilsPhoto, .deteilsProduct{
         height: auto !important;
     }
+    .mainSearch .dropdown-menu{
+    left: 0px !important;
+   }
 }
 @media (max-width: 320px){
     .nav-login{
@@ -3820,6 +3840,9 @@ div#connections .profile .girl, div#connections .profile .boy{
     .photoCover > img{
         height: 100%;
     }
+    .cover .profilePic{
+        left:0 !important;
+    }
     .btnSetting{
         margin-top: 0 !important;
     }
@@ -3849,6 +3872,9 @@ div#connections .profile .girl, div#connections .profile .boy{
    }
    .mainSearch{
     margin-top: 10px;
+   }
+   .mainSearch .dropdown-menu{
+    left: 0px !important;
    }
    .textImageContainer{
     height: auto;
@@ -3900,6 +3926,10 @@ div#connections .profile .girl, div#connections .profile .boy{
     }
     .deteilsPhoto, .deteilsProduct{
         height: auto !important;
+    }
+    .notificationsWidget{
+        float: left;
+        margin-left: 20%;
     }
 
 }
