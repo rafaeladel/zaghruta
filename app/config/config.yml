@@ -83,7 +83,7 @@ fos_user:
     registration:
         confirmation:
             from_email:
-                address:        noreply@zaghruta.com
+                address:        noreply@beta.zaghruta.com
                 sender_name:    Registration confirmation
             enabled: true
         form:
@@ -95,7 +95,7 @@ fos_user:
     resetting:
         email:
             from_email:
-                address:        noreply@zaghruta.com
+                address:        noreply@beta.zaghruta.com
                 sender_name:    Password resetting
         form:
             validation_groups: ["customResetting", "Default"]
