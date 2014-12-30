@@ -22,6 +22,7 @@ security:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
                 success_handler: zgh_fe.login_handler_success
+                require_previous_session: false
             logout:       true
             anonymous:    true
             remember_me:
