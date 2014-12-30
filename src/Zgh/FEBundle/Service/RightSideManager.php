@@ -48,6 +48,7 @@ class RightSideManager
         $q->setParameters([
                 "user" => $user
             ]);
+
         return $q->execute();
     }
 
