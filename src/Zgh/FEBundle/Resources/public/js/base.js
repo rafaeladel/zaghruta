@@ -50,7 +50,7 @@ $(document).ready(function () {
                 window.location.href = window.location.href;
             }
         });
-    }, 1000);
+    }, 2000);
 
 
     $("body").on("click", ".btnFollowing", function (e) {
