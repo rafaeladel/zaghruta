@@ -12,7 +12,18 @@ $(document).ready(function () {
             $(".tab").removeClass("active");
             tab.addClass("active");
             $(".content_wrapper").html('<img style="margin: auto; display: block;" src="' + UrlContainer.loader + '" />');
-            $(".content_wrapper").load(tab.data("target_url"));
+
+            //to prevent chrome ajax caching (back button)
+            var d = new Date();
+            var n = d.getTime();
+            $.ajax({
+                type: "GET",
+                url: tab.data("target_url")+"?ajax="+n,
+                success: function (data) {
+                    $(".content_wrapper").html(data);
+                }
+            });
+            //$(".content_wrapper").load(tab.data("target_url"));
             var stateObj = {
                 targetUrl : tab.data("target_url"),
                 targetId: tab.data("id")
@@ -70,7 +81,7 @@ $(document).ready(function () {
     });
 
     var img_crop = new ImgCrop({
-        height: 280,
+        height: 160,
         width: 535,
         image_class: "cover_thumb",
         wrapper: "cover_wrapper",
@@ -78,7 +89,7 @@ $(document).ready(function () {
         input_class: "cover_input",
         crop: true,
         autocrop: true,
-        file_size: 1
+        file_size: 5
     });
     img_crop.init();
 
