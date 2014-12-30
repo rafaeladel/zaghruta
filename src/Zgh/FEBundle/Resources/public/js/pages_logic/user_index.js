@@ -58,7 +58,7 @@ $(document).ready(function () {
             rules: {
                 picture: {
                     accept: "image/*",
-                    file_size: 5
+                    file_size: 1
                 }
             },
             messages: {
@@ -84,7 +84,7 @@ $(document).ready(function () {
             form.find(".pp_errors").html("").hide();
         } else {
             imgWrapper.attr("src", "#").hide();
-            form.find(".pp_errors").show().text("Invalid file, must be an image and size must be under (2 MB max).");
+            form.find(".pp_errors").show().text("Invalid file, must be an image and size must be under (5 MB max).");
         }
 
     });
