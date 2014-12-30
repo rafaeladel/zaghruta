@@ -103,7 +103,9 @@ class PhotoController extends Controller
 
         $this->getDoctrine()->getManager()->persist($user);
         $this->getDoctrine()->getManager()->flush();
-        return new JsonResponse(array("success" => true));
+
+        $url = $this->generateUrl("zgh_fe.photos_partial_albums_photos_content", [ "id" => $user->getId(), "album_id" => $album->getId() ], true);
+        return new JsonResponse(array("success" => true, "url" => $url ));
     }
 
     public function postPhotoAlbumDeleteAction(Request $request, Album $album)
@@ -135,7 +137,10 @@ class PhotoController extends Controller
 
         $em->persist($album);
         $em->flush();
-        return new JsonResponse(array("status" => 200));
+
+        $url = $this->generateUrl("zgh_fe.photos_partial_albums_photos_content", [ "id" => $user->getId(), "album_id" => $album->getId() ], true);
+
+        return new JsonResponse(array("status" => 200, "url" => $url));
     }
 
     public function postPhotoPhotoDeleteAction(Request $request, Photo $photo)
