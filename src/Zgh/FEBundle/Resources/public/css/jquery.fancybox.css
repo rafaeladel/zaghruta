@@ -19,6 +19,7 @@
 
 .fancybox-wrap {
 	position: absolute;
+	width: 900px !important;
 	top: 0;
 	left: 0;
 	z-index: 8020;

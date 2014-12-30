@@ -27,7 +27,9 @@ $(document).ready(function () {
     $.validator.addMethod(
         "file_size",
         function(value, element, size) {
-            var element_size = element.files[0].size/5000000;
+            //console.log(element.files[0].size);
+            //return;
+            var element_size = element.files[0].size/1000000;
             return element_size < size;
         },
         "File is large."
@@ -50,7 +52,7 @@ $(document).ready(function () {
                 window.location.href = window.location.href;
             }
         });
-    }, 500);
+    }, 2000);
 
 
     $("body").on("click", ".btnFollowing", function (e) {

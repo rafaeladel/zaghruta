@@ -151,13 +151,7 @@ function refresh_uploader(response, wrapper, list_btn_id, list_wrapper_class, aj
         w.find(".error").text(response.message);
     } else {
         w.modal("hide");
-        $("." + list_wrapper_class).find(".photosWrapper").html('<img style="margin: auto; display: block;" src=' + UrlContainer.loader + ' />');
-        $("." + list_wrapper_class).load(ajax_url, null, function () {
-            $("#" + list_btn_id).parent().find("a").each(function () {
-                $(this).removeClass("active");
-            });
-            $("#" + list_btn_id).addClass("active");
-        });
+        window.location = response.url;
     }
     var saveBtn = $("." + saveBtnClass);
     saveBtn.removeAttr("disabled");

@@ -936,8 +936,8 @@ footer .container {
 
 .profile a {
     margin-right: 10px !important;
-    /*width: 125px;*/
-    /*height: 125px;*/
+    width: 124px !important;
+    height: 124px !important;
     overflow: hidden;
 }
 
@@ -2761,8 +2761,8 @@ border-top: none;
  margin: 0 auto;
 }
 .fancybox-inner{
-  min-width: 715px;
-  width: 100% !important;}
+    min-width: 900px;
+    width: 100% !important;}
 
 .ZaghrutaTitle{
    margin-top: 10px;
@@ -3362,11 +3362,11 @@ background: #ccc;
 }
 
 .contentImg{
- height: 350px;
-overflow: hidden;
-background: #000;
-min-height: 100px !important;
-padding: 0;
+    height: 600px;
+    overflow: hidden;
+    background: #000;
+    min-height: 100px !important;
+    padding: 0;
  
 }
 .contentImg img{
@@ -3892,8 +3892,11 @@ div#connections .profile .girl, div#connections .profile .boy{
         width: auto !important;
     }
     .fancybox-wrap{
-        width: 260px !important;
-        left: 32px;
+        position: absolute;
+        width: 900px !important;
+        top: 0;
+        left: 0;
+        z-index: 8020
     }
     .deteilsPhoto, .deteilsProduct{
         height: auto !important;
