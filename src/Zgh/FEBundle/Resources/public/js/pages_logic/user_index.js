@@ -58,7 +58,7 @@ $(document).ready(function () {
             rules: {
                 picture: {
                     accept: "image/*",
-                    file_size: 1
+                    file_size: 5
                 }
             },
             messages: {
