@@ -159,7 +159,7 @@ liip_imagine:
         my_photos:
             quality: 100
             filters:
-                relative_resize: { heighten: 350 }
+                relative_resize: { heighten: 600 }
         my_list_thumb:
             quality: 100
             filters:
