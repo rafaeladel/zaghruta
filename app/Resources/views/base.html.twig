@@ -15,12 +15,13 @@
         {% stylesheets
         "bundles/zghfe/css/ie8.css"
         "bundles/zghfe/css/bootstrap.css"
-        "bundles/zghfe/css/custom.css"
         "bundles/zghfe/css/jquery.fancybox.css"
         "bundles/zghfe/css/jquery.fancybox-buttons.css"
         "bundles/zghfe/css/jquery.fancybox-thumbs.css"
         "bundles/zghfe/plugins/select2-3.4.6/select2.css"
         "bundles/zghfe/css/select2-bootstrap-css-master/select2-bootstrap.css"
+        "bundles/zghfe/css/custom.css"
+
         filter="cssrewrite" %}
         <link href="{{ asset_url }}" rel="stylesheet" type="text/css" media="screen">
         {% endstylesheets %}
@@ -74,15 +75,15 @@
     {% endjavascripts %}
 {% endblock %}
 {% block misc %}{% endblock misc %}
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+{#<script>#}
+    {#(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){#}
+        {#(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),#}
+            {#m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)#}
+    {#})(window,document,'script','//www.google-analytics.com/analytics.js','ga');#}
 
-    ga('create', 'UA-51343140-1', 'zaghruta.com');
-    ga('send', 'pageview');
+    {#ga('create', 'UA-51343140-1', 'zaghruta.com');#}
+    {#ga('send', 'pageview');#}
 
-</script>
+{#</script>#}
 </body>
 </html>
