@@ -327,9 +327,9 @@ a.boy {
     width: 100%;
 }
 .imgProfile{
-    height: 150px;
+    height: 125px;
     position: relative;
-    width: 160px;
+    width: 125px;
 }
 .imgProfile #fancybox{
     position: absolute;
@@ -936,8 +936,8 @@ footer .container {
 
 .profile a {
     margin-right: 10px !important;
-    width: 150px !important;
-    height: 150px !important;
+    /*width: 125px;*/
+    /*height: 125px;*/
     overflow: hidden;
 }
 
