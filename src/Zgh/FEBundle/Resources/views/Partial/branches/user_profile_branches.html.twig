@@ -47,8 +47,9 @@
     </div><!-- End col 12-->
     <!-- GridView-->
 
-    <div id="branches_list" class="clearfix">
+    <div id="branches_list">
         {{ render_esi(controller("ZghFEBundle:Branch:getBranchesList", {"id": user.id})) }}
+    </div>
    </div>
 {% endblock %}
 
