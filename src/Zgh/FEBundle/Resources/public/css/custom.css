@@ -2341,7 +2341,7 @@ footer a {
      border-color: #8FD2C8 !important;
 }
 .panel-default > .panel-heading{
-    max-height: 60px;
+    max-height: 58px;
     overflow: hidden;
 }
 .panel-default h5{
