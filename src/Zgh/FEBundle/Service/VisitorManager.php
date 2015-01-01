@@ -25,7 +25,8 @@ class VisitorManager
     public function getVisitor()
     {
         $url = $this->requestStack->getMasterRequest()->getUri();
-        $path = str_replace(["zaghruta/web/app_dev.php/", "app_dev.php/"], "", parse_url($url,PHP_URL_PATH ));
+        $needles = ["zaghruta.com/beta/zaghruta/web/", "beta.zaghruta.com/", "zaghruta/web/app_dev.php/", "app_dev.php/"];
+        $path = str_replace($needles, "", parse_url($url,PHP_URL_PATH ));
         $info = $this->router->match($path);
         return $info;
     }
