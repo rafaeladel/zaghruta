@@ -7,12 +7,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TagController extends Controller
 {
-    public function getSerializedAction(Request $request)
+    public function getSerializedAction(Request $request, $id)
     {
         $tags_arr = [];
-        $user = $this->getUser();
         $criteria = $request->query->get("q");
-        $tags = $this->getDoctrine()->getRepository("ZghFEBundle:Tag")->findSearchResult($criteria, $user);
+        $tags = $this->getDoctrine()->getRepository("ZghFEBundle:Tag")->findSearchResult($criteria, $id);
         foreach ($tags as $tag) {
             $tag_entry = [];
             $tag_entry['id'] = $tag->getName();

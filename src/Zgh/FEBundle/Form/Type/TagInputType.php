@@ -5,9 +5,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use Zgh\FEBundle\Service\VisitorManager;
 use Zgh\FEBundle\Transformer\TagsTransformer;
 
 class TagInputType extends AbstractType
@@ -15,12 +17,14 @@ class TagInputType extends AbstractType
     private $em;
     private $router;
     private $context;
+    private $visitorManager;
 
-    public function __construct(RouterInterface $routerInterface, EntityManagerInterface $entityManagerInterface, SecurityContextInterface $contextInterface)
+    public function __construct(RouterInterface $routerInterface, EntityManagerInterface $entityManagerInterface, SecurityContextInterface $contextInterface,VisitorManager $visitorManager)
     {
         $this->em = $entityManagerInterface;
         $this->router = $routerInterface;
         $this->context = $contextInterface;
+        $this->visitorManager = $visitorManager;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -38,7 +42,7 @@ class TagInputType extends AbstractType
                 'width' => '100%',
                 "maximumInputLength" => "30",
                 'ajax' => [
-                    'url' => $this->router->generate('zgh_fe.tags.serialized', array(), true),
+                    'url' => $this->router->generate('zgh_fe.tags.serialized', ["id" => $this->visitorManager->getVisitor()["id"] ], true),
                     'type' => 'GET',
                     'dataType' => 'json',
                     'data' => "function (term, page) {

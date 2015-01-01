@@ -29,6 +29,7 @@
         <parameter key="zgh_fe.like_manager.class">Zgh\FEBundle\Service\LikeManager</parameter>
         <parameter key="zgh_fe.comment_manager.class">Zgh\FEBundle\Service\CommentManager</parameter>
         <parameter key="zgh_fe.tag.class">Zgh\FEBundle\Form\Type\TagInputType</parameter>
+        <parameter key="zgh_fe.visitor_manager.class">Zgh\FEBundle\Service\VisitorManager</parameter>
         <parameter key="zgh_fe.wishlist.class">Zgh\FEBundle\Form\Type\WishlistInputType</parameter>
         <parameter key="zgh_fe.delete_manager.class">Zgh\FEBundle\Service\DeleteManager</parameter>
         <parameter key="zgh_fe.search_manager.class">Zgh\FEBundle\Service\SearchManager</parameter>
@@ -171,7 +172,13 @@
             <argument type="service" id="router" />
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument type="service" id="security.context" />
+            <argument type="service" id="zgh_fe.visitor_manger" />
             <tag name="form.type" alias="tag_input"/>
+        </service>
+
+        <service id="zgh_fe.visitor_manger" class="%zgh_fe.visitor_manager.class%">
+            <argument type="service" id="request_stack" />
+            <argument type="service" id="router" />
         </service>
 
         <service id="zgh_fe.wishlist" class="%zgh_fe.wishlist.class%">
