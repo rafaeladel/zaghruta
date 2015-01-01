@@ -28,6 +28,7 @@ class VisitorManager
         $needles = ["https://zaghruta.com/beta/zaghruta/web/",
                     "http://beta.zaghruta.com/",
                     "beta/zaghruta/web/",
+                    "https://zaghruta.com/",
                     "zaghruta/web/app_dev.php/",
                     "app_dev.php/",
                 ];
