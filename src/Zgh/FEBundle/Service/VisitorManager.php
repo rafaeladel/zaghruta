@@ -27,7 +27,7 @@ class VisitorManager
         $url = $this->requestStack->getMasterRequest()->getUri();
         $needles = ["https://zaghruta.com/beta/zaghruta/web/",
                     "http://beta.zaghruta.com/",
-                    "/beta/zaghruta/web/",
+                    "beta/zaghruta/web/",
                     "zaghruta/web/app_dev.php/",
                     "app_dev.php/",
                 ];
