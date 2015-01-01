@@ -143,6 +143,7 @@ class UserRepository extends EntityRepository
         return $result;
     }
 
+
     public function getAllNotifications($user)
     {
         $q = $this->getEntityManager()->createQuery(
