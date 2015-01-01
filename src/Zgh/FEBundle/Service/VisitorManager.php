@@ -28,6 +28,7 @@ class VisitorManager
         var_dump($url);
         $needles = ["https://zaghruta.com/beta/zaghruta/web/",
                     "http://beta.zaghruta.com/",
+                    "/beta/zaghruta/web/",
                     "zaghruta/web/app_dev.php/",
                     "app_dev.php/",
                 ];
