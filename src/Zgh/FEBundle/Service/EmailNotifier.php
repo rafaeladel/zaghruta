@@ -75,7 +75,7 @@ class EmailNotifier
                 $entity_name = "post";
                 break;
             case(1):
-                $url = $this->router->generate("zgh_fe.photos.photo.content", ["id" => $user->getId(), "photo_id", $this->notification->getContent()["obj_id"]], true);
+                $url = $this->router->generate("zgh_fe.photos.photo.content", ["id" => $user->getId(), "photo_id" => $this->notification->getContent()["obj_id"]], true);
                 $entity_name = "photo";
                 break;
             case(2):
@@ -108,7 +108,7 @@ class EmailNotifier
                 $entity_name = "post";
                 break;
             case(1):
-                $url = $this->router->generate("zgh_fe.photos.photo.content", ["id" => $user->getId(), "photo_id", $this->notification->getContent()["obj_id"]], true);
+                $url = $this->router->generate("zgh_fe.photos.photo.content", ["id" => $user->getId(), "photo_id" =>  $this->notification->getContent()["obj_id"]], true);
                 $entity_name = "photo";
                 break;
             case(2):
@@ -213,7 +213,7 @@ class EmailNotifier
             ->setBody($template, 'text/html');
 
         try {
-            $this->mailer->send($message);
+            $result = $this->mailer->send($message);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
