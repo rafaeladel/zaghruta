@@ -91,7 +91,7 @@
         {% endfor %}
     {% else %}
         {% if user.id == app.user.id %}
-            <p><a href="{{ url("zgh_fe.search.start_search", {"category": "all", "q": ""}) }}#searchProduct"><strong>Browse vendors products</strong> and add products to your wishlist.</a></p>
+            <p><a href="{{ url("zgh_fe.search.start_search", {"category": "all", "q": ""}) }}#searchProduct"><strong>Browse vendors products</strong></a> and add products to your wishlist.</p>
         {% else %}
             <p>{{ user.fullname }} hasn't added products to this wishlist yet.</p>
         {% endif %}
