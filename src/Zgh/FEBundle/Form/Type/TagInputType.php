@@ -40,6 +40,7 @@ class TagInputType extends AbstractType
             "multiple" => true,
             "configs" => [
                 'width' => '100%',
+                "minimumInputLength" => "1",
                 "maximumInputLength" => "30",
                 'ajax' => [
                     'url' => $this->router->generate('zgh_fe.tags.serialized', ["id" => $this->visitorManager->getVisitor()["id"] ], true),
