@@ -5637,6 +5637,11 @@ td.visible-lg {
 .hidden-xs {
   display: block !important;
 }
+
+.showMe-xs {
+    display: none !important;
+}
+
 tr.hidden-xs {
   display: table-row !important;
 }
@@ -5648,6 +5653,10 @@ td.hidden-xs {
   .hidden-xs {
     display: none !important;
   }
+    .showMe-xs {
+        display: block !important;
+    }
+
   tr.hidden-xs {
     display: none !important;
   }
