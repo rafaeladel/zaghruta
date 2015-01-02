@@ -3665,6 +3665,7 @@ div#connections .profile .girl, div#connections .profile .boy{
         border: 1px solid rgb(225, 225, 225) !important;
         font-size: 15px !important;
         font-weight: 700 !important;
+        height: 30px !important;
     }
     .albumCont .thumbnail a img{
        width: 100%;
