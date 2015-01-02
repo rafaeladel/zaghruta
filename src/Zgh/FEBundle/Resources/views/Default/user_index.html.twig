@@ -213,7 +213,9 @@
     </div>
     <!-- Menu End  -->
 <!-- Ahmed -->
-    <div class="col-md-5 col-sm-5 showMe-xs">Hello</div>
+    <div class="col-md-5 col-sm-5 showMe-xs">
+        {{ render_esi(controller("ZghFEBundle:UserProfile:getAboutPartialSmall", {"id": user.id})) }}
+    </div>
 
 <!-- Ahmed -->
     <div class="divider"></div>

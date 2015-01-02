@@ -143,6 +143,18 @@ class UserProfileController extends Controller
         ));
     }
 
+    public function getAboutPartialSmallAction(User $user)
+    {
+        if (in_array("ROLE_CUSTOMER", $user->getRoles())) {
+            return "";
+        } else if (in_array("ROLE_VENDOR", $user->getRoles())) {
+            $about = $user->getVendorInfo();
+            return $this->render('@ZghFE/Partial/about/user_profile_about_vendor.small.html.twig', array(
+                "about" => $about
+            ));
+        }
+    }
+
     public function getAboutPartialAction(User $user)
     {
         if (in_array("ROLE_CUSTOMER", $user->getRoles())) {
