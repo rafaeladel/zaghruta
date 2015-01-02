@@ -593,7 +593,7 @@ footer .container {
 .select2-container-multi .select2-choices .select2-search-field input{
     padding: 0 !important;
     font-size: 14px;
-    color: #ccc;
+    color: #000;
 }
 .select2-input{
     padding: 0 !important;
