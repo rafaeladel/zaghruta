@@ -951,10 +951,10 @@ footer .container {
     height: auto!important;
 }
 .fullName{
-    max-height: 34px;
+    max-height: 50px;
     overflow: hidden;
     display: inline-block;
-    width: 160px;
+    width: 139px;
 }
 
 .profile h3 a {
