@@ -145,7 +145,7 @@ class EmailNotifier
 
     protected function sendMessage(NotifyMessageEvent $event)
     {
-        $user = $event->getUserToNotify(); 
+        $user = $event->getUserToNotify();
         $notification = $event->getNotification();
         $user_url = $this->router->generate("zgh_fe.user_profile.index", ["id" => $this->notification->getOtherEnd()->getId()], true);
         $title = "{$this->notification->getOtherEnd()->getFullName()} has sent you a message";
