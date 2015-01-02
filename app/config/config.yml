@@ -73,7 +73,8 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:
-        { type: memory }
+        type: file
+        path: %kernel.root_dir%/spool
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
@@ -82,7 +83,7 @@ fos_user:
     registration:
         confirmation:
             from_email:
-                address:        noreply@beta.zaghruta.com
+                address:        noreply@zaghruta.com
                 sender_name:    Registration confirmation
             enabled: true
         form:
@@ -94,7 +95,7 @@ fos_user:
     resetting:
         email:
             from_email:
-                address:        noreply@beta.zaghruta.com
+                address:        noreply@zaghruta.com
                 sender_name:    Password resetting
         form:
             validation_groups: ["customResetting", "Default"]
