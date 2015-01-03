@@ -3696,6 +3696,12 @@ div#connections .profile .girl, div#connections .profile .boy{
     .mainSearch .dropdown-menu{
     left: 0px !important;
    }
+    .moveEditExpTip{
+        min-width: 115px !important;
+    }
+     .exptip_edit_submit{
+        min-width: 115px !important;
+    }
 
 }
 
@@ -3801,6 +3807,12 @@ div#connections .profile .girl, div#connections .profile .boy{
     .mainSearch .dropdown-menu{
     left: 0px !important;
    }
+    .moveEditExpTip{
+        min-width: 115px !important;
+    }
+     .exptip_edit_submit{
+        min-width: 115px !important;
+    }
 }
 @media (max-width: 320px){
     .nav-login{
