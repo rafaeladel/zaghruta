@@ -47,11 +47,6 @@
                 </div>
             </div>
         </div>
-        <div class="row hidden-md hidden-lg">
-            <div class="col-sm-12 btnTitle  margin">
-                <button class="btn btn-primary btn-wide btn-block" type="button"> Decorama Co</button>
-            </div>
-        </div>
         <div class="content_wrapper {{ toggles["is_popup"] ? "contentPopupWish" : "" }}">
             {% block innerPartial %}
                 {{ include("@ZghFE/Partial/products/user_profile_product_content_widget.html.twig", {"product": product, "toggles": toggles}) }}
