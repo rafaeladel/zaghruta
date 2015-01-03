@@ -3,7 +3,13 @@
         {% for photo in photos %}
             <div class="col-md-3 col-sm-4 col-xs-12 col-xxs-12 margin">
                 <div class="thumbnail photoGallery">
-                    <a class="fancybox" href="{{ url("zgh_fe.photos.photo.content", {"id": user.id, "photo_id": photo.id } ) }}" data-fancybox-href="#photosPopup_{{ photo.id }}" rel="gallery">
+                    <a class="fancybox hidden-xs" href="{{ url("zgh_fe.photos.photo.content", {"id": user.id, "photo_id": photo.id } ) }}" data-fancybox-href="#photosPopup_{{ photo.id }}" rel="gallery">
+                        <div class="thumbOverlay">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </div>
+                        <img src="{{ asset(photo.getThumbWebPath) }}" class="img-responsive imgResponsive" alt="Responsive image" />
+                    </a>
+                    <a class="hidden-sm hidden-md hidden-lg" href="{{ url("zgh_fe.photos.photo.content", {"id": user.id, "photo_id": photo.id } ) }}" data-fancybox-href="#photosPopup_{{ photo.id }}" rel="gallery">
                         <div class="thumbOverlay">
                             <span class="glyphicon glyphicon-eye-open"></span>
                         </div>

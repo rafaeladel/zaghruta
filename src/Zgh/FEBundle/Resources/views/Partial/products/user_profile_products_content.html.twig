@@ -9,7 +9,12 @@
                             <a rel="Product" data-toggle="tooltip" data-placement="top" title="Open"
                                data-fancybox-href="{{ url("zgh_fe.products.get_parent_content_widget", {"id": product.user.id, "product_id": product.id}) }}"
                                href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}"
-                               class="{{ app.user and product.user.id == app.user.id ? "openProduct tooltip" : "" }}  fancybox  fancybox.ajax"><span
+                               class="{{ app.user and product.user.id == app.user.id ? "openProduct tooltip" : "" }} hidden-xs  fancybox  fancybox.ajax"><span
+                                        class="glyphicon glyphicon-eye-open"></span></a>
+                                        <a rel="Product" data-toggle="tooltip" data-placement="top" title="Open"
+                               data-fancybox-href="{{ url("zgh_fe.products.get_parent_content_widget", {"id": product.user.id, "product_id": product.id}) }}"
+                               href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}"
+                               class="{{ app.user and product.user.id == app.user.id ? "openProduct tooltip" : "" }} hidden-sm hidden-md hidden-lg"><span
                                         class="glyphicon glyphicon-eye-open"></span></a>
                             {% if app.user and app.user.id == product.user.id %}
                                 <a class="editProduct tooltip" target="_blank"  data-toggle="tooltip" data-placement="top" title="Edit"
