@@ -3824,6 +3824,9 @@ div#connections .profile .girl, div#connections .profile .boy{
     .headerProduct .moveEditExpTip{
         min-width: 0 !important;
     }
+    .btnSetting .upper-menu{
+        right: -91px !important;
+    }
 }
 @media (max-width: 320px){
     .nav-login{
@@ -3975,6 +3978,9 @@ div#connections .profile .girl, div#connections .profile .boy{
     }
     .headerProduct .moveEditExpTip{
         min-width: 0 !important;
+    }
+    .btnSetting .upper-menu{
+        right: -91px !important;
     }
 
 }

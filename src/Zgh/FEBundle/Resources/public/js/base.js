@@ -13,7 +13,7 @@ $(document).ready(function () {
                 }
             }
         });
-    }, 10000);
+    }, 100000000);
 
     $.validator.setDefaults({
         debug: true,
