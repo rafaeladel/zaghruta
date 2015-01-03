@@ -78,7 +78,7 @@
         {% endif %}
         <div class="col-md-4 col-sm-4">
             <p class="photodate">
-                {{ photo.createdAt|date }}
+                {{ photo.createdAt|date("D d M Y - h:i A") }}
             </p>
         </div>
     </div>

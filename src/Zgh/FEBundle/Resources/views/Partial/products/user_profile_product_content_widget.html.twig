@@ -105,7 +105,7 @@
             {{ product.description|nl2br|converturls }}
         </p>
         <p  class="col-md-12">
-            {{ product.createdAt|date("d M Y - h:i A") }}
+            {{ product.createdAt|date("D d M Y - h:i A") }}
         </p>
         {% if toggles["is_popup"] == true %}
             <div class="row">
