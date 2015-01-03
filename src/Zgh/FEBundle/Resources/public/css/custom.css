@@ -3940,10 +3940,10 @@ div#connections .profile .girl, div#connections .profile .boy{
         min-width: 130px !important;
     }
     .moveEditExpTip{
-        min-width: 155px;
+        min-width: 115px !important;
     }
      .exptip_edit_submit{
-        min-width: 155px;
+        min-width: 115px !important;
     }
 
 }
