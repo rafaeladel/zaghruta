@@ -6,7 +6,7 @@
 
 
             <div class="album_nav btn-group pull-right">
-                <button class="wishlist_back_btn btn btn-primary btn-wide"
+                <button style="min-width: 130px;" class="wishlist_back_btn btn btn-primary btn-wide"
                         data-target_url="{{ url("zgh_fe.wishlist_partial_content", {"id": user.id }) }}"><span
                             class="glyphicon  glyphicon-arrow-left"></span> Back
                 </button>
@@ -59,6 +59,8 @@
                        data-fancybox-href="{{ url("zgh_fe.products.get_parent_content_widget", {"id": product.user.id, "product_id": product.id}) }}"
                        href="{{ url("zgh_fe.products.content", {"id": product.user.id, "product_id": product.id}) }}"
                        class="textImageContainer fancybox fancybox.ajax wishlist_img">
+
+                        
                         <div class="thumbOverlay img-responsive">
                             <div class="thumbOverlay"><span class="glyphicon glyphicon-eye-open"></span></div>
                         </div>
