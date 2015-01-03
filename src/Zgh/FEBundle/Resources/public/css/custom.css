@@ -3937,7 +3937,12 @@ div#connections .profile .girl, div#connections .profile .boy{
         margin-left: 20%;
     }
     .wishlist_back_btn{
-        min-width: 130px !important;
+         min-width: 115px !important;
+        margin-right: 21px;
+        font-size: 13px;
+    }
+    .btnDeleteWishlist{
+        min-width: 115px !important;
     }
     .moveEditExpTip{
         min-width: 115px !important;

@@ -13,7 +13,7 @@
 
                 {% if app.user and user.id == app.user.id %}
                     <button data-target="#deleteWishlist_{{ wishlist.id }}" data-toggle="modal"
-                            class="btnDelete btn btn-primary btn-wide pull-right"><span
+                            class="btnDelete btnDeleteWishlist btn btn-primary btn-wide pull-right"><span
                                 class="glyphicon  glyphicon-trash"></span> Delete wishlist
                     </button>
                     <div id="deleteWishlist_{{ wishlist.id }}" aria-hidden="true" aria-labelledby="myModalLabel"
