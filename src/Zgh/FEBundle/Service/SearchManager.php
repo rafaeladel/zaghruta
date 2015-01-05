@@ -191,8 +191,8 @@ class SearchManager
     {
         $q = $this->em->createQuery("
                 select t
-                from Zgh\FEBundle\Entity\Tag t
-                inner join t.products pr
+                from Zgh\FEBundle\Entity\Product pr
+                inner join pr.tags t
                 where pr.user= :user
                 order by t.name desc
             ");
