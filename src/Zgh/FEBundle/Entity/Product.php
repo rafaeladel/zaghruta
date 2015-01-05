@@ -33,7 +33,7 @@ class Product extends Image implements LikeableInterface, CommentableInterface
     protected $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Tag", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="Tag", cascade={"persist"})
      */
     protected $tags;
 
