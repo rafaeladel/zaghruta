@@ -203,6 +203,25 @@ class SearchManager
         return $q->execute();
     }
 
+
+    public function getTagsByProductOnlyResults($user)
+    {
+        $q = $this->em->createQuery("
+                select t
+                from Zgh\FEBundle\Entity\Tag t
+                inner join t.users u
+                inner join t.products p
+                where u.id= :user
+                and p.user_id = :user
+                order by t.name desc
+            ");
+        $q->setParameters([
+            "user" => $user,
+        ]);
+
+        return $q->execute();
+    }
+
     public function getVendorByCategoryResults($cat_slug, $query)
     {
         $q = $this->em->createQuery("

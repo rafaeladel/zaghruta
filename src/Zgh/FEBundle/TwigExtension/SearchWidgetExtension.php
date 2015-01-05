@@ -56,7 +56,7 @@ class SearchWidgetExtension extends \Twig_Extension
         $custome_class = "";
         $url = "";
         if($inProduct == true) {
-            $tags = $this->searchManager->getTagsByProductResults($user);
+            $tags = $this->searchManager->getTagsByProductOnlyResults($user);
             $url = $this->router->generate("zgh_fe.products.search", ["id" => $user->getId()]);
             return $this->env->render("@ZghFE/Partial/search/search_products.html.twig", [
                     "tags" => $tags,
