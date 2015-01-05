@@ -190,14 +190,14 @@ class SearchManager
     public function getTagsByProductResults($user)
     {
         $q = $this->em->createQuery("
-                select t
-                from (
-                select pr, t
+    select t
+    from Zgh\FEBundle\Entity\Tag t
+    where t.id IN (
+                select DISTINCT ta.tag_id
                 from Zgh\FEBundle\Entity\Product pr
-                inner join pr.tags t
+                inner join pr.tags ta
                 where pr.user= :user
-                order by t.name desc
-                )
+    )
             ");
         $q->setParameters([
                 "user" => $user,
