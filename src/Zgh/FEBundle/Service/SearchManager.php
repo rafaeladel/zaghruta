@@ -193,6 +193,7 @@ class SearchManager
                 select t
                 from Zgh\FEBundle\Entity\Tag t
                 inner join t.products pr
+                with pr.tags = t
                 where pr.user= :user
                 order by t.name desc
             ");
