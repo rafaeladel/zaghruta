@@ -190,11 +190,11 @@ class SearchManager
     public function getTagsByProductResults($user)
     {
         $q = $this->em->createQuery("
-                select pr.tags
+                select t, pr
                 from Zgh\FEBundle\Entity\Product pr
-                inner join pr.tags ta
+                inner join pr.tags t
                 where pr.user= :user
-                order by ta.name desc
+                order by t.name desc
             ");
         $q->setParameters([
                 "user" => $user,
