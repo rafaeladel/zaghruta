@@ -193,7 +193,7 @@ class SearchManager
     select t
     from Zgh\FEBundle\Entity\Tag t
     where t.id IN (
-                select DISTINCT ta.tag_id
+                select DISTINCT ta.id
                 from Zgh\FEBundle\Entity\Product pr
                 inner join pr.tags ta
                 where pr.user= :user
