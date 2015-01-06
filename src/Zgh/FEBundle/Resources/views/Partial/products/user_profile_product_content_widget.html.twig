@@ -115,7 +115,7 @@
     </div>
     {% if product.price %}
         <div class="row">
-            <span class="col-md-4 price ">Price:<span> {{ product.price }} EGP</span></span>
+            <span class="col-md-4 price ">Price:<span> {{ product.price|number_format(0, '.', ',') }} EGP</span></span>
         </div>
     {% endif %}
     <div class="col-md-12">

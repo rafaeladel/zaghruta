@@ -40,7 +40,7 @@
                         {#{% endfor %}</h6>#}
                     <span class="date">{{ product.createdAt|date("d M Y - h:i A") }}</span>
                     {% if product.price %}
-                        <span class="price">Price:<span> {{ product.price }} EGP</span></span>
+                        <span class="price">Price:<span> {{ product.price|number_format(0, '.', ',') }} EGP</span></span>
                     {% endif %}
 
                     <p class="description">
