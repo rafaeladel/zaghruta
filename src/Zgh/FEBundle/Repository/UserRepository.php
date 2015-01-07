@@ -71,28 +71,20 @@ class UserRepository extends EntityRepository
 
     public function getPublicPosts($user, $offset = null, $id_holder = null)
     {
-        $sq = $this->getEntityManager()->getConnection()
-                ->prepare("
-                SELECT
-posts.id,
-posts.user_id,
-CONCAT(fos_user.firstname, ' ', IFNULL(fos_user.lastname,'')) fullname,
-posts.created_at,
-posts.updated_at,
-posts.video,
-posts.content,
-posts.image_name
-FROM posts join follow_users
-on posts.user_id = follow_users.followee_id
-and is_approved =1
-join fos_user
-on posts.user_id = fos_user.id
-where follow_users.follower_id = :user
-order by posts.created_at desc
-                ");
-        $sq->bindValue('user', $user);
-        $sq->execute();
-        return $sq->fetchAll();
+                $q = $this->getEntityManager()->createQuery(
+            "
+                            select p from Zgh\FEBundle\Entity\Post p
+                                where p.user in (
+                                  select fo from Zgh\FEBundle\Entity\FollowUsers f
+                                    left join f.followee fo
+                                    where f.follower = :follower_id
+                                    and f.is_approved = 1
+                              ) or p.user = :follower_id
+                            order by p.created_at desc
+                          "
+        )
+            ->setParameter("follower_id", $user);
+        return $q->getQuery()->getResult();
     }
 
     public function getUsersForRelationship($user)
