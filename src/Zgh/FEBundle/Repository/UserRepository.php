@@ -83,15 +83,15 @@ class UserRepository extends EntityRepository
                               ) or p.user = :follower_id
                             order by p.created_at desc
                     union
-                    select p
-                    from Zgh\FEBundle\Entity\Post p
-                                where p.user in (
-                                  select fo from Zgh\FEBundle\Entity\FollowUsers f
-                                    left join f.followee fo
-                                    where f.follower = :follower_id
-                                    and f.is_approved = 1
-                              ) or p.user = :follower_id
-                            order by p.created_at desc
+                    select p2
+                    from Zgh\FEBundle\Entity\Post p2
+                                where p2.user in (
+                                  select fo1 from Zgh\FEBundle\Entity\FollowUsers f1
+                                    left join f1.followee fo1
+                                    where f1.follower = :follower_id
+                                    and f1.is_approved = 1
+                              ) or p2.user = :follower_id
+                            order by p2.created_at desc
                           "
         )->setParameter("follower_id", $user);
         return $q->execute();
