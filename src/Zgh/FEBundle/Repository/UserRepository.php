@@ -71,30 +71,39 @@ class UserRepository extends EntityRepository
 
     public function getPublicPosts($user, $offset = null, $id_holder = null)
     {
-                $q = $this->getEntityManager()->createQuery(
-            "
-                  select p
-                  from Zgh\FEBundle\Entity\Post p
-                                where p.user in (
-                                  select fo from Zgh\FEBundle\Entity\FollowUsers f
-                                    left join f.followee fo
-                                    where f.follower = :follower_id
-                                    and f.is_approved = 1
-                              ) or p.user = :follower_id
-                            order by p.created_at desc
-                    UNION
-                    select p2
-                    from Zgh\FEBundle\Entity\Post p2
-                                where p2.user in (
-                                  select fo1 from Zgh\FEBundle\Entity\FollowUsers f1
-                                    left join f1.followee fo1
-                                    where f1.follower = :follower_id
-                                    and f1.is_approved = 1
-                              ) or p2.user = :follower_id
-                            order by p2.created_at desc
-                          "
-        )->setParameter("follower_id", $user);
-        return $q->execute();
+        $rsm = new ResultSetMapping;
+        $rsm->addEntityResult('post', 'post');
+        $rsm->addFieldResult('post', 'id', 'id');
+        $rsm->addFieldResult('post', 'user_id', 'user_id');
+        $rsm->addFieldResult('post', 'fullname', 'fullname');
+        $rsm->addFieldResult('post', 'created_at', 'created_at');
+        $rsm->addFieldResult('post', 'updated_at', 'updated_at');
+        $rsm->addFieldResult('post', 'video', 'video');
+        $rsm->addFieldResult('post', 'content', 'content');
+        $rsm->addFieldResult('post', 'image_name', 'image_name');
+
+        $query = $this->_em->createNativeQuery("
+                        SELECT
+                posts.id,
+                posts.user_id,
+                CONCAT(fos_user.firstname, ' ', IFNULL(fos_user.lastname,'')) fullname,
+                posts.created_at,
+                posts.updated_at,
+                posts.video,
+                posts.content,
+                posts.image_name
+                FROM posts join follow_users
+                on posts.user_id = follow_users.followee_id
+                and is_approved =1
+                join fos_user
+                on posts.user_id = ?
+                where follow_users.follower_id = 2
+                order by posts.created_at desc
+        ", $rsm);
+        $query->setParameter(1, $user.id);
+
+        return $query->getResult();
+
     }
 
     public function getUsersForRelationship($user)

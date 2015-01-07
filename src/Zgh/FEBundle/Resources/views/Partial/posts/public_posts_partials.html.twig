@@ -36,17 +36,17 @@
             <div class="header-post">
                 <div class="data-reacted col-xs-8 pull-left">
                     <div class="profile sm-img-post">
-                        <a href="{{ url("zgh_fe.user_profile.index", {"id": post.user.id } ) }}"
+                        <a href="{{ url("zgh_fe.user_profile.index", {"id": post.user_id } ) }}"
                            class="pull-left img-circle">
                             <img alt=""
-                                 src="{{ post.user.profilePhoto ?  asset(post.user.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in post.user.roles ? 'https://graph.facebook.com/'~post.user.facebookId~'/picture?width=125&height=125' : "#") }}"
+                                 src=""
                                  width="639" class="img-responsive  media-object">
                         </a>
 
                         <h3>
-                            <a href="{{ url("zgh_fe.user_profile.index", {"id": post.user.id } ) }}">{{ post.user.fullname }}</a>
+                            <a href="{{ url("zgh_fe.user_profile.index", {"id": post.user_id } ) }}">{{ post.fullname }}</a>
                         </h3>
-                        <a href="{{ url("zgh_fe.post.display", {"id": post.user.id, "post_id": post.id}) }}"><span
+                        <a href="{{ url("zgh_fe.post.display", {"id": post.user_id, "post_id": post.id}) }}"><span
                                     class="date-time">{{ post.createdAt|date("D d M Y - h:i A") }}</span></a>
 
                     </div>
