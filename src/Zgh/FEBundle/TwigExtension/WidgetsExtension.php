@@ -159,6 +159,15 @@ class WidgetsExtension extends \Twig_Extension
         return $this->env->render("@ZghFE/Partial/search/search_partial_users.html.twig", ["users" => $vendors]);
     }
 
+    public function getVendorSearchResultMini($crit)
+    {
+        $vendors = $this->searchManager->getVendorsResultsMini($crit);
+        if (count($vendors) == 0) {
+            return null;
+        }
+        return $this->env->render("@ZghFE/Partial/search/search_partial_users.html.twig", ["users" => $vendors]);
+    }
+
     public function getTipsSearchResult($crit)
     {
         $tips = $this->searchManager->getTipsResults($crit);

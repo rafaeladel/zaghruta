@@ -151,6 +151,23 @@ class SearchManager
         return $q->execute();
     }
 
+    public function getVendorsResultsMini($query)
+    {
+        $q = $this->em->createQuery(
+            "
+                select u
+                from Zgh\FEBundle\Entity\User u
+                where (u.firstname like :crit
+                or u.lastname like :crit
+                or concat(u.firstname, ' ', u.lastname) like :crit)
+                and u.roles like '%ROLE_VENDOR%'
+                order by u.created_at DESC
+            "
+        )->setMaxResults(12);
+        $q->setParameter("crit", "%" .  strtolower($query) . "%");
+        return $q->execute();
+    }
+
     public function getProductByCategoryResults($cat_slug, $query)
     {
         $q = $this->em->createQuery("
