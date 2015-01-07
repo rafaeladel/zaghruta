@@ -82,7 +82,7 @@ class UserRepository extends EntityRepository
                                     and f.is_approved = 1
                               ) or p.user = :follower_id
                             order by p.created_at desc
-                    union
+                    UNION
                     select p2
                     from Zgh\FEBundle\Entity\Post p2
                                 where p2.user in (
