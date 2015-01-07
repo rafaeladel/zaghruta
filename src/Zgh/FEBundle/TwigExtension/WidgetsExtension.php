@@ -46,6 +46,7 @@ class WidgetsExtension extends \Twig_Extension
             new \Twig_SimpleFunction("getProductsSearchResult", [$this, "getProductsSearchResult"]),
             new \Twig_SimpleFunction("getPeopleSearchResult", [$this, "getPeopleSearchResult"]),
             new \Twig_SimpleFunction("getVendorSearchResult", [$this, "getVendorSearchResult"]),
+            new \Twig_SimpleFunction("getVendorSearchResultMini", [$this, "getVendorSearchResultMini"]),
             new \Twig_SimpleFunction("getTipsSearchResult", [$this, "getTipsSearchResult"]),
             new \Twig_SimpleFunction("getExperiencesSearchResult", [$this, "getExperiencesSearchResult"]),
             new \Twig_SimpleFunction("getProductsByCategory", [$this, "getProductsByCategory"]),
