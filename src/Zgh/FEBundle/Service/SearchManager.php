@@ -165,7 +165,7 @@ class SearchManager
             "
         );
         $q->setParameter("crit", "%" .  strtolower($query) . "%");
-        
+        $q->setMaxResults(12);
         return $q->execute();
     }
 
