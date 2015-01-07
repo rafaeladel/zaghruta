@@ -86,7 +86,7 @@
 
             {% if catSlug == "all" %}
                 <div id="searchVendors" class="row resultWrapper">
-                    {% set vendors = getVendorSearchResultMini(query) %}
+                    {% set vendors = getVendorSearchResult(query) %}
                     <h2>Vendors</h2>
                     <hr>
                     {% if vendors != null %}
