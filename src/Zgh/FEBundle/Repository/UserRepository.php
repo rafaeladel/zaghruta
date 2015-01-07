@@ -73,7 +73,7 @@ class UserRepository extends EntityRepository
     {
                 $q = $this->getEntityManager()->createQuery(
             "
-                  select p.id, p.user, p.createdAt
+                  select p.id, p.user, p.created_At createdAt
                   from Zgh\FEBundle\Entity\Post p
                                 where p.user in (
                                   select fo from Zgh\FEBundle\Entity\FollowUsers f
