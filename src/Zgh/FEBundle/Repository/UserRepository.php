@@ -82,12 +82,8 @@ class UserRepository extends EntityRepository
                               ) or p.user = :follower_id
                             order by p.created_at desc
                           "
-        )
-            ->setParameter("follower_id", $user);
-        if($offset != null) {
-            $q->setFirstResult($offset);
-        }
-        return $q->getQuery()->getResult();
+        )->setParameter("follower_id", $user);
+        return $q->execute();
     }
 
     public function getUsersForRelationship($user)
