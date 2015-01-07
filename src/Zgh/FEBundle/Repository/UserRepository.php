@@ -73,7 +73,7 @@ class UserRepository extends EntityRepository
     {
                 $q = $this->getEntityManager()->createQuery(
             "
-                  select p.id, p.user, p.created_at
+                  select p
                   from Zgh\FEBundle\Entity\Post p
                                 where p.user in (
                                   select fo from Zgh\FEBundle\Entity\FollowUsers f
@@ -82,7 +82,16 @@ class UserRepository extends EntityRepository
                                     and f.is_approved = 1
                               ) or p.user = :follower_id
                             order by p.created_at desc
-
+                    union
+                    select p
+                    from Zgh\FEBundle\Entity\Post p
+                                where p.user in (
+                                  select fo from Zgh\FEBundle\Entity\FollowUsers f
+                                    left join f.followee fo
+                                    where f.follower = :follower_id
+                                    and f.is_approved = 1
+                              ) or p.user = :follower_id
+                            order by p.created_at desc
                           "
         )->setParameter("follower_id", $user);
         return $q->execute();
