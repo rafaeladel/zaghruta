@@ -57,7 +57,7 @@ class PostController extends Controller
             if(count($posts) != 0) {
                 return new JsonResponse([
                     "success" => true,
-                    "view" => $this->renderView("@ZghFE/Partial/posts/posts_partials.html.twig", array(
+                    "view" => $this->renderView("@ZghFE/Partial/posts/public_posts_partials.html.twig", array(
                         "posts" => $posts
                     ))
                 ]);
@@ -68,7 +68,7 @@ class PostController extends Controller
                 ]);
             }
         } else {
-            return $this->render("@ZghFE/Partial/posts/posts_partials.html.twig", array(
+            return $this->render("@ZghFE/Partial/posts/public_posts_partials.html.twig", array(
                 "posts" => $posts
             ));
         }
