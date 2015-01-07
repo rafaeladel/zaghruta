@@ -51,7 +51,7 @@ class PostController extends Controller
         $offset = $request->query->get("f", null);
         $id_holder = $request->query->get("idh", null);
         $user = $this->get("security.context")->getToken()->getUser();
-        $posts = $this->getDoctrine()->getRepository("ZghFEBundle:User")->getPublicPosts($user, $offset, $id_holder);
+        $posts = $this->getDoctrine()->getRepository("ZghFEBundle:User")->getPosts($user, $offset, $id_holder);
         if($request->isXmlHttpRequest() && $offset != null)
         {
             if(count($posts) != 0) {
