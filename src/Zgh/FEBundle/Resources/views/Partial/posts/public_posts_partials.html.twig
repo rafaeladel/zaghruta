@@ -44,10 +44,10 @@
                         </a>
 
                         <h3>
-                            <a href="{{ url("zgh_fe.user_profile.index", {"id": post.user.id } ) }}">{{ post.user.fullname }}</a>
+                            <a href="{{ url("zgh_fe.user_profile.index", {"id": post.user.id } ) }}">{{ post.user.fullname }} {{ post.user.profilePhoto }}</a>
                         </h3>
                         <a href="{{ url("zgh_fe.post.display", {"id": post.user.id, "post_id": post.id}) }}"><span
-                                    class="date-time">{{ post.createdAt|date("d M Y - h:i A") }}</span></a>
+                                    class="date-time">{{ post.createdAt|date("D d M Y - h:i A") }}</span></a>
 
                     </div>
 
