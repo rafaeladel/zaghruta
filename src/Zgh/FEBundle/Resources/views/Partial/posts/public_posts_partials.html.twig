@@ -1,7 +1,7 @@
 <div class="posts_wrapper">
     {% for post in posts %}
         <div class="post margin" data-post_id="{{ post.id }}">
-            {% if app.user and post.user.id == app.user.id %}
+            {% if app.user and post.user_id == app.user.id %}
                 <button data-target="#deletePost_{{ post.id }}" data-toggle="modal" type="submit"
                         class="row  btn delete-post pull-right"><span
                             class="glyphicon glyphicon-remove pull-right"></span></button>
@@ -36,47 +36,27 @@
             <div class="header-post">
                 <div class="data-reacted col-xs-8 pull-left">
                     <div class="profile sm-img-post">
-                        <a href="{{ url("zgh_fe.user_profile.index", {"id": post.user.id } ) }}"
+                        <a href="{{ url("zgh_fe.user_profile.index", {"id": post.user_id } ) }}"
                            class="pull-left img-circle">
                             <img alt=""
-                                 src="{{ post.user.profilePhoto ?  asset(post.user.profilePhoto.getThumbWebPath) : ("ROLE_FACEBOOK" in post.user.roles ? 'https://graph.facebook.com/'~post.user.facebookId~'/picture?width=125&height=125' : "#") }}"
+                                 src=""
                                  width="639" class="img-responsive  media-object">
                         </a>
 
                         <h3>
-                            <a href="{{ url("zgh_fe.user_profile.index", {"id": post.user.id } ) }}">{{ post.user.fullname }} </a>
+                            <a href="{{ url("zgh_fe.user_profile.index", {"id": post.user_id } ) }}">{{ post.fullname }} </a>
                         </h3>
-                        <a href="{{ url("zgh_fe.post.display", {"id": post.user.id, "post_id": post.id}) }}"><span
+                        <a href="{{ url("zgh_fe.post.display", {"id": post.user_id, "post_id": post.id}) }}"><span
                                     class="date-time">{{ post.createdAt|date("D d M Y - h:i A") }}</span></a>
 
                     </div>
 
                 </div>
-                {% if app.user %}
-                    <div class="icons-G pull-right">
 
-                        <form class="btnForm pull-right"
-                              action="{{ url("zgh_fe.like.post", {"id": post.id, "entity_type": post.getObjectType }) }}"
-                              method="post">
-                            <button type="submit" data-placement="top" data-toggle="tooltip"
-                                    title="{{ checkLike(app.user, post) ? "Unlike" : "Like" }}"
-                                    class="btn tooltip btn-circle doLike {{ checkLike(app.user, post) ? "btn-danger" : "likeBtn" }}">
-                                <span class="glyphicon glyphicon-heart"></span>
-                            </button>
-                        </form>
-
-                    </div>
-                {% endif %}
                 <div class="clearfix"></div>
             </div>
             <!--End header-post-->
 
-            {{ getPostContent(post)|raw }}
-
-            <div class="footer-post">
-                {{ include(
-                "@ZghFE/Partial/common/comments_section.html.twig",{'entity': post}) }}
-            </div>
         </div>
 
     {% endfor %}
