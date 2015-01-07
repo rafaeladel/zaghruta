@@ -84,6 +84,9 @@ class UserRepository extends EntityRepository
                           "
         )
             ->setParameter("follower_id", $user);
+        if($offset != null) {
+            $q->setFirstResult($offset);
+        }
         return $q->getQuery()->getResult();
     }
 
