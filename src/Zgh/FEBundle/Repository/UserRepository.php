@@ -83,7 +83,7 @@ class UserRepository extends EntityRepository
         $rsm->addFieldResult('post', 'image_name', 'image_name');
 
         $query = $this->_em->createNativeQuery("
-                        SELECT
+                SELECT
                 posts.id,
                 posts.user_id,
                 CONCAT(fos_user.firstname, ' ', IFNULL(fos_user.lastname,'')) fullname,
@@ -96,8 +96,8 @@ class UserRepository extends EntityRepository
                 on posts.user_id = follow_users.followee_id
                 and is_approved =1
                 join fos_user
-                on posts.user_id = ?
-                where follow_users.follower_id = 2
+                on posts.user_id = fos_user.id
+                where follow_users.follower_id = ?
                 order by posts.created_at desc
         ", $rsm);
         $query->setParameter(1, $user.id);
