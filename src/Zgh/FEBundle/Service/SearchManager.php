@@ -163,8 +163,9 @@ class SearchManager
                 and u.roles like '%ROLE_VENDOR%'
                 order by u.created_at DESC
             "
-        )->setMaxResults(12);
+        );
         $q->setParameter("crit", "%" .  strtolower($query) . "%");
+        $q->setMaxResults(12);
         return $q->execute();
     }
 
