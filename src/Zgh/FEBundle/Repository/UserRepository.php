@@ -72,7 +72,7 @@ class UserRepository extends EntityRepository
     public function getPublicPosts($user, $offset = null, $id_holder = null)
     {
         $rsm = new ResultSetMapping;
-        $rsm->addEntityResult('Zgh\FEBundle\Entity\Post', 'post');
+        $rsm->addEntityResult('Post', 'post');
         $rsm->addFieldResult('post', 'id', 'id');
         $rsm->addFieldResult('post', 'user_id', 'user_id');
         $rsm->addFieldResult('post', 'fullname', 'fullname');
