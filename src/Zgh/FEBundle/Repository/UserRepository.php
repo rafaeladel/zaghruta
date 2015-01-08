@@ -97,10 +97,10 @@ class UserRepository extends EntityRepository
                 and is_approved =1
                 join fos_user
                 on posts.user_id = fos_user.id
-                where follow_users.follower_id = ?
+                where follow_users.follower_id = 2
                 order by posts.created_at desc
         ", $rsm);
-        $query->setParameter(1, $user.id);
+        //$query->setParameter(1, $user.id);
 
         return $query->getResult();
 
